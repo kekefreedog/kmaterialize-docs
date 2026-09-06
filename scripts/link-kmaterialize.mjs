@@ -45,3 +45,18 @@ if (!alreadyLinked) {
 
 console.log(`kmaterialize -> ${target}`);
 execSync("corepack pnpm install", { stdio: "inherit", cwd: rootDir });
+
+// pnpm's content-addressable store caches a "file:" directory dependency
+// the first time it's packed, and does NOT reliably notice source edits
+// afterwards - not on a plain reinstall, not even with `pnpm install
+// --force` (confirmed: only `pnpm store prune` busted it). So for local
+// dev, bypass that cache entirely: overwrite node_modules/kmaterialize
+// with a straight, fresh copy of the source directory every time.
+if (mode === "local") {
+  const nodeModulesTarget = path.join(rootDir, "node_modules", "kmaterialize");
+  console.log(`Refreshing ${nodeModulesTarget} from source (bypassing pnpm's store cache)...`);
+  execSync(
+    `rsync -a --delete --exclude node_modules --exclude .git "${LOCAL_KMATERIALIZE_PATH}/" "${nodeModulesTarget}/"`,
+    { stdio: "inherit" }
+  );
+}
