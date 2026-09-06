@@ -43,15 +43,21 @@ if (mode === "latest") {
   // --latest` is what actually re-resolves the dist-tag - but it also
   // rewrites package.json's specifier to the exact pinned version as a
   // side effect, so put "latest" back afterwards.
+  //
+  // The reconciliation install below needs --no-frozen-lockfile: pnpm
+  // auto-enables frozen-lockfile whenever CI=true (i.e. every GitHub
+  // Actions run), which would otherwise reject it for package.json/
+  // lockfile briefly disagreeing mid-script. (`update` has no such flag -
+  // it isn't subject to frozen-lockfile in the first place.)
   execSync("corepack pnpm update kmaterialize --latest", { stdio: "inherit", cwd: rootDir });
   const pkgAfterUpdate = JSON.parse(readFileSync(pkgPath, "utf8"));
   if (pkgAfterUpdate.dependencies.kmaterialize !== "latest") {
     pkgAfterUpdate.dependencies.kmaterialize = "latest";
     writeFileSync(pkgPath, JSON.stringify(pkgAfterUpdate, null, 2) + "\n");
-    execSync("corepack pnpm install", { stdio: "inherit", cwd: rootDir });
+    execSync("corepack pnpm install --no-frozen-lockfile", { stdio: "inherit", cwd: rootDir });
   }
 } else {
-  execSync("corepack pnpm install", { stdio: "inherit", cwd: rootDir });
+  execSync("corepack pnpm install --no-frozen-lockfile", { stdio: "inherit", cwd: rootDir });
 }
 
 // pnpm's content-addressable store caches a "file:" directory dependency
