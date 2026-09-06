@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "@material/material-color-utilities": "^0.2.7",
-    "kmaterialize": "latest",
     "glob": "^10.4.5",
     "highlight.js": "^11.11.1",
+    "kmaterialize": "latest",
     "material-icons": "^1.13.14",
     "vite-plugin-handlebars": "^1.6.0"
   },

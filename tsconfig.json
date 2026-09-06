@@ -12,6 +12,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    // Avoid implicitly picking up every @types/* package hoisted into
+    // node_modules by transitive dependencies (node-linker=hoisted in
+    // .npmrc, needed for kmaterialize's sass imports, flattens them all
+    // into visibility, some of them broken/incomplete on their own).
+    "types": [],
 
     /* Linting */
     "strict": false,
