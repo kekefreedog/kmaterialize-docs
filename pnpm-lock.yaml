@@ -19,7 +19,7 @@ importers:
         version: 11.12.0
       kmaterialize:
         specifier: latest
-        version: 2.3.3-1.0.10
+        version: 2.3.3-1.0.11
       material-icons:
         specifier: ^1.13.14
         version: 1.13.14
@@ -1862,8 +1862,8 @@ packages:
   keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
 
-  kmaterialize@2.3.3-1.0.10:
-    resolution: {integrity: sha512-wxZstPLPqdy312ZnoyryHzKawEDTV+DJ96R1jdU0HY9mvxSXjIKTjax15KZoBXvrzw2Yq520Wi9XYMceJ2xJAA==}
+  kmaterialize@2.3.3-1.0.11:
+    resolution: {integrity: sha512-+cVMuguyH8tUh7AZnrXhaoYT6EB/4CuHszuMrlyErbPIODgM0R9gYex7/UsWE/OLz6bH4f2n7nnvREuesEEzyQ==}
 
   lazystream@1.0.1:
     resolution: {integrity: sha512-b94GiNHQNy6JNTrt5w6zNyffMrNkXZb3KTkCZJb2V1xaEGCk093vkZ2jk3tpaeP33/OiXC+WvK9AxUebnf5nbw==}
@@ -4359,7 +4359,7 @@ snapshots:
     dependencies:
       json-buffer: 3.0.1
 
-  kmaterialize@2.3.3-1.0.10:
+  kmaterialize@2.3.3-1.0.11:
     dependencies:
       normalize.css: 8.0.1
 

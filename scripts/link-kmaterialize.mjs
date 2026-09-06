@@ -27,24 +27,32 @@ const pkgPath = path.join(rootDir, "package.json");
 const pkg = JSON.parse(readFileSync(pkgPath, "utf8"));
 const alreadyLinked = pkg.dependencies.kmaterialize === target;
 
-// node-linker=hoisted (needed for kmaterialize's sass imports to resolve)
-// makes pnpm COPY file: dependencies instead of symlinking them, so a
-// stale copy would otherwise persist across edits to the library source.
-// Always reinstall in local mode to pick those up; skip in latest mode
-// since re-hitting the registry on every build for something that never
-// changed locally is just wasted time.
-if (alreadyLinked && mode === "latest") {
-  console.log(`kmaterialize already linked to "${target}", skipping reinstall.`);
-  process.exit(0);
-}
-
 if (!alreadyLinked) {
   pkg.dependencies.kmaterialize = target;
   writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + "\n");
 }
 
 console.log(`kmaterialize -> ${target}`);
-execSync("corepack pnpm install", { stdio: "inherit", cwd: rootDir });
+
+if (mode === "latest") {
+  // A plain `pnpm install` reuses whatever version is already resolved in
+  // pnpm-lock.yaml for the "latest" specifier - it does NOT re-check the
+  // npm registry just because the "latest" dist-tag moved on to a newer
+  // publish (confirmed: a build shipped a week-old version this way even
+  // though package.json said "latest" the whole time). `pnpm update
+  // --latest` is what actually re-resolves the dist-tag - but it also
+  // rewrites package.json's specifier to the exact pinned version as a
+  // side effect, so put "latest" back afterwards.
+  execSync("corepack pnpm update kmaterialize --latest", { stdio: "inherit", cwd: rootDir });
+  const pkgAfterUpdate = JSON.parse(readFileSync(pkgPath, "utf8"));
+  if (pkgAfterUpdate.dependencies.kmaterialize !== "latest") {
+    pkgAfterUpdate.dependencies.kmaterialize = "latest";
+    writeFileSync(pkgPath, JSON.stringify(pkgAfterUpdate, null, 2) + "\n");
+    execSync("corepack pnpm install", { stdio: "inherit", cwd: rootDir });
+  }
+} else {
+  execSync("corepack pnpm install", { stdio: "inherit", cwd: rootDir });
+}
 
 // pnpm's content-addressable store caches a "file:" directory dependency
 // the first time it's packed, and does NOT reliably notice source edits
