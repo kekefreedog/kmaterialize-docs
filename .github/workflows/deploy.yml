@@ -23,6 +23,22 @@ jobs:
       - name: Enable corepack (pnpm)
         run: corepack enable
 
+      - name: Sync package.json version with release tag
+        # Same idea as kmaterialize's publish.yml: the tag is the source of
+        # truth, so package.json just follows it - no manual version bump
+        # commit needed before tagging a release.
+        if: github.event_name == 'release'
+        run: |
+          TARGET_VERSION="${{ github.event.release.tag_name }}"
+          TARGET_VERSION="${TARGET_VERSION#v}"
+          PKG_VERSION="$(node -p "require('./package.json').version")"
+          if [ "$PKG_VERSION" != "$TARGET_VERSION" ]; then
+            echo "Updating package.json version from ${PKG_VERSION} to ${TARGET_VERSION}"
+            npm pkg set version="$TARGET_VERSION"
+          else
+            echo "Version already matches tag: ${PKG_VERSION}"
+          fi
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
