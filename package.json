@@ -4,15 +4,17 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node scripts/link-kmaterialize.mjs local && vite",
-    "build": "node scripts/link-kmaterialize.mjs latest && tsc && vite build",
+    "dev": "corepack pnpm run dev:pnpm",
+    "build": "corepack pnpm run build:pnpm",
+    "dev:pnpm": "node scripts/link-kmaterialize.mjs local && vite",
+    "build:pnpm": "node scripts/link-kmaterialize.mjs latest && tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@material/material-color-utilities": "^0.2.7",
     "glob": "^10.4.5",
     "highlight.js": "^11.11.1",
-    "kmaterialize": "latest",
+    "kmaterialize": "file:/Users/kzarshenas/Sites/CrazyProject/kmaterialize",
     "material-icons": "^1.13.14",
     "vite-plugin-handlebars": "^1.6.0"
   },
