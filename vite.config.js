@@ -1,10 +1,98 @@
 import { globSync } from "glob";
 import path, { resolve } from "path";
+import fs from "node:fs";
 import handlebars from "vite-plugin-handlebars";
 import { fileURLToPath } from "node:url";
 import { config } from "./config.materialize";
 
 let currentRoute = "";
+
+// Maps a small set of file extensions to a Content-Type header. The version
+// snapshots only ever contain the kinds of files a built docs page ships with.
+const MIME_TYPES = {
+  ".html": "text/html",
+  ".css": "text/css",
+  ".js": "text/javascript",
+  ".mjs": "text/javascript",
+  ".json": "application/json",
+  ".svg": "image/svg+xml",
+  ".png": "image/png",
+  ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg",
+  ".gif": "image/gif",
+  ".ico": "image/x-icon",
+  ".woff": "font/woff",
+  ".woff2": "font/woff2",
+};
+
+// `/version/<x.y.z>/...` pages are static snapshots produced by release.js
+// after each build (see docs/version/*). They only exist as pre-built HTML,
+// so `vite dev` has no route for them and falls back to serving the current
+// index.html instead - breaking every relative asset (images, css, js) on
+// the page, since they then resolve one directory level too deep.
+// This middleware serves docs/version/* directly, the same way the
+// deployed static site does, so version pages behave the same in dev.
+//
+// The built page's own bundle is referenced with root-absolute paths
+// (e.g. "/assets/main-xxxx.js", and in turn that CSS's own
+// "/assets/some-font.woff2"), which don't carry the version anywhere in
+// their URL. For those, we fall back to the Referer header to figure out
+// which snapshot they belong to. A single lookup at the immediate parent
+// isn't enough though - browsers set Referer to the *stylesheet's* URL for
+// resources a stylesheet pulls in (fonts, background images), not to the
+// original page - so `servedVersionByUrl` remembers, for every URL we've
+// served out of a version snapshot, which version it came from. That lets
+// a referer chain of any depth (page -> css -> font) resolve correctly.
+function serveVersionSnapshotsPlugin() {
+  const versionsRoot = resolve(__dirname, "docs/version");
+  const servedVersionByUrl = new Map();
+
+  return {
+    name: "serve-version-snapshots",
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        if (!fs.existsSync(versionsRoot)) return next();
+
+        const urlPath = decodeURIComponent(req.url.split("?")[0]);
+        let version;
+        let restPath;
+
+        if (urlPath.startsWith("/version/")) {
+          const rest = urlPath.slice("/version/".length); // e.g. "v2.2.2/images/x.svg"
+          const slashIndex = rest.indexOf("/");
+          version = slashIndex === -1 ? rest : rest.slice(0, slashIndex);
+          restPath = slashIndex === -1 ? "/" : rest.slice(slashIndex);
+        } else if (req.headers.referer) {
+          const refererPath = new URL(req.headers.referer).pathname;
+          const refererMatch = refererPath.match(/^\/version\/([^/]+)\//);
+          version = refererMatch ? refererMatch[1] : servedVersionByUrl.get(refererPath);
+          if (version) restPath = urlPath;
+        }
+
+        if (!version) return next();
+
+        const versionDir = path.join(versionsRoot, version);
+        const candidates = restPath.endsWith("/")
+          ? [path.join(versionDir, restPath, "index.html")]
+          : [path.join(versionDir, restPath), path.join(versionDir, restPath, "index.html")];
+
+        const filePath = candidates.find((candidate) => {
+          try {
+            return fs.statSync(candidate).isFile();
+          } catch {
+            return false;
+          }
+        });
+
+        if (!filePath) return next();
+
+        servedVersionByUrl.set(urlPath, version);
+        res.setHeader("Content-Type", MIME_TYPES[path.extname(filePath)] || "application/octet-stream");
+        fs.createReadStream(filePath).pipe(res);
+      });
+    },
+  };
+}
 
 function getMenuItem(item) {
   // Has kids?
@@ -52,13 +140,8 @@ function getMenuItem(item) {
 export default {
   root: "./src",
   //base: "./",
-  resolve: {
-    alias: {
-      "@materializecss/materialize/sass": path.resolve(__dirname, "./packages/materialize/sass/"),
-      "@materializecss/materialize": path.resolve(__dirname, "./packages/materialize/src/"),
-    },
-  },
   plugins: [
+    serveVersionSnapshotsPlugin(),
     handlebars({
       context(pagePath) {
         currentRoute = pagePath;

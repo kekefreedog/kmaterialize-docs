@@ -6,7 +6,7 @@ This project uses pnpm with workspaces. So pnpm [should be installed](https://pn
 
 This project has been generated from with a `$ pnpm create vite` command and selecting the vanilla-ts project.
 
-[Materialize](https://github.com/materializecss/materialize) has been added as a git submodule in packages folder and then defined as a [pnpm workspace](https://pnpm.io/workspaces), to use it as a monorepo.
+[Kmaterialize](https://github.com/kekefreedog/kmaterialize) has been added as a git submodule in packages folder and then defined as a [pnpm workspace](https://pnpm.io/workspaces), to use it as a monorepo.
 
 Typescript has been configured to treat all projects in /packages folder as typescript packages.
 

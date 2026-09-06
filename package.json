@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@material/material-color-utilities": "^0.2.7",
-    "@materializecss/materialize": "workspace:*",
+    "kmaterialize": "latest",
     "glob": "^10.4.5",
     "highlight.js": "^11.11.1",
     "material-icons": "^1.13.14",

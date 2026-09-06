@@ -1,5 +1,5 @@
 @import "material-icons/iconfont/material-icons.css";
-@import "@materializecss/materialize/sass/materialize.scss";
+@import "kmaterialize/sass/materialize.scss";
 
 body {
   line-height: 1.25;
@@ -80,6 +80,23 @@ footer {
       font-size: 36px;
     }
   }
+}
+
+// Match .material-icons glyph sizing/centering (24px in the navbar row)
+// so the GitHub/OpenCollective logo images align with the icon buttons
+// next to them instead of following their own intrinsic svg size.
+.navbar .nav-icon-img {
+  display: block;
+  height: 24px;
+  width: 24px;
+  object-fit: contain;
+}
+
+// The default 1em gap between navbar items reads much tighter than the
+// reference (materializeweb.com), whose icon row has roughly double the
+// whitespace between icons. Widen it for this header icon row only.
+header .navbar .nav-wrapper > ul.ml-auto {
+  gap: 1.75em;
 }
 
 @media #{$medium-and-up} {

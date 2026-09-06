@@ -26,7 +26,7 @@ import {
   TapTarget,
   Timepicker,
   Tooltip,
-} from "@materializecss/materialize";
+} from "kmaterialize";
 
 function importCodeStyle(isDarkMode) {
   if (isDarkMode) import("highlight.js/styles/atom-one-dark.min.css");

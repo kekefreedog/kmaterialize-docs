@@ -14,7 +14,7 @@ export class Themes {
 
   getThemePrimaryColor(): string {
     let themeColor = localStorage.getItem(Themes.themePrimaryColorStorageKey);
-    if (!themeColor) themeColor = "#006495";
+    if (!themeColor) themeColor = "#FFD700";
     return themeColor;
   }
 
