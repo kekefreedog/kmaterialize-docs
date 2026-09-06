@@ -204,12 +204,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!themeSwitch) return;
     if (isDark) {
       themeSwitch.classList.add("is-dark");
-      themeSwitch.querySelector("i").innerText = "light_mode";
+      // Icon reflects the current state (moon while dark), not the
+      // state clicking switches to - was the other way round, which
+      // reads backward.
+      themeSwitch.querySelector("i").innerText = "dark_mode";
       (themeSwitch as any).title = "Switch to light mode";
       return;
     }
     themeSwitch.classList.remove("is-dark");
-    themeSwitch.querySelector("i").innerText = "dark_mode";
+    themeSwitch.querySelector("i").innerText = "light_mode";
     (themeSwitch as any).title = "Switch to dark mode";
   }
   setBtnState(isDarkMode);

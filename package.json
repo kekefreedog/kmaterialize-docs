@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
+    "dev": "node scripts/link-kmaterialize.mjs local && vite",
+    "build": "node scripts/link-kmaterialize.mjs latest && tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
