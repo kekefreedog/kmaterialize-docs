@@ -4,8 +4,23 @@ import { CssGenerator } from "./css-generator";
 export class Themes {
   static themePrimaryColorStorageKey: string = "theme-primary-color";
   static themeModeStorageKey: string = "theme-mode";
+  static fontStorageKey: string = "font";
 
   constructor(private document: Document) {}
+
+  getFont(): string {
+    return localStorage.getItem(Themes.fontStorageKey) ?? "";
+  }
+
+  setFont(value: string) {
+    if (value) {
+      localStorage.setItem(Themes.fontStorageKey, value);
+      this.document.documentElement.setAttribute("data-font", value);
+    } else {
+      localStorage.removeItem(Themes.fontStorageKey);
+      this.document.documentElement.removeAttribute("data-font");
+    }
+  }
 
   setThemePrimaryColor(value: string) {
     localStorage.setItem(Themes.themePrimaryColorStorageKey, value);

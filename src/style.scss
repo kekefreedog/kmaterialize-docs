@@ -6,6 +6,83 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   Index banner — animated M3 wave background
+   Applies to #index-banner on every page (the shared partials/intro.html
+   banner, and the home page's own richer version of it). Two
+   pseudo-element blobs with asymmetric border-radius that rotate
+   slowly, their irregular edges forming flowing waves. All colours
+   reference M3 system tokens so they update automatically with the
+   dynamic colour scheme.
+   ═══════════════════════════════════════════════════════════════ */
+#index-banner {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--md-sys-color-background);
+
+  /* Keep all direct children above the wave layers */
+  & > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Wave layer 1 — primary tint */
+  &::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    left: -50%;
+    top: -25%;
+    border-radius: 46% 54% 42% 58% / 52% 44% 56% 48%;
+    background: color-mix(in srgb, var(--md-sys-color-primary) 40%, transparent);
+    transform-origin: 62% 58%;
+    animation: index-banner-wave-a 10s ease-in-out infinite alternate;
+    z-index: 0;
+  }
+
+  /* Wave layer 2 — secondary tint, counter-phase */
+  &::after {
+    content: "";
+    position: absolute;
+    width: 220%;
+    height: 220%;
+    left: -40%;
+    top: -35%;
+    border-radius: 54% 46% 58% 42% / 44% 58% 42% 56%;
+    background: color-mix(in srgb, var(--md-sys-color-secondary) 30%, transparent);
+    transform-origin: 38% 44%;
+    animation: index-banner-wave-b 14s ease-in-out infinite alternate-reverse;
+    z-index: 0;
+  }
+}
+
+/* Layer 1: gentle clockwise arc */
+@keyframes index-banner-wave-a {
+  0% {
+    transform: rotate(-12deg) scale(1);
+  }
+  50% {
+    transform: rotate(6deg) scale(1.04);
+  }
+  100% {
+    transform: rotate(20deg) scale(1.02);
+  }
+}
+
+/* Layer 2: counter-clockwise, slightly wider swing */
+@keyframes index-banner-wave-b {
+  0% {
+    transform: rotate(18deg) scale(1.03);
+  }
+  50% {
+    transform: rotate(-4deg) scale(1);
+  }
+  100% {
+    transform: rotate(-22deg) scale(1.05);
+  }
+}
+
 //--------------------
 
 .header {
@@ -97,6 +174,7 @@ footer {
 // whitespace between icons. Widen it for this header icon row only.
 header .navbar .nav-wrapper > ul.ml-auto {
   gap: 1.75em;
+  padding-right: 1rem;
 }
 
 @media #{$medium-and-up} {
@@ -245,6 +323,7 @@ pre:has(code) {
 .copyButton {
   color: var(--md-sys-color-on-surface-variant);
   position: absolute;
+  z-index: 2;
 }
 
 .copyMessage {

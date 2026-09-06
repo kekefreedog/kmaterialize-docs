@@ -17,13 +17,13 @@
                 <input id="lunchtime" type="text" class="timepicker" />
                 <label for="lunchtime">Lunchtime</label>
               </div>
-              <pre><code class="language-html"><xmp><input type="text" class="timepicker"></xmp></code></pre>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><input type="text" class="timepicker"></xmp></code></pre>
 
               <div class="section">
                 <h5>Initialization</h5>
-                <pre><code class="language-javascript">document.addEventListener('DOMContentLoaded', function() {
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">document.addEventListener('DOMContentLoaded', function() {
   const elems = document.querySelectorAll('.timepicker');
-  const instances = M.Timepicker.init(elems, {
+  const instances = Timepicker.init(elems, {
     // specify options here
   });
 });</code></pre>
@@ -79,12 +79,6 @@
                       <td>Internationalization options.</td>
                     </tr>
                     <tr>
-                      <td>autoClose</td>
-                      <td>Boolean</td>
-                      <td>false</td>
-                      <td><span class="red-text">DEPRECATED</span> Automatically close picker when minute is selected.</td>
-                    </tr>
-                    <tr>
                       <td>twelveHour</td>
                       <td>Boolean</td>
                       <td>true</td>
@@ -95,30 +89,6 @@
                       <td>Boolean</td>
                       <td>true</td>
                       <td>Vibrate device when dragging clock hand.</td>
-                    </tr>
-                    <tr>
-                      <td>onOpenStart</td>
-                      <td>Function</td>
-                      <td>null</td>
-                      <td><span class="red-text">DEPRECATED</span> Callback function called before modal is opened.</td>
-                    </tr>
-                    <tr>
-                      <td>onOpenEnd</td>
-                      <td>Function</td>
-                      <td>null</td>
-                      <td><span class="red-text">DEPRECATED</span> Callback function called after modal is opened.</td>
-                    </tr>
-                    <tr>
-                      <td>onCloseStart</td>
-                      <td>Function</td>
-                      <td>null</td>
-                      <td><span class="red-text">DEPRECATED</span> Callback function called before modal is closed.</td>
-                    </tr>
-                    <tr>
-                      <td>onCloseEnd</td>
-                      <td>Function</td>
-                      <td>null</td>
-                      <td><span class="red-text">DEPRECATED</span> Callback function called after modal is closed.</td>
                     </tr>
                     <tr>
                       <td>onSelect</td>
@@ -223,23 +193,19 @@
 
                 <blockquote>
                   <p>All the methods are called on the plugin instance. You can get the plugin instance like this:</p>
-                  <pre><code class="language-javascript col s12">const instance = M.Timepicker.getInstance(elem);</code></pre>
+                  <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">const instance = Timepicker.getInstance(elem);</code></pre>
                 </blockquote>
 
                 <h5 class="method-header">.showView();</h5>
                 <p>Show hours or minutes view on timepicker</p>
                 <h6>Arguments</h6>
                 <p><b>String:</b> The name of the view you want to switch to, 'hours' or 'minutes'.</p>
-                <pre><code class="language-javascript col s12">instance.showView('hours');</code></pre>
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">instance.showView('hours');</code></pre>
 
                 <h5 class="method-header">.destroy();</h5>
                 <p>Destroy plugin instance and teardown</p>
-                <pre><code class="language-javascript col s12">instance.destroy();</code></pre>
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">instance.destroy();</code></pre>
 
-                <h5 class="method-header">.open();</h5>
-                <p><span class="red-text">DEPRECATED</span> Open timepicker</p>
-                <h5 class="method-header">.close();</h5>
-                <p><span class="red-text">DEPRECATED</span> Close timepicker</p>
               </div>
             </div>
           </div>

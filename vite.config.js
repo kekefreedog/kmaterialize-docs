@@ -160,6 +160,10 @@ export default {
   ],
   build: {
     outDir: "./../build", // ====> relative to root Dir
+    // outDir sits outside root, so Vite doesn't clear it by default -
+    // every build silently accumulated another hashed assets/main-*.js/css
+    // pair on top of the last one instead of replacing it.
+    emptyOutDir: true,
     rollupOptions: {
       //this is needed for "vite publish" to include all html files, not only the index.
       input: Object.fromEntries(

@@ -21,6 +21,7 @@
 <!--<meta name="theme-color" content="#EE6E73" />-->
 <style>
   @import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i");
+  @import url("https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,500,600");
 </style>
 
 <!-- CSS-->
@@ -35,4 +36,6 @@
 <script>
   const theme = localStorage.getItem("theme");
   if (theme) document.documentElement.setAttribute("theme", theme);
+  const font = localStorage.getItem("font");
+  if (font) document.documentElement.setAttribute("data-font", font);
 </script>

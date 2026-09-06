@@ -24,6 +24,7 @@
     <!--<meta name="theme-color" content="#EE6E73" />-->
     <style>
       @import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i");
+      @import url("https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,500,600");
     </style>
     
     <!-- CSS-->
@@ -38,9 +39,11 @@
     <script>
       const theme = localStorage.getItem("theme");
       if (theme) document.documentElement.setAttribute("theme", theme);
+      const font = localStorage.getItem("font");
+      if (font) document.documentElement.setAttribute("data-font", font);
     </script>
-    <script type="module" crossorigin src="/assets/main-a1677ca0.js"></script>
-    <link rel="stylesheet" href="/assets/main-606ec849.css">
+    <script type="module" crossorigin src="/assets/main-07c37889.js"></script>
+    <link rel="stylesheet" href="/assets/main-7176694b.css">
   </head>
   <body>
     <header>
@@ -52,7 +55,7 @@
           <div class="nav-wrapper primary">
             <a class="brand-logo">Autocomplete</a>
             <a class="sidenav-trigger" href="#" data-target="nav-mobile"><i class="material-icons">menu</i></a>
-            <ul class="right">
+            <ul class="ml-auto">
               <li>
                 <a href="" onclick="paletteSelectorModal.showModal(); return false;">
                   <i class="material-icons">palette</i>
@@ -64,13 +67,8 @@
                 </a>
               </li>
               <li>
-                <a class="ext-link" href="https://github.com/materializecss/materialize" target="_blank" rel="noopener" title="Check out our GitHub">
-                  <img src="images/github.svg" alt="GitHub logo" style="height: 20px" />
-                </a>
-              </li>
-              <li>
-                <a class="ext-link" href="https://opencollective.com/materialize" target="_blank" rel="noopener" title="Support us via OpenCollective">
-                  <img src="images/opencollective.svg" alt="Open Collective logo" />
+                <a class="ext-link" href="https://github.com/kekefreedog/kmaterialize" target="_blank" rel="noopener" title="Check out our GitHub">
+                  <img class="nav-icon-img" src="images/github.svg" alt="GitHub logo" />
                 </a>
               </li>
             </ul>
@@ -83,7 +81,7 @@
         <li class="logo">
           <a class="brand-logo" id="logo-container" href="/">
             <img id="front-page-logo" src="images/materialize.svg" alt="Materialize Web Logo" />
-            Materialize
+            Kmaterialize
           </a>
         </li>
     
@@ -336,25 +334,6 @@
         <span class="material-icons">mobile_friendly</span>
         Mobile</a>
       </li> 
-    
-        <li class="version">
-          <a class="dropdown-trigger" href="#" data-target="version-dropdown">
-            <!-- svg -->
-            v2.2.2 (Latest)
-            <svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7 10l5 5 5-5z"></path>
-              <path d="M0 0h24v24H0z" fill="none"></path>
-            </svg>
-          </a>
-          <ul class="dropdown-content" id="version-dropdown">
-            <li><a href="/version/v2.2.2/">v2.2.2 (Latest)</a></li>
-            <li><a href="/version/v2.2.1/">v2.2.1</a></li>
-            <li><a href="/version/v2.1.1/">v2.1.1</a></li>
-            <li><a>2.1.0</a></li>
-            <li><a>2.0.4</a></li>
-            <li><a>2.0.3-alpha</a></li>
-          </ul>
-        </li>
       </ul>
     </header>
     
@@ -364,8 +343,15 @@
       </div>
       <div class="modal-content">
         <div class="color-row">
-          <input type="color" id="color-picker" value="#0000ff" />
+          <input type="color" id="color-picker" value="#FFD700" />
           <label for="color-picker">Primary Color</label>
+        </div>
+        <div class="font-row">
+          <label for="font-picker">Font</label>
+          <select id="font-picker">
+            <option value="">Default</option>
+            <option value="muli">Muli</option>
+          </select>
         </div>
         <button id="downloadCss" type="button" class="btn tonal">Download css style</button>
       </div>
@@ -415,12 +401,8 @@
                 <p class="red-text"><strong>ATTENTION:</strong> Data-Format has changed from version 1.X.X to 2.0.0! Please update option 'data'.</p>
               </div>
 
-              <pre style="padding-top: 0px">
-          <span class="copyMessage">Copied!</span>
-          <i class="material-icons copyButton">content_copy</i>
-          <code class="language-html copiedText">
-<xmp>
-<div class="row">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="row">
   <div class="col s12">
     <div class="row">
       <div class="input-field col s12">
@@ -430,10 +412,8 @@
       </div>
     </div>
   </div>
-</div>
-</xmp>
-          </code>
-        </pre>
+</div></xmp>
+          </code></pre>
             </div>
 
             <div id="initialization" class="scrollspy section">
@@ -468,13 +448,10 @@
                 You may also provide additional attributes to an option object but they will not be taken into consideration by the standard search function. If you want to use
                 them for option filtering, you must specify a custom function in "<b>onSearch</b>" option.
               </p>
-              <pre style="padding-top: 0px">
-            <span class="copyMessage">Copied!</span>
-            <i class="material-icons copyButton">content_copy</i>
-            <code class="language-javascript copiedText">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
   document.addEventListener('DOMContentLoaded', function() {
     const elems = document.querySelectorAll('.autocomplete');
-    const instances = M.Autocomplete.init(elems, {
+    const instances = Autocomplete.init(elems, {
       // specify options here
       minLength: 0, // shows instantly
       data: [
@@ -489,7 +466,7 @@
 
   document.addEventListener('DOMContentLoaded', function() {
     const elems = document.querySelectorAll('.autocomplete');
-    const instances = M.Autocomplete.init(elems, {
+    const instances = Autocomplete.init(elems, {
       // specify options here
       minLength: 0, // shows instantly
       isMultiSelect: true,
@@ -505,7 +482,7 @@
 
   document.addEventListener('DOMContentLoaded', function() {
     const elems = document.querySelectorAll('.autocomplete');
-    const instances = M.Autocomplete.init(elems, {
+    const instances = Autocomplete.init(elems, {
       // specify options here
       isMultiSelect: true,
       data: [
@@ -524,8 +501,7 @@
       }
     });
   });
-          </code>
-        </pre>
+          </code></pre>
             </div>
 
             <div id="options" class="scrollspy section">
@@ -603,10 +579,7 @@
                 This is the default Search Function. You can write your own search function by passing in a function with the same parameters. You can load asynchronously data in
                 this function or filter an existing list or dictionary. When the data is loaded you can use setMenuItems() to update the content of the Menu.
               </p>
-              <pre style="padding-top: 0px">
-            <span class="copyMessage">Copied!</span>
-            <i class="material-icons copyButton">content_copy</i>
-            <code class="language-javascript copiedText">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
 onSearch: (text, autocomplete) => {
   const normSearch = text.toLocaleLowerCase();
   autocomplete.setMenuItems(
@@ -616,8 +589,7 @@ onSearch: (text, autocomplete) => {
     )
   );
 }
-</code>
-          </pre>
+</code></pre>
               <p>To disable sorting and use the values as they appear in the data object, use a falsy value.</p>
             </div>
 
@@ -625,24 +597,20 @@ onSearch: (text, autocomplete) => {
               <h3 class="header">Methods</h3>
               <blockquote>
                 <p>All the methods are called on the plugin instance. You can get the plugin instance like this:</p>
-                <pre style="padding-top: 0px">
-              <span class="copyMessage">Copied!</span>
-              <i class="material-icons copyButton">content_copy</i>
-              <code class="language-javascript copiedText">
-  const instance = M.Autocomplete.getInstance(elem);
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+  const instance = Autocomplete.getInstance(elem);
   instance.open();
-              </code>
-            </pre>
+              </code></pre>
               </blockquote>
               <h5 class="method-header">.open();</h5>
               <p>Open autocomplete dropdown.</p>
-              <pre><code class="language-javascript col s12">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
 instance.open();
       </code></pre>
 
               <h5 class="method-header">.close();</h5>
               <p>Close autocomplete dropdown.</p>
-              <pre><code class="language-javascript col s12">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
 instance.close();
       </code></pre>
 
@@ -650,7 +618,7 @@ instance.close();
               <p>Select a specific autocomplete option via id-property.</p>
               <h6>Arguments</h6>
               <p><b>id:</b> The id of a data-entry.</p>
-              <pre><code class="language-javascript col s12">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
 instance.selectOption(42);
       </code></pre>
 
@@ -658,7 +626,7 @@ instance.selectOption(42);
               <p>Updates the visible or selectable items shown in the menu.</p>
               <h6>Arguments</h6>
               <p><b>items:</b> .</p>
-              <pre><code class="language-javascript col s12">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
 instance.setMenuItems([
   {id: "Test"},
   {id: 12, text: "Apple"},
@@ -669,7 +637,7 @@ instance.setMenuItems([
 
               <h5 class="method-header">.destroy();</h5>
               <p>Destroy plugin instance and teardown</p>
-              <pre><code class="language-javascript col s12">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
 instance.destroy();
       </code></pre>
             </div>
@@ -750,60 +718,13 @@ instance.destroy();
       <div class="container">
         <div class="row">
           <div class="s12 m10 offset-m1">
-            <div class="row" style="gap: 2rem">
-              <div class="s12 m6 l4">
-                <h5>Help Materialize Grow</h5>
-                <p>
-                  We hope you have enjoyed using <a href="https://materializeweb.com">Materialize</a> and if you feel like it has helped you out and want to support the team you can
-                  help us by opening issues or contributing on GitHub.
-                </p>
-                <a tabindex="0" class="btn tonal btn-small waves-effect waves-light" target="_blank" href="https://github.com/materializecss/materialize">Contribute</a>
-              </div>
-    
-              <div class="s12 m6 l4">
-                <h5>Join the Discussion</h5>
-                <p>
-                  We have a Gitter chat room set up where you can talk directly with us. Come in and discuss new features, future goals, general problems or questions, or anything else
-                  you can think of.
-                </p>
-                <a tabindex="0" class="btn tonal btn-small waves-effect waves-light" href="https://gitter.im/materializecss/materialize" target="_blank">Chat</a>
-              </div>
-    
-              <div class="s12 m6 l4" style="overflow: hidden">
-                <h5>Star us</h5>
-                <div>
-                  <a href="https://github.com/materializecss/materialize" target="_blank">
-                    <img style="width: 42%" alt="GitHub Repo stars" src="https://img.shields.io/github/stars/materializecss/materialize" />
-                  </a>
-                </div>
-    
-                <!-- Ad Placements -->
-                <div style="width: 100%; background-color: #f883">
-                  <div style="height: 90px; width: 100%">
-                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9412332535613378" crossorigin="anonymous"></script>
-                    <ins
-                      class="adsbygoogle"
-                      style="display: block"
-                      data-ad-format="fluid"
-                      data-ad-layout-key="-fb+5w+4e-db+86"
-                      data-ad-client="ca-pub-9412332535613378"
-                      data-ad-slot="4127762940"
-                    ></ins>
-                    <script>
-                      (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                  </div>
-                </div>
-              </div>
-            </div>
-    
             <div class="footer-copyright">
               © 2014-
               <noscript>2018</noscript>
               <script>
                 document.write(new Date().getFullYear());
               </script>
-              &nbsp;Materialize, All rights reserved.<a class="right" target="_blank" href="https://github.com/materializecss/materialize/blob/main/LICENSE">MIT License</a>
+              &nbsp;Kmaterialize, All rights reserved.<a class="right" target="_blank" href="https://github.com/kekefreedog/kmaterialize/blob/main/LICENSE">MIT License</a>
             </div>
           </div>
         </div>

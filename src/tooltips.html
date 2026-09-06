@@ -37,19 +37,17 @@
               </div>
 
               <p>Add the Tooltipped class to your element and add either top, bottom, left, right on data-tooltip to control the position.</p>
-              <pre><code class="language-html">
-<xmp>
-<!-- data-position can be : bottom, top, left, or right -->
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><!-- data-position can be : bottom, top, left, or right -->
 <!-- data-tooltip defines the tooltip text -->
-<a class="btn tooltipped" data-position="bottom" data-tooltip="I am a tooltip">Hover me!</a>
-</xmp>
+<a class="btn tooltipped" data-position="bottom" data-tooltip="I am a tooltip">Hover me!</a></xmp>
         </code></pre>
 
               <p>
                 Also HTML-Elements can be added with the attribute
                 <code>data-tooltip-id="tooltip-content"</code>
               </p>
-              <pre><code class="language-html">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
 <xmp>            
   <a href="#" class="btn tooltipped" data-html="true" data-position="bottom" data-tooltip-id="tooltip-content">
     Bottom
@@ -58,22 +56,20 @@
     This is a tooltip with a
     <a href="https://github.com/materializecss">link</a> and a
     <i class="material-icons icon-demo">insert_chart</i>
-  </div>
-</xmp>
+  </div></xmp>
         </code></pre>
             </div>
 
             <div id="initialization" class="scrollspy section">
               <h3 class="header">Initialization</h3>
-              <pre><code class="language-javascript">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
   document.addEventListener('DOMContentLoaded', function() {
     const elems = document.querySelectorAll('.tooltipped');
-    const instances = M.Tooltip.init(elems, {
+    const instances = Tooltip.init(elems, {
       // specify options here
     });
   });
-        </code>
-      </pre>
+        </code></pre>
             </div>
 
             <div id="options" class="section scrollspy">
@@ -114,22 +110,6 @@
                     <td>
                       HTML content that will be appended to to
                       <code class="language-javascript">text</code>. Only use properly sanitized or otherwise trusted data for <code class="language-javascript">unsafeHTML</code>.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>html</td>
-                    <td>String</td>
-                    <td>null</td>
-                    <td>
-                      <p>(DEPRECATED): will be removed in a later release.</p>
-                      <p>
-                        HTML content that will be appended to
-                        <code class="language-javascript">text</code>. Only use properly sanitized or otherwise trusted data for <code class="language-javascript">html</code>.
-                      </p>
-                      <p>
-                        Will be ignored if
-                        <code class="language-javascript">unsafeHTML</code> is set.
-                      </p>
                     </td>
                   </tr>
                   <tr>
@@ -176,25 +156,25 @@
               <h3 class="header">Methods</h3>
               <blockquote>
                 <p>All the methods are called on the plugin instance. You can get the plugin instance like this:</p>
-                <pre><code class="language-javascript col s12">
-                  const instance = M.Tooltip.getInstance(elem);
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
+                  const instance = Tooltip.getInstance(elem);
           </code></pre>
               </blockquote>
               <h5 class="method-header">.open();</h5>
               <p>Show tooltip.</p>
-              <pre><code class="language-javascript col s12">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
 instance.open();
         </code></pre>
 
               <h5 class="method-header">.close();</h5>
               <p>Hide tooltip.</p>
-              <pre><code class="language-javascript col s12">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
 instance.close();
         </code></pre>
 
               <h5 class="method-header">.destroy();</h5>
               <p>Destroy plugin instance and teardown</p>
-              <pre><code class="language-javascript col s12">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
 instance.destroy();
         </code></pre>
             </div>

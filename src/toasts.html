@@ -17,14 +17,12 @@
               </p>
               <button type="button" class="waves-effect waves-light btn tonal" onclick="M.toast({text: 'I am a toast', classes: 'primary'})">Show Toast</button>
               <p>To do this, call the M.toast() function programmatically in JavaScript.</p>
-              <pre><code class="language-javascript">
-  M.toast({text: 'I am a toast!'})
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+  toast({text: 'I am a toast!'})
         </code></pre>
               <p>One way to add this into your application is to add this as an onclick event to a button.</p>
-              <pre><code class="language-html">
-<xmp>
-<button type="button" onclick="M.toast({text: 'I am a toast'})" class="btn tonal">Show Toast</button>
-</xmp>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><button type="button" onclick="M.toast({text: 'I am a toast'})" class="btn tonal">Show Toast</button></xmp>
         </code></pre>
             </div>
 
@@ -144,22 +142,20 @@
               </template>
               <button type="button" class="waves-effect waves-light btn tonal" onclick="M.toast({toastId: 'my-toast-2', classes: 'primary'})">Show Toast 2</button>
               <div id="my-toast-2" style="display: none">This is toast nº2 with a <i class="material-icons icon-demo">insert_chart</i></div>
-              <pre><code class="language-html">
-<xmp>
-<button type="button" class="btn tonal" onclick="M.toast({toastId: 'my-toast-1'})">Show Toast 1</button>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><button type="button" class="btn tonal" onclick="M.toast({toastId: 'my-toast-1'})">Show Toast 1</button>
 <template id="my-toast-1">
   <div>
     This is toast nº1 with a  <a href="https://github.com/materializecss"> link </a>
   </div>                  
-</template>
-</xmp>
+</template></xmp>
 </code></pre>
             </div>
             <div id="callback" class="scrollspy section">
               <h3 class="header">Callback</h3>
               <p>You can have the toast callback a function when it has been dismissed.</p>
               <button type="button" class="btn tonal" onclick="M.toast({text: 'I am a toast', completeCallback: function(){alert('Your toast was dismissed')}})">Show Toast</button>
-              <pre><code class="language-html">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
   <button type="button" class="btn tonal" onclick="M.toast({text: 'I am a toast', completeCallback: function(){alert('Your toast was dismissed')}})">Show Toast</button>
         </code></pre>
             </div>
@@ -173,9 +169,9 @@
 
               <button type="button" class="waves-effect waves-light btn tonal" onclick="M.toast({text: 'I am a toast!', classes: 'rounded'})">Show round Toast</button>
 
-              <pre><code class="language-javascript">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
   // 'rounded' is the class I'm applying to the toast
-  M.toast({text: 'I am a toast!', classes: 'rounded'});
+  toast({text: 'I am a toast!', classes: 'rounded'});
         </code></pre>
             </div>
 
@@ -186,16 +182,16 @@
                 <code class="language-javascript">M_Toast</code> toast HTML element and call the dismiss function
               </p>
 
-              <pre><code class="language-javascript">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
   // Get toast DOM Element, get instance, then call dismiss function
   const toastElement = document.querySelector('.toast');
-  const toastInstance = M.Toast.getInstance(toastElement);
+  const toastInstance = Toast.getInstance(toastElement);
   toastInstance.dismiss();
         </code></pre>
 
               <h5>Dismiss all Toasts</h5>
-              <pre><code class="language-javascript">
-  M.Toast.dismissAll();
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+  Toast.dismissAll();
         </code></pre>
             </div>
           </div>

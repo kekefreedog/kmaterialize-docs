@@ -24,6 +24,7 @@
     <!--<meta name="theme-color" content="#EE6E73" />-->
     <style>
       @import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i");
+      @import url("https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,500,600");
     </style>
     
     <!-- CSS-->
@@ -38,6 +39,8 @@
     <script>
       const theme = localStorage.getItem("theme");
       if (theme) document.documentElement.setAttribute("theme", theme);
+      const font = localStorage.getItem("font");
+      if (font) document.documentElement.setAttribute("data-font", font);
     </script>
     <style>
       .current-version-number {
@@ -82,10 +85,6 @@
         font-size: 1rem;
       }
 
-      .sponsors h3 {
-        font-size: 1.75rem;
-        font-weight: 500;
-      }
       /*
       @media #{$medium-and-down} {
         .intro {
@@ -111,36 +110,9 @@
         margin: 0 6px 0 6px;
       }
 
-      #index-banner {
-        position: relative;
-        background-color: var(--md-sys-color-background);
-      }
-
-      @keyframes rotate {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-      .gradient {
-        --size: 100vh;
-        --speed: 9s;
-        --easing: cubic-bezier(0.8, 0.2, 0.6, 0.8);
-        --bg-color: color-mix(in srgb, var(--md-sys-color-secondary) 20%, var(--md-sys-color-background));
-
-        width: var(--size);
-        height: var(--size);
-        filter: blur(calc(var(--size) / 5));
-        background-image: linear-gradient(var(--bg-color), var(--md-sys-color-primary)); /* hsl(252, 59%, 63%) */
-        animation: rotate var(--speed) var(--easing) alternate infinite;
-        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-      }
     </style>
-    <script type="module" crossorigin src="/assets/main-a1677ca0.js"></script>
-    <link rel="stylesheet" href="/assets/main-606ec849.css">
+    <script type="module" crossorigin src="/assets/main-07c37889.js"></script>
+    <link rel="stylesheet" href="/assets/main-7176694b.css">
   </head>
   <body>
     <header>
@@ -152,7 +124,7 @@
           <div class="nav-wrapper primary">
             <a class="brand-logo">Documentation</a>
             <a class="sidenav-trigger" href="#" data-target="nav-mobile"><i class="material-icons">menu</i></a>
-            <ul class="right">
+            <ul class="ml-auto">
               <li>
                 <a href="" onclick="paletteSelectorModal.showModal(); return false;">
                   <i class="material-icons">palette</i>
@@ -164,13 +136,8 @@
                 </a>
               </li>
               <li>
-                <a class="ext-link" href="https://github.com/materializecss/materialize" target="_blank" rel="noopener" title="Check out our GitHub">
-                  <img src="images/github.svg" alt="GitHub logo" style="height: 20px" />
-                </a>
-              </li>
-              <li>
-                <a class="ext-link" href="https://opencollective.com/materialize" target="_blank" rel="noopener" title="Support us via OpenCollective">
-                  <img src="images/opencollective.svg" alt="Open Collective logo" />
+                <a class="ext-link" href="https://github.com/kekefreedog/kmaterialize" target="_blank" rel="noopener" title="Check out our GitHub">
+                  <img class="nav-icon-img" src="images/github.svg" alt="GitHub logo" />
                 </a>
               </li>
             </ul>
@@ -183,7 +150,7 @@
         <li class="logo">
           <a class="brand-logo" id="logo-container" href="/">
             <img id="front-page-logo" src="images/materialize.svg" alt="Materialize Web Logo" />
-            Materialize
+            Kmaterialize
           </a>
         </li>
     
@@ -436,25 +403,6 @@
         <span class="material-icons">mobile_friendly</span>
         Mobile</a>
       </li> 
-    
-        <li class="version">
-          <a class="dropdown-trigger" href="#" data-target="version-dropdown">
-            <!-- svg -->
-            v2.2.2 (Latest)
-            <svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7 10l5 5 5-5z"></path>
-              <path d="M0 0h24v24H0z" fill="none"></path>
-            </svg>
-          </a>
-          <ul class="dropdown-content" id="version-dropdown">
-            <li><a href="/version/v2.2.2/">v2.2.2 (Latest)</a></li>
-            <li><a href="/version/v2.2.1/">v2.2.1</a></li>
-            <li><a href="/version/v2.1.1/">v2.1.1</a></li>
-            <li><a>2.1.0</a></li>
-            <li><a>2.0.4</a></li>
-            <li><a>2.0.3-alpha</a></li>
-          </ul>
-        </li>
       </ul>
     </header>
     
@@ -464,8 +412,15 @@
       </div>
       <div class="modal-content">
         <div class="color-row">
-          <input type="color" id="color-picker" value="#0000ff" />
+          <input type="color" id="color-picker" value="#FFD700" />
           <label for="color-picker">Primary Color</label>
+        </div>
+        <div class="font-row">
+          <label for="font-picker">Font</label>
+          <select id="font-picker">
+            <option value="">Default</option>
+            <option value="muli">Muli</option>
+          </select>
         </div>
         <button id="downloadCss" type="button" class="btn tonal">Download css style</button>
       </div>
@@ -475,23 +430,19 @@
     </dialog>
     <main>
       <div id="index-banner">
-        <!-- Background -->
-        <div style="position: absolute; top: 0; height: 100%; overflow: hidden; width: 100%; z-index: 0">
-          <div class="gradient"></div>
-        </div>
         <!-- Intro -->
         <div class="intro py-5" style="z-index: 1">
-          <div class="container py-5">
+          <div class="py-5">
             <!-- Hero -->
             <div class="center">
-              <img id="logo" src="images/materialize.svg" style="height: 100px" alt="Materialize" />
-              <h1 class="header mb-0">Materialize</h1>
+              <img id="logo" src="images/materialize.svg" style="height: 100px" alt="Kmaterialize" />
+              <h1 class="header mb-0">Kmaterialize</h1>
               <p class="slogan">Simple. Built on open source. The responsive front-end library based on Material Design from Google.</p>
             </div>
             <!-- Call to Action -->
             <div style="justify-content: center; display: flex; gap: 0.5rem; flex-wrap: wrap">
               <a tabindex="0" class="btn filled rounded btn-large z-depth-1 waves-effect waves-light" href="getting-started.html" id="download-button">Get started</a>
-              <a tabindex="0" class="btn outlined rounded btn-large waves-effect waves-light" href="https://github.com/materializecss/materialize" target="_blank">
+              <a tabindex="0" class="btn outlined rounded btn-large waves-effect waves-light" href="https://github.com/kekefreedog/kmaterialize" target="_blank">
                 View on GitHub</a
               >
             </div>
@@ -565,7 +516,7 @@
                 <div class="s12 m6 l4 card">
                   <h2>Awesome Community</h2>
                   <p>
-                    User centric approach with many members all around the world, which help bring Materialize forward and improve usability for everyone on the web. You can be a
+                    User centric approach with many members all around the world, which help bring Kmaterialize forward and improve usability for everyone on the web. You can be a
                     part too!
                   </p>
                 </div>
@@ -574,41 +525,13 @@
                   <h2>Extensible</h2>
                   <p>
                     Component cutsomization should be possible by yourself. To help growing this project, you can
-                    <a href="https://github.com/materializecss/materialize" target="_blank">join the community</a>
+                    <a href="https://github.com/kekefreedog/kmaterialize" target="_blank">join the community</a>
                     and ask for support or you can easily
-                    <a target="_blank" href="https://github.com/materializecss/materialize/issues">create an issue</a>
-                    to move Materialize forward.
+                    <a target="_blank" href="https://github.com/kekefreedog/kmaterialize/issues">create an issue</a>
+                    to move Kmaterialize forward.
                   </p>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sponsors -->
-      <div class="container sponsors">
-        <div class="section">
-          <div class="row">
-            <div class="s12 m10 offset-m1">
-              <h3>Materialize is free and open-source. This is made possible by our awesome sponsors.</h3>
-
-              <div class="row my-5" style="gap: 2rem; align-items: center">
-                <div class="s6 m2 offset-m4 center">
-                  <a href="https://www.rumya.ch" target="_blank">
-                    <img class="responsive-img" style="max-height: 42px" src="https://www.rumya.ch/Mods/Website/Front/Ui/RumyaLogo.png" alt="Rumya Logo" />
-                  </a>
-                </div>
-                <div class="s6 m2 center">
-                  <a href="https://wuda.io" target="_blank">
-                    <img class="responsive-img" style="max-height: 42px" src="https://www.wuda.io/img/wuda-logo.png" alt="Wuda Software Logo" />
-                  </a>
-                </div>
-              </div>
-              <div class="center">
-                <a tabindex="0" class="btn tonal" target="_blank" href="https://opencollective.com/materialize">Become a sponsor</a>
-              </div>
-              <p class="center">Materialize development is provided by an international team. Thanks for supporting us! ❤️</p>
             </div>
           </div>
         </div>
@@ -618,60 +541,13 @@
       <div class="container">
         <div class="row">
           <div class="s12 m10 offset-m1">
-            <div class="row" style="gap: 2rem">
-              <div class="s12 m6 l4">
-                <h5>Help Materialize Grow</h5>
-                <p>
-                  We hope you have enjoyed using <a href="https://materializeweb.com">Materialize</a> and if you feel like it has helped you out and want to support the team you can
-                  help us by opening issues or contributing on GitHub.
-                </p>
-                <a tabindex="0" class="btn tonal btn-small waves-effect waves-light" target="_blank" href="https://github.com/materializecss/materialize">Contribute</a>
-              </div>
-    
-              <div class="s12 m6 l4">
-                <h5>Join the Discussion</h5>
-                <p>
-                  We have a Gitter chat room set up where you can talk directly with us. Come in and discuss new features, future goals, general problems or questions, or anything else
-                  you can think of.
-                </p>
-                <a tabindex="0" class="btn tonal btn-small waves-effect waves-light" href="https://gitter.im/materializecss/materialize" target="_blank">Chat</a>
-              </div>
-    
-              <div class="s12 m6 l4" style="overflow: hidden">
-                <h5>Star us</h5>
-                <div>
-                  <a href="https://github.com/materializecss/materialize" target="_blank">
-                    <img style="width: 42%" alt="GitHub Repo stars" src="https://img.shields.io/github/stars/materializecss/materialize" />
-                  </a>
-                </div>
-    
-                <!-- Ad Placements -->
-                <div style="width: 100%; background-color: #f883">
-                  <div style="height: 90px; width: 100%">
-                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9412332535613378" crossorigin="anonymous"></script>
-                    <ins
-                      class="adsbygoogle"
-                      style="display: block"
-                      data-ad-format="fluid"
-                      data-ad-layout-key="-fb+5w+4e-db+86"
-                      data-ad-client="ca-pub-9412332535613378"
-                      data-ad-slot="4127762940"
-                    ></ins>
-                    <script>
-                      (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                  </div>
-                </div>
-              </div>
-            </div>
-    
             <div class="footer-copyright">
               © 2014-
               <noscript>2018</noscript>
               <script>
                 document.write(new Date().getFullYear());
               </script>
-              &nbsp;Materialize, All rights reserved.<a class="right" target="_blank" href="https://github.com/materializecss/materialize/blob/main/LICENSE">MIT License</a>
+              &nbsp;Kmaterialize, All rights reserved.<a class="right" target="_blank" href="https://github.com/kekefreedog/kmaterialize/blob/main/LICENSE">MIT License</a>
             </div>
           </div>
         </div>

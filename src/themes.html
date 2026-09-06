@@ -26,9 +26,8 @@
                 It has to be loaded as soon as possible (therefore put it as first script) to avoid flickering of the page. It is also recommended to put this code directly into
                 into the HTML code to load faster (no additional requests).
               </p>
-              <pre><code class="language-javascript">
-<xmp>
-<script>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+<xmp><script>
   function getTheme() {
     const isDarkModeEnabledViaCss = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     const currentTheme = localStorage.getItem('theme');
@@ -41,8 +40,7 @@
   }
   const currentState = getTheme();
   setTheme(currentState);
-</script>
-</xmp>
+</script></xmp>
 </code></pre>
 
               <p>This Script loads the users settings from the local storage and sets a parameter which can be then used to set variables in the CSS.</p>
@@ -54,7 +52,7 @@
                 The following example binds a Theme-Switching Function to an HTML-Element, which has a class of `btn-switch-theme`. To test this, you can click on the moon or the
                 sun icon at this page in the top-right corenr to see it in action!
               </p>
-              <pre><code class="language-javascript">  // Change Theme Setting with a Switch
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">  // Change Theme Setting with a Switch
   function getTheme() {
     const isDarkModeEnabledViaCss = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     const currentTheme = localStorage.getItem('theme');
@@ -97,9 +95,8 @@
                 <code class="language-html"><strong>head</strong></code>
                 tags.
               </p>
-              <p class="error-text">Deprecated in 2.1.0! Use the Material M3 Variables instead to create a custom Theme!</p>
               <p>Here is an example of the standard Dark-Theme:</p>
-              <pre><code class="language-css">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-css copiedText">
 :root[theme='dark'] {
   --background-color: #121212;
   --surface-color: #242424;

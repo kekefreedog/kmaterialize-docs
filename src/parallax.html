@@ -21,20 +21,18 @@
 
               <p>Exlore an example website with the parallax effect applied.</p>
             </div>
-            <pre><code class="language-html">
-<xmp>
-<div class="parallax-container">
+            <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="parallax-container">
   <div class="parallax"><img src="images/parallax1.jpg"></div>
-</div>
-</xmp>
+</div></xmp>
         </code></pre>
 
             <div id="initialization" class="scrollspy section">
               <h3 class="header">Initialization</h3>
-              <pre><code class="language-javascript">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
   document.addEventListener('DOMContentLoaded', function() {
     const elems = document.querySelectorAll('.parallax');
-    const instances = M.Parallax.init(elems, {
+    const instances = Parallax.init(elems, {
       // specify options here
     });
   });
@@ -68,14 +66,14 @@
               <h3 class="header">Methods</h3>
               <blockquote>
                 <p>All the methods are called on the plugin instance. You can get the plugin instance like this:</p>
-                <pre><code class="language-javascript col s12">
-                  const instance = M.Parallax.getInstance(elem);
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
+                  const instance = Parallax.getInstance(elem);
         </code></pre>
               </blockquote>
 
               <h5 class="method-header">.destroy();</h5>
               <p>Destroy plugin instance and teardown</p>
-              <pre><code class="language-javascript col s12">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
 instance.destroy();
       </code></pre>
             </div>
@@ -111,7 +109,7 @@ instance.destroy();
               <p>
                 The parallax container height is what defines how much of the image can be seen. This is set to a default of 500px. You can add your own style to override this.
               </p>
-              <pre><code class="language-css">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-css copiedText">
     .parallax-container {
       height: "your height here";
     }

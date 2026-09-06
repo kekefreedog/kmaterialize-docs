@@ -16,12 +16,12 @@
                 <label for="birthdate">Birthdate</label>
               </div>
 
-              <pre><code class="language-html"><xmp><input type="text" class="datepicker"></xmp></code></pre>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><input type="text" class="datepicker"></xmp></code></pre>
               <div class="section">
                 <h5>Initialization</h5>
-                <pre><code class="language-javascript">document.addEventListener('DOMContentLoaded', function() {
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">document.addEventListener('DOMContentLoaded', function() {
   const elems = document.querySelectorAll('.datepicker');
-  const instances = M.Datepicker.init(elems, {
+  const instances = Datepicker.init(elems, {
     // specify options here
   });
 });</code></pre>
@@ -40,12 +40,6 @@
                   </thead>
 
                   <tbody>
-                    <tr>
-                      <td>autoClose</td>
-                      <td>Boolean</td>
-                      <td>false</td>
-                      <td><span class="red-text">DEPRECATED</span> Automatically close picker when date is selected.</td>
-                    </tr>
                     <tr>
                       <td>format</td>
                       <td>String || Function</td>
@@ -159,18 +153,6 @@
                       <td>Function</td>
                       <td>null</td>
                       <td>Callback function when date is selected, first parameter is the newly selected date.</td>
-                    </tr>
-                    <tr>
-                      <td>onOpen</td>
-                      <td>Function</td>
-                      <td>null</td>
-                      <td><span class="red-text">DEPRECATED</span> Callback function when Datepicker is opened.</td>
-                    </tr>
-                    <tr>
-                      <td>onClose</td>
-                      <td>Function</td>
-                      <td>null</td>
-                      <td><span class="red-text">DEPRECATED</span> Callback function when Datepicker is closed.</td>
                     </tr>
                     <tr>
                       <td>isDateRange</td>
@@ -426,33 +408,28 @@
 
                 <blockquote>
                   <p>All the methods are called on the plugin instance. You can get the plugin instance like this:</p>
-                  <pre><code class="language-javascript col s12">const instance = M.Datepicker.getInstance(elem);</code></pre>
+                  <pre><code class="language-javascript col s12">const instance = Datepicker.getInstance(elem);</code></pre>
                 </blockquote>
 
                 <h5 class="method-header">.toString();</h5>
                 <p>Gets a string representation of the selected date</p>
-                <pre><code class="language-javascript col s12">instance.toString();</code></pre>
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">instance.toString();</code></pre>
 
                 <h5 class="method-header">.setDate();</h5>
                 <p>Set a date on the datepicker</p>
                 <h6>Arguments</h6>
                 <p><b>Date (optional):</b> Date to set on the datepicker.</p>
-                <pre><code class="language-javascript col s12">instance.setDate(new Date());</code></pre>
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">instance.setDate(new Date());</code></pre>
 
                 <h5 class="method-header">.gotoDate();</h5>
                 <p>Change date view to a specific date on the datepicker</p>
                 <h6>Arguments</h6>
                 <p><b>Date:</b> Date to show on the datepicker.</p>
-                <pre><code class="language-javascript col s12">instance.gotoDate(new Date());</code></pre>
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">instance.gotoDate(new Date());</code></pre>
 
                 <h5 class="method-header">.destroy();</h5>
                 <p>Destroy plugin instance and teardown</p>
-                <pre><code class="language-javascript col s12">instance.destroy();</code></pre>
-
-                <h5 class="method-header">.open();</h5>
-                <p><span class="red-text">DEPRECATED</span> Open datepicker</p>
-                <h5 class="method-header">.close();</h5>
-                <p><span class="red-text">DEPRECATED</span> Close datepicker</p>
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">instance.destroy();</code></pre>
               </div>
             </div>
           </div>

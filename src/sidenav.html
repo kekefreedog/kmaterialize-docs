@@ -57,9 +57,8 @@
           </li>
         </ul>
 
-        <pre><code class="language-html">
-<xmp>
-<nav> <!-- navbar content here  --> </nav>
+        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><nav> <!-- navbar content here  --> </nav>
 <ul id="slide-out" class="sidenav">
   <li><div class="user-view">
     <div class="background">
@@ -75,24 +74,23 @@
   <li><a class="subheader">Subheader</a></li>
   <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
 </ul>
-<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-</xmp>
+<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a></xmp>
         </code></pre>
       </div>
 
       <div id="initialization" class="section scrollspy">
         <h3 class="header">Initialization</h3>
-        <pre><code class="language-javascript col s12">
+        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
   document.addEventListener('DOMContentLoaded', function() {
     const elems = document.querySelectorAll('.sidenav');
-    const instances = M.Sidenav.init(elems, {
+    const instances = Sidenav.init(elems, {
       // specify options here
     });
   });
 
   // Initialize collapsible (uncomment the lines below if you use the dropdown variation)
   // const collapsibleElem = document.querySelector('.collapsible');
-  // const collapsibleInstance = M.Collapsible.init(collapsibleElem, {
+  // const collapsibleInstance = Collapsible.init(collapsibleElem, {
   //  // specify options here
   // });
         </code></pre>
@@ -182,15 +180,15 @@
         <h3 class="header">Methods</h3>
         <blockquote>
           <p>All the methods are called on the plugin instance. You can get the plugin instance like this: </p>
-          <pre><code class="language-javascript col s12">
-            const instance = M.Sidenav.getInstance(elem);
+          <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
+            const instance = Sidenav.getInstance(elem);
           </code></pre>
         </blockquote>
         <h5 class="method-header">
           .open();
         </h5>
         <p>Opens Sidenav.</p>
-        <pre><code class="language-javascript col s12">
+        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
 instance.open();
         </code></pre>
         
@@ -199,7 +197,7 @@ instance.open();
           .close();
         </h5>
         <p>Closes Sidenav.</p>
-        <pre><code class="language-javascript col s12">
+        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
 instance.close();
         </code></pre>
         
@@ -208,7 +206,7 @@ instance.close();
           .destroy();
         </h5>
         <p>Destroy plugin instance and teardown</p>
-        <pre><code class="language-javascript col s12">
+        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
 instance.destroy();
         </code></pre>
       </div>
@@ -261,13 +259,11 @@ instance.destroy();
         <p>Add the class
           <code class="language-html">.sidenav-close</code> to an element inside the sidenav and any click event on that element will cause the sidenav to close. This is
           useful in Single Page Apps where the page does not refresh on link clicks.</p>
-        <pre><code class="language-html">
-<xmp>
-<ul id="slide-out" class="sidenav">
+        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><ul id="slide-out" class="sidenav">
   <li><a class="sidenav-close" href="#!">Clicking this will close Sidenav</a></li>
 </ul>
-<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-</xmp>
+<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a></xmp>
           </code></pre>
       </div>
 
@@ -280,9 +276,8 @@ instance.destroy();
 
         <h4>Dropdown HTML Structure</h4>
         <p>Add collapsible menus to your sidebar.</p>
-        <pre><code class="language-html">
-<xmp>
-<ul id="slide-out" class="sidenav">
+        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><ul id="slide-out" class="sidenav">
   <li><a href="#!">First Sidebar Link</a></li>
   <li><a href="#!">Second Sidebar Link</a></li>
   <li class="no-padding">
@@ -312,8 +307,7 @@ instance.destroy();
     <li><a href="#!">Fourth</a></li>
   </ul>
 </ul>
-<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-</xmp>
+<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a></xmp>
           </code></pre>
         
 
@@ -322,14 +316,12 @@ instance.destroy();
           <code class="language-html">show-on-large</code> to the
           <code class="language-html">.sidenav-trigger</code>. </p>
 
-        <pre><code class="language-html">
-<xmp>
-<ul id="slide-out" class="sidenav">
+        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><ul id="slide-out" class="sidenav">
   <li><a href="#!">First Sidebar Link</a></li>
   <li><a href="#!">Second Sidebar Link</a></li>
 </ul>
-<a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
-</xmp>
+<a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a></xmp>
           </code></pre>
         
 
@@ -337,18 +329,16 @@ instance.destroy();
         <p>Add the class
           <code class="language-html">sidenav-fixed</code> to have the sidenav be fixed and open on large screens and hides to the regular functionality on smaller screens.
           Our sidenav on the left is an example of this.</p>
-        <pre><code class="language-html">
-<xmp>
-<ul id="slide-out" class="sidenav sidenav-fixed">
+        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><ul id="slide-out" class="sidenav sidenav-fixed">
   <li><a href="#!">First Sidebar Link</a></li>
   <li><a href="#!">Second Sidebar Link</a></li>
 </ul>
-<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-</xmp>
+<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a></xmp>
           </code></pre>
         <p>If you are planning on using this you will have to offset your content by the width of the side menu. Place the padding
           on where the offset content will be, which in our case is in header, main and footer.</p>
-        <pre><code class="language-css col s12">
+        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-css col s12 copiedText">
     header, main, footer {
       padding-left: 300px;
     }

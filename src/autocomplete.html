@@ -40,12 +40,8 @@
                 <p class="red-text"><strong>ATTENTION:</strong> Data-Format has changed from version 1.X.X to 2.0.0! Please update option 'data'.</p>
               </div>
 
-              <pre style="padding-top: 0px">
-          <span class="copyMessage">Copied!</span>
-          <i class="material-icons copyButton">content_copy</i>
-          <code class="language-html copiedText">
-<xmp>
-<div class="row">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="row">
   <div class="col s12">
     <div class="row">
       <div class="input-field col s12">
@@ -55,10 +51,8 @@
       </div>
     </div>
   </div>
-</div>
-</xmp>
-          </code>
-        </pre>
+</div></xmp>
+          </code></pre>
             </div>
 
             <div id="initialization" class="scrollspy section">
@@ -93,13 +87,10 @@
                 You may also provide additional attributes to an option object but they will not be taken into consideration by the standard search function. If you want to use
                 them for option filtering, you must specify a custom function in "<b>onSearch</b>" option.
               </p>
-              <pre style="padding-top: 0px">
-            <span class="copyMessage">Copied!</span>
-            <i class="material-icons copyButton">content_copy</i>
-            <code class="language-javascript copiedText">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
   document.addEventListener('DOMContentLoaded', function() {
     const elems = document.querySelectorAll('.autocomplete');
-    const instances = M.Autocomplete.init(elems, {
+    const instances = Autocomplete.init(elems, {
       // specify options here
       minLength: 0, // shows instantly
       data: [
@@ -114,7 +105,7 @@
 
   document.addEventListener('DOMContentLoaded', function() {
     const elems = document.querySelectorAll('.autocomplete');
-    const instances = M.Autocomplete.init(elems, {
+    const instances = Autocomplete.init(elems, {
       // specify options here
       minLength: 0, // shows instantly
       isMultiSelect: true,
@@ -130,7 +121,7 @@
 
   document.addEventListener('DOMContentLoaded', function() {
     const elems = document.querySelectorAll('.autocomplete');
-    const instances = M.Autocomplete.init(elems, {
+    const instances = Autocomplete.init(elems, {
       // specify options here
       isMultiSelect: true,
       data: [
@@ -149,8 +140,7 @@
       }
     });
   });
-          </code>
-        </pre>
+          </code></pre>
             </div>
 
             <div id="options" class="scrollspy section">
@@ -228,10 +218,7 @@
                 This is the default Search Function. You can write your own search function by passing in a function with the same parameters. You can load asynchronously data in
                 this function or filter an existing list or dictionary. When the data is loaded you can use setMenuItems() to update the content of the Menu.
               </p>
-              <pre style="padding-top: 0px">
-            <span class="copyMessage">Copied!</span>
-            <i class="material-icons copyButton">content_copy</i>
-            <code class="language-javascript copiedText">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
 onSearch: (text, autocomplete) => {
   const normSearch = text.toLocaleLowerCase();
   autocomplete.setMenuItems(
@@ -241,8 +228,7 @@ onSearch: (text, autocomplete) => {
     )
   );
 }
-</code>
-          </pre>
+</code></pre>
               <p>To disable sorting and use the values as they appear in the data object, use a falsy value.</p>
             </div>
 
@@ -250,24 +236,20 @@ onSearch: (text, autocomplete) => {
               <h3 class="header">Methods</h3>
               <blockquote>
                 <p>All the methods are called on the plugin instance. You can get the plugin instance like this:</p>
-                <pre style="padding-top: 0px">
-              <span class="copyMessage">Copied!</span>
-              <i class="material-icons copyButton">content_copy</i>
-              <code class="language-javascript copiedText">
-  const instance = M.Autocomplete.getInstance(elem);
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+  const instance = Autocomplete.getInstance(elem);
   instance.open();
-              </code>
-            </pre>
+              </code></pre>
               </blockquote>
               <h5 class="method-header">.open();</h5>
               <p>Open autocomplete dropdown.</p>
-              <pre><code class="language-javascript col s12">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
 instance.open();
       </code></pre>
 
               <h5 class="method-header">.close();</h5>
               <p>Close autocomplete dropdown.</p>
-              <pre><code class="language-javascript col s12">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
 instance.close();
       </code></pre>
 
@@ -275,7 +257,7 @@ instance.close();
               <p>Select a specific autocomplete option via id-property.</p>
               <h6>Arguments</h6>
               <p><b>id:</b> The id of a data-entry.</p>
-              <pre><code class="language-javascript col s12">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
 instance.selectOption(42);
       </code></pre>
 
@@ -283,7 +265,7 @@ instance.selectOption(42);
               <p>Updates the visible or selectable items shown in the menu.</p>
               <h6>Arguments</h6>
               <p><b>items:</b> .</p>
-              <pre><code class="language-javascript col s12">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
 instance.setMenuItems([
   {id: "Test"},
   {id: 12, text: "Apple"},
@@ -294,7 +276,7 @@ instance.setMenuItems([
 
               <h5 class="method-header">.destroy();</h5>
               <p>Destroy plugin instance and teardown</p>
-              <pre><code class="language-javascript col s12">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
 instance.destroy();
       </code></pre>
             </div>

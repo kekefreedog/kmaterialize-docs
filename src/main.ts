@@ -4,6 +4,7 @@ import "./style.scss";
 import { Themes } from "./themes";
 import { autocompleteDemoData } from "./data-autocomplete";
 import hljs from "highlight.js";
+import * as M from "kmaterialize";
 import {
   Autocomplete,
   Cards,
@@ -27,6 +28,11 @@ import {
   Timepicker,
   Tooltip,
 } from "kmaterialize";
+
+// Docs pages have live `onclick="M.toast(...)"` / `M.Waves...` handlers
+// demonstrating the public API - expose the same namespace globally so
+// those actually work, matching what the CDN/IIFE build provides.
+(window as any).M = M;
 
 function importCodeStyle(isDarkMode) {
   if (isDarkMode) import("highlight.js/styles/atom-one-dark.min.css");
@@ -95,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const githubCommitElem = document.querySelector(".github-commit");
   if (githubCommitElem != null) {
     // Checks if widget div exists (Index only)
-    fetch("https://api.github.com/repos/materializecss/materialize/commits/main")
+    fetch("https://api.github.com/repos/kekefreedog/kmaterialize/commits/main")
       .then((resp) => resp.json())
       .then((data) => {
         const url = data.html_url;
@@ -229,6 +235,14 @@ document.addEventListener("DOMContentLoaded", () => {
     themes.setThemePrimaryColor(toggleColorsButton.value);
   });
 
+  const toggleFontButton = <HTMLSelectElement>document.getElementById("font-picker");
+  if (toggleFontButton) {
+    toggleFontButton.value = themes.getFont();
+  }
+  toggleFontButton?.addEventListener("change", () => {
+    themes.setFont(toggleFontButton.value);
+  });
+
   document.querySelector("#downloadCss")?.addEventListener("click", () => {
     themes.downloadCss();
   });
@@ -237,15 +251,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //------ Copy Button
 
-  const copyBtn = Array.prototype.slice.call(document.querySelectorAll(".copyButton"));
-  const copiedText = Array.prototype.slice.call(document.querySelectorAll(".copiedText"));
-  const copyMsg = Array.prototype.slice.call(document.querySelectorAll(".copyMessage"));
-  copyBtn.forEach((copyBtn, i) => {
-    copyBtn.addEventListener("click", () => {
-      navigator.clipboard.writeText(copiedText[i].innerText);
-      copyMsg[i].style.opacity = 1;
+  // Each button finds its own .copiedText/.copyMessage via the shared <pre>
+  // ancestor, rather than pairing them up by matching index across three
+  // separate page-wide querySelectorAll arrays. The old array-index approach
+  // silently mis-paired (or crashed on undefined) as soon as a single block
+  // anywhere on the page had a mismatched count - which happened repeatedly
+  // in practice. DOM-relative lookup can't misalign this way.
+  document.querySelectorAll<HTMLElement>(".copyButton").forEach((btn) => {
+    const container = btn.closest("pre");
+    const textEl = container?.querySelector<HTMLElement>(".copiedText");
+    const msgEl = container?.querySelector<HTMLElement>(".copyMessage");
+    if (!container || !textEl || !msgEl) {
+      console.warn("Copy button missing a .copiedText/.copyMessage sibling in the same <pre>", btn);
+      return;
+    }
+    btn.addEventListener("click", () => {
+      navigator.clipboard.writeText(textEl.innerText);
+      msgEl.style.opacity = "1";
       setTimeout(() => {
-        copyMsg[i].style.opacity = 0;
+        msgEl.style.opacity = "0";
       }, 2000);
     });
   });

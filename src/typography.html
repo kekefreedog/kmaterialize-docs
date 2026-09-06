@@ -28,12 +28,10 @@
                 <h3 class="header">Blockquotes</h3>
                 <p>Blockquotes are mainly used to give emphasis to a quote or citation. You can also use these for some extra text hierarchy and emphasis.</p>
                 <blockquote>This is an example quotation that uses the blockquote tag. Here is another line to make it look bigger.</blockquote>
-                <pre><code class="language-html">
-<xmp>
-<blockquote>
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><blockquote>
   This is an example quotation that uses the blockquote tag.
-</blockquote>
-</xmp>
+</blockquote></xmp>
 </code></pre>
               </div>
 
@@ -56,7 +54,7 @@
                   To use flow-text on a body of text, simply just add the class
                   <code class="language-html">flow-text</code> to a tag, see the code below.
                 </p>
-                <pre><code class="language-html"><xmp><p class="flow-text">I am Flow Text</p></xmp></code></pre>
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><p class="flow-text">I am Flow Text</p></xmp></code></pre>
               </div>
               <div id="fontstack" class="section scrollspy">
                 <h2 class="header">Changing the font stack</h2>
@@ -64,9 +62,29 @@
                   The Material Design standard uses Roboto font. We have included the font in our framework. In case you don't want to use Roboto on your webpage, fear not. You can
                   change the font stack by modifying the code below to your liking and add it to your custom CSS.
                 </p>
-                <pre><code class="language-css">html,
-button, input, optgroup, select, textarea {
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-css copiedText">html, button, input, optgroup, select, textarea {
   font-family: GillSans, Calibri, Trebuchet, sans-serif;
+}
+</code></pre>
+              </div>
+
+              <div id="font-picker-section" class="section scrollspy">
+                <h2 class="header">Alternate Font</h2>
+                <p class="caption">
+                  Alongside the default font stack, this site ships an optional <code class="language-html">Muli</code> typeface you can switch to. Try it via the
+                  <b>Font</b> selector in the Color Scheme dialog (the palette icon in the navbar) — your choice is saved and reapplied on your next visit.
+                </p>
+                <p>
+                  Under the hood, switching fonts just toggles a <code class="language-html">data-font</code> attribute on the
+                  <code class="language-html">&lt;html&gt;</code> element:
+                </p>
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><html data-font="muli"></xmp></code></pre>
+                <p>
+                  which is matched by a rule shipped in the framework itself, so it works the same way anywhere you use Kmaterialize — just load the face (e.g. from Google Fonts)
+                  and set the attribute:
+                </p>
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-css copiedText">html[data-font="muli"] {
+  font-family: "Muli", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 </code></pre>
               </div>
@@ -80,6 +98,7 @@ button, input, optgroup, select, textarea {
                   <li><a href="#blockquote">Blockquotes</a></li>
                   <li><a href="#flow">Flow Text</a></li>
                   <li><a href="#fontstack">Changing the font stack</a></li>
+                  <li><a href="#font-picker-section">Alternate Font</a></li>
                 </ul>
               </div>
             </div>

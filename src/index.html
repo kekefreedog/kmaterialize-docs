@@ -70,46 +70,15 @@
         margin: 0 6px 0 6px;
       }
 
-      #index-banner {
-        position: relative;
-        background-color: var(--md-sys-color-background);
-      }
-
-      @keyframes rotate {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-      .gradient {
-        --size: 100vh;
-        --speed: 9s;
-        --easing: cubic-bezier(0.8, 0.2, 0.6, 0.8);
-        --bg-color: color-mix(in srgb, var(--md-sys-color-secondary) 20%, var(--md-sys-color-background));
-
-        width: var(--size);
-        height: var(--size);
-        filter: blur(calc(var(--size) / 5));
-        background-image: linear-gradient(var(--bg-color), var(--md-sys-color-primary)); /* hsl(252, 59%, 63%) */
-        animation: rotate var(--speed) var(--easing) alternate infinite;
-        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-      }
     </style>
   </head>
   <body>
     {{> navbar }}
     <main>
       <div id="index-banner">
-        <!-- Background -->
-        <div style="position: absolute; top: 0; height: 100%; overflow: hidden; width: 100%; z-index: 0">
-          <div class="gradient"></div>
-        </div>
         <!-- Intro -->
         <div class="intro py-5" style="z-index: 1">
-          <div class="container py-5">
+          <div class="py-5">
             <!-- Hero -->
             <div class="center">
               <img id="logo" src="images/materialize.svg" style="height: 100px" alt="Kmaterialize" />
@@ -119,7 +88,7 @@
             <!-- Call to Action -->
             <div style="justify-content: center; display: flex; gap: 0.5rem; flex-wrap: wrap">
               <a tabindex="0" class="btn filled rounded btn-large z-depth-1 waves-effect waves-light" href="getting-started.html" id="download-button">Get started</a>
-              <a tabindex="0" class="btn outlined rounded btn-large waves-effect waves-light" href="https://github.com/materializecss/materialize" target="_blank">
+              <a tabindex="0" class="btn outlined rounded btn-large waves-effect waves-light" href="https://github.com/kekefreedog/kmaterialize" target="_blank">
                 View on GitHub</a
               >
             </div>
@@ -202,9 +171,9 @@
                   <h2>Extensible</h2>
                   <p>
                     Component cutsomization should be possible by yourself. To help growing this project, you can
-                    <a href="https://github.com/materializecss/materialize" target="_blank">join the community</a>
+                    <a href="https://github.com/kekefreedog/kmaterialize" target="_blank">join the community</a>
                     and ask for support or you can easily
-                    <a target="_blank" href="https://github.com/materializecss/materialize/issues">create an issue</a>
+                    <a target="_blank" href="https://github.com/kekefreedog/kmaterialize/issues">create an issue</a>
                     to move Kmaterialize forward.
                   </p>
                 </div>

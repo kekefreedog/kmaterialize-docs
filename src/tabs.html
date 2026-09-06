@@ -60,9 +60,8 @@
             <div id="test15" class="col s12"><p>Test 11</p></div>
 
             <div id="structure" class="section scrollspy">
-              <pre><code class="language-html">
-<xmp>
-<div class="row">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="row">
   <div class="col s12">
     <ul class="tabs">
       <li class="tab col s3"><a href="#test1">Test 1</a></li>
@@ -75,15 +74,14 @@
   <div id="test2" class="col s12">Test 2</div>
   <div id="test3" class="col s12">Test 3</div>
   <div id="test4" class="col s12">Test 4</div>
-</div>
-</xmp>
+</div></xmp>
         </code></pre>
             </div>
 
             <div id="initialization" class="section scrollspy">
               <h3 class="header">Initialization</h3>
-              <pre><code class="language-javascript">
-                const instance = M.Tabs.init(el, options);
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+                const instance = Tabs.init(el, options);
         </code></pre>
             </div>
 
@@ -132,8 +130,8 @@
               <h3 class="header">Methods</h3>
               <blockquote>
                 <p>All the methods are called on the plugin instance. You can get the plugin instance like this:</p>
-                <pre><code class="language-javascript col s12">
-                  const instance = M.Tabs.getInstance(elem);
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
+                  const instance = Tabs.getInstance(elem);
           </code></pre>
               </blockquote>
 
@@ -141,15 +139,15 @@
               <p>Show tab content that corresponds to the tab with the id</p>
               <h6>Arguments</h6>
               <p><b>String:</b> The id of the tab that you want to switch to</p>
-              <pre><code class="language-javascript col s12">instance.select('tab_id');</code></pre>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">instance.select('tab_id');</code></pre>
 
               <h5 class="method-header">.updateTabIndicator();</h5>
               <p>Recalculate tab indicator position. This is useful when the indicator position is not correct.</p>
-              <pre><code class="language-javascript col s12">instance.updateTabIndicator();</code></pre>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">instance.updateTabIndicator();</code></pre>
 
               <h5 class="method-header">.destroy();</h5>
               <p>Destroy plugin instance and teardown</p>
-              <pre><code class="language-javascript col s12">instance.destroy();</code></pre>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">instance.destroy();</code></pre>
             </div>
 
             <div id="properties" class="section scrollspy">
@@ -191,7 +189,7 @@
                   >#test2</code
                 >. Or you can add the class <code class="language-html">active</code> to the <code class="language-html">a</code> tag.
               </p>
-              <pre><code class="language-html">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
   <li class="tab"><a class="active" href="#test3">Test 3</a></li>
         </code></pre>
             </div>
@@ -203,15 +201,13 @@
                 <code class="language-html">target</code> property of that link! A list of <code class="language-html">target</code> values may be
                 <a href="https://www.w3schools.com/tags/att_a_target.asp">found here</a>.
               </p>
-              <pre><code class="language-html">
-<xmp>
-<li class="tab col s2">
-  <a target="_blank" href="https://github.com/materializecss/materialize">External link in new window</a>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><li class="tab col s2">
+  <a target="_blank" href="https://github.com/kekefreedog/kmaterialize">External link in new window</a>
 </li>
 <li class="tab col s2">
-  <a target="_self" href="https://github.com/materializecss/materialize">External link in same window</a>
-</li>
-</xmp>
+  <a target="_self" href="https://github.com/kekefreedog/kmaterialize">External link in same window</a>
+</li></xmp>
         </code></pre>
             </div>
 
@@ -236,17 +232,15 @@
               <div id="test-swipe-2" class="col s12 red">Test 2</div>
               <div id="test-swipe-3" class="col s12 green">Test 3</div>
 
-              <pre><code class="language-html">
-<xmp>
-<ul id="tabs-swipe-demo" class="tabs">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><ul id="tabs-swipe-demo" class="tabs">
   <li class="tab col s3"><a href="#test-swipe-1">Test 1</a></li>
   <li class="tab col s3"><a class="active" href="#test-swipe-2">Test 2</a></li>
   <li class="tab col s3"><a href="#test-swipe-3">Test 3</a></li>
 </ul>
 <div id="test-swipe-1" class="col s12 blue">Test 1</div>
 <div id="test-swipe-2" class="col s12 red">Test 2</div>
-<div id="test-swipe-3" class="col s12 green">Test 3</div>
-</xmp>
+<div id="test-swipe-3" class="col s12 green">Test 3</div></xmp>
         </code></pre>
             </div>
 
@@ -269,9 +263,8 @@
               <div id="test4" class="col s12"><p>Test 4</p></div>
               <div id="test0" class="col s12"><p>Test 5</p></div>
 
-              <pre><code class="language-html">
-<xmp>
-<ul class="tabs tabs-fixed-width tab-demo z-depth-1">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><ul class="tabs tabs-fixed-width tab-demo z-depth-1">
   <li class="tab"><a href="#test1">Test 1</a></li>
   <li class="tab"><a class="active" href="#test2">Test 2</a></li>
   <li class="tab disabled"><a href="#test3">Disabled Tab</a></li>
@@ -282,8 +275,7 @@
 <div id="test2" class="col s12"><p>Test 2</p></div>
 <div id="test3" class="col s12"><p>Test 3</p></div>
 <div id="test4" class="col s12"><p>Test 4</p></div>
-<div id="test0" class="col s12"><p>Test 5</p></div>
-</xmp>
+<div id="test0" class="col s12"><p>Test 5</p></div></xmp>
         </code></pre>
             </div>
 
@@ -329,17 +321,15 @@
                   <a href="#image-test3"><i class="material-icons">explore</i>Explore</a>
                 </li>
               </ul>
-              <pre><code class="language-markup">    
-<xmp>
-  <ul class="tabs tabs-fixed-width tab-demo tabs-horizontal z-depth-1">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-markup copiedText">    
+<xmp>  <ul class="tabs tabs-fixed-width tab-demo tabs-horizontal z-depth-1">
     <li class="tab"><a href="#image-test1"><i class="material-icons">flight</i>Flight</a></li>
     <li class="tab"><a class="active" href="#image-test2"><i class="material-icons">luggage</i>Luggage</a></li>
     <li class="tab"><a href="#image-test3"><i class="material-icons">explore</i>Explore</a></li>
   </ul>              
   <div id="image-test1" class="col s12"><p>Flight</p></div>
   <div id="image-test2" class="col s12"><p>Luggage</p></div>
-  <div id="image-test3" class="col s12"><p>Explore</p></div>    
-</xmp>
+  <div id="image-test3" class="col s12"><p>Explore</p></div>    </xmp>
               </code></pre>
             </div>
           </div>

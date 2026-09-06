@@ -24,6 +24,7 @@
     <!--<meta name="theme-color" content="#EE6E73" />-->
     <style>
       @import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i");
+      @import url("https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,500,600");
     </style>
     
     <!-- CSS-->
@@ -38,6 +39,8 @@
     <script>
       const theme = localStorage.getItem("theme");
       if (theme) document.documentElement.setAttribute("theme", theme);
+      const font = localStorage.getItem("font");
+      if (font) document.documentElement.setAttribute("data-font", font);
     </script>
     <style>
       .promo {
@@ -171,8 +174,8 @@
         margin: 0;
       }
     </style>
-    <script type="module" crossorigin src="/assets/main-a1677ca0.js"></script>
-    <link rel="stylesheet" href="/assets/main-606ec849.css">
+    <script type="module" crossorigin src="/assets/main-07c37889.js"></script>
+    <link rel="stylesheet" href="/assets/main-7176694b.css">
   </head>
   <body>
     <header>
@@ -184,7 +187,7 @@
           <div class="nav-wrapper primary">
             <a class="brand-logo">Grid</a>
             <a class="sidenav-trigger" href="#" data-target="nav-mobile"><i class="material-icons">menu</i></a>
-            <ul class="right">
+            <ul class="ml-auto">
               <li>
                 <a href="" onclick="paletteSelectorModal.showModal(); return false;">
                   <i class="material-icons">palette</i>
@@ -196,13 +199,8 @@
                 </a>
               </li>
               <li>
-                <a class="ext-link" href="https://github.com/materializecss/materialize" target="_blank" rel="noopener" title="Check out our GitHub">
-                  <img src="images/github.svg" alt="GitHub logo" style="height: 20px" />
-                </a>
-              </li>
-              <li>
-                <a class="ext-link" href="https://opencollective.com/materialize" target="_blank" rel="noopener" title="Support us via OpenCollective">
-                  <img src="images/opencollective.svg" alt="Open Collective logo" />
+                <a class="ext-link" href="https://github.com/kekefreedog/kmaterialize" target="_blank" rel="noopener" title="Check out our GitHub">
+                  <img class="nav-icon-img" src="images/github.svg" alt="GitHub logo" />
                 </a>
               </li>
             </ul>
@@ -215,7 +213,7 @@
         <li class="logo">
           <a class="brand-logo" id="logo-container" href="/">
             <img id="front-page-logo" src="images/materialize.svg" alt="Materialize Web Logo" />
-            Materialize
+            Kmaterialize
           </a>
         </li>
     
@@ -468,25 +466,6 @@
         <span class="material-icons">mobile_friendly</span>
         Mobile</a>
       </li> 
-    
-        <li class="version">
-          <a class="dropdown-trigger" href="#" data-target="version-dropdown">
-            <!-- svg -->
-            v2.2.2 (Latest)
-            <svg class="caret" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7 10l5 5 5-5z"></path>
-              <path d="M0 0h24v24H0z" fill="none"></path>
-            </svg>
-          </a>
-          <ul class="dropdown-content" id="version-dropdown">
-            <li><a href="/version/v2.2.2/">v2.2.2 (Latest)</a></li>
-            <li><a href="/version/v2.2.1/">v2.2.1</a></li>
-            <li><a href="/version/v2.1.1/">v2.1.1</a></li>
-            <li><a>2.1.0</a></li>
-            <li><a>2.0.4</a></li>
-            <li><a>2.0.3-alpha</a></li>
-          </ul>
-        </li>
       </ul>
     </header>
     
@@ -496,8 +475,15 @@
       </div>
       <div class="modal-content">
         <div class="color-row">
-          <input type="color" id="color-picker" value="#0000ff" />
+          <input type="color" id="color-picker" value="#FFD700" />
           <label for="color-picker">Primary Color</label>
+        </div>
+        <div class="font-row">
+          <label for="font-picker">Font</label>
+          <select id="font-picker">
+            <option value="">Default</option>
+            <option value="muli">Muli</option>
+          </select>
         </div>
         <button id="downloadCss" type="button" class="btn tonal">Download css style</button>
       </div>
@@ -569,14 +555,12 @@
                   tag with a <code class="language-html">container</code> class. Here's an example of how your page might be set up.
                 </p>
 
-                <pre><code class="language-html">
-<xmp>
-<body>
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><body>
   <div class="container">
     <!-- Page Content goes here -->
   </div>
-</body>
-</xmp>
+</body></xmp>
           </code></pre>
               </div>
 
@@ -625,9 +609,8 @@
                   </div>
                 </div>
                 <p>To get a feel of how the grid is used in HTML, take a look at the code below which will produce a similar result to the one above.</p>
-                <pre><code class="language-html">
-<xmp>
-<div class="row">
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="row">
   <div class="col s1">1</div>
   <div class="col s1">2</div>
   <div class="col s1">3</div>
@@ -640,8 +623,7 @@
   <div class="col s1">10</div>
   <div class="col s1">11</div>
   <div class="col s1">12</div>
-</div>
-</xmp>
+</div></xmp>
           </code></pre>
                 <p>
                   Note: For now, just know that the
@@ -664,14 +646,12 @@
                     <span class="flow-text">6-columns (one-half)</span>
                   </div>
                 </div>
-                <pre><code class="language-html">
-<xmp>
-<div class="row">
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="row">
   <div class="col s12">This div is 12-columns wide on all screen sizes</div>
   <div class="col s6">6-columns (one-half)</div>
   <div class="col s6">6-columns (one-half)</div>
-</div>
-</xmp>
+</div></xmp>
           </code></pre>
               </div>
 
@@ -723,9 +703,8 @@
                   </div>
                 </div>
 
-                <pre><code class="language-html">
-<xmp>
-<div class="row">
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="row">
   <div class="col s12"> <span class="flow-text">This div is 12-columns wide on all screen sizes </span> </div>
   <div class="col s6 offset-s6"> <span class="flow-text">6-columns (offset-by-6) </span> </div>
 </div>
@@ -742,8 +721,7 @@
   <div class="l2"> <span>col </span> </div>
   <div class="l2"> </div>
   <div class="l2"> <span>relative offset 2 </span> </div>
-</div>
-</xmp>
+</div></xmp>
 </code></pre>
               </div>
 
@@ -777,21 +755,18 @@
                   <div class="s4 grid-example">3</div>
                 </div>
 
-                <pre><code class="language-html">
-<xmp>
-<div class="row g-4">
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="row g-4">
   <div class="s3">1</div>
   <div class="s3">2</div>
   <div class="s3">3</div>
   <div class="s3">4</div>
-</div>
-</xmp></code></pre>
+</div></xmp></code></pre>
               </div>
 
               <!-- Grid push and pull -->
               <div id="grid-push" class="section scrollspy">
                 <h2 class="header">Push and Pull</h2>
-                <p class="red-text">Deprecated in V2.0.0, since CSS Grid is used. You can use left and right (see offsets).</p>
                 <p>
                   You can easily change the order of your columns with push and pull. Simply add
                   <code class="language-html">push-s2</code> or <code class="language-html">pull-s2</code> to the class where <code class="language-html">s</code> signifies the
@@ -848,9 +823,8 @@
                   <p>Stuff</p>
                 </div>
                 <div class="divider"></div>
-                <pre><code class="language-html">
-<xmp>
-<div class="divider"></div>
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="divider"></div>
 <div class="section">
   <h5>Section 1</h5>
   <p>Stuff</p>
@@ -864,8 +838,7 @@
 <div class="section">
   <h5>Section 3</h5>
   <p>Stuff</p>
-</div>
-</xmp>
+</div></xmp>
           </code></pre>
 
                 <h5>Example Promotion Table</h5>
@@ -900,9 +873,8 @@
                   </div>
                 </div>
 
-                <pre><code class="language-html">
-<xmp>
-<div class="row">
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="row">
   <div class="col s4">
     <!-- Promo Content 1 goes here -->
   </div>
@@ -912,8 +884,7 @@
   <div class="col s4">
     <!-- Promo Content 3 goes here -->
   </div>
-</div>
-</xmp>
+</div></xmp>
           </code></pre>
 
                 <h5>Example Side Navigation Layout</h5>
@@ -951,9 +922,8 @@
                   </div>
                 </div>
 
-                <pre><code class="language-html">
-<xmp>
-<!-- Navbar goes here -->
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><!-- Navbar goes here -->
 <!-- Page Layout here -->
 <div class="row">
   <div class="col s3">
@@ -962,8 +932,7 @@
   <div class="col s9">
     <!-- Teal page content  -->
   </div>
-</div>
-</xmp>
+</div></xmp>
           </code></pre>
               </div>
 
@@ -1022,13 +991,11 @@
                     <span class="flow-text">I am full-width on mobile (col s12 m6)</span>
                   </div>
                 </div>
-                <pre><code class="language-html">
-<xmp>
-<div class="row">
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="row">
   <div class="grid-example col s12"><span class="flow-text">I am always full-width (col s12)</span></div>
   <div class="grid-example col s12 m6"><span class="flow-text">I am full-width on mobile (col s12 m6)</span></div>
-</div>
-</xmp>
+</div></xmp>
           </code></pre>
 
                 <h5>Responsive Side Navigation Layout</h5>
@@ -1069,9 +1036,8 @@
                   </div>
                 </div>
 
-                <pre><code class="language-html">
-<xmp>
-<!-- Navbar goes here -->
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><!-- Navbar goes here -->
 <!-- Page Layout here -->
 <div class="row">
   <div class="col s12 m4 l3"> <!-- Note that "m4 l3" was added -->
@@ -1088,8 +1054,7 @@
       8-columns-wide on medium screens,
       12-columns-wide on small screens  -->
   </div>
-</div>
-</xmp>
+</div></xmp>
           </code></pre>
 
                 <h5>More Responsive Grid Examples</h5>
@@ -1121,9 +1086,8 @@
                 </div>
 
                 <div>
-                  <pre><code class="language-html">
-<xmp>
-<div class="row">
+                  <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="row">
   <div class="col s12"><p>s12</p></div>
   <div class="col s12 m4 l2"><p>s12 m4</p></div>
   <div class="col s12 m4 l8"><p>s12 m4</p></div>
@@ -1134,8 +1098,7 @@
   <div class="col s12 m6 l3"><p>s12 m6 l3</p></div>
   <div class="col s12 m6 l3"><p>s12 m6 l3</p></div>
   <div class="col s12 m6 l3"><p>s12 m6 l3</p></div>
-</div>
-</xmp>
+</div></xmp>
             </code></pre>
                 </div>
               </div>
@@ -1164,60 +1127,13 @@
       <div class="container">
         <div class="row">
           <div class="s12 m10 offset-m1">
-            <div class="row" style="gap: 2rem">
-              <div class="s12 m6 l4">
-                <h5>Help Materialize Grow</h5>
-                <p>
-                  We hope you have enjoyed using <a href="https://materializeweb.com">Materialize</a> and if you feel like it has helped you out and want to support the team you can
-                  help us by opening issues or contributing on GitHub.
-                </p>
-                <a tabindex="0" class="btn tonal btn-small waves-effect waves-light" target="_blank" href="https://github.com/materializecss/materialize">Contribute</a>
-              </div>
-    
-              <div class="s12 m6 l4">
-                <h5>Join the Discussion</h5>
-                <p>
-                  We have a Gitter chat room set up where you can talk directly with us. Come in and discuss new features, future goals, general problems or questions, or anything else
-                  you can think of.
-                </p>
-                <a tabindex="0" class="btn tonal btn-small waves-effect waves-light" href="https://gitter.im/materializecss/materialize" target="_blank">Chat</a>
-              </div>
-    
-              <div class="s12 m6 l4" style="overflow: hidden">
-                <h5>Star us</h5>
-                <div>
-                  <a href="https://github.com/materializecss/materialize" target="_blank">
-                    <img style="width: 42%" alt="GitHub Repo stars" src="https://img.shields.io/github/stars/materializecss/materialize" />
-                  </a>
-                </div>
-    
-                <!-- Ad Placements -->
-                <div style="width: 100%; background-color: #f883">
-                  <div style="height: 90px; width: 100%">
-                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9412332535613378" crossorigin="anonymous"></script>
-                    <ins
-                      class="adsbygoogle"
-                      style="display: block"
-                      data-ad-format="fluid"
-                      data-ad-layout-key="-fb+5w+4e-db+86"
-                      data-ad-client="ca-pub-9412332535613378"
-                      data-ad-slot="4127762940"
-                    ></ins>
-                    <script>
-                      (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                  </div>
-                </div>
-              </div>
-            </div>
-    
             <div class="footer-copyright">
               © 2014-
               <noscript>2018</noscript>
               <script>
                 document.write(new Date().getFullYear());
               </script>
-              &nbsp;Materialize, All rights reserved.<a class="right" target="_blank" href="https://github.com/materializecss/materialize/blob/main/LICENSE">MIT License</a>
+              &nbsp;Kmaterialize, All rights reserved.<a class="right" target="_blank" href="https://github.com/kekefreedog/kmaterialize/blob/main/LICENSE">MIT License</a>
             </div>
           </div>
         </div>

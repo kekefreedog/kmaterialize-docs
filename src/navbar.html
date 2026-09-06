@@ -17,84 +17,78 @@
               </p>
               <h3 class="header">Right Aligned Links</h3>
               <p>
-                To right align your navbar links, just add a <code class="language-html">right</code> class to the
+                To right align your navbar links, just add an <code class="language-html">ml-auto</code> class to the
                 <code class="language-html">ul</code>
-                that contains them.
+                that contains them. <code class="language-html">.nav-wrapper</code> is a flex container, so the old v1
+                <code class="language-html">right</code> float class has no effect on it.
               </p>
               <nav class="nav navbar">
                 <div class="nav-wrapper">
-                  <div class="col s12">
-                    <a href="#!" class="brand-logo">Logo</a>
-                    <ul class="right hide-on-med-and-down">
-                      <li>
-                        <a href="sass.html">Sass</a>
-                      </li>
-                      <li>
-                        <a href="badges.html">Components</a>
-                      </li>
-                      <li>
-                        <a href="collapsible.html">JavaScript</a>
-                      </li>
-                    </ul>
-                  </div>
+                  <a href="#!" class="brand-logo">Logo</a>
+                  <ul class="ml-auto hide-on-med-and-down">
+                    <li>
+                      <a href="sass.html">Sass</a>
+                    </li>
+                    <li>
+                      <a href="badges.html">Components</a>
+                    </li>
+                    <li>
+                      <a href="collapsible.html">JavaScript</a>
+                    </li>
+                  </ul>
                 </div>
               </nav>
 
-              <pre><code class="language-html">
-<xmp>
-<nav class="nav navbar">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><nav class="nav navbar">
   <div class="nav-wrapper">
     <a href="#" class="brand-logo">Logo</a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
+    <ul id="nav-mobile" class="ml-auto hide-on-med-and-down">
       <li><a href="sass.html">Sass</a></li>
       <li><a href="badges.html">Components</a></li>
       <li><a href="collapsible.html">JavaScript</a></li>
     </ul>
   </div>
-</nav>
-</xmp>
+</nav></xmp>
         </code></pre>
             </div>
 
             <div id="left" class="section scrollspy">
               <h3 class="header">Left Aligned Links</h3>
               <p>
-                To left align your navbar links, just add a <code class="language-html">left</code> class to the
-                <code class="language-html">ul</code>
-                that contains them.
+                Links sit at the left by default, since <code class="language-html">.nav-wrapper</code> is a flex row and they're the
+                first thing after the logo in source order. To push the logo itself to the right instead and keep the links at
+                the left, put the <code class="language-html">ul</code> before the logo in the markup and add
+                <code class="language-html">ml-auto</code> to the logo.
               </p>
               <nav class="nav navbar">
                 <div class="nav-wrapper">
-                  <div class="col s12">
-                    <a href="#!" class="brand-logo right">Logo</a>
-                    <ul class="left hide-on-med-and-down">
-                      <li>
-                        <a href="sass.html">Sass</a>
-                      </li>
-                      <li>
-                        <a href="badges.html">Components</a>
-                      </li>
-                      <li>
-                        <a href="collapsible.html">JavaScript</a>
-                      </li>
-                    </ul>
-                  </div>
+                  <ul class="hide-on-med-and-down">
+                    <li>
+                      <a href="sass.html">Sass</a>
+                    </li>
+                    <li>
+                      <a href="badges.html">Components</a>
+                    </li>
+                    <li>
+                      <a href="collapsible.html">JavaScript</a>
+                    </li>
+                  </ul>
+                  <a href="#!" class="brand-logo ml-auto">Logo</a>
                 </div>
               </nav>
 
-              <pre><code class="language-html">
-<xmp>
-<nav class="nav navbar">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><nav class="nav navbar">
   <div class="nav-wrapper">
-    <a href="#" class="brand-logo right">Logo</a>
-    <ul id="nav-mobile" class="left hide-on-med-and-down">
+    <ul id="nav-mobile" class="hide-on-med-and-down">
       <li><a href="sass.html">Sass</a></li>
       <li><a href="badges.html">Components</a></li>
       <li><a href="collapsible.html">JavaScript</a></li>
     </ul>
+    <a href="#" class="brand-logo ml-auto">Logo</a>
   </div>
-</nav>
-</xmp>
+</nav></xmp>
         </code></pre>
             </div>
 
@@ -121,9 +115,8 @@
                 </div>
               </nav>
 
-              <pre><code class="language-html">
-<xmp>
-<nav class="nav navbar">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><nav class="nav navbar">
   <div class="nav-wrapper">
     <a href="#" class="brand-logo center">Logo</a>
     <ul id="nav-mobile" class="left hide-on-med-and-down">
@@ -132,8 +125,7 @@
       <li><a href="collapsible.html">JavaScript</a></li>
     </ul>
   </div>
-</nav>
-</xmp>
+</nav></xmp>
         </code></pre>
             </div>
 
@@ -158,9 +150,8 @@
                 </div>
               </nav>
 
-              <pre><code class="language-html">
-<xmp>
-<nav class="nav navbar">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><nav class="nav navbar">
   <div class="nav-wrapper">
     <a href="#!" class="brand-logo center">Logo</a>
     <ul class="left hide-on-med-and-down">
@@ -169,8 +160,7 @@
       <li class="active"><a href="collapsible.html">JavaScript</a></li>
     </ul>
   </div>
-</nav>
-</xmp>
+</nav></xmp>
         </code></pre>
             </div>
 
@@ -235,9 +225,8 @@
               <div id="test3" class="col s12">Test 3</div>
               <div id="test4" class="col s12">Test 4</div>
 
-              <pre><code class="language-html">
-<xmp>
-<nav class="nav navbar nav-extended">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><nav class="nav navbar nav-extended">
   <div class="nav-wrapper">
     <a href="#" class="brand-logo">Logo</a>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -266,8 +255,7 @@
 <div id="test1" class="col s12">Test 1</div>
 <div id="test2" class="col s12">Test 2</div>
 <div id="test3" class="col s12">Test 3</div>
-<div id="test4" class="col s12">Test 4</div>
-</xmp>
+<div id="test4" class="col s12">Test 4</div></xmp>
         </code></pre>
             </div>
 
@@ -279,9 +267,8 @@
                 change how much offset is on your content.
               </p>
 
-              <pre><code class="language-html">
-<xmp>
-<div class="navbar-fixed">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="navbar-fixed">
   <nav class="nav navbar">
     <div class="nav-wrapper">
       <a href="#!" class="brand-logo">Logo</a>
@@ -291,8 +278,7 @@
       </ul>
     </div>
   </nav>
-</div>
-</xmp>
+</div></xmp>
         </code></pre>
             </div>
 
@@ -338,9 +324,8 @@
                 </div>
               </nav>
 
-              <pre><code class="language-html">
-<xmp>
-<!-- Dropdown Structure -->
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
   <li><a href="#!">one</a></li>
   <li><a href="#!">two</a></li>
@@ -357,17 +342,16 @@
       <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
     </ul>
   </div>
-</nav>
-</xmp>
+</nav></xmp>
         </code></pre>
               <p>
                 To activate the dropdown menu, insert this line of code into your JavaScript file. You can read more about the
                 <a href="dropdown.html" target="_blank">Dropdown component here</a>.
               </p>
-              <pre><code class="language-javascript">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
   document.addEventListener('DOMContentLoaded', function() {
     const elems = document.querySelectorAll('.dropdown-trigger');
-    const instances = M.Dropdown.init(elems, {
+    const instances = Dropdown.init(elems, {
       // specify options here
     });
   });
@@ -413,9 +397,8 @@
               <p>
                 You can add icons into links. For icon only links you don't need any additional class. Just pop the <code class="language-html">i</code> tag in and it will work.
               </p>
-              <pre><code class="language-html">
-<xmp>
-<nav class="nav navbar">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><nav class="nav navbar">
   <div class="nav-wrapper">
     <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
     <ul class="right hide-on-med-and-down">
@@ -425,8 +408,7 @@
       <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
     </ul>
   </div>
-</nav>
-</xmp>
+</nav></xmp>
 </code></pre>
 
               <nav class="nav navbar">
@@ -450,9 +432,8 @@
                 For adding an icon to a text link you need to add either a <code class="language-html">left</code> or <code class="language-html">right</code> class to the icon
                 depending on where you want the icon to be.
               </p>
-              <pre><code class="language-html">
-<xmp>
-<nav class="nav navbar">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><nav class="nav navbar">
   <div class="nav-wrapper">
     <a href="#!" class="brand-logo">Logo</a>
     <ul class="right hide-on-med-and-down">
@@ -460,8 +441,7 @@
       <li><a href="badges.html"><i class="material-icons right">view_module</i>Link with Right Icon</a></li>
     </ul>
   </div>
-</nav>
-</xmp>
+</nav></xmp>
 </code></pre>
             </div>
 
@@ -492,9 +472,8 @@
                 You can add buttons into links. For buttons you don't need any additional class. Just pop the <code class="language-html">.btn</code> class on the
                 <code class="language-html">a</code> tag.
               </p>
-              <pre><code class="language-html">
-<xmp>
-<nav class="nav navbar">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><nav class="nav navbar">
   <div class="nav-wrapper">
     <a href="#!" class="brand-logo">Logo</a>
     <ul class="right hide-on-med-and-down">
@@ -503,8 +482,7 @@
       <li><a class="waves-effect waves-light btn-large">Large Button</a></li>
     </ul>
   </div>
-</nav>
-</xmp>
+</nav></xmp>
 </code></pre>
 
               <h5>Halfway FAB in Extended Navbar</h5>
@@ -533,9 +511,8 @@
                 </div>
               </nav>
 
-              <pre><code class="language-html">
-<xmp>
-<nav class="nav navbar nav-extended">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><nav class="nav navbar nav-extended">
   <div class="nav-wrapper">
     <a href="#!" class="brand-logo">Logo</a>
     <ul class="right hide-on-med-and-down">
@@ -550,8 +527,7 @@
       <i class="material-icons">add</i>
     </a>
   </div>
-</nav>
-</xmp>
+</nav></xmp>
 </code></pre>
             </div>
 
@@ -573,9 +549,8 @@
               </nav>
 
               <p>You can add a search form in the navbar.</p>
-              <pre><code class="language-html">
-<xmp>
-<nav class="navbar">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><nav class="navbar">
   <div class="nav-wrapper">
     <form>
       <div class="input-field">
@@ -585,8 +560,7 @@
       </div>
     </form>
   </div>
-</nav>
-</xmp>
+</nav></xmp>
 </code></pre>
             </div>
 
@@ -641,9 +615,8 @@
                 When your nav bar is resized, you will see that the links on the right turn into a hamburger icon <i class="material-icons">menu</i>. Take a look at the example
                 below to get this functionality. Add the entire <code class="language-html">sidenav-trigger</code> line to your <code class="language-html">nav</code>.
               </p>
-              <pre><code class="language-html">
-<xmp>
-<nav class="nav navbar">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><nav class="nav navbar">
   <div class="nav-wrapper">
     <a href="#!" class="brand-logo">Logo</a>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -661,8 +634,7 @@
   <li><a href="badges.html">Components</a></li>
   <li><a href="collapsible.html">Javascript</a></li>
   <li><a href="mobile.html">Mobile</a></li>
-</ul>
-</xmp>
+</ul></xmp>
           </code></pre>
 
               <h5>Initialization</h5>
@@ -670,10 +642,10 @@
                 After including the sidenav-trigger line into your navbar, all you have to do now initialize the plugin. This example below assumes you have not modified the
                 classes in the above example. In the case that you have, just change the selector in the line below to match it.
               </p>
-              <pre><code class="language-javascript">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
   document.addEventListener('DOMContentLoaded', function() {
     const elems = document.querySelectorAll('.sidenav');
-    const instances = M.Sidenav.init(elems, options);
+    const instances = Sidenav.init(elems, options);
   });
         </code></pre>
             </div>
