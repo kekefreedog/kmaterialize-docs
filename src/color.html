@@ -420,6 +420,190 @@
                 </div>
               </div>
             </div>
+
+            <div id="borders" class="section scrollspy">
+              <h3 class="header">Borders</h3>
+              <p>
+                Every color also has a <code class="language-html">-border</code> variant, applying it to <code class="language-css">border-color</code> instead of
+                <code class="language-css">background-color</code>. Combine it with a shade class exactly like the background/text variants
+                (<code class="language-html">teal-border darken-2</code>).
+              </p>
+              <div class="row">
+                <div class="col s4">
+                  <div class="card-panel teal-border darken-2" style="border: 3px solid;">teal-border darken-2</div>
+                </div>
+                <div class="col s4">
+                  <div class="card-panel red-border accent-3" style="border: 3px solid;">red-border accent-3</div>
+                </div>
+                <div class="col s4">
+                  <div class="card-panel amber-border" style="border: 3px solid;">amber-border</div>
+                </div>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="card-panel teal-border darken-2" style="border: 3px solid;">teal-border darken-2</div>
+<div class="card-panel red-border accent-3" style="border: 3px solid;">red-border accent-3</div>
+<div class="card-panel amber-border" style="border: 3px solid;">amber-border</div></xmp>
+        </code></pre>
+            </div>
+
+            <div id="scheme-colors" class="section scrollspy">
+              <h3 class="header">Light/Dark Mode Colors</h3>
+              <p>
+                <code class="language-html">light-mode-*</code> and <code class="language-html">dark-mode-*</code> variants apply a color only while the system is actually in that
+                color scheme (via <code class="language-css">@media (prefers-color-scheme: ...)</code>) - the other one does nothing. Put both on the same element to pick a
+                different color per scheme automatically, without any JS:
+              </p>
+              <div class="card-panel light-mode-indigo dark-mode-amber lighten-2-light-mode darken-2-dark-mode">
+                Indigo lighten-2 in light mode, amber darken-2 in dark mode - switch your system's appearance to see it change.
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="card-panel light-mode-indigo dark-mode-amber lighten-2-light-mode darken-2-dark-mode">
+  Indigo lighten-2 in light mode, amber darken-2 in dark mode
+</div></xmp>
+        </code></pre>
+              <p>The base color (no shade) is simpler - no extra suffix needed:</p>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="card-panel light-mode-red dark-mode-blue">
+  Plain red in light mode, plain blue in dark mode
+</div></xmp>
+        </code></pre>
+              <p>Text and border follow the same pattern: <code class="language-html">light-mode-*-text</code>/<code class="language-html">dark-mode-*-text</code> and <code class="language-html">light-mode-*-border</code>/<code class="language-html">dark-mode-*-border</code>.</p>
+            </div>
+
+            <div id="gradients" class="section scrollspy">
+              <h3 class="header">Gradients</h3>
+              <p>
+                30 ready-made two-color gradients, each named <code class="language-html">gradient-45deg-&lt;start&gt;-&lt;end&gt;</code>. Add
+                <code class="language-html">gradient-shadow</code> alongside one for a drop shadow tinted to match the gradient's end color (like the two below).
+              </p>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="gradient-45deg-purple-pink" style="height: 80px;"></div>
+<div class="gradient-45deg-orange-deep-orange gradient-shadow" style="height: 80px;"></div></xmp>
+        </code></pre>
+
+              <div class="row">
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-light-blue-teal card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">light-blue-teal</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-indigo-light-blue card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">indigo-light-blue</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-light-blue-indigo card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">light-blue-indigo</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-yellow-green card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">yellow-green</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-orange-deep-orange card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">orange-deep-orange</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-deep-purple-purple card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">deep-purple-purple</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-red-pink card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">red-pink</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-light-green-amber card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">light-green-amber</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-amber-amber card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">amber-amber</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-purple-pink card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">purple-pink</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-teal-cyan card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">teal-cyan</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-blue-grey-blue-grey card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">blue-grey-blue-grey</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-orange-amber card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">orange-amber</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-indigo-blue card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">indigo-blue</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-brown-brown card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">brown-brown</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-blue-grey-blue card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">blue-grey-blue</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-purple-deep-orange card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">purple-deep-orange</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-green-teal card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">green-teal</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-purple-light-blue card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">purple-light-blue</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-cyan-cyan card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">cyan-cyan</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-yellow-teal card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">yellow-teal</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-purple-deep-purple card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">purple-deep-purple</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-cyan-light-green card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">cyan-light-green</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-purple-amber card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">purple-amber</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-indigo-purple card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">indigo-purple</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-deep-purple-blue card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">deep-purple-blue</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-deep-orange-orange card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">deep-orange-orange</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-light-blue-cyan card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">light-blue-cyan</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-blue-indigo card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">blue-indigo</code> + shadow</p>
+                </div>
+                <div class="col s6 m3">
+                  <div class="gradient-45deg-semi-dark card-panel gradient-shadow" style="height: 70px;"></div>
+                  <p class="center-align"><code class="language-html">semi-dark</code> + shadow</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="col hide-on-small-only m3 xl3">
@@ -429,6 +613,9 @@
                   <li><a href="#color-usage">Usage</a></li>
                   <li><a href="#sass">Sass</a></li>
                   <li><a href="#palette">Color Palette</a></li>
+                  <li><a href="#borders">Borders</a></li>
+                  <li><a href="#scheme-colors">Light/Dark Mode Colors</a></li>
+                  <li><a href="#gradients">Gradients</a></li>
                 </ul>
               </div>
             </div>

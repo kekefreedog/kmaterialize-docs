@@ -26,6 +26,7 @@ import {
   Tabs,
   TapTarget,
   Timepicker,
+  Toolbar,
   Tooltip,
 } from "kmaterialize";
 
@@ -326,6 +327,10 @@ document.addEventListener("DOMContentLoaded", () => {
   Tabs.init(document.querySelectorAll("#tabs-swipe-demo"), {
     swipeable: true,
   });
+
+  // Excludes .fixed-action-btn.toolbar - that's an unrelated FAB display
+  // mode reusing the same class name, not this component.
+  Toolbar.init(document.querySelectorAll(".toolbar:not(.fixed-action-btn)"), {});
 
   Timepicker.init(document.querySelectorAll(".timepicker"), {});
 

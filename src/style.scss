@@ -200,6 +200,14 @@ header .navbar .nav-wrapper > ul.ml-auto {
   h1 {
     margin-top: 16px;
   }
+  // Scoped to the banner only - .header/.light are used site-wide
+  // elsewhere (section titles, etc.) and shouldn't pick this up too.
+  .header {
+    font-weight: 600;
+  }
+  .light {
+    font-weight: 300;
+  }
 }
 @media #{$medium-and-down} {
   #index-banner {

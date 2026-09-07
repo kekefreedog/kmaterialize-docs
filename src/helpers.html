@@ -812,6 +812,19 @@
   <h5 class="mt-1">The div has a padding 0.5rem and the h5 has a margin-top of 0.25rem</h5>
 </div></xmp>
         </code></pre>
+
+              <h5>padding-* / margin-* aliases</h5>
+              <p>
+                <code class="language-html">padding-0</code> through <code class="language-html">padding-6</code> and
+                <code class="language-html">margin-0</code> through <code class="language-html">margin-6</code> are exact aliases of the all-direction
+                <code class="language-html">p-*</code>/<code class="language-html">m-*</code> classes above (same steps, same values) - spelled out in full
+                for projects whose markup already uses that naming. There's no <code class="language-html">-auto</code> or per-direction
+                (<code class="language-html">-top</code>, <code class="language-html">-x</code>, ...) variant under this name; use <code class="language-html">p-*</code>/<code class="language-html">m-*</code>
+                and friends for that.
+              </p>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="padding-2 margin-3">Same as class="p-2 m-3"</div></xmp>
+        </code></pre>
             </div>
             <!--  End Spacing Section  -->
 
@@ -921,6 +934,312 @@
             </div>
             <!--  End Cursors Section  -->
 
+            <!--  Screen Fit Section  -->
+            <div id="screen-fit" class="section scrollspy">
+              <h3 class="header">Screen Fit</h3>
+              <p>Utility classes to size an element to (or at least to) the full viewport, without writing custom CSS.</p>
+
+              <table class="striped">
+                <thead>
+                  <tr>
+                    <th>Class</th>
+                    <th>Effect</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code class="language-html">screen-fit</code></td>
+                    <td><code class="language-css">width: 100%; height: 100vh;</code></td>
+                    <td>Locks the element to exactly the viewport's width and height. Content taller than the viewport gets clipped/overflows unless you handle it yourself.</td>
+                  </tr>
+                  <tr>
+                    <td><code class="language-html">screen-fit-x</code></td>
+                    <td><code class="language-css">width: 100%;</code></td>
+                    <td>Full width only - height is left untouched, so the element grows naturally with its content.</td>
+                  </tr>
+                  <tr>
+                    <td><code class="language-html">screen-fit-y</code></td>
+                    <td><code class="language-css">align-items: stretch;</code></td>
+                    <td>Not a size at all - it makes a flex/grid <em>container</em>'s children stretch to fill its cross-axis. Use it on the parent, not the item you want stretched.</td>
+                  </tr>
+                  <tr>
+                    <td><code class="language-html">screen-fit-min</code></td>
+                    <td><code class="language-css">min-width: 100%; min-height: 100vh;</code></td>
+                    <td>Fills <em>at least</em> the viewport - unlike plain <code class="language-html">screen-fit</code>, taller content simply pushes the element taller instead of being clipped.</td>
+                  </tr>
+                  <tr>
+                    <td><code class="language-html">screen-fit-min-x</code></td>
+                    <td><code class="language-css">min-width: 100%; height: 100vh;</code></td>
+                    <td>Width can only grow (min 100%), height is locked exactly to the viewport.</td>
+                  </tr>
+                  <tr>
+                    <td><code class="language-html">screen-fit-min-y</code></td>
+                    <td><code class="language-css">width: 100%; min-height: 100vh;</code></td>
+                    <td>Width is locked to 100%, height can only grow (min 100vh) - the most common one for a "full height, but can scroll if content is long" page wrapper.</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h5>screen-fit-y in action</h5>
+              <p>
+                The only one of these that's actually demoable inside a small box: compared here against <code class="language-html">screen-top-y</code>
+                so the difference is visible. Same markup, same tall chip - <code class="language-html">screen-top-y</code> leaves the shorter chips at
+                their natural height, <code class="language-html">screen-fit-y</code> stretches them to match:
+              </p>
+              <div class="screen-flex screen-top-y card-panel" style="gap: .5rem;">
+                <div class="chip" style="padding-top: 2rem; padding-bottom: 2rem;">tall chip</div>
+                <div class="chip">screen-top-y: not stretched</div>
+                <div class="chip">screen-top-y: not stretched</div>
+              </div>
+              <div class="screen-flex screen-fit-y card-panel" style="gap: .5rem;">
+                <div class="chip" style="padding-top: 2rem; padding-bottom: 2rem;">tall chip</div>
+                <div class="chip">screen-fit-y: stretched</div>
+                <div class="chip">screen-fit-y: stretched</div>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="screen-flex screen-top-y">
+  <div class="chip">tall chip</div>
+  <div class="chip">screen-top-y: not stretched</div>
+</div>
+
+<div class="screen-flex screen-fit-y">
+  <div class="chip">tall chip</div>
+  <div class="chip">screen-fit-y: stretched</div>
+</div></xmp>
+        </code></pre>
+
+              <h5>Typical usage</h5>
+              <p>The rest are viewport-relative by nature (<code class="language-css">100vh</code>), so they can't be demoed inside a small box on this page without covering it - here's how they're meant to be used instead.</p>
+
+              <p><code class="language-html">screen-fit</code>: an app shell that never scrolls the outer page, only an inner content area does.</p>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="screen-fit screen-flex screen-direction-y-asc">
+  <header>App bar</header>
+  <main class="element-flex-grow-1" style="overflow-y: auto;">Scrollable content</main>
+  <footer>Status bar</footer>
+</div></xmp>
+        </code></pre>
+
+              <p><code class="language-html">screen-fit-min</code>: a landing-page hero that always fills the first screen, but grows if its own text/image needs more room.</p>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><section class="screen-fit-min screen-flex screen-center">
+  <h1>Welcome</h1>
+</section></xmp>
+        </code></pre>
+            </div>
+            <!--  End Screen Fit Section  -->
+
+            <!--  Screen Flex Section  -->
+            <div id="screen-flex" class="section scrollspy">
+              <h3 class="header">Screen Flex</h3>
+              <p>
+                <code class="language-html">screen-flex</code> turns an element into a flex container; combine it with any of the modifier classes below
+                on the same element to control alignment, wrapping and direction. <code class="language-html">element-flex-grow-1</code>, used on a
+                direct child, makes that child grow to fill remaining space.
+              </p>
+
+              <h5>Both-axis alignment</h5>
+              <p><code class="language-html">screen-center</code>: centers children horizontally and vertically at once.</p>
+              <div class="screen-flex screen-center card-panel" style="height: 100px; gap: .5rem;">
+                <div class="chip">screen-center</div>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="screen-flex screen-center">
+  <div class="chip">screen-center</div>
+</div></xmp>
+        </code></pre>
+
+              <h5>Horizontal (main-axis) alignment</h5>
+              <p><code class="language-html">screen-left</code> / <code class="language-html">screen-right</code>: pushes children to the start or end of the row.</p>
+              <div class="screen-flex screen-left card-panel" style="height: 80px; gap: .5rem;">
+                <div class="chip">screen-left</div>
+              </div>
+              <div class="screen-flex screen-right card-panel" style="height: 80px; gap: .5rem;">
+                <div class="chip">screen-right</div>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="screen-flex screen-left"><div class="chip">screen-left</div></div>
+<div class="screen-flex screen-right"><div class="chip">screen-right</div></div></xmp>
+        </code></pre>
+
+              <p><code class="language-html">screen-center-x</code>: centers horizontally only (children keep their natural vertical position).</p>
+              <div class="screen-flex screen-center-x card-panel" style="height: 80px;">
+                <div class="chip">screen-center-x</div>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="screen-flex screen-center-x">
+  <div class="chip">screen-center-x</div>
+</div></xmp>
+        </code></pre>
+
+              <p><code class="language-html">screen-distributed-x</code>: even gaps between children, none at the outer edges (<code class="language-css">space-between</code>).</p>
+              <div class="screen-flex screen-distributed-x card-panel" style="height: 100px;">
+                <div class="chip">screen-distributed-x</div>
+                <div class="chip">spreads</div>
+                <div class="chip">children</div>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="screen-flex screen-distributed-x">
+  <div class="chip">screen-distributed-x</div>
+  <div class="chip">spreads</div>
+  <div class="chip">children</div>
+</div></xmp>
+        </code></pre>
+
+              <p><code class="language-html">screen-center-space-x</code> / <code class="language-html">screen-center-distributed-x</code>: like <code class="language-html">screen-distributed-x</code>, but with room left at the outer edges too (<code class="language-css">space-around</code> / <code class="language-css">space-evenly</code>).</p>
+              <div class="screen-flex screen-center-space-x card-panel" style="height: 90px;">
+                <div class="chip">space-around</div>
+                <div class="chip">a</div>
+                <div class="chip">b</div>
+              </div>
+              <div class="screen-flex screen-center-distributed-x card-panel" style="height: 90px;">
+                <div class="chip">space-evenly</div>
+                <div class="chip">a</div>
+                <div class="chip">b</div>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="screen-flex screen-center-space-x">...</div>
+<div class="screen-flex screen-center-distributed-x">...</div></xmp>
+        </code></pre>
+
+              <h5>Vertical (cross-axis) alignment</h5>
+              <p>
+                <code class="language-html">screen-center-y</code> / <code class="language-html">screen-top-y</code> / <code class="language-html">screen-bottom-y</code>:
+                aligns children to the middle, top or bottom of the row, independently of horizontal alignment.
+              </p>
+              <div class="screen-flex screen-top-y card-panel" style="height: 100px; gap: .5rem;">
+                <div class="chip">screen-top-y</div>
+              </div>
+              <div class="screen-flex screen-center-y card-panel" style="height: 100px; gap: .5rem;">
+                <div class="chip">screen-center-y</div>
+              </div>
+              <div class="screen-flex screen-bottom-y card-panel" style="height: 100px; gap: .5rem;">
+                <div class="chip">screen-bottom-y</div>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="screen-flex screen-top-y">...</div>
+<div class="screen-flex screen-center-y">...</div>
+<div class="screen-flex screen-bottom-y">...</div></xmp>
+        </code></pre>
+
+              <h5>Wrapping</h5>
+              <p><code class="language-html">screen-wrap</code>: children that don't fit on one line drop to the next, instead of overflowing or shrinking.</p>
+              <div class="screen-flex screen-wrap card-panel" style="gap: .5rem; max-width: 260px;">
+                <div class="chip">one</div>
+                <div class="chip">two</div>
+                <div class="chip">three</div>
+                <div class="chip">four</div>
+                <div class="chip">five</div>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="screen-flex screen-wrap" style="max-width: 260px;">
+  <div class="chip">one</div>
+  <div class="chip">two</div>
+  <div class="chip">three</div>
+</div></xmp>
+        </code></pre>
+              <p><code class="language-html">screen-no-wrap</code> is the opposite (and flexbox's own default) - forces everything onto a single line.</p>
+
+              <h5>Direction</h5>
+              <p><code class="language-html">screen-direction-y-asc</code> / <code class="language-html">screen-direction-y-desc</code>: stacks children in a column, top-to-bottom or bottom-to-top.</p>
+              <div class="screen-flex screen-direction-y-asc screen-center-x card-panel" style="height: 140px; gap: .5rem;">
+                <div class="chip">direction-y-asc</div>
+                <div class="chip">stacks</div>
+                <div class="chip">vertically</div>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="screen-flex screen-direction-y-asc screen-center-x">
+  <div class="chip">direction-y-asc</div>
+  <div class="chip">stacks</div>
+  <div class="chip">vertically</div>
+</div></xmp>
+        </code></pre>
+
+              <p><code class="language-html">screen-direction-x-asc</code> / <code class="language-html">screen-direction-x-desc</code>: row order left-to-right (the flexbox default) or reversed, right-to-left.</p>
+              <div class="screen-flex screen-direction-x-desc card-panel" style="gap: .5rem;">
+                <div class="chip">1</div>
+                <div class="chip">2</div>
+                <div class="chip">3</div>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="screen-flex screen-direction-x-desc">
+  <div class="chip">1</div>
+  <div class="chip">2</div>
+  <div class="chip">3</div>
+</div></xmp>
+        </code></pre>
+
+              <h5>Emphasis &amp; standalone flex</h5>
+              <p><code class="language-html">screen-flex-important</code>: same as <code class="language-html">screen-flex</code>, but <code class="language-css">!important</code> - for when something more specific already set <code class="language-css">display</code> on the element.</p>
+
+              <p><code class="language-html">element-flex</code>: a plain <code class="language-css">display: flex;</code> with none of <code class="language-html">screen-flex</code>'s modifier machinery - for a quick flex container that doesn't need any of the above.</p>
+
+              <p>
+                <code class="language-html">element-flex-grow-1</code>: put on a <strong>direct child</strong> of a <code class="language-html">screen-flex</code> container to make just that
+                child grow and fill the remaining space, while its siblings keep their natural size.
+              </p>
+              <div class="screen-flex card-panel" style="gap: .5rem;">
+                <div class="chip">fixed</div>
+                <div class="chip element-flex-grow-1">element-flex-grow-1 (fills the rest)</div>
+                <div class="chip">fixed</div>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="screen-flex">
+  <div class="chip">fixed</div>
+  <div class="chip element-flex-grow-1">fills the rest</div>
+  <div class="chip">fixed</div>
+</div></xmp>
+        </code></pre>
+
+              <p>Quick reference:</p>
+              <table class="striped">
+                <thead>
+                  <tr>
+                    <th>Class</th>
+                    <th>Effect</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td><code class="language-html">screen-flex-important</code></td><td><code class="language-css">display: flex !important;</code></td></tr>
+                  <tr><td><code class="language-html">screen-center</code></td><td>Centers children on both axes</td></tr>
+                  <tr><td><code class="language-html">screen-left</code> / <code class="language-html">screen-right</code></td><td>Aligns children to the start/end horizontally</td></tr>
+                  <tr><td><code class="language-html">screen-wrap</code> / <code class="language-html">screen-no-wrap</code></td><td><code class="language-css">flex-wrap: wrap / nowrap;</code></td></tr>
+                  <tr><td><code class="language-html">screen-center-y</code> / <code class="language-html">screen-top-y</code> / <code class="language-html">screen-bottom-y</code></td><td>Vertical (cross-axis) alignment only</td></tr>
+                  <tr><td><code class="language-html">screen-center-x</code> / <code class="language-html">screen-distributed-x</code></td><td>Horizontal (main-axis) alignment only</td></tr>
+                  <tr><td><code class="language-html">screen-center-space-x</code> / <code class="language-html">screen-center-distributed-x</code></td><td><code class="language-css">justify-content: space-around / space-evenly;</code></td></tr>
+                  <tr><td><code class="language-html">screen-direction-y-asc</code> / <code class="language-html">screen-direction-y-desc</code></td><td><code class="language-css">flex-direction: column / column-reverse;</code></td></tr>
+                  <tr><td><code class="language-html">screen-direction-x-asc</code> / <code class="language-html">screen-direction-x-desc</code></td><td><code class="language-css">flex-direction: row / row-reverse;</code></td></tr>
+                  <tr><td><code class="language-html">element-flex</code></td><td>Standalone <code class="language-css">display: flex;</code>, no other behavior</td></tr>
+                  <tr><td><code class="language-html">element-flex-grow-1</code></td><td>On a direct child of <code class="language-html">screen-flex</code>: <code class="language-css">flex-grow: 1;</code></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <!--  End Screen Flex Section  -->
+
+            <!--  Object Fit Section  -->
+            <div id="object-fit" class="section scrollspy">
+              <h3 class="header">Object Fit</h3>
+              <p>Shortcuts for the <code class="language-html">object-fit</code> property on <code class="language-html">&lt;img&gt;</code>/<code class="language-html">&lt;video&gt;</code> tags.</p>
+
+              <div class="row">
+                <div class="col s6">
+                  <p><code class="language-html">object-fit-cover</code></p>
+                  <img src="images/sample-1.jpg" class="object-fit-cover" style="width: 100%; height: 120px;" />
+                </div>
+                <div class="col s6">
+                  <p><code class="language-html">object-fit-fill</code></p>
+                  <img src="images/sample-1.jpg" class="object-fit-fill" style="width: 100%; height: 120px;" />
+                </div>
+              </div>
+
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><img src="photo.jpg" class="object-fit-cover" style="width: 100%; height: 120px;">
+<img src="photo.jpg" class="object-fit-fill" style="width: 100%; height: 120px;"></xmp>
+        </code></pre>
+            </div>
+            <!--  End Object Fit Section  -->
+
             <!--  Browser Default Section-->
             <div id="browser-default" class="section scrollspy">
               <h3 class="header">Browser Defaults</h3>
@@ -964,6 +1283,9 @@
                   <li><a href="#spacing">Spacing Content</a></li>
                   <li><a href="#formatting">Formatting</a></li>
                   <li><a href="#cursors">Cursors</a></li>
+                  <li><a href="#screen-fit">Screen Fit</a></li>
+                  <li><a href="#screen-flex">Screen Flex</a></li>
+                  <li><a href="#object-fit">Object Fit</a></li>
                   <li><a href="#browser-default">Browser Defaults</a></li>
                 </ul>
               </div>

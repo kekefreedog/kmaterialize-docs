@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{> head }}
+  </head>
+  <body>
+    {{> navbar }}
+    <main>
+      {{> intro}}
+      <div class="container">
+        <div class="row">
+          <div class="col s12 m8 offset-m1 xl7 offset-xl1">
+            <div id="introduction" class="section scrollspy">
+              <p class="caption">
+                A rounded "pill" action bar for grouping controls above the content they act on - buttons, a segmented "track" control (e.g. Today/Previous/Next), and an
+                expandable search field. It's a plain flex row in normal page flow, not fixed or sticky.
+              </p>
+
+              <div class="toolbar">
+                <div class="toolbar-group">
+                  <div class="toolbar-track">
+                    <div class="toolbar-track-indicator"></div>
+                    <button class="toolbar-track-item is-active">Today</button>
+                    <button class="toolbar-track-item">Previous</button>
+                    <button class="toolbar-track-item">Next</button>
+                  </div>
+                </div>
+                <div class="toolbar-group">
+                  <div class="toolbar-search">
+                    <button class="toolbar-search-toggle"><i class="material-icons">search</i></button>
+                    <input class="toolbar-search-input" placeholder="Search..." />
+                  </div>
+                  <button class="btn-floating btn-small"><i class="material-icons">refresh</i></button>
+                </div>
+              </div>
+
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="toolbar">
+  <div class="toolbar-group">
+    <div class="toolbar-track">
+      <div class="toolbar-track-indicator"></div>
+      <button class="toolbar-track-item is-active">Today</button>
+      <button class="toolbar-track-item">Previous</button>
+      <button class="toolbar-track-item">Next</button>
+    </div>
+  </div>
+  <div class="toolbar-group">
+    <div class="toolbar-search">
+      <button class="toolbar-search-toggle"><i class="material-icons">search</i></button>
+      <input class="toolbar-search-input" placeholder="Search...">
+    </div>
+    <button class="btn-floating btn-small"><i class="material-icons">refresh</i></button>
+  </div>
+</div></xmp>
+        </code></pre>
+            </div>
+
+            <div id="groups" class="section scrollspy">
+              <h3 class="header">Groups</h3>
+              <p>
+                <code class="language-html">toolbar-group</code> clusters related controls (buttons, a track, a search field, ...) with a small gap between them, and a bigger gap
+                between groups themselves - the toolbar lays groups out with <code class="language-css">justify-content: space-between</code>.
+              </p>
+              <p>A regular <code class="language-html">btn</code> fits into a group just as well as a <code class="language-html">btn-floating</code>:</p>
+              <div class="toolbar">
+                <div class="toolbar-group">
+                  <a class="btn-floating btn-small"><i class="material-icons">add</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">remove</i></a>
+                  <a class="btn filled btn-small">Reset</a>
+                  <a class="btn-floating btn-small"><i class="material-icons">crop_free</i></a>
+                </div>
+                <div class="toolbar-group">
+                  <a class="btn-floating btn-small"><i class="material-icons">download</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">refresh</i></a>
+                </div>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="toolbar">
+  <div class="toolbar-group">
+    <a class="btn-floating btn-small"><i class="material-icons">add</i></a>
+    <a class="btn-floating btn-small"><i class="material-icons">remove</i></a>
+    <a class="btn filled btn-small">Reset</a>
+    <a class="btn-floating btn-small"><i class="material-icons">crop_free</i></a>
+  </div>
+  <div class="toolbar-group">
+    <a class="btn-floating btn-small"><i class="material-icons">download</i></a>
+    <a class="btn-floating btn-small"><i class="material-icons">refresh</i></a>
+  </div>
+</div></xmp>
+        </code></pre>
+            </div>
+
+            <div id="track" class="section scrollspy">
+              <h3 class="header">Track (segmented control)</h3>
+              <p>
+                A pill-shaped segmented control with a sliding highlight behind whichever <code class="language-html">toolbar-track-item</code> is
+                <code class="language-html">is-active</code>. Click an item below - the <code class="language-html">Toolbar</code> component slides the
+                <code class="language-html">toolbar-track-indicator</code> to match.
+              </p>
+              <div class="toolbar">
+                <div class="toolbar-group">
+                  <div class="toolbar-track">
+                    <div class="toolbar-track-indicator"></div>
+                    <button class="toolbar-track-item">Week</button>
+                    <button class="toolbar-track-item is-active">Month</button>
+                    <button class="toolbar-track-item">6 Month</button>
+                    <button class="toolbar-track-item">Year</button>
+                  </div>
+                </div>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="toolbar-track">
+  <div class="toolbar-track-indicator"></div>
+  <button class="toolbar-track-item">Week</button>
+  <button class="toolbar-track-item is-active">Month</button>
+  <button class="toolbar-track-item">6 Month</button>
+  <button class="toolbar-track-item">Year</button>
+</div></xmp>
+        </code></pre>
+              <p>
+                Add <code class="language-html">toolbar-track-bare</code> for a track with no background/border of its own - just for spacing a group of items that don't need
+                the pill-within-a-pill look:
+              </p>
+              <div class="toolbar">
+                <div class="toolbar-group">
+                  <div class="toolbar-track toolbar-track-bare">
+                    <div class="toolbar-track-indicator"></div>
+                    <button class="toolbar-track-item is-active">List</button>
+                    <button class="toolbar-track-item">Grid</button>
+                  </div>
+                </div>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="toolbar-track toolbar-track-bare">
+  <div class="toolbar-track-indicator"></div>
+  <button class="toolbar-track-item is-active">List</button>
+  <button class="toolbar-track-item">Grid</button>
+</div></xmp>
+        </code></pre>
+            </div>
+
+            <div id="slider" class="section scrollspy">
+              <h3 class="header">Slider</h3>
+              <p>
+                <code class="language-html">toolbar-slider</code> wraps a plain <a href="range.html"><code class="language-html">range-field</code></a> in the same pill container
+                as <code class="language-html">toolbar-track</code> - it's not just cosmetic: the range's native track line is the same color as the toolbar's own background,
+                so without a container to contrast against it's invisible. The container also vertically centers any label text/icons placed next to it.
+              </p>
+
+              <p>With custom labels on each side (e.g. a zoom level):</p>
+              <div class="toolbar">
+                <div class="toolbar-group">
+                  <div class="toolbar-slider">
+                    <span>-</span>
+                    <p class="range-field"><input type="range" min="70" max="150" value="100" /></p>
+                    <span>+</span>
+                  </div>
+                </div>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="toolbar-slider">
+  <span>-</span>
+  <p class="range-field">
+    <input type="range" min="70" max="150" value="100">
+  </p>
+  <span>+</span>
+</div></xmp>
+        </code></pre>
+
+              <p>With icons instead of text, or no label at all:</p>
+              <div class="toolbar">
+                <div class="toolbar-group">
+                  <div class="toolbar-slider">
+                    <i class="material-icons">volume_down</i>
+                    <p class="range-field"><input type="range" /></p>
+                    <i class="material-icons">volume_up</i>
+                  </div>
+                  <div class="toolbar-slider">
+                    <p class="range-field"><input type="range" /></p>
+                  </div>
+                </div>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="toolbar-slider">
+  <i class="material-icons">volume_down</i>
+  <p class="range-field"><input type="range"></p>
+  <i class="material-icons">volume_up</i>
+</div>
+
+<!-- no label at all -->
+<div class="toolbar-slider">
+  <p class="range-field"><input type="range"></p>
+</div></xmp>
+        </code></pre>
+              <p>See <a href="range.html">Range</a> for the full component documentation.</p>
+            </div>
+
+            <div id="dropdown" class="section scrollspy">
+              <h3 class="header">Dropdown</h3>
+              <p>
+                A real <a href="dropdown.html"><code class="language-javascript">Dropdown</code></a> instance, triggered from a button inside a
+                <code class="language-html">toolbar-group</code> - same <code class="language-html">dropdown-trigger</code>/<code class="language-html">dropdown-content</code>
+                markup as everywhere else, auto-initialized like any other dropdown on the page.
+              </p>
+              <div class="toolbar" style="justify-content: flex-start;">
+                <div class="toolbar-group">
+                  <a class="dropdown-trigger btn-floating btn-small" href="#" data-target="toolbar-dropdown-sort"><i class="material-icons">sort</i></a>
+                  <a class="dropdown-trigger btn-floating btn-small" href="#" data-target="toolbar-dropdown-color"><i class="material-icons">palette</i></a>
+                </div>
+              </div>
+              <ul id="toolbar-dropdown-sort" class="dropdown-content">
+                <li><a href="#!">Name</a></li>
+                <li><a href="#!">Date</a></li>
+                <li><a href="#!">Priority</a></li>
+              </ul>
+              <ul id="toolbar-dropdown-color" class="dropdown-content">
+                <li><a href="#!">Department</a></li>
+                <li><a href="#!">Status</a></li>
+              </ul>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="toolbar-group">
+  <a class="dropdown-trigger btn-floating btn-small" href="#" data-target="toolbar-dropdown-sort"><i class="material-icons">sort</i></a>
+</div>
+
+<ul id="toolbar-dropdown-sort" class="dropdown-content">
+  <li><a href="#!">Name</a></li>
+  <li><a href="#!">Date</a></li>
+  <li><a href="#!">Priority</a></li>
+</ul></xmp>
+        </code></pre>
+              <p>Same <code class="language-javascript">M.Dropdown.init()</code>/<code class="language-javascript">getInstance()</code> API as on the <a href="dropdown.html">Dropdown</a> page - nothing toolbar-specific about it.</p>
+            </div>
+
+            <div id="search" class="section scrollspy">
+              <h3 class="header">Expandable Search</h3>
+              <p>
+                Starts as just an icon button and expands into a text input on focus (or once it has a value) - click the icon below. Press
+                <code class="language-html">Escape</code> to clear and collapse it again.
+              </p>
+              <div class="toolbar" style="justify-content: flex-start;">
+                <div class="toolbar-search">
+                  <button class="toolbar-search-toggle"><i class="material-icons">search</i></button>
+                  <input class="toolbar-search-input" placeholder="Search..." />
+                </div>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="toolbar-search">
+  <button class="toolbar-search-toggle"><i class="material-icons">search</i></button>
+  <input class="toolbar-search-input" placeholder="Search...">
+</div></xmp>
+        </code></pre>
+            </div>
+
+            <div id="initialization" class="section scrollspy">
+              <h3 class="header">Initialization</h3>
+              <p>
+                Auto-initializes on every <code class="language-html">.toolbar</code> element via <a href="auto-init.html">Auto Init</a>, or explicitly:
+              </p>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">var elems = document.querySelectorAll('.toolbar');
+var instances = M.Toolbar.init(elems, options);</code></pre>
+              <p>Or with jQuery:</p>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">var instance = M.Toolbar.getInstance(elem);</code></pre>
+            </div>
+
+            <div id="method" class="section scrollspy">
+              <h3 class="header">Methods</h3>
+              <table class="striped">
+                <thead>
+                  <tr>
+                    <th>Method</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code class="language-javascript">updateIndicators()</code></td>
+                    <td>Re-measures and repositions every track's sliding indicator. Call it after changing which <code class="language-html">toolbar-track-item</code> is active from your own code (rather than by a user click), or after anything else that could have changed the toolbar's layout/width.</td>
+                  </tr>
+                  <tr>
+                    <td><code class="language-javascript">destroy()</code></td>
+                    <td>Removes the instance's event listeners.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Table of Contents -->
+          <div class="col hide-on-small-only m3 xl3">
+            <div class="toc-wrapper">
+              <div style="height: 1px">
+                <ul class="section table-of-contents">
+                  <li><a href="#introduction">Introduction</a></li>
+                  <li><a href="#groups">Groups</a></li>
+                  <li><a href="#track">Track</a></li>
+                  <li><a href="#slider">Slider</a></li>
+                  <li><a href="#dropdown">Dropdown</a></li>
+                  <li><a href="#search">Expandable Search</a></li>
+                  <li><a href="#initialization">Initialization</a></li>
+                  <li><a href="#method">Methods</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    {{> footer }}
+    <script type="module" src="/main.ts"></script>
+  </body>
+</html>
