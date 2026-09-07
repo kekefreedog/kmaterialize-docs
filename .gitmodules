@@ -1,4 +1,0 @@
-[submodule "packages/materialize"]
-	path = packages/materialize
-	url = https://github.com/kekefreedog/kmaterialize.git
-	branch = main

@@ -1,0 +1,8 @@
+#!/bin/sh
+# Blocks any commit that would ship a "file:" dependency (a path that only
+# exists on this machine - kmaterialize's local dev link). See
+# scripts/check-no-local-deps.mjs for why this exists.
+#
+# Enabled once per clone via: git config core.hooksPath .githooks
+
+node "$(git rev-parse --show-toplevel)/scripts/check-no-local-deps.mjs"

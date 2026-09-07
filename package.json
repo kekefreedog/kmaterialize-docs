@@ -4,8 +4,9 @@
   "version": "1.2.0",
   "type": "module",
   "scripts": {
+    "prepare": "git config core.hooksPath .githooks || true",
     "dev": "node scripts/link-kmaterialize.mjs local && vite",
-    "build": "node scripts/link-kmaterialize.mjs latest && tsc && vite build",
+    "build": "node scripts/link-kmaterialize.mjs latest && node scripts/check-no-local-deps.mjs && tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {

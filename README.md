@@ -28,38 +28,41 @@ pnpm install
 pnpm dev
 ```
 
-`pnpm install` resolves `kmaterialize` from npm, so that's all you need to just work on the docs site.
+`pnpm dev` (and `npm run dev`, if pnpm isn't on your PATH — see `scripts/link-kmaterialize.mjs`) automatically
+points `kmaterialize` at `file:/Users/kzarshenas/Sites/CrazyProject/kmaterialize` on disk before starting Vite,
+so edits to the library show up immediately without a publish/`pnpm update` round trip. It always re-syncs a
+fresh copy into `node_modules/kmaterialize` too (pnpm's store otherwise caches a local `file:` dependency and
+won't notice source edits on its own).
 
-### Developing against a local copy of the library
+This means **`package.json`/`pnpm-lock.yaml` will show `kmaterialize` pinned to that local path while you're
+developing** — that's expected and fine locally, but it must never reach a commit (see next section).
 
-If you're also changing the library itself and want those changes reflected immediately in the docs:
-
-```
-git submodule init
-git submodule update
-```
-
-Then point `package.json`'s `kmaterialize` dependency at `"workspace:*"` instead of `"latest"`, and add
-back the `kmaterialize`/`kmaterialize/sass` aliases in `vite.config.js` pointing at
-`packages/materialize/src` and `packages/materialize/sass` — this makes edits in `packages/materialize`
-show up instantly in the browser. Remember to revert both before merging, since the deployed site expects
-the published npm package.
-
-Also browser debugging displays the files exactly as they are in the source.
-
-Note: when a new page is selected it takes some time to render completely the page. This not happens in the build version.
-
-## Instructions to build site
+### Building — and the one rule that actually matters here
 
 ```
 pnpm build
 pnpm preview
 ```
 
-`pnpm build` always builds against whatever `kmaterialize` version `pnpm install` last resolved from npm —
-if the library published a new release and you want it reflected, run `pnpm install` again first (a plain
-`pnpm update kmaterialize` also works, but rewrites the `"latest"` specifier in package.json to the exact
-resolved version, so change it back to `"latest"` afterwards if you do that).
+`pnpm build` switches `kmaterialize` back to the published `"latest"` npm version *first*, so the shipped
+site never depends on a path that only exists on a dev machine. It also force-refreshes the resolution
+(`pnpm update kmaterialize --latest`), not just a plain reinstall — pnpm otherwise happily reuses a
+stale resolved version from the lockfile even when a newer release exists on npm.
+
+**Golden rule: never `git commit` right after `pnpm dev`.** A local `file:` dependency that leaks into a
+commit — and worse, into a tagged release — breaks CI outright (a path that doesn't exist on the runner).
+This happened once (`v1.4.0`, patched by `v1.4.1`). To make that structurally hard to repeat:
+
+- `pnpm build` itself refuses to proceed (`scripts/check-no-local-deps.mjs`) if a `file:` dependency is
+  still present anywhere in `package.json`/`pnpm-lock.yaml`, right after switching to `"latest"` and before
+  compiling anything.
+- A pre-commit hook runs the same check and blocks the commit. It activates automatically the first time
+  you `pnpm install` (via the `prepare` script), or manually: `git config core.hooksPath .githooks`.
+- The `Deploy` workflow (`.github/workflows/deploy.yml`) runs the same check again as its very first step,
+  before `pnpm install` even runs — so even a hook bypassed with `--no-verify` still can't reach deploy.
+
+If any of these ever fires, just run `node scripts/link-kmaterialize.mjs latest` (or `pnpm build`, which
+does it for you) before retrying.
 
 ## Deployment
 

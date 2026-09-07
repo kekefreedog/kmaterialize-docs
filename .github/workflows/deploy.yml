@@ -23,6 +23,14 @@ jobs:
       - name: Enable corepack (pnpm)
         run: corepack enable
 
+      - name: Refuse to deploy a local file: dependency
+        # v1.4.0 was tagged/pushed with kmaterialize still pinned to
+        # file:/Users/.../kmaterialize (a path that only exists on a dev
+        # machine) - CI failed with a cryptic pnpm ENOENT instead of a
+        # clear error. Fail fast here instead, before wasting time on an
+        # install that can't work.
+        run: node scripts/check-no-local-deps.mjs
+
       - name: Sync package.json version with release tag
         # Same idea as kmaterialize's publish.yml: the tag is the source of
         # truth, so package.json just follows it - no manual version bump
