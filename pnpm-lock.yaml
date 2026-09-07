@@ -18,8 +18,8 @@ importers:
         specifier: ^11.11.1
         version: 11.12.0
       kmaterialize:
-        specifier: file:/Users/kzarshenas/Sites/CrazyProject/kmaterialize
-        version: file:../kmaterialize
+        specifier: latest
+        version: 2.3.3-1.0.13
       material-icons:
         specifier: ^1.13.14
         version: 1.13.14
@@ -2023,8 +2023,8 @@ packages:
   keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
 
-  kmaterialize@file:../kmaterialize:
-    resolution: {directory: ../kmaterialize, type: directory}
+  kmaterialize@2.3.3-1.0.13:
+    resolution: {integrity: sha512-Y9Tt0lezaVt0ujJhZvWIGkUDEIC6EB5lZCG/Iq4Yi9g84A6lxQ/uSYDbAofLvxdWtlSo0b8NjsmOGeFjbV39+A==}
 
   lazystream@1.0.1:
     resolution: {integrity: sha512-b94GiNHQNy6JNTrt5w6zNyffMrNkXZb3KTkCZJb2V1xaEGCk093vkZ2jk3tpaeP33/OiXC+WvK9AxUebnf5nbw==}
@@ -4627,7 +4627,7 @@ snapshots:
     dependencies:
       json-buffer: 3.0.1
 
-  kmaterialize@file:../kmaterialize:
+  kmaterialize@2.3.3-1.0.13:
     dependencies:
       normalize.css: 8.0.1
 
