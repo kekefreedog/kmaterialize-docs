@@ -17,13 +17,13 @@
                 <section class="kanban-column">
                   <header class="kanban-column-header"><h3 class="kanban-column-title">Backlog</h3><span class="kanban-column-count">2</span></header>
                   <div class="kanban-column-body">
-                    <article class="kanban-card" data-kanban-card="research" draggable="true">
+                    <article class="kanban-card kanban-card-accent" style="--kanban-card-accent: #7c4dff" data-kanban-card="research" draggable="true">
                       <span class="kanban-card-label">Research</span>
                       <h4 class="kanban-card-title">Review user feedback</h4>
                       <p class="kanban-card-description">Group the latest notes into actionable themes.</p>
                       <div class="kanban-card-meta"><span>Today</span><span>AM</span></div>
                     </article>
-                    <article class="kanban-card" data-kanban-card="copy" draggable="true">
+                    <article class="kanban-card kanban-card-accent" style="--kanban-card-accent: #00897b" data-kanban-card="copy" draggable="true">
                       <span class="kanban-card-label">Content</span>
                       <h4 class="kanban-card-title">Write onboarding copy</h4>
                       <p class="kanban-card-description">Prepare the first-run experience for review.</p>
@@ -45,9 +45,9 @@
                 <section class="kanban-column">
                   <header class="kanban-column-header"><h3 class="kanban-column-title">Review</h3><span class="kanban-column-count">1</span></header>
                   <div class="kanban-column-body">
-                    <article class="kanban-card" data-kanban-card="navbar" draggable="true">
+                    <article class="kanban-card is-disabled" data-kanban-card="navbar" aria-disabled="true" draggable="false">
                       <span class="kanban-card-label">Docs</span>
-                      <h4 class="kanban-card-title">Review navbar examples</h4>
+                      <h4 class="kanban-card-title">Review navbar examples (blocked)</h4>
                       <p class="kanban-card-description">Check mobile overflow and keyboard focus.</p>
                       <div class="kanban-card-meta"><span>Friday</span><span>AM</span></div>
                     </article>
@@ -59,6 +59,57 @@
                 </section>
               </div>
               <p id="kanban-status" class="caption" aria-live="polite">Drag a card to another column.</p>
+              <p class="caption">Cards with <code>is-disabled</code> or <code>aria-disabled="true"</code> stay visible but cannot be dragged.</p>
+              <p class="caption">Add <code>kanban-card-accent</code> and set <code>--kanban-card-accent</code> to customize the color. Use <code>kanban-card-accent-top</code>, <code>kanban-card-accent-right</code>, <code>kanban-card-accent-bottom</code>, or <code>kanban-card-accent-left</code> to choose its position.</p>
+              <div class="row">
+                <div class="col s12 m6">
+                  <article class="kanban-card kanban-card-accent kanban-card-accent-top" style="--kanban-card-accent: #7c4dff">
+                    <h4 class="kanban-card-title">Top accent</h4>
+                    <p class="kanban-card-description">A line inside the top edge.</p>
+                  </article>
+                </div>
+                <div class="col s12 m6">
+                  <article class="kanban-card kanban-card-accent kanban-card-accent-right" style="--kanban-card-accent: #00897b">
+                    <h4 class="kanban-card-title">Right accent</h4>
+                    <p class="kanban-card-description">A line inside the right edge.</p>
+                  </article>
+                </div>
+                <div class="col s12 m6">
+                  <article class="kanban-card kanban-card-accent kanban-card-accent-bottom" style="--kanban-card-accent: #ef6c00">
+                    <h4 class="kanban-card-title">Bottom accent</h4>
+                    <p class="kanban-card-description">The default position.</p>
+                  </article>
+                </div>
+                <div class="col s12 m6">
+                  <article class="kanban-card kanban-card-accent kanban-card-accent-left" style="--kanban-card-accent: #d81b60">
+                    <h4 class="kanban-card-title">Left accent</h4>
+                    <p class="kanban-card-description">A line inside the left edge.</p>
+                  </article>
+                </div>
+              </div>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><!-- Top edge -->
+<article class="kanban-card kanban-card-accent kanban-card-accent-top"
+  style="--kanban-card-accent: #7c4dff">
+  <h4 class="kanban-card-title">Top accent</h4>
+</article>
+
+<!-- Right edge -->
+<article class="kanban-card kanban-card-accent kanban-card-accent-right"
+  style="--kanban-card-accent: #00897b">
+  <h4 class="kanban-card-title">Right accent</h4>
+</article>
+
+<!-- Bottom edge (default) -->
+<article class="kanban-card kanban-card-accent kanban-card-accent-bottom"
+  style="--kanban-card-accent: #ef6c00">
+  <h4 class="kanban-card-title">Bottom accent</h4>
+</article>
+
+<!-- Left edge -->
+<article class="kanban-card kanban-card-accent kanban-card-accent-left"
+  style="--kanban-card-accent: #d81b60">
+  <h4 class="kanban-card-title">Left accent</h4>
+</article></xmp></code></pre>
               <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><div class="kanban-board" aria-label="Project work board">
   <section class="kanban-column">
     <header class="kanban-column-header">
