@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{> head }}
+  </head>
+  <body>
+    {{> navbar }}
+    <main>
+      {{> intro}}
+      <div class="container">
+        <div class="row">
+          <div class="col s12 m8 offset-m1 xl7 offset-xl1">
+            <div id="introduction" class="section scrollspy">
+              <p>
+                <code class="language-html">TomSelectField</code> enhances an EXISTING native <code class="language-html">&lt;select&gt;</code>
+                with <a href="https://tom-select.js.org/">Tom Select</a> - searchable, taggable, remote-loading, dependent-field wiring, a clear
+                button, drag-drop reorder. Opt in with the <code class="language-html">tomselected</code> class.
+              </p>
+              <p>
+                <b>Coexistence with <a href="select.html">FormSelect</a>:</b> a <code class="language-html">.tomselected</code> select is never
+                picked up by <code class="language-html">FormSelect</code>'s own AutoInit selector - it's excluded the same way
+                <code class="language-html">.no-autoinit</code> is. If you initialize both manually (as this docs site does, since it never calls
+                the global <code class="language-html">AutoInit()</code>), make sure your own <code class="language-html">FormSelect.init(...)</code>
+                call also excludes <code class="language-html">.tomselected</code>.
+              </p>
+              <p>
+                Tom Select is an optional peer dependency, loaded on demand - install it yourself:
+                <code class="language-html">npm install tom-select</code>.
+              </p>
+
+              <div class="row">
+                <form class="col s12">
+                  <div class="input-field">
+                    <select id="tomselect-example-1" class="tomselected" data-select-clear="" placeholder="Choose your option">
+                      <option value="" disabled selected></option>
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                      <option value="3">Option 3</option>
+                    </select>
+                    <label for="tomselect-example-1">Searchable select</label>
+                  </div>
+                  <div class="input-field">
+                    <select id="tomselect-example-2" class="tomselected" data-select-tag="" multiple>
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                      <option value="3">Option 3</option>
+                    </select>
+                    <label for="tomselect-example-2">Taggable multi-select</label>
+                  </div>
+                </form>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="input-field">
+  <select id="tomselect-example-1" class="tomselected" data-select-clear="" placeholder="Choose your option">
+    <option value="" disabled selected></option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+  </select>
+  <label for="tomselect-example-1">Searchable select</label>
+</div>
+
+<div class="input-field">
+  <select id="tomselect-example-2" class="tomselected" data-select-tag="" multiple>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+  </select>
+  <label for="tomselect-example-2">Taggable multi-select</label>
+</div></xmp>
+              </code></pre>
+            </div>
+
+            <div id="examples" class="scrollspy section">
+              <h3 class="header">Examples</h3>
+              <div class="row">
+                <div class="s12 m6">
+                  <h5>Placeholder</h5>
+                  <div class="input-field">
+                    <select id="tom-placeholder" class="tomselected" placeholder="Search a country">
+                      <option value=""></option>
+                      <option value="fr">France</option>
+                      <option value="jp">Japan</option>
+                      <option value="ca">Canada</option>
+                    </select>
+                    <label for="tom-placeholder">Country</label>
+                  </div>
+                  <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><select id="tom-placeholder" class="tomselected" placeholder="Search a country">
+  <option value=""></option>
+  <option value="fr">France</option>
+  <option value="jp">Japan</option>
+</select>
+<label for="tom-placeholder">Country</label></xmp></code></pre>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="s12 m6">
+                  <h5>Multiple values selected</h5>
+                  <div class="input-field">
+                    <select id="tom-multiple" class="tomselected" multiple>
+                      <option value="html" selected>HTML</option>
+                      <option value="css" selected>CSS</option>
+                      <option value="typescript">TypeScript</option>
+                    </select>
+                    <label for="tom-multiple">Skills</label>
+                  </div>
+                  <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><select id="tom-multiple" class="tomselected" multiple>
+  <option value="html" selected>HTML</option>
+  <option value="css" selected>CSS</option>
+  <option value="typescript">TypeScript</option>
+</select>
+<label for="tom-multiple">Skills</label></xmp></code></pre>
+                </div>
+                <div class="s12 m6">
+                  <h5>Tag creation</h5>
+                  <div class="input-field">
+                    <select id="tom-tags" class="tomselected" data-select-tag="" data-select-clear="Clear tags" multiple>
+                      <option value="documentation">Documentation</option>
+                      <option value="frontend">Frontend</option>
+                    </select>
+                    <label for="tom-tags">Tags</label>
+                  </div>
+                  <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><select id="tom-tags" class="tomselected"
+  data-select-tag="" data-select-clear="Clear tags" multiple>
+  <option value="documentation">Documentation</option>
+  <option value="frontend">Frontend</option>
+</select>
+<label for="tom-tags">Tags</label></xmp></code></pre>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="s12 m6">
+                  <h5>Clearable</h5>
+                  <div class="input-field">
+                    <select id="tom-clear" class="tomselected" data-select-clear="Clear selection">
+                      <option value=""></option>
+                      <option value="high" selected>High</option>
+                      <option value="medium">Medium</option>
+                      <option value="low">Low</option>
+                    </select>
+                    <label for="tom-clear">Priority</label>
+                  </div>
+                  <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><select id="tom-clear" class="tomselected" data-select-clear="Clear selection">
+  <option value=""></option>
+  <option value="high" selected>High</option>
+  <option value="medium">Medium</option>
+</select>
+<label for="tom-clear">Priority</label></xmp></code></pre>
+                </div>
+                <div class="s12 m6">
+                  <h5>Disabled</h5>
+                  <div class="input-field">
+                    <select id="tom-disabled" class="tomselected" disabled>
+                      <option value="archived" selected>Archived</option>
+                    </select>
+                    <label for="tom-disabled">Status</label>
+                  </div>
+                  <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><select id="tom-disabled" class="tomselected" disabled>
+  <option value="archived" selected>Archived</option>
+</select>
+<label for="tom-disabled">Status</label></xmp></code></pre>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="s12 m6">
+                  <h5>Rounded image options</h5>
+                  <div class="input-field">
+                    <select id="tom-icons" class="tomselected icons">
+                      <option value="">Choose a person</option>
+                      <option value="kevin" data-icon="/images/kevin.png">Kevin</option>
+                      <option value="yuna" data-icon="/images/yuna.jpg">Yuna</option>
+                      <option value="alvin" data-icon="/images/alvin.png">Alvin</option>
+                    </select>
+                    <label for="tom-icons">Assignee</label>
+                  </div>
+                  <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><select id="tom-icons" class="tomselected icons">
+  <option value="">Choose a person</option>
+  <option value="kevin" data-icon="/images/kevin.png">Kevin</option>
+  <option value="yuna" data-icon="/images/yuna.jpg">Yuna</option>
+</select>
+<label for="tom-icons">Assignee</label></xmp></code></pre>
+                </div>
+                <div class="s12 m6">
+                  <h5>Outlined</h5>
+                  <div class="input-field outlined">
+                    <select id="tom-outlined" class="tomselected">
+                      <option value="">Choose a type</option>
+                      <option value="feature">Feature</option>
+                      <option value="bug">Bug</option>
+                      <option value="task">Task</option>
+                    </select>
+                    <label for="tom-outlined">Issue type</label>
+                  </div>
+                  <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><div class="input-field outlined">
+  <select id="tom-outlined" class="tomselected">
+    <option value="">Choose a type</option>
+    <option value="feature">Feature</option>
+    <option value="bug">Bug</option>
+  </select>
+  <label for="tom-outlined">Issue type</label>
+</div></xmp></code></pre>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="s12 m6">
+                  <h5>Outlined with multiple values</h5>
+                  <div class="input-field outlined">
+                    <select id="tom-outlined-multiple" class="tomselected" multiple>
+                      <option value="design" selected>Design</option>
+                      <option value="frontend" selected>Frontend</option>
+                      <option value="backend">Backend</option>
+                      <option value="testing">Testing</option>
+                    </select>
+                    <label for="tom-outlined-multiple">Departments</label>
+                  </div>
+                  <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><div class="input-field outlined">
+  <select id="tom-outlined-multiple" class="tomselected" multiple>
+    <option value="design" selected>Design</option>
+    <option value="frontend" selected>Frontend</option>
+    <option value="backend">Backend</option>
+    <option value="testing">Testing</option>
+  </select>
+  <label for="tom-outlined-multiple">Departments</label>
+</div></xmp></code></pre>
+                </div>
+
+                <div class="s12 m6">
+                  <h5>Many values: wrap</h5>
+                  <div class="input-field">
+                    <select id="tom-many-values" class="tomselected" data-select-overflow="wrap" multiple>
+                      <option value="html" selected>HTML</option>
+                      <option value="css" selected>CSS</option>
+                      <option value="sass" selected>Sass</option>
+                      <option value="typescript" selected>TypeScript</option>
+                      <option value="vite" selected>Vite</option>
+                      <option value="accessibility" selected>Accessibility</option>
+                      <option value="testing" selected>Testing</option>
+                      <option value="documentation" selected>Documentation</option>
+                    </select>
+                    <label for="tom-many-values">Technologies</label>
+                  </div>
+                  <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><select id="tom-many-values" class="tomselected"
+  data-select-overflow="wrap" multiple>
+  <option value="html" selected>HTML</option>
+  <option value="css" selected>CSS</option>
+  <option value="sass" selected>Sass</option>
+  <option value="typescript" selected>TypeScript</option>
+  <option value="vite" selected>Vite</option>
+  <option value="accessibility" selected>Accessibility</option>
+  <option value="testing" selected>Testing</option>
+  <option value="documentation" selected>Documentation</option>
+</select>
+<label for="tom-many-values">Technologies</label></xmp></code></pre>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="s12 m6">
+                  <h5>Many values: horizontal scroll</h5>
+                  <div class="input-field">
+                    <select id="tom-many-values-scroll" class="tomselected" data-select-overflow="scroll" multiple>
+                      <option value="html" selected>HTML</option>
+                      <option value="css" selected>CSS</option>
+                      <option value="sass" selected>Sass</option>
+                      <option value="typescript" selected>TypeScript</option>
+                      <option value="vite" selected>Vite</option>
+                      <option value="accessibility" selected>Accessibility</option>
+                      <option value="testing" selected>Testing</option>
+                      <option value="documentation" selected>Documentation</option>
+                    </select>
+                    <label for="tom-many-values-scroll">Technologies</label>
+                  </div>
+                  <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><select id="tom-many-values-scroll" class="tomselected"
+  data-select-overflow="scroll" multiple>
+  <option value="html" selected>HTML</option>
+  <option value="css" selected>CSS</option>
+  <option value="sass" selected>Sass</option>
+  <option value="typescript" selected>TypeScript</option>
+  <option value="vite" selected>Vite</option>
+  <option value="accessibility" selected>Accessibility</option>
+  <option value="testing" selected>Testing</option>
+  <option value="documentation" selected>Documentation</option>
+</select>
+<label for="tom-many-values-scroll">Technologies</label></xmp></code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div id="initialization" class="scrollspy section">
+              <h3 class="header">Initialization</h3>
+              <p>
+                If you also call <code class="language-html">FormSelect.init(...)</code> yourself elsewhere (rather than relying on
+                <code class="language-html">AutoInit()</code>), exclude <code class="language-html">.tomselected</code> from that call too, so a
+                select is never initialized by both components.
+              </p>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+  document.addEventListener('DOMContentLoaded', function() {
+    FormSelect.init(document.querySelectorAll('select:not(.tomselected)'), {});
+    TomSelectField.init(document.querySelectorAll('select.tomselected'), {
+      // specify options here
+    });
+  });
+        </code></pre>
+            </div>
+
+            <div id="options" class="scrollspy section">
+              <h3 class="header">Options</h3>
+              <table class="striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>remote</td>
+                    <td>Object</td>
+                    <td>undefined</td>
+                    <td>
+                      <code class="language-html">{ url, value, label, search, dataKey }</code> - fetches options remotely. Derived from
+                      <code class="language-html">data-select-remote</code> (JSON) if not passed. <code class="language-html">label</code> may be a
+                      <code class="language-html">{{field}}</code> render template.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>settings</td>
+                    <td>Object</td>
+                    <td>undefined</td>
+                    <td>Raw Tom Select settings, merged in last - escape hatch for anything not covered by the dataset attributes below.</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>Per-select attributes, matching the CrazyPHP convention this component was ported from:</p>
+              <table class="striped">
+                <thead>
+                  <tr>
+                    <th>Attribute</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>data-select-tag</td>
+                    <td>Allows creating new options (tagging); also enables the drag-drop reorder plugin.</td>
+                  </tr>
+                  <tr>
+                    <td>data-select-clear</td>
+                    <td>Adds a clear button, with this attribute's value as its title.</td>
+                  </tr>
+                  <tr>
+                    <td>data-select-remote</td>
+                    <td>JSON-encoded <code class="language-html">{ url, value, label, search, dataKey }</code> remote data spec.</td>
+                  </tr>
+                  <tr>
+                    <td>data-depends</td>
+                    <td>A selector for another element; this select's remote options reload when it changes.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div id="methods" class="scrollspy section">
+              <h3 class="header">Methods</h3>
+              <blockquote>
+                <p>All the methods are called on the plugin instance. You can get the plugin instance like this:</p>
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
+                  const instance = TomSelectField.getInstance(elem);
+        </code></pre>
+              </blockquote>
+
+              <h5 class="method-header">.destroy();</h5>
+              <p>Destroy plugin instance and teardown the Tom Select widget.</p>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
+instance.destroy();
+      </code></pre>
+            </div>
+
+            <div id="properties" class="scrollspy section">
+              <h3 class="header">Properties</h3>
+              <table class="striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>el</td>
+                    <td>Element</td>
+                    <td>The native <code class="language-html">&lt;select&gt;</code> the plugin was initialized with.</td>
+                  </tr>
+                  <tr>
+                    <td>ready</td>
+                    <td>Promise&lt;void&gt;</td>
+                    <td>Resolves once Tom Select has loaded and the widget has been created.</td>
+                  </tr>
+                  <tr>
+                    <td>tomSelect</td>
+                    <td>TomSelect</td>
+                    <td>The underlying Tom Select instance, once <code class="language-html">ready</code> resolves.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="col hide-on-small-only m3 xl3">
+            <div class="toc-wrapper">
+              <div style="height: 1px">
+                <ul class="section table-of-contents">
+                  <li><a href="#introduction">Introduction</a></li>
+                  <li><a href="#examples">Examples</a></li>
+                  <li><a href="#initialization">Initialization</a></li>
+                  <li><a href="#options">Options</a></li>
+                  <li><a href="#methods">Methods</a></li>
+                  <li><a href="#properties">Properties</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    {{> footer }}
+    <script type="module" src="/main.ts"></script>
+  </body>
+</html>

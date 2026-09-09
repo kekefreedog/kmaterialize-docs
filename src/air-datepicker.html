@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{> head }}
+  </head>
+  <body>
+    {{> navbar }}
+    <main>
+      {{> intro}}
+      <div class="container">
+        <div class="row">
+          <div class="col s12 m8 offset-m1 xl7 offset-xl1">
+            <div id="introduction" class="section scrollspy">
+              <p>
+                <code class="language-html">AirDatepickerField</code> enhances a text input with the
+                <a href="https://air-datepicker.com/">air-datepicker</a> calendar/range picker. This is a separate, opt-in component from
+                kmaterialize's own native <a href="datepicker.html">Datepicker</a> - opt in with
+                <code class="language-html">data-date-picker="air-datepicker"</code>, and add the <code class="language-html">multiple</code>
+                attribute (or <code class="language-html">data-date-range="true"</code>) to switch it into range-selection mode.
+              </p>
+              <p>
+                air-datepicker is an optional peer dependency, loaded on demand - install it yourself
+                (<code class="language-html">npm install air-datepicker</code>) and import its base stylesheet once:
+              </p>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+import 'air-datepicker/air-datepicker.css';
+        </code></pre>
+
+              <div id="examples" class="section scrollspy">
+                <h3 class="header">Examples</h3>
+                <p>Click any field or its calendar icon. These examples follow Air Datepicker's official option patterns.</p>
+                <div class="row">
+                  <div class="input-field s12 m6">
+                    <input id="airdate-single" type="text" data-type="date" data-date-picker="air-datepicker" placeholder=" " readonly />
+                    <label for="airdate-single">Single date</label>
+                  </div>
+                  <div class="input-field s12 m6">
+                    <input id="airdate-range" type="text" data-type="date" data-date-picker="air-datepicker" data-date-range="true" placeholder=" " readonly />
+                    <label for="airdate-range">Date range</label>
+                  </div>
+
+                  <div class="input-field s12 m6">
+                    <i class="material-icons prefix">event</i>
+                    <input id="airdate-prefix" type="text" data-type="date" data-date-picker="air-datepicker" placeholder=" " readonly />
+                    <label for="airdate-prefix">Icon before</label>
+                  </div>
+                  <div class="input-field s12 m6">
+                    <i class="material-icons suffix">calendar_month</i>
+                    <input id="airdate-suffix" type="text" data-type="date" data-date-picker="air-datepicker" placeholder=" " readonly />
+                    <label for="airdate-suffix">Icon after</label>
+                  </div>
+
+                  <div class="input-field s12 m6">
+                    <input id="airdate-default" type="text" data-type="date" data-date-picker="air-datepicker" value="2026-09-15" placeholder=" " readonly />
+                    <label for="airdate-default">Default value</label>
+                  </div>
+                  <div class="input-field s12 m6">
+                    <input id="airdate-range-default" type="text" data-type="date" data-date-picker="air-datepicker" data-date-range="true" value="2026-09-15 - 2026-09-22" placeholder=" " readonly />
+                    <label for="airdate-range-default">Default range</label>
+                  </div>
+
+                  <div class="input-field s12 m6">
+                    <input id="airdate-limited" type="text" data-type="date" data-date-picker="air-datepicker" min="2026-09-01" max="2026-12-31" placeholder=" " readonly />
+                    <label for="airdate-limited">Minimum and maximum dates</label>
+                  </div>
+                  <div class="input-field s12 m6">
+                    <input id="airdate-month" type="text" data-type="date" data-date-picker="air-datepicker" data-date-view="months" data-date-min-view="months" data-date-format="MMMM yyyy" placeholder=" " readonly />
+                    <label for="airdate-month">Select a month</label>
+                  </div>
+
+                  <div class="input-field s12 m6">
+                    <input id="airdate-time" type="text" data-type="date" data-date-picker="air-datepicker" data-date-timepicker="true" data-date-format="yyyy-MM-dd" data-date-time-format="HH:mm" placeholder=" " readonly />
+                    <label for="airdate-time">Date and time</label>
+                  </div>
+                  <div class="input-field s12 m6">
+                    <input id="airdate-buttons" type="text" data-type="date" data-date-picker="air-datepicker" data-date-buttons="today,clear" data-date-auto-close="false" placeholder=" " readonly />
+                    <label for="airdate-buttons">Today and Clear buttons</label>
+                  </div>
+
+                  <div class="input-field s12 m6">
+                    <input id="airdate-position" type="text" data-type="date" data-date-picker="air-datepicker" data-date-position="right center" placeholder=" " readonly />
+                    <label for="airdate-position">Popup on the right</label>
+                  </div>
+                  <div class="input-field s12 m6">
+                    <input id="airdate-mobile" type="text" data-type="date" data-date-picker="air-datepicker" data-date-mobile="true" placeholder=" " readonly />
+                    <label for="airdate-mobile">Mobile modal mode</label>
+                  </div>
+                </div>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="input-field">
+  <input id="airdate-single" type="text" data-type="date" data-date-picker="air-datepicker" placeholder=" " readonly>
+  <label for="airdate-single">Single date</label>
+</div>
+
+<div class="input-field">
+  <input id="airdate-range" type="text" data-type="date" data-date-picker="air-datepicker" data-date-range="true" placeholder=" " readonly>
+  <label for="airdate-range">Date range</label>
+</div>
+
+<div class="input-field">
+  <i class="material-icons prefix">event</i>
+  <input id="airdate-icon" type="text" data-type="date" data-date-picker="air-datepicker" placeholder=" " readonly>
+  <label for="airdate-icon">With icon</label>
+</div>
+
+<div class="input-field">
+  <input id="airdate-default" type="text" data-type="date" data-date-picker="air-datepicker" value="2026-09-15" placeholder=" " readonly>
+  <label for="airdate-default">Default value</label>
+</div>
+
+<div class="input-field">
+  <input id="airdate-time" type="text" data-type="date" data-date-picker="air-datepicker" data-date-timepicker="true" data-date-time-format="HH:mm" placeholder=" " readonly>
+  <label for="airdate-time">Date and time</label>
+</div></xmp>
+              </code></pre>
+            </div>
+
+            <div id="initialization" class="scrollspy section">
+              <h3 class="header">Initialization</h3>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+  document.addEventListener('DOMContentLoaded', function() {
+    const elems = document.querySelectorAll('input[data-date-picker="air-datepicker"]');
+    const instances = AirDatepickerField.init(elems, {
+      // specify options here
+    });
+  });
+        </code></pre>
+            </div>
+
+            <div id="options" class="scrollspy section">
+              <h3 class="header">Options</h3>
+              <table class="striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>locale</td>
+                    <td>Object</td>
+                    <td>undefined</td>
+                    <td>
+                      An air-datepicker locale object, used when the input has <code class="language-html">data-date-lang="fr-FR"</code> (only
+                      "fr-FR" is wired up so far).
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>Per-input attributes, matching the CrazyPHP convention this component was ported from:</p>
+              <table class="striped">
+                <thead>
+                  <tr>
+                    <th>Attribute</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>data-date-format</td>
+                    <td>air-datepicker format string, default <code class="language-html">yyyy-MM-dd</code>.</td>
+                  </tr>
+                  <tr>
+                    <td>multiple / data-date-range="true"</td>
+                    <td>Switches to range mode, joining the two dates with " - ".</td>
+                  </tr>
+                  <tr>
+                    <td>min / max</td>
+                    <td>Bound the selectable range.</td>
+                  </tr>
+                  <tr>
+                    <td>value</td>
+                    <td>Preselects one date, or two dates separated by " - " in range mode.</td>
+                  </tr>
+                  <tr>
+                    <td>data-date-timepicker / data-date-time-format</td>
+                    <td>Enables time selection and optionally sets its format.</td>
+                  </tr>
+                  <tr>
+                    <td>data-date-view / data-date-min-view</td>
+                    <td>Uses <code>days</code>, <code>months</code>, or <code>years</code>; set both to <code>months</code> for month-only selection.</td>
+                  </tr>
+                  <tr>
+                    <td>data-date-buttons</td>
+                    <td>Comma-separated preset buttons: <code>today,clear</code>.</td>
+                  </tr>
+                  <tr>
+                    <td>data-date-position</td>
+                    <td>Popup position such as <code>right center</code>.</td>
+                  </tr>
+                  <tr>
+                    <td>data-date-mobile</td>
+                    <td>Set to <code>true</code> to use Air Datepicker's modal-style mobile presentation.</td>
+                  </tr>
+                  <tr>
+                    <td>data-date-auto-close</td>
+                    <td>Set to <code>false</code> to keep the popup open, useful with action buttons.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div id="methods" class="scrollspy section">
+              <h3 class="header">Methods</h3>
+              <blockquote>
+                <p>All the methods are called on the plugin instance. You can get the plugin instance like this:</p>
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
+                  const instance = AirDatepickerField.getInstance(elem);
+        </code></pre>
+              </blockquote>
+
+              <h5 class="method-header">.destroy();</h5>
+              <p>Destroy plugin instance and teardown the calendar popup.</p>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
+instance.destroy();
+      </code></pre>
+            </div>
+
+            <div id="properties" class="scrollspy section">
+              <h3 class="header">Properties</h3>
+              <table class="striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>el</td>
+                    <td>Element</td>
+                    <td>The text input the plugin was initialized with.</td>
+                  </tr>
+                  <tr>
+                    <td>ready</td>
+                    <td>Promise&lt;void&gt;</td>
+                    <td>Resolves once air-datepicker has loaded and the picker has been created.</td>
+                  </tr>
+                  <tr>
+                    <td>picker</td>
+                    <td>AirDatepicker</td>
+                    <td>The underlying air-datepicker instance, once <code class="language-html">ready</code> resolves.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="col hide-on-small-only m3 xl3">
+            <div class="toc-wrapper">
+              <div style="height: 1px">
+                <ul class="section table-of-contents">
+                  <li><a href="#introduction">Introduction</a></li>
+                  <li><a href="#examples">Examples</a></li>
+                  <li><a href="#initialization">Initialization</a></li>
+                  <li><a href="#options">Options</a></li>
+                  <li><a href="#methods">Methods</a></li>
+                  <li><a href="#properties">Properties</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    {{> footer }}
+    <script type="module" src="/main.ts"></script>
+  </body>
+</html>

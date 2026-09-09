@@ -25,6 +25,8 @@ const MIME_TYPES = {
   ".woff2": "font/woff2",
 };
 
+const localKmaterializeRoot = resolve(__dirname, "../kmaterialize");
+
 // `/version/<x.y.z>/...` pages are static snapshots produced by release.js
 // after each build (see docs/version/*). They only exist as pre-built HTML,
 // so `vite dev` has no route for them and falls back to serving the current
@@ -137,8 +139,31 @@ function getMenuItem(item) {
   </li>`;
 }
 
-export default {
+export default ({ command }) => ({
   root: "./src",
+  // In dev, consume the library's TypeScript source directly and allow Vite
+  // to watch the sibling repository. The package dependency remains in place
+  // for peer resolution and production builds.
+  resolve: {
+    alias:
+      command === "serve"
+        ? [
+            { find: /^kmaterialize$/, replacement: resolve(localKmaterializeRoot, "src/index.ts") },
+            {
+              find: /^kmaterialize\/sass\/materialize\.scss$/,
+              replacement: resolve(localKmaterializeRoot, "sass/materialize.scss"),
+            },
+          ]
+        : [],
+  },
+  server: {
+    fs: {
+      allow: [resolve(__dirname), localKmaterializeRoot],
+    },
+  },
+  optimizeDeps: {
+    exclude: command === "serve" ? ["kmaterialize"] : [],
+  },
   //base: "./",
   plugins: [
     serveVersionSnapshotsPlugin(),
@@ -180,4 +205,4 @@ export default {
       ),
     },
   },
-};
+});

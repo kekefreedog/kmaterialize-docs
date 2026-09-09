@@ -5,16 +5,24 @@
   "type": "module",
   "scripts": {
     "prepare": "git config core.hooksPath .githooks || true",
-    "dev": "node scripts/link-kmaterialize.mjs local && vite",
+    "dev": "node scripts/link-kmaterialize.mjs local && vite --force",
     "build": "node scripts/link-kmaterialize.mjs latest && node scripts/check-no-local-deps.mjs && tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@material/material-color-utilities": "^0.2.7",
-    "glob": "^10.4.5",
+    "@simonwep/pickr": "^1.9.0",
+    "air-datepicker": "^3.5.0",
+    "filepond": "^4.30.0",
+    "filepond-plugin-file-validate-type": "^1.2.0",
+    "filepond-plugin-image-exif-orientation": "^1.0.0",
+    "filepond-plugin-image-preview": "^4.6.0",
+    "glob": "^13.0.6",
     "highlight.js": "^11.11.1",
+    "imask": "^7.6.0",
     "kmaterialize": "latest",
     "material-icons": "^1.13.14",
+    "tom-select": "^2.3.0",
     "vite-plugin-handlebars": "^1.6.0"
   },
   "devDependencies": {

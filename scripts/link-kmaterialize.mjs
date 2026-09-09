@@ -7,7 +7,7 @@
 //
 // Usage: node scripts/link-kmaterialize.mjs <local|latest>
 
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
 import { execSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
@@ -60,17 +60,12 @@ if (mode === "latest") {
   execSync("corepack pnpm install --no-frozen-lockfile", { stdio: "inherit", cwd: rootDir });
 }
 
-// pnpm's content-addressable store caches a "file:" directory dependency
-// the first time it's packed, and does NOT reliably notice source edits
-// afterwards - not on a plain reinstall, not even with `pnpm install
-// --force` (confirmed: only `pnpm store prune` busted it). So for local
-// dev, bypass that cache entirely: overwrite node_modules/kmaterialize
-// with a straight, fresh copy of the source directory every time.
+// Keep the local dependency as a real symlink. A copied file: package is a
+// snapshot that Vite cannot watch, so library changes otherwise require a
+// server restart and a hard refresh before they appear in the docs.
 if (mode === "local") {
   const nodeModulesTarget = path.join(rootDir, "node_modules", "kmaterialize");
-  console.log(`Refreshing ${nodeModulesTarget} from source (bypassing pnpm's store cache)...`);
-  execSync(
-    `rsync -a --delete --exclude node_modules --exclude .git "${LOCAL_KMATERIALIZE_PATH}/" "${nodeModulesTarget}/"`,
-    { stdio: "inherit" }
-  );
+  rmSync(nodeModulesTarget, { recursive: true, force: true });
+  symlinkSync(LOCAL_KMATERIALIZE_PATH, nodeModulesTarget, "dir");
+  console.log(`Linked ${nodeModulesTarget} -> ${LOCAL_KMATERIALIZE_PATH}`);
 }

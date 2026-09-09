@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{> head }}
+  </head>
+  <body>
+    {{> navbar }}
+    <main>
+      {{> intro}}
+      <div class="container">
+        <div class="row">
+          <div class="col s12 m8 offset-m1 xl7 offset-xl1">
+            <div id="introduction" class="section scrollspy">
+              <p>
+                <code class="language-html">FileInput</code> enhances the existing <code class="language-html">.file-field</code> structure in
+                place with a <a href="https://pqina.nl/filepond/">FilePond</a> drag-and-drop uploader - add
+                <code class="language-html">data-file-picker="filepond"</code> to an otherwise completely stock
+                <code class="language-html">.file-field</code>, nothing else about the markup changes. FilePond hides the native
+                <code class="language-html">&lt;input type="file"&gt;</code> and injects its own root as a sibling, so the surrounding
+                button/label/file-path-wrapper stay intact at rest.
+              </p>
+              <p>
+                FilePond is an optional peer dependency, loaded on demand - install it yourself
+                (<code class="language-html">npm install filepond</code>) and import its base stylesheet once. The image-preview
+                plugin also requires its own stylesheet. Optional plugins
+                (<code class="language-html">image-preview</code>, <code class="language-html">file-validate-type</code>,
+                <code class="language-html">image-exif-orientation</code>) are each their own optional peer, listed via
+                <code class="language-html">data-file-plugins="image-preview,file-validate-type"</code>.
+              </p>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+import 'filepond/dist/filepond.min.css';
+import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css';
+        </code></pre>
+
+              <div class="row">
+                <form action="#" class="s12">
+                  <div class="file-field input-field" data-file-picker="filepond" data-file-plugins="image-preview,file-validate-type">
+                    <div class="btn">
+                      <span>File</span>
+                      <input type="file" accept="image/*" />
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path validate" type="text" placeholder="Upload one or more files" />
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="file-field input-field" data-file-picker="filepond" data-file-plugins="image-preview,file-validate-type">
+  <div class="btn">
+    <span>File</span>
+    <input type="file" accept="image/*">
+  </div>
+  <div class="file-path-wrapper">
+    <input class="file-path validate" type="text" placeholder="Upload one or more files">
+  </div>
+</div></xmp>
+              </code></pre>
+            </div>
+
+            <div id="examples" class="scrollspy section">
+              <h3 class="header">Examples</h3>
+              <p>
+                These examples use FilePond's native options through attributes on the file input. No upload endpoint is
+                configured, so files stay local to this page.
+              </p>
+
+              <h5>Basic file</h5>
+              <div class="file-field input-field" data-file-picker="filepond">
+                <label for="file-basic">Attachment</label>
+                <div class="btn">
+                  <span>File</span>
+                  <input id="file-basic" type="file" data-label-idle='Drop a file or <span class="filepond--label-action">browse</span>' />
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text" placeholder="Choose a file" />
+                </div>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><div class="file-field input-field" data-file-picker="filepond">
+  <label for="file-basic">Attachment</label>
+  <div class="btn"><span>File</span>
+    <input id="file-basic" type="file"
+      data-label-idle='Drop a file or <span class="filepond--label-action">browse</span>'>
+  </div>
+  <div class="file-path-wrapper">
+    <input class="file-path validate" type="text" placeholder="Choose a file">
+  </div>
+</div></xmp></code></pre>
+
+              <h5>Multiple images, sortable, maximum 3</h5>
+              <div
+                class="file-field input-field"
+                data-file-picker="filepond"
+                data-file-plugins="image-preview,file-validate-type,image-exif-orientation"
+              >
+                <label for="file-multiple">Gallery images</label>
+                <div class="btn">
+                  <span>Images</span>
+                  <input id="file-multiple" type="file" accept="image/*" multiple data-max-files="3" data-allow-reorder="true" />
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text" placeholder="Choose up to 3 images" />
+                </div>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><label for="file-multiple">Gallery images</label>
+<input id="file-multiple" type="file" accept="image/*" multiple
+  data-max-files="3" data-allow-reorder="true"></xmp></code></pre>
+
+              <div class="row">
+                <div class="s12 m6">
+                  <h5>PNG, JPEG or GIF only</h5>
+                  <div class="file-field input-field" data-file-picker="filepond" data-file-plugins="image-preview,file-validate-type">
+                    <label for="file-image-types">Image</label>
+                    <div class="btn">
+                      <span>Image</span>
+                      <input id="file-image-types" type="file" accept="image/png,image/jpeg,image/gif" data-drop-validation="true" />
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path validate" type="text" placeholder="Choose an image" />
+                    </div>
+                  </div>
+                  <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><label for="file-image-types">Image</label>
+<input id="file-image-types" type="file"
+  accept="image/png,image/jpeg,image/gif"
+  data-drop-validation="true"></xmp></code></pre>
+                </div>
+                <div class="s12 m6">
+                  <h5>Custom drop label</h5>
+                  <div class="file-field input-field" data-file-picker="filepond">
+                    <label for="file-document">Document</label>
+                    <div class="btn">
+                      <span>Document</span>
+                      <input
+                        id="file-document"
+                        type="file"
+                        data-label-idle='Drop a document here or <span class="filepond--label-action">browse</span>'
+                        data-instant-upload="false"
+                      />
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path validate" type="text" placeholder="Drop or browse" />
+                    </div>
+                  </div>
+                  <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><label for="file-document">Document</label>
+<input id="file-document" type="file"
+  data-label-idle='Drop a document here or <span class="filepond--label-action">browse</span>'
+  data-instant-upload="false"></xmp></code></pre>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="s12 m6">
+                  <h5>Compact image preview</h5>
+                  <div class="file-field input-field" data-file-picker="filepond" data-file-plugins="image-preview,image-exif-orientation">
+                    <label for="file-compact">Profile photo</label>
+                    <div class="btn">
+                      <span>Photo</span>
+                      <input id="file-compact" type="file" accept="image/*" data-style-panel-layout="compact" data-file-height="76" />
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path validate" type="text" placeholder="Choose a photo" />
+                    </div>
+                  </div>
+                  <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><label for="file-compact">Profile photo</label>
+<input id="file-compact" type="file" accept="image/*"
+  data-style-panel-layout="compact" data-file-height="76"></xmp></code></pre>
+                </div>
+                <div class="s12 m6">
+                  <h5>Disabled</h5>
+                  <div class="file-field input-field" data-file-picker="filepond">
+                    <label for="file-disabled">Attachment</label>
+                    <div class="btn disabled">
+                      <span>File</span>
+                      <input id="file-disabled" type="file" disabled />
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path" type="text" placeholder="Upload disabled" disabled />
+                    </div>
+                  </div>
+                  <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><label for="file-disabled">Attachment</label>
+<input id="file-disabled" type="file" disabled></xmp></code></pre>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="s12 m6">
+                  <h5>Default file</h5>
+                  <div class="file-field input-field" data-file-picker="filepond" data-file-plugins="image-preview,image-exif-orientation">
+                    <label for="file-default">Profile image</label>
+                    <div class="btn">
+                      <span>Image</span>
+                      <input id="file-default" type="file" accept="image/*" data-default-file="/images/sample-1.jpg" />
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path validate" type="text" placeholder="Choose an image" />
+                    </div>
+                  </div>
+                  <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><label for="file-default">Profile image</label>
+<input id="file-default" type="file" accept="image/*"
+  data-default-file="/images/sample-1.jpg"></xmp></code></pre>
+                </div>
+
+                <div class="s12 m6">
+                  <h5>Value set programmatically</h5>
+                  <div
+                    id="file-value-field"
+                    class="file-field input-field"
+                    data-file-picker="filepond"
+                    data-file-plugins="image-preview,image-exif-orientation"
+                  >
+                    <label for="file-value">Team image</label>
+                    <div class="btn">
+                      <span>Image</span>
+                      <input id="file-value" type="file" accept="image/*" />
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path validate" type="text" placeholder="Choose an image" />
+                    </div>
+                  </div>
+                  <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">const field = document.querySelector('#file-value-field');
+const instance = FileInput.getInstance(field);
+await instance.ready;
+await instance.pond.addFile('https://fastly.picsum.photos/id/265/200/300.jpg?hmac=NX0ut-ylHFyYKa4TxhZFNElh-h6RcVV7P4PNPgeBxKk');</code></pre>
+                </div>
+              </div>
+
+              <h5>Labels and placeholder icons</h5>
+              <div class="row">
+                <div class="s12 m6">
+                  <h6>Icon before</h6>
+                  <div class="file-field input-field" data-file-picker="filepond">
+                    <label for="file-icon-before">Contract</label>
+                    <div class="btn">
+                      <span>Upload</span>
+                      <input
+                        id="file-icon-before"
+                        type="file"
+                        data-label-idle='<span class="filepond-label-content"><i class="material-icons" aria-hidden="true">upload_file</i><span>Drop or <span class="filepond--label-action">browse</span></span></span>'
+                      />
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path validate" type="text" placeholder="Upload a file" />
+                    </div>
+                  </div>
+                  <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><label for="file-icon-before">Contract</label>
+<input id="file-icon-before" type="file"
+  data-label-idle='<span class="filepond-label-content"><i class="material-icons">upload_file</i><span>Drop or <span class="filepond--label-action">browse</span></span></span>'></xmp></code></pre>
+                </div>
+                <div class="s12 m6">
+                  <h6>Icon after</h6>
+                  <div class="file-field input-field" data-file-picker="filepond">
+                    <label for="file-icon-after">Attachment</label>
+                    <div class="btn">
+                      <span>Upload</span>
+                      <input
+                        id="file-icon-after"
+                        type="file"
+                        data-label-idle='<span class="filepond-label-content"><span>Drop or <span class="filepond--label-action">browse</span></span><i class="material-icons" aria-hidden="true">attach_file</i></span>'
+                      />
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path validate" type="text" placeholder="Attach a file" />
+                    </div>
+                  </div>
+                  <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><label for="file-icon-after">Attachment</label>
+<input id="file-icon-after" type="file"
+  data-label-idle='<span class="filepond-label-content"><span>Drop or <span class="filepond--label-action">browse</span></span><i class="material-icons">attach_file</i></span>'></xmp></code></pre>
+                </div>
+              </div>
+
+            </div>
+
+            <div id="initialization" class="scrollspy section">
+              <h3 class="header">Initialization</h3>
+              <p><code class="language-html">this.el</code> is the <code class="language-html">.file-field</code> container itself, not the file input.</p>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+  document.addEventListener('DOMContentLoaded', function() {
+    const elems = document.querySelectorAll('.file-field[data-file-picker="filepond"]');
+    const instances = FileInput.init(elems, {
+      // specify options here
+    });
+  });
+        </code></pre>
+            </div>
+
+            <div id="options" class="scrollspy section">
+              <h3 class="header">Options</h3>
+              <table class="striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>plugins</td>
+                    <td>Array</td>
+                    <td>[]</td>
+                    <td>
+                      Which FilePond plugins to register: any of <code class="language-html">'image-preview'</code>,
+                      <code class="language-html">'file-validate-type'</code>, <code class="language-html">'image-exif-orientation'</code>. Derived
+                      from <code class="language-html">data-file-plugins</code> if not passed. <code class="language-html">file-validate-type</code>
+                      is auto-registered whenever the input restricts <code class="language-html">accept</code>, even if not listed.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Input attributes</td>
+                    <td>HTML attributes</td>
+                    <td>-</td>
+                    <td>
+                      Supports <code class="language-html">multiple</code>, <code class="language-html">accept</code>,
+                      <code class="language-html">disabled</code>, <code class="language-html">data-default-file</code>,
+                      <code class="language-html">data-max-files</code>,
+                      <code class="language-html">data-allow-reorder</code>, <code class="language-html">data-label-idle</code>,
+                      <code class="language-html">data-instant-upload</code>, <code class="language-html">data-drop-validation</code>,
+                      <code class="language-html">data-image-preview-height</code>,
+                      <code class="language-html">data-style-panel-layout</code>, and
+                      <code class="language-html">data-style-panel-aspect-ratio</code>. Use
+                      <code class="language-html">data-file-height</code> to give compact layouts an explicit pixel height.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div id="methods" class="scrollspy section">
+              <h3 class="header">Methods</h3>
+              <blockquote>
+                <p>All the methods are called on the plugin instance. You can get the plugin instance like this:</p>
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
+                  const instance = FileInput.getInstance(elem);
+        </code></pre>
+              </blockquote>
+
+              <h5 class="method-header">.getFiles();</h5>
+              <p>Convenience wrapper over the underlying FilePond instance's own <code class="language-html">getFiles()</code>.</p>
+              <h6>Return Value</h6>
+              <p><b>Array:</b> The FilePond file items currently loaded.</p>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
+instance.getFiles();
+      </code></pre>
+
+              <h5 class="method-header">.destroy();</h5>
+              <p>Destroy plugin instance and teardown the FilePond widget.</p>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
+instance.destroy();
+      </code></pre>
+            </div>
+
+            <div id="properties" class="scrollspy section">
+              <h3 class="header">Properties</h3>
+              <table class="striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>el</td>
+                    <td>Element</td>
+                    <td>The <code class="language-html">.file-field</code> container the plugin was initialized with.</td>
+                  </tr>
+                  <tr>
+                    <td>ready</td>
+                    <td>Promise&lt;void&gt;</td>
+                    <td>Resolves once FilePond (and its plugins) have loaded and the widget has been created.</td>
+                  </tr>
+                  <tr>
+                    <td>pond</td>
+                    <td>FilePond</td>
+                    <td>The underlying FilePond instance, once <code class="language-html">ready</code> resolves.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="col hide-on-small-only m3 xl3">
+            <div class="toc-wrapper">
+              <div style="height: 1px">
+                <ul class="section table-of-contents">
+                  <li><a href="#introduction">Introduction</a></li>
+                  <li><a href="#examples">Examples</a></li>
+                  <li><a href="#initialization">Initialization</a></li>
+                  <li><a href="#options">Options</a></li>
+                  <li><a href="#methods">Methods</a></li>
+                  <li><a href="#properties">Properties</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    {{> footer }}
+    <script type="module" src="/main.ts"></script>
+    <script type="module">
+      import { FileInput } from 'kmaterialize';
+
+      async function setFileValue() {
+        const valueField = document.querySelector('#file-value-field');
+        const valueInstance = FileInput.getInstance(valueField);
+        if (!valueInstance) return;
+        await valueInstance.ready;
+        await valueInstance.pond?.addFile(
+          'https://fastly.picsum.photos/id/265/200/300.jpg?hmac=NX0ut-ylHFyYKa4TxhZFNElh-h6RcVV7P4PNPgeBxKk'
+        );
+      }
+
+      setFileValue();
+    </script>
+  </body>
+</html>

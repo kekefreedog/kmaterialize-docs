@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{> head }}
+  </head>
+  <body>
+    {{> navbar }}
+    <main>
+      {{> intro}}
+      <div class="container">
+        <div class="row">
+          <div class="col s12 m8 offset-m1 xl7 offset-xl1">
+            <div id="introduction" class="section scrollspy">
+              <p>
+                <code class="language-html">ColorInput</code> enhances a native
+                <code class="language-html">&lt;input type="color"&gt;</code> with a full
+                <a href="https://github.com/Simonwep/pickr">Pickr</a> popup - palette, hue/opacity sliders, swatches, hex/rgba/hsla. Opt in by adding
+                <code class="language-html">data-color-picker="pickr"</code>: without it the input stays a plain native color swatch, completely
+                unaffected.
+              </p>
+              <p>
+                Pickr is an optional peer dependency, loaded on demand only when a <code class="language-html">data-color-picker="pickr"</code> input
+                is actually initialized - install it yourself:
+                <code class="language-html">npm install @simonwep/pickr</code>.
+              </p>
+
+              <div class="row">
+                <div class="col s12 m6">
+                  <div class="input-field">
+                    <input id="color-example-1" type="color" data-color-picker="pickr" data-color-theme="nano" value="#26a69a" />
+                    <label for="color-example-1">Accent color</label>
+                  </div>
+                </div>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="input-field">
+  <input id="color-example-1" type="color" data-color-picker="pickr" data-color-theme="nano" value="#26a69a">
+  <label for="color-example-1">Accent color</label>
+</div></xmp>
+              </code></pre>
+            </div>
+
+            <div id="examples" class="section scrollspy">
+              <h3 class="header">Examples</h3>
+              <p>
+                These presets can be combined: start with the Pickr opt-in, then add a theme, French locale, or opacity setting with data attributes.
+                Open each swatch to compare the result.
+              </p>
+
+              <div class="row">
+                <div class="col s12 m6 l4">
+                  <div class="input-field">
+                    <input id="color-theme-classic" type="color" data-color-picker="pickr" data-color-theme="classic" value="#673ab7" />
+                    <label for="color-theme-classic">Color Input Pickr</label>
+                  </div>
+                </div>
+                <div class="col s12 m6 l4">
+                  <div class="input-field">
+                    <input id="color-theme-monolith" type="color" data-color-picker="pickr" data-color-theme="monolith" value="#3f51b5" />
+                    <label for="color-theme-monolith">Color Input Monolith</label>
+                  </div>
+                </div>
+                <div class="col s12 m6 l4">
+                  <div class="input-field">
+                    <input id="color-theme-nano" type="color" data-color-picker="pickr" data-color-theme="nano" value="#009688" />
+                    <label for="color-theme-nano">Color Input Nano</label>
+                  </div>
+                </div>
+
+                <div class="col s12 m6 l4">
+                  <div class="input-field">
+                    <input id="color-locale-fr" type="color" data-color-picker="pickr" data-color-locale="fr-fr" value="#e91e63" />
+                    <label for="color-locale-fr">Color Input Pickr French</label>
+                  </div>
+                </div>
+                <div class="col s12 m6 l4">
+                  <div class="input-field">
+                    <input id="color-opacity-on" type="color" data-color-picker="pickr" value="rgba(255, 152, 0, 0.6)" />
+                    <label for="color-opacity-on">Color Input Opacity</label>
+                  </div>
+                </div>
+                <div class="col s12 m6 l4">
+                  <div class="input-field">
+                    <input id="color-opacity-off" type="color" data-color-picker="pickr" data-color-opacity="false" value="#ff9800" />
+                    <label for="color-opacity-off">Color Input Without Opacity</label>
+                  </div>
+                </div>
+
+                <div class="col s12 m6 l4">
+                  <div class="input-field">
+                    <input
+                      id="color-opacity-fr"
+                      type="color"
+                      data-color-picker="pickr"
+                      data-color-locale="fr-fr"
+                      value="rgba(0, 188, 212, 0.65)"
+                    />
+                    <label for="color-opacity-fr">Color Input Opacity French</label>
+                  </div>
+                </div>
+
+                <div class="col s12 m6 l4">
+                  <div class="input-field">
+                    <input id="color-placeholder" type="color" data-color-picker="pickr" />
+                    <label for="color-placeholder">No value set (placeholder)</label>
+                  </div>
+                </div>
+                <div class="col s12 m6 l4">
+                  <div class="input-field">
+                    <input id="color-value-set" type="color" data-color-picker="pickr" value="#4caf50" />
+                    <label for="color-value-set">Value already set</label>
+                  </div>
+                </div>
+                <div class="col s12 m6 l4">
+                  <div class="input-field">
+                    <input id="color-value-default" type="color" data-color-picker="pickr" default="randomHex()" />
+                    <label for="color-value-default">Value by default (random)</label>
+                  </div>
+                </div>
+
+                <div class="col s12 m6 l4">
+                  <div class="input-field">
+                    <i class="material-icons">palette</i>
+                    <input id="color-icon-left" type="color" data-color-picker="pickr" value="#795548" />
+                    <label for="color-icon-left">Icon on left</label>
+                  </div>
+                </div>
+                <div class="col s12 m6 l4">
+                  <div class="input-field">
+                    <input id="color-icon-right" type="color" data-color-picker="pickr" value="#607d8b" />
+                    <label for="color-icon-right">Icon on right</label>
+                    <i class="material-icons">colorize</i>
+                  </div>
+                </div>
+                <div class="col s12 m6 l4">
+                  <div class="input-field">
+                    <input id="color-disabled" type="color" data-color-picker="pickr" value="#9e9e9e" disabled />
+                    <label for="color-disabled">Disabled</label>
+                  </div>
+                </div>
+              </div>
+
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><!-- Themes -->
+<div class="input-field">
+  <input id="color-theme-classic" type="color" data-color-picker="pickr" data-color-theme="classic" value="#673ab7">
+  <label for="color-theme-classic">Color Input Pickr</label>
+</div>
+<div class="input-field">
+  <input id="color-theme-monolith" type="color" data-color-picker="pickr" data-color-theme="monolith" value="#3f51b5">
+  <label for="color-theme-monolith">Color Input Monolith</label>
+</div>
+<div class="input-field">
+  <input id="color-theme-nano" type="color" data-color-picker="pickr" data-color-theme="nano" value="#009688">
+  <label for="color-theme-nano">Color Input Nano</label>
+</div>
+
+<!-- Locale -->
+<div class="input-field">
+  <input id="color-locale-fr" type="color" data-color-picker="pickr" data-color-locale="fr-fr" value="#e91e63">
+  <label for="color-locale-fr">Color Input Pickr French</label>
+</div>
+
+<!-- Opacity -->
+<div class="input-field">
+  <input id="color-opacity-on" type="color" data-color-picker="pickr" value="rgba(255, 152, 0, 0.6)">
+  <label for="color-opacity-on">Color Input Opacity</label>
+</div>
+<div class="input-field">
+  <input id="color-opacity-off" type="color" data-color-picker="pickr" data-color-opacity="false" value="#ff9800">
+  <label for="color-opacity-off">Color Input Without Opacity</label>
+</div>
+<div class="input-field">
+  <input id="color-opacity-fr" type="color" data-color-picker="pickr" data-color-locale="fr-fr" value="rgba(0, 188, 212, 0.65)">
+  <label for="color-opacity-fr">Color Input Opacity French</label>
+</div>
+
+<!-- Value / default -->
+<div class="input-field">
+  <input id="color-placeholder" type="color" data-color-picker="pickr">
+  <label for="color-placeholder">No value set (placeholder)</label>
+</div>
+<div class="input-field">
+  <input id="color-value-set" type="color" data-color-picker="pickr" value="#4caf50">
+  <label for="color-value-set">Value already set</label>
+</div>
+<div class="input-field">
+  <input id="color-value-default" type="color" data-color-picker="pickr" default="randomHex()">
+  <label for="color-value-default">Value by default (random)</label>
+</div>
+
+<!-- Icons -->
+<div class="input-field">
+  <i class="material-icons">palette</i>
+  <input id="color-icon-left" type="color" data-color-picker="pickr" value="#795548">
+  <label for="color-icon-left">Icon on left</label>
+</div>
+<div class="input-field">
+  <input id="color-icon-right" type="color" data-color-picker="pickr" value="#607d8b">
+  <label for="color-icon-right">Icon on right</label>
+  <i class="material-icons">colorize</i>
+</div>
+
+<!-- Disabled -->
+<div class="input-field">
+  <input id="color-disabled" type="color" data-color-picker="pickr" value="#9e9e9e" disabled>
+  <label for="color-disabled">Disabled</label>
+</div></xmp>
+              </code></pre>
+            </div>
+
+            <div id="initialization" class="scrollspy section">
+              <h3 class="header">Initialization</h3>
+              <p>
+                Each opted-in input needs to resolve Pickr asynchronously before the popup exists - await
+                <code class="language-html">instance.ready</code> if you need to interact with it right after init.
+              </p>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+  document.addEventListener('DOMContentLoaded', function() {
+    const elems = document.querySelectorAll('input[type="color"][data-color-picker="pickr"]');
+    const instances = ColorInput.init(elems, {
+      // specify options here
+    });
+  });
+        </code></pre>
+            </div>
+
+            <div id="options" class="scrollspy section">
+              <h3 class="header">Options</h3>
+              <table class="striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>theme</td>
+                    <td>String</td>
+                    <td>'classic'</td>
+                    <td>Pickr theme: 'classic', 'monolith' or 'nano'. Overridable per-input via <code class="language-html">data-color-theme</code>.</td>
+                  </tr>
+                  <tr>
+                    <td>opacity</td>
+                    <td>Boolean</td>
+                    <td>true</td>
+                    <td>Whether the opacity slider is shown. Locked via <code class="language-html">data-color-opacity="false"</code>.</td>
+                  </tr>
+                  <tr>
+                    <td>swatches</td>
+                    <td>Array</td>
+                    <td>14 preset colors</td>
+                    <td>Swatch palette shown in the popup.</td>
+                  </tr>
+                  <tr>
+                    <td>locale</td>
+                    <td>Object</td>
+                    <td>undefined</td>
+                    <td>
+                      Pickr <code class="language-html">i18n</code> string overrides. A built-in French translation is used automatically for
+                      <code class="language-html">data-color-locale="fr-fr"</code> if this isn't passed.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div id="methods" class="scrollspy section">
+              <h3 class="header">Methods</h3>
+              <blockquote>
+                <p>All the methods are called on the plugin instance. You can get the plugin instance like this:</p>
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
+                  const instance = ColorInput.getInstance(elem);
+        </code></pre>
+              </blockquote>
+
+              <h5 class="method-header">.destroy();</h5>
+              <p>Destroy plugin instance, removes the Pickr popup and un-hides the native input.</p>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
+instance.destroy();
+      </code></pre>
+            </div>
+
+            <div id="properties" class="scrollspy section">
+              <h3 class="header">Properties</h3>
+              <table class="striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>el</td>
+                    <td>Element</td>
+                    <td>The native <code class="language-html">&lt;input type="color"&gt;</code> the plugin was initialized with.</td>
+                  </tr>
+                  <tr>
+                    <td>ready</td>
+                    <td>Promise&lt;void&gt;</td>
+                    <td>Resolves once Pickr has loaded and the popup has been created.</td>
+                  </tr>
+                  <tr>
+                    <td>pickr</td>
+                    <td>Pickr</td>
+                    <td>The underlying Pickr instance, once <code class="language-html">ready</code> resolves.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="col hide-on-small-only m3 xl3">
+            <div class="toc-wrapper">
+              <div style="height: 1px">
+                <ul class="section table-of-contents">
+                  <li><a href="#introduction">Introduction</a></li>
+                  <li><a href="#examples">Examples</a></li>
+                  <li><a href="#initialization">Initialization</a></li>
+                  <li><a href="#options">Options</a></li>
+                  <li><a href="#methods">Methods</a></li>
+                  <li><a href="#properties">Properties</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    {{> footer }}
+    <script type="module" src="/main.ts"></script>
+  </body>
+</html>

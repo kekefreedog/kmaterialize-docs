@@ -251,6 +251,146 @@
         </code></pre>
             </div>
 
+            <div id="overflow" class="section scrollspy">
+              <h3 class="header">Overflow</h3>
+              <p>
+                When there are more groups/buttons than fit on one line, <code class="language-html">.toolbar</code> defaults to a plain horizontal scroll (no visible scrollbar,
+                still fully scrollable by trackpad/touch/shift+wheel) rather than squeezing everything to fit. Shrink your browser window below to see it kick in on this example
+                with 14 buttons:
+              </p>
+              <div class="toolbar" style="max-width: 420px;">
+                <div class="toolbar-group">
+                  <a class="btn-floating btn-small"><i class="material-icons">home</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">search</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">star</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">favorite</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">share</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">print</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">download</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">upload</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">edit</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">delete</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">settings</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">info</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">help</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">refresh</i></a>
+                </div>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="toolbar">
+  <div class="toolbar-group">
+    <a class="btn-floating btn-small"><i class="material-icons">home</i></a>
+    <a class="btn-floating btn-small"><i class="material-icons">search</i></a>
+    <!-- ...12 more... -->
+  </div>
+</div></xmp>
+        </code></pre>
+
+              <p>
+                Add <code class="language-html">toolbar-wrap</code> to drop to a new line instead of scrolling, if that suits the content better - same 14 buttons, same container
+                width:
+              </p>
+              <div class="toolbar toolbar-wrap" style="max-width: 420px;">
+                <div class="toolbar-group">
+                  <a class="btn-floating btn-small"><i class="material-icons">home</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">search</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">star</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">favorite</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">share</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">print</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">download</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">upload</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">edit</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">delete</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">settings</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">info</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">help</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">refresh</i></a>
+                </div>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="toolbar toolbar-wrap">
+  <div class="toolbar-group">
+    <a class="btn-floating btn-small"><i class="material-icons">home</i></a>
+    <!-- ... -->
+  </div>
+</div></xmp>
+        </code></pre>
+            </div>
+
+            <div id="separator" class="section scrollspy">
+              <h3 class="header">Separator</h3>
+              <p>
+                A thin vertical line between groups, for when the usual gap isn't explicit enough. Drop <code class="language-html">toolbar-separator</code> in as a sibling
+                between two <code class="language-html">toolbar-group</code> elements:
+              </p>
+              <div class="toolbar" style="justify-content: flex-start;">
+                <div class="toolbar-group">
+                  <a class="btn-floating btn-small"><i class="material-icons">format_bold</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">format_italic</i></a>
+                </div>
+                <div class="toolbar-separator"></div>
+                <div class="toolbar-group">
+                  <a class="btn-floating btn-small"><i class="material-icons">format_align_left</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">format_align_center</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">format_align_right</i></a>
+                </div>
+                <div class="toolbar-separator"></div>
+                <div class="toolbar-group">
+                  <a class="btn-floating btn-small"><i class="material-icons">link</i></a>
+                </div>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="toolbar">
+  <div class="toolbar-group">
+    <a class="btn-floating btn-small"><i class="material-icons">format_bold</i></a>
+    <a class="btn-floating btn-small"><i class="material-icons">format_italic</i></a>
+  </div>
+  <div class="toolbar-separator"></div>
+  <div class="toolbar-group">
+    <a class="btn-floating btn-small"><i class="material-icons">format_align_left</i></a>
+    <!-- ... -->
+  </div>
+</div></xmp>
+        </code></pre>
+            </div>
+
+            <div id="freeze" class="section scrollspy">
+              <h3 class="header">Freeze a group</h3>
+              <p>
+                <code class="language-html">toolbar-freeze-left</code>/<code class="language-html">toolbar-freeze-right</code> keeps a group pinned at that edge while the rest
+                of an <a href="#overflow">overflowing, scrolling</a> toolbar moves underneath it - handy for a button (refresh, close, ...) that should always stay reachable no
+                matter how far the user has scrolled. Scroll the row below - the icon on the right never moves:
+              </p>
+              <div class="toolbar" style="max-width: 320px;">
+                <div class="toolbar-group">
+                  <a class="btn-floating btn-small"><i class="material-icons">home</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">search</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">star</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">favorite</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">share</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">print</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">download</i></a>
+                  <a class="btn-floating btn-small"><i class="material-icons">upload</i></a>
+                </div>
+                <div class="toolbar-group toolbar-freeze-right">
+                  <a class="btn-floating btn-small"><i class="material-icons">refresh</i></a>
+                </div>
+              </div>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="toolbar">
+  <div class="toolbar-group">
+    <a class="btn-floating btn-small"><i class="material-icons">home</i></a>
+    <!-- ...more buttons, enough to overflow... -->
+  </div>
+  <div class="toolbar-group toolbar-freeze-right">
+    <a class="btn-floating btn-small"><i class="material-icons">refresh</i></a>
+  </div>
+</div></xmp>
+        </code></pre>
+              <p>Same idea on the left with <code class="language-html">toolbar-freeze-left</code> instead.</p>
+            </div>
+
             <div id="initialization" class="section scrollspy">
               <h3 class="header">Initialization</h3>
               <p>
@@ -296,6 +436,9 @@ var instances = M.Toolbar.init(elems, options);</code></pre>
                   <li><a href="#slider">Slider</a></li>
                   <li><a href="#dropdown">Dropdown</a></li>
                   <li><a href="#search">Expandable Search</a></li>
+                  <li><a href="#overflow">Overflow</a></li>
+                  <li><a href="#separator">Separator</a></li>
+                  <li><a href="#freeze">Freeze a group</a></li>
                   <li><a href="#initialization">Initialization</a></li>
                   <li><a href="#method">Methods</a></li>
                 </ul>

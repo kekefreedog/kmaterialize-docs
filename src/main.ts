@@ -28,6 +28,12 @@ import {
   Timepicker,
   Toolbar,
   Tooltip,
+  PasswordInput,
+  NumberInput,
+  ColorInput,
+  AirDatepickerField,
+  FileInput,
+  TomSelectField,
 } from "kmaterialize";
 
 // Docs pages have live `onclick="M.toast(...)"` / `M.Waves...` handlers
@@ -63,6 +69,26 @@ function is_touch_device() {
 function escapeHtml(unsafe) {
   return unsafe.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
 }
+
+// The module is loaded at the end of <body>, so all page inputs already
+// exist. Initialize optional color pickers independently: an exception in
+// another docs component must not leave Firefox's native picker active.
+ColorInput.init(document.querySelectorAll('input[type="color"][data-color-picker="pickr"]'), {});
+AirDatepickerField.init(document.querySelectorAll('input[data-date-picker="air-datepicker"]'), {});
+FileInput.init(document.querySelectorAll('.file-field[data-file-picker="filepond"]'), {});
+// FormSelect must not depend on every unrelated docs demo initializing first.
+// Keep native browser selects and Tom Select opt-ins out of this pass.
+FormSelect.init(document.querySelectorAll("select:not(.browser-default):not(.tomselected)"), {});
+// Tom Select must initialize immediately as well. Keeping it outside the
+// shared DOMContentLoaded demo registry prevents an unrelated page demo from
+// stopping this enhancement and leaving the native browser select visible.
+TomSelectField.init(document.querySelectorAll("select.tomselected"), {});
+// This demo is initialized immediately and independently so its tab panels
+// work even if another documentation example fails during DOM-ready setup.
+// Guard the page-specific element: passing null here aborts all subsequent
+// docs initialization, including application of the saved/default gold theme.
+const navbarDemoTabs = document.querySelector<HTMLElement>("#navbar-demo-tabs");
+if (navbarDemoTabs) Tabs.init(navbarDemoTabs, {});
 
 document.addEventListener("DOMContentLoaded", () => {
   const themes = new Themes(document);
@@ -323,7 +349,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   Datepicker.init(document.querySelectorAll(".datepicker"), {});
 
-  Tabs.init(document.querySelectorAll(".tabs"), {});
+  Tabs.init(document.querySelectorAll(".tabs:not(#navbar-demo-tabs)"), {});
   Tabs.init(document.querySelectorAll("#tabs-swipe-demo"), {
     swipeable: true,
   });
@@ -342,10 +368,10 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#open-taptarget")?.addEventListener("click", () => tts[0].open());
   document.querySelector("#close-taptarget")?.addEventListener("click", () => tts[0].close());
 
-  FormSelect.init(document.querySelectorAll("select:not(.disabled)"), {});
-
   CharacterCounter.init(document.querySelectorAll("[maxlength]"), {});
 
+  PasswordInput.init(document.querySelectorAll("input[data-password-toggle]"), {});
+  NumberInput.init(document.querySelectorAll('input[data-type="number"]'), {});
   Autocomplete.init(document.querySelectorAll("input.autocomplete"), {
     minLength: 0,
     data: autocompleteDemoData,

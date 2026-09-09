@@ -1,4 +1,21 @@
 @import "material-icons/iconfont/material-icons.css";
+
+// Optional peer libraries' own base stylesheets, for the enhanced form
+// input demo pages (see color-picker.html, air-datepicker.html,
+// file-upload.html, tom-select.html) - kmaterialize's own SCSS only
+// overrides these libraries' custom properties/selectors, it can't ship
+// their base CSS itself without turning an optional peerDependency into a
+// hard one. Imported BEFORE kmaterialize itself so kmaterialize's own
+// overrides (e.g. .ts-control's background/border) win the cascade instead
+// of being clobbered by these libraries' own base rules.
+@import "air-datepicker/air-datepicker.css";
+@import "filepond/dist/filepond.min.css";
+@import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css";
+@import "@simonwep/pickr/dist/themes/classic.min.css";
+@import "@simonwep/pickr/dist/themes/monolith.min.css";
+@import "@simonwep/pickr/dist/themes/nano.min.css";
+@import "tom-select/dist/css/tom-select.default.css";
+
 @import "kmaterialize/sass/materialize.scss";
 
 body {
@@ -175,6 +192,27 @@ footer {
 header .navbar .nav-wrapper > ul.ml-auto {
   gap: 1.75em;
   padding-right: 1rem;
+}
+
+header .docs-appbar {
+  border-radius: 0;
+  background: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+}
+
+header .docs-appbar .nav-wrapper {
+  background: var(--md-sys-color-primary);
+}
+
+header .docs-appbar :is(.brand-logo, ul > li > a) {
+  color: var(--md-sys-color-on-primary);
+}
+
+.navbar .navbar-search-toolbar {
+  width: auto;
+  margin: 0 0 0 auto;
+  padding: 4px;
+  overflow: visible;
 }
 
 @media #{$medium-and-up} {

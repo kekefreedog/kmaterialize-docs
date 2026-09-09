@@ -15,38 +15,60 @@
                 There are 2 main parts of the navbar. A logo or brand link, and the
                 navigations links. You can align these links to the left or right.
               </p>
-              <h3 class="header">Right Aligned Links</h3>
+              <h3 class="header">Branded app bar with right actions</h3>
               <p>
-                To right align your navbar links, just add an <code class="language-html">ml-auto</code> class to the
-                <code class="language-html">ul</code>
-                that contains them. <code class="language-html">.nav-wrapper</code> is a flex container, so the old v1
-                <code class="language-html">right</code> float class has no effect on it.
+                Combine a logo, a visual separator, compact floating icon buttons, and a final call-to-action. The
+                <code class="language-html">ml-auto</code> class keeps the action group fixed to the right edge.
               </p>
-              <nav class="nav navbar">
+              <nav class="navbar appbar-bordered">
                 <div class="nav-wrapper">
-                  <a href="#!" class="brand-logo">Logo</a>
-                  <ul class="ml-auto hide-on-med-and-down">
+                  <a href="#!" class="brand-logo" aria-label="Materialize home">
+                    <img class="brand-logo-image" src="images/materialize.svg" alt="" />
+                    <span>Materialize</span>
+                  </a>
+                  <span class="nav-separator" aria-hidden="true"></span>
+                  <span class="nav-context hide-on-med-and-down">Design system</span>
+                  <ul class="nav-actions ml-auto">
                     <li>
-                      <a href="sass.html">Sass</a>
+                      <a href="#!" class="btn-floating" aria-label="Search" title="Search">
+                        <i class="material-icons">search</i>
+                      </a>
                     </li>
                     <li>
-                      <a href="badges.html">Components</a>
+                      <a href="#!" class="btn-floating hide-on-small-only" aria-label="Notifications" title="Notifications">
+                        <i class="material-icons">notifications</i>
+                      </a>
                     </li>
+                    <li class="nav-separator hide-on-small-only" aria-hidden="true"></li>
                     <li>
-                      <a href="collapsible.html">JavaScript</a>
+                      <a href="#!" class="btn-floating" aria-label="Pinned items" title="Pinned items">
+                        <i class="material-icons">push_pin</i>
+                      </a>
+                    </li>
+                    <li class="hide-on-med-and-down">
+                      <a href="#!" class="btn filled rounded icon-right">
+                        Create <i class="material-icons">add</i>
+                      </a>
                     </li>
                   </ul>
                 </div>
               </nav>
 
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav class="nav navbar">
+<xmp><nav class="navbar appbar-bordered">
   <div class="nav-wrapper">
-    <a href="#" class="brand-logo">Logo</a>
-    <ul id="nav-mobile" class="ml-auto hide-on-med-and-down">
-      <li><a href="sass.html">Sass</a></li>
-      <li><a href="badges.html">Components</a></li>
-      <li><a href="collapsible.html">JavaScript</a></li>
+    <a href="#" class="brand-logo" aria-label="Materialize home">
+      <img class="brand-logo-image" src="images/materialize.svg" alt="">
+      <span>Materialize</span>
+    </a>
+    <span class="nav-separator" aria-hidden="true"></span>
+    <span class="nav-context hide-on-med-and-down">Design system</span>
+    <ul class="nav-actions ml-auto">
+      <li><a class="btn-floating" aria-label="Search"><i class="material-icons">search</i></a></li>
+      <li class="hide-on-small-only"><a class="btn-floating" aria-label="Notifications"><i class="material-icons">notifications</i></a></li>
+      <li class="nav-separator hide-on-small-only" aria-hidden="true"></li>
+      <li><a class="btn-floating" aria-label="Pinned items"><i class="material-icons">push_pin</i></a></li>
+      <li class="hide-on-med-and-down"><a class="btn filled rounded icon-right">Create <i class="material-icons">add</i></a></li>
     </ul>
   </div>
 </nav></xmp>
@@ -61,7 +83,7 @@
                 the left, put the <code class="language-html">ul</code> before the logo in the markup and add
                 <code class="language-html">ml-auto</code> to the logo.
               </p>
-              <nav class="nav navbar">
+              <nav class="navbar appbar-bordered">
                 <div class="nav-wrapper">
                   <ul class="hide-on-med-and-down">
                     <li>
@@ -74,19 +96,19 @@
                       <a href="collapsible.html">JavaScript</a>
                     </li>
                   </ul>
-                  <a href="#!" class="brand-logo ml-auto">Logo</a>
+                  <a href="#!" class="brand-logo ml-auto"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
                 </div>
               </nav>
 
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav class="nav navbar">
+<xmp><nav class="navbar appbar-bordered">
   <div class="nav-wrapper">
     <ul id="nav-mobile" class="hide-on-med-and-down">
       <li><a href="sass.html">Sass</a></li>
       <li><a href="badges.html">Components</a></li>
       <li><a href="collapsible.html">JavaScript</a></li>
     </ul>
-    <a href="#" class="brand-logo ml-auto">Logo</a>
+    <a href="#" class="brand-logo ml-auto"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
   </div>
 </nav></xmp>
         </code></pre>
@@ -101,9 +123,9 @@
                   &lt;a class=&quot;brand-logo&quot;&gt;&lt;/a&gt;
                 </code>. You will have to make sure yourself that links do not overlap if you use this.
               </p>
-              <nav clas="nav navbar">
-                <div class="nav-wrapper">
-                  <a href="#!" class="brand-logo center">Logo</a>
+              <nav class="navbar appbar-bordered">
+                <div class="nav-wrapper nav-wrapper-centered">
+                  <a href="#!" class="brand-logo center"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
                   <ul class="left hide-on-med-and-down">
                     <li>
                       <a href="sass.html">Sass</a>
@@ -116,9 +138,9 @@
               </nav>
 
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav class="nav navbar">
-  <div class="nav-wrapper">
-    <a href="#" class="brand-logo center">Logo</a>
+<xmp><nav class="navbar appbar-bordered">
+  <div class="nav-wrapper nav-wrapper-centered">
+    <a href="#" class="brand-logo center"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
     <ul id="nav-mobile" class="left hide-on-med-and-down">
       <li><a href="sass.html">Sass</a></li>
       <li><a href="badges.html">Components</a></li>
@@ -133,9 +155,9 @@
               <h3 class="header">Active Items</h3>
               <p>Add active class to your li tags to denote the current page.</p>
 
-              <nav class="nav navbar">
-                <div class="nav-wrapper">
-                  <a href="#!" class="brand-logo center">Logo</a>
+              <nav class="navbar appbar-bordered">
+                <div class="nav-wrapper nav-wrapper-centered">
+                  <a href="#!" class="brand-logo center"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
                   <ul class="left hide-on-med-and-down">
                     <li>
                       <a href="sass.html">Sass</a>
@@ -151,9 +173,9 @@
               </nav>
 
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav class="nav navbar">
-  <div class="nav-wrapper">
-    <a href="#!" class="brand-logo center">Logo</a>
+<xmp><nav class="navbar appbar-bordered">
+  <div class="nav-wrapper nav-wrapper-centered">
+    <a href="#!" class="brand-logo center"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
     <ul class="left hide-on-med-and-down">
       <li><a href="sass.html">Sass</a></li>
       <li><a href="badges.html">Components</a></li>
@@ -172,13 +194,13 @@
                 can just include a tabs component inside the <span class="language-html">nav-wrapper</span>.
               </p>
 
-              <nav class="nav navbar nav-extended">
+              <nav class="navbar appbar-bordered nav-extended">
                 <div class="nav-wrapper">
-                  <a href="#" class="brand-logo">Logo</a>
+                  <a href="#" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
                   <a href="#" data-target="mobile-demo" class="sidenav-trigger">
                     <i class="material-icons">menu</i>
                   </a>
-                  <ul id="nav-mobile" class="right hide-on-med-and-down">
+                  <ul id="nav-mobile" class="ml-auto hide-on-med-and-down">
                     <li>
                       <a href="sass.html">Sass</a>
                     </li>
@@ -191,18 +213,18 @@
                   </ul>
                 </div>
                 <div class="nav-content">
-                  <ul class="tabs tabs-transparent">
+                  <ul id="navbar-demo-tabs" class="tabs tabs-transparent">
                     <li class="tab">
-                      <a href="#test1">Test 1</a>
+                      <a href="#navbar-test1">Test 1</a>
                     </li>
                     <li class="tab">
-                      <a class="active" href="#test2">Test 2</a>
+                      <a class="active" href="#navbar-test2">Test 2</a>
                     </li>
                     <li class="tab disabled">
-                      <a href="#test3">Disabled Tab</a>
+                      <a href="#navbar-test3">Disabled Tab</a>
                     </li>
                     <li class="tab">
-                      <a href="#test4">Test 4</a>
+                      <a href="#navbar-test4">Test 4</a>
                     </li>
                   </ul>
                 </div>
@@ -220,17 +242,17 @@
                 </li>
               </ul>
 
-              <div id="test1" class="col s12">Test 1</div>
-              <div id="test2" class="col s12">Test 2</div>
-              <div id="test3" class="col s12">Test 3</div>
-              <div id="test4" class="col s12">Test 4</div>
+              <div id="navbar-test1" class="s12">Test 1</div>
+              <div id="navbar-test2" class="s12">Test 2</div>
+              <div id="navbar-test3" class="s12">Test 3</div>
+              <div id="navbar-test4" class="s12">Test 4</div>
 
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav class="nav navbar nav-extended">
+<xmp><nav class="navbar appbar-bordered nav-extended">
   <div class="nav-wrapper">
-    <a href="#" class="brand-logo">Logo</a>
+    <a href="#" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
+    <ul id="nav-mobile" class="ml-auto hide-on-med-and-down">
       <li><a href="sass.html">Sass</a></li>
       <li><a href="badges.html">Components</a></li>
       <li><a href="collapsible.html">JavaScript</a></li>
@@ -269,10 +291,10 @@
 
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
 <xmp><div class="navbar-fixed">
-  <nav class="nav navbar">
+  <nav class="navbar appbar-bordered">
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo">Logo</a>
-      <ul class="right hide-on-med-and-down">
+      <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
+      <ul class="ml-auto hide-on-med-and-down">
         <li><a href="sass.html">Sass</a></li>
         <li><a href="badges.html">Components</a></li>
       </ul>
@@ -303,10 +325,10 @@
                   <a href="#!">three</a>
                 </li>
               </ul>
-              <nav class="nav navbar">
+              <nav class="navbar appbar-bordered">
                 <div class="nav-wrapper">
-                  <a href="#!" class="brand-logo">Logo</a>
-                  <ul class="right hide-on-med-and-down">
+                  <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
+                  <ul class="ml-auto hide-on-med-and-down">
                     <li>
                       <a href="sass.html">Sass</a>
                     </li>
@@ -332,10 +354,10 @@
   <li class="divider"></li>
   <li><a href="#!">three</a></li>
 </ul>
-<nav class="nav navbar">
+<nav class="navbar appbar-bordered">
   <div class="nav-wrapper">
-    <a href="#!" class="brand-logo">Logo</a>
-    <ul class="right hide-on-med-and-down">
+    <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
+    <ul class="ml-auto hide-on-med-and-down">
       <li><a href="sass.html">Sass</a></li>
       <li><a href="badges.html">Components</a></li>
       <!-- Dropdown Trigger -->
@@ -366,10 +388,10 @@
             <div id="icons" class="section scrollspy">
               <h3 class="header">Icon Links</h3>
 
-              <nav class="nav navbar">
+              <nav class="navbar appbar-bordered">
                 <div class="nav-wrapper">
-                  <a href="#!" class="brand-logo"> <i class="material-icons">cloud</i>Logo</a>
-                  <ul class="right hide-on-med-and-down">
+                  <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
+                  <ul class="ml-auto hide-on-med-and-down">
                     <li>
                       <a href="sass.html">
                         <i class="material-icons">search</i>
@@ -398,10 +420,10 @@
                 You can add icons into links. For icon only links you don't need any additional class. Just pop the <code class="language-html">i</code> tag in and it will work.
               </p>
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav class="nav navbar">
+<xmp><nav class="navbar appbar-bordered">
   <div class="nav-wrapper">
-    <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
-    <ul class="right hide-on-med-and-down">
+    <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
+    <ul class="ml-auto hide-on-med-and-down">
       <li><a href="sass.html"><i class="material-icons">search</i></a></li>
       <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
       <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
@@ -411,10 +433,10 @@
 </nav></xmp>
 </code></pre>
 
-              <nav class="nav navbar">
+              <nav class="navbar appbar-bordered">
                 <div class="nav-wrapper">
-                  <a href="#!" class="brand-logo">Logo</a>
-                  <ul class="right hide-on-med-and-down">
+                  <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
+                  <ul class="ml-auto hide-on-med-and-down">
                     <li>
                       <a href="sass.html"> <i class="material-icons left">search</i>Link with Left Icon</a>
                     </li>
@@ -433,10 +455,10 @@
                 depending on where you want the icon to be.
               </p>
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav class="nav navbar">
+<xmp><nav class="navbar appbar-bordered">
   <div class="nav-wrapper">
-    <a href="#!" class="brand-logo">Logo</a>
-    <ul class="right hide-on-med-and-down">
+    <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
+    <ul class="ml-auto hide-on-med-and-down">
       <li><a href="sass.html"><i class="material-icons left">search</i>Link with Left Icon</a></li>
       <li><a href="badges.html"><i class="material-icons right">view_module</i>Link with Right Icon</a></li>
     </ul>
@@ -448,10 +470,10 @@
             <div id="buttons" class="section scrollspy">
               <h3 class="header">Buttons</h3>
 
-              <nav class="nav navbar">
+              <nav class="navbar appbar-bordered">
                 <div class="nav-wrapper">
-                  <a href="#!" class="brand-logo">Logo</a>
-                  <ul class="right hide-on-med-and-down">
+                  <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
+                  <ul class="ml-auto hide-on-med-and-down">
                     <li>
                       <a class="waves-effect waves-light btn">Button</a>
                     </li>
@@ -473,10 +495,10 @@
                 <code class="language-html">a</code> tag.
               </p>
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav class="nav navbar">
+<xmp><nav class="navbar appbar-bordered">
   <div class="nav-wrapper">
-    <a href="#!" class="brand-logo">Logo</a>
-    <ul class="right hide-on-med-and-down">
+    <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
+    <ul class="ml-auto hide-on-med-and-down">
       <li><a class="waves-effect waves-light btn">Button</a></li>
       <li><a class="waves-effect waves-light btn">Button <i class="material-icons right">cloud</i></a></li>
       <li><a class="waves-effect waves-light btn-large">Large Button</a></li>
@@ -488,10 +510,10 @@
               <h5>Halfway FAB in Extended Navbar</h5>
               <p>Add a halfway FAB to your extended navbar.</p>
 
-              <nav class="nav navbar nav-extended">
+              <nav class="navbar appbar-bordered nav-extended">
                 <div class="nav-wrapper">
-                  <a href="#!" class="brand-logo">Logo</a>
-                  <ul class="right hide-on-med-and-down">
+                  <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
+                  <ul class="ml-auto hide-on-med-and-down">
                     <li>
                       <a>A link</a>
                     </li>
@@ -512,10 +534,10 @@
               </nav>
 
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav class="nav navbar nav-extended">
+<xmp><nav class="navbar appbar-bordered nav-extended">
   <div class="nav-wrapper">
-    <a href="#!" class="brand-logo">Logo</a>
-    <ul class="right hide-on-med-and-down">
+    <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
+    <ul class="ml-auto hide-on-med-and-down">
       <li><a>A link</a></li>
       <li><a>A second link</a></li>
       <li><a>A third link</a></li>
@@ -534,31 +556,33 @@
             <div id="search-docs" class="section scrollspy">
               <h3 class="header">Search Bar</h3>
 
-              <nav class="nav navbar">
+              <nav class="navbar appbar-bordered">
                 <div class="nav-wrapper">
-                  <form>
-                    <div class="input-field">
-                      <input id="search-example" type="search" required />
-                      <label class="label-icon" for="search-example">
-                        <i class="material-icons">search</i>
-                      </label>
-                      <i class="material-icons">close</i>
+                  <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
+                  <div class="toolbar navbar-search-toolbar">
+                    <div class="toolbar-group">
+                      <div class="toolbar-search">
+                        <button class="toolbar-search-toggle" type="button" aria-label="Open search"><i class="material-icons">search</i></button>
+                        <input class="toolbar-search-input" type="search" placeholder="Search..." aria-label="Search" />
+                      </div>
                     </div>
-                  </form>
+                  </div>
                 </div>
               </nav>
 
               <p>You can add a search form in the navbar.</p>
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav class="navbar">
+<xmp><nav class="navbar appbar-bordered">
   <div class="nav-wrapper">
-    <form>
-      <div class="input-field">
-        <input id="search" type="search" required>
-        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-        <i class="material-icons">close</i>
+    <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt=""><span>Materialize</span></a>
+    <div class="toolbar navbar-search-toolbar">
+      <div class="toolbar-group">
+        <div class="toolbar-search">
+          <button class="toolbar-search-toggle" type="button" aria-label="Open search"><i class="material-icons">search</i></button>
+          <input class="toolbar-search-input" type="search" placeholder="Search..." aria-label="Search">
+        </div>
       </div>
-    </form>
+    </div>
   </div>
 </nav></xmp>
 </code></pre>
@@ -567,13 +591,13 @@
             <div id="mobile-collapse" class="section scrollspy">
               <h3 class="header">Mobile Collapse Button</h3>
 
-              <nav class="nav navbar">
+              <nav class="navbar appbar-bordered">
                 <div class="nav-wrapper">
-                  <a href="#!" class="brand-logo">Logo</a>
+                  <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
                   <a href="#" data-target="mobile-demo" class="sidenav-trigger">
                     <i class="material-icons">menu</i>
                   </a>
-                  <ul class="right hide-on-med-and-down">
+                  <ul class="ml-auto hide-on-med-and-down">
                     <li>
                       <a href="sass.html">Sass</a>
                     </li>
@@ -616,11 +640,11 @@
                 below to get this functionality. Add the entire <code class="language-html">sidenav-trigger</code> line to your <code class="language-html">nav</code>.
               </p>
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav class="nav navbar">
+<xmp><nav class="navbar appbar-bordered">
   <div class="nav-wrapper">
-    <a href="#!" class="brand-logo">Logo</a>
+    <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    <ul class="right hide-on-med-and-down">
+    <ul class="ml-auto hide-on-med-and-down">
       <li><a href="sass.html">Sass</a></li>
       <li><a href="badges.html">Components</a></li>
       <li><a href="collapsible.html">Javascript</a></li>
