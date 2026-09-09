@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{> head }}
+  </head>
+  <body>
+    {{> navbar }}
+    <main>
+      {{> intro}}
+      <div class="container">
+        <div class="row">
+          <div class="col s12 m8 offset-m1 xl7 offset-xl1">
+            <div id="introduction" class="section scrollspy">
+              <p class="caption">Alerts keep important contextual feedback visible in the page. Use a semantic variant, optional icon, and a close action when the message can be dismissed.</p>
+
+              <h3 class="header">Variants</h3>
+              <div class="alert alert-info" role="status">
+                <i class="material-icons alert-icon" aria-hidden="true">info</i>
+                <div class="alert-content"><strong class="alert-title">Information</strong><p class="alert-message">Your profile is ready to be completed.</p></div>
+              </div>
+              <div class="alert alert-success" role="status">
+                <i class="material-icons alert-icon" aria-hidden="true">check_circle</i>
+                <div class="alert-content"><strong class="alert-title">Saved successfully</strong><p class="alert-message">Your changes have been saved.</p></div>
+              </div>
+              <div class="alert alert-warning" role="alert">
+                <i class="material-icons alert-icon" aria-hidden="true">warning</i>
+                <div class="alert-content"><strong class="alert-title">Heads up</strong><p class="alert-message">This action may take a few minutes.</p></div>
+              </div>
+              <div class="alert alert-error" role="alert">
+                <i class="material-icons alert-icon" aria-hidden="true">error</i>
+                <div class="alert-content"><strong class="alert-title">Something went wrong</strong><p class="alert-message">Try again or contact support.</p></div>
+              </div>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><div class="alert alert-success" role="status">
+  <i class="material-icons alert-icon" aria-hidden="true">check_circle</i>
+  <div class="alert-content">
+    <strong class="alert-title">Saved successfully</strong>
+    <p class="alert-message">Your changes have been saved.</p>
+  </div>
+</div></xmp></code></pre>
+            </div>
+
+            <div id="styles" class="section scrollspy">
+              <h3 class="header">Outlined and compact</h3>
+              <div class="alert alert-info alert-outlined alert-compact" role="status">
+                <i class="material-icons alert-icon" aria-hidden="true">info</i>
+                <div class="alert-content"><p class="alert-message">Outlined alerts work well on busy surfaces.</p></div>
+              </div>
+              <div class="alert alert-success alert-filled alert-compact" role="status">
+                <i class="material-icons alert-icon" aria-hidden="true">task_alt</i>
+                <div class="alert-content"><p class="alert-message">Filled alerts provide stronger emphasis.</p></div>
+              </div>
+
+              <h3 class="header">Image content</h3>
+              <div class="alert alert-info" role="status">
+                <img class="alert-icon alert-image" src="images/materialize.svg" alt="">
+                <div class="alert-content"><strong class="alert-title">New design system update</strong><p class="alert-message">The latest components are ready to explore.</p></div>
+              </div>
+            </div>
+
+            <div id="dismissible" class="section scrollspy">
+              <h3 class="header">Dismissible alert</h3>
+              <div id="dismissible-alert" class="alert alert-warning" role="alert">
+                <i class="material-icons alert-icon" aria-hidden="true">lightbulb</i>
+                <div class="alert-content"><strong class="alert-title">Try the new keyboard shortcuts</strong><p class="alert-message">You can dismiss this message when you are done.</p></div>
+                <button class="alert-close" type="button" aria-label="Dismiss alert"><i class="material-icons" aria-hidden="true">close</i></button>
+              </div>
+              <button id="restore-alert" type="button" class="btn tonal">Restore alert</button>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText"><xmp>const alert = Alert.init(document.querySelector('.alert'), {});
+alert.dismiss();
+alert.open();</xmp></code></pre>
+            </div>
+          </div>
+
+          <div class="col hide-on-small-only m3 xl3">
+            <div class="toc-wrapper">
+              <div style="height: 1px">
+                <ul class="section table-of-contents">
+                  <li><a href="#introduction">Variants</a></li>
+                  <li><a href="#styles">Outlined and compact</a></li>
+                  <li><a href="#dismissible">Dismissible alert</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    {{> footer }}
+    <script type="module" src="/main.ts"></script>
+  </body>
+</html>

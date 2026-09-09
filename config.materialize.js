@@ -51,6 +51,7 @@ export const config = {
     { id: "themes", url: "themes.html", name: "Themes" },
     { id: "waves", url: "waves.html", name: "Waves" },
     { id: "badges", url: "badges.html", name: "Badges" },
+    { id: "alerts", url: "alerts.html", name: "Alerts" },
     { id: "buttons", url: "buttons.html", name: "Buttons" },
     { id: "breadcrumbs", url: "breadcrumbs.html", name: "Breadcrumbs" },
     { id: "cards", url: "cards.html", name: "Cards" },
@@ -169,6 +170,7 @@ export const config = {
       name: "Components",
       icon: "add_circle",
       items: [
+        { id: "alerts" },
         { id: "badges" },
         { id: "buttons" },
         { id: "breadcrumbs" },

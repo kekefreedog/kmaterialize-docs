@@ -32,6 +32,7 @@ import {
   NumberInput,
   ColorInput,
   AirDatepickerField,
+  Alert,
   FileInput,
   TomSelectField,
 } from "kmaterialize";
@@ -356,6 +357,11 @@ document.addEventListener("DOMContentLoaded", () => {
   //------  Materialize Components
 
   Cards.init(document.querySelectorAll(".card"));
+  Alert.init(document.querySelectorAll(".alert"), {});
+  document.querySelector("#restore-alert")?.addEventListener("click", () => {
+    const alert = Alert.getInstance(document.querySelector("#dismissible-alert") as HTMLElement);
+    alert?.open();
+  });
 
   Carousel.init(document.querySelectorAll(".carousel"), {});
   Carousel.init(document.querySelectorAll(".carousel.carousel-slider"), {

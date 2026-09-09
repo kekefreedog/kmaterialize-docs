@@ -40,7 +40,7 @@ importers:
         version: 7.6.1
       kmaterialize:
         specifier: latest
-        version: 2.3.3-1.0.18(@simonwep/pickr@1.10.2)(air-datepicker@3.6.0)(filepond-plugin-file-validate-type@1.2.9(filepond@4.32.12))(filepond-plugin-image-exif-orientation@1.0.11(filepond@4.32.12))(filepond-plugin-image-preview@4.6.12(filepond@4.32.12))(filepond@4.32.12)(imask@7.6.1)(tom-select@2.6.2)
+        version: 2.3.3-1.0.20(@simonwep/pickr@1.10.2)(air-datepicker@3.6.0)(filepond-plugin-file-validate-type@1.2.9(filepond@4.32.12))(filepond-plugin-image-exif-orientation@1.0.11(filepond@4.32.12))(filepond-plugin-image-preview@4.6.12(filepond@4.32.12))(filepond@4.32.12)(imask@7.6.1)(tom-select@2.6.2)
       material-icons:
         specifier: ^1.13.14
         version: 1.13.14
@@ -517,8 +517,8 @@ packages:
     resolution: {integrity: sha512-xelSayHH36ZgE7ZWhli7pW34hNbNl8Ojv5KVmkJD4hBdD3th8Tfk9vYasLM+mXWOZhFkgZfxhLSnrwRr4elSSg==}
     engines: {node: '>=0.10.0'}
 
-  kmaterialize@2.3.3-1.0.18:
-    resolution: {integrity: sha512-zVIqESSopN394Nv2pN8LLu6uMAt9db1SQuSvVtX6naaBW2TEgASdnxeNg3zLNbAySQy21JzCBSV1S8azCtwsoA==}
+  kmaterialize@2.3.3-1.0.20:
+    resolution: {integrity: sha512-nt1M4ancRcXQ88N4P6oja57PYx7pS0GhKILc00TMe63E1S4w5LdeHMVrdbOjlaZw7GGBO56uTaBR4gMOQfhhqQ==}
     peerDependencies:
       '@simonwep/pickr': ^1.9.0
       air-datepicker: ^3.5.0
@@ -1095,7 +1095,7 @@ snapshots:
       is-extglob: 2.1.1
     optional: true
 
-  kmaterialize@2.3.3-1.0.18(@simonwep/pickr@1.10.2)(air-datepicker@3.6.0)(filepond-plugin-file-validate-type@1.2.9(filepond@4.32.12))(filepond-plugin-image-exif-orientation@1.0.11(filepond@4.32.12))(filepond-plugin-image-preview@4.6.12(filepond@4.32.12))(filepond@4.32.12)(imask@7.6.1)(tom-select@2.6.2):
+  kmaterialize@2.3.3-1.0.20(@simonwep/pickr@1.10.2)(air-datepicker@3.6.0)(filepond-plugin-file-validate-type@1.2.9(filepond@4.32.12))(filepond-plugin-image-exif-orientation@1.0.11(filepond@4.32.12))(filepond-plugin-image-preview@4.6.12(filepond@4.32.12))(filepond@4.32.12)(imask@7.6.1)(tom-select@2.6.2):
     dependencies:
       normalize.css: 8.0.1
     optionalDependencies:
