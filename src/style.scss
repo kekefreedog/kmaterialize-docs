@@ -186,6 +186,61 @@ footer {
   object-fit: contain;
 }
 
+header .navbar .ext-link {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  min-height: 40px;
+  padding: 0;
+  line-height: 1;
+  margin: 0;
+}
+
+header .navbar .nav-wrapper > ul.ml-auto > li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+header .navbar .ext-link > .nav-icon-img {
+  display: block;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  vertical-align: initial;
+}
+
+header .navbar .nav-wrapper > ul.ml-auto > li > a:has(> .material-icons) {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  min-height: 40px;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+header .navbar .nav-wrapper > ul.ml-auto > li > a > .material-icons {
+  display: block !important;
+  position: static !important;
+  float: none !important;
+  width: 24px;
+  height: 24px;
+  margin: 0 !important;
+  line-height: 24px;
+  text-align: center;
+}
+
 // The default 1em gap between navbar items reads much tighter than the
 // reference (materializeweb.com), whose icon row has roughly double the
 // whitespace between icons. Widen it for this header icon row only.
@@ -213,6 +268,467 @@ header .docs-appbar :is(.brand-logo, ul > li > a) {
   margin: 0 0 0 auto;
   padding: 4px;
   overflow: visible;
+}
+
+/* Navbar surface variants used by the navbar documentation examples. */
+.navbar.appbar-bordered.navbar-rounded {
+  box-sizing: border-box;
+  height: 64px;
+  margin: 8px 0;
+  padding: 4px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.navbar.appbar-bordered.navbar-rounded > .nav-wrapper {
+  box-sizing: border-box;
+  flex: 0 0 56px;
+  height: 56px;
+  border-radius: 11px;
+  transform: none;
+}
+
+.navbar.appbar-bordered.navbar-full {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  border-left: 0;
+  border-right: 0;
+}
+
+/* Crowded navigation options. Scroll keeps one compact row; wrap grows the
+   bar vertically and preserves every item without clipping. */
+.navbar.appbar-bordered.navbar-scroll > .nav-wrapper {
+  position: relative;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.navbar.appbar-bordered.navbar-scroll > .nav-wrapper > ul:not(.dropdown-content) {
+  flex: 0 0 auto;
+  width: max-content;
+  min-width: max-content;
+}
+
+.navbar.appbar-bordered.navbar-scroll {
+  position: relative;
+  isolation: isolate;
+}
+
+.navbar.appbar-bordered.navbar-scroll > .nav-wrapper {
+  position: relative;
+  z-index: 0;
+}
+
+.navbar.appbar-bordered.navbar-scroll::after {
+  content: '';
+  position: absolute;
+  z-index: 20;
+  right: 0;
+  top: 0;
+  width: 15px;
+  height: 100%;
+  pointer-events: none;
+  opacity: var(--scroll-right-fade, 1) !important;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--md-sys-color-surface-variant)
+  );
+  transition: opacity 160ms ease;
+}
+
+.navbar.appbar-bordered.navbar-scroll::before {
+  content: '';
+  position: absolute;
+  z-index: 20;
+  left: 0;
+  top: 0;
+  width: 15px;
+  height: 100%;
+  pointer-events: none;
+  opacity: var(--scroll-left-fade, 1) !important;
+  background: linear-gradient(
+    to left,
+    transparent,
+    var(--md-sys-color-surface-variant)
+  );
+  transition: opacity 160ms ease;
+}
+
+.navbar.appbar-bordered.navbar-scroll:not(.is-scroll-end)::after {
+  opacity: var(--scroll-right-fade, 0) !important;
+}
+
+.navbar.appbar-bordered.navbar-scroll.is-scroll-start::before {
+  opacity: 0;
+}
+
+.navbar.appbar-bordered.navbar-scroll:not(.is-scroll-start)::before {
+  opacity: var(--scroll-left-fade, 0) !important;
+}
+
+/* Fixed edge masks. These are real children of the navbar (not descendants
+   of the scrolling row), so they cannot move with the links. */
+.navbar.appbar-bordered.navbar-scroll > .navbar-scroll-fade {
+  display: block;
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  width: 28px;
+  height: 100%;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 160ms ease;
+}
+
+.navbar.appbar-bordered.navbar-scroll > .navbar-scroll-fade-left {
+  left: 0;
+  background: linear-gradient(to left, transparent, var(--md-sys-color-surface-variant));
+}
+
+.navbar.appbar-bordered.navbar-scroll > .navbar-scroll-fade-right {
+  right: 0;
+  background: linear-gradient(to right, transparent, var(--md-sys-color-surface-variant));
+}
+
+.navbar.appbar-bordered.navbar-scroll > .navbar-scroll-fade.is-hidden {
+  opacity: 0;
+}
+
+/* Dropdown trigger demo: keep the label and arrow in one predictable hit
+   target instead of inheriting the legacy floated-icon offsets. */
+#navbar-dropdown .navbar.appbar-bordered .dropdown-trigger {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: max-content !important;
+  max-width: none;
+  height: 40px;
+  min-height: 40px;
+  padding: 0 14px 0 16px;
+  line-height: 1;
+}
+
+#navbar-dropdown .navbar.appbar-bordered .dropdown-trigger > .material-icons {
+  display: inline-block !important;
+  position: static !important;
+  float: none !important;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  line-height: 20px;
+  transition: transform 160ms ease;
+}
+
+#navbar-dropdown .navbar.appbar-bordered .nav-wrapper > ul > li:has(> .dropdown-trigger) {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+#navbar-dropdown .navbar.appbar-bordered .nav-wrapper > ul > li:has(> .dropdown-trigger) > .dropdown-trigger {
+  flex: 0 0 auto;
+  align-self: center;
+  margin: 0;
+}
+
+#navbar-dropdown .navbar.appbar-bordered .dropdown-trigger[aria-expanded="true"] > .material-icons {
+  transform: rotate(180deg);
+}
+
+/* Icon Links demo: center standalone icons inside their 40px hit targets. */
+#icons .navbar.appbar-bordered .nav-wrapper > ul > li:has(> a > .material-icons:only-child) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+#icons .navbar.appbar-bordered .nav-wrapper > ul > li > a:has(> .material-icons:only-child) {
+  display: inline-grid !important;
+  place-items: center;
+  box-sizing: border-box;
+  width: 40px !important;
+  height: 40px;
+  min-height: 40px;
+  padding: 0 !important;
+  line-height: 1;
+}
+
+#icons .navbar.appbar-bordered .nav-wrapper > ul > li > a > .material-icons:only-child {
+  display: block !important;
+  position: static !important;
+  float: none !important;
+  width: 24px;
+  height: 24px;
+  margin: 0 !important;
+  line-height: 24px;
+  text-align: center;
+}
+
+#icons .navbar.appbar-bordered .nav-wrapper > ul > li > a:has(> .material-icons.left),
+#icons .navbar.appbar-bordered .nav-wrapper > ul > li > a:has(> .material-icons.right) {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  box-sizing: border-box;
+  width: max-content !important;
+  min-width: 0;
+  height: 40px;
+  min-height: 40px;
+  padding: 0 12px !important;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+#icons .navbar.appbar-bordered .nav-wrapper > ul > li > a > .material-icons.left,
+#icons .navbar.appbar-bordered .nav-wrapper > ul > li > a > .material-icons.right {
+  display: block !important;
+  position: static !important;
+  float: none !important;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  margin: 0 !important;
+  line-height: 24px;
+  text-align: center;
+}
+
+#icons .navbar.appbar-bordered .nav-wrapper > ul > li:has(> a > .material-icons.left),
+#icons .navbar.appbar-bordered .nav-wrapper > ul > li:has(> a > .material-icons.right) {
+  flex: 0 0 auto;
+  width: max-content;
+  height: 40px;
+}
+
+/* Buttons demo: normalize the item row and prevent text-plus-icon buttons
+   from being mistaken for standalone icon buttons. */
+#buttons .navbar.appbar-bordered .nav-wrapper > ul > li {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  height: 48px;
+  margin: 0;
+  padding: 0;
+}
+
+#buttons .navbar.appbar-bordered .nav-wrapper > ul > li > a.btn,
+#buttons .navbar.appbar-bordered .nav-wrapper > ul > li > a.btn-large {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: max-content !important;
+  min-width: 104px;
+  height: 40px;
+  min-height: 40px;
+  margin: 0 !important;
+  padding: 0 20px !important;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+#buttons .navbar.appbar-bordered .nav-wrapper > ul > li > a.btn-large {
+  min-width: 144px;
+  height: 48px;
+  min-height: 48px;
+  padding-inline: 24px !important;
+}
+
+#buttons .navbar.appbar-bordered .nav-wrapper > ul > li > a.btn:has(> .material-icons),
+#buttons .navbar.appbar-bordered .nav-wrapper > ul > li > a.btn-large:has(> .material-icons) {
+  gap: 8px;
+}
+
+#buttons .navbar.appbar-bordered .nav-wrapper > ul > li > a.btn > .material-icons,
+#buttons .navbar.appbar-bordered .nav-wrapper > ul > li > a.btn-large > .material-icons {
+  display: block !important;
+  position: static !important;
+  float: none !important;
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  margin: 0 !important;
+  line-height: 20px;
+}
+
+/* Mobile Collapse demo: keep the complete action row reachable when the
+   example is narrower than its links. */
+#mobile-collapse .navbar.appbar-bordered > .nav-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+#mobile-collapse .navbar.appbar-bordered > .nav-wrapper > ul.ml-auto {
+  flex: 0 0 auto;
+  width: max-content;
+  max-width: none;
+  margin-left: 0 !important;
+}
+
+#mobile-collapse .navbar.appbar-bordered > .nav-wrapper > ul > li {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  height: 40px;
+}
+
+#mobile-collapse .navbar.appbar-bordered > .nav-wrapper > ul > li > a.btn {
+  width: max-content !important;
+  min-width: 104px;
+  height: 40px;
+  min-height: 40px;
+  padding-block: 0 !important;
+  line-height: 1;
+  margin: 0 !important;
+  white-space: nowrap;
+}
+
+/* Extended navbar tabs: use the navbar's readable foreground instead of the
+   low-contrast primary token inherited by transparent tabs. */
+#navbar-tabs .navbar.appbar-bordered .nav-content,
+#navbar-demo-tabs {
+  background: var(--md-sys-color-surface-variant);
+}
+
+#navbar-demo-tabs > .tab > a {
+  color: var(--md-sys-color-on-surface) !important;
+  opacity: 0.92;
+}
+
+#navbar-demo-tabs > .tab > a.active {
+  color: var(--md-sys-color-on-surface) !important;
+  opacity: 1;
+  font-weight: 600;
+}
+
+#navbar-demo-tabs > .tab.disabled > a {
+  color: var(--md-sys-color-on-surface) !important;
+  opacity: 0.5;
+}
+
+#navbar-demo-tabs > .indicator {
+  background-color: var(--md-sys-color-on-surface) !important;
+}
+
+#navbar-tabs .navbar.appbar-bordered .sidenav-trigger {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  min-height: 40px;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  color: var(--md-sys-color-on-surface) !important;
+}
+
+#navbar-tabs .navbar.appbar-bordered .sidenav-trigger > .material-icons {
+  display: block !important;
+  position: static !important;
+  float: none !important;
+  width: 24px;
+  height: 24px;
+  margin: 0 !important;
+  line-height: 24px;
+  text-align: center;
+}
+
+.navbar.appbar-bordered.navbar-wrap > .nav-wrapper {
+  flex-wrap: wrap;
+  height: auto;
+  min-height: 56px;
+  padding-bottom: 8px;
+  overflow: visible;
+  row-gap: 8px;
+}
+
+.navbar.appbar-bordered.navbar-wrap {
+  height: auto;
+  min-height: 56px;
+}
+
+.navbar.appbar-bordered.navbar-wrap > .nav-wrapper > ul:not(.dropdown-content) {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  flex: 1 1 100%;
+  padding-left: 0;
+  height: auto !important;
+  flex-wrap: wrap;
+  white-space: normal;
+}
+
+.navbar.appbar-bordered.navbar-wrap > .nav-wrapper > ul:not(.dropdown-content) > li {
+  height: auto !important;
+}
+
+.navbar.appbar-bordered ul:not(.dropdown-content) > li > a {
+  white-space: nowrap;
+}
+
+.navbar.appbar-bordered .nav-wrapper > ul.ml-auto:not(.nav-actions):not(.dropdown-content) {
+  flex: 0 0 auto;
+  width: max-content;
+  max-width: none;
+}
+
+/* The branded demo's CTA keeps its icon in the button's flex row. This
+   intentionally overrides the generic absolute-positioned icon helper, whose
+   offsets are useful for standalone buttons but can crop a compact app-bar CTA. */
+.navbar .appbar-create {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 104px;
+  min-width: 104px;
+  height: 40px;
+  min-height: 40px;
+  padding: 0 14px !important;
+  overflow: visible;
+  white-space: nowrap;
+}
+
+.navbar .appbar-create > .material-icons {
+  position: static !important;
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  margin: 0 !important;
+  line-height: 20px;
+  transform: none !important;
+}
+
+/* Separators used as list items need an explicit display/height; otherwise
+   navbar item rules can collapse the one-pixel divider. */
+.navbar.appbar-bordered .nav-actions > li.nav-separator {
+  display: block !important;
+  flex: 0 0 1px;
+  width: 1px;
+  height: 24px;
+  margin: 0 4px;
+  padding: 0;
+  background: var(--md-sys-color-on-surface-variant);
+  opacity: 0.7;
+  border: 0;
+  visibility: visible !important;
 }
 
 @media #{$medium-and-up} {

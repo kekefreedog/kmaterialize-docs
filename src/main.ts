@@ -41,6 +41,13 @@ import {
 // those actually work, matching what the CDN/IIFE build provides.
 (window as any).M = M;
 
+// Apply the saved/default theme as soon as the module runs. Waiting until
+// DOMContentLoaded leaves the navbar and page surface painted with the
+// library's default blue palette for a frame (or permanently if another
+// page-specific initializer throws).
+const themes = new Themes(document);
+themes.applyThemeProperties(themes.isDarkMode());
+
 function importCodeStyle(isDarkMode) {
   if (isDarkMode) import("highlight.js/styles/atom-one-dark.min.css");
   else import("highlight.js/styles/atom-one-light.min.css");
@@ -83,15 +90,49 @@ FormSelect.init(document.querySelectorAll("select:not(.browser-default):not(.tom
 // shared DOMContentLoaded demo registry prevents an unrelated page demo from
 // stopping this enhancement and leaving the native browser select visible.
 TomSelectField.init(document.querySelectorAll("select.tomselected"), {});
-// This demo is initialized immediately and independently so its tab panels
-// work even if another documentation example fails during DOM-ready setup.
-// Guard the page-specific element: passing null here aborts all subsequent
-// docs initialization, including application of the saved/default gold theme.
-const navbarDemoTabs = document.querySelector<HTMLElement>("#navbar-demo-tabs");
-if (navbarDemoTabs) Tabs.init(navbarDemoTabs, {});
+
+function initNavbarTabs() {
+  const tabsEl = document.querySelector<HTMLElement>("#navbar-demo-tabs");
+  if (!tabsEl || (tabsEl as any).M_Tabs) return;
+  try {
+    Tabs.init(tabsEl, {});
+  } catch (error) {
+    console.error("Failed to initialize Extended Navbar tabs", error);
+  }
+}
+
+// Keep horizontal-scroll edge fades honest: only show a fade when more
+// content exists in that direction.
+document.querySelectorAll<HTMLElement>(".navbar-scroll").forEach((navbar) => {
+  const row = navbar.querySelector<HTMLElement>(".nav-wrapper");
+  if (!row) return;
+  const leftFade = document.createElement("span");
+  const rightFade = document.createElement("span");
+  leftFade.className = "navbar-scroll-fade navbar-scroll-fade-left";
+  rightFade.className = "navbar-scroll-fade navbar-scroll-fade-right";
+  leftFade.setAttribute("aria-hidden", "true");
+  rightFade.setAttribute("aria-hidden", "true");
+  navbar.append(leftFade, rightFade);
+  const updateScrollEdges = () => {
+    const maxScroll = Math.max(0, row.scrollWidth - row.clientWidth);
+    const atStart = row.scrollLeft <= 1;
+    const atEnd = maxScroll <= 1 || row.scrollLeft >= maxScroll - 1;
+    navbar.classList.toggle("is-scroll-start", atStart);
+    navbar.classList.toggle("is-scroll-end", atEnd);
+    navbar.style.setProperty("--scroll-left-fade", atStart ? "0" : "1");
+    navbar.style.setProperty("--scroll-right-fade", atEnd ? "0" : "1");
+    leftFade.classList.toggle("is-hidden", atStart);
+    rightFade.classList.toggle("is-hidden", atEnd);
+  };
+  row.addEventListener("scroll", updateScrollEdges, { passive: true });
+  window.addEventListener("resize", updateScrollEdges);
+  updateScrollEdges();
+});
 
 document.addEventListener("DOMContentLoaded", () => {
-  const themes = new Themes(document);
+  // The extended navbar tabs must be wired before the remaining page
+  // components mutate or measure the surrounding navigation layout.
+  initNavbarTabs();
 
   // CSS > Colors
   document.querySelectorAll(".dynamic-color .col > div").forEach((el) => {
@@ -328,7 +369,9 @@ document.addEventListener("DOMContentLoaded", () => {
     accordion: false,
   });
 
-  Dropdown.init(document.querySelectorAll(".dropdown-trigger"), {});
+  Dropdown.init(document.querySelectorAll(".dropdown-trigger"), {
+    container: document.body,
+  });
   Dropdown.init(document.querySelector("#dropdown-demo-left"), {
     alignment: "left",
     constrainWidth: false,

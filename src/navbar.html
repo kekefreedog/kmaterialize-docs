@@ -15,12 +15,16 @@
                 There are 2 main parts of the navbar. A logo or brand link, and the
                 navigations links. You can align these links to the left or right.
               </p>
+              <p>
+                For crowded navigation, add <code class="language-html">navbar-scroll</code> to keep one row with horizontal overflow, or
+                <code class="language-html">navbar-wrap</code> to let links flow onto additional rows.
+              </p>
               <h3 class="header">Branded app bar with right actions</h3>
               <p>
                 Combine a logo, a visual separator, compact floating icon buttons, and a final call-to-action. The
                 <code class="language-html">ml-auto</code> class keeps the action group fixed to the right edge.
               </p>
-              <nav class="navbar appbar-bordered">
+              <nav class="navbar appbar-bordered navbar-rounded">
                 <div class="nav-wrapper">
                   <a href="#!" class="brand-logo" aria-label="Materialize home">
                     <img class="brand-logo-image" src="images/materialize.svg" alt="" />
@@ -46,7 +50,7 @@
                       </a>
                     </li>
                     <li class="hide-on-med-and-down">
-                      <a href="#!" class="btn filled rounded icon-right">
+                      <a href="#!" class="btn filled rounded icon-right appbar-create">
                         Create <i class="material-icons">add</i>
                       </a>
                     </li>
@@ -54,8 +58,48 @@
                 </div>
               </nav>
 
+              <h5>Many items: wrap or horizontal scroll</h5>
+              <p>
+                Choose <code class="language-html">navbar-wrap</code> when every link should remain visible, or
+                <code class="language-html">navbar-scroll</code> when the bar should stay compact.
+              </p>
+              <div class="row">
+                <div class="s12 m6">
+                  <p class="caption">Wrap</p>
+                  <nav class="navbar appbar-bordered navbar-wrap">
+                    <div class="nav-wrapper">
+                      <a href="#!" class="brand-logo"><span>Materialize</span></a>
+                      <ul>
+                        <li><a href="#!">Overview</a></li>
+                        <li><a href="#!">Components</a></li>
+                        <li><a href="#!">Patterns</a></li>
+                        <li><a href="#!">Guides</a></li>
+                        <li><a href="#!">Resources</a></li>
+                        <li><a href="#!">Community</a></li>
+                      </ul>
+                    </div>
+                  </nav>
+                </div>
+                <div class="s12 m6">
+                  <p class="caption">Horizontal scroll</p>
+                  <nav class="navbar appbar-bordered navbar-scroll">
+                    <div class="nav-wrapper">
+                      <a href="#!" class="brand-logo"><span>Materialize</span></a>
+                      <ul>
+                        <li><a href="#!">Overview</a></li>
+                        <li><a href="#!">Components</a></li>
+                        <li><a href="#!">Patterns</a></li>
+                        <li><a href="#!">Guides</a></li>
+                        <li><a href="#!">Resources</a></li>
+                        <li><a href="#!">Community</a></li>
+                      </ul>
+                    </div>
+                  </nav>
+                </div>
+              </div>
+
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav class="navbar appbar-bordered">
+<xmp><nav class="navbar appbar-bordered navbar-scroll">
   <div class="nav-wrapper">
     <a href="#" class="brand-logo" aria-label="Materialize home">
       <img class="brand-logo-image" src="images/materialize.svg" alt="">
@@ -68,7 +112,7 @@
       <li class="hide-on-small-only"><a class="btn-floating" aria-label="Notifications"><i class="material-icons">notifications</i></a></li>
       <li class="nav-separator hide-on-small-only" aria-hidden="true"></li>
       <li><a class="btn-floating" aria-label="Pinned items"><i class="material-icons">push_pin</i></a></li>
-      <li class="hide-on-med-and-down"><a class="btn filled rounded icon-right">Create <i class="material-icons">add</i></a></li>
+      <li class="hide-on-med-and-down"><a class="btn filled rounded icon-right appbar-create">Create <i class="material-icons">add</i></a></li>
     </ul>
   </div>
 </nav></xmp>
@@ -83,7 +127,7 @@
                 the left, put the <code class="language-html">ul</code> before the logo in the markup and add
                 <code class="language-html">ml-auto</code> to the logo.
               </p>
-              <nav class="navbar appbar-bordered">
+              <nav class="navbar appbar-bordered navbar-scroll">
                 <div class="nav-wrapper">
                   <ul class="hide-on-med-and-down">
                     <li>
@@ -156,9 +200,9 @@
               <p>Add active class to your li tags to denote the current page.</p>
 
               <nav class="navbar appbar-bordered">
-                <div class="nav-wrapper nav-wrapper-centered">
-                  <a href="#!" class="brand-logo center"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
-                  <ul class="left hide-on-med-and-down">
+                <div class="nav-wrapper">
+                  <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
+                  <ul class="ml-auto hide-on-med-and-down">
                     <li>
                       <a href="sass.html">Sass</a>
                     </li>
@@ -590,7 +634,7 @@
             <div id="mobile-collapse" class="section scrollspy">
               <h3 class="header">Mobile Collapse Button</h3>
 
-              <nav class="navbar appbar-bordered">
+              <nav class="navbar appbar-bordered navbar-scroll">
                 <div class="nav-wrapper">
                   <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
                   <a href="#" data-target="mobile-demo" class="sidenav-trigger">
@@ -639,7 +683,7 @@
                 below to get this functionality. Add the entire <code class="language-html">sidenav-trigger</code> line to your <code class="language-html">nav</code>.
               </p>
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav class="navbar appbar-bordered">
+<xmp><nav class="navbar appbar-bordered navbar-scroll">
   <div class="nav-wrapper">
     <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>

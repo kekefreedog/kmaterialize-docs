@@ -155,6 +155,10 @@ export default ({ command }) => ({
   // to watch the sibling repository. The package dependency remains in place
   // for peer resolution and production builds.
   resolve: {
+    // The local library contains legacy .mjs stubs beside the live TypeScript
+    // components. Prefer TypeScript during docs development so Tabs (and the
+    // other components) expose their complete init implementations.
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".mjs"],
     alias:
       command === "serve"
         ? [
