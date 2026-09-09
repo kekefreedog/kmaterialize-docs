@@ -99,6 +99,17 @@ function serveVersionSnapshotsPlugin() {
 function getMenuItem(item) {
   // Has kids?
   if (item.items) {
+    // Keep the section order from config.materialize.js, but make the pages
+    // inside each section easier to scan. Sorting a copy avoids mutating the
+    // shared navigation config used by search and page generation.
+    const sortedItems = [...item.items].sort((a, b) => {
+      const pageName = (menuItem) => {
+        const page = menuItem.id ? config.pages.find((candidate) => candidate.id === menuItem.id) : undefined;
+        return (page?.name || menuItem.name || "").trim();
+      };
+      return pageName(a).localeCompare(pageName(b), undefined, { sensitivity: "base" });
+    });
+
     // active kids?
     const kidsIds = item.items.map((el) => el.id);
     const kidsPages = config.pages.filter((page) => kidsIds.includes(page.id));
@@ -114,7 +125,7 @@ function getMenuItem(item) {
           </a>
           <div class="collapsible-body">
             <ul>
-              ${item.items.map((itm) => getMenuItem(itm)).join("")}
+              ${sortedItems.map((itm) => getMenuItem(itm)).join("")}
             </ul>
           </div>
         </li>
