@@ -6,6 +6,9 @@ name: Deploy
 on:
   release:
     types: [published]
+  push:
+    tags:
+      - 'v*'
   workflow_dispatch: {}
 
 jobs:
@@ -35,9 +38,9 @@ jobs:
         # Same idea as kmaterialize's publish.yml: the tag is the source of
         # truth, so package.json just follows it - no manual version bump
         # commit needed before tagging a release.
-        if: github.event_name == 'release'
+        if: github.event_name == 'release' || startsWith(github.ref, 'refs/tags/v')
         run: |
-          TARGET_VERSION="${{ github.event.release.tag_name }}"
+          TARGET_VERSION="${{ github.event.release.tag_name || github.ref_name }}"
           TARGET_VERSION="${TARGET_VERSION#v}"
           PKG_VERSION="$(node -p "require('./package.json').version")"
           if [ "$PKG_VERSION" != "$TARGET_VERSION" ]; then
