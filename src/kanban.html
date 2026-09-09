@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{> head }}
+  </head>
+  <body>
+    {{> navbar }}
+    <main>
+      {{> intro}}
+      <div class="container">
+        <div class="row">
+          <div class="col s12 m8 offset-m1 xl7 offset-xl1">
+            <div id="introduction" class="section scrollspy">
+              <p class="caption">Kanban is a responsive board for visualizing work across columns. Cards can be reordered or dragged between columns with native browser drag-and-drop.</p>
+
+              <div id="kanban-demo" class="kanban-board" aria-label="Project work board">
+                <section class="kanban-column">
+                  <header class="kanban-column-header"><h3 class="kanban-column-title">Backlog</h3><span class="kanban-column-count">2</span></header>
+                  <div class="kanban-column-body">
+                    <article class="kanban-card" data-kanban-card="research" draggable="true">
+                      <span class="kanban-card-label">Research</span>
+                      <h4 class="kanban-card-title">Review user feedback</h4>
+                      <p class="kanban-card-description">Group the latest notes into actionable themes.</p>
+                      <div class="kanban-card-meta"><span>Today</span><span>AM</span></div>
+                    </article>
+                    <article class="kanban-card" data-kanban-card="copy" draggable="true">
+                      <span class="kanban-card-label">Content</span>
+                      <h4 class="kanban-card-title">Write onboarding copy</h4>
+                      <p class="kanban-card-description">Prepare the first-run experience for review.</p>
+                      <div class="kanban-card-meta"><span>Tomorrow</span><span>JL</span></div>
+                    </article>
+                  </div>
+                </section>
+                <section class="kanban-column">
+                  <header class="kanban-column-header"><h3 class="kanban-column-title">In progress</h3><span class="kanban-column-count">1</span></header>
+                  <div class="kanban-column-body">
+                    <article class="kanban-card" data-kanban-card="alerts" draggable="true">
+                      <span class="kanban-card-label">UI</span>
+                      <h4 class="kanban-card-title">Build alert component</h4>
+                      <p class="kanban-card-description">Add variants and keyboard-friendly dismissal.</p>
+                      <div class="kanban-card-meta"><span>Today</span><span>KS</span></div>
+                    </article>
+                  </div>
+                </section>
+                <section class="kanban-column">
+                  <header class="kanban-column-header"><h3 class="kanban-column-title">Review</h3><span class="kanban-column-count">1</span></header>
+                  <div class="kanban-column-body">
+                    <article class="kanban-card" data-kanban-card="navbar" draggable="true">
+                      <span class="kanban-card-label">Docs</span>
+                      <h4 class="kanban-card-title">Review navbar examples</h4>
+                      <p class="kanban-card-description">Check mobile overflow and keyboard focus.</p>
+                      <div class="kanban-card-meta"><span>Friday</span><span>AM</span></div>
+                    </article>
+                  </div>
+                </section>
+                <section class="kanban-column">
+                  <header class="kanban-column-header"><h3 class="kanban-column-title">Done</h3><span class="kanban-column-count">0</span></header>
+                  <div class="kanban-column-body"><div class="kanban-empty">Drop completed work here</div></div>
+                </section>
+              </div>
+              <p id="kanban-status" class="caption" aria-live="polite">Drag a card to another column.</p>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><div class="kanban-board" aria-label="Project work board">
+  <section class="kanban-column">
+    <header class="kanban-column-header">
+      <h3 class="kanban-column-title">Backlog</h3>
+      <span class="kanban-column-count">1</span>
+    </header>
+    <div class="kanban-column-body">
+      <article class="kanban-card" data-kanban-card="task">
+        <h4 class="kanban-card-title">A task</h4>
+      </article>
+    </div>
+  </section>
+</div></xmp></code></pre>
+            </div>
+
+            <div id="options" class="section scrollspy">
+              <h3 class="header">Options</h3>
+              <table class="striped">
+                <thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr></thead>
+                <tbody>
+                  <tr><td>draggable</td><td>Boolean</td><td>true</td><td>Enable native drag-and-drop interactions.</td></tr>
+                  <tr><td>onMove</td><td>Function</td><td>undefined</td><td>Called after a card moves to another column.</td></tr>
+                </tbody>
+              </table>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText"><xmp>Kanban.init(document.querySelector('.kanban-board'), {
+  onMove: ({ card, from, to }) => {
+    console.log(`${card.dataset.kanbanCard}: ${from} → ${to}`);
+  }
+});</xmp></code></pre>
+            </div>
+          </div>
+          <div class="col hide-on-small-only m3 xl3">
+            <div class="toc-wrapper"><div style="height: 1px"><ul class="section table-of-contents">
+              <li><a href="#introduction">Introduction</a></li>
+              <li><a href="#options">Options</a></li>
+            </ul></div></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    {{> footer }}
+    <script type="module" src="/main.ts"></script>
+  </body>
+</html>

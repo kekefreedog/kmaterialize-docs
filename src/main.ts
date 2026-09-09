@@ -33,6 +33,7 @@ import {
   ColorInput,
   AirDatepickerField,
   Alert,
+  Kanban,
   FileInput,
   TomSelectField,
 } from "kmaterialize";
@@ -361,6 +362,13 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#restore-alert")?.addEventListener("click", () => {
     const alert = Alert.getInstance(document.querySelector("#dismissible-alert") as HTMLElement);
     alert?.open();
+  });
+  Kanban.init(document.querySelectorAll(".kanban-board"), {
+    onMove: ({ card, to }) => {
+      const status = document.querySelector<HTMLElement>("#kanban-status");
+      const columnName = to.querySelector<HTMLElement>(".kanban-column-title")?.textContent?.trim() || "the new column";
+      if (status) status.textContent = `${card.querySelector(".kanban-card-title")?.textContent || "Card"} moved to ${columnName}.`;
+    },
   });
 
   Carousel.init(document.querySelectorAll(".carousel"), {});
