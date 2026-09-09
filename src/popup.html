@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{> head }}
+  </head>
+  <body>
+    {{> navbar }}
+    <main>
+      {{> intro }}
+      <div class="container">
+        <div class="row">
+          <div class="s12 m8 offset-m1 xl7 offset-xl1">
+            <div id="introduction" class="section scrollspy">
+              <p class="caption">Popup brings messages, confirmations, and input prompts into your Materialize theme. It uses <a href="https://sweetalert2.github.io/" target="_blank" rel="noopener">SweetAlert2</a> for dialog behavior, keyboard navigation, and focus management.</p>
+              <button id="popup-basic" class="btn filled" type="button">Open a popup</button>
+              <p id="popup-demo-status" role="status" aria-live="polite">Try an example. All actions on this page are demonstrations.</p>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText"><xmp>await M.Popup.fire({
+  titleText: 'Welcome back',
+  text: 'Your workspace is ready. Pick up where you left off.'
+});</xmp></code></pre>
+            </div>
+
+            <div id="setup" class="section scrollspy">
+              <h3 class="header">Setup</h3>
+              <p>SweetAlert2 is an optional peer dependency. Install it alongside Kmaterialize when using Popup. The JavaScript loads on the first call to <code>Popup.fire()</code>; no element markup or <code>AutoInit()</code> call is required.</p>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-bash copiedText"><xmp>npm install kmaterialize sweetalert2</xmp></code></pre>
+              <p>Load SweetAlert2’s base stylesheet before Materialize so the popup uses your theme colors and button styles.</p>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText"><xmp>import 'sweetalert2/dist/sweetalert2.min.css';
+import 'kmaterialize/dist/css/materialize.min.css';
+import { Popup } from 'kmaterialize';
+
+await Popup.fire({ titleText: 'Hello', text: 'Ready when you are.' });</xmp></code></pre>
+              <h5>Without a bundler</h5>
+              <p>Copy the following distribution files into your assets folder. SweetAlert2’s script exposes <code>window.Swal</code>, which Popup can use directly.</p>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><link rel="stylesheet" href="assets/sweetalert2.min.css">
+<link rel="stylesheet" href="assets/materialize.min.css">
+<script src="assets/sweetalert2.min.js"></script>
+<script src="assets/materialize.min.js"></script>
+<button type="button" onclick="M.Popup.fire({ titleText: 'Hello' })">Open popup</button></xmp></code></pre>
+            </div>
+
+            <div id="messages" class="section scrollspy">
+              <h3 class="header">Messages</h3>
+              <p>Use an icon to communicate the type of message. The surface, text, and actions follow the active Materialize theme, including dark mode.</p>
+              <div class="row g-2">
+                <div class="s12 m6"><button id="popup-success" class="btn tonal" type="button">Success</button></div>
+                <div class="s12 m6"><button id="popup-error" class="btn tonal" type="button">Error</button></div>
+                <div class="s12 m6"><button id="popup-warning" class="btn tonal" type="button">Warning</button></div>
+                <div class="s12 m6"><button id="popup-info" class="btn tonal" type="button">Information</button></div>
+                <div class="s12 m6"><button id="popup-question" class="btn tonal" type="button">Question</button></div>
+              </div>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText"><xmp>await M.Popup.fire({
+  icon: 'success', // success, error, warning, info, or question
+  titleText: 'Changes saved',
+  text: 'Your project settings are up to date.'
+});</xmp></code></pre>
+            </div>
+
+            <div id="confirmation" class="section scrollspy">
+              <h3 class="header">Confirmation</h3>
+              <p>Await the result and check <code>isConfirmed</code> before performing the action. Cancelling, closing, pressing Escape, or clicking the backdrop dismisses the dialog.</p>
+              <button id="popup-confirm" class="btn filled" type="button">Archive project</button>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText"><xmp>const result = await M.Popup.fire({
+  icon: 'question',
+  titleText: 'Archive this project?',
+  text: 'You can restore it later from the archive.',
+  showCancelButton: true,
+  confirmButtonText: 'Archive project',
+  cancelButtonText: 'Keep project',
+  focusCancel: true
+});
+
+if (result.isConfirmed) {
+  // Archive the project here.
+}</xmp></code></pre>
+            </div>
+
+            <div id="inputs" class="section scrollspy">
+              <h3 class="header">Input prompts</h3>
+              <p>Collect a value using SweetAlert2’s input types. Give each field an <code>inputLabel</code> and return a message from <code>inputValidator</code> to keep the dialog open when validation fails.</p>
+              <button id="popup-input" class="btn filled" type="button">Text prompt</button>
+              <button id="popup-select" class="btn outlined" type="button">Select prompt</button>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText"><xmp>const result = await M.Popup.fire({
+  titleText: 'Name your workspace',
+  input: 'text',
+  inputLabel: 'Workspace name',
+  inputPlaceholder: 'Animation studio',
+  showCancelButton: true,
+  confirmButtonText: 'Create workspace',
+  inputValidator: (value) => value.trim() ? undefined : 'Enter a workspace name.'
+});
+
+if (result.isConfirmed) {
+  console.log(result.value);
+}</xmp></code></pre>
+              <p>The input-width adjustment is adapted from Rodeo FX’s SweetAlert2 enhancement, keeping fields inside the popup’s margins on small screens.</p>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText"><xmp>await M.Popup.fire({
+  titleText: 'Choose a department',
+  input: 'select',
+  inputLabel: 'Department',
+  inputPlaceholder: 'Select a department',
+  inputOptions: {
+    animation: 'Animation',
+    lighting: 'Lighting',
+    compositing: 'Compositing'
+  },
+  showCancelButton: true,
+  inputValidator: (value) => value ? undefined : 'Choose a department.'
+});</xmp></code></pre>
+            </div>
+
+            <div id="async" class="section scrollspy">
+              <h3 class="header">Asynchronous actions</h3>
+              <p>Return a promise from <code>preConfirm</code> and enable <code>showLoaderOnConfirm</code> to show progress while it completes. This example simulates two seconds of work.</p>
+              <button id="popup-async" class="btn filled" type="button">Prepare preview</button>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText"><xmp>const result = await M.Popup.fire({
+  titleText: 'Prepare a preview?',
+  text: 'This demo simulates a two-second operation.',
+  showCancelButton: true,
+  confirmButtonText: 'Prepare preview',
+  showLoaderOnConfirm: true,
+  allowOutsideClick: false,
+  allowEscapeKey: false,
+  preConfirm: () => new Promise((resolve) => {
+    setTimeout(() => resolve('Preview ready'), 2000);
+  })
+});
+
+if (result.isConfirmed) console.log(result.value);</xmp></code></pre>
+            </div>
+
+            <div id="toast" class="section scrollspy">
+              <h3 class="header">Toast mode</h3>
+              <p>SweetAlert2’s toast mode provides a compact notification that closes automatically.</p>
+              <button id="popup-toast" class="btn tonal" type="button">Show toast</button>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText"><xmp>await M.Popup.fire({
+  toast: true,
+  position: 'top-end',
+  icon: 'success',
+  titleText: 'Draft saved',
+  showConfirmButton: false,
+  timer: 2500,
+  timerProgressBar: true
+});</xmp></code></pre>
+            </div>
+
+            <div id="dragging" class="section scrollspy">
+              <h3 class="header">Draggable popup</h3>
+              <p>Set <code>draggable: true</code> to add a line handle at the top. Drag it with a mouse or touch, or focus it and use the arrow keys. Hold Shift for larger steps and press Home to reset the position.</p>
+              <button id="popup-draggable" class="btn filled" type="button">Open draggable popup</button>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText"><xmp>await M.Popup.fire({
+  titleText: 'Move this popup',
+  text: 'Drag the line at the top to reposition this dialog.',
+  draggable: true,
+  dragHandleLabel: 'Move popup',
+  showCloseButton: true,
+  confirmButtonText: 'Done'
+});</xmp></code></pre>
+              <p>Dragging is restricted to the handle, keeping text and form fields usable. The popup stays within the viewport, and each new popup starts at its normal position. Toasts do not show a drag handle.</p>
+            </div>
+
+            <div id="options" class="section scrollspy">
+              <h3 class="header">Options and methods</h3>
+              <p><code>Popup.fire(options)</code> accepts <a href="https://sweetalert2.github.io/#configuration" target="_blank" rel="noopener">SweetAlert2 options</a> and resolves with its result object. Use <code>titleText</code> and <code>text</code> for plain text; <code>title</code> and <code>html</code> interpret HTML.</p>
+              <table class="striped responsive-table">
+                <thead><tr><th>Materialize default</th><th>Value</th><th>Purpose</th></tr></thead>
+                <tbody>
+                  <tr><td><code>buttonsStyling</code></td><td>false</td><td>Use Materialize button classes.</td></tr>
+                  <tr><td><code>heightAuto</code></td><td>false</td><td>Preserve the page’s existing height.</td></tr>
+                  <tr><td><code>draggable</code></td><td>false</td><td>Show a handle for moving the dialog.</td></tr>
+                  <tr><td><code>dragHandleLabel</code></td><td>Move popup</td><td>Accessible label for the drag handle.</td></tr>
+                  <tr><td><code>customClass.confirmButton</code></td><td>btn filled</td><td>Primary action.</td></tr>
+                  <tr><td><code>customClass.cancelButton</code></td><td>btn outlined</td><td>Cancel action.</td></tr>
+                  <tr><td><code>customClass.denyButton</code></td><td>btn tonal</td><td>Alternative action, shown with showDenyButton.</td></tr>
+                </tbody>
+              </table>
+              <p>Supply <code>customClass</code> to customize individual elements. Button class overrides replace the default for that button; your popup and container classes are added alongside the required theme classes.</p>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText"><xmp>await M.Popup.fire({
+  titleText: 'A softer action',
+  customClass: { confirmButton: 'btn tonal rounded' }
+});
+
+// Close the current dialog programmatically:
+await M.Popup.close();</xmp></code></pre>
+              <table class="striped responsive-table">
+                <thead><tr><th>Result field</th><th>Description</th></tr></thead>
+                <tbody>
+                  <tr><td><code>isConfirmed</code></td><td>The confirm action was accepted.</td></tr>
+                  <tr><td><code>isDenied</code></td><td>The deny action was selected.</td></tr>
+                  <tr><td><code>isDismissed</code></td><td>The dialog was dismissed.</td></tr>
+                  <tr><td><code>value</code></td><td>Input value or the value returned by preConfirm.</td></tr>
+                  <tr><td><code>dismiss</code></td><td>Dismissal reason, such as cancel, esc, backdrop, close, or timer.</td></tr>
+                </tbody>
+              </table>
+              <p>TypeScript consumers can import <code>PopupOptions</code> and <code>PopupResult</code> and call <code>Popup.fire&lt;string&gt;(options)</code> for a typed input result.</p>
+              <p>Popups use a 16px corner radius and a 120ms opening animation. Override <code>--swal2-border-radius</code> and <code>--swal2-show-animation</code> on <code>.swal2-popup.popup</code> to customize them.</p>
+              <p>SweetAlert2 manages one current dialog, so opening another replaces it. Await the first result when sequencing dialogs. Reduced-motion preferences disable popup animations, and closing a dialog returns focus to its trigger.</p>
+            </div>
+          </div>
+          <div class="hide-on-small-only m3 xl3">
+            <div class="toc-wrapper">
+              <div style="height: 1px">
+                <ul class="section table-of-contents">
+                  <li><a href="#introduction">Introduction</a></li>
+                  <li><a href="#setup">Setup</a></li>
+                  <li><a href="#messages">Messages</a></li>
+                  <li><a href="#confirmation">Confirmation</a></li>
+                  <li><a href="#inputs">Input prompts</a></li>
+                  <li><a href="#async">Asynchronous actions</a></li>
+                  <li><a href="#toast">Toast mode</a></li>
+                  <li><a href="#dragging">Draggable popup</a></li>
+                  <li><a href="#options">Options and methods</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    {{> footer }}
+    <script type="module" src="/main.ts"></script>
+    <script type="module" src="/popup-demo.ts"></script>
+  </body>
+</html>

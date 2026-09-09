@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{> head }}
+  </head>
+  <body>
+    {{> navbar }}
+    <main>
+      {{> intro }}
+      <div class="container">
+        <div class="row">
+          <div class="s12 m8 offset-m1 xl7 offset-xl1">
+            <div id="introduction" class="section scrollspy">
+              <p class="caption">Keep your logo visible while content loads. Inspired by Rodeo FX’s LoadingScreenBtn, Loading uses the same expanding and contracting spinner animation as Preloader, around a stationary image or icon.</p>
+              <div class="center">
+                <div class="loading loading-large active" role="status" aria-label="Loading workspace" aria-busy="true">
+                  <div class="preloader-wrapper active" aria-hidden="true">
+                    <div class="spinner-layer">
+                      <div class="circle-clipper left"><div class="circle"></div></div>
+                      <div class="gap-patch"><div class="circle"></div></div>
+                      <div class="circle-clipper right"><div class="circle"></div></div>
+                    </div>
+                  </div>
+                  <span class="loading-content"><img src="images/materialize.svg" alt=""></span>
+                </div>
+                <p>Loading your workspace…</p>
+              </div>
+              <h3 class="header">Basic usage</h3>
+              <p>The indicator works with CSS alone using the standard Preloader markup below. Toggle <code>active</code> on the outer <code>loading</code> element to show or hide the spinner; keep <code>active</code> on the inner <code>preloader-wrapper</code>. Place your image inside <code>loading-content</code>, or leave the content out for a plain spinner.</p>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><div class="loading active" role="status" aria-label="Loading workspace" aria-busy="true">
+  <div class="preloader-wrapper active" aria-hidden="true">
+    <div class="spinner-layer">
+      <div class="circle-clipper left"><div class="circle"></div></div>
+      <div class="gap-patch"><div class="circle"></div></div>
+      <div class="circle-clipper right"><div class="circle"></div></div>
+    </div>
+  </div>
+  <span class="loading-content">
+    <img src="images/materialize.svg" alt="">
+  </span>
+</div></xmp></code></pre>
+            </div>
+
+            <div id="sizes" class="section scrollspy">
+              <h3 class="header">Sizes and content</h3>
+              <p>Use <code>loading-small</code> (4rem), the default (7rem), or <code>loading-large</code> (10rem). Images fit inside the ring without being stretched.</p>
+              <div class="row center">
+                <div class="s12 m4">
+                  <div class="loading loading-small active" role="status" aria-label="Loading" aria-busy="true">
+                    <div class="preloader-wrapper active" aria-hidden="true">
+                      <div class="spinner-layer">
+                        <div class="circle-clipper left"><div class="circle"></div></div>
+                        <div class="gap-patch"><div class="circle"></div></div>
+                        <div class="circle-clipper right"><div class="circle"></div></div>
+                      </div>
+                    </div>
+                  </div>
+                  <p>Small · spinner</p>
+                </div>
+                <div class="s12 m4">
+                  <div class="loading active" role="status" aria-label="Syncing files" aria-busy="true">
+                    <div class="preloader-wrapper active" aria-hidden="true">
+                      <div class="spinner-layer">
+                        <div class="circle-clipper left"><div class="circle"></div></div>
+                        <div class="gap-patch"><div class="circle"></div></div>
+                        <div class="circle-clipper right"><div class="circle"></div></div>
+                      </div>
+                    </div>
+                    <span class="loading-content"><i class="material-icons" aria-hidden="true">cloud_sync</i></span>
+                  </div>
+                  <p>Default · icon</p>
+                </div>
+                <div class="s12 m4">
+                  <div class="loading loading-large active" role="status" aria-label="Loading assets" aria-busy="true">
+                    <div class="preloader-wrapper active" aria-hidden="true">
+                      <div class="spinner-layer">
+                        <div class="circle-clipper left"><div class="circle"></div></div>
+                        <div class="gap-patch"><div class="circle"></div></div>
+                        <div class="circle-clipper right"><div class="circle"></div></div>
+                      </div>
+                    </div>
+                    <span class="loading-content"><img src="images/materialize.svg" alt=""></span>
+                  </div>
+                  <p>Large · logo</p>
+                </div>
+              </div>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><div class="loading loading-small active" role="status" aria-label="Loading" aria-busy="true">
+  <div class="preloader-wrapper active" aria-hidden="true">
+    <div class="spinner-layer">
+      <div class="circle-clipper left"><div class="circle"></div></div>
+      <div class="gap-patch"><div class="circle"></div></div>
+      <div class="circle-clipper right"><div class="circle"></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="loading active" role="status" aria-label="Syncing files" aria-busy="true">
+  <div class="preloader-wrapper active" aria-hidden="true">
+    <div class="spinner-layer">
+      <div class="circle-clipper left"><div class="circle"></div></div>
+      <div class="gap-patch"><div class="circle"></div></div>
+      <div class="circle-clipper right"><div class="circle"></div></div>
+    </div>
+  </div>
+  <span class="loading-content">
+    <i class="material-icons" aria-hidden="true">cloud_sync</i>
+  </span>
+</div></xmp></code></pre>
+            </div>
+
+            <div id="customization" class="section scrollspy">
+              <h3 class="header">Customization</h3>
+              <p>Colors follow the current theme, including dark mode. Override these CSS properties on an individual indicator to match your brand.</p>
+              <div class="center">
+                <div class="loading active" role="status" aria-label="Preparing your project" aria-busy="true" style="--loading-size: 9rem; --loading-color: var(--md-sys-color-tertiary); --loading-background: var(--md-sys-color-tertiary-container); --loading-thickness: 5px;">
+                  <div class="preloader-wrapper active" aria-hidden="true">
+                    <div class="spinner-layer">
+                      <div class="circle-clipper left"><div class="circle"></div></div>
+                      <div class="gap-patch"><div class="circle"></div></div>
+                      <div class="circle-clipper right"><div class="circle"></div></div>
+                    </div>
+                  </div>
+                  <span class="loading-content"><i class="material-icons" aria-hidden="true">auto_awesome</i></span>
+                </div>
+              </div>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-css copiedText"><xmp>.loading {
+  --loading-size: 9rem;
+  --loading-color: var(--md-sys-color-tertiary);
+  --loading-background: var(--md-sys-color-tertiary-container);
+  --loading-thickness: 5px;
+}</xmp></code></pre>
+              <table class="striped responsive-table">
+                <thead><tr><th>Property</th><th>Default</th><th>Purpose</th></tr></thead>
+                <tbody>
+                  <tr><td><code>--loading-size</code></td><td>7rem</td><td>Width and height of the indicator.</td></tr>
+                  <tr><td><code>--loading-color</code></td><td>Theme primary</td><td>Ring and icon color.</td></tr>
+                  <tr><td><code>--loading-background</code></td><td>Theme surface container</td><td>Circular background.</td></tr>
+                  <tr><td><code>--loading-thickness</code></td><td>3px</td><td>Ring stroke width.</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div id="javascript" class="section scrollspy">
+              <h3 class="header">JavaScript controls</h3>
+              <p>Initialize <code>Loading</code> to keep the animation and accessible status in sync. The JavaScript API adds the Preloader markup automatically when it is missing. Stopping hides the ring and keeps your logo visible.</p>
+              <div class="center">
+                <div id="loading-demo" class="loading no-autoinit">
+                  <span class="loading-content"><img src="images/materialize.svg" alt=""></span>
+                </div>
+                <p id="loading-demo-status" role="status">Ready to load.</p>
+                <button id="loading-demo-start" class="btn filled" type="button">Start loading</button>
+                <button id="loading-demo-stop" class="btn outlined" type="button" disabled>Finish loading</button>
+              </div>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText"><xmp>const loading = M.Loading.init(document.querySelector('#loading-demo'), {
+  active: false,
+  label: 'Loading workspace…',
+  completeLabel: 'Workspace ready'
+});
+
+loading.start();
+// When your operation finishes:
+loading.stop();
+
+// Override the status for a specific operation:
+loading.start('Refreshing assets…');
+loading.stop('Assets ready');</xmp></code></pre>
+              <p>For ES modules, use <code>import { Loading } from 'kmaterialize'</code>. <code>M.AutoInit()</code> initializes <code>.loading</code> elements automatically; add <code>no-autoinit</code> when initializing manually.</p>
+              <h5>Options</h5>
+              <table class="striped responsive-table">
+                <thead><tr><th>Option</th><th>Default</th><th>Description</th></tr></thead>
+                <tbody>
+                  <tr><td><code>active</code></td><td>true</td><td>Start animating on initialization.</td></tr>
+                  <tr><td><code>label</code></td><td>Loading…</td><td>Accessible loading status. Uses the element’s existing aria-label when this option is omitted.</td></tr>
+                  <tr><td><code>completeLabel</code></td><td>Ready</td><td>Accessible status after stopping.</td></tr>
+                </tbody>
+              </table>
+              <h5>Methods and properties</h5>
+              <table class="striped responsive-table">
+                <thead><tr><th>API</th><th>Description</th></tr></thead>
+                <tbody>
+                  <tr><td><code>start(label?)</code></td><td>Animate the ring and set aria-busy to true.</td></tr>
+                  <tr><td><code>stop(label?)</code></td><td>Hide the ring and set aria-busy to false.</td></tr>
+                  <tr><td><code>isActive</code></td><td>Read whether the indicator is active.</td></tr>
+                  <tr><td><code>Loading.getInstance(element)</code></td><td>Retrieve an initialized instance.</td></tr>
+                  <tr><td><code>destroy()</code></td><td>Remove the instance and restore the original classes and accessibility attributes.</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div id="accessibility" class="section scrollspy">
+              <h3 class="header">Accessibility</h3>
+              <p>Give the indicator a meaningful status using <code>aria-label</code>. Keep decorative images empty with <code>alt=""</code>, and hide decorative icons from assistive technology with <code>aria-hidden="true"</code>.</p>
+              <p>For CSS-only usage, update <code>aria-busy</code> and the status label when toggling <code>active</code>. The JavaScript API handles these attributes for you. If a separate region is being updated, manage that region’s <code>aria-busy</code> as part of your operation too.</p>
+              <p>When the user requests reduced motion, the ring stays visible without rotating. Loading is a status indicator; use a separate button for actions.</p>
+              <p>For linear progress bars and traditional circular spinners, see <a href="preloader.html">Preloader</a>.</p>
+            </div>
+          </div>
+          <div class="hide-on-small-only m3 xl3">
+            <div class="toc-wrapper">
+              <div style="height: 1px">
+                <ul class="section table-of-contents">
+                  <li><a href="#introduction">Basic usage</a></li>
+                  <li><a href="#sizes">Sizes and content</a></li>
+                  <li><a href="#customization">Customization</a></li>
+                  <li><a href="#javascript">JavaScript controls</a></li>
+                  <li><a href="#accessibility">Accessibility</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    {{> footer }}
+    <script type="module" src="/main.ts"></script>
+    <script type="module" src="/loading-demo.ts"></script>
+  </body>
+</html>

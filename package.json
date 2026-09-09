@@ -22,6 +22,7 @@
     "imask": "^7.6.0",
     "kmaterialize": "latest",
     "material-icons": "^1.13.14",
+    "sweetalert2": "^11.26.25",
     "tom-select": "^2.3.0",
     "vite-plugin-handlebars": "^1.6.0"
   },
