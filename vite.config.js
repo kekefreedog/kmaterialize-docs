@@ -141,6 +141,16 @@ function getMenuItem(item) {
 
 export default ({ command }) => ({
   root: "./src",
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // Vite 4 still invokes Sass through its legacy JS API. Keep the
+        // output clean until the Vite major upgrade that switches to the
+        // modern compiler API.
+        silenceDeprecations: ["legacy-js-api", "import"],
+      },
+    },
+  },
   // In dev, consume the library's TypeScript source directly and allow Vite
   // to watch the sibling repository. The package dependency remains in place
   // for peer resolution and production builds.
