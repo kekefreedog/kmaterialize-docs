@@ -22,6 +22,9 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: '22' # Node 20 is being deprecated by GitHub Actions
+          # setup-node tries to run pnpm before pnpm/action-setup has put it
+          # on PATH. Disable its automatic cache and install pnpm explicitly.
+          package-manager-cache: false
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
