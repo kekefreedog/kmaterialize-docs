@@ -23,8 +23,11 @@ jobs:
         with:
           node-version: '22' # Node 20 is being deprecated by GitHub Actions
 
-      - name: Enable corepack (pnpm)
-        run: corepack enable
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.12.2
+          run_install: false
 
       - name: "Refuse to deploy a local file: dependency"
         # v1.4.0 was tagged/pushed with kmaterialize still pinned to
