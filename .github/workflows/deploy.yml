@@ -23,7 +23,7 @@ jobs:
       - name: Enable corepack (pnpm)
         run: corepack enable
 
-      - name: Refuse to deploy a local file: dependency
+      - name: "Refuse to deploy a local file: dependency"
         # v1.4.0 was tagged/pushed with kmaterialize still pinned to
         # file:/Users/.../kmaterialize (a path that only exists on a dev
         # machine) - CI failed with a cryptic pnpm ENOENT instead of a
