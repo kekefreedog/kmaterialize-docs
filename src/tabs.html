@@ -279,6 +279,70 @@
         </code></pre>
             </div>
 
+
+            <section id="fill-container" class="section scrollspy">
+              <h3 class="header">Fill a container</h3>
+              <p>Let the tabs fill the width and height of a parent div. The selected panel fills the remaining space and scrolls independently, keeping the navigation visible.</p>
+              <label for="tabs-nav-position">Navigation position</label>
+              <select id="tabs-nav-position" class="browser-default">
+                <option value="top">Top</option>
+                <option value="bottom">Bottom</option>
+              </select>
+              <div class="tabs-fill-demo-parent">
+                <div id="tabs-fill-demo" class="tabs-fill" data-tab-position="top">
+                  <ul class="tabs tabs-fixed-width" aria-label="Workspace views">
+                    <li class="tab"><a class="active" href="#fill-overview">Overview</a></li>
+                    <li class="tab"><a href="#fill-team">Team</a></li>
+                    <li class="tab"><a href="#fill-notes">Notes</a></li>
+                  </ul>
+                  <div id="fill-overview" class="tabs-fill-panel" tabindex="0">
+                    <h5>Your workspace</h5>
+                    <p>This panel fills the available space inside a 400px-high div. Change the navigation position above to move the tabs to the bottom.</p>
+                  </div>
+                  <div id="fill-team" class="tabs-fill-panel" tabindex="0">
+                    <h5>People &amp; teams</h5>
+                    <p>Design, engineering, and production share this space.</p>
+                    <ul class="collection"><li class="collection-item">Alex Morgan — Creative director</li><li class="collection-item">Sam Rivera — Producer</li><li class="collection-item">Jules Chen — Design lead</li><li class="collection-item">Maya Patel — Product designer</li><li class="collection-item">Noah Kim — Engineering lead</li><li class="collection-item">Léa Martin — Frontend developer</li><li class="collection-item">Robin Park — Quality assurance</li><li class="collection-item">Avery Lee — Technical artist</li></ul>
+                    <p>Long content scrolls inside this panel while the navigation stays in place.</p>
+                  </div>
+                  <div id="fill-notes" class="tabs-fill-panel" tabindex="0">
+                    <h5>Room for your content</h5><p>Use this layout for a dashboard, an editor, or a card with several views.</p>
+                  </div>
+                </div>
+              </div>
+              <p>The <code>tabs-fill</code> styles below are supplied by this docs example. Give the parent a definite height (or an allocated flex height). For bottom navigation, place the list after the panels and set <code>data-tab-position="bottom"</code>.</p>
+              <pre><code class="language-html">&lt;div style="height: 400px"&gt;
+  &lt;div class="tabs-fill" data-tab-position="top"&gt;
+    &lt;ul class="tabs tabs-fixed-width"&gt;
+      &lt;li class="tab"&gt;&lt;a href="#first-view"&gt;First&lt;/a&gt;&lt;/li&gt;
+      &lt;li class="tab"&gt;&lt;a href="#second-view"&gt;Second&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div id="first-view" class="tabs-fill-panel"&gt;First view&lt;/div&gt;
+    &lt;div id="second-view" class="tabs-fill-panel"&gt;Second view&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              <pre><code class="language-css">.tabs-fill {
+  display: flex; flex-direction: column;
+  width: 100%; height: 100%; min-height: 0; overflow: hidden;
+}
+.tabs-fill &gt; .tabs { flex: 0 0 auto; margin: 0; width: 100%; }
+.tabs-fill &gt; .tabs-fill-panel {
+  flex: 1 1 0; min-height: 0; overflow: auto; padding: 24px;
+}
+.tabs-fill[data-tab-position="bottom"] &gt; .tabs .indicator {
+  top: 0; bottom: auto;
+}</code></pre>
+              <pre><code class="language-javascript">const layout = document.querySelector('.tabs-fill');
+const navigation = layout.querySelector('.tabs');
+Tabs.init(navigation);
+function setTabPosition(position) {
+  layout.dataset.tabPosition = position;
+  if (position === 'bottom') layout.append(navigation);
+  else layout.prepend(navigation);
+}
+setTabPosition('bottom'); // Or 'top'.</code></pre>
+            </section>
+
             <div id="icon-tabs" class="scrollspy section">
               <h3 class="header">Icons</h3>
               <p>
@@ -349,6 +413,7 @@
                   <li><a href="#external">External Links</a></li>
                   <li><a href="#swipeable">Swipeable Tabs</a></li>
                   <li><a href="#fixed-width">Fixed Width Tabs</a></li>
+                  <li><a href="#fill-container">Fill a Container</a></li>
                 </ul>
               </div>
             </div>
@@ -358,5 +423,6 @@
     </main>
     {{> footer }}
     <script type="module" src="/main.ts"></script>
+    <script type="module" src="/tabs-demo.ts"></script>
   </body>
 </html>

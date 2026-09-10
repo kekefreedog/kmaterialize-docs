@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Documentation drawer example</title></head>
+  <body class="drawer-example">
+    <ul id="docs-example-menu" class="sidenav" aria-label="Documentation">
+      <li class="drawer-example-brand"><a href="index.html" target="_top"><img src="images/materialize.svg" alt="">Kmaterialize</a></li>
+      <li class="drawer-example-search"><div class="search-wrapper"><input id="docs-example-search" class="search-docs" type="search" placeholder="Search" aria-label="Search documentation" autocomplete="off"><i class="material-icons" aria-hidden="true">search</i></div></li>
+      <li><a href="about.html" target="_top"><i class="material-icons" aria-hidden="true">info</i>About</a></li>
+      <li><a href="getting-started.html" target="_top"><i class="material-icons" aria-hidden="true">apps</i>Getting started</a></li>
+      <li><ul class="collapsible collapsible-accordion">
+        <li><button type="button" class="collapsible-header"><i class="material-icons" aria-hidden="true">palette</i>Styles</button><div class="collapsible-body"><ul>
+          <li><a href="color.html" target="_top">Color</a></li><li><a href="grid.html" target="_top">Grid</a></li><li><a href="themes.html" target="_top">Themes</a></li><li><a href="typography.html" target="_top">Typography</a></li>
+        </ul></div></li>
+        <li class="active"><button type="button" class="collapsible-header"><i class="material-icons" aria-hidden="true">add_circle</i>Components</button><div class="collapsible-body"><ul>
+          <li><a href="cards.html" target="_top">Cards</a></li><li><a href="kanban.html" target="_top">Kanban</a></li><li><a href="navbar.html" target="_top">Navbar</a></li><li><a href="org-chart.html" target="_top">Org Chart</a></li><li class="active"><a href="sidenav.html" target="_top" aria-current="page">Sidenav</a></li><li><a href="tabs.html" target="_top">Tabs</a></li>
+        </ul></div></li>
+        <li><button type="button" class="collapsible-header"><i class="material-icons" aria-hidden="true">text_fields</i>Forms</button><div class="collapsible-body"><ul>
+          <li><a href="autocomplete.html" target="_top">Autocomplete</a></li><li><a href="checkboxes.html" target="_top">Checkboxes</a></li><li><a href="select.html" target="_top">Select</a></li>
+        </ul></div></li>
+      </ul></li>
+      <li><a href="mobile.html" target="_top"><i class="material-icons" aria-hidden="true">mobile_friendly</i>Mobile</a></li>
+    </ul>
+    <div class="drawer-example-page">
+      <nav class="navbar"><div class="nav-wrapper primary">
+        <button type="button" id="docs-example-toggle" class="btn text" aria-controls="docs-example-menu" aria-expanded="false" aria-label="Open navigation"><i class="material-icons" aria-hidden="true">menu</i></button>
+        <span>Documentation</span>
+      </div></nav>
+      <main class="drawer-example-content"><span class="chip">Variant 2</span><h1>A familiar place<br>to find your way.</h1><p>The docs drawer brings search, expandable sections, and the current page together.</p><p>Search any documentation page, or expand Styles and Forms. The links open the corresponding documentation pages.</p><p class="drawer-example-note" role="status" id="docs-example-status">The drawer stays open on wider screens.</p></main>
+    </div>
+    <script type="module" src="/sidenav-docs-demo.ts"></script>
+  </body>
+</html>

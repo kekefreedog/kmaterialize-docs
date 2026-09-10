@@ -77,6 +77,63 @@
         </code></pre>
             </div>
 
+<div id="horizontal" class="section scrollspy">
+  <h3 class="header">Horizontal</h3>
+  <p>Place radio options side by side with <code>radio-group-horizontal</code>. They wrap onto another line when space is limited. Tab enters the group and arrow keys change the selection, skipping disabled options.</p>
+<!-- The shared name keeps this group independent from the other examples. -->
+<div class="radio-group-horizontal" role="radiogroup" aria-label="Delivery priority">
+  <label>
+    <input type="radio" name="horizontal-priority" value="low" checked>
+    <span>Low</span>
+  </label>
+  <label>
+    <input type="radio" name="horizontal-priority" value="normal">
+    <span>Normal</span>
+  </label>
+  <label>
+    <input type="radio" name="horizontal-priority" value="high">
+    <span>High</span>
+  </label>
+  <label>
+    <input type="radio" name="horizontal-priority" value="urgent" disabled>
+    <span>Urgent (unavailable)</span>
+  </label>
+</div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- The shared name keeps this group independent from the other examples. --&gt;
+&lt;div class=&quot;radio-group-horizontal&quot; role=&quot;radiogroup&quot; aria-label=&quot;Delivery priority&quot;&gt;
+  &lt;label&gt;
+    &lt;input type=&quot;radio&quot; name=&quot;horizontal-priority&quot; value=&quot;low&quot; checked&gt;
+    &lt;span&gt;Low&lt;/span&gt;
+  &lt;/label&gt;
+  &lt;label&gt;
+    &lt;input type=&quot;radio&quot; name=&quot;horizontal-priority&quot; value=&quot;normal&quot;&gt;
+    &lt;span&gt;Normal&lt;/span&gt;
+  &lt;/label&gt;
+  &lt;label&gt;
+    &lt;input type=&quot;radio&quot; name=&quot;horizontal-priority&quot; value=&quot;high&quot;&gt;
+    &lt;span&gt;High&lt;/span&gt;
+  &lt;/label&gt;
+  &lt;label&gt;
+    &lt;input type=&quot;radio&quot; name=&quot;horizontal-priority&quot; value=&quot;urgent&quot; disabled&gt;
+    &lt;span&gt;Urgent (unavailable)&lt;/span&gt;
+  &lt;/label&gt;
+&lt;/div&gt;</code></pre><p>Add this CSS after Materialize. No JavaScript initialization is required.</p><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">// Arrange standard Materialize radio labels horizontally, wrapping on small screens.
+.radio-group-horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  margin: 16px 0;
+  padding: 16px;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: 16px;
+  &gt; label { position: relative; padding-block: 8px; }
+  &gt; label &gt; input:focus-visible + span {
+    outline: 2px solid var(--md-sys-color-primary);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+}
+</code></pre></div>
             <div id="gap" class="section scrollspy">
               <h3 class="header">With Gap</h3>
               <p>
@@ -106,6 +163,7 @@
                 <ul class="section table-of-contents">
                   <li><a href="#radio">Radio Buttons</a></li>
                   <li><a href="#gap">With Gap</a></li>
+                  <li><a href="#horizontal">Horizontal</a></li>
                 </ul>
               </div>
             </div>
@@ -115,5 +173,6 @@
     </main>
     {{> footer }}
     <script type="module" src="/main.ts"></script>
+    <script type="module" src="/radio-buttons-demo.ts"></script>
   </body>
 </html>

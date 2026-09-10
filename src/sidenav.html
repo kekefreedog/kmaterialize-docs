@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head> {{> head }} </head>
+  <head> {{> head }}
+    <style>
+      .sidenav-example-frame { display: block; width: 100%; height: 580px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 20px; }
+      .sidenav-example-frame-rail { height: 780px; }
+      .sidenav-example-code { margin: 16px 0; }
+      .sidenav-example-code > summary { cursor: pointer; padding: 12px 0; color: var(--md-sys-color-primary); }
+    </style>
+  </head>
   <body>
     {{> navbar }}
     <main>
@@ -11,6 +18,7 @@
     <div class="col s12 m8 offset-m1 xl7 offset-xl1">
 
       <div id="structure" class="section scrollspy">
+        <h3 class="header">1. Slide-out drawer</h3>
         <p class="caption">
           This is a slide out menu. You can add a dropdown to your sidebar by using our collapsible component. If you want to see a
           demo, our sidebar will use this on smaller screens. To use this in conjunction with a fullscreen navigation, you
@@ -57,43 +65,710 @@
           </li>
         </ul>
 
-        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav> <!-- navbar content here  --> </nav>
-<ul id="slide-out" class="sidenav">
-  <li><div class="user-view">
-    <div class="background">
-      <img src="images/office.jpg">
-    </div>
-    <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
-    <a href="#name"><span class="white-text name">John Doe</span></a>
-    <a href="#email"><span class="white-text email">jdoe@example.com</span></a>
-  </div></li>
-  <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-  <li><a href="#!">Second Link</a></li>
-  <li><div class="divider"></div></li>
-  <li><a class="subheader">Subheader</a></li>
-  <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-</ul>
-<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a></xmp>
-        </code></pre>
+        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;nav&gt;&lt;!-- navbar content here  --&gt;&lt;/nav&gt;
+&lt;ul id=&quot;slide-out&quot; class=&quot;sidenav&quot;&gt;
+  &lt;li&gt;
+    &lt;div class=&quot;user-view&quot;&gt;
+      &lt;div class=&quot;background&quot;&gt;
+        &lt;img src=&quot;images/office.jpg&quot; /&gt;
+      &lt;/div&gt;
+      &lt;a href=&quot;#user&quot;&gt;&lt;img class=&quot;circle&quot; src=&quot;images/yuna.jpg&quot; /&gt;&lt;/a&gt;
+      &lt;a href=&quot;#name&quot;&gt;&lt;span class=&quot;white-text name&quot;&gt;John Doe&lt;/span&gt;&lt;/a&gt;
+      &lt;a href=&quot;#email&quot;&gt;&lt;span class=&quot;white-text email&quot;&gt;jdoe@example.com&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href=&quot;#!&quot;&gt;
+      &lt;i class=&quot;material-icons&quot;&gt;cloud&lt;/i&gt;
+      First Link With Icon
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#!&quot;&gt;Second Link&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a class=&quot;subheader&quot;&gt;Subheader&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a class=&quot;waves-effect&quot; href=&quot;#!&quot;&gt;Third Link With Waves&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a href=&quot;#&quot; data-target=&quot;slide-out&quot; class=&quot;sidenav-trigger&quot;&gt;
+  &lt;i class=&quot;material-icons&quot;&gt;menu&lt;/i&gt;
+&lt;/a&gt;</code></pre>
       </div>
+
+
+      <section id="docs-drawer" class="section scrollspy">
+        <h3 class="header">2. Documentation drawer</h3>
+        <p>A second variant matching this site's drawer: Kmaterialize branding, a search field, expandable sections, and an active page. This sample includes representative links from the docs menu.</p>
+        <p><a href="sidenav-docs-demo.html" target="_blank" rel="noopener">Open documentation drawer in a full window</a></p>
+        <iframe class="sidenav-example-frame" src="sidenav-docs-demo.html" title="Interactive documentation drawer example" loading="lazy"></iframe>
+        <p>The preview docks the drawer at 560px and above; below that, the menu button opens it as an overlay. Use 993px instead to match the main site's desktop breakpoint. Search uses the same autocomplete and full page index as the website. Select a suggestion to open the page. In your own app, replace the imported <code>config.pages</code> with your route list. Links navigate to actual documentation pages. This example reads the same saved theme and palette as the site, using <code>@material/material-color-utilities</code>.</p>
+<details class="sidenav-example-code"><summary>HTML — structure and navigation</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;body class=&quot;drawer-example&quot;&gt;
+  &lt;!-- Drawer: logo, search, and grouped page links. Keep it outside the navbar. --&gt;
+  &lt;ul id=&quot;docs-example-menu&quot; class=&quot;sidenav&quot; aria-label=&quot;Documentation&quot;&gt;
+    &lt;li class=&quot;drawer-example-brand&quot;&gt;
+      &lt;a href=&quot;index.html&quot; target=&quot;_top&quot;&gt;
+        &lt;img src=&quot;images/materialize.svg&quot; alt=&quot;&quot; /&gt;
+        Kmaterialize
+      &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;!-- Autocomplete uses the full documentation page index. --&gt;
+    &lt;li class=&quot;drawer-example-search&quot;&gt;
+      &lt;div class=&quot;search-wrapper&quot;&gt;
+        &lt;input
+          id=&quot;docs-example-search&quot;
+          class=&quot;search-docs&quot;
+          type=&quot;search&quot;
+          placeholder=&quot;Search&quot;
+          aria-label=&quot;Search documentation&quot;
+          autocomplete=&quot;off&quot;
+        /&gt;
+        &lt;i class=&quot;material-icons&quot; aria-hidden=&quot;true&quot;&gt;search&lt;/i&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href=&quot;about.html&quot; target=&quot;_top&quot;&gt;
+        &lt;i class=&quot;material-icons&quot; aria-hidden=&quot;true&quot;&gt;info&lt;/i&gt;
+        About
+      &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href=&quot;getting-started.html&quot; target=&quot;_top&quot;&gt;
+        &lt;i class=&quot;material-icons&quot; aria-hidden=&quot;true&quot;&gt;apps&lt;/i&gt;
+        Getting started
+      &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;!-- Expandable navigation groups. The active section starts open. --&gt;
+    &lt;li&gt;
+      &lt;ul class=&quot;collapsible collapsible-accordion&quot;&gt;
+        &lt;li&gt;
+          &lt;button type=&quot;button&quot; class=&quot;collapsible-header&quot;&gt;
+            &lt;i class=&quot;material-icons&quot; aria-hidden=&quot;true&quot;&gt;palette&lt;/i&gt;
+            Styles
+          &lt;/button&gt;
+          &lt;div class=&quot;collapsible-body&quot;&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;color.html&quot; target=&quot;_top&quot;&gt;Color&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;grid.html&quot; target=&quot;_top&quot;&gt;Grid&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;themes.html&quot; target=&quot;_top&quot;&gt;Themes&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;typography.html&quot; target=&quot;_top&quot;&gt;Typography&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;active&quot;&gt;
+          &lt;button type=&quot;button&quot; class=&quot;collapsible-header&quot;&gt;
+            &lt;i class=&quot;material-icons&quot; aria-hidden=&quot;true&quot;&gt;add_circle&lt;/i&gt;
+            Components
+          &lt;/button&gt;
+          &lt;div class=&quot;collapsible-body&quot;&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;cards.html&quot; target=&quot;_top&quot;&gt;Cards&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;kanban.html&quot; target=&quot;_top&quot;&gt;Kanban&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;navbar.html&quot; target=&quot;_top&quot;&gt;Navbar&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;org-chart.html&quot; target=&quot;_top&quot;&gt;Org Chart&lt;/a&gt;&lt;/li&gt;
+              &lt;li class=&quot;active&quot;&gt;
+                &lt;a href=&quot;sidenav.html&quot; target=&quot;_top&quot; aria-current=&quot;page&quot;&gt;Sidenav&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;tabs.html&quot; target=&quot;_top&quot;&gt;Tabs&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;button type=&quot;button&quot; class=&quot;collapsible-header&quot;&gt;
+            &lt;i class=&quot;material-icons&quot; aria-hidden=&quot;true&quot;&gt;text_fields&lt;/i&gt;
+            Forms
+          &lt;/button&gt;
+          &lt;div class=&quot;collapsible-body&quot;&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;autocomplete.html&quot; target=&quot;_top&quot;&gt;Autocomplete&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;checkboxes.html&quot; target=&quot;_top&quot;&gt;Checkboxes&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;select.html&quot; target=&quot;_top&quot;&gt;Select&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href=&quot;mobile.html&quot; target=&quot;_top&quot;&gt;
+        &lt;i class=&quot;material-icons&quot; aria-hidden=&quot;true&quot;&gt;mobile_friendly&lt;/i&gt;
+        Mobile
+      &lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;!-- Page area: offset beside the drawer on wide screens. --&gt;
+  &lt;div class=&quot;drawer-example-page&quot;&gt;
+    &lt;nav class=&quot;navbar&quot;&gt;
+      &lt;div class=&quot;nav-wrapper primary&quot;&gt;
+        &lt;!-- Visible on narrow screens; JavaScript updates aria-expanded. --&gt;
+        &lt;button
+          type=&quot;button&quot;
+          id=&quot;docs-example-toggle&quot;
+          class=&quot;btn text&quot;
+          aria-controls=&quot;docs-example-menu&quot;
+          aria-expanded=&quot;false&quot;
+          aria-label=&quot;Open navigation&quot;
+        &gt;
+          &lt;i class=&quot;material-icons&quot; aria-hidden=&quot;true&quot;&gt;menu&lt;/i&gt;
+        &lt;/button&gt;
+        &lt;span&gt;Documentation&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/nav&gt;
+    &lt;main class=&quot;drawer-example-content&quot;&gt;
+      &lt;span class=&quot;chip&quot;&gt;Variant 2&lt;/span&gt;
+      &lt;h1&gt;
+        A familiar place
+        &lt;br /&gt;
+        to find your way.
+      &lt;/h1&gt;
+      &lt;p&gt;
+        The docs drawer brings search, expandable sections, and the current page
+        together.
+      &lt;/p&gt;
+      &lt;p&gt;
+        Search any documentation page, or expand Styles and Forms. The links open the
+        corresponding documentation pages.
+      &lt;/p&gt;
+      &lt;p class=&quot;drawer-example-note&quot; role=&quot;status&quot; id=&quot;docs-example-status&quot;&gt;
+        The drawer stays open on wider screens.
+      &lt;/p&gt;
+    &lt;/main&gt;
+  &lt;/div&gt;
+  &lt;!-- Load the TypeScript below through your bundler. --&gt;
+  &lt;script type=&quot;module&quot; src=&quot;/sidenav-docs-demo.ts&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre></details><details class="sidenav-example-code"><summary>SCSS — layout, colors, and responsive styles</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">// Load the icon font and Materialize before these example-specific styles.
+@import &#x27;material-icons/iconfont/material-icons.css&#x27;;
+@import &#x27;kmaterialize/sass/materialize.scss&#x27;;
+
+// Base surface and drawer dimensions.
+.drawer-example {
+  margin: 0;
+  background: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-background);
+}
+.drawer-example .sidenav {
+  width: 300px;
+}
+.drawer-example-brand &gt; a {
+  display: flex !important;
+  align-items: center;
+  gap: 16px;
+  height: 72px !important;
+  font-size: 22px !important;
+}
+.drawer-example-brand img {
+  width: 28px;
+  height: 28px;
+}
+// Match the website search: a compact field with an inset search icon.
+.drawer-example-search {
+  margin: 5px 0;
+  position: relative;
+  z-index: 2;
+}
+.drawer-example-search .search-wrapper {
+  position: relative;
+  margin-top: -1px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+.drawer-example-search input#docs-example-search {
+  display: block;
+  box-sizing: border-box;
+  width: 80%;
+  height: 32px;
+  margin: 0 auto;
+  padding: 5px;
+  padding-right: 32px;
+  font-size: 16px;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--md-sys-color-on-surface-variant);
+  &amp;:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+.drawer-example-search .search-wrapper &gt; i {
+  position: absolute;
+  top: 4px;
+  right: 34px;
+  color: var(--md-sys-color-outline-variant);
+  pointer-events: none;
+}
+// Make expandable section buttons fill their navigation row.
+.drawer-example .collapsible-header {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
+.drawer-example [hidden] {
+  display: none !important;
+}
+.drawer-example .nav-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+}
+.drawer-example .nav-wrapper .btn {
+  color: var(--md-sys-color-on-primary);
+}
+// Content spacing and typography for the preview.
+.drawer-example-content {
+  padding: 32px 24px;
+}
+.drawer-example-content h1 {
+  font-size: clamp(28px, 4vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+.drawer-example-content p {
+  max-width: 48ch;
+  line-height: 1.6;
+}
+.drawer-example-note {
+  font-size: 13px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+// JavaScript applies this class at 560px: dock the drawer and hide the overlay.
+.drawer-example-docked .drawer-example-page {
+  margin-left: 300px;
+}
+.drawer-example-docked .sidenav-overlay,
+.drawer-example-docked #docs-example-toggle {
+  display: none !important;
+}</code></pre></details><details class="sidenav-example-code"><summary>TypeScript — initialization and interactions</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">import { Sidenav, Collapsible, Autocomplete } from &#x27;kmaterialize&#x27;;
+import &#x27;./sidenav-docs-demo.scss&#x27;;
+// This project supplies the page index. Use your own route list in another app.
+import { config } from &#x27;../config.materialize&#x27;;
+import {
+  applyTheme,
+  argbFromHex,
+  themeFromSourceColor,
+} from &#x27;@material/material-color-utilities&#x27;;
+
+// Use the same saved palette and theme as the documentation site.
+const seed = localStorage.getItem(&#x27;theme-primary-color&#x27;) || &#x27;#FFD700&#x27;;
+const preference = localStorage.getItem(&#x27;theme-mode&#x27;);
+const dark = preference
+  ? preference === &#x27;dark&#x27;
+  : matchMedia(&#x27;(prefers-color-scheme: dark)&#x27;).matches;
+applyTheme(themeFromSourceColor(argbFromHex(seed)), {
+  target: document.documentElement,
+  dark,
+});
+document.documentElement.setAttribute(&#x27;theme&#x27;, dark ? &#x27;dark&#x27; : &#x27;light&#x27;);
+
+// Find the drawer and its controls after the HTML has loaded.
+const menu = document.querySelector&lt;HTMLElement&gt;(&#x27;#docs-example-menu&#x27;)!;
+const toggle = document.querySelector&lt;HTMLButtonElement&gt;(&#x27;#docs-example-toggle&#x27;)!;
+const search = document.querySelector&lt;HTMLInputElement&gt;(&#x27;#docs-example-search&#x27;)!;
+const wide = matchMedia(&#x27;(min-width: 560px)&#x27;);
+// Initialize the drawer and keep the menu button state accessible.
+const drawer = Sidenav.init(menu, {
+  draggable: false,
+  preventScrolling: false,
+  onOpenStart: () =&gt; toggle.setAttribute(&#x27;aria-expanded&#x27;, &#x27;true&#x27;),
+  onCloseStart: () =&gt; toggle.setAttribute(&#x27;aria-expanded&#x27;, &#x27;false&#x27;),
+});
+// Allow several navigation groups to stay open at once.
+Collapsible.init(menu.querySelector&lt;HTMLElement&gt;(&#x27;.collapsible&#x27;)!, {
+  accordion: false,
+});
+// Wide screens dock the drawer; narrow screens use the menu button.
+function resize() {
+  document.body.classList.toggle(&#x27;drawer-example-docked&#x27;, wide.matches);
+  if (wide.matches) drawer.open();
+  else drawer.close();
+}
+wide.addEventListener(&#x27;change&#x27;, resize);
+resize();
+// Toggle the mobile drawer; Escape closes it and restores button focus.
+toggle.addEventListener(&#x27;click&#x27;, () =&gt;
+  drawer.isOpen ? drawer.close() : drawer.open(),
+);
+document.addEventListener(&#x27;keydown&#x27;, (event) =&gt; {
+  if (event.key === &#x27;Escape&#x27; &amp;&amp; !wide.matches &amp;&amp; drawer.isOpen) {
+    drawer.close();
+    toggle.focus();
+  }
+});
+// Match the documentation site&#x27;s autocomplete and complete page index.
+Autocomplete.init(search, {
+  minLength: 1,
+  data: config.pages.map((page) =&gt; ({
+    id: page.id,
+    text: page.name,
+    description: page.description,
+    url: page.url,
+  })),
+  onAutocomplete: (items) =&gt; {
+    if (items.length === 1) window.top!.location.href = items[0][&#x27;url&#x27;];
+  },
+});</code></pre></details>
+      </section>
+      <section id="material-rail" class="section scrollspy">
+        <h3 class="header">3. Material 3 navigation rail</h3>
+        <p>A compact rail inspired by <a href="https://m3.material.io/" target="_blank" rel="noopener">the Material Design website</a>: centered icons and labels, the website’s current colors, and circular motion and theme controls at the bottom. This example uses the Kmaterialize logo and Material Icons.</p>
+        <p><a href="sidenav-rail-demo.html" target="_blank" rel="noopener">Open navigation rail in a full window</a></p>
+        <iframe class="sidenav-example-frame sidenav-example-frame-rail" src="sidenav-rail-demo.html" title="Interactive Material 3 navigation rail example" loading="lazy"></iframe>
+        <p>Choose a section to update the preview. The bottom controls pause the illustration and switch the example's light/dark theme. Its initial palette and theme match the website, and updates from the surrounding page are reflected automatically. Motion starts paused when the device requests reduced motion. The rail stays visible on phones and scrolls when the screen is too short.</p>
+        <p>The rail uses custom CSS and native links, so it needs no <code>Sidenav.init()</code>. Load Materialize and Material Icons, then the SCSS below. The theme control uses <code>@material/material-color-utilities</code>. Replace the demo hash links with your app's routes and preserve <code>aria-current="page"</code> on the active link.</p>
+<details class="sidenav-example-code"><summary>HTML — structure and navigation</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;body class=&quot;rail-example&quot;&gt;
+  &lt;!-- Fixed rail: section links above, utility buttons below. --&gt;
+  &lt;aside class=&quot;m3-rail&quot; aria-label=&quot;Site navigation&quot;&gt;
+    &lt;nav class=&quot;m3-rail-nav&quot; aria-label=&quot;Main sections&quot;&gt;
+      &lt;!-- Each link pairs an icon with a visible label. aria-current marks the active page. --&gt;
+      &lt;a href=&quot;#home&quot; aria-current=&quot;page&quot; data-view=&quot;Home&quot;&gt;
+        &lt;span class=&quot;m3-rail-icon&quot;&gt;&lt;img src=&quot;images/materialize.svg&quot; alt=&quot;&quot; /&gt;&lt;/span&gt;
+        &lt;span&gt;Home&lt;/span&gt;
+      &lt;/a&gt;
+      &lt;a href=&quot;#get-started&quot; data-view=&quot;Get started&quot;&gt;
+        &lt;span class=&quot;m3-rail-icon&quot;&gt;
+          &lt;i class=&quot;material-icons&quot; aria-hidden=&quot;true&quot;&gt;apps&lt;/i&gt;
+        &lt;/span&gt;
+        &lt;span&gt;Get started&lt;/span&gt;
+      &lt;/a&gt;
+      &lt;a href=&quot;#develop&quot; data-view=&quot;Develop&quot;&gt;
+        &lt;span class=&quot;m3-rail-icon&quot;&gt;
+          &lt;i class=&quot;material-icons&quot; aria-hidden=&quot;true&quot;&gt;code&lt;/i&gt;
+        &lt;/span&gt;
+        &lt;span&gt;Develop&lt;/span&gt;
+      &lt;/a&gt;
+      &lt;a href=&quot;#foundations&quot; data-view=&quot;Foundations&quot;&gt;
+        &lt;span class=&quot;m3-rail-icon&quot;&gt;
+          &lt;i class=&quot;material-icons&quot; aria-hidden=&quot;true&quot;&gt;book&lt;/i&gt;
+        &lt;/span&gt;
+        &lt;span&gt;Foundations&lt;/span&gt;
+      &lt;/a&gt;
+      &lt;a href=&quot;#styles&quot; data-view=&quot;Styles&quot;&gt;
+        &lt;span class=&quot;m3-rail-icon&quot;&gt;
+          &lt;i class=&quot;material-icons&quot; aria-hidden=&quot;true&quot;&gt;palette&lt;/i&gt;
+        &lt;/span&gt;
+        &lt;span&gt;Styles&lt;/span&gt;
+      &lt;/a&gt;
+      &lt;a href=&quot;#components&quot; data-view=&quot;Components&quot;&gt;
+        &lt;span class=&quot;m3-rail-icon&quot;&gt;
+          &lt;i class=&quot;material-icons&quot; aria-hidden=&quot;true&quot;&gt;add_circle_outline&lt;/i&gt;
+        &lt;/span&gt;
+        &lt;span&gt;Components&lt;/span&gt;
+      &lt;/a&gt;
+      &lt;a href=&quot;#blog&quot; data-view=&quot;Blog&quot;&gt;
+        &lt;span class=&quot;m3-rail-icon&quot;&gt;
+          &lt;i class=&quot;material-icons&quot; aria-hidden=&quot;true&quot;&gt;stars&lt;/i&gt;
+        &lt;/span&gt;
+        &lt;span&gt;Blog&lt;/span&gt;
+      &lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;!-- Bottom actions: pause motion and change the theme. --&gt;
+    &lt;div class=&quot;m3-rail-actions&quot;&gt;
+      &lt;button
+        type=&quot;button&quot;
+        id=&quot;rail-motion&quot;
+        aria-label=&quot;Pause motion&quot;
+        aria-pressed=&quot;false&quot;
+      &gt;
+        &lt;i class=&quot;material-icons&quot; aria-hidden=&quot;true&quot;&gt;pause&lt;/i&gt;
+      &lt;/button&gt;
+      &lt;button type=&quot;button&quot; id=&quot;rail-theme&quot; aria-label=&quot;Switch to light theme&quot;&gt;
+        &lt;i class=&quot;material-icons&quot; aria-hidden=&quot;true&quot;&gt;light_mode&lt;/i&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/aside&gt;
+  &lt;!-- Demo content. Replace hash navigation with your application routes. --&gt;
+  &lt;main class=&quot;rail-example-content&quot;&gt;
+    &lt;p class=&quot;rail-example-eyebrow&quot;&gt;MATERIAL DESIGN · VARIANT 3&lt;/p&gt;
+    &lt;h1 id=&quot;rail-view-title&quot;&gt;Home&lt;/h1&gt;
+    &lt;p id=&quot;rail-view-description&quot; aria-live=&quot;polite&quot;&gt;
+      A place for the ideas, tools, and components that shape your next interface.
+    &lt;/p&gt;
+    &lt;!-- Decorative animation controlled by the pause button. --&gt;
+    &lt;div class=&quot;rail-example-art&quot; aria-hidden=&quot;true&quot;&gt;
+      &lt;div&gt;&lt;/div&gt;
+      &lt;i class=&quot;material-icons&quot;&gt;auto_awesome&lt;/i&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;rail-example-hint&quot;&gt;
+      Choose a section. Use the controls at the bottom of the rail to pause motion or
+      switch the theme.
+    &lt;/p&gt;
+  &lt;/main&gt;
+  &lt;!-- Load the TypeScript below through your bundler. --&gt;
+  &lt;script type=&quot;module&quot; src=&quot;/sidenav-rail-demo.ts&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre></details><details class="sidenav-example-code"><summary>SCSS — layout, colors, and responsive styles</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">// Load the icon font and Materialize before these example-specific styles.
+@import &#x27;material-icons/iconfont/material-icons.css&#x27;;
+@import &#x27;kmaterialize/sass/materialize.scss&#x27;;
+
+.rail-example {
+  margin: 0;
+  background: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-background);
+}
+// Rail layout: fill the viewport and scroll on short screens.
+.m3-rail {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 104px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 16px 4px;
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface-variant);
+}
+// Stack icon-and-label links. Highlight hover, active, and keyboard-focus states.
+.m3-rail-nav {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  width: 100%;
+  height: auto;
+  line-height: normal;
+  background: transparent;
+  box-shadow: none;
+  &gt; a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-height: 76px;
+    padding: 8px 0;
+    color: inherit;
+    font-size: 13px;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 16px;
+  }
+  &gt; a:hover .m3-rail-icon {
+    background: var(--md-sys-color-surface-variant);
+  }
+  &gt; a[aria-current=&#x27;page&#x27;] .m3-rail-icon {
+    background: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+  }
+  &gt; a:focus-visible {
+    outline: 2px solid var(--md-sys-color-primary);
+    outline-offset: -2px;
+  }
+}
+.m3-rail-icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 32px;
+  border-radius: 18px;
+}
+.m3-rail-icon .material-icons {
+  font-size: 28px;
+}
+.m3-rail-icon img {
+  width: 28px;
+  height: 28px;
+}
+// Push utility buttons to the bottom with margin-top: auto.
+.m3-rail-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 36px;
+  button {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 1px solid var(--md-sys-color-outline);
+    padding: 0;
+    color: inherit;
+    background: transparent;
+    cursor: pointer;
+  }
+  button:hover {
+    background: var(--md-sys-color-surface-variant);
+  }
+  button:focus-visible {
+    outline: 2px solid var(--md-sys-color-primary);
+    outline-offset: 3px;
+  }
+  .material-icons {
+    font-size: 28px;
+  }
+}
+// Keep page content clear of the fixed rail.
+.rail-example-content {
+  margin-left: 104px;
+  padding: 40px clamp(20px, 5vw, 64px);
+  max-width: 1050px;
+}
+.rail-example-content h1 {
+  font-size: clamp(36px, 7vw, 80px);
+  letter-spacing: -0.05em;
+  margin: 24px 0;
+}
+.rail-example-content p {
+  line-height: 1.6;
+  max-width: 48ch;
+}
+.rail-example-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--md-sys-color-on-surface-variant);
+}
+.rail-example-hint {
+  font-size: 13px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+// Optional demo illustration; not required for navigation.
+.rail-example-art {
+  display: grid;
+  place-items: center;
+  position: relative;
+  isolation: isolate;
+  height: 240px;
+  margin: 32px 0;
+  overflow: hidden;
+  border-radius: 36px;
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  &gt; div {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    background: var(--md-sys-color-tertiary-container);
+    border-radius: 40%;
+    animation: rail-orbit 18s linear infinite;
+    z-index: -1;
+  }
+  &gt; i {
+    font-size: 64px;
+  }
+}
+.rail-motion-paused .rail-example-art &gt; div {
+  animation-play-state: paused;
+}
+@keyframes rail-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+// Narrow screens keep the rail visible with slightly smaller spacing.
+@media (max-width: 480px) {
+  .m3-rail {
+    width: 88px;
+  }
+  .m3-rail-nav &gt; a {
+    font-size: 12px;
+    min-height: 72px;
+  }
+  .rail-example-content {
+    margin-left: 88px;
+    padding: 28px 20px;
+  }
+}</code></pre></details><details class="sidenav-example-code"><summary>TypeScript — initialization and interactions</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">import {
+  applyTheme,
+  argbFromHex,
+  themeFromSourceColor,
+} from &#x27;@material/material-color-utilities&#x27;;
+import &#x27;./sidenav-rail-demo.scss&#x27;;
+
+// Read the website theme, falling back to the device preference.
+const systemTheme = matchMedia(&#x27;(prefers-color-scheme: dark)&#x27;);
+const savedDark = () =&gt; {
+  const preference = localStorage.getItem(&#x27;theme-mode&#x27;);
+  return preference ? preference === &#x27;dark&#x27; : systemTheme.matches;
+};
+// Cache controls and initialize their state. Reduced motion starts paused.
+const themeButton = document.querySelector&lt;HTMLButtonElement&gt;(&#x27;#rail-theme&#x27;)!;
+const motionButton = document.querySelector&lt;HTMLButtonElement&gt;(&#x27;#rail-motion&#x27;)!;
+let dark = savedDark();
+let paused = matchMedia(&#x27;(prefers-reduced-motion: reduce)&#x27;).matches;
+// Generate colors from the saved website palette and update the theme button.
+function updateTheme() {
+  const seed = localStorage.getItem(&#x27;theme-primary-color&#x27;) || &#x27;#FFD700&#x27;;
+  const theme = themeFromSourceColor(argbFromHex(seed));
+  applyTheme(theme, { target: document.documentElement, dark });
+  document.documentElement.setAttribute(&#x27;theme&#x27;, dark ? &#x27;dark&#x27; : &#x27;light&#x27;);
+  themeButton.setAttribute(&#x27;aria-label&#x27;, `Switch to ${dark ? &#x27;light&#x27; : &#x27;dark&#x27;} theme`);
+  themeButton.querySelector(&#x27;i&#x27;)!.textContent = dark ? &#x27;light_mode&#x27; : &#x27;dark_mode&#x27;;
+}
+// Keep the animation, icon, and accessible button state in sync.
+function updateMotion() {
+  document.body.classList.toggle(&#x27;rail-motion-paused&#x27;, paused);
+  motionButton.setAttribute(&#x27;aria-pressed&#x27;, String(paused));
+  motionButton.setAttribute(&#x27;aria-label&#x27;, paused ? &#x27;Resume motion&#x27; : &#x27;Pause motion&#x27;);
+  motionButton.querySelector(&#x27;i&#x27;)!.textContent = paused ? &#x27;play_arrow&#x27; : &#x27;pause&#x27;;
+}
+// Connect the two utility buttons.
+themeButton.addEventListener(&#x27;click&#x27;, () =&gt; {
+  dark = !dark;
+  updateTheme();
+});
+motionButton.addEventListener(&#x27;click&#x27;, () =&gt; {
+  paused = !paused;
+  updateMotion();
+});
+// Changes made in the surrounding docs page also reach this iframe.
+window.addEventListener(&#x27;storage&#x27;, (event) =&gt; {
+  if (!event.key || [&#x27;theme-primary-color&#x27;, &#x27;theme-mode&#x27;].includes(event.key)) {
+    dark = savedDark();
+    updateTheme();
+  }
+});
+systemTheme.addEventListener(&#x27;change&#x27;, () =&gt; {
+  if (!localStorage.getItem(&#x27;theme-mode&#x27;)) {
+    dark = savedDark();
+    updateTheme();
+  }
+});
+updateTheme();
+updateMotion();
+// Demo page content. Real applications would render their own routes here.
+const descriptions: Record&lt;string, string&gt; = {
+  Home: &#x27;A place for the ideas, tools, and components that shape your next interface.&#x27;,
+  &#x27;Get started&#x27;:
+    &#x27;Start with the essentials and build a shared design language for your product.&#x27;,
+  Develop: &#x27;Turn design decisions into working interfaces with reusable components.&#x27;,
+  Foundations:
+    &#x27;Create a clear hierarchy with accessible layouts, interaction, and motion.&#x27;,
+  Styles: &#x27;Make color, typography, and shape work together across your interface.&#x27;,
+  Components:
+    &#x27;Explore the building blocks that help people navigate and get things done.&#x27;,
+  Blog: &#x27;Discover new ideas and stories from the world of interface design.&#x27;,
+};
+const links = Array.from(
+  document.querySelectorAll&lt;HTMLAnchorElement&gt;(&#x27;.m3-rail-nav a&#x27;),
+);
+// Update the active link and content when the URL hash changes.
+function selectSection() {
+  const selected = links.find((link) =&gt; link.hash === location.hash) || links[0];
+  links.forEach((link) =&gt; {
+    if (link === selected) link.setAttribute(&#x27;aria-current&#x27;, &#x27;page&#x27;);
+    else link.removeAttribute(&#x27;aria-current&#x27;);
+  });
+  const name = selected.dataset.view!;
+  document.querySelector(&#x27;#rail-view-title&#x27;)!.textContent = name;
+  document.querySelector(&#x27;#rail-view-description&#x27;)!.textContent = descriptions[name];
+}
+window.addEventListener(&#x27;hashchange&#x27;, selectSection);
+selectSection();</code></pre></details>
+      </section>
 
       <div id="initialization" class="section scrollspy">
         <h3 class="header">Initialization</h3>
-        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
-  document.addEventListener('DOMContentLoaded', function() {
-    const elems = document.querySelectorAll('.sidenav');
-    const instances = Sidenav.init(elems, {
-      // specify options here
-    });
+        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">document.addEventListener(&#x27;DOMContentLoaded&#x27;, function () {
+  const elems = document.querySelectorAll(&#x27;.sidenav&#x27;);
+  const instances = Sidenav.init(elems, {
+    // specify options here
   });
+});
 
-  // Initialize collapsible (uncomment the lines below if you use the dropdown variation)
-  // const collapsibleElem = document.querySelector('.collapsible');
-  // const collapsibleInstance = Collapsible.init(collapsibleElem, {
-  //  // specify options here
-  // });
-        </code></pre>
+// Initialize collapsible (uncomment the lines below if you use the dropdown variation)
+// const collapsibleElem = document.querySelector(&#x27;.collapsible&#x27;);
+// const collapsibleInstance = Collapsible.init(collapsibleElem, {
+//  // specify options here
+// });</code></pre>
       </div>
 
 
@@ -180,35 +855,27 @@
         <h3 class="header">Methods</h3>
         <blockquote>
           <p>All the methods are called on the plugin instance. You can get the plugin instance like this: </p>
-          <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
-            const instance = Sidenav.getInstance(elem);
-          </code></pre>
+          <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">const instance = Sidenav.getInstance(elem);</code></pre>
         </blockquote>
         <h5 class="method-header">
           .open();
         </h5>
         <p>Opens Sidenav.</p>
-        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
-instance.open();
-        </code></pre>
+        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">instance.open();</code></pre>
         
 
         <h5 class="method-header">
           .close();
         </h5>
         <p>Closes Sidenav.</p>
-        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
-instance.close();
-        </code></pre>
+        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">instance.close();</code></pre>
         
 
         <h5 class="method-header">
           .destroy();
         </h5>
         <p>Destroy plugin instance and teardown</p>
-        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
-instance.destroy();
-        </code></pre>
+        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">instance.destroy();</code></pre>
       </div>
 
 
@@ -259,12 +926,12 @@ instance.destroy();
         <p>Add the class
           <code class="language-html">.sidenav-close</code> to an element inside the sidenav and any click event on that element will cause the sidenav to close. This is
           useful in Single Page Apps where the page does not refresh on link clicks.</p>
-        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><ul id="slide-out" class="sidenav">
-  <li><a class="sidenav-close" href="#!">Clicking this will close Sidenav</a></li>
-</ul>
-<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a></xmp>
-          </code></pre>
+        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;ul id=&quot;slide-out&quot; class=&quot;sidenav&quot;&gt;
+  &lt;li&gt;&lt;a class=&quot;sidenav-close&quot; href=&quot;#!&quot;&gt;Clicking this will close Sidenav&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a href=&quot;#&quot; data-target=&quot;slide-out&quot; class=&quot;sidenav-trigger&quot;&gt;
+  &lt;i class=&quot;material-icons&quot;&gt;menu&lt;/i&gt;
+&lt;/a&gt;</code></pre>
       </div>
 
 
@@ -276,79 +943,89 @@ instance.destroy();
 
         <h4>Dropdown HTML Structure</h4>
         <p>Add collapsible menus to your sidebar.</p>
-        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><ul id="slide-out" class="sidenav">
-  <li><a href="#!">First Sidebar Link</a></li>
-  <li><a href="#!">Second Sidebar Link</a></li>
-  <li class="no-padding">
-    <ul class="collapsible collapsible-accordion">
-      <li>
-        <a class="collapsible-header">Dropdown<i class="material-icons">arrow_drop_down</i></a>
-        <div class="collapsible-body">
-          <ul>
-            <li><a href="#!">First</a></li>
-            <li><a href="#!">Second</a></li>
-            <li><a href="#!">Third</a></li>
-            <li><a href="#!">Fourth</a></li>
-          </ul>
-        </div>
-      </li>
-    </ul>
-  </li>
-</ul>
-<ul class="right hide-on-med-and-down">
-  <li><a href="#!">First Sidebar Link</a></li>
-  <li><a href="#!">Second Sidebar Link</a></li>
-  <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
-  <ul id='dropdown1' class='dropdown-content'>
-    <li><a href="#!">First</a></li>
-    <li><a href="#!">Second</a></li>
-    <li><a href="#!">Third</a></li>
-    <li><a href="#!">Fourth</a></li>
-  </ul>
-</ul>
-<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a></xmp>
-          </code></pre>
+        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;ul id=&quot;slide-out&quot; class=&quot;sidenav&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#!&quot;&gt;First Sidebar Link&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#!&quot;&gt;Second Sidebar Link&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;no-padding&quot;&gt;
+    &lt;ul class=&quot;collapsible collapsible-accordion&quot;&gt;
+      &lt;li&gt;
+        &lt;a class=&quot;collapsible-header&quot;&gt;
+          Dropdown
+          &lt;i class=&quot;material-icons&quot;&gt;arrow_drop_down&lt;/i&gt;
+        &lt;/a&gt;
+        &lt;div class=&quot;collapsible-body&quot;&gt;
+          &lt;ul&gt;
+            &lt;li&gt;&lt;a href=&quot;#!&quot;&gt;First&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#!&quot;&gt;Second&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#!&quot;&gt;Third&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#!&quot;&gt;Fourth&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class=&quot;right hide-on-med-and-down&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#!&quot;&gt;First Sidebar Link&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#!&quot;&gt;Second Sidebar Link&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;a class=&quot;dropdown-trigger&quot; href=&quot;#!&quot; data-target=&quot;dropdown1&quot;&gt;
+      Dropdown
+      &lt;i class=&quot;material-icons right&quot;&gt;arrow_drop_down&lt;/i&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;ul id=&quot;dropdown1&quot; class=&quot;dropdown-content&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;#!&quot;&gt;First&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#!&quot;&gt;Second&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#!&quot;&gt;Third&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#!&quot;&gt;Fourth&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/ul&gt;
+&lt;a href=&quot;#&quot; data-target=&quot;slide-out&quot; class=&quot;sidenav-trigger&quot;&gt;
+  &lt;i class=&quot;material-icons&quot;&gt;menu&lt;/i&gt;
+&lt;/a&gt;</code></pre>
         
 
-        Fullscreen HTML Structure</h4>
+        <h4>Fullscreen HTML Structure</h4>
         <p>If you want the menu to be accessible on all screensizes you just have to add a simple helper class
           <code class="language-html">show-on-large</code> to the
           <code class="language-html">.sidenav-trigger</code>. </p>
 
-        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><ul id="slide-out" class="sidenav">
-  <li><a href="#!">First Sidebar Link</a></li>
-  <li><a href="#!">Second Sidebar Link</a></li>
-</ul>
-<a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a></xmp>
-          </code></pre>
+        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;ul id=&quot;slide-out&quot; class=&quot;sidenav&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#!&quot;&gt;First Sidebar Link&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#!&quot;&gt;Second Sidebar Link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a href=&quot;#&quot; data-target=&quot;slide-out&quot; class=&quot;sidenav-trigger show-on-large&quot;&gt;
+  &lt;i class=&quot;material-icons&quot;&gt;menu&lt;/i&gt;
+&lt;/a&gt;</code></pre>
         
 
-        Fixed HTML Structure</h4>
+        <h4>Fixed HTML Structure</h4>
         <p>Add the class
           <code class="language-html">sidenav-fixed</code> to have the sidenav be fixed and open on large screens and hides to the regular functionality on smaller screens.
           Our sidenav on the left is an example of this.</p>
-        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><ul id="slide-out" class="sidenav sidenav-fixed">
-  <li><a href="#!">First Sidebar Link</a></li>
-  <li><a href="#!">Second Sidebar Link</a></li>
-</ul>
-<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a></xmp>
-          </code></pre>
+        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;ul id=&quot;slide-out&quot; class=&quot;sidenav sidenav-fixed&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#!&quot;&gt;First Sidebar Link&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#!&quot;&gt;Second Sidebar Link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a href=&quot;#&quot; data-target=&quot;slide-out&quot; class=&quot;sidenav-trigger&quot;&gt;
+  &lt;i class=&quot;material-icons&quot;&gt;menu&lt;/i&gt;
+&lt;/a&gt;</code></pre>
         <p>If you are planning on using this you will have to offset your content by the width of the side menu. Place the padding
           on where the offset content will be, which in our case is in header, main and footer.</p>
-        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-css col s12 copiedText">
-    header, main, footer {
-      padding-left: 300px;
-    }
+        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-css col s12 copiedText">header,
+main,
+footer {
+  padding-left: 300px;
+}
 
-    @media only screen and (max-width : 992px) {
-      header, main, footer {
-        padding-left: 0;
-      }
-    }
-          </code></pre>
+@media only screen and (max-width: 992px) {
+  header,
+  main,
+  footer {
+    padding-left: 0;
+  }
+}</code></pre>
       </div>
     </div>
 
@@ -358,8 +1035,10 @@ instance.destroy();
         <div style="height: 1px;">
           <ul class="section table-of-contents">
             <li>
-              <a href="#structure">Structure</a>
+              <a href="#structure">1. Slide-out drawer</a>
             </li>
+            <li><a href="#docs-drawer">2. Documentation drawer</a></li>
+            <li><a href="#material-rail">3. Material 3 rail</a></li>
             <li>
               <a href="#initialization">Initialization</a>
             </li>

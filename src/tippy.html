@@ -1,0 +1,102 @@
+<!doctype html><html lang="en"><head>{{> head }}</head><body>{{> navbar }}<main>{{> intro}}<div class="container"><div class="row"><div id="tippy-examples" class="s12 m9"><p class="caption"><a href="https://atomiks.github.io/tippyjs/" target="_blank" rel="noopener">Tippy.js</a> integration based on an animated-fill configuration. These examples use Tippy 6.3.7 and a local reusable adapter.</p><p>Use focusable buttons or links as triggers. Text is treated as plain text by default. Existing <a href="tooltips.html">Materialize tooltips</a> remain available; initialize only one tooltip library per trigger.</p><section id="styles" class="section scrollspy"><h3>Choose a style</h3><p>Two previews share the same behavior: animated fill, no arrow, and automatic placement. Classic uses Tippy’s original dark colors. Material uses this website’s inverse surface tokens and follows the theme. The site default is awaiting confirmation.</p><div class="tippy-demo-row"><button id="tippy-classic" class="btn filled" type="button">Classic</button>
+<button id="tippy-material" class="btn tonal" type="button">Material colors</button></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;button id="tippy-classic" class="btn filled" type="button"&gt;Classic&lt;/button&gt;
+&lt;button id="tippy-material" class="btn tonal" type="button"&gt;Material colors&lt;/button&gt;</code></pre><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">import { createTooltip } from './components/tippy';
+
+// Choose the style explicitly for each preview.
+createTooltip(document.querySelector&lt;HTMLElement&gt;('#tippy-classic')!, 'classic', {
+  content: 'Save your review notes',
+});
+createTooltip(document.querySelector&lt;HTMLElement&gt;('#tippy-material')!, 'material', {
+  content: 'Save your review notes',
+});</code></pre></section><section id="placement" class="section scrollspy"><h3>Placement</h3><p>Automatic placement finds available space. Override placement when you prefer a side; Tippy can reposition to fit the viewport.</p><div class="tippy-demo-row"><button type="button" class="btn outlined" data-tooltip-placement="top">Top</button>
+<button type="button" class="btn outlined" data-tooltip-placement="right">Right</button>
+<button type="button" class="btn outlined" data-tooltip-placement="bottom">Bottom</button>
+<button type="button" class="btn outlined" data-tooltip-placement="left">Left</button></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;button type="button" class="btn outlined" data-tooltip-placement="top"&gt;Top&lt;/button&gt;
+&lt;button type="button" class="btn outlined" data-tooltip-placement="right"&gt;Right&lt;/button&gt;
+&lt;button type="button" class="btn outlined" data-tooltip-placement="bottom"&gt;
+  Bottom
+&lt;/button&gt;
+&lt;button type="button" class="btn outlined" data-tooltip-placement="left"&gt;Left&lt;/button&gt;</code></pre><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">for (const target of document.querySelectorAll&lt;HTMLElement&gt;(
+  '[data-tooltip-placement]',
+)) {
+  createTooltip(target, 'classic', {
+    content: `Preferred placement: ${target.dataset.tooltipPlacement}`,
+    placement: target.dataset.tooltipPlacement as 'top' | 'right' | 'bottom' | 'left',
+  });
+}</code></pre></section><section id="touch" class="section scrollspy"><h3>Click or tap</h3><p>Hover and keyboard focus work with the default trigger. A click trigger is useful when you want a tap-controlled hint. Escape or an outside click dismisses this example.</p><div class="tippy-demo-row"><button id="tippy-touch" class="btn tonal" type="button">Tap for help</button></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;button id="tippy-touch" class="btn tonal" type="button"&gt;Tap for help&lt;/button&gt;</code></pre><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">createTooltip(document.querySelector&lt;HTMLElement&gt;('#tippy-touch')!, 'classic', {
+  content: 'Tap outside or press Escape to dismiss.',
+  trigger: 'click',
+});</code></pre></section><section id="template" class="section scrollspy"><h3>Template content</h3><p>The basic example passes a plain label string to Tippy. For richer content, clone your own HTML template. Keep tooltip content informational; use a popover with focus management for interactive actions.</p><div class="tippy-demo-row"><button id="tippy-template" class="btn filled" type="button">Review details</button>
+<template id="tippy-content-template">
+  <div class="tippy-demo-content">
+    <strong>Ready for review</strong>
+    <span>The latest movie and notes are attached.</span>
+  </div>
+</template></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;button id="tippy-template" class="btn filled" type="button"&gt;Review details&lt;/button&gt;
+&lt;template id="tippy-content-template"&gt;
+  &lt;div class="tippy-demo-content"&gt;
+    &lt;strong&gt;Ready for review&lt;/strong&gt;
+    &lt;span&gt;The latest movie and notes are attached.&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">const template = document.querySelector&lt;HTMLTemplateElement&gt;(
+  '#tippy-content-template',
+)!;
+createTooltip(document.querySelector&lt;HTMLElement&gt;('#tippy-template')!, 'classic', {
+  content: template.content.firstElementChild!.cloneNode(true) as HTMLElement,
+});</code></pre></section><section id="setup" class="section scrollspy"><h3>Setup and methods</h3><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">// Install: pnpm add tippy.js@6.3.7
+// Copy components/tippy.ts and components/tippy.scss into your project.
+import { createTooltip } from './components/tippy';
+
+const button = document.querySelector&lt;HTMLElement&gt;('#my-button')!;
+const tooltip = createTooltip(button, 'classic', { content: 'Initial description' });
+tooltip.setContent('Updated description');
+// tooltip.show();
+// tooltip.hide();
+// tooltip.setProps({ placement: 'bottom' });
+// tooltip.destroy(); // Call when removing the view.</code></pre><p>The adapter returns a standard Tippy instance. Reduced-motion preferences disable the fill animation. Escape dismisses tooltips without moving focus. Destroy instances when removing their triggers.</p><details><summary>TypeScript adapter and stylesheet imports</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">import tippy, { animateFill, type Props, type Instance } from 'tippy.js';
+import 'tippy.js/dist/tippy.css';
+import 'tippy.js/dist/backdrop.css';
+import 'tippy.js/animations/shift-away.css';
+import './tippy.scss';
+
+export type TooltipStyle = 'classic' | 'material';
+
+/** Animated tooltip behavior, with an explicit style until the site default is chosen. */
+export function createTooltip(
+  target: HTMLElement,
+  style: TooltipStyle,
+  options: Partial&lt;Props&gt; = {},
+): Instance {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const instance = tippy(target, {
+    animateFill: !reducedMotion,
+    arrow: false,
+    plugins: [animateFill],
+    placement: 'auto',
+    theme: style === 'material' ? 'materialize' : '',
+    allowHTML: false,
+    ...options,
+    ...(reducedMotion ? { animateFill: false, animation: false, duration: 0 } : {}),
+  });
+  // Escape dismisses a focused tooltip without moving keyboard focus.
+  const escape = (event: KeyboardEvent) =&gt; {
+    if (event.key === 'Escape') instance.hide();
+  };
+  document.addEventListener('keydown', escape);
+  const destroy = instance.destroy.bind(instance);
+  instance.destroy = () =&gt; {
+    document.removeEventListener('keydown', escape);
+    destroy();
+  };
+  return instance;
+}</code></pre></details><details><summary>Optional Material theme SCSS</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">// Optional Material palette; the classic variant uses unmodified Tippy colors.
+.tippy-box[data-theme~='materialize'] {
+  background-color: var(--md-sys-color-inverse-surface);
+  color: var(--md-sys-color-inverse-on-surface);
+  &gt; .tippy-backdrop {
+    background-color: var(--md-sys-color-inverse-surface);
+  }
+  &gt; .tippy-arrow {
+    color: var(--md-sys-color-inverse-surface);
+  }
+}</code></pre></details></section></div><div class="hide-on-small-only m3"><div class="toc-wrapper"><ul class="section table-of-contents"><li><a href="#styles">Choose a style</a></li><li><a href="#placement">Placement</a></li><li><a href="#touch">Click or tap</a></li><li><a href="#template">Template content</a></li><li><a href="#setup">Setup</a></li></ul></div></div></div></div></main>{{> footer }}<script type="module" src="/main.ts"></script><script type="module" src="/tippy-demo.ts"></script></body></html>

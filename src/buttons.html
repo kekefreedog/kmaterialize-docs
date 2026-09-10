@@ -1,259 +1,1194 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    {{> head }}
-  </head>
+  <head>{{> head }}</head>
   <body>
     {{> navbar }}
     <main>
-      {{> intro}}
+      {{> intro }}
       <div class="container">
         <div class="row">
-          <div class="col s12 m8 offset-m1 xl7 offset-xl1">
-            <p class="caption">There are main button types described in material design - the elevated button, the filled, text and floating button.</p>
-            <a tabindex="0" class="btn">Standard Button</a>
-            <!-- ### -->
-            <div id="filled" class="section scrollspy">
-              <h3 class="header">Filled <small class="secondary-text">(Standard)</small></h3>
-              <p>
-                The filled buttons communicates <b>high</b> emphasized actions. This is the Stadard Button Design. You can add the class <u>filled</u> to the button to provide this
-                style. This should be the main Actions on a Page, so be carful. A good rule of thumb is to add just one primary action per page or field of view.
-              </p>
-
-              <div style="display: flex; gap: 1rem">
-                <a tabindex="0" class="btn filled">Create</a>
-                <a tabindex="0" class="btn filled icon-left"> <i class="material-icons">add</i>Create </a>
-                <a tabindex="0" class="btn filled icon-right rounded waves-effect waves-light"> <i class="material-icons">edit</i>Update </a>
-              </div>
-
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><a class="btn">Standard Button</a>
-<a tabindex="0" class="btn filled">Create</a>
-<a tabindex="0" class="btn filled icon-left">
-  <i class="material-icons">add</i>Create
-</a>
-<a tabindex="0" class="btn filled icon-right rounded waves-effect waves-light">
-  <i class="material-icons">edit</i>Update
-</a></xmp></code></pre>
-            </div>
-            <!-- ### -->
-            <div id="filled-tonal" class="section scrollspy">
-              <h3>Tonal</h3>
-              <p>
-                Tonal buttons communicates a <b>medium</b> emphasized action. Just add the class tonal to the button. This can be used more often on a page because this are
-                additional Actions next to the primary actions.
-              </p>
-
-              <div style="display: flex; gap: 1rem">
-                <a tabindex="0" class="btn tonal">Create</a>
-                <a tabindex="0" class="btn tonal icon-left"> <i class="material-icons">add</i>Create </a>
-                <a tabindex="0" class="btn tonal icon-right waves-effect waves-light"> <i class="material-icons">add</i>Create </a>
-              </div>
-
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><a tabindex="0" class="btn tonal">Create</a>
-<a tabindex="0" class="btn tonal icon-left">
-  <i class="material-icons">add</i>Create
-</a>
-<a tabindex="0" class="btn tonal icon-right waves-effect waves-light">
-  <i class="material-icons">add</i>Create
-</a></xmp></code></pre>
-            </div>
-            <!-- ### -->
-            <div id="outlined" class="section scrollspy">
-              <h3 class="header">Outlined</h3>
-              <p>The outlined button communicates a <b>medium</b> emphasized action. Just add the class outlined to the button.</p>
-
-              <div style="display: flex; gap: 1rem">
-                <a tabindex="0" class="btn outlined">Create</a>
-                <a tabindex="0" class="btn outlined icon-left"> <i class="material-icons">add</i>Create </a>
-                <a tabindex="0" class="btn outlined icon-right waves-effect waves-light"> <i class="material-icons">add</i>Create </a>
-              </div>
-
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><a tabindex="0" class="btn outlined">Create</a>
-<a tabindex="0" class="btn outlined icon-left">
-  <i class="material-icons">add</i>Create
-</a>
-<a tabindex="0" class="btn outlined icon-right waves-effect waves-light">
-  <i class="material-icons">add</i>Create
-</a></xmp>
-</code></pre>
-            </div>
-            <!-- ### -->
-            <div id="elevated" class="section scrollspy">
-              <h3 class="header">Elevated</h3>
-              <p>
-                The elevated button is a tonal button with a shadow. This button that signify <b>medium</b> emphazied actions and seek to give depth to a mostly flat page. Try to
-                only use shadows when absolutely neccessary, to prevent shadow creep. Also keep in mind that on darker backgrounds the shadows are not really good visible.
-              </p>
-
-              <div style="display: flex; gap: 1rem">
-                <a tabindex="0" class="btn elevated">Create</a>
-                <a tabindex="0" class="btn elevated icon-left"> <i class="material-icons">add</i>Create </a>
-                <a tabindex="0" class="btn elevated icon-right"> <i class="material-icons">add</i>Create </a>
-                <a tabindex="0" class="btn elevated rounded">Create</a>
-                <a tabindex="0" class="btn elevated icon-left rounded"><i class="material-icons">add</i>Create</a>
-              </div>
-
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><a tabindex="0" class="btn elevated">Create</a>
-<a tabindex="0" class="btn elevated">
-  <i class="material-icons left">add</i>Create
-</a>
-<a tabindex="0" class="btn elevated">
-  <i class="material-icons right">add</i>Create
-</a>        
-<a tabindex="0" class="btn elevated rounded">Create</a>
-<a tabindex="0" class="btn elevated rounded"><i class="material-icons">add</i>Create</a></xmp></code></pre>
-            </div>
-            <!-- ### -->
-            <div id="text" class="section scrollspy">
-              <h3 class="header">Text</h3>
-              <p>
-                Text buttons are used to reduce excessive layering and communicate <b>low</b> emphasis actions. For example, text buttons are used for actions within a card or
-                modal so there are not too many overlapping shadows.
-              </p>
-
-              <div style="display: flex; gap: 1rem">
-                <a tabindex="0" class="btn text">Create</a>
-                <button class="btn text icon-left"><i class="material-icons">add</i>Create</button>
-                <a tabindex="0" class="btn text icon-right waves-effect"> <i class="material-icons">add</i>Create </a>
-              </div>
-
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><a tabindex="0" class="btn text">Create</a>
-<button class="btn text icon-left">
-  <i class="material-icons">add</i>Create
+          <div id="button-examples" class="s12 m8 offset-m1 xl7 offset-xl1">
+            <p class="caption">Explore all ten button families from <a href="https://m3.material.io/components/all-buttons" target="_blank" rel="noopener">Material 3's All buttons</a>: buttons, toggles, icon buttons, icon toggles, split buttons, standard groups, connected groups, FABs, extended FABs, and FAB menus.</p>
+            <p>The new classes are provided by this project's <code>src/components/material-buttons.scss</code>; interactive behavior lives in <code>material-buttons.ts</code>. Copy both files into your app. They extend Materialize and are not yet included in the npm library.</p>
+            <p id="button-demo-status" class="button-demo-status" role="status">Try a button. Demo actions and selection changes appear here.</p>
+<section id="filled" class="section scrollspy">
+  <h3 class="header">Filled</h3>
+  <p>A prominent action, such as saving your work.</p>
+  <div class="button-demo-row "><button type="button" class="btn btn-expressive filled" data-action="Save">
+  Save
 </button>
-<a tabindex="0" class="btn text icon-right waves-effect">
-  <i class="material-icons">add</i>Create
-</a></xmp>
-          </code></pre>
-            </div>
-            <!-- ### -->
+<button type="button" class="btn btn-expressive filled" data-action="Save with icon">
+  <i class="material-icons" aria-hidden="true">save</i>
+  Save
+</button>
+<button type="button" class="btn btn-expressive filled btn-square" data-action="Continue">
+  <i class="material-icons" aria-hidden="true">arrow_forward</i>
+  Continue
+</button></div>
+  <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- Use native buttons for actions; add an icon only when it helps. --&gt;
+&lt;button type="button" class="btn btn-expressive filled" data-action="Save"&gt;Save&lt;/button&gt;
+&lt;button type="button" class="btn btn-expressive filled" data-action="Save with icon"&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;save&lt;/i&gt;
+  Save
+&lt;/button&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive filled btn-square"
+  data-action="Continue"
+&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;arrow_forward&lt;/i&gt;
+  Continue
+&lt;/button&gt;</code></pre>
 
-            <div id="floating" class="section scrollspy">
-              <h3 class="header">Floating</h3>
-              <a class="btn-floating btn-large waves-effect waves-light">
-                <i class="material-icons">add</i>
-              </a>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><a class="btn-floating btn-large waves-effect waves-light">
-  <i class="material-icons">add</i>
-</a></xmp>
-</code></pre>
-              <h5>Floating Action Button</h5>
-              <p>A circular material button that lifts and displays an ink reaction on press. See the documentation on <a href="floating-action-button.html">this page</a></p>
-            </div>
+</section><section id="filled-tonal" class="section scrollspy">
+  <h3 class="header">Tonal</h3>
+  <p>A supporting action with a tinted surface.</p>
+  <div class="button-demo-row "><button type="button" class="btn btn-expressive tonal" data-action="Save">
+  Save
+</button>
+<button type="button" class="btn btn-expressive tonal" data-action="Save with icon">
+  <i class="material-icons" aria-hidden="true">save</i>
+  Save
+</button>
+<button type="button" class="btn btn-expressive tonal btn-square" data-action="Continue">
+  <i class="material-icons" aria-hidden="true">arrow_forward</i>
+  Continue
+</button></div>
+  <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- Use native buttons for actions; add an icon only when it helps. --&gt;
+&lt;button type="button" class="btn btn-expressive tonal" data-action="Save"&gt;Save&lt;/button&gt;
+&lt;button type="button" class="btn btn-expressive tonal" data-action="Save with icon"&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;save&lt;/i&gt;
+  Save
+&lt;/button&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive tonal btn-square"
+  data-action="Continue"
+&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;arrow_forward&lt;/i&gt;
+  Continue
+&lt;/button&gt;</code></pre>
 
-            <!-- Helpers -->
-            <div id="helpers" class="section scrollspy">
-              <h3 class="header">Helpers</h3>
-              <h4 class="header">Submit Button</h4>
-              <p>When you use a button to submit a form, instead of using a input tag, use a button tag with a type submit</p>
-              <button class="btn icon-right waves-effect waves-light" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><button class="btn icon-right waves-effect waves-light" type="submit" name="action">
-  Submit<i class="material-icons right">send</i>
-</button></xmp>
-</code></pre>
-              <!-- ### -->
-              <h4 class="header">Large</h4>
-              <p>This button has a larger height for buttons that need more attention.</p>
-              <a class="btn-large waves-effect waves-light">Button</a>
-              <a class="btn-large icon-left waves-effect waves-light"> <i class="material-icons">cloud</i>button </a>
-              <a class="btn-large icon-right waves-effect waves-light"> <i class="material-icons">cloud</i>button </a>
+</section><section id="outlined" class="section scrollspy">
+  <h3 class="header">Outlined</h3>
+  <p>An alternative action with a visible boundary.</p>
+  <div class="button-demo-row "><button type="button" class="btn btn-expressive outlined" data-action="Save">
+  Save
+</button>
+<button type="button" class="btn btn-expressive outlined" data-action="Save with icon">
+  <i class="material-icons" aria-hidden="true">save</i>
+  Save
+</button>
+<button type="button" class="btn btn-expressive outlined btn-square" data-action="Continue">
+  <i class="material-icons" aria-hidden="true">arrow_forward</i>
+  Continue
+</button></div>
+  <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- Use native buttons for actions; add an icon only when it helps. --&gt;
+&lt;button type="button" class="btn btn-expressive outlined" data-action="Save"&gt;
+  Save
+&lt;/button&gt;
+&lt;button type="button" class="btn btn-expressive outlined" data-action="Save with icon"&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;save&lt;/i&gt;
+  Save
+&lt;/button&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive outlined btn-square"
+  data-action="Continue"
+&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;arrow_forward&lt;/i&gt;
+  Continue
+&lt;/button&gt;</code></pre>
 
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><a class="btn-large waves-effect waves-light">Button</a>
-<a class="btn-large icon-left waves-effect waves-light">
-  <i class="material-icons">cloud</i>button
-</a>
-<a class="btn-large icon-right waves-effect waves-light ">
-  <i class="material-icons">cloud</i>button
-</a></xmp>
-</code></pre>
+</section><section id="elevated" class="section scrollspy">
+  <h3 class="header">Elevated</h3>
+  <p>A raised action that separates from a patterned surface.</p>
+  <div class="button-demo-row button-demo-pattern"><button type="button" class="btn btn-expressive elevated" data-action="Save">
+  Save
+</button>
+<button type="button" class="btn btn-expressive elevated" data-action="Save with icon">
+  <i class="material-icons" aria-hidden="true">save</i>
+  Save
+</button>
+<button type="button" class="btn btn-expressive elevated btn-square" data-action="Continue">
+  <i class="material-icons" aria-hidden="true">arrow_forward</i>
+  Continue
+</button></div>
+  <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- Use native buttons for actions; add an icon only when it helps. --&gt;
+&lt;button type="button" class="btn btn-expressive elevated" data-action="Save"&gt;
+  Save
+&lt;/button&gt;
+&lt;button type="button" class="btn btn-expressive elevated" data-action="Save with icon"&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;save&lt;/i&gt;
+  Save
+&lt;/button&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive elevated btn-square"
+  data-action="Continue"
+&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;arrow_forward&lt;/i&gt;
+  Continue
+&lt;/button&gt;</code></pre>
 
-              <!-- ### -->
+</section><section id="text" class="section scrollspy">
+  <h3 class="header">Text</h3>
+  <p>A quiet action with no persistent container.</p>
+  <div class="button-demo-row "><button type="button" class="btn btn-expressive text" data-action="Save">
+  Save
+</button>
+<button type="button" class="btn btn-expressive text" data-action="Save with icon">
+  <i class="material-icons" aria-hidden="true">save</i>
+  Save
+</button>
+<button type="button" class="btn btn-expressive text btn-square" data-action="Continue">
+  <i class="material-icons" aria-hidden="true">arrow_forward</i>
+  Continue
+</button></div>
+  <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- Use native buttons for actions; add an icon only when it helps. --&gt;
+&lt;button type="button" class="btn btn-expressive text" data-action="Save"&gt;Save&lt;/button&gt;
+&lt;button type="button" class="btn btn-expressive text" data-action="Save with icon"&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;save&lt;/i&gt;
+  Save
+&lt;/button&gt;
+&lt;button type="button" class="btn btn-expressive text btn-square" data-action="Continue"&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;arrow_forward&lt;/i&gt;
+  Continue
+&lt;/button&gt;</code></pre>
 
-              <h4 class="header">Small</h4>
-              <p>When mouse and keyboard are the primary input methods, this smaller button is useful for denser UI layouts.</p>
+</section><section id="toggle" class="section scrollspy">
+  <h3 class="header">Toggle buttons</h3>
+  <p>A toggle remembers an on/off choice. <code>aria-pressed</code> drives the selected color and shape.</p>
+  <div class="button-demo-row "><button type="button" class="btn btn-expressive tonal btn-toggle" aria-pressed="false" data-action="Favorite">
+  <i class="material-icons" aria-hidden="true">favorite_border</i>
+  Favorite
+</button>
+<button type="button" class="btn btn-expressive filled btn-toggle" aria-pressed="true" data-action="Following">
+  <i class="material-icons" aria-hidden="true">check</i>
+  Following
+</button>
+<button type="button" class="btn btn-expressive outlined btn-toggle" aria-pressed="false" data-action="Notifications">
+  <i class="material-icons" aria-hidden="true">notifications</i>
+  Notifications
+</button></div>
+  <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- initMaterialButtons() updates aria-pressed when each button is activated. --&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive tonal btn-toggle"
+  aria-pressed="false"
+  data-action="Favorite"
+&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;favorite_border&lt;/i&gt;
+  Favorite
+&lt;/button&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive filled btn-toggle"
+  aria-pressed="true"
+  data-action="Following"
+&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;check&lt;/i&gt;
+  Following
+&lt;/button&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive outlined btn-toggle"
+  aria-pressed="false"
+  data-action="Notifications"
+&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;notifications&lt;/i&gt;
+  Notifications
+&lt;/button&gt;</code></pre>
 
-              <a class="btn-small waves-effect waves-light">Button</a>
-              <a class="btn-small icon-left waves-effect waves-light"> <i class="material-icons">cloud</i>button </a>
-              <a class="btn-small icon-right waves-effect waves-light"> <i class="material-icons">cloud</i>button </a>
+</section><section id="icon-buttons" class="section scrollspy">
+  <h3 class="header">Icon buttons</h3>
+  <p>Compact actions with an accessible name. Choose standard, filled, tonal, or outlined styling.</p>
+  <div class="button-demo-row "><button type="button" class="btn btn-expressive btn-icon-standard btn-icon" aria-label="Settings" title="Settings" data-action="Settings">
+  <i class="material-icons" aria-hidden="true">settings</i>
 
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><a class="btn-small waves-effect waves-light">Button</a>
-<a class="btn-small icon-left waves-effect waves-light">
-  <i class="material-icons">cloud</i>button
-</a>
-<a class="btn-small icon-right waves-effect waves-light">
-  <i class="material-icons">cloud</i>button
-</a></xmp>
-</code></pre>
-            </div>
+</button>
+<button type="button" class="btn btn-expressive filled btn-icon" aria-label="Add item" title="Add item" data-action="Add item">
+  <i class="material-icons" aria-hidden="true">add</i>
 
-            <!-- ### -->
+</button>
+<button type="button" class="btn btn-expressive tonal btn-icon" aria-label="Share" title="Share" data-action="Share">
+  <i class="material-icons" aria-hidden="true">share</i>
 
-            <div id="disabled" class="section scrollspy">
-              <h3 class="header">Disabled</h3>
-              <p>This style can be applied to all button types</p>
+</button>
+<button type="button" class="btn btn-expressive outlined btn-icon" aria-label="Print" title="Print" data-action="Print">
+  <i class="material-icons" aria-hidden="true">print</i>
 
-              <div style="display: flex; gap: 1rem">
-                <a class="btn-large disabled">Button</a>
-                <a class="btn disabled">Button</a>
-                <a class="btn-flat disabled">Button</a>
-                <a class="btn-floating disabled">
-                  <i class="material-icons">add</i>
-                </a>
-              </div>
+</button></div>
+  <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- Icon-only buttons always need an accessible name. --&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive btn-icon-standard btn-icon"
+  aria-label="Settings"
+  title="Settings"
+  data-action="Settings"
+&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;settings&lt;/i&gt;
+&lt;/button&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive filled btn-icon"
+  aria-label="Add item"
+  title="Add item"
+  data-action="Add item"
+&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;add&lt;/i&gt;
+&lt;/button&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive tonal btn-icon"
+  aria-label="Share"
+  title="Share"
+  data-action="Share"
+&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;share&lt;/i&gt;
+&lt;/button&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive outlined btn-icon"
+  aria-label="Print"
+  title="Print"
+  data-action="Print"
+&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;print&lt;/i&gt;
+&lt;/button&gt;</code></pre>
 
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><a class="btn-large disabled">Button</a>
-<a class="btn disabled">Button</a>
-<a class="btn-flat disabled">Button</a>
-<a class="btn-floating disabled">
-  <i class="material-icons">add</i>
-</a></xmp></code></pre>
-            </div>
+</section><section id="toggle-icon-buttons" class="section scrollspy">
+  <h3 class="header">Toggle icon buttons</h3>
+  <p>Combine <code>btn-icon</code> and <code>btn-toggle</code> for selectable icon actions.</p>
+  <div class="button-demo-row "><button type="button" class="btn btn-expressive btn-icon-standard btn-icon btn-toggle" aria-label="Favorite" title="Favorite" aria-pressed="false" data-action="Favorite">
+  <i class="material-icons" aria-hidden="true">favorite</i>
+
+</button>
+<button type="button" class="btn btn-expressive filled btn-icon btn-toggle" aria-label="Bookmark" title="Bookmark" aria-pressed="true" data-action="Bookmark">
+  <i class="material-icons" aria-hidden="true">bookmark</i>
+
+</button>
+<button type="button" class="btn btn-expressive tonal btn-icon btn-toggle" aria-label="Mute" title="Mute" aria-pressed="false" data-action="Mute">
+  <i class="material-icons" aria-hidden="true">volume_off</i>
+
+</button>
+<button type="button" class="btn btn-expressive outlined btn-icon btn-toggle" aria-label="Pin" title="Pin" aria-pressed="false" data-action="Pin">
+  <i class="material-icons" aria-hidden="true">push_pin</i>
+
+</button></div>
+  <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- Keep the accessible name stable; aria-pressed announces the current state. --&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive btn-icon-standard btn-icon btn-toggle"
+  aria-label="Favorite"
+  title="Favorite"
+  aria-pressed="false"
+  data-action="Favorite"
+&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;favorite&lt;/i&gt;
+&lt;/button&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive filled btn-icon btn-toggle"
+  aria-label="Bookmark"
+  title="Bookmark"
+  aria-pressed="true"
+  data-action="Bookmark"
+&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;bookmark&lt;/i&gt;
+&lt;/button&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive tonal btn-icon btn-toggle"
+  aria-label="Mute"
+  title="Mute"
+  aria-pressed="false"
+  data-action="Mute"
+&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;volume_off&lt;/i&gt;
+&lt;/button&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive outlined btn-icon btn-toggle"
+  aria-label="Pin"
+  title="Pin"
+  aria-pressed="false"
+  data-action="Pin"
+&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;push_pin&lt;/i&gt;
+&lt;/button&gt;</code></pre>
+
+</section><section id="split-buttons" class="section scrollspy">
+  <h3 class="header">Split buttons</h3>
+  <p>The main action and its related menu are separate buttons. Open the menu with a click or arrow key; Escape closes it.</p>
+  <div class="button-demo-row "><div class="btn-split">
+  <!-- Primary action. -->
+  <button type="button" class="btn btn-expressive filled" data-action="Send">
+  <i class="material-icons" aria-hidden="true">send</i>
+  Send
+</button>
+  <!-- Dropdown trigger: data-target matches the menu ID. -->
+  <button type="button" class="btn btn-expressive filled btn-icon btn-menu-trigger dropdown-trigger no-autoinit" aria-label="More send options" aria-haspopup="menu" aria-expanded="false" aria-controls="send-options" data-target="send-options">
+  <i class="material-icons" aria-hidden="true">expand_more</i>
+
+</button>
+  <ul id="send-options" class="dropdown-content">
+    <li><a href="#!" data-action="Schedule send">Schedule send</a></li>
+    <li><a href="#!" data-action="Save draft">Save draft</a></li>
+  </ul>
+</div></div>
+  <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- Use standard dropdown markup and a unique data-target for each menu. --&gt;
+&lt;div class="btn-split"&gt;
+  &lt;!-- Primary action. --&gt;
+  &lt;button type="button" class="btn btn-expressive filled" data-action="Send"&gt;
+    &lt;i class="material-icons" aria-hidden="true"&gt;send&lt;/i&gt;
+    Send
+  &lt;/button&gt;
+  &lt;!-- Dropdown trigger: data-target matches the menu ID. --&gt;
+  &lt;button
+    type="button"
+    class="btn btn-expressive filled btn-icon btn-menu-trigger dropdown-trigger no-autoinit"
+    aria-label="More send options"
+    aria-haspopup="menu"
+    aria-expanded="false"
+    aria-controls="send-options"
+    data-target="send-options"
+  &gt;
+    &lt;i class="material-icons" aria-hidden="true"&gt;expand_more&lt;/i&gt;
+  &lt;/button&gt;
+  &lt;ul id="send-options" class="dropdown-content"&gt;
+    &lt;li&gt;&lt;a href="#!" data-action="Schedule send"&gt;Schedule send&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#!" data-action="Save draft"&gt;Save draft&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+  <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">import { Dropdown } from 'kmaterialize';
+
+// Initialize once. The no-autoinit class opts out of the site's general setup.
+Dropdown.init(document.querySelectorAll('.btn-split .dropdown-trigger'), {
+  alignment: 'right',
+  constrainWidth: false, // Allow menu labels to determine its width.
+  coverTrigger: false, // Place the menu beside the trigger, without covering it.
+  closeOnClick: true,
+});</code></pre>
+</section><section id="button-groups" class="section scrollspy">
+  <h3 class="header">Standard button groups</h3>
+  <p>Group related actions with space between them. Hovering gives an action a little more room; reduced-motion settings disable the transition.</p>
+  <div class="button-demo-row "><div class="btn-group btn-group-standard" role="group" aria-label="Playback">
+  <button type="button" class="btn btn-expressive tonal" data-action="Previous track">
+  <i class="material-icons" aria-hidden="true">skip_previous</i>
+  Back
+</button>
+<button type="button" class="btn btn-expressive filled btn-toggle" aria-pressed="false" data-action="Playback paused">
+  <i class="material-icons" aria-hidden="true">pause</i>
+  Pause
+</button>
+<button type="button" class="btn btn-expressive tonal" data-action="Next track">
+  <i class="material-icons" aria-hidden="true">skip_next</i>
+  Next
+</button>
+</div></div>
+  <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- Each button remains a separate action. Use role="group" with a descriptive label. --&gt;
+&lt;div class="btn-group btn-group-standard" role="group" aria-label="Playback"&gt;
+  &lt;button type="button" class="btn btn-expressive tonal" data-action="Previous track"&gt;
+    &lt;i class="material-icons" aria-hidden="true"&gt;skip_previous&lt;/i&gt;
+    Back
+  &lt;/button&gt;
+  &lt;button
+    type="button"
+    class="btn btn-expressive filled btn-toggle"
+    aria-pressed="false"
+    data-action="Playback paused"
+  &gt;
+    &lt;i class="material-icons" aria-hidden="true"&gt;pause&lt;/i&gt;
+    Pause
+  &lt;/button&gt;
+  &lt;button type="button" class="btn btn-expressive tonal" data-action="Next track"&gt;
+    &lt;i class="material-icons" aria-hidden="true"&gt;skip_next&lt;/i&gt;
+    Next
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+
+</section><section id="connected-groups" class="section scrollspy">
+  <h3 class="header">Connected button groups</h3>
+  <p>Use a connected outline for related choices. These examples show single and multiple selection.</p>
+  <div class="button-demo-row button-demo-choices"><!-- Single selection: choosing one option clears the others. -->
+<div class="btn-group btn-group-connected" role="group" aria-label="Travel mode" data-selection="single">
+  <button type="button" class="btn btn-expressive tonal btn-toggle" aria-pressed="true" data-action="Walk">
+  <i class="material-icons" aria-hidden="true">directions_walk</i>
+  Walk
+</button>
+<button type="button" class="btn btn-expressive tonal btn-toggle" aria-pressed="false" data-action="Bike">
+  <i class="material-icons" aria-hidden="true">directions_bike</i>
+  Bike
+</button>
+<button type="button" class="btn btn-expressive tonal btn-toggle" aria-pressed="false" data-action="Drive">
+  <i class="material-icons" aria-hidden="true">directions_car</i>
+  Drive
+</button>
+</div>
+<!-- Multiple selection: each setting can be toggled independently. -->
+<div class="btn-group btn-group-connected" role="group" aria-label="Text formatting" data-selection="multiple">
+  <button type="button" class="btn btn-expressive outlined btn-icon btn-toggle" aria-label="Bold" aria-pressed="true" data-action="Bold">
+  <i class="material-icons" aria-hidden="true">format_bold</i>
+
+</button>
+<button type="button" class="btn btn-expressive outlined btn-icon btn-toggle" aria-label="Italic" aria-pressed="false" data-action="Italic">
+  <i class="material-icons" aria-hidden="true">format_italic</i>
+
+</button>
+<button type="button" class="btn btn-expressive outlined btn-icon btn-toggle" aria-label="Underline" aria-pressed="false" data-action="Underline">
+  <i class="material-icons" aria-hidden="true">format_underlined</i>
+
+</button>
+</div></div>
+  <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- Single selection: choosing one option clears the others. --&gt;
+&lt;div
+  class="btn-group btn-group-connected"
+  role="group"
+  aria-label="Travel mode"
+  data-selection="single"
+&gt;
+  &lt;button
+    type="button"
+    class="btn btn-expressive tonal btn-toggle"
+    aria-pressed="true"
+    data-action="Walk"
+  &gt;
+    &lt;i class="material-icons" aria-hidden="true"&gt;directions_walk&lt;/i&gt;
+    Walk
+  &lt;/button&gt;
+  &lt;button
+    type="button"
+    class="btn btn-expressive tonal btn-toggle"
+    aria-pressed="false"
+    data-action="Bike"
+  &gt;
+    &lt;i class="material-icons" aria-hidden="true"&gt;directions_bike&lt;/i&gt;
+    Bike
+  &lt;/button&gt;
+  &lt;button
+    type="button"
+    class="btn btn-expressive tonal btn-toggle"
+    aria-pressed="false"
+    data-action="Drive"
+  &gt;
+    &lt;i class="material-icons" aria-hidden="true"&gt;directions_car&lt;/i&gt;
+    Drive
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;!-- Multiple selection: each setting can be toggled independently. --&gt;
+&lt;div
+  class="btn-group btn-group-connected"
+  role="group"
+  aria-label="Text formatting"
+  data-selection="multiple"
+&gt;
+  &lt;button
+    type="button"
+    class="btn btn-expressive outlined btn-icon btn-toggle"
+    aria-label="Bold"
+    aria-pressed="true"
+    data-action="Bold"
+  &gt;
+    &lt;i class="material-icons" aria-hidden="true"&gt;format_bold&lt;/i&gt;
+  &lt;/button&gt;
+  &lt;button
+    type="button"
+    class="btn btn-expressive outlined btn-icon btn-toggle"
+    aria-label="Italic"
+    aria-pressed="false"
+    data-action="Italic"
+  &gt;
+    &lt;i class="material-icons" aria-hidden="true"&gt;format_italic&lt;/i&gt;
+  &lt;/button&gt;
+  &lt;button
+    type="button"
+    class="btn btn-expressive outlined btn-icon btn-toggle"
+    aria-label="Underline"
+    aria-pressed="false"
+    data-action="Underline"
+  &gt;
+    &lt;i class="material-icons" aria-hidden="true"&gt;format_underlined&lt;/i&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+
+</section><section id="floating" class="section scrollspy">
+  <h3 class="header">Floating action buttons (FABs)</h3>
+  <p>Use a floating action button for a primary action. These examples add container colors and compact, regular, and large sizes.</p>
+  <div class="button-demo-row "><button type="button" class="btn btn-expressive btn-fab fab-small" aria-label="Add note" title="Add note" data-action="Add note">
+  <i class="material-icons" aria-hidden="true">add</i>
+
+</button>
+<button type="button" class="btn btn-expressive btn-fab " aria-label="Create note" title="Create note" data-action="Create note">
+  <i class="material-icons" aria-hidden="true">edit</i>
+
+</button>
+<button type="button" class="btn btn-expressive btn-fab fab-secondary" aria-label="Take photo" title="Take photo" data-action="Take photo">
+  <i class="material-icons" aria-hidden="true">photo_camera</i>
+
+</button>
+<button type="button" class="btn btn-expressive btn-fab fab-large fab-tertiary" aria-label="Create project" title="Create project" data-action="Create project">
+  <i class="material-icons" aria-hidden="true">add</i>
+
+</button></div>
+  <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- The btn-fab class is an opt-in addition to the existing floating button styles. --&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive btn-fab fab-small"
+  aria-label="Add note"
+  title="Add note"
+  data-action="Add note"
+&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;add&lt;/i&gt;
+&lt;/button&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive btn-fab"
+  aria-label="Create note"
+  title="Create note"
+  data-action="Create note"
+&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;edit&lt;/i&gt;
+&lt;/button&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive btn-fab fab-secondary"
+  aria-label="Take photo"
+  title="Take photo"
+  data-action="Take photo"
+&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;photo_camera&lt;/i&gt;
+&lt;/button&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive btn-fab fab-large fab-tertiary"
+  aria-label="Create project"
+  title="Create project"
+  data-action="Create project"
+&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;add&lt;/i&gt;
+&lt;/button&gt;</code></pre>
+  <p>For the existing fixed-position launcher, see <a href="floating-action-button.html">Floating Action Button</a>.</p>
+</section><section id="extended-fab" class="section scrollspy">
+  <h3 class="header">Extended FABs</h3>
+  <p>Add a visible label when an icon alone would be unclear.</p>
+  <div class="button-demo-row "><button type="button" class="btn btn-expressive btn-fab btn-fab-extended" data-action="Compose">
+  <i class="material-icons" aria-hidden="true">edit</i>
+  Compose
+</button>
+<button type="button" class="btn btn-expressive btn-fab btn-fab-extended fab-secondary" data-action="New project">
+  <i class="material-icons" aria-hidden="true">add</i>
+  New project
+</button></div>
+  <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- Use btn-fab-extended together with btn-fab. --&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive btn-fab btn-fab-extended"
+  data-action="Compose"
+&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;edit&lt;/i&gt;
+  Compose
+&lt;/button&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive btn-fab btn-fab-extended fab-secondary"
+  data-action="New project"
+&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;add&lt;/i&gt;
+  New project
+&lt;/button&gt;</code></pre>
+
+</section><section id="fab-menu" class="section scrollspy">
+  <h3 class="header">FAB menus</h3>
+  <p>A launcher reveals a small set of related actions. Materialize handles positioning, keyboard navigation, and closing after selection or an outside click.</p>
+  <div class="button-demo-row button-demo-menu-space"><div class="btn-fab-menu">
+  <!-- Menu appears above the launcher. -->
+  <ul id="create-options" class="dropdown-content">
+    <li><a href="#!" data-action="New document"><i class="material-icons" aria-hidden="true">description</i>Document</a></li>
+    <li><a href="#!" data-action="New folder"><i class="material-icons" aria-hidden="true">folder</i>Folder</a></li>
+    <li><a href="#!" data-action="Upload file"><i class="material-icons" aria-hidden="true">upload_file</i>Upload</a></li>
+  </ul>
+  <button type="button" class="btn btn-expressive btn-fab btn-menu-trigger dropdown-trigger no-autoinit" aria-label="Create" aria-haspopup="menu" aria-expanded="false" aria-controls="create-options" data-target="create-options">
+  <i class="material-icons" aria-hidden="true">add</i>
+
+</button>
+</div></div>
+  <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- Render the popup in document.body with the dropdown container option. --&gt;
+&lt;div class="btn-fab-menu"&gt;
+  &lt;!-- Menu appears above the launcher. --&gt;
+  &lt;ul id="create-options" class="dropdown-content"&gt;
+    &lt;li&gt;
+      &lt;a href="#!" data-action="New document"&gt;
+        &lt;i class="material-icons" aria-hidden="true"&gt;description&lt;/i&gt;
+        Document
+      &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href="#!" data-action="New folder"&gt;
+        &lt;i class="material-icons" aria-hidden="true"&gt;folder&lt;/i&gt;
+        Folder
+      &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href="#!" data-action="Upload file"&gt;
+        &lt;i class="material-icons" aria-hidden="true"&gt;upload_file&lt;/i&gt;
+        Upload
+      &lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;button
+    type="button"
+    class="btn btn-expressive btn-fab btn-menu-trigger dropdown-trigger no-autoinit"
+    aria-label="Create"
+    aria-haspopup="menu"
+    aria-expanded="false"
+    aria-controls="create-options"
+    data-target="create-options"
+  &gt;
+    &lt;i class="material-icons" aria-hidden="true"&gt;add&lt;/i&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+  <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">import { Dropdown } from 'kmaterialize';
+
+// Initialize once. The no-autoinit class opts out of the site's general setup.
+Dropdown.init(document.querySelectorAll('.btn-fab-menu .dropdown-trigger'), {
+  container: document.body, // Render outside the FAB container.
+  alignment: 'right',
+  constrainWidth: false, // Allow menu labels to determine its width.
+  coverTrigger: false, // Place the menu beside the trigger, without covering it.
+  closeOnClick: true,
+});</code></pre>
+</section><section id="helpers" class="section scrollspy">
+  <h3 class="header">Sizes, shapes, and icon widths</h3>
+  <p>Use <code>btn-xs</code>, <code>btn-sm</code>, <code>btn-md</code>, <code>btn-lg</code>, or <code>btn-xl</code>. Rounded is the default; <code>btn-square</code> gives a softer rectangular shape.</p>
+  <div class="button-demo-row "><button type="button" class="btn btn-expressive tonal btn-xs" data-action="XS button">
+  XS
+</button>
+<button type="button" class="btn btn-expressive tonal btn-sm" data-action="SM button">
+  SM
+</button>
+<button type="button" class="btn btn-expressive tonal btn-md" data-action="MD button">
+  MD
+</button>
+<button type="button" class="btn btn-expressive tonal btn-lg" data-action="LG button">
+  LG
+</button>
+<button type="button" class="btn btn-expressive tonal btn-xl" data-action="XL button">
+  XL
+</button>
+<button type="button" class="btn btn-expressive outlined btn-icon btn-md btn-icon-narrow" aria-label="Narrow back button" data-action="Back">
+  <i class="material-icons" aria-hidden="true">arrow_back</i>
+
+</button>
+<button type="button" class="btn btn-expressive filled btn-icon btn-md btn-icon-wide" aria-label="Wide forward button" data-action="Forward">
+  <i class="material-icons" aria-hidden="true">arrow_forward</i>
+
+</button></div>
+  <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- Size modifiers are opt-in and do not change the legacy btn-small / btn-large helpers. --&gt;
+&lt;button type="button" class="btn btn-expressive tonal btn-xs" data-action="XS button"&gt;
+  XS
+&lt;/button&gt;
+&lt;button type="button" class="btn btn-expressive tonal btn-sm" data-action="SM button"&gt;
+  SM
+&lt;/button&gt;
+&lt;button type="button" class="btn btn-expressive tonal btn-md" data-action="MD button"&gt;
+  MD
+&lt;/button&gt;
+&lt;button type="button" class="btn btn-expressive tonal btn-lg" data-action="LG button"&gt;
+  LG
+&lt;/button&gt;
+&lt;button type="button" class="btn btn-expressive tonal btn-xl" data-action="XL button"&gt;
+  XL
+&lt;/button&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive outlined btn-icon btn-md btn-icon-narrow"
+  aria-label="Narrow back button"
+  data-action="Back"
+&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;arrow_back&lt;/i&gt;
+&lt;/button&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive filled btn-icon btn-md btn-icon-wide"
+  aria-label="Wide forward button"
+  data-action="Forward"
+&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;arrow_forward&lt;/i&gt;
+&lt;/button&gt;</code></pre>
+
+</section><section id="disabled" class="section scrollspy">
+  <h3 class="header">Disabled buttons</h3>
+  <p>Use the native <code>disabled</code> attribute so unavailable actions cannot receive clicks or keyboard activation.</p>
+  <div class="button-demo-row "><button type="button" class="btn btn-expressive filled" disabled data-action="Should not run">
+  Unavailable
+</button>
+<button type="button" class="btn btn-expressive tonal" disabled data-action="Should not run">
+  Unavailable
+</button>
+<button type="button" class="btn btn-expressive outlined" disabled data-action="Should not run">
+  Unavailable
+</button>
+<button type="button" class="btn btn-expressive elevated" disabled data-action="Should not run">
+  Unavailable
+</button>
+<button type="button" class="btn btn-expressive text" disabled data-action="Should not run">
+  Unavailable
+</button>
+<button type="button" class="btn btn-expressive tonal btn-icon btn-toggle" aria-label="Favorite unavailable" aria-pressed="true" disabled>
+  <i class="material-icons" aria-hidden="true">favorite</i>
+
+</button></div>
+  <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- Native disabled state applies to all variants. --&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive filled"
+  disabled
+  data-action="Should not run"
+&gt;
+  Unavailable
+&lt;/button&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive tonal"
+  disabled
+  data-action="Should not run"
+&gt;
+  Unavailable
+&lt;/button&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive outlined"
+  disabled
+  data-action="Should not run"
+&gt;
+  Unavailable
+&lt;/button&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive elevated"
+  disabled
+  data-action="Should not run"
+&gt;
+  Unavailable
+&lt;/button&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive text"
+  disabled
+  data-action="Should not run"
+&gt;
+  Unavailable
+&lt;/button&gt;
+&lt;button
+  type="button"
+  class="btn btn-expressive tonal btn-icon btn-toggle"
+  aria-label="Favorite unavailable"
+  aria-pressed="true"
+  disabled
+&gt;
+  &lt;i class="material-icons" aria-hidden="true"&gt;favorite&lt;/i&gt;
+&lt;/button&gt;</code></pre>
+
+</section><section id="hierarchy" class="section scrollspy">
+  <h3 class="header">Hierarchy and placement</h3>
+  <p>Give the key action more visual emphasis and keep related alternatives nearby. These arrangements mirror the combinations on the reference page.</p>
+  <div class="button-demo-row button-demo-choices"><!-- Primary action with a quieter alternative. -->
+<div class="btn-group" role="group" aria-label="Save changes">
+  <button type="button" class="btn btn-expressive text" data-action="Cancel">
+  Cancel
+</button>
+<button type="button" class="btn btn-expressive filled" data-action="Save">
+  Save
+</button>
+</div>
+<!-- Outline and fill distinguish two important actions. -->
+<div class="btn-group" role="group" aria-label="Review changes">
+  <button type="button" class="btn btn-expressive outlined" data-action="Review">
+  Review
+</button>
+<button type="button" class="btn btn-expressive filled" data-action="Confirm">
+  Confirm
+</button>
+</div>
+<!-- Two supporting actions. -->
+<div class="btn-group" role="group" aria-label="More information">
+  <button type="button" class="btn btn-expressive text" data-action="Learn more">
+  Learn more
+</button>
+<button type="button" class="btn btn-expressive outlined" data-action="View all">
+  View all
+</button>
+</div>
+<!-- One clear primary action is enough for a simple step. -->
+<button type="button" class="btn btn-expressive filled" data-action="Continue">
+  Continue
+</button></div>
+  <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- Primary action with a quieter alternative. --&gt;
+&lt;div class="btn-group" role="group" aria-label="Save changes"&gt;
+  &lt;button type="button" class="btn btn-expressive text" data-action="Cancel"&gt;
+    Cancel
+  &lt;/button&gt;
+  &lt;button type="button" class="btn btn-expressive filled" data-action="Save"&gt;
+    Save
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;!-- Outline and fill distinguish two important actions. --&gt;
+&lt;div class="btn-group" role="group" aria-label="Review changes"&gt;
+  &lt;button type="button" class="btn btn-expressive outlined" data-action="Review"&gt;
+    Review
+  &lt;/button&gt;
+  &lt;button type="button" class="btn btn-expressive filled" data-action="Confirm"&gt;
+    Confirm
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;!-- Two supporting actions. --&gt;
+&lt;div class="btn-group" role="group" aria-label="More information"&gt;
+  &lt;button type="button" class="btn btn-expressive text" data-action="Learn more"&gt;
+    Learn more
+  &lt;/button&gt;
+  &lt;button type="button" class="btn btn-expressive outlined" data-action="View all"&gt;
+    View all
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;!-- One clear primary action is enough for a simple step. --&gt;
+&lt;button type="button" class="btn btn-expressive filled" data-action="Continue"&gt;
+  Continue
+&lt;/button&gt;</code></pre>
+
+</section><section id="setup" class="section scrollspy"><h3 class="header">Initialization &amp; classes</h3><p>Native buttons already support Enter and Space. Initialize once per container for toggles and menus. Split buttons and FAB menus use the standard Materialize Dropdown for positioning and keyboard navigation. The initializer below already calls Dropdown.init; the standalone snippets above are alternatives. New selection controls use <code>aria-pressed</code>; menu triggers use <code>aria-expanded</code>.</p><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">// Import once, after the site's Materialize stylesheet.
+import './components/material-buttons.scss';
+import { initMaterialButtons } from './components/material-buttons';
+
+const root = document.querySelector&lt;HTMLElement&gt;('#button-examples')!;
+const destroy = initMaterialButtons(root);
+
+// Application actions stay outside the reusable UI behavior.
+root.addEventListener('buttonaction', (event) =&gt; {
+  const { action, pressed } = (event as CustomEvent).detail;
+  console.log(action, pressed);
+});
+
+// When removing the view:
+// destroy();</code></pre><table class="striped responsive-table"><thead><tr><th>Class</th><th>Purpose</th></tr></thead><tbody><tr><td><code>btn-expressive</code></td><td>Rounded layout, inline icons, focus and pressed states.</td></tr><tr><td><code>btn-xs / btn-sm / btn-md / btn-lg / btn-xl</code></td><td>Explicit 32 / 40 / 56 / 96 / 136px heights.</td></tr><tr><td><code>btn-square</code></td><td>Soft rectangular shape.</td></tr><tr><td><code>btn-toggle</code></td><td>Selection driven by aria-pressed.</td></tr><tr><td><code>btn-icon / btn-icon-standard</code></td><td>Icon-only geometry and unfilled styling.</td></tr><tr><td><code>btn-icon-narrow / btn-icon-wide</code></td><td>Narrow and wide icon containers.</td></tr><tr><td><code>btn-group / btn-group-standard</code></td><td>Spaced related actions.</td></tr><tr><td><code>btn-group-connected</code></td><td>Connected single- or multi-select choices.</td></tr><tr><td><code>btn-split / btn-menu-trigger</code></td><td>Primary action paired with a standard dropdown.</td></tr><tr><td><code>btn-fab / btn-fab-extended</code></td><td>Container-color FABs, with or without labels.</td></tr><tr><td><code>fab-small / fab-large / fab-secondary / fab-tertiary</code></td><td>FAB sizes and color alternatives.</td></tr><tr><td><code>btn-fab-menu</code></td><td>FAB launcher for a standard dropdown.</td></tr></tbody></table>
+<details><summary>SCSS — reusable button classes</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">// Add after Materialize. Opt-in classes preserve existing .btn styling elsewhere.
+.btn.btn-expressive {
+  --button-height: 40px;
+  --button-padding: 24px;
+  --button-icon: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: var(--button-height);
+  min-height: var(--button-height);
+  padding: 0 var(--button-padding);
+  border-radius: 999px;
+  font-size: 14px;
+  line-height: 1.2;
+  text-transform: none;
+  white-space: nowrap;
+  transition:
+    border-radius 180ms ease,
+    background-color 180ms ease,
+    flex-grow 180ms ease;
+  &gt; .material-icons {
+    position: static;
+    transform: none;
+    font-size: var(--button-icon);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  &amp;:focus-visible {
+    outline: 3px solid var(--md-sys-color-on-surface);
+    outline-offset: 3px;
+  }
+  &amp;:active:not(:disabled) {
+    border-radius: 12px;
+  }
+  &amp;.btn-xs {
+    --button-height: 32px;
+    --button-padding: 12px;
+  }
+  &amp;.btn-sm {
+    --button-height: 40px;
+  }
+  &amp;.btn-md {
+    --button-height: 56px;
+    --button-icon: 24px;
+    font-size: 16px;
+  }
+  &amp;.btn-lg {
+    --button-height: 96px;
+    --button-padding: 40px;
+    --button-icon: 32px;
+    font-size: 24px;
+  }
+  &amp;.btn-xl {
+    --button-height: 136px;
+    --button-padding: 48px;
+    --button-icon: 40px;
+    font-size: 32px;
+  }
+  &amp;.btn-square {
+    border-radius: calc(var(--button-height) * 0.28);
+  }
+}
+
+// Toggle state belongs in aria-pressed, so visual and accessible states agree.
+.btn.btn-toggle[aria-pressed='true'] {
+  background: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  border-color: transparent;
+  border-radius: 16px;
+}
+.btn.btn-icon {
+  width: var(--button-height);
+  min-width: var(--button-height);
+  padding: 0;
+}
+.btn.btn-icon-standard {
+  background: transparent;
+  color: var(--md-sys-color-on-surface-variant);
+  box-shadow: none;
+}
+.btn.btn-icon-standard:hover:not(:disabled) {
+  background: var(--md-sys-color-surface-variant);
+}
+.btn.btn-icon.btn-toggle[aria-pressed='true'] {
+  background: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+}
+.btn.btn-icon.btn-icon-narrow {
+  width: calc(var(--button-height) * 0.8);
+  min-width: calc(var(--button-height) * 0.8);
+}
+.btn.btn-icon.btn-icon-wide {
+  width: calc(var(--button-height) * 1.5);
+}
+
+// Standard groups keep gaps; connected groups share the outer silhouette.
+.btn-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+}
+.btn-group &gt; .btn {
+  flex: 1 1 0;
+  min-width: 0;
+}
+.btn-group-standard {
+  width: 100%;
+  max-width: 480px;
+}
+.btn-group-standard &gt; .btn:hover:not(:disabled) {
+  flex-grow: 1.2;
+}
+.btn-group-connected {
+  gap: 2px;
+}
+.btn-group-connected &gt; .btn.btn-expressive {
+  border-radius: 4px;
+}
+.btn-group-connected &gt; .btn.btn-expressive:first-child {
+  border-start-start-radius: 999px;
+  border-end-start-radius: 999px;
+}
+.btn-group-connected &gt; .btn.btn-expressive:last-child {
+  border-start-end-radius: 999px;
+  border-end-end-radius: 999px;
+}
+// Keep the connected silhouette unchanged during selection and pointer presses.
+.btn-group-connected &gt; .btn.btn-expressive:active:not(:disabled) {
+  border-radius: 4px;
+  &amp;:first-child {
+    border-start-start-radius: 999px;
+    border-end-start-radius: 999px;
+  }
+  &amp;:last-child {
+    border-start-end-radius: 999px;
+    border-end-end-radius: 999px;
+  }
+}
+
+// Split controls expose a separate primary action and menu action.
+.btn-split {
+  display: inline-flex;
+  gap: 2px;
+  position: relative;
+  vertical-align: middle;
+}
+.btn-split &gt; .btn:first-child {
+  border-start-end-radius: 4px;
+  border-end-end-radius: 4px;
+}
+.btn-split &gt; .btn-menu-trigger {
+  border-start-start-radius: 4px;
+  border-end-start-radius: 4px;
+}
+.btn-menu-trigger &gt; .material-icons {
+  transition: transform 180ms ease;
+}
+.btn-menu-trigger[aria-expanded='true'] &gt; .material-icons {
+  transform: rotate(180deg);
+}
+// FABs use container colors and elevation; extended FABs also carry a label.
+.btn.btn-fab {
+  --button-height: 56px;
+  --button-icon: 24px;
+  width: var(--button-height);
+  padding: 0;
+  border-radius: 16px;
+  background: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  box-shadow: 0 3px 8px color-mix(in srgb, var(--md-sys-color-shadow) 20%, transparent);
+  &amp;.fab-secondary {
+    background: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+  }
+  &amp;.fab-tertiary {
+    background: var(--md-sys-color-tertiary-container);
+    color: var(--md-sys-color-on-tertiary-container);
+  }
+  &amp;.fab-small {
+    --button-height: 40px;
+    border-radius: 12px;
+  }
+  &amp;.fab-large {
+    --button-height: 96px;
+    --button-icon: 36px;
+    border-radius: 28px;
+  }
+  &amp;.btn-fab-extended {
+    width: auto;
+    padding: 0 20px;
+  }
+}
+.btn-fab-menu {
+  position: relative;
+  display: inline-flex;
+}
+.btn-fab-menu .btn-menu-trigger[aria-expanded='true'] &gt; .material-icons {
+  transform: rotate(45deg);
+}
+
+// Explicitly retain native disabled behavior across all custom variants.
+.btn.btn-expressive:disabled,
+.btn.btn-expressive.btn-toggle:disabled {
+  background: color-mix(in srgb, var(--md-sys-color-on-surface) 12%, transparent);
+  color: color-mix(in srgb, var(--md-sys-color-on-surface) 38%, transparent);
+  box-shadow: none;
+  cursor: default;
+}
+@media (pointer: coarse) {
+  .btn.btn-expressive::after {
+    content: '';
+    position: absolute;
+    inset: -4px 0;
+    min-height: 48px;
+  }
+  .btn-group {
+    gap: 8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn.btn-expressive,
+  .btn-menu-trigger &gt; .material-icons {
+    transition: none;
+  }
+}</code></pre></details>
+<details><summary>TypeScript — toggles, groups, and menus</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">import { Dropdown } from 'kmaterialize';
+
+/** Initialize Materialize dropdowns and the additional button selection states. */
+export function initMaterialButtons(root: HTMLElement): () =&gt; void {
+  const events = new AbortController();
+
+  const triggers = Array.from(root.querySelectorAll&lt;HTMLElement&gt;('.dropdown-trigger'));
+  // Remember ownership before Dropdown moves a FAB menu into document.body.
+  const menus = new Set(
+    triggers.map((trigger) =&gt; document.getElementById(trigger.dataset.target!)!),
+  );
+  const owns = (element: Element) =&gt;
+    root.contains(element) || Array.from(menus).some((menu) =&gt; menu.contains(element));
+
+  const dropdowns = triggers.map((trigger) =&gt;
+    Dropdown.init(trigger, {
+      alignment: 'right',
+      constrainWidth: false,
+      coverTrigger: false,
+      closeOnClick: true,
+      // FAB popups escape their demo container; split menus keep their default parent.
+      ...(trigger.closest('.btn-fab-menu') ? { container: document.body } : {}),
+    }),
+  );
+
+  // Dropdown activates its focused item on Enter. Suppress the native follow-up
+  // click when focus returns to a button trigger, which would reopen the menu.
+  document.addEventListener(
+    'keydown',
+    (event) =&gt; {
+      if (
+        event.key === 'Enter' &amp;&amp;
+        owns(event.target as Element) &amp;&amp;
+        (event.target as Element).closest('.dropdown-content')
+      ) {
+        event.preventDefault();
+      }
+    },
+    { capture: true, signal: events.signal },
+  );
+
+  document.addEventListener(
+    'click',
+    (event) =&gt; {
+      const action = (event.target as Element).closest&lt;HTMLElement&gt;(
+        '[data-action], .btn-toggle',
+      );
+      if (!action || !owns(action) || action.matches(':disabled')) return;
+      // Demo menu actions are links, following the standard dropdown markup.
+      if (action.matches('a[data-action]')) event.preventDefault();
+
+      if (action.classList.contains('btn-toggle')) {
+        const group = action.closest&lt;HTMLElement&gt;('[data-selection]');
+        const selected = action.getAttribute('aria-pressed') === 'true';
+        if (group?.dataset.selection === 'single') {
+          group.querySelectorAll('.btn-toggle').forEach((item) =&gt; {
+            item.setAttribute('aria-pressed', String(item === action));
+          });
+        } else {
+          action.setAttribute('aria-pressed', String(!selected));
+        }
+      }
+
+      // Keep application behavior separate from selection and dropdown behavior.
+      if (action.dataset.action) {
+        root.dispatchEvent(
+          new CustomEvent('buttonaction', {
+            bubbles: true,
+            detail: {
+              action: action.dataset.action,
+              pressed: action.getAttribute('aria-pressed'),
+            },
+          }),
+        );
+      }
+    },
+    { signal: events.signal },
+  );
+
+  return () =&gt; {
+    dropdowns.forEach((dropdown) =&gt; dropdown.destroy());
+    events.abort();
+  };
+}</code></pre></details></section>
           </div>
-
-          <div class="col hide-on-small-only m3 xl3">
-            <div class="toc-wrapper">
-              <div style="height: 1px">
-                <ul class="section table-of-contents">
-                  <li>
-                    <a href="#filled">Filled</a>
-                  </li>
-                  <li>
-                    <a href="#filled-tonal">Filled Tonal</a>
-                  </li>
-                  <li>
-                    <a href="#outlined">Outlined</a>
-                  </li>
-                  <li>
-                    <a href="#elevated">Elevated</a>
-                  </li>
-                  <li>
-                    <a href="#text">Text</a>
-                  </li>
-                  <li>
-                    <a href="#floating">Floating</a>
-                  </li>
-                  <li>
-                    <a href="#helpers">Helpers</a>
-                  </li>
-                  <li>
-                    <a href="#disabled">Disabled</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+          <div class="hide-on-small-only m3 xl3"><div class="toc-wrapper"><ul class="section table-of-contents"><li><a href="#filled">Filled</a></li><li><a href="#filled-tonal">Tonal</a></li><li><a href="#outlined">Outlined</a></li><li><a href="#elevated">Elevated</a></li><li><a href="#text">Text</a></li><li><a href="#toggle">Toggle buttons</a></li><li><a href="#icon-buttons">Icon buttons</a></li><li><a href="#toggle-icon-buttons">Toggle icon buttons</a></li><li><a href="#split-buttons">Split buttons</a></li><li><a href="#button-groups">Standard button groups</a></li><li><a href="#connected-groups">Connected button groups</a></li><li><a href="#floating">Floating action buttons (FABs)</a></li><li><a href="#extended-fab">Extended FABs</a></li><li><a href="#fab-menu">FAB menus</a></li><li><a href="#helpers">Sizes, shapes, and icon widths</a></li><li><a href="#disabled">Disabled buttons</a></li><li><a href="#hierarchy">Hierarchy and placement</a></li><li><a href="#setup">Initialization &amp; classes</a></li></ul></div></div>
         </div>
       </div>
     </main>
     {{> footer }}
     <script type="module" src="/main.ts"></script>
+    <script type="module" src="/buttons-demo.ts"></script>
   </body>
 </html>

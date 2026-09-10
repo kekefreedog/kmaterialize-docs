@@ -1,0 +1,27 @@
+@import 'material-icons/iconfont/material-icons.css';
+@import 'kmaterialize/sass/materialize.scss';
+
+.drawer-example { margin: 0; background: var(--md-sys-color-background); color: var(--md-sys-color-on-background); }
+.drawer-example .sidenav { width: 300px; }
+.drawer-example-brand > a { display: flex !important; align-items: center; gap: 16px; height: 72px !important; font-size: 22px !important; }
+.drawer-example-brand img { width: 28px; height: 28px; }
+.drawer-example-search { margin: 5px 0; position: relative; z-index: 2; }
+.drawer-example-search .search-wrapper { position: relative; margin-top: -1px; color: var(--md-sys-color-on-surface-variant); }
+.drawer-example-search input#docs-example-search {
+  display: block; box-sizing: border-box; width: 80%; height: 32px;
+  margin: 0 auto; padding: 5px; padding-right: 32px; font-size: 16px;
+  border: 1px solid var(--md-sys-color-outline-variant); border-radius: 3px;
+  background: transparent; color: var(--md-sys-color-on-surface-variant);
+  &:focus { outline: none; box-shadow: none; }
+}
+.drawer-example-search .search-wrapper > i { position: absolute; top: 4px; right: 34px; color: var(--md-sys-color-outline-variant); pointer-events: none; }
+.drawer-example .collapsible-header { width: 100%; border: 0; background: transparent; color: inherit; font: inherit; text-align: left; }
+.drawer-example [hidden] { display: none !important; }
+.drawer-example .nav-wrapper { display: flex; align-items: center; gap: 12px; padding: 0 16px; }
+.drawer-example .nav-wrapper .btn { color: var(--md-sys-color-on-primary); }
+.drawer-example-content { padding: 32px 24px; }
+.drawer-example-content h1 { font-size: clamp(28px, 4vw, 52px); line-height: 1.1; letter-spacing: -.035em; }
+.drawer-example-content p { max-width: 48ch; line-height: 1.6; }
+.drawer-example-note { font-size: 13px; color: var(--md-sys-color-on-surface-variant); }
+.drawer-example-docked .drawer-example-page { margin-left: 300px; }
+.drawer-example-docked .sidenav-overlay, .drawer-example-docked #docs-example-toggle { display: none !important; }

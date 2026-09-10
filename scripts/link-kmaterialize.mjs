@@ -7,12 +7,13 @@
 //
 // Usage: node scripts/link-kmaterialize.mjs <local|latest>
 
-import { readFileSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
 import { execSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 
-const LOCAL_KMATERIALIZE_PATH = "/Users/kzarshenas/Sites/CrazyProject/kmaterialize";
+const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const LOCAL_KMATERIALIZE_PATH = path.resolve(process.env.KMATERIALIZE_PATH || path.join(rootDir, "../kmaterialize"));
 
 const mode = process.argv[2];
 if (mode !== "local" && mode !== "latest") {
@@ -20,9 +21,10 @@ if (mode !== "local" && mode !== "latest") {
   process.exit(1);
 }
 
-const target = mode === "local" ? `file:${LOCAL_KMATERIALIZE_PATH}` : "latest";
+const useLocal = mode === "local" && existsSync(path.join(LOCAL_KMATERIALIZE_PATH, "src/index.ts"));
+if (mode === "local" && !useLocal) console.log("No local library checkout found; using published Kmaterialize.");
+const target = useLocal ? `file:${LOCAL_KMATERIALIZE_PATH}` : "latest";
 
-const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const pkgPath = path.join(rootDir, "package.json");
 const pkg = JSON.parse(readFileSync(pkgPath, "utf8"));
 const alreadyLinked = pkg.dependencies.kmaterialize === target;
@@ -63,7 +65,7 @@ if (mode === "latest") {
 // Keep the local dependency as a real symlink. A copied file: package is a
 // snapshot that Vite cannot watch, so library changes otherwise require a
 // server restart and a hard refresh before they appear in the docs.
-if (mode === "local") {
+if (useLocal) {
   const nodeModulesTarget = path.join(rootDir, "node_modules", "kmaterialize");
   rmSync(nodeModulesTarget, { recursive: true, force: true });
   symlinkSync(LOCAL_KMATERIALIZE_PATH, nodeModulesTarget, "dir");

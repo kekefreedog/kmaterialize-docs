@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>{{> head }}</head>
+  <body>
+    {{> navbar }}
+    <main>
+      {{> intro }}
+      <div class="container">
+        <section id="introduction" class="section scrollspy">
+          <p class="caption">Give every team a place. Arrange people in a two-dimensional workspace and trace their relationships with gently curved, named connections. Surfaces, colors, and rounded cards follow your Materialize theme.</p>
+          <p><strong>Connect on the canvas:</strong> drag the round <strong>+</strong> on a person or team to another card or team header. A dashed line previews the connection and valid targets are highlighted. Release, enter a relationship name, and save. Escape or dropping on empty space cancels. Self-links and duplicate connections are ignored. The form remains available for keyboard use.</p>
+          <div class="toolbar toolbar-wrap" role="toolbar" aria-label="Chart actions">
+            <div class="toolbar-group">
+              <span class="org-chart-toolbar-title">People &amp; teams</span>
+              <button type="button" class="btn tonal" data-org-add="team">Add team</button>
+              <button type="button" class="btn tonal" data-org-add="person">Add person</button>
+              <button type="button" class="btn filled" data-org-add="link">Connect people &amp; teams</button>
+            </div>
+            <div class="toolbar-group">
+              <button type="button" class="btn text" id="org-chart-export">Export JSON</button>
+              <button type="button" class="btn text" id="org-chart-export-pdf">Export PDF</button>
+              <button type="button" class="btn text" id="org-chart-pdf-theme" aria-pressed="false" title="Switch PDF export to dark mode">PDF: Light</button>
+              <button type="button" class="btn text" id="org-chart-reset">Reset example</button>
+              <button type="button" class="btn text" id="org-chart-zoom-out">−</button>
+              <output id="org-chart-zoom-value">100%</output>
+              <button type="button" class="btn text" id="org-chart-zoom-in">+</button>
+              <button type="button" class="btn text" id="org-chart-zoom-reset">100%</button>
+            </div>
+          </div>
+          <div id="org-chart-demo" tabindex="0" role="region" aria-label="Organization chart workspace" aria-describedby="org-chart-help"></div>
+          <p>New connections are named “New link” automatically. Click a link’s text to rename it directly on the canvas, or hover over its line and click × to remove it. Both examples enable <code>editable: true</code>.</p>
+          <p id="org-chart-help">Drag a team header’s handle to move the group. Drag a person’s handle to reorder them or move them to another team. With a header focused, use arrow keys to move by 10px, or Shift + arrow keys for 40px. Scroll to explore the canvas.</p>
+          <p id="org-chart-status" role="status">3 teams · 6 people · 3 relationships. Changes stay in this page; export JSON to save your layout.</p>
+        </section>
+        <section id="vertical" class="section scrollspy">
+          <h3 class="header">Vertical org chart</h3>
+          <p>A top-to-bottom hierarchy: leadership above the design and engineering teams. Set <code>orientation: "vertical"</code> to attach connections to the top and bottom edges, then position the teams with <code>x</code> and <code>y</code>.</p>
+          <div class="org-chart-toolbar">
+            <span class="org-chart-toolbar-title">From leadership to teams</span>
+            <button type="button" class="btn text" id="org-chart-vertical-reset">Reset vertical example</button>
+          </div>
+          <div id="org-chart-vertical-demo" tabindex="0" role="region" aria-label="Vertical organization chart workspace" aria-describedby="org-chart-vertical-help"></div>
+          <p id="org-chart-vertical-help">Drag the handles to move teams or people, or use the same keyboard controls as above. On smaller screens, scroll inside the chart to explore both branches.</p>
+          <p id="org-chart-vertical-status" role="status">3 teams · 6 people · 2 relationships. This example has its own layout.</p>
+          <pre><code class="language-typescript">const verticalHost = document.querySelector&lt;HTMLElement&gt;('#vertical-organization')!;
+OrgChart.init(verticalHost, {
+  orientation: 'vertical',
+  data: {
+    teams: [
+      { id: 'leadership', name: 'Leadership', x: 208, y: 32 },
+      { id: 'design', name: 'Design', x: 32, y: 360 },
+      { id: 'engineering', name: 'Engineering', x: 384, y: 360 }
+    ],
+    people: [
+      { id: 'alex', teamId: 'leadership', name: 'Alex Morgan' },
+      { id: 'maya', teamId: 'design', name: 'Maya Patel' },
+      { id: 'lea', teamId: 'engineering', name: 'Léa Martin' }
+    ],
+    links: [
+      { from: 'leadership', fromType: 'team', to: 'design', toType: 'team', label: 'Creative direction' },
+      { from: 'leadership', fromType: 'team', to: 'engineering', toType: 'team', label: 'Delivery' }
+    ]
+  }
+});</code></pre>
+        </section>
+        <section id="usage" class="section scrollspy">
+          <h3 class="header">Usage</h3>
+          <p>This standalone TypeScript component lives in <code>src/components/org-chart.ts</code> in the docs project. Copy it together with its imported SCSS, card-drag-handles, chart-connections, chart-gestures, and chart-print helpers into your app and load your Materialize styles. It is not yet exported by the npm package.</p>
+          <pre><code class="language-html">&lt;div id="organization" tabindex="0" role="region"
+  aria-label="Organization chart"&gt;&lt;/div&gt;</code></pre>
+          <pre><code class="language-typescript">import { OrgChart } from './components/org-chart';
+
+const host = document.querySelector&lt;HTMLElement&gt;('#organization')!;
+const chart = OrgChart.init(host, {
+  editable: true,
+  data: {
+    teams: [
+      { id: 'design', name: 'Design', x: 32, y: 32 },
+      { id: 'engineering', name: 'Engineering', x: 480, y: 160 }
+    ],
+    people: [
+      { id: 'maya', teamId: 'design', name: 'Maya Patel', role: 'Designer' },
+      { id: 'lea', teamId: 'engineering', name: 'Léa Martin', role: 'Developer' }
+    ],
+    links: [
+      { from: 'maya', to: 'lea', label: 'Collaborates with' }
+    ]
+  },
+  onChange: data =&gt; console.log(data)
+});</code></pre>
+        </section>
+        <section id="data" class="section scrollspy">
+          <h3 class="header">Data &amp; options</h3>
+          <table class="striped responsive-table">
+            <thead><tr><th>Option</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><code>data.teams</code></td><td>Teams with unique <code>id</code>, <code>name</code>, and non-negative <code>x</code>/<code>y</code> canvas coordinates in pixels.</td></tr>
+              <tr><td><code>data.people</code></td><td>People with unique <code>id</code>, existing <code>teamId</code>, <code>name</code>, and optional <code>role</code>.</td></tr>
+              <tr><td><code>data.links</code></td><td>Relationships between different endpoints: <code>from</code> and <code>to</code> IDs, with an optional <code>label</code>. Set <code>fromType</code> or <code>toType</code> to <code>"team"</code> to connect a group; omitted types default to <code>"person"</code>. Supports person → person, group → person, person → group, and group → group.</td></tr>
+              <tr><td><code>zoom</code>, <code>minZoom</code>, <code>maxZoom</code></td><td>Initial scale and bounds. Use <code>chart.setZoom(value)</code>, <code>chart.getZoom()</code>, and <code>chart.resetZoom()</code> at runtime.</td></tr>
+              <tr><td><code>editable</code></td><td>Defaults to false. Set true to rename relationships by clicking their labels on the canvas (or focus a label and press Enter). Enter or clicking away saves; Escape cancels. Clear the field to leave the link unlabeled. Hover or focus the link to reveal “Add label” when you want to name it again. The × on the line appears on hover (always visible on touch screens) and removes that relationship immediately; it also supports Enter or Space.</td></tr>
+              <tr><td><code>connectable</code></td><td>Defaults to true. Enables drag-to-connect ports on people and teams. Set false to hide them. The cancelable <code>orgconnect</code> event on the host contains the proposed link in <code>event.detail</code>; prevent its default to handle insertion yourself. Otherwise the component inserts a link named “New link” immediately and calls <code>onChange</code>.</td></tr>
+              <tr><td><code>draggable</code></td><td>Defaults to <code>true</code>. Set to <code>false</code> for a fixed layout.</td></tr>
+              <tr><td><code>onChange(data)</code></td><td>Called after moving a team or replacing data. Receives a copy of the full chart, ready to save.</td></tr>
+            </tbody>
+          </table>
+          <p>Connections attach to people or group headers and follow them as they move. Layout is manual: give panels enough room for their members and connection labels. User-provided names are rendered as text. The public zoom API is <code>chart.setZoom(1.25)</code>, <code>chart.getZoom()</code>, and <code>chart.resetZoom()</code>.</p>
+        </section>
+        <section id="data-interfaces" class="section scrollspy">
+          <h3 class="header">Data interfaces</h3>
+          <p><code>getData()</code> returns an independent <code>OrgChartData</code> object. Pass the same structure to <code>setData(data)</code> to replace the entire chart. All three arrays are required, but may be empty. Fields marked with <code>?</code> are optional.</p>
+          <pre><code class="language-typescript">import type {
+  OrgChartData, OrgChartTeam, OrgChartPerson,
+  OrgChartLink, OrgChartAppearance
+} from './components/org-chart';</code></pre>
+          <pre><code class="language-typescript">export interface OrgChartData {
+  teams: OrgChartTeam[];
+  people: OrgChartPerson[];
+  links: OrgChartLink[];
+}
+
+export interface OrgChartAppearance {
+  color?: string;       // Item color: CSS color or theme variable.
+  textColor?: string;   // Text color.
+  borderColor?: string;
+  accent?: string;      // Color of the accent edge.
+  accentPosition?: 'top' | 'right' | 'bottom' | 'left'; // Default: bottom.
+}
+
+export interface OrgChartTeam extends OrgChartAppearance {
+  id: string;          // Non-empty and unique among teams.
+  name: string;        // Non-blank display name.
+  x: number;           // Finite, non-negative canvas position in pixels.
+  y: number;           // Positions are independent of zoom.
+}
+
+export interface OrgChartPerson extends OrgChartAppearance {
+  id: string;          // Non-empty and unique among people.
+  teamId: string;      // Must reference an existing team ID.
+  name: string;        // Non-blank display name.
+  role?: string;
+}
+
+export interface OrgChartLink {
+  from: string;        // Existing source person or team ID.
+  to: string;          // Existing target person or team ID.
+  fromType?: 'person' | 'team'; // Default: person.
+  toType?: 'person' | 'team';   // Default: person.
+  label?: string;      // Omit or use '' for an unlabeled link.
+}</code></pre>
+          <p>The declarations above describe the exported types; import them in your app instead of redeclaring them. A link's endpoint type determines which collection its ID refers to. Source and target must be different endpoints. People appear in their team's list in the order supplied by <code>people</code>.</p>
+          <h4>Read, update, and save data</h4>
+          <pre><code class="language-typescript">import { OrgChart } from './components/org-chart';
+import type { OrgChartData } from './components/org-chart';
+
+const host = document.querySelector&lt;HTMLElement&gt;('#org-chart-demo')!;
+const chart = OrgChart.getInstance(host);
+if (!chart) throw new Error('Initialize the chart first.');
+
+const data: OrgChartData = chart.getData();
+// Changes to this copy do not affect the canvas until setData() is called.
+if (data.teams.length) data.teams[0].x = 120;
+if (data.links.length) data.links[0].label = ''; // Keep the line, clear its name.
+chart.setData(data);
+
+const json = JSON.stringify(chart.getData()); // Save to your storage or API.
+// Restore trusted, correctly shaped data:
+const restored: OrgChartData = JSON.parse(json);
+chart.setData(restored);</code></pre>
+          <p><code>setData()</code> validates IDs, names, coordinates, and endpoint references, redraws the chart, and calls <code>onChange</code>. It replaces all three arrays; it does not merge a partial update. When removing a team, remove or reassign its people and remove links targeting that team. When removing a person, remove links targeting that person.</p>
+          <p><code>OrgChartData</code> contains the organization and its positions. Options such as <code>editable</code>, <code>connectable</code>, <code>orientation</code>, and zoom are configured separately and are not included in <code>getData()</code>. TypeScript types do not validate JSON from an external service; check its structure before passing it to the component.</p>
+        </section>
+        <section id="appearance" class="section scrollspy">
+          <h3 class="header">Colors, borders &amp; group connections</h3>
+          <p>Teams and people accept the same appearance options. <code>color</code> overrides the item background, <code>textColor</code> overrides its text, <code>borderColor</code> adds a full border, and <code>accent</code> adds a colored line directly on one edge. Choose <code>accentPosition</code>: top, right, bottom (default), or left. Values accept CSS colors, including Materialize theme variables. You can combine these options in the Add team and Add person forms.</p>
+          <pre><code class="language-typescript">const data = chart.getData();
+data.teams[0].color = 'var(--md-sys-color-primary)';
+data.teams[0].textColor = 'white';
+data.teams[0].borderColor = 'var(--md-sys-color-primary)';
+data.people[0].accent = 'var(--md-sys-color-tertiary)';
+data.people[0].accentPosition = 'left';
+// Group → person. IDs refer to existing items in your data.
+data.links.push({
+  from: data.teams[0].id, fromType: 'team',
+  to: data.people[1].id, toType: 'person', label: 'Supports'
+});
+// Group → group.
+data.links.push({
+  from: data.teams[0].id, fromType: 'team',
+  to: data.teams[1].id, toType: 'team', label: 'Partners with'
+});
+chart.setData(data);</code></pre>
+          <p>Move handles appear only when <code>draggable</code> is enabled. Person handles support arrow keys: up/down to reorder, left/right to move between groups. Group handles move the whole team. Touch gestures outside a handle scroll the workspace.</p>
+        </section>
+        <section id="methods" class="section scrollspy">
+          <h3 class="header">Methods</h3>
+          <h4>Export PDF</h4>
+          <p>Pinch with two fingers on the chart to zoom, or use a trackpad pinch / Ctrl + mouse wheel. Drag empty space with one finger to pan. The toolbar percentage follows gestures; 100% restores the actual card size.</p>
+          <p>Click <strong>Export PDF</strong> above, then choose <strong>Save as PDF</strong> in the browser print dialog. The complete chart (including off-screen cards and SVG connections) fits on one A3 landscape page, independently of the current zoom. Disable browser headers and footers; enable background graphics if your browser requires it. Very large charts will have smaller text.</p>
+          <pre><code class="language-typescript">// Call from a user click so the browser allows the preview window.
+pdfButton.addEventListener('click', async () =&gt; {
+  try {
+    await chart.exportPdf('People &amp; teams'); // Light theme by default.
+    // To export in dark mode instead:
+    // await chart.exportPdf('People &amp; teams', { theme: 'dark' });
+  } catch (error) {
+    console.error(error); // For example, the browser blocked the popup.
+  }
+});</code></pre>
+          <p>The PDF defaults to a white page with light-theme cards, even when the app is dark. Use the <strong>PDF: Light / Dark</strong> toolbar button to switch the export theme, or pass <code>{ theme: 'light' }</code> / <code>{ theme: 'dark' }</code> as the second argument. Explicit item colors are preserved. This opens the browser's print workflow, not an automatic PDF download. Keep <code>chart-print.ts</code> alongside the component when copying this example into your app. The original theme, layout, scroll position, and zoom are preserved.</p>
+          <pre><code class="language-typescript">const data = chart.getData(); // Independent copy, including positions.
+chart.setData(data);           // Validate and replace teams, people, and links.
+OrgChart.getInstance(host);
+chart.destroy();               // Remove listeners and restore original content.</code></pre>
+          <p>Add, edit, or remove items through <code>getData()</code> and <code>setData()</code>. Remove a person's relationships when removing that person; remove or reassign members when removing a team. Invalid IDs or coordinates throw an error before the current chart is replaced.</p>
+        </section>
+      </div>
+    </main>
+    <dialog id="org-chart-editor" class="modal" aria-labelledby="org-chart-editor-title">
+      <form id="org-chart-form">
+        <div class="modal-header"><h4 id="org-chart-editor-title">Add a team</h4></div>
+        <div class="modal-content org-chart-form">
+          <div id="org-chart-fields" class="org-chart-form"></div>
+          <p id="org-chart-error" class="org-chart-form-error" role="alert"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn text" id="org-chart-cancel">Cancel</button>
+          <button type="submit" class="btn filled">Add to chart</button>
+        </div>
+      </form>
+    </dialog>
+    {{> footer }}
+    <script type="module" src="/main.ts"></script>
+    <script type="module" src="/org-chart-demo.ts"></script>
+  </body>
+</html>

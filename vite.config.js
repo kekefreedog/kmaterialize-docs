@@ -25,7 +25,8 @@ const MIME_TYPES = {
   ".woff2": "font/woff2",
 };
 
-const localKmaterializeRoot = resolve(__dirname, "../kmaterialize");
+const localKmaterializeRoot = resolve(process.env.KMATERIALIZE_PATH || resolve(__dirname, "../kmaterialize"));
+const hasLocalKmaterialize = fs.existsSync(resolve(localKmaterializeRoot, "src/index.ts"));
 
 // `/version/<x.y.z>/...` pages are static snapshots produced by release.js
 // after each build (see docs/version/*). They only exist as pre-built HTML,
@@ -166,12 +167,14 @@ export default ({ command }) => ({
   // to watch the sibling repository. The package dependency remains in place
   // for peer resolution and production builds.
   resolve: {
+    // The linked library must use the docs' installed Pickr, including in dev.
+    dedupe: ['@simonwep/pickr'],
     // The local library contains legacy .mjs stubs beside the live TypeScript
     // components. Prefer TypeScript during docs development so Tabs (and the
     // other components) expose their complete init implementations.
     extensions: [".ts", ".tsx", ".js", ".jsx", ".mjs"],
     alias:
-      command === "serve"
+      command === "serve" && hasLocalKmaterialize
         ? [
             { find: /^kmaterialize$/, replacement: resolve(localKmaterializeRoot, "src/index.ts") },
             {
@@ -187,6 +190,7 @@ export default ({ command }) => ({
     },
   },
   optimizeDeps: {
+    include: ['@simonwep/pickr'],
     exclude: command === "serve" ? ["kmaterialize"] : [],
   },
   //base: "./",

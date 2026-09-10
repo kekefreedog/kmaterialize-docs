@@ -124,66 +124,133 @@
         </div>
       </div>
 
-      <!-- Benefits -->
-      <div class="container">
-        <div class="section">
-          <div class="row">
-            <div class="s12 m10 offset-m1">
-              <div class="row materialize-benefits" style="gap: 1rem">
-                <div class="s12 m6 l4 card">
-                  <h2>Ultra Fast</h2>
-                  <p>
-                    Using VanillaJS and as less dependecies as possible to keep it fast and simple. We use TypeScript since it builds upon JavaScript and it enhances the type- and
-                    code safety.
-                  </p>
-                </div>
 
-                <div class="s12 m6 l4 card">
-                  <h2>Quick integration</h2>
-                  <p>
-                    You dont have to learn or integrate any new or crappy stuff. Goal here is to stick to the roots. Just copy and paste from the documentation and you are good to
-                    go!
-                  </p>
-                </div>
+      <!-- Project foundations and additions, with direct links to working examples. -->
+      <section id="new-features" class="container home-features" aria-labelledby="new-features-title">
+        <h2 id="new-features-title">More ways to build with Materialize</h2>
+        <p>Kmaterialize builds on the familiar Materialize foundation with additional components, richer variants, and integrations for application interfaces. Explore the shared foundations, then try the features documented here.</p>
 
-                <div class="s12 m6 l4 card">
-                  <h2>Responsive and accessible</h2>
-                  <p>Most of the Features which work event without JavaScript. Components should be useable by mobile devices and easily accessible by keyboard too. Try it out!</p>
-                </div>
+        <div class="home-foundations">
+          <article class="home-foundation" data-foundation-theme="original">
+            <h3>Original Materialize</h3>
+            <p>The original library brings Material Design to the web through a responsive grid, forms, cards, navigation, and interactive components.</p>
+            <a href="https://materializecss.com/" target="_blank" rel="noopener">Explore materializecss.com</a>
+          </article>
+          <article class="home-foundation" data-foundation-theme="web">
+            <h3>Materialize Web</h3>
+            <p>The community continuation develops the shared component foundation with vanilla JavaScript, TypeScript, and Material Design guidance.</p>
+            <a href="https://materializeweb.com/" target="_blank" rel="noopener">Explore materializeweb.com</a>
+          </article>
+          <article class="home-foundation home-foundation-current">
+            <h3>Kmaterialize</h3>
+            <p>This project extends that foundation with workflow components, expanded control examples, themed integrations, and practical customization guides.</p>
+            <a href="getting-started.html">Start building</a>
+          </article>
+        </div>
 
-                <div class="s12 m6 l4 card">
-                  <h2>Simple and clean Design</h2>
-                  <p>
-                    User centric approach with established design principles mainly from
-                    <a target="_blank" href="https://m3.material.io">Googles Material guidelines</a>. Our Components should work on nearly every device with a monitor.
-                  </p>
-                </div>
+        <div class="home-feature-grid materialize-benefits">
+          <article class="home-feature">
+            <i class="material-icons" aria-hidden="true">account_tree</i>
+            <span class="home-feature-label">Workflow components</span>
+            <h3>Teams and task boards</h3>
+            <p>Arrange people and groups on an organization chart, edit curved connections, or organize tasks in Kanban columns. Touch-friendly drag handles support moving cards on smaller screens.</p>
+            <div class="home-feature-links"><a href="org-chart.html">Org Chart</a><a href="kanban.html">Kanban</a></div>
+          </article>
+          <article class="home-feature">
+            <i class="material-icons" aria-hidden="true">table_view</i>
+            <span class="home-feature-label">Spreadsheet integration</span>
+            <h3>Editable data, familiar controls</h3>
+            <p>Use kspreadsheet with frozen columns, dropdowns, dates, and checkboxes. Keep its original grid colors or choose the Material variant, with themed editor and context menus.</p>
+            <div class="home-feature-links"><a href="spreadsheet.html">Spreadsheet examples</a></div>
+          </article>
+          <article class="home-feature">
+            <i class="material-icons" aria-hidden="true">smart_button</i>
+            <span class="home-feature-label">Expanded controls</span>
+            <h3>More actions and list layouts</h3>
+            <p>Explore split buttons, connected groups, and FAB menus. Build standard or segmented lists, add optional checklist progress, and separate content with labeled or vertical dividers.</p>
+            <div class="home-feature-links"><a href="buttons.html">Buttons</a><a href="lists.html">Lists</a><a href="divider.html">Dividers</a></div>
+          </article>
+          <article class="home-feature">
+            <i class="material-icons" aria-hidden="true">view_sidebar</i>
+            <span class="home-feature-label">Navigation variants</span>
+            <h3>Layouts for application screens</h3>
+            <p>Try documentation-style side navigation and a compact navigation rail. Use tabs that fill their container, with navigation positioned above or below the content.</p>
+            <div class="home-feature-links"><a href="sidenav.html">Sidenav variants</a><a href="tabs.html">Tabs</a><a href="navbar.html">Navbar</a></div>
+          </article>
+          <article class="home-feature">
+            <i class="material-icons" aria-hidden="true">palette</i>
+            <span class="home-feature-label">Practical theme guides</span>
+            <h3>A palette for any scope</h3>
+            <p>Generate Material colors from a source color. Apply a theme to the whole page, a card, or a section, with live examples for light and dark modes and matching text colors.</p>
+            <div class="home-feature-links"><a href="color.html#theme-playground">Try scoped themes</a><a href="themes.html">Theme guide</a></div>
+          </article>
+          <article class="home-feature">
+            <i class="material-icons" aria-hidden="true">chat_bubble_outline</i>
+            <span class="home-feature-label">Feedback and integrations</span>
+            <h3>Helpful feedback, consistent styling</h3>
+            <p>Add animated Tippy tooltips, SweetAlert2 popups, alerts, and logo loading indicators. Each documentation page includes examples and the setup needed to use it.</p>
+            <div class="home-feature-links"><a href="tippy.html">Tooltip</a><a href="popup.html">Popup</a><a href="alerts.html">Alerts</a><a href="loading.html">Loading</a></div>
+          </article>
 
-                <div class="s12 m6 l4 card">
-                  <h2>Awesome Community</h2>
-                  <p>
-                    User centric approach with many members all around the world, which help bring Kmaterialize forward and improve usability for everyone on the web. You can be a
-                    part too!
-                  </p>
-                </div>
+          <!-- Library benefits continue in the same grid as the added features. -->
+          <div class="card home-benefit">
+            <i class="material-icons" aria-hidden="true">bolt</i>
+            <h2>Ultra Fast</h2>
+            <p>
+              Using VanillaJS and as less dependecies as possible to keep it fast and simple. We use TypeScript since it builds upon JavaScript and it enhances the type- and
+              code safety.
+            </p>
+          </div>
 
-                <div class="s12 m6 l4 card">
-                  <h2>Extensible</h2>
-                  <p>
-                    Component cutsomization should be possible by yourself. To help growing this project, you can
-                    <a href="https://github.com/kekefreedog/kmaterialize" target="_blank">join the community</a>
-                    and ask for support or you can easily
-                    <a target="_blank" href="https://github.com/kekefreedog/kmaterialize/issues">create an issue</a>
-                    to move Kmaterialize forward.
-                  </p>
-                </div>
-              </div>
-            </div>
+          <div class="card home-benefit">
+            <i class="material-icons" aria-hidden="true">integration_instructions</i>
+            <h2>Quick integration</h2>
+            <p>
+              You dont have to learn or integrate any new or crappy stuff. Goal here is to stick to the roots. Just copy and paste from the documentation and you are good to
+              go!
+            </p>
+          </div>
+
+          <div class="card home-benefit">
+            <i class="material-icons" aria-hidden="true">devices</i>
+            <h2>Responsive and accessible</h2>
+            <p>Most of the Features which work event without JavaScript. Components should be useable by mobile devices and easily accessible by keyboard too. Try it out!</p>
+          </div>
+
+          <div class="card home-benefit">
+            <i class="material-icons" aria-hidden="true">design_services</i>
+            <h2>Simple and clean Design</h2>
+            <p>
+              User centric approach with established design principles mainly from
+              <a target="_blank" href="https://m3.material.io">Googles Material guidelines</a>. Our Components should work on nearly every device with a monitor.
+            </p>
+          </div>
+
+          <div class="card home-benefit">
+            <i class="material-icons" aria-hidden="true">groups</i>
+            <h2>Awesome Community</h2>
+            <p>
+              User centric approach with many members all around the world, which help bring Kmaterialize forward and improve usability for everyone on the web. You can be a
+              part too!
+            </p>
+          </div>
+
+          <div class="card home-benefit">
+            <i class="material-icons" aria-hidden="true">extension</i>
+            <h2>Extensible</h2>
+            <p>
+              Component cutsomization should be possible by yourself. To help growing this project, you can
+              <a href="https://github.com/kekefreedog/kmaterialize" target="_blank">join the community</a>
+              and ask for support or you can easily
+              <a target="_blank" href="https://github.com/kekefreedog/kmaterialize/issues">create an issue</a>
+              to move Kmaterialize forward.
+            </p>
           </div>
         </div>
-      </div>
+      </section>
     </main>
     {{> footer }}
     <script type="module" src="/main.ts"></script>
+    <script type="module" src="/home-features.ts"></script>
   </body>
 </html>

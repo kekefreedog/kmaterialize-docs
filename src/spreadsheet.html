@@ -1,0 +1,1050 @@
+<!doctype html><html lang="en"><head>{{> head }}</head><body>{{> navbar }}<main>{{> intro}}<div class="container"><div class="row"><div id="spreadsheet-examples" class="s12">
+<p class="caption"><a href="https://github.com/kekefreedog/kspreadsheet" target="_blank" rel="noopener">kspreadsheet</a> with its original colors by default and a separate, optional Material variant. This standalone example uses fictional submission data, two frozen columns, editable cells, and jSuites editors.</p>
+<section id="demo" class="section scrollspy"><h3>Default — kspreadsheet colors</h3><p>Double-click text, dropdown, or date cells to edit; click a checkbox to toggle it. Right-click a cell for its Material-styled context menu, available in both color variants. Edits stay in this page until reset or reload. The grid scrolls horizontally on smaller screens.</p><div id="submission-spreadsheet" class="spreadsheet-demo"></div>
+<div class="spreadsheet-demo-actions">
+  <button id="spreadsheet-get" type="button" class="btn filled">Get data</button>
+  <button id="spreadsheet-update" type="button" class="btn tonal">Mark first shot ready</button>
+  <button id="spreadsheet-reset" type="button" class="btn outlined">Reset sample</button>
+</div>
+<p id="spreadsheet-status" class="spreadsheet-demo-status" role="status">Double-click a cell to edit. Scroll sideways to see the frozen columns.</p>
+<pre id="spreadsheet-data" hidden></pre><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;div id="submission-spreadsheet" class="spreadsheet-demo"&gt;&lt;/div&gt;
+&lt;div class="spreadsheet-demo-actions"&gt;
+  &lt;button id="spreadsheet-get" type="button" class="btn filled"&gt;Get data&lt;/button&gt;
+  &lt;button id="spreadsheet-update" type="button" class="btn tonal"&gt;
+    Mark first shot ready
+  &lt;/button&gt;
+  &lt;button id="spreadsheet-reset" type="button" class="btn outlined"&gt;
+    Reset sample
+  &lt;/button&gt;
+&lt;/div&gt;
+&lt;p id="spreadsheet-status" class="spreadsheet-demo-status" role="status"&gt;
+  Double-click a cell to edit. Scroll sideways to see the frozen columns.
+&lt;/p&gt;
+&lt;pre id="spreadsheet-data" hidden&gt;&lt;/pre&gt;</code></pre></section>
+<section id="material-variant" class="section scrollspy"><h3>Material variant</h3><p>Opt in with <code>spreadsheet-material</code> on the wrapper. Headers and cells use the page’s navigation and surface colors, with fine grid lines, rounded tabs, and soft selection colors in light and dark mode. Both examples remain editable and keep their data separately.</p><!-- Opt in on a wrapper; leave it off to keep kspreadsheet colors. -->
+<div class="spreadsheet-material">
+  <div id="material-spreadsheet" class="spreadsheet-demo"></div>
+</div>
+<p id="material-spreadsheet-status" class="spreadsheet-demo-status" role="status">An independent sheet with a softer Material palette.</p><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- Opt in on a wrapper; leave it off to keep kspreadsheet colors. --&gt;
+&lt;div class="spreadsheet-material"&gt;
+  &lt;div id="material-spreadsheet" class="spreadsheet-demo"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p id="material-spreadsheet-status" class="spreadsheet-demo-status" role="status"&gt;
+  An independent sheet with a softer Material palette.
+&lt;/p&gt;</code></pre></section>
+<section id="setup" class="section scrollspy"><h3>Install and initialize</h3><p>Shared spreadsheet styles are loaded once in <code>src/style.scss</code>. Install with <code>pnpm add kspreadsheet@2.7.0 jsuites@5.13.5</code>. The default grid keeps vendor colors; load <code>spreadsheet_editors.scss</code> after them for Material dropdown menus and readable editing text. For the optional Material variant, copy both enhancement files from <code>src/enhancement</code>. Their import paths are adapted for Vite; no stylesheet is fetched from a public <code>/node_modules</code> URL.</p><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">// Add to the main Materialize SCSS entry, once.
+@import 'kmaterialize/sass/materialize.scss';
+@import 'jsuites/dist/jsuites.css';
+@import 'kspreadsheet/dist/jspreadsheet.css';
+@import 'kspreadsheet/dist/jspreadsheet.themes.css';
+
+// Optional palette, scoped to .spreadsheet-material.
+@import './enhancement/jspreadsheet_materializecss.scss';
+// Shared dropdown styling and readable cell editors.
+@import './enhancement/spreadsheet_editors.scss';</code></pre><details open><summary>Complete example — data, columns, events, and buttons</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">import jspreadsheet, { type CellValue, type SpreadsheetOptions } from 'kspreadsheet';
+// Shared spreadsheet and enhancement styles are loaded by style.scss.
+import './spreadsheet-demo.scss';
+
+// Fictional demo data. Column order is the same in data, columns, and getData().
+const initialData: CellValue[][] = [
+  [
+    'SQ010_SH010',
+    'Lighting',
+    'Alex',
+    'In progress',
+    '2026-09-15',
+    false,
+    'Balance the window light',
+  ],
+  [
+    'SQ010_SH020',
+    'Compositing',
+    'Sam',
+    'Ready for review',
+    '2026-09-16',
+    true,
+    'Version 12 is ready',
+  ],
+  [
+    'SQ020_SH010',
+    'Animation',
+    'Morgan',
+    'Approved',
+    '2026-09-17',
+    true,
+    'Approved timing',
+  ],
+  [
+    'SQ020_SH020',
+    'Lighting',
+    'Taylor',
+    'Not started',
+    '2026-09-18',
+    false,
+    'Awaiting animation',
+  ],
+];
+const copyRows = () =&gt; initialData.map((row) =&gt; [...row]);
+const host = document.querySelector&lt;HTMLDivElement&gt;('#submission-spreadsheet')!;
+const status = document.querySelector&lt;HTMLElement&gt;('#spreadsheet-status')!;
+const output = document.querySelector&lt;HTMLElement&gt;('#spreadsheet-data')!;
+
+const options: SpreadsheetOptions = {
+  tabs: true,
+  toolbar: false,
+  worksheets: [
+    {
+      worksheetName: 'Submission review',
+      data: copyRows(),
+      columns: [
+        { type: 'text', title: 'Shot', width: 150 },
+        {
+          type: 'dropdown',
+          title: 'Department',
+          width: 140,
+          source: ['Animation', 'Lighting', 'Compositing'],
+        },
+        { type: 'text', title: 'Artist', width: 130 },
+        {
+          type: 'dropdown',
+          title: 'Status',
+          width: 170,
+          source: ['Not started', 'In progress', 'Ready for review', 'Approved'],
+        },
+        {
+          type: 'calendar',
+          title: 'Due date',
+          width: 130,
+          options: { format: 'YYYY-MM-DD' },
+        },
+        { type: 'checkbox', title: 'Ready', width: 80 },
+        { type: 'text', title: 'Review notes', width: 260, wordWrap: true },
+      ],
+      freezeColumns: 2,
+      tableOverflow: true,
+      tableWidth: '100%',
+      tableHeight: '360px',
+      minDimensions: [7, 8],
+      allowComments: true,
+    },
+  ],
+  onchange: (_worksheet, _cell, x, y) =&gt; {
+    status.textContent = `Updated column ${Number(x) + 1}, row ${Number(y) + 1}. Changes stay in this demo.`;
+  },
+};
+
+// Keep the first worksheet returned by the constructor.
+const worksheet = jspreadsheet(host, options)[0];
+document.querySelector('#spreadsheet-get')!.addEventListener('click', () =&gt; {
+  output.textContent = JSON.stringify(worksheet.getData(), null, 2);
+  output.hidden = false;
+  status.textContent = 'Current worksheet data shown below.';
+});
+document.querySelector('#spreadsheet-reset')!.addEventListener('click', () =&gt; {
+  worksheet.setData(copyRows());
+  output.hidden = true;
+  status.textContent = 'Sample data restored.';
+});
+document.querySelector('#spreadsheet-update')!.addEventListener('click', () =&gt; {
+  worksheet.setValue('D1', 'Ready for review');
+});
+
+// A separate worksheet demonstrates the opt-in Material palette.
+const materialHost = document.querySelector&lt;HTMLDivElement&gt;('#material-spreadsheet')!;
+const materialWorksheet = jspreadsheet(materialHost, {
+  ...options,
+  worksheets: options.worksheets!.map((sheet) =&gt; ({ ...sheet, data: copyRows() })),
+  onchange: () =&gt; {
+    document.querySelector('#material-spreadsheet-status')!.textContent =
+      'Material example updated. Changes stay in this demo.';
+  },
+})[0];
+
+// Release worksheet listeners when Vite replaces this module during development.
+if (import.meta.hot)
+  import.meta.hot.dispose(() =&gt; {
+    jspreadsheet.destroy(worksheet.parent.el);
+    jspreadsheet.destroy(materialWorksheet.parent.el);
+  });</code></pre></details></section>
+<section id="data" class="section scrollspy"><h3>Data interface and methods</h3><p>The constructor takes a <code>worksheets</code> array and returns worksheet instances. Use <code>[0]</code> for the first sheet. Each data row follows the column order; blank spare rows also appear in <code>getData()</code>. Calendar values use year-month-day strings, and checkbox values are booleans.</p><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">import type { CellValue, SpreadsheetOptions, WorksheetOptions } from 'kspreadsheet';
+
+// Matrix rows match the columns array from left to right.
+type SubmissionRow = [
+  shot: string,
+  department: string,
+  artist: string,
+  status: string,
+  dueDate: string,
+  ready: boolean,
+  notes: string,
+];
+const rows: SubmissionRow[] = [
+  [
+    'SQ010_SH010',
+    'Lighting',
+    'Alex',
+    'In progress',
+    '2026-09-15',
+    false,
+    'Check lighting',
+  ],
+];
+
+// WorksheetOptions: data, columns, dimensions, frozen columns, editors.
+// SpreadsheetOptions: worksheets, tabs, toolbar, and shared event callbacks.
+// CellValue[][] is the library's general matrix type.</code></pre><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">// Worksheet methods — not the array returned by jspreadsheet().
+const rows = worksheet.getData();
+worksheet.setData([
+  ['SQ030_SH010', 'Lighting', 'Alex', 'In progress', '2026-09-20', false, 'New review'],
+]);
+worksheet.setValue('D1', 'Ready for review');
+const status = worksheet.getValue('D1');
+
+// Optional local CSV download when the user requests it:
+// await worksheet.download(true, true, 'csv');
+
+// When removing the view:
+// jspreadsheet.destroy(worksheet.parent.el);</code></pre><p><code>onchange(worksheet, cell, column, row, newValue, oldValue)</code> reports edits with zero-based column and row indexes. Connect this event to your application's persistence layer when needed.</p></section>
+<section id="theme" class="section scrollspy"><h3>Material enhancement</h3><p>The imported styles preserve editor font size and color, raise active dropdown cells above frozen columns, round popup corners, and style worksheet tabs. The companion jSuites enhancement covers dropdowns, calendars, context menus, and color pickers. All enhancement rules are scoped under <code>spreadsheet-material</code>; default grids retain kspreadsheet’s colors. The Material variant follows the site’s light and dark themes.</p>
+<details><summary>Spreadsheet enhancement SCSS</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">// Optional Material variant. Wrap the spreadsheet host with this class.
+// Unwrapped worksheets retain the vendor's colors, including in dark mode.
+.spreadsheet-material {
+  // Inherit the page palette so the grid matches surrounding navigation surfaces.
+
+  /// /// ///
+  /// Enhancement - Crazy Content
+  ///
+  /// Jspreadsheet ft. Materialize
+  ///
+  /// @package    kzarshenas/crazyphp
+  /// @author     kekefreedog &lt;kevin.zarshenas@gmail.com&gt;
+  /// @copyright  2022-2023 Kévin Zarshenas
+  /// /// ///
+
+  /// Parameters
+  ///////////////////////////////////////////////////////
+  ///
+  // Vendor theme CSS is imported by the TypeScript entry before this enhancement.
+
+  /* jSuites ft. Materialize - reconcile the floating jSuites widgets (dropdown, calendar,
+   contextmenu, color picker) used by kSpreadsheet with the Materialize look &amp; feel */
+  @import './jsuites_materializecss.scss';
+
+  /* Variable for repeated values */
+  $font-size-default: 13px;
+  $font-color-default: #444;
+  $border-radius-default: 6px;
+  $shadow-default:
+    0 4px 5px 0 rgba(0, 0, 0, 0.14),
+    0 1px 10px 0 rgba(0, 0, 0, 0.12),
+    0 2px 4px -1px rgba(0, 0, 0, 0.3);
+
+  /// Styles
+  ///////////////////////////////////////////////////////
+  ///
+
+  // Assign @material/material-color-utilities color
+  .jss_worksheet {
+    // Explicit token mapping for the standalone documentation integration.
+    --jss_border_color: color-mix(
+      in srgb,
+      var(--md-sys-color-outline-variant) 60%,
+      var(--md-sys-color-surface)
+    );
+    --jss_border_color_highlighted: var(--md-sys-color-primary);
+
+    --jss_header_background: var(--md-sys-color-surface-variant);
+    --jss_header_color: var(--md-sys-color-on-surface-variant);
+    --jss_header_background_highlighted: color-mix(
+      in srgb,
+      var(--md-sys-color-surface) 88%,
+      var(--md-sys-color-primary)
+    );
+    --jss_header_color_highlighted: var(--md-sys-color-on-surface);
+
+    --jss_content_background: var(--md-sys-color-background);
+    --jss_content_color: var(--md-sys-color-on-background);
+    --jss_content_background_highlighted: var(--md-sys-color-surface-variant);
+    --jss_content_color_highlighted: var(--md-sys-color-on-surface-variant);
+
+    --jss_selection: color-mix(
+      in srgb,
+      var(--md-sys-color-surface) 90%,
+      var(--md-sys-color-primary)
+    );
+    --jss_cursor: color-mix(
+      in srgb,
+      var(--md-sys-color-surface) 84%,
+      var(--md-sys-color-primary)
+    );
+
+    --jss_menu_background: var(--md-sys-color-surface);
+    --jss_menu_color: var(--md-sys-color-on-surface);
+    --jss_menu_box_shadow: 0 2px 6px rgba(0, 0, 0, 0.15); // fallback shadow
+    --jss_menu_background_highlighted: var(--md-sys-color-surface-variant);
+    --jss_menu_color_highlighted: var(--md-sys-color-on-surface-variant);
+
+    // Font text
+
+    --jss_editor_font_size: 13px;
+    --jss_editor_icon_size: 24px;
+    --jss_font_size: 13px;
+    --jss_contextmenu_font_size: 13px;
+    --jss_about_font_size: 13px;
+
+    // Body
+    &gt; tbody {
+      // row
+      &gt; tr {
+        // Data
+        &gt; td {
+          // Drop down
+          &amp;.jss_dropdown {
+            // Set background position
+            background-position: bottom right 5px;
+          }
+        }
+      }
+    }
+
+    // Editor
+    .editor {
+      // Rich text
+      .jss_richtext {
+        // Break line
+        white-space: break-spaces;
+      }
+    }
+  }
+
+  /**
+ * Nested Align
+ */
+  .jss_content {
+    // T head
+    thead {
+      // Nested list
+      tr.jss_nested {
+        // Item
+        td {
+          // Left case
+          &amp;[align='left'] {
+            text-align: left;
+          }
+
+          // Left right
+          &amp;[align='right'] {
+            text-align: right;
+          }
+
+          // Left center
+          &amp;[align='center'] {
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    /* TD */
+    td {
+      /**
+         * Inline editor input - conflict fix
+         *
+         * Materialize's global `input { font-family: Roboto; font-size: 100% }` (and the lack of
+         * any font/colour on the vendor's editor input) made a cell's text jump size and colour
+         * the moment it entered edit mode. Inherit the cell's own metrics and colour instead of
+         * hard-coding them, so what you type looks identical to what the cell renders - in every
+         * theme, whatever the column's font size.
+         */
+      input,
+      textarea {
+        /* Font - match the cell exactly (no forced 13px) */
+        font-family: inherit !important;
+        font-size: inherit !important;
+        line-height: inherit !important;
+
+        /* Colour - follow the cell / theme (no forced black) */
+        color: inherit !important;
+      }
+    }
+  }
+
+  /**
+ * Dropdown vs frozen column - stacking fix
+ *
+ * A frozen column is `position: sticky` with its own stacking context, so it paints over the
+ * `.jdropdown-container` popup that jSuites renders inside the cell being edited (the popup sits
+ * at the grid's base level and gets covered). Lift the edited cell above every frozen cell so its
+ * dropdown is never hidden: non-frozen cells get a fresh stacking context via `position:relative`,
+ * while frozen cells keep their `position:sticky` and just take the raised z-index.
+ */
+  .jss_worksheet td.editor {
+    /* Above frozen cells (which top out around z-index 4) */
+    z-index: 30 !important;
+  }
+
+  .jss_worksheet td.editor:not(.jss_freezed) {
+    /* Establish a stacking context so the absolute dropdown popup rises above frozen columns */
+    position: relative;
+  }
+
+  /**
+ * In-cell dropdown popup - rounding
+ *
+ * kSpreadsheet renders the dropdown list inside the worksheet, where jspreadsheet.css only sets
+ * `margin-top` (square corners). Round it to 4px like the standalone jSuites dropdown, and clip
+ * the content so the hovered/selected item highlight follows the rounded corners.
+ */
+  .jss_worksheet .jdropdown-container {
+    /* Round */
+    border-radius: 4px;
+
+    /* Clip the item highlight to the rounded corners */
+    overflow: hidden;
+  }
+
+  /* Tabs  */
+  .jtabs {
+    /* Container */
+    .jtabs-headers-container {
+      /* Header */
+      .jtabs-headers {
+        // Dimension
+        overflow-x: auto;
+
+        // Selected
+        .jtabs-selected {
+          // Color
+          background-color: color-mix(
+            in srgb,
+            transparent,
+            var(--md-sys-color-primary) 18%
+          );
+          color: var(--md-sys-color-primary);
+        }
+
+        // Not selected
+        div:not(.jtabs-selected) {
+          // Color
+          background-color: color-mix(
+            in srgb,
+            var(--md-sys-color-surface),
+            var(--md-sys-color-surface-tint) 17%
+          );
+          color: var(--md-sys-color-on-background);
+        }
+
+        /* Div */
+        div:not(.jtabs-border) {
+          /* Dimension */
+          height: 48px;
+
+          /* Color */
+          color: var(--md-sys-color-on-surface-variant);
+
+          /* Position */
+          padding: 12px 20px 12px 20px !important;
+        }
+
+        // Border
+        .jtabs-border {
+          // Color
+          background-color: var(--md-sys-color-primary) !important;
+
+          // Dimension
+          height: 3px;
+          border-radius: 3px 3px 0 0;
+        }
+      }
+    }
+  }
+
+  // The vendor frozen-cell rule is more specific than its theme stylesheet.
+  // Keep sticky data cells opaque, but use the current Material surface in dark mode.
+  .jss_worksheet &gt; tbody &gt; tr &gt; td.jss_freezed:not(:first-child),
+  .jss_worksheet &gt; tbody &gt; tr &gt; td.jss_row_freezed:not(:first-child) {
+    background-color: var(--jss_content_background);
+    color: var(--jss_content_color);
+    &amp;.highlight {
+      background-color: var(--jss_content_background_highlighted);
+      color: var(--jss_content_color_highlighted);
+    }
+  }
+
+  .jss_worksheet input[type='checkbox'] {
+    accent-color: var(--md-sys-color-primary);
+  }
+  // Quiet headers and tabs; reserve the primary color for active states.
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: 16px;
+  padding: 8px;
+  background: var(--md-sys-color-surface);
+  .jss_worksheet &gt; thead &gt; tr &gt; td {
+    font-weight: 500;
+    height: 36px;
+  }
+  .jss_worksheet &gt; tbody &gt; tr &gt; td {
+    height: 34px;
+  }
+  .jtabs .jtabs-headers-container .jtabs-headers {
+    div:not(.jtabs-selected):not(.jtabs-border) {
+      background: transparent;
+      color: var(--md-sys-color-on-surface-variant);
+    }
+    .jtabs-selected {
+      background: color-mix(
+        in srgb,
+        var(--md-sys-color-primary) 8%,
+        var(--md-sys-color-surface)
+      );
+      color: var(--md-sys-color-primary);
+      border-radius: 8px 8px 0 0;
+    }
+  }
+  // Paint selection on cells with an opaque, softly tinted surface.
+  // The overlay draws only the outline, so it never washes out the text.
+  .jss_worksheet &gt; tbody &gt; tr &gt; td.highlight:not(:first-child) {
+    background-color: var(--jss_selection);
+    color: var(--md-sys-color-on-surface);
+  }
+  .jss_worksheet &gt; tbody &gt; tr &gt; td.highlight-selected:not(:first-child) {
+    background-color: var(--jss_cursor);
+    color: var(--md-sys-color-on-surface);
+  }
+  .jss_border_main {
+    background: transparent;
+    border-color: var(--md-sys-color-primary);
+    opacity: 1;
+  }
+}</code></pre></details><details><summary>jSuites enhancement SCSS</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">/// /// ///
+/// Enhancement - Crazy Content
+///
+/// jSuites ft. Materialize
+///
+/// Reconciles the floating widgets shipped by jSuites (https://github.com/jsuites/jsuites)
+/// with the Materialize look &amp; feel (https://github.com/materializecss/materialize) so the
+/// dropdowns, calendars, context menus and color pickers rendered by kSpreadsheet
+/// (https://github.com/kekefreedog/kspreadsheet) read like native Materialize surfaces.
+///
+/// Two hard conflicts are resolved here:
+///   1. Materialize styles every raw `&lt;select&gt;` (width:100%, height:3rem, border) which breaks
+///      the inline month / year selectors of the jSuites calendar.
+///   2. Materialize colors every `&lt;a&gt;` with its link blue which bleeds into context-menu items.
+///
+/// Everything below only re-themes colors, typography, radius and elevation. The structural
+/// properties kSpreadsheet relies on (position, transform, z-index, dimensions) are left
+/// untouched, and the in-cell editors under `.jss_worksheet` keep the overrides already forced
+/// by jspreadsheet.css — so kSpreadsheet is never compromised.
+///
+/// @package    kzarshenas/crazyphp
+/// @author     kekefreedog &lt;kevin.zarshenas@gmail.com&gt;
+/// @copyright  2022-2025 Kévin Zarshenas
+/// /// ///
+
+/// Parameters
+///////////////////////////////////////////////////////
+///
+
+/* Variable for repeated values */
+$jsuites-font-family: 'Roboto', sans-serif;
+$jsuites-font-size: 14px;
+$jsuites-radius: 4px;
+$jsuites-elevation:
+  0 2px 2px rgba(0, 0, 0, 0.14),
+  0 3px 1px -2px rgba(0, 0, 0, 0.12),
+  0 1px 5px rgba(0, 0, 0, 0.2);
+
+/// Styles
+///////////////////////////////////////////////////////
+///
+
+/**
+ * Shared accent
+ *
+ * jSuites exposes its accent through CSS variables — remap them onto the Materialize palette so
+ * the "done" / "close" / "reset" affordances match the rest of the UI.
+ */
+.jdropdown,
+.jcalendar,
+.jcontextmenu,
+.jcolor,
+.jslider,
+.jpicker {
+  // Accent
+  --jactive-color: var(--md-sys-color-primary);
+  --jbutton-color: var(--md-sys-color-primary);
+
+  // Font
+  font-family: $jsuites-font-family;
+}
+
+/**
+ * Dropdown
+ *
+ * The `.jdropdown-container` popup is appended to the body, outside `.jss_worksheet`, which is
+ * why it escapes the kSpreadsheet overrides and needs its own Materialize skin here.
+ */
+.jdropdown-container {
+  // Surface
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+
+  // Border
+  border: none;
+  border-radius: $jsuites-radius;
+
+  // Elevation
+  box-shadow: $jsuites-elevation;
+
+  // Overflow
+  overflow: hidden;
+
+  // Content
+  .jdropdown-content {
+    // Surface
+    background-color: var(--md-sys-color-surface);
+  }
+
+  // Item
+  .jdropdown-item {
+    // Font
+    font-family: $jsuites-font-family;
+    font-size: $jsuites-font-size;
+
+    // Color
+    color: var(--md-sys-color-on-surface);
+
+    // Dimension
+    padding: 10px 16px;
+
+    // Title
+    .jdropdown-title {
+      // Color
+      color: var(--md-sys-color-on-surface-variant);
+    }
+  }
+
+  // Group name
+  .jdropdown-group-name {
+    // Font
+    font-family: $jsuites-font-family;
+    font-size: 12px;
+    font-weight: 500;
+
+    // Color
+    color: var(--md-sys-color-primary);
+  }
+
+  // Search bar
+  .jdropdown-container-header input {
+    // Font
+    font-family: $jsuites-font-family;
+    font-size: $jsuites-font-size;
+
+    // Surface
+    background-color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+
+    // Border
+    border: none;
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: 0;
+  }
+
+  // Close
+  .jdropdown-close {
+    // Color
+    color: var(--md-sys-color-primary);
+  }
+}
+
+/**
+ * Dropdown - states
+ *
+ * Replace the hard-coded jSuites blue (#1f93ff) hover / selection with the Materialize
+ * secondary-container / primary tokens.
+ */
+.jdropdown-default,
+.jdropdown-picker,
+.jdropdown-searchbar,
+.jdropdown-list {
+  // Hover
+  .jdropdown-item:hover {
+    // Surface
+    background-color: color-mix(in srgb, transparent, var(--md-sys-color-primary) 8%);
+    color: var(--md-sys-color-on-surface);
+  }
+
+  // Keyboard cursor
+  .jdropdown-cursor {
+    // Surface
+    background-color: color-mix(in srgb, transparent, var(--md-sys-color-primary) 12%);
+  }
+
+  // Selected
+  .jdropdown-selected {
+    // Surface
+    background-color: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container, var(--md-sys-color-on-surface));
+  }
+}
+
+/**
+ * Calendar
+ */
+.jcalendar {
+  // Content surface
+  .jcalendar-content {
+    // Surface
+    background-color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+
+    // Border
+    border-radius: $jsuites-radius;
+
+    // Elevation
+    box-shadow: $jsuites-elevation;
+  }
+
+  // Header
+  .jcalendar-header {
+    // Color
+    color: var(--md-sys-color-on-surface);
+  }
+
+  // Weekday
+  .jcalendar-weekday {
+    // Surface
+    background-color: transparent;
+
+    // Color
+    color: var(--md-sys-color-on-surface-variant);
+
+    // Font
+    font-family: $jsuites-font-family;
+    font-weight: 500;
+  }
+
+  // Table cells
+  .jcalendar-table td {
+    // Font
+    font-family: $jsuites-font-family;
+  }
+
+  // Selected day
+  .jcalendar-selected {
+    // Surface
+    background-color: var(--md-sys-color-primary) !important;
+    color: var(--md-sys-color-on-primary) !important;
+
+    // Border
+    border-radius: 50%;
+  }
+
+  // Confirm / reset controls
+  .jcalendar-confirm,
+  .jcalendar-reset {
+    // Color
+    color: var(--md-sys-color-primary);
+  }
+
+  /**
+     * Conflict fix - the inline month / year `&lt;select&gt;` gets crushed by Materialize's global
+     * `select { width:100%; height:3rem; border; }`. Restore the compact jSuites layout.
+     */
+  .jcalendar-container select {
+    // Reset the Materialize global select
+    width: auto !important;
+    height: auto !important;
+    padding: 4px !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+
+    // Surface
+    background-color: transparent !important;
+    color: var(--md-sys-color-on-surface) !important;
+
+    // Font
+    font-family: $jsuites-font-family;
+    display: inline-block !important;
+  }
+}
+
+/**
+ * Context menu
+ */
+.jcontextmenu {
+  // Surface
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+
+  // Border
+  border: none;
+  border-radius: $jsuites-radius;
+
+  // Elevation
+  box-shadow: $jsuites-elevation;
+
+  // Font
+  font-family: $jsuites-font-family;
+
+  // Item
+  &gt; div {
+    // Font
+    font-size: 13px;
+    font-family: $jsuites-font-family;
+
+    // Icon
+    &amp;::before {
+      // Color
+      color: var(--md-sys-color-on-surface-variant);
+    }
+
+    // Hover / highlight
+    &amp;:hover {
+      // Surface - a distinct Material container so the row clearly reads as highlighted,
+      // paired below with its guaranteed-contrast on-* text token.
+      background-color: var(--md-sys-color-secondary-container);
+
+      // Label + icon stay readable on the highlight (contrast-safe pair)
+      a {
+        // Color
+        color: var(--md-sys-color-on-secondary-container) !important;
+      }
+
+      &amp;::before {
+        // Color
+        color: var(--md-sys-color-on-secondary-container);
+      }
+    }
+
+    /**
+         * Conflict fix - Materialize colors every `&lt;a&gt;` with its link blue, which on the pale
+         * highlight left the label almost invisible. Force the menu label onto the surface text
+         * token so it is dark and readable in every theme (the hover state above swaps in the
+         * matching on-secondary-container pair).
+         */
+    a {
+      // Color
+      color: var(--md-sys-color-on-surface) !important;
+    }
+  }
+
+  // Disabled
+  .jcontextmenu-disabled a,
+  .jcontextmenu-disabled::before {
+    // Color
+    color: color-mix(
+      in srgb,
+      transparent,
+      var(--md-sys-color-on-surface) 38%
+    ) !important;
+  }
+
+  // Divisor
+  hr {
+    // Color
+    border-color: var(--md-sys-color-outline-variant);
+  }
+}
+
+/**
+ * Color picker
+ */
+.jcolor {
+  // Content surface
+  .jcolor-content {
+    // Surface
+    background-color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+
+    // Border
+    border-radius: $jsuites-radius;
+
+    // Elevation
+    box-shadow: $jsuites-elevation;
+  }
+
+  // Reset / close controls
+  .jcolor-reset,
+  .jcolor-close {
+    // Color
+    color: var(--md-sys-color-primary);
+  }
+}</code></pre></details><details><summary>Shared dropdown and editor SCSS</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">// Shared editor fixes for both vendor-color and Material-color worksheets.
+// Cell text follows the worksheet palette, not Materialize's page-level input color.
+.jss_worksheet td.editor {
+  z-index: 30 !important;
+  &amp;:not(.jss_freezed) {
+    position: relative;
+  }
+  &gt; input,
+  &gt; textarea,
+  .jdropdown-header {
+    font-family: inherit !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    color: inherit !important;
+    -webkit-text-fill-color: currentColor;
+    opacity: 1;
+    background-color: inherit;
+  }
+}
+
+// Match Materialize's dropdown surface, spacing, typography, and hover treatment.
+// Keep jSuites positioning and selection behavior intact.
+.jss_spreadsheet .jss_worksheet .jdropdown-container {
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  box-shadow:
+    0 2px 2px rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12),
+    0 1px 5px rgba(0, 0, 0, 0.2);
+
+  .jdropdown-content {
+    border: 0;
+    background: var(--md-sys-color-surface);
+  }
+  .jdropdown-item {
+    position: relative;
+    min-height: 50px;
+    padding: 14px 40px 14px 16px;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 22px;
+    color: var(--md-sys-color-on-surface);
+    background-color: transparent;
+    background-image: none;
+    &amp;:hover,
+    &amp;.jdropdown-cursor {
+      color: var(--md-sys-color-on-surface);
+      background-color: color-mix(
+        in srgb,
+        var(--md-sys-color-surface),
+        var(--md-sys-color-on-surface) 8%
+      );
+    }
+    &amp;.jdropdown-selected::after {
+      content: 'check';
+      position: absolute;
+      inset-inline-end: 12px;
+      font-family: 'Material Icons';
+      font-size: 20px;
+      color: currentColor;
+    }
+  }
+  .jdropdown-description {
+    line-height: 22px;
+  }
+}
+
+// The right-click menu shares the dropdown palette in both spreadsheet variants.
+// Do not clip overflow: nested context menus need to extend beyond this surface.
+.jss_spreadsheet .jcontextmenu {
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: 12px;
+  padding-block: 4px;
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  font-family: inherit;
+  box-shadow:
+    0 2px 2px rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12),
+    0 1px 5px rgba(0, 0, 0, 0.2);
+
+  &gt; div:not(.header) {
+    // Inset every row, including the first visible row after a hidden header.
+    // Rounding rows preserves submenu overflow without clipping the parent menu.
+    margin-inline: 4px;
+    border-radius: 8px;
+    min-height: 50px;
+    padding: 12px 16px 12px 40px;
+    gap: 16px;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 22px;
+    cursor: pointer;
+    &gt; a {
+      color: var(--md-sys-color-on-surface) !important;
+    }
+    &gt; span {
+      color: var(--md-sys-color-on-surface-variant);
+      font-size: 12px;
+      margin: 0;
+      white-space: nowrap;
+    }
+    &amp;::before {
+      color: var(--md-sys-color-on-surface);
+      font-size: 20px;
+    }
+    &amp;:hover,
+    &amp;:focus-visible {
+      background: color-mix(
+        in srgb,
+        var(--md-sys-color-surface),
+        var(--md-sys-color-on-surface) 8%
+      );
+      &gt; a {
+        color: var(--md-sys-color-on-surface) !important;
+      }
+      &amp;::before {
+        color: var(--md-sys-color-on-surface);
+      }
+    }
+    &amp;:first-child {
+      border-start-start-radius: 8px;
+      border-start-end-radius: 8px;
+    }
+    &amp;:last-child {
+      border-end-start-radius: 8px;
+      border-end-end-radius: 8px;
+    }
+    &amp;.jcontextmenu-disabled {
+      cursor: default;
+      &gt; a,
+      &gt; span,
+      &amp;::before {
+        color: color-mix(
+          in srgb,
+          var(--md-sys-color-on-surface) 38%,
+          transparent
+        ) !important;
+      }
+      &amp;:hover {
+        background: transparent;
+      }
+    }
+  }
+  &gt; hr {
+    border: 0;
+    border-top: 1px solid var(--md-sys-color-outline-variant);
+    margin: 4px 0;
+  }
+}</code></pre></details><details><summary>Example layout SCSS</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">#spreadsheet-examples {
+  min-width: 0;
+}
+.spreadsheet-demo {
+  width: 100%;
+  min-width: 0;
+  margin-block: 24px;
+}
+.spreadsheet-demo .jss_container {
+  max-width: 100%;
+}
+.spreadsheet-demo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-block: 16px;
+}
+.spreadsheet-demo-status {
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 14px;
+}
+#spreadsheet-data {
+  max-height: 320px;
+  overflow: auto;
+}</code></pre></details></section></div></div></div></main>{{> footer }}<script type="module" src="/main.ts"></script><script type="module" src="/spreadsheet-demo.ts"></script></body></html>

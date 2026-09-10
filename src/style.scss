@@ -19,6 +19,28 @@
 
 @import "kmaterialize/sass/materialize.scss";
 
+// Spreadsheet styles: vendor palette first, then scoped Material and editor enhancements.
+@import "jsuites/dist/jsuites.css";
+@import "kspreadsheet/dist/jspreadsheet.css";
+@import "kspreadsheet/dist/jspreadsheet.themes.css";
+@import "./enhancement/jspreadsheet_materializecss.scss";
+@import "./enhancement/spreadsheet_editors.scss";
+@import "./enhancement/textfield_layout.scss";
+
+// A quiet outline separates dropdown surfaces from the page in either theme.
+.dropdown-content {
+  border: 1px solid var(--md-sys-color-outline-variant);
+  > li > a,
+  > li > span {
+    color: var(--md-sys-color-on-surface);
+  }
+  > li.disabled > a,
+  > li.disabled > span {
+    color: color-mix(in srgb, var(--md-sys-color-on-surface) 38%, transparent);
+  }
+}
+
+
 body {
   line-height: 1.25;
   -webkit-font-smoothing: antialiased;
@@ -145,17 +167,19 @@ footer {
   border-radius: unset;
   height: 65px;
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 1rem;
   font-size: 1.5rem;
+  line-height: 1.2;
 }
 
 .sidenav #front-page-logo {
-  display: inline-block;
+  display: block;
+  flex-shrink: 0;
   height: 24px;
-  //width: 90px;
   object-fit: contain;
   pointer-events: none;
-  //margin: 1rem 0;
 }
 
 //--------------
@@ -930,43 +954,12 @@ ul.table-of-contents {
   white-space: nowrap;
 }
 
-// Search
+// Use the standard floating-label field; only sidebar spacing is customized.
 #nav-mobile li.search {
-  margin: 5px 0;
-  z-index: 2;
-  .search-wrapper {
-    color: var(--md-sys-color-on-surface-variant);
-    margin-top: -1px;
-    transition: margin 0.25s ease;
-    position: relative;
-    input#search {
-      &:focus {
-        outline: none;
-        box-shadow: none;
-      }
-      background-color: transparent;
-      border: 1px solid var(--md-sys-color-outline-variant);
-      border-radius: 3px;
-      margin: 0 auto;
-      color: var(--md-sys-color-on-surface-variant);
-      display: block;
-      font-size: 16px;
-      width: 80%;
-      padding: 5px;
-      box-sizing: border-box;
-      height: 32px;
-    }
-    i.material-icons,
-    i.material-symbols-outlined,
-    i.material-symbols-rounded,
-    i.material-symbols-sharp {
-      position: absolute;
-      top: 4px;
-      right: 34px;
-      color: var(--md-sys-color-outline-variant);
-      cursor: pointer;
-    }
-  }
+  margin: 8px 16px 16px;
+  // Navigation rows use a tall line-height that would displace the field label.
+  line-height: 1.25;
+  .input-field { margin: 0; }
 }
 .search-results {
   position: fixed;
@@ -1097,3 +1090,14 @@ ul.table-of-contents {
 }
 
 */
+
+// Keep Pickr's positioning anchor over the visible palette icon.
+.header-palette {
+  position: relative;
+  > .pickr {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    .pcr-button { width: 100%; height: 100%; opacity: 0; }
+  }
+}

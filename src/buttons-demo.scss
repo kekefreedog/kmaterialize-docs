@@ -1,0 +1,65 @@
+.button-demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 24px;
+  background: var(--md-sys-color-surface-variant);
+  margin: 16px 0;
+}
+.button-demo-row > figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+}
+.button-demo-row figcaption {
+  font-size: 12px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+.button-demo-menu-space {
+  min-height: 260px;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.button-demo-status {
+  position: sticky;
+  top: 68px;
+  z-index: 11;
+  padding: 10px 16px;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: 12px;
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  font-size: 13px;
+}
+.button-demo-pattern {
+  background-image: radial-gradient(
+    var(--md-sys-color-outline-variant) 1px,
+    transparent 1px
+  );
+  background-size: 12px 12px;
+}
+.button-demo-choices {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+}
+.button-demo-choices > .btn-group {
+  align-self: flex-start;
+}
+#button-examples {
+  min-width: 0;
+}
+@media (max-width: 600px) {
+  .button-demo-row {
+    padding: 20px 12px;
+    gap: 12px;
+  }
+  .btn-group > .btn-expressive {
+    --button-padding: 12px;
+  }
+}

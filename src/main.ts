@@ -1,3 +1,4 @@
+import { enableCardHandles } from "./components/card-drag-handles";
 import { config } from "../config.materialize";
 import "./style.scss";
 //import { argbFromHex, themeFromSourceColor } from "@material/material-color-utilities";
@@ -82,7 +83,48 @@ function escapeHtml(unsafe) {
 // The module is loaded at the end of <body>, so all page inputs already
 // exist. Initialize optional color pickers independently: an exception in
 // another docs component must not leave Firefox's native picker active.
-ColorInput.init(document.querySelectorAll('input[type="color"][data-color-picker="pickr"]'), {});
+// Set the persisted seed before the asynchronous picker reads its initial value.
+const paletteInput = document.querySelector<HTMLInputElement>('#color-picker');
+if (paletteInput) {
+  paletteInput.value = themes.getThemePrimaryColor();
+  paletteInput.setAttribute('value', paletteInput.value);
+}
+const colorInputs = ColorInput.init(document.querySelectorAll('input[type="color"][data-color-picker="pickr"]'), {});
+for (const input of colorInputs) {
+  // Sync without emitting another Pickr save event (save -> change -> setColor).
+  input.el.removeEventListener('change', input._handleInputChange);
+  input._handleInputChange = () => { input.pickr?.setColor(input.el.value, true); };
+  input.el.addEventListener('change', input._handleInputChange);
+  if (input.el === paletteInput) {
+    // Open the existing picker directly, anchored to the header palette control.
+    document.querySelector('#palette-trigger')?.addEventListener('click', (event) => {
+      event.preventDefault();
+      void input.ready.then(() => input.pickr?.show());
+    });
+    void input.ready.then(() => {
+      const { button, app } = input.pickr!.getRoot() as { button: HTMLButtonElement; app: HTMLElement };
+      button.tabIndex = -1;
+      button.setAttribute('aria-hidden', 'true');
+      // The header previews and persists immediately; other color inputs keep Save.
+      app.querySelector<HTMLElement>('.pcr-save')?.remove();
+      input.pickr!.on('change', (color) => {
+        const value = color.toHEXA().toString();
+        if (input.el.value.toLowerCase() === value.toLowerCase()) return;
+        input.el.value = value;
+        input.el.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    });
+  }
+  const dialog = input.el.closest('dialog');
+  if (dialog) {
+    void input.ready.then(() => {
+      // Keep the popup in the dialog's top layer so it remains visible and clickable.
+      const popup = (input.pickr!.getRoot() as { app: HTMLElement }).app;
+      dialog.append(popup);
+      dialog.addEventListener('close', () => input.pickr?.hide());
+    });
+  }
+}
 AirDatepickerField.init(document.querySelectorAll('input[data-date-picker="air-datepicker"]'), {});
 FileInput.init(document.querySelectorAll('.file-field[data-file-picker="filepond"]'), {});
 // FormSelect must not depend on every unrelated docs demo initializing first.
@@ -363,13 +405,44 @@ document.addEventListener("DOMContentLoaded", () => {
     const alert = Alert.getInstance(document.querySelector("#dismissible-alert") as HTMLElement);
     alert?.open();
   });
-  Kanban.init(document.querySelectorAll(".kanban-board"), {
+  const kanbanInstances = Kanban.init(document.querySelectorAll(".kanban-board"), {
     onMove: ({ card, to }) => {
       const status = document.querySelector<HTMLElement>("#kanban-status");
       const columnName = to.querySelector<HTMLElement>(".kanban-column-title")?.textContent?.trim() || "the new column";
       if (status) status.textContent = `${card.querySelector(".kanban-card-title")?.textContent || "Card"} moved to ${columnName}.`;
     },
   });
+
+  kanbanInstances?.forEach(instance => {
+    enableCardHandles(instance.el, {
+      cardSelector: '.kanban-card', dropSelector: '.kanban-column-body',
+      enabled: card => instance.options.draggable && !card.classList.contains('is-disabled') && card.getAttribute('aria-disabled') !== 'true',
+      onMove: (card, from, to) => {
+        instance.el.querySelectorAll<HTMLElement>('.kanban-column').forEach(column => {
+          const count = column.querySelector('.kanban-column-count');
+          const total = column.querySelectorAll('.kanban-card').length;
+          if (count) count.textContent = String(total);
+          const empty = column.querySelector<HTMLElement>('.kanban-empty');
+          if (empty) empty.hidden = total > 0;
+        });
+        instance.options.onMove?.({ card, from: from.closest('.kanban-column')!, to: to.closest('.kanban-column')! });
+      },
+    });
+  });
+  const kanbanDemo = document.querySelector<HTMLElement>("#kanban-demo");
+  const kanban = kanbanDemo ? Kanban.getInstance(kanbanDemo) as (typeof Kanban extends { getInstance: (...args: any[]) => infer R } ? R : any) & {
+    setZoom(value: number): void;
+    getZoom(): number;
+    resetZoom(): void;
+  } : undefined;
+  const kanbanZoomValue = document.querySelector<HTMLOutputElement>("#kanban-zoom-value");
+  const updateKanbanZoom = () => {
+    if (kanbanZoomValue && kanban) kanbanZoomValue.textContent = `${Math.round(kanban.getZoom() * 100)}%`;
+  };
+  document.querySelector("#kanban-zoom-in")?.addEventListener("click", () => { if (kanban) kanban.setZoom(kanban.getZoom() + 0.1); updateKanbanZoom(); });
+  document.querySelector("#kanban-zoom-out")?.addEventListener("click", () => { if (kanban) kanban.setZoom(kanban.getZoom() - 0.1); updateKanbanZoom(); });
+  document.querySelector("#kanban-zoom-reset")?.addEventListener("click", () => { kanban?.resetZoom(); updateKanbanZoom(); });
+  updateKanbanZoom();
 
   Carousel.init(document.querySelectorAll(".carousel"), {});
   Carousel.init(document.querySelectorAll(".carousel.carousel-slider"), {
@@ -383,7 +456,7 @@ document.addEventListener("DOMContentLoaded", () => {
     accordion: false,
   });
 
-  Dropdown.init(document.querySelectorAll(".dropdown-trigger"), {
+  Dropdown.init(document.querySelectorAll(".dropdown-trigger:not(.no-autoinit)"), {
     container: document.body,
   });
   Dropdown.init(document.querySelector("#dropdown-demo-left"), {

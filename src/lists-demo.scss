@@ -1,0 +1,14 @@
+.list-demo {
+  margin-block: 16px;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: 16px;
+  padding: 8px;
+}
+#list-examples {
+  min-width: 0;
+}
+
+// Let flush lists fill the bordered example surface, including hover states.
+.list-demo:has(> .list-flush) {
+  padding: 0;
+}

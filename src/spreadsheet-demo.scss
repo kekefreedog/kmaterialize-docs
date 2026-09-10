@@ -1,0 +1,25 @@
+#spreadsheet-examples {
+  min-width: 0;
+}
+.spreadsheet-demo {
+  width: 100%;
+  min-width: 0;
+  margin-block: 24px;
+}
+.spreadsheet-demo .jss_container {
+  max-width: 100%;
+}
+.spreadsheet-demo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-block: 16px;
+}
+.spreadsheet-demo-status {
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 14px;
+}
+#spreadsheet-data {
+  max-height: 320px;
+  overflow: auto;
+}

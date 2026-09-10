@@ -1,0 +1,623 @@
+<!doctype html><html lang="en"><head>{{> head }}</head><body>{{> navbar }}<main>{{> intro}}<div class="container"><div class="row"><div id="list-examples" class="s12 m9">
+<p class="caption">Standard and segmented lists with flexible text, visual, and control slots, based on <a href="https://m3.material.io/components/lists/overview" target="_blank" rel="noopener">Material 3 Lists</a>.</p>
+<p>These reusable classes are a local extension. Copy <code>src/components/list.scss</code> into your project and import it after Materialize. Plain lists need no JavaScript; copy <code>src/components/list.ts</code> for checklist attribution and optional progress. Existing <a href="collections.html">Collections</a> remain available.</p>
+<section id="anatomy" class="section scrollspy"><h3>One, two, and three lines</h3><p>Use a headline with optional supporting text, leading visuals, and trailing metadata. Rows grow with their content; the three-line variant aligns content to the top.</p><div class="list-demo"><ul class="list" aria-label="Files">
+  <!-- One line: minimum height 56px. -->
+  <li class="list-item">
+    <span class="list-leading"><i class="material-icons" aria-hidden="true">folder</i></span>
+    <span class="list-content"><span class="list-headline">Project files</span></span>
+    <span class="list-trailing">12 items</span>
+  </li>
+  <!-- Two lines: minimum height 72px. -->
+  <li class="list-item list-two-line">
+    <span class="list-leading"><i class="material-icons" aria-hidden="true">description</i></span>
+    <span class="list-content"><span class="list-headline">Review notes</span><span class="list-supporting">Updated this morning</span></span>
+    <span class="list-trailing">PDF</span>
+  </li>
+  <!-- Three lines: minimum height 88px; long text can wrap naturally. -->
+  <li class="list-item list-three-line">
+    <span class="list-leading"><i class="material-icons" aria-hidden="true">movie</i></span>
+    <span class="list-content"><span class="list-headline">Sequence delivery</span><span class="list-supporting">Final renders and review notes.<br>Ready for the next production review.</span></span>
+    <span class="list-trailing">Today</span>
+  </li>
+</ul></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;ul class="list" aria-label="Files"&gt;
+  &lt;!-- One line: minimum height 56px. --&gt;
+  &lt;li class="list-item"&gt;
+    &lt;span class="list-leading"&gt;
+      &lt;i class="material-icons" aria-hidden="true"&gt;folder&lt;/i&gt;
+    &lt;/span&gt;
+    &lt;span class="list-content"&gt;&lt;span class="list-headline"&gt;Project files&lt;/span&gt;&lt;/span&gt;
+    &lt;span class="list-trailing"&gt;12 items&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;!-- Two lines: minimum height 72px. --&gt;
+  &lt;li class="list-item list-two-line"&gt;
+    &lt;span class="list-leading"&gt;
+      &lt;i class="material-icons" aria-hidden="true"&gt;description&lt;/i&gt;
+    &lt;/span&gt;
+    &lt;span class="list-content"&gt;
+      &lt;span class="list-headline"&gt;Review notes&lt;/span&gt;
+      &lt;span class="list-supporting"&gt;Updated this morning&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;span class="list-trailing"&gt;PDF&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;!-- Three lines: minimum height 88px; long text can wrap naturally. --&gt;
+  &lt;li class="list-item list-three-line"&gt;
+    &lt;span class="list-leading"&gt;
+      &lt;i class="material-icons" aria-hidden="true"&gt;movie&lt;/i&gt;
+    &lt;/span&gt;
+    &lt;span class="list-content"&gt;
+      &lt;span class="list-headline"&gt;Sequence delivery&lt;/span&gt;
+      &lt;span class="list-supporting"&gt;
+        Final renders and review notes.
+        &lt;br /&gt;
+        Ready for the next production review.
+      &lt;/span&gt;
+    &lt;/span&gt;
+    &lt;span class="list-trailing"&gt;Today&lt;/span&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre></section><section id="visuals" class="section scrollspy"><h3>Avatars and images</h3><p>Leading slots support initials, avatars, icons, or thumbnails. Use empty image alt text when the adjacent headline already supplies its meaning.</p><div class="list-demo"><ul class="list" aria-label="Project contacts and references">
+  <li class="list-item list-two-line">
+    <span class="list-avatar" aria-hidden="true">AL</span>
+    <span class="list-content"><span class="list-headline">Alex Lee</span><span class="list-supporting">Lighting artist</span></span>
+  </li>
+  <li class="list-item list-two-line">
+    <img class="list-avatar" src="/images/yuna.jpg" alt="">
+    <span class="list-content"><span class="list-headline">Yuna</span><span class="list-supporting">Production coordinator</span></span>
+  </li>
+  <li class="list-item list-three-line">
+    <img class="list-image" src="/images/sample-1.jpg" alt="">
+    <span class="list-content"><span class="list-headline">Environment reference</span><span class="list-supporting">Location and lighting inspiration</span></span>
+  </li>
+</ul></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;ul class="list" aria-label="Project contacts and references"&gt;
+  &lt;li class="list-item list-two-line"&gt;
+    &lt;span class="list-avatar" aria-hidden="true"&gt;AL&lt;/span&gt;
+    &lt;span class="list-content"&gt;
+      &lt;span class="list-headline"&gt;Alex Lee&lt;/span&gt;
+      &lt;span class="list-supporting"&gt;Lighting artist&lt;/span&gt;
+    &lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li class="list-item list-two-line"&gt;
+    &lt;img class="list-avatar" src="/images/yuna.jpg" alt="" /&gt;
+    &lt;span class="list-content"&gt;
+      &lt;span class="list-headline"&gt;Yuna&lt;/span&gt;
+      &lt;span class="list-supporting"&gt;Production coordinator&lt;/span&gt;
+    &lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li class="list-item list-three-line"&gt;
+    &lt;img class="list-image" src="/images/sample-1.jpg" alt="" /&gt;
+    &lt;span class="list-content"&gt;
+      &lt;span class="list-headline"&gt;Environment reference&lt;/span&gt;
+      &lt;span class="list-supporting"&gt;Location and lighting inspiration&lt;/span&gt;
+    &lt;/span&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre></section><section id="navigation" class="section scrollspy"><h3>Interactive rows and dividers</h3><p>Use a full-row link for navigation. Avoid placing another button or link inside that link. A decorative inset divider can separate groups. Add <code>list-flush</code> and remove parent padding so the hover background fills the entire surface.</p><div class="list-demo"><ul class="list list-flush" aria-label="Related components">
+  <li><a class="list-item list-interactive" href="buttons.html">
+    <span class="list-leading"><i class="material-icons" aria-hidden="true">smart_button</i></span>
+    <span class="list-content"><span class="list-headline">Buttons</span></span>
+    <span class="list-trailing"><i class="material-icons" aria-hidden="true">chevron_right</i></span>
+  </a></li>
+  <li class="list-divider" aria-hidden="true"></li>
+  <li><a class="list-item list-interactive" href="divider.html">
+    <span class="list-leading"><i class="material-icons" aria-hidden="true">horizontal_rule</i></span>
+    <span class="list-content"><span class="list-headline">Dividers</span></span>
+    <span class="list-trailing"><i class="material-icons" aria-hidden="true">chevron_right</i></span>
+  </a></li>
+</ul></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- Flush rows fill the surface; keep the parent container padding at zero. --&gt;
+&lt;ul class="list list-flush" aria-label="Related components"&gt;
+  &lt;li&gt;
+    &lt;a class="list-item list-interactive" href="buttons.html"&gt;
+      &lt;span class="list-leading"&gt;
+        &lt;i class="material-icons" aria-hidden="true"&gt;smart_button&lt;/i&gt;
+      &lt;/span&gt;
+      &lt;span class="list-content"&gt;&lt;span class="list-headline"&gt;Buttons&lt;/span&gt;&lt;/span&gt;
+      &lt;span class="list-trailing"&gt;
+        &lt;i class="material-icons" aria-hidden="true"&gt;chevron_right&lt;/i&gt;
+      &lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li class="list-divider" aria-hidden="true"&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;a class="list-item list-interactive" href="divider.html"&gt;
+      &lt;span class="list-leading"&gt;
+        &lt;i class="material-icons" aria-hidden="true"&gt;horizontal_rule&lt;/i&gt;
+      &lt;/span&gt;
+      &lt;span class="list-content"&gt;&lt;span class="list-headline"&gt;Dividers&lt;/span&gt;&lt;/span&gt;
+      &lt;span class="list-trailing"&gt;
+        &lt;i class="material-icons" aria-hidden="true"&gt;chevron_right&lt;/i&gt;
+      &lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre></section><section id="selection" class="section scrollspy"><h3>Selection and segmented lists</h3><p>Segmented rows share rounded outer corners. Standard <a href="checkboxes.html">Materialize checkbox inputs</a> support multiple choices, and labels make the entire row clickable. Selection changes the fill while preserving the shape.</p><div class="list-demo"><ul class="list list-segmented" aria-label="Delivery formats">
+  <li><label class="list-item list-interactive">
+    <span class="list-content"><span class="list-headline">Review movie</span></span>
+    <input class="list-control" type="checkbox" name="delivery" value="movie" checked>
+  </label></li>
+  <li><label class="list-item list-interactive">
+    <span class="list-content"><span class="list-headline">Image sequence</span></span>
+    <input class="list-control" type="checkbox" name="delivery" value="sequence">
+  </label></li>
+  <li><label class="list-item list-interactive">
+    <span class="list-content"><span class="list-headline">Review notes</span></span>
+    <input class="list-control" type="checkbox" name="delivery" value="notes">
+  </label></li>
+</ul></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;ul class="list list-segmented" aria-label="Delivery formats"&gt;
+  &lt;li&gt;
+    &lt;label class="list-item list-interactive"&gt;
+      &lt;span class="list-content"&gt;&lt;span class="list-headline"&gt;Review movie&lt;/span&gt;&lt;/span&gt;
+      &lt;input
+        class="list-control"
+        type="checkbox"
+        name="delivery"
+        value="movie"
+        checked
+      /&gt;
+    &lt;/label&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;label class="list-item list-interactive"&gt;
+      &lt;span class="list-content"&gt;
+        &lt;span class="list-headline"&gt;Image sequence&lt;/span&gt;
+      &lt;/span&gt;
+      &lt;input class="list-control" type="checkbox" name="delivery" value="sequence" /&gt;
+    &lt;/label&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;label class="list-item list-interactive"&gt;
+      &lt;span class="list-content"&gt;&lt;span class="list-headline"&gt;Review notes&lt;/span&gt;&lt;/span&gt;
+      &lt;input class="list-control" type="checkbox" name="delivery" value="notes" /&gt;
+    &lt;/label&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre></section><section id="radio" class="section scrollspy"><h3>Single choice</h3><p>Uses the same <a href="radio-buttons.html">Materialize radio styling</a> as the Radio Buttons page. Keep a <code>span</code> directly after each input and give the inputs the same name for exclusive selection and arrow-key navigation.</p><div class="list-demo"><ul class="list list-flush" aria-label="Review priority">
+  <li><label class="list-item list-interactive">
+    <input class="list-control" type="radio" name="review-priority" value="normal" checked>
+    <span class="list-content"><span class="list-headline">Normal</span></span>
+  </label></li>
+  <li><label class="list-item list-interactive">
+    <input class="list-control" type="radio" name="review-priority" value="urgent">
+    <span class="list-content"><span class="list-headline">Urgent</span></span>
+  </label></li>
+</ul></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- Keep the enclosing surface padding at zero for edge-to-edge rows. --&gt;
+&lt;ul class="list list-flush" aria-label="Review priority"&gt;
+  &lt;li&gt;
+    &lt;label class="list-item list-interactive"&gt;
+      &lt;input
+        class="list-control"
+        type="radio"
+        name="review-priority"
+        value="normal"
+        checked
+      /&gt;
+      &lt;span class="list-content"&gt;&lt;span class="list-headline"&gt;Normal&lt;/span&gt;&lt;/span&gt;
+    &lt;/label&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;label class="list-item list-interactive"&gt;
+      &lt;input class="list-control" type="radio" name="review-priority" value="urgent" /&gt;
+      &lt;span class="list-content"&gt;&lt;span class="list-headline"&gt;Urgent&lt;/span&gt;&lt;/span&gt;
+    &lt;/label&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre></section><section id="checklist" class="section scrollspy"><h3>Submission checklist with optional progress</h3><p>Combine checkboxes, review notes, completion stamps, and a bottom progress footer. Toggle items to update the count and progress. Demo author/time values are client-side display data; your application handles storage and trusted attribution.</p><div class="list-demo"><div id="submission-checklist" data-checker="You">
+<ul class="list list-segmented" aria-label="Submission checks">
+<li><label class="list-item list-three-line list-interactive">
+  <input class="list-control" type="checkbox" name="submission" value="frames" checked>
+  <span class="list-content">
+    <span class="list-headline">Check frame range</span>
+    <span class="list-supporting list-check-note">Confirm the first and last frames match the delivery request.</span>
+    <!-- Stored attribution can be rendered here before initialization. -->
+    <span class="list-check-stamp" data-list-stamp>
+      <i class="material-icons" aria-hidden="true">check_circle</i><span>Checked by <strong data-list-checker>Alex</strong> <time datetime="2026-09-10T09:00:00Z">Sep 10, 2026</time></span>
+    </span>
+  </span>
+</label></li>
+<li><label class="list-item list-three-line list-interactive">
+  <input class="list-control" type="checkbox" name="submission" value="color">
+  <span class="list-content">
+    <span class="list-headline">Verify color space</span>
+    <span class="list-supporting list-check-note">Review the display transform before exporting.</span>
+    <!-- Stored attribution can be rendered here before initialization. -->
+    <span class="list-check-stamp" data-list-stamp hidden>
+      <i class="material-icons" aria-hidden="true">check_circle</i><span>Checked by <strong data-list-checker></strong> <time></time></span>
+    </span>
+  </span>
+</label></li>
+<li><label class="list-item list-three-line list-interactive">
+  <input class="list-control" type="checkbox" name="submission" value="notes">
+  <span class="list-content">
+    <span class="list-headline">Attach review notes</span>
+    <span class="list-supporting list-check-note">Include the latest supervisor feedback.</span>
+    <!-- Stored attribution can be rendered here before initialization. -->
+    <span class="list-check-stamp" data-list-stamp hidden>
+      <i class="material-icons" aria-hidden="true">check_circle</i><span>Checked by <strong data-list-checker></strong> <time></time></span>
+    </span>
+  </span>
+</label></li>
+</ul>
+<!-- Optional: remove this entire footer to hide count and progress. -->
+<div class="list-checklist-footer">
+  <span data-list-progress-label role="status">1 / 3 completed</span>
+  <progress value="1" max="3" aria-label="Submission checklist completion"></progress>
+</div>
+</div></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;div id="submission-checklist" data-checker="You"&gt;
+  &lt;ul class="list list-segmented" aria-label="Submission checks"&gt;
+    &lt;li&gt;
+      &lt;label class="list-item list-three-line list-interactive"&gt;
+        &lt;input
+          class="list-control"
+          type="checkbox"
+          name="submission"
+          value="frames"
+          checked
+        /&gt;
+        &lt;span class="list-content"&gt;
+          &lt;span class="list-headline"&gt;Check frame range&lt;/span&gt;
+          &lt;span class="list-supporting list-check-note"&gt;
+            Confirm the first and last frames match the delivery request.
+          &lt;/span&gt;
+          &lt;!-- Stored attribution can be rendered here before initialization. --&gt;
+          &lt;span class="list-check-stamp" data-list-stamp&gt;
+            &lt;i class="material-icons" aria-hidden="true"&gt;check_circle&lt;/i&gt;
+            &lt;span&gt;
+              Checked by
+              &lt;strong data-list-checker&gt;Alex&lt;/strong&gt;
+              &lt;time datetime="2026-09-10T09:00:00Z"&gt;Sep 10, 2026&lt;/time&gt;
+            &lt;/span&gt;
+          &lt;/span&gt;
+        &lt;/span&gt;
+      &lt;/label&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;label class="list-item list-three-line list-interactive"&gt;
+        &lt;input class="list-control" type="checkbox" name="submission" value="color" /&gt;
+        &lt;span class="list-content"&gt;
+          &lt;span class="list-headline"&gt;Verify color space&lt;/span&gt;
+          &lt;span class="list-supporting list-check-note"&gt;
+            Review the display transform before exporting.
+          &lt;/span&gt;
+          &lt;!-- Stored attribution can be rendered here before initialization. --&gt;
+          &lt;span class="list-check-stamp" data-list-stamp hidden&gt;
+            &lt;i class="material-icons" aria-hidden="true"&gt;check_circle&lt;/i&gt;
+            &lt;span&gt;
+              Checked by
+              &lt;strong data-list-checker&gt;&lt;/strong&gt;
+              &lt;time&gt;&lt;/time&gt;
+            &lt;/span&gt;
+          &lt;/span&gt;
+        &lt;/span&gt;
+      &lt;/label&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;label class="list-item list-three-line list-interactive"&gt;
+        &lt;input class="list-control" type="checkbox" name="submission" value="notes" /&gt;
+        &lt;span class="list-content"&gt;
+          &lt;span class="list-headline"&gt;Attach review notes&lt;/span&gt;
+          &lt;span class="list-supporting list-check-note"&gt;
+            Include the latest supervisor feedback.
+          &lt;/span&gt;
+          &lt;!-- Stored attribution can be rendered here before initialization. --&gt;
+          &lt;span class="list-check-stamp" data-list-stamp hidden&gt;
+            &lt;i class="material-icons" aria-hidden="true"&gt;check_circle&lt;/i&gt;
+            &lt;span&gt;
+              Checked by
+              &lt;strong data-list-checker&gt;&lt;/strong&gt;
+              &lt;time&gt;&lt;/time&gt;
+            &lt;/span&gt;
+          &lt;/span&gt;
+        &lt;/span&gt;
+      &lt;/label&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;!-- Optional: remove this entire footer to hide count and progress. --&gt;
+  &lt;div class="list-checklist-footer"&gt;
+    &lt;span data-list-progress-label role="status"&gt;1 / 3 completed&lt;/span&gt;
+    &lt;progress value="1" max="3" aria-label="Submission checklist completion"&gt;&lt;/progress&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">import { initListChecklist } from './components/list';
+
+// Initialize the wrapper around the list and its optional footer.
+const checklist = document.querySelector&lt;HTMLElement&gt;('#submission-checklist')!;
+const destroy = initListChecklist(checklist);
+
+// Save changes using your application's own persistence layer.
+checklist.addEventListener('listchange', (event) =&gt; {
+  const { value, checked, completed, total } = (event as CustomEvent).detail;
+  console.log(value, checked, completed, total);
+});
+
+// When removing this view:
+// destroy();</code></pre></section><section id="no-progress" class="section scrollspy"><h3>Checklist without progress</h3><p>The footer is opt-in markup. This example has no count or progress bar; native checkbox selection works without JavaScript.</p><div class="list-demo"><ul class="list list-segmented" aria-label="Quick checks">
+  <li><label class="list-item list-interactive">
+    <input class="list-control" type="checkbox" value="preview">
+    <span class="list-content"><span class="list-headline">Preview the export</span></span>
+  </label></li>
+  <li><label class="list-item list-interactive">
+    <input class="list-control" type="checkbox" value="filename">
+    <span class="list-content"><span class="list-headline">Check the filename</span></span>
+  </label></li>
+</ul></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;ul class="list list-segmented" aria-label="Quick checks"&gt;
+  &lt;li&gt;
+    &lt;label class="list-item list-interactive"&gt;
+      &lt;input class="list-control" type="checkbox" value="preview" /&gt;
+      &lt;span class="list-content"&gt;
+        &lt;span class="list-headline"&gt;Preview the export&lt;/span&gt;
+      &lt;/span&gt;
+    &lt;/label&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;label class="list-item list-interactive"&gt;
+      &lt;input class="list-control" type="checkbox" value="filename" /&gt;
+      &lt;span class="list-content"&gt;
+        &lt;span class="list-headline"&gt;Check the filename&lt;/span&gt;
+      &lt;/span&gt;
+    &lt;/label&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre></section><section id="setup" class="section scrollspy"><h3>Setup and class reference</h3><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">// Load after Materialize.
+import './components/list.scss';</code></pre><table class="striped responsive-table"><thead><tr><th>Class</th><th>Purpose</th></tr></thead><tbody><tr><td><code>list-flush</code></td><td>Edge-to-edge rows without outer list padding; inherits the container corner radius.</td></tr><tr><td><code>list / list-item</code></td><td>List container and flex row.</td></tr><tr><td><code>list-two-line / list-three-line</code></td><td>Minimum row heights of 72px / 88px; base rows are 56px.</td></tr><tr><td><code>list-content / list-headline / list-supporting</code></td><td>Text hierarchy and wrapping.</td></tr><tr><td><code>list-leading / list-trailing</code></td><td>Optional visual, metadata, or action slots.</td></tr><tr><td><code>list-avatar / list-image</code></td><td>Initials, portraits, and thumbnails.</td></tr><tr><td><code>list-interactive / list-control</code></td><td>Native interactive rows and selection inputs.</td></tr><tr><td><code>list-segmented</code></td><td>Separated rows with rounded outside corners; --list-gap controls spacing.</td></tr><tr><td><code>list-divider</code></td><td>Decorative inset separator.</td></tr><tr><td><code>list-check-stamp / list-check-note</code></td><td>Attribution and review notes.</td></tr><tr><td><code>list-checklist-footer</code></td><td>Optional bottom count and progress bar.</td></tr></tbody></table>
+<p>Use <code>ul</code>/<code>li</code> for list semantics and native labels for checkbox or radio rows. Mark decorative icons as hidden from assistive technology. Keep controls independently focusable when adding a separate trailing action to a static row.</p>
+<p><code>initListChecklist(root)</code> returns a cleanup function. It reads checked inputs, preserves existing stamp data, and updates any optional <code>data-list-progress-label</code> and <code>progress</code> elements. Set <code>data-checker</code> on the wrapper for the display name. Each change emits <code>listchange</code> with <code>{ value: string, checked: boolean, completed: number, total: number }</code>. Disabled items are included in the total. Reinitialize after replacing the list markup.</p>
+<details><summary>Component SCSS</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">// Material-themed lists. Load after Materialize; no changes to legacy collections.
+.list {
+  --list-gap: 2px;
+  margin: 0;
+  padding: 8px 0;
+  list-style: none;
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  &gt; li {
+    list-style: none;
+  }
+}
+// Edge-to-edge interactive rows, clipped to the enclosing surface's corners.
+.list.list-flush {
+  padding: 0;
+  border-radius: inherit;
+  overflow: hidden;
+}
+.list-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 56px;
+  width: 100%;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  color: inherit;
+  &amp;.list-two-line {
+    min-height: 72px;
+  }
+  &amp;.list-three-line {
+    min-height: 88px;
+    align-items: flex-start;
+    padding-block: 12px;
+  }
+}
+.list-content {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.list-headline {
+  display: block;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--md-sys-color-on-surface);
+}
+.list-supporting {
+  display: block;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+.list-leading,
+.list-trailing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--md-sys-color-on-surface-variant);
+}
+.list-trailing {
+  gap: 8px;
+  font-size: 12px;
+  line-height: 16px;
+}
+.list-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+}
+.list-image {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+// Use native links, buttons, and labels for their built-in keyboard behavior.
+.list-interactive {
+  border: 0;
+  background: transparent;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+  &amp;:hover {
+    background: color-mix(in srgb, var(--md-sys-color-on-surface) 8%, transparent);
+  }
+  &amp;:focus-visible {
+    outline: 2px solid var(--md-sys-color-primary);
+    outline-offset: -2px;
+  }
+  &amp;:disabled {
+    opacity: 0.38;
+    cursor: default;
+  }
+}
+.list-item:has(.list-control:checked),
+.list-item[aria-current='page'] {
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+// Checkbox inputs use Materialize's shared checkbox styles without overrides.
+// Keep the standard radio visual while allowing list text to wrap.
+.list .list-control[type='radio'] + .list-content {
+  height: auto;
+  min-height: 25px;
+}
+.list-item:has(.list-control[type='radio']:focus-visible) {
+  outline: 2px solid var(--md-sys-color-primary);
+  outline-offset: -2px;
+}
+
+// Segmented rows retain their silhouette when selected.
+.list-segmented {
+  display: flex;
+  flex-direction: column;
+  gap: var(--list-gap);
+  padding: 0;
+  background: transparent;
+  &gt; li &gt; .list-item {
+    border-radius: 4px;
+    background-color: var(--md-sys-color-surface-variant);
+  }
+  &gt; li:first-child &gt; .list-item {
+    border-start-start-radius: 16px;
+    border-start-end-radius: 16px;
+  }
+  &gt; li:last-child &gt; .list-item {
+    border-end-start-radius: 16px;
+    border-end-end-radius: 16px;
+  }
+  &gt; li &gt; .list-item:has(.list-control:checked),
+  &gt; li &gt; .list-item[aria-current='page'] {
+    background-color: var(--md-sys-color-secondary-container);
+  }
+  &gt; li &gt; .list-interactive:hover {
+    background-color: color-mix(
+      in srgb,
+      var(--md-sys-color-surface-variant),
+      var(--md-sys-color-on-surface) 8%
+    );
+  }
+}
+.list-divider {
+  height: 1px;
+  margin: 0 16px 0 56px;
+  background: var(--md-sys-color-outline-variant);
+}
+.list-check-stamp {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+.list-check-stamp[hidden] {
+  display: none;
+}
+.list-check-stamp &gt; .material-icons {
+  font-size: 16px;
+}
+.list-check-note {
+  margin: 8px 0 0;
+  padding-inline-start: 12px;
+  border-inline-start: 2px solid var(--md-sys-color-outline);
+  font-style: italic;
+}
+.list-checklist-footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+.list-checklist-footer &gt; progress {
+  flex: 1;
+  min-width: 0;
+  height: 6px;
+  accent-color: var(--md-sys-color-primary);
+}</code></pre></details><details><summary>Checklist TypeScript</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">/** Enhance a submission-style checklist. Ordinary lists need no initialization. */
+export function initListChecklist(root: HTMLElement): () =&gt; void {
+  const events = new AbortController();
+  const controls = () =&gt;
+    Array.from(
+      root.querySelectorAll&lt;HTMLInputElement&gt;('.list-control[type="checkbox"]'),
+    );
+
+  function updateProgress() {
+    const items = controls();
+    const completed = items.filter((item) =&gt; item.checked).length;
+    const label = root.querySelector&lt;HTMLElement&gt;('[data-list-progress-label]');
+    const progress = root.querySelector&lt;HTMLProgressElement&gt;('progress');
+    if (label) label.textContent = `${completed} / ${items.length} completed`;
+    if (progress) {
+      progress.max = Math.max(items.length, 1);
+      progress.value = completed;
+    }
+    return { completed, total: items.length };
+  }
+
+  root.addEventListener(
+    'change',
+    (event) =&gt; {
+      const control = event.target;
+      if (
+        !(control instanceof HTMLInputElement) ||
+        !control.matches('.list-control[type="checkbox"]')
+      )
+        return;
+      const stamp = control
+        .closest('.list-item')
+        ?.querySelector&lt;HTMLElement&gt;('[data-list-stamp]');
+      if (stamp) {
+        stamp.hidden = !control.checked;
+        const name = stamp.querySelector('[data-list-checker]');
+        const time = stamp.querySelector('time');
+        if (control.checked) {
+          if (name) name.textContent = root.dataset.checker || 'You';
+          if (time) {
+            const now = new Date();
+            time.dateTime = now.toISOString();
+            time.textContent = now.toLocaleString(undefined, {
+              dateStyle: 'medium',
+              timeStyle: 'short',
+            });
+          }
+        } else {
+          if (name) name.textContent = '';
+          if (time) {
+            time.textContent = '';
+            time.removeAttribute('datetime');
+          }
+        }
+      }
+      root.dispatchEvent(
+        new CustomEvent('listchange', {
+          bubbles: true,
+          detail: {
+            value: control.value,
+            checked: control.checked,
+            ...updateProgress(),
+          },
+        }),
+      );
+    },
+    { signal: events.signal },
+  );
+
+  // Preserve supplied author/time data for items checked before initialization.
+  controls().forEach((control) =&gt; {
+    const stamp = control
+      .closest('.list-item')
+      ?.querySelector&lt;HTMLElement&gt;('[data-list-stamp]');
+    if (stamp) stamp.hidden = !control.checked;
+  });
+  updateProgress();
+  return () =&gt; events.abort();
+}</code></pre></details></section></div><div class="hide-on-small-only m3"><div class="toc-wrapper"><ul class="section table-of-contents"><li><a href="#anatomy">One, two, and three lines</a></li><li><a href="#visuals">Avatars and images</a></li><li><a href="#navigation">Interactive rows and dividers</a></li><li><a href="#selection">Selection and segmented lists</a></li><li><a href="#radio">Single choice</a></li><li><a href="#checklist">Submission checklist with optional progress</a></li><li><a href="#no-progress">Checklist without progress</a></li><li><a href="#setup">Setup</a></li></ul></div></div></div></div></main>{{> footer }}<script type="module" src="/main.ts"></script><script type="module" src="/lists-demo.ts"></script></body></html>

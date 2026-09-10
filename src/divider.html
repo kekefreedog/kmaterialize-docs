@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en"><head>{{> head }}</head><body>{{> navbar }}
+<main>{{> intro}}<div class="container"><div class="row">
+<div id="divider-examples" class="s12 m9">
+<p class="caption">Separate content with horizontal, vertical, inset, and labeled dividers. All examples inherit the site's Material colors in light and dark themes.</p>
+<p>The existing <code>divider</code> class still works. These additional variants are a local extension: copy <code>src/components/divider.scss</code> into your project and load it after Materialize.</p>
+<section id="horizontal" class="section scrollspy"><h3>Horizontal</h3><p>A full-width rule separates sections. Use a native <code>hr</code> for a thematic break.</p><div class="divider-demo"><p>Account details</p>
+<!-- Add divider-line to opt into the extended styles. -->
+<hr class="divider divider-line">
+<p>Notification preferences</p></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;p&gt;Account details&lt;/p&gt;
+&lt;!-- Add divider-line to opt into the extended styles. --&gt;
+&lt;hr class="divider divider-line" /&gt;
+&lt;p&gt;Notification preferences&lt;/p&gt;</code></pre></section><section id="inset" class="section scrollspy"><h3>Inset and middle</h3><p>Inset from the start edge, or both edges. Logical margins also follow right-to-left layouts.</p><div class="divider-demo"><div class="divider-demo-item">Full width</div>
+<hr class="divider divider-line">
+<div class="divider-demo-item">Start inset</div>
+<hr class="divider divider-line divider-inset">
+<div class="divider-demo-item">Inset on both sides</div>
+<hr class="divider divider-line divider-middle"></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;div class="divider-demo-item"&gt;Full width&lt;/div&gt;
+&lt;hr class="divider divider-line" /&gt;
+&lt;div class="divider-demo-item"&gt;Start inset&lt;/div&gt;
+&lt;hr class="divider divider-line divider-inset" /&gt;
+&lt;div class="divider-demo-item"&gt;Inset on both sides&lt;/div&gt;
+&lt;hr class="divider divider-line divider-middle" /&gt;</code></pre></section><section id="styles" class="section scrollspy"><h3>Line styles</h3><p>Combine emphasis, thickness, and line styles. Colors follow the current Material theme.</p><div class="divider-demo"><!-- Neutral emphasis. -->
+<hr class="divider divider-line divider-strong">
+<!-- Theme primary color. -->
+<hr class="divider divider-line divider-accent">
+<!-- A thicker section boundary. -->
+<hr class="divider divider-line divider-thick">
+<!-- Alternative decorative styles. -->
+<hr class="divider divider-line divider-dashed">
+<hr class="divider divider-line divider-dotted"></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- Neutral emphasis. --&gt;
+&lt;hr class="divider divider-line divider-strong" /&gt;
+&lt;!-- Theme primary color. --&gt;
+&lt;hr class="divider divider-line divider-accent" /&gt;
+&lt;!-- A thicker section boundary. --&gt;
+&lt;hr class="divider divider-line divider-thick" /&gt;
+&lt;!-- Alternative decorative styles. --&gt;
+&lt;hr class="divider divider-line divider-dashed" /&gt;
+&lt;hr class="divider divider-line divider-dotted" /&gt;</code></pre></section><section id="vertical" class="section scrollspy"><h3>Vertical</h3><p>Use a flex or grid container with available height. A vertical separator needs an explicit orientation for assistive technology.</p><div class="divider-demo"><div style="display: flex; align-items: center; min-height: 64px;">
+  <span>Overview</span>
+  <div class="divider divider-line divider-vertical"
+       role="separator" aria-orientation="vertical"></div>
+  <span>Details</span>
+  <div class="divider divider-line divider-vertical divider-accent"
+       role="separator" aria-orientation="vertical"></div>
+  <span>Activity</span>
+</div></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;div style="display: flex; align-items: center; min-height: 64px"&gt;
+  &lt;span&gt;Overview&lt;/span&gt;
+  &lt;div
+    class="divider divider-line divider-vertical"
+    role="separator"
+    aria-orientation="vertical"
+  &gt;&lt;/div&gt;
+  &lt;span&gt;Details&lt;/span&gt;
+  &lt;div
+    class="divider divider-line divider-vertical divider-accent"
+    role="separator"
+    aria-orientation="vertical"
+  &gt;&lt;/div&gt;
+  &lt;span&gt;Activity&lt;/span&gt;
+&lt;/div&gt;</code></pre></section><section id="labels" class="section scrollspy"><h3>With a label</h3><p>Center a label or align it toward either end. These labels are ordinary text; the surrounding lines are decorative.</p><div class="divider-demo"><div class="divider divider-line divider-label">Or continue with</div>
+<div class="divider divider-line divider-label divider-label-start">Today</div>
+<div class="divider divider-line divider-label divider-label-end">Earlier</div></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;div class="divider divider-line divider-label"&gt;Or continue with&lt;/div&gt;
+&lt;div class="divider divider-line divider-label divider-label-start"&gt;Today&lt;/div&gt;
+&lt;div class="divider divider-line divider-label divider-label-end"&gt;Earlier&lt;/div&gt;</code></pre></section><section id="customization" class="section scrollspy"><h3>Custom spacing</h3><p>Override CSS variables per divider. Use theme tokens to keep custom colors compatible with light and dark modes.</p><div class="divider-demo"><hr class="divider divider-line divider-middle"
+    style="--divider-inset: 32px; --divider-spacing: 24px; --divider-thickness: 2px; --divider-color: var(--md-sys-color-tertiary);"></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;hr
+  class="divider divider-line divider-middle"
+  style="
+    --divider-inset: 32px;
+    --divider-spacing: 24px;
+    --divider-thickness: 2px;
+    --divider-color: var(--md-sys-color-tertiary);
+  "
+/&gt;</code></pre></section><section id="setup" class="section scrollspy"><h3>Setup and accessibility</h3><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">// Import once, after your Materialize stylesheet. No JavaScript initialization.
+import './components/divider.scss';</code></pre><p>Use <code>hr</code> for a thematic break. For a purely decorative line, use a <code>div</code> with <code>aria-hidden="true"</code>. Keep labeled dividers as ordinary text; use a heading element when the label introduces a section.</p>
+<p>Combine horizontal modifiers freely. Use vertical and labeled variants separately. Set the parent height or minimum height for vertical dividers.</p>
+<table class="striped"><thead><tr><th>Variable</th><th>Default</th></tr></thead><tbody>
+<tr><td>--divider-color</td><td>Material outline-variant</td></tr>
+<tr><td>--divider-thickness</td><td>1px</td></tr>
+<tr><td>--divider-style</td><td>solid</td></tr>
+<tr><td>--divider-spacing</td><td>16px</td></tr>
+<tr><td>--divider-inset</td><td>16px</td></tr>
+</tbody></table><details><summary>Component SCSS — copy into your project</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">// Load after Materialize. The opt-in base preserves existing .divider elements.
+.divider.divider-line {
+  --divider-color: var(--md-sys-color-outline-variant);
+  --divider-thickness: 1px;
+  --divider-style: solid;
+  --divider-spacing: 16px;
+  --divider-inset: 16px;
+  display: block;
+  flex-shrink: 0;
+  height: 0;
+  margin: var(--divider-spacing) 0;
+  border: 0;
+  border-block-start: var(--divider-thickness) var(--divider-style) var(--divider-color);
+  background: transparent;
+  overflow: visible;
+
+  // Logical properties support both left-to-right and right-to-left layouts.
+  &amp;.divider-inset {
+    margin-inline-start: var(--divider-inset);
+  }
+  &amp;.divider-middle {
+    margin-inline: var(--divider-inset);
+  }
+  &amp;.divider-strong {
+    --divider-color: var(--md-sys-color-outline);
+  }
+  &amp;.divider-accent {
+    --divider-color: var(--md-sys-color-primary);
+  }
+  &amp;.divider-thick {
+    --divider-thickness: 4px;
+  }
+  &amp;.divider-dashed {
+    --divider-style: dashed;
+  }
+  &amp;.divider-dotted {
+    --divider-style: dotted;
+  }
+
+  // A flex or grid parent supplies the vertical divider's available height.
+  &amp;.divider-vertical {
+    width: 0;
+    height: auto;
+    align-self: stretch;
+    margin: 0 var(--divider-spacing);
+    border-block-start: 0;
+    border-inline-start: var(--divider-thickness) var(--divider-style)
+      var(--divider-color);
+  }
+
+  // Real text stays selectable; pseudo-elements draw the surrounding lines.
+  &amp;.divider-label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    height: auto;
+    border: 0;
+    color: var(--md-sys-color-on-surface-variant);
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+    &amp;::before,
+    &amp;::after {
+      content: '';
+      flex: 1;
+      min-width: 8px;
+      border-block-start: var(--divider-thickness) var(--divider-style)
+        var(--divider-color);
+    }
+    &amp;.divider-label-start::before {
+      flex: 0 0 24px;
+    }
+    &amp;.divider-label-end::after {
+      flex: 0 0 24px;
+    }
+  }
+}</code></pre></details></section></div>
+<div class="hide-on-small-only m3"><div class="toc-wrapper"><ul class="section table-of-contents"><li><a href="#horizontal">Horizontal</a></li><li><a href="#inset">Inset and middle</a></li><li><a href="#styles">Line styles</a></li><li><a href="#vertical">Vertical</a></li><li><a href="#labels">With a label</a></li><li><a href="#customization">Custom spacing</a></li><li><a href="#setup">Setup</a></li></ul></div></div>
+</div></div></main>{{> footer }}<script type="module" src="/main.ts"></script><script type="module" src="/divider-demo.ts"></script></body></html>

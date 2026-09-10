@@ -48,8 +48,195 @@
       <div class="container">
         <div class="row">
           <div class="col s12 m8 offset-m1 xl7 offset-xl1">
+<section id="material-colors" class="section scrollspy"><h3>Material color roles</h3><p class="caption">Use Material roles when colors should follow the theme. A source color generates a coordinated palette; CSS variables carry that palette to your page and components. The named colors below, such as <code>teal lighten-2</code>, are fixed colors and do not automatically follow the generated palette.</p>
+<table class="striped"><thead><tr><th>Use</th><th>Background</th><th>Matching text</th></tr></thead><tbody>
+<tr><td>Main action</td><td>primary</td><td>on-primary</td></tr>
+<tr><td>Soft accent panel</td><td>primary-container</td><td>on-primary-container</td></tr>
+<tr><td>Page or card</td><td>surface</td><td>on-surface</td></tr>
+<tr><td>Secondary surface</td><td>surface-variant</td><td>on-surface-variant</td></tr>
+<tr><td>Error message</td><td>error-container</td><td>on-error-container</td></tr>
+</tbody></table><p>Use background classes and their matching <code>-text</code> classes together. An <code>on-*</code> role is the foreground intended for that background.</p><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- Theme-aware colors, inherited from the nearest theme scope. --&gt;
+&lt;div class=&quot;card-panel primary-container on-primary-container-text&quot;&gt;
+  A soft accent panel with its matching text color.
+&lt;/div&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn filled&quot;&gt;Primary action&lt;/button&gt;</code></pre><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-css copiedText">/* The same roles work in your own CSS. */
+.my-panel {
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  border: 1px solid var(--md-sys-color-outline-variant);
+}</code></pre></section><section id="generate-theme" class="section scrollspy"><h3>Generate a palette</h3><p>Install <code>@material/material-color-utilities</code> (already included in these docs). These examples use the package’s <a href="https://github.com/material-foundation/material-color-utilities/tree/main/typescript" target="_blank" rel="noopener">TypeScript theme helpers</a>.</p><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">// npm install @material/material-color-utilities
+import { argbFromHex, themeFromSourceColor, applyTheme } from &#x27;@material/material-color-utilities&#x27;;
+
+// 1. Convert a source hex color to the library&#x27;s ARGB representation.
+// 2. Generate coordinated light and dark schemes.
+const theme = themeFromSourceColor(argbFromHex(&#x27;#6750A4&#x27;));
+
+// 3. Write --md-sys-color-* CSS variables onto the target.
+applyTheme(theme, { target: document.body, dark: false });</code></pre><p>The source color is a seed, so the generated primary color may differ from the exact hex you provided. <code>applyTheme</code> writes variables; elements must use those variables or Material color classes to show the result.</p></section><section id="theme-playground" class="section scrollspy"><h3>Try page, card, and section themes</h3><p>Use the color picker to choose a source color, press Save, then choose a mode and target. Try different colors for the card and section to compare them with the page. A locally themed element keeps its palette until you apply a new one or reset it.</p><div class="color-theme-controls">
+  <label for="theme-demo-seed">Source color <input id="theme-demo-seed" type="color" data-color-picker="pickr" data-color-theme="nano" data-color-opacity="false" value="#6750a4"></label>
+  <label><input id="theme-demo-dark" type="checkbox"><span>Dark mode</span></label>
+</div>
+<div class="color-theme-controls">
+  <button id="theme-demo-page-apply" type="button" class="btn filled">Apply to page</button>
+  <button id="theme-demo-card-apply" type="button" class="btn tonal">Apply to card</button>
+  <button id="theme-demo-section-apply" type="button" class="btn tonal">Apply to section</button>
+  <button id="theme-demo-reset" type="button" class="btn outlined">Reset previews</button>
+</div>
+<p id="theme-demo-status" role="status">Choose a color and target. Previews do not change saved preferences.</p>
+<div id="theme-demo-card" class="color-theme-surface">
+  <h5>Card theme</h5><p>This card can have its own palette and mode.</p>
+  <div class="color-theme-note">Matching container and foreground colors.</div>
+  <button type="button" class="btn filled">Card action</button>
+</div>
+<section id="theme-demo-section" class="color-theme-surface">
+  <h5>Section theme</h5><p>One wrapper passes its palette to all descendants.</p>
+  <div class="color-theme-note">This panel inherits the section’s theme.</div>
+  <button type="button" class="btn filled">Section action</button>
+  <button type="button" class="btn outlined">Another action</button>
+</section></section><section id="page-theme" class="section scrollspy"><h3>Change the whole page</h3><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">const theme = themeFromSourceColor(argbFromHex(&#x27;#006B5F&#x27;));
+
+function setPageMode(dark: boolean) {
+  applyTheme(theme, { target: document.body, dark });
+  // Keep Materialize mode selectors and native form controls in sync.
+  document.documentElement.setAttribute(&#x27;theme&#x27;, dark ? &#x27;dark&#x27; : &#x27;light&#x27;);
+  document.documentElement.style.colorScheme = dark ? &#x27;dark&#x27; : &#x27;light&#x27;;
+}
+
+setPageMode(window.matchMedia(&#x27;(prefers-color-scheme: dark)&#x27;).matches);
+// Call setPageMode(true) or setPageMode(false) from your own theme toggle.</code></pre><p>Use <code>document.body</code> consistently when that is where your application writes its palette. Variables on <code>body</code> override inherited values from <code>html</code>. Changing only the <code>theme</code> attribute does not regenerate variables written by <code>applyTheme</code>; reapply the matching scheme too.</p>
+<p>For this documentation project, its <code>Themes</code> helper also saves the source color and mode in local storage:</p><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">// This helper belongs to the documentation project; it is not a library export.
+import { Themes } from &#x27;./themes&#x27;;
+
+const themes = new Themes(document);
+themes.setThemePrimaryColor(&#x27;#006B5F&#x27;);
+themes.setDarkMode();
+// themes.setLightMode();</code></pre></section><section id="scoped-theme" class="section scrollspy"><h3>Theme a card or another element</h3><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- The palette is local to this element and its descendants. --&gt;
+&lt;div id=&quot;project-card&quot; class=&quot;card-panel surface on-surface-text&quot;&gt;
+  &lt;h5&gt;Project card&lt;/h5&gt;
+  &lt;button type=&quot;button&quot; class=&quot;btn filled&quot;&gt;Open project&lt;/button&gt;
+&lt;/div&gt;</code></pre><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">const card = document.querySelector&lt;HTMLElement&gt;(&#x27;#project-card&#x27;)!;
+const cardTheme = themeFromSourceColor(argbFromHex(&#x27;#B15C00&#x27;));
+
+applyTheme(cardTheme, { target: card, dark: false });
+card.style.colorScheme = &#x27;light&#x27;;
+
+// Use the same approach for a section, toolbar, dialog, or button.
+// Applying to a wrapper also themes the children inside it.
+// A button can be targeted directly with applyTheme(theme, { target: button, dark: false }).</code></pre><p>CSS variables inherit downward, so a local palette does not affect siblings or parents. To follow page mode, reapply each local palette with the new <code>dark</code> value when your theme toggle changes.</p>
+<p>A dropdown or tooltip appended to <code>document.body</code> inherits the page palette. To match a themed card, render it inside that scope where the component supports it, or apply the card palette to the popup itself.</p><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">// Return a locally themed element to the inherited page palette.
+for (const property of Array.from(card.style)) {
+  if (property.startsWith(&#x27;--md-sys-color-&#x27;)) card.style.removeProperty(property);
+}
+card.style.removeProperty(&#x27;color-scheme&#x27;);</code></pre></section><section id="single-color" class="section scrollspy"><h3>Change only one element color</h3><p>If you only need a different accent on one component, use another role such as <code>secondary-container</code>, or override a matching token pair locally. A token override does not generate a full palette or a separate dark scheme.</p><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;div class=&quot;card-panel secondary-container on-secondary-container-text&quot;&gt;
+  Uses the existing secondary container colors.
+&lt;/div&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn filled&quot;
+  style=&quot;--md-sys-color-primary: #285943; --md-sys-color-on-primary: #ffffff;&quot;&gt;
+  Local green action
+&lt;/button&gt;</code></pre><p>Prefer generated schemes for light/dark support. If you choose custom pairs, verify their text contrast in every state. Setting <code>--md-sys-color-primary</code> alone does not update <code>on-primary</code>, container colors, or the rest of the palette.</p>
+<details><summary>Live preview TypeScript</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">import {
+  applyTheme,
+  argbFromHex,
+  themeFromSourceColor,
+} from &quot;@material/material-color-utilities&quot;;
+import { Themes } from &quot;./themes&quot;;
+import &quot;./color-theme-demo.scss&quot;;
+
+const seed = document.querySelector&lt;HTMLInputElement&gt;(&quot;#theme-demo-seed&quot;)!;
+const dark = document.querySelector&lt;HTMLInputElement&gt;(&quot;#theme-demo-dark&quot;)!;
+const card = document.querySelector&lt;HTMLElement&gt;(&quot;#theme-demo-card&quot;)!;
+const section = document.querySelector&lt;HTMLElement&gt;(&quot;#theme-demo-section&quot;)!;
+const status = document.querySelector&lt;HTMLElement&gt;(&quot;#theme-demo-status&quot;)!;
+const savedTheme = new Themes(document);
+dark.checked = savedTheme.isDarkMode();
+
+// Only CSS tokens on the chosen target change; no saved preference is overwritten.
+function previewTheme(target: HTMLElement) {
+  const theme = themeFromSourceColor(argbFromHex(seed.value));
+  applyTheme(theme, { target, dark: dark.checked });
+  target.style.colorScheme = dark.checked ? &quot;dark&quot; : &quot;light&quot;;
+  if (target === document.body) {
+    document.documentElement.setAttribute(
+      &quot;theme&quot;,
+      dark.checked ? &quot;dark&quot; : &quot;light&quot;,
+    );
+    document.documentElement.style.colorScheme = dark.checked
+      ? &quot;dark&quot;
+      : &quot;light&quot;;
+  }
+}
+
+document
+  .querySelector(&quot;#theme-demo-page-apply&quot;)!
+  .addEventListener(&quot;click&quot;, () =&gt; {
+    previewTheme(document.body);
+    status.textContent = `Page preview: ${seed.value}, ${dark.checked ? &quot;dark&quot; : &quot;light&quot;} mode.`;
+  });
+for (const [id, target] of [
+  [&quot;#theme-demo-card-apply&quot;, card],
+  [&quot;#theme-demo-section-apply&quot;, section],
+] as const) {
+  document.querySelector(id)!.addEventListener(&quot;click&quot;, () =&gt; {
+    previewTheme(target);
+    status.textContent = `${target === card ? &quot;Card&quot; : &quot;Section&quot;} preview updated; the page palette is unchanged.`;
+  });
+}
+
+document.querySelector(&quot;#theme-demo-reset&quot;)!.addEventListener(&quot;click&quot;, () =&gt; {
+  // Remove only generated theme properties, so these examples inherit the page again.
+  for (const target of [card, section]) {
+    Array.from(target.style)
+      .filter((name) =&gt; name.startsWith(&quot;--md-sys-color-&quot;))
+      .forEach((name) =&gt; target.style.removeProperty(name));
+    target.style.removeProperty(&quot;color-scheme&quot;);
+  }
+  const isDark = savedTheme.isDarkMode();
+  savedTheme.applyThemeProperties(isDark);
+  document.body.style.removeProperty(&quot;color-scheme&quot;);
+  document.documentElement.setAttribute(&quot;theme&quot;, isDark ? &quot;dark&quot; : &quot;light&quot;);
+  dark.checked = isDark;
+  status.textContent =
+    &quot;Saved page theme restored. Card and section inherit it again.&quot;;
+});</code></pre></details><details><summary>Live preview SCSS</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">.color-theme-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-block: 16px;
+}
+.color-theme-controls &gt; label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--md-sys-color-on-surface);
+}
+.color-theme-controls input[type=&quot;color&quot;] {
+  width: 48px;
+  height: 40px;
+  padding: 4px;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: 8px;
+}
+.color-theme-surface {
+  padding: 24px;
+  margin-block: 16px;
+  border-radius: 16px;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+}
+.color-theme-surface h5 {
+  margin-top: 0;
+}
+.color-theme-note {
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  margin-block: 16px;
+}</code></pre></details></section>
             <div id="color-usage" class="section scrollspy">
-              <h3 class="header">Usage</h3>
+              <h3 class="header">Fixed color classes</h3>
               <p class="caption">
                 Here is a color palette based on the material design base colors. Each of these colors is defined with a base color class and an optional lighten or darken class.
               </p>
@@ -610,7 +797,7 @@
             <div class="toc-wrapper">
               <div style="height: 1px">
                 <ul class="section table-of-contents">
-                  <li><a href="#color-usage">Usage</a></li>
+                  <li><a href="#material-colors">Material color roles</a></li><li><a href="#generate-theme">Generate a palette</a></li><li><a href="#theme-playground">Try page, card, and section themes</a></li><li><a href="#page-theme">Change the whole page</a></li><li><a href="#scoped-theme">Theme a card or another element</a></li><li><a href="#single-color">Change only one element color</a></li><li><a href="#color-usage">Fixed colors</a></li>
                   <li><a href="#sass">Sass</a></li>
                   <li><a href="#palette">Color Palette</a></li>
                   <li><a href="#borders">Borders</a></li>
@@ -625,5 +812,6 @@
     </main>
     {{> footer }}
     <script type="module" src="/main.ts"></script>
+    <script type="module" src="/color-theme-demo.ts"></script>
   </body>
 </html>

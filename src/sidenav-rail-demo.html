@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Material 3 navigation rail example</title></head>
+  <body class="rail-example">
+    <aside class="m3-rail" aria-label="Site navigation">
+      <nav class="m3-rail-nav" aria-label="Main sections">
+        <a href="#home" aria-current="page" data-view="Home"><span class="m3-rail-icon"><img src="images/materialize.svg" alt=""></span><span>Home</span></a>
+        <a href="#get-started" data-view="Get started"><span class="m3-rail-icon"><i class="material-icons" aria-hidden="true">apps</i></span><span>Get started</span></a>
+        <a href="#develop" data-view="Develop"><span class="m3-rail-icon"><i class="material-icons" aria-hidden="true">code</i></span><span>Develop</span></a>
+        <a href="#foundations" data-view="Foundations"><span class="m3-rail-icon"><i class="material-icons" aria-hidden="true">book</i></span><span>Foundations</span></a>
+        <a href="#styles" data-view="Styles"><span class="m3-rail-icon"><i class="material-icons" aria-hidden="true">palette</i></span><span>Styles</span></a>
+        <a href="#components" data-view="Components"><span class="m3-rail-icon"><i class="material-icons" aria-hidden="true">add_circle_outline</i></span><span>Components</span></a>
+        <a href="#blog" data-view="Blog"><span class="m3-rail-icon"><i class="material-icons" aria-hidden="true">stars</i></span><span>Blog</span></a>
+      </nav>
+      <div class="m3-rail-actions">
+        <button type="button" id="rail-motion" aria-label="Pause motion" aria-pressed="false"><i class="material-icons" aria-hidden="true">pause</i></button>
+        <button type="button" id="rail-theme" aria-label="Switch to light theme"><i class="material-icons" aria-hidden="true">light_mode</i></button>
+      </div>
+    </aside>
+    <main class="rail-example-content">
+      <p class="rail-example-eyebrow">MATERIAL DESIGN · VARIANT 3</p>
+      <h1 id="rail-view-title">Home</h1>
+      <p id="rail-view-description" aria-live="polite">A place for the ideas, tools, and components that shape your next interface.</p>
+      <div class="rail-example-art" aria-hidden="true"><div></div><i class="material-icons">auto_awesome</i></div>
+      <p class="rail-example-hint">Choose a section. Use the controls at the bottom of the rail to pause motion or switch the theme.</p>
+    </main>
+    <script type="module" src="/sidenav-rail-demo.ts"></script>
+  </body>
+</html>

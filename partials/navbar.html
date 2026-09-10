@@ -11,10 +11,14 @@
         </a>
         <a class="sidenav-trigger" href="#" data-target="nav-mobile"><i class="material-icons">menu</i></a>
         <ul class="ml-auto">
-          <li>
-            <a href="" onclick="paletteSelectorModal.showModal(); return false;">
+          <li class="header-palette">
+            <input type="color" id="color-picker" data-color-picker="pickr" data-color-theme="nano" data-color-opacity="false" value="#FFD700" aria-label="Page palette" />
+            <a id="palette-trigger" href="#" aria-label="Change page palette">
               <i class="material-icons">palette</i>
             </a>
+          </li>
+          <li>
+            <a href="#paletteSelectorModal" aria-label="Font and theme export settings" onclick="paletteSelectorModal.showModal(); return false;"><i class="material-icons">tune</i></a>
           </li>
           <li>
             <a id="theme-switch" href="#">
@@ -35,14 +39,15 @@
   <ul class="sidenav sidenav-fixed" id="nav-mobile">
     <li class="logo">
       <a class="brand-logo" id="logo-container" href="/">
-        <img id="front-page-logo" src="images/materialize.svg" alt="Materialize Web Logo" />
-        Kmaterialize
+        <img id="front-page-logo" src="images/materialize.svg" alt="" />
+        <span>Kmaterialize</span>
       </a>
     </li>
 
     <li class="search">
-      <div class="search-wrapper">
-        <input class="search-docs" id="search" type="search" placeholder="Search" autocomplete="off" autofocus /><i class="material-icons">search</i>
+      <div class="s12 input-field outlined">
+        <input class="search-docs" id="search" type="text" placeholder=" " autocomplete="off" />
+        <label for="search">Search</label>
       </div>
     </li>
 
@@ -52,13 +57,9 @@
 
 <dialog id="paletteSelectorModal" class="modal">
   <div class="modal-header">
-    <h4>Color Scheme</h4>
+    <h4>Font and theme export</h4>
   </div>
   <div class="modal-content">
-    <div class="color-row">
-      <input type="color" id="color-picker" value="#FFD700" />
-      <label for="color-picker">Primary Color</label>
-    </div>
     <div class="font-row">
       <label for="font-picker">Font</label>
       <select id="font-picker">

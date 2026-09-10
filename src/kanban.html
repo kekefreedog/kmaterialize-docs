@@ -58,9 +58,17 @@
                   <div class="kanban-column-body"><div class="kanban-empty">Drop completed work here</div></div>
                 </section>
               </div>
-              <p id="kanban-status" class="caption" aria-live="polite">Drag a card to another column.</p>
+              <div class="toolbar toolbar-wrap" role="toolbar" aria-label="Kanban zoom">
+                <div class="toolbar-group">
+                  <button type="button" class="btn text" id="kanban-zoom-out" aria-label="Zoom out">−</button>
+                  <output id="kanban-zoom-value" aria-label="Zoom level">100%</output>
+                  <button type="button" class="btn text" id="kanban-zoom-in" aria-label="Zoom in">+</button>
+                  <button type="button" class="btn text" id="kanban-zoom-reset" aria-label="Reset zoom to 100%">100%</button>
+                </div>
+              </div>
+              <p id="kanban-status" class="caption" aria-live="polite">Drag a card or its handle to another column. On a phone, drag the top-right handle; swipe elsewhere to scroll.</p>
               <p class="caption">Cards with <code>is-disabled</code> or <code>aria-disabled="true"</code> stay visible but cannot be dragged.</p>
-              <p class="caption">Add <code>kanban-card-accent</code> and set <code>--kanban-card-accent</code> to customize the color. Use <code>kanban-card-accent-top</code>, <code>kanban-card-accent-right</code>, <code>kanban-card-accent-bottom</code>, or <code>kanban-card-accent-left</code> to choose its position.</p>
+              <p class="caption">Override an item with <code>data-kanban-color</code> and <code>data-kanban-text-color</code>. Set <code>data-kanban-accent</code> and optionally <code>data-kanban-accent-position</code> (<code>top</code>, <code>right</code>, <code>bottom</code>, or <code>left</code>) for an edge color. The older <code>kanban-card-accent</code> classes and CSS variables remain supported. Use <code>kanban.setZoom(value)</code>, <code>kanban.getZoom()</code>, and <code>kanban.resetZoom()</code> for board scaling.</p>
               <div class="row">
                 <div class="col s12 m6">
                   <article class="kanban-card kanban-card-accent kanban-card-accent-top" style="--kanban-card-accent: #7c4dff">
@@ -125,6 +133,11 @@
 </div></xmp></code></pre>
             </div>
 
+            <section class="section">
+              <h3 class="header">Touch drag handles</h3>
+              <p>Movable cards in this demo have a discreet top-right handle with a 44px touch target and the <code>&lt;i class="material-icons"&gt;drag_indicator&lt;/i&gt;</code> handle. Drag it to reorder cards or move between columns on a phone. Focus a handle and use up/down arrows to reorder, or left/right arrows to change columns. Disabled cards and boards with <code>draggable: false</code> have no handle.</p>
+              <p>The pointer helper lives in <code>src/components/card-drag-handles.ts</code> with its imported SCSS. It supplements the npm component’s native desktop dragging. See its integration in <code>src/main.ts</code> for the move callback and count updates.</p>
+            </section>
             <div id="options" class="section scrollspy">
               <h3 class="header">Options</h3>
               <table class="striped">
