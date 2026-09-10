@@ -1,91 +1,67 @@
+# Kmaterialize documentation
+
+Documentation, live examples, and optional integrations for [Kmaterialize](https://github.com/kekefreedog/kmaterialize). Pages use Vite, TypeScript, Sass, and Handlebars partials.
+
 ## Requirements
 
-This project uses pnpm with workspaces. So pnpm [should be installed](https://pnpm.io/installation).
+- Node.js 22 (the version used by deployment).
+- Corepack and the pnpm version declared in `package.json`.
+- Git.
 
-## Project generation
+## Build the docs
 
-This project has been generated from with a `$ pnpm create vite` command and selecting the vanilla-ts project.
-
-The site depends on [Kmaterialize](https://github.com/kekefreedog/kmaterialize) as a regular npm package
-(`"kmaterialize": "latest"` in `package.json`), so `pnpm install` always pulls whatever is currently
-published on npm — no extra step needed to get the newest library release.
-
-[Kmaterialize](https://github.com/kekefreedog/kmaterialize) is *also* checked out as a git submodule in
-`packages/materialize` and declared as a [pnpm workspace](https://pnpm.io/workspaces) project, but that's
-optional and only matters if you want to develop the library itself alongside the docs (see below) — the
-docs site's own build never reads from that folder.
-
-Typescript has been configured to treat all projects in /packages folder as typescript packages.
-
-head, navbar and footer in all html pages has been defined using [vite-plugin-handlebars](https://github.com/alexlafroscia/vite-plugin-handlebars).
-
-## Instructions to develop
-
-```
+```sh
 git clone https://github.com/kekefreedog/kmaterialize-docs.git
 cd kmaterialize-docs
-pnpm install
-pnpm dev
+corepack pnpm install --frozen-lockfile
+corepack pnpm build
+corepack pnpm preview
 ```
 
-`pnpm dev` (and `npm run dev`, if pnpm isn't on your PATH — see `scripts/link-kmaterialize.mjs`) automatically
-points `kmaterialize` at `file:/Users/kzarshenas/Sites/CrazyProject/kmaterialize` on disk before starting Vite,
-so edits to the library show up immediately without a publish/`pnpm update` round trip. It always re-syncs a
-fresh copy into `node_modules/kmaterialize` too (pnpm's store otherwise caches a local `file:` dependency and
-won't notice source edits on its own).
+Open the preview URL printed in the terminal. The generated website is in `build/`.
 
-This means **`package.json`/`pnpm-lock.yaml` will show `kmaterialize` pinned to that local path while you're
-developing** — that's expected and fine locally, but it must never reach a commit (see next section).
+`pnpm build` first updates Kmaterialize to the latest published npm release, then checks for local dependency paths, runs TypeScript checks, and builds every documentation page with Vite. It requires registry access and can update `package.json` and `pnpm-lock.yaml`; review and commit those changes when preparing a release.
 
-### Building — and the one rule that actually matters here
+To build exactly the dependency versions already recorded in the lockfile, without refreshing Kmaterialize:
 
-```
-pnpm build
-pnpm preview
+```sh
+corepack pnpm install --frozen-lockfile
+node scripts/check-no-local-deps.mjs
+corepack pnpm exec tsc --noEmit
+corepack pnpm exec vite build
+corepack pnpm preview
 ```
 
-`pnpm build` switches `kmaterialize` back to the published `"latest"` npm version *first*, so the shipped
-site never depends on a path that only exists on a dev machine. It also force-refreshes the resolution
-(`pnpm update kmaterialize --latest`), not just a plain reinstall — pnpm otherwise happily reuses a
-stale resolved version from the lockfile even when a newer release exists on npm.
+## Develop with the local library
 
-**Golden rule: never `git commit` right after `pnpm dev`.** A local `file:` dependency that leaks into a
-commit — and worse, into a tagged release — breaks CI outright (a path that doesn't exist on the runner).
-This happened once (`v1.4.0`, patched by `v1.4.1`). To make that structurally hard to repeat:
+`pnpm dev` links the sibling `../kmaterialize` checkout before starting Vite. To use a different checkout, set `KMATERIALIZE_PATH` to its absolute path. Library TypeScript and Sass changes are watched directly.
 
-- `pnpm build` itself refuses to proceed (`scripts/check-no-local-deps.mjs`) if a `file:` dependency is
-  still present anywhere in `package.json`/`pnpm-lock.yaml`, right after switching to `"latest"` and before
-  compiling anything.
-- A pre-commit hook runs the same check and blocks the commit. It activates automatically the first time
-  you `pnpm install` (via the `prepare` script), or manually: `git config core.hooksPath .githooks`.
-- The `Deploy` workflow (`.github/workflows/deploy.yml`) runs the same check again as its very first step,
-  before `pnpm install` even runs — so even a hook bypassed with `--no-verify` still can't reach deploy.
+```sh
+git clone https://github.com/kekefreedog/kmaterialize.git ../kmaterialize
+corepack pnpm dev
+```
 
-If any of these ever fires, just run `node scripts/link-kmaterialize.mjs latest` (or `pnpm build`, which
-does it for you) before retrying.
+If no local checkout exists, `pnpm dev` uses the published library instead.
 
-## Deployment
+Local development changes the library dependency to a `file:` path. Before committing or tagging, run `pnpm build` to restore the published dependency. The pre-commit hook and deployment workflow reject local dependency paths.
 
-Pushing to `main` does **not** deploy by itself. Publishing a GitHub Release (or running the `Deploy`
-workflow manually from the Actions tab) builds the site and `rsync`s it over SSH to the host. That
-workflow (`.github/workflows/deploy.yml`) expects these repo secrets to already be set:
+## Where to edit
 
-- `DEPLOY_SSH_KEY` — private key authorized on the target server
-- `DEPLOY_SSH_HOST`, `DEPLOY_SSH_PORT`, `DEPLOY_SSH_USER` — connection details
-- `DEPLOY_PATH` — absolute path on the server to sync `build/` into
+- `src/*.html`: documentation pages and examples.
+- `partials/`: shared header, sidebar, and footer.
+- `config.materialize.js`: navigation and page metadata.
+- `src/style.scss`: shared styles and enhancement imports.
+- `src/components/`: reusable extensions demonstrated by the docs.
+- `src/*-demo.ts` and `src/*-demo.scss`: page-specific examples.
 
-### New Release (for Maintainers)
+## Publish a docs release
 
-The docs should be kept in the core repo as markdown files for quick editing. This repo should then
-collect all the markdown files from the core repo and compile them into a collection of nice html files,
-The versions are managed in docs/version/ to keep different versions. The workflow was removed for now.
+1. Publish the Kmaterialize tag first and wait for its **Publish to npm** workflow to succeed.
+2. Run `pnpm build` in this repository so the docs consume the new npm release.
+3. Check the preview, review the dependency changes, and commit the documentation changes.
+4. Push the commit and a new, unused `v`-prefixed docs tag to `kekefreedog/kmaterialize-docs`.
+5. Wait for the **Deploy** workflow to succeed.
 
-This has to be done after release process of the [core repo](https://github.com/kekefreedog/kmaterialize) and releasing on npm
+A `v*` tag push triggers deployment. Publishing a GitHub Release also triggers deployment, so doing both starts two runs. A push to `main` alone does not deploy. Maintainers can also run **Deploy** manually from GitHub Actions.
 
-- Update version string in **src/public/info**, **src/getting-started.html**, **partials/navbar.html**
-- Run docs locally and check manually with `pnpm dev` & `pnpm build`
-- run `node release.js` to create new version
-- goto docs folder and run locally via `npx http-server -c-1 -p 8080` and test in browser
-- Make PR into main
-- Publish a GitHub Release to deploy (see Deployment above)
-- Spread news via social media channels
+Deployment builds `build/` and uploads it using rsync over SSH. It requires these repository secrets: `DEPLOY_SSH_KEY`, `DEPLOY_SSH_HOST`, `DEPLOY_SSH_PORT`, `DEPLOY_SSH_USER`, and `DEPLOY_PATH`.
