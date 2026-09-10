@@ -1,5 +1,5 @@
-import { OrgChart } from "./components/org-chart";
-import type { OrgChartData } from "./components/org-chart";
+import { OrgChart } from 'kmaterialize';
+import type { OrgChartData } from 'kmaterialize';
 
 const initial: OrgChartData = {
   teams: [

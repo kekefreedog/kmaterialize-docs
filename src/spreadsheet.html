@@ -32,16 +32,16 @@
 &lt;p id="material-spreadsheet-status" class="spreadsheet-demo-status" role="status"&gt;
   An independent sheet with a softer Material palette.
 &lt;/p&gt;</code></pre></section>
-<section id="setup" class="section scrollspy"><h3>Install and initialize</h3><p>Shared spreadsheet styles are loaded once in <code>src/style.scss</code>. Install with <code>pnpm add kspreadsheet@2.7.0 jsuites@5.13.5</code>. The default grid keeps vendor colors; load <code>spreadsheet_editors.scss</code> after them for Material dropdown menus and readable editing text. For the optional Material variant, copy both enhancement files from <code>src/enhancement</code>. Their import paths are adapted for Vite; no stylesheet is fetched from a public <code>/node_modules</code> URL.</p><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">// Add to the main Materialize SCSS entry, once.
+<section id="setup" class="section scrollspy"><h3>Install and initialize</h3><p>Shared spreadsheet styles are loaded once in <code>src/style.scss</code>. Install with <code>pnpm add kspreadsheet@2.7.0 jsuites@5.13.5</code>. The default grid keeps vendor colors; load <code>spreadsheet_editors.scss</code> after them for Material dropdown menus and readable editing text. For the optional Material variant, import the enhancement styles from <code>kmaterialize/sass/enhancement</code> as shown below. Both stylesheets are shipped by the library.</p><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">// Add to the main Materialize SCSS entry, once.
 @import 'kmaterialize/sass/materialize.scss';
 @import 'jsuites/dist/jsuites.css';
 @import 'kspreadsheet/dist/jspreadsheet.css';
 @import 'kspreadsheet/dist/jspreadsheet.themes.css';
 
 // Optional palette, scoped to .spreadsheet-material.
-@import './enhancement/jspreadsheet_materializecss.scss';
+@import 'kmaterialize/sass/enhancement/jspreadsheet_materializecss.scss';
 // Shared dropdown styling and readable cell editors.
-@import './enhancement/spreadsheet_editors.scss';</code></pre><details open><summary>Complete example — data, columns, events, and buttons</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">import jspreadsheet, { type CellValue, type SpreadsheetOptions } from 'kspreadsheet';
+@import 'kmaterialize/sass/enhancement/spreadsheet_editors.scss';</code></pre><details open><summary>Complete example — data, columns, events, and buttons</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">import jspreadsheet, { type CellValue, type SpreadsheetOptions } from 'kspreadsheet';
 // Shared spreadsheet and enhancement styles are loaded by style.scss.
 import './spreadsheet-demo.scss';
 

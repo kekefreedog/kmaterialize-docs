@@ -136,7 +136,7 @@
             <section class="section">
               <h3 class="header">Touch drag handles</h3>
               <p>Movable cards in this demo have a discreet top-right handle with a 44px touch target and the <code>&lt;i class="material-icons"&gt;drag_indicator&lt;/i&gt;</code> handle. Drag it to reorder cards or move between columns on a phone. Focus a handle and use up/down arrows to reorder, or left/right arrows to change columns. Disabled cards and boards with <code>draggable: false</code> have no handle.</p>
-              <p>The pointer helper lives in <code>src/components/card-drag-handles.ts</code> with its imported SCSS. It supplements the npm component’s native desktop dragging. See its integration in <code>src/main.ts</code> for the move callback and count updates.</p>
+              <p>Import the pointer helper <code>enableCardHandles</code> from <code>kmaterialize</code>; its styles are included in Materialize CSS. It supplements the npm component’s native desktop dragging. See its integration in <code>src/main.ts</code> for the move callback and count updates.</p>
             </section>
             <div id="options" class="section scrollspy">
               <h3 class="header">Options</h3>

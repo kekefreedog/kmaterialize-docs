@@ -167,8 +167,19 @@ export default ({ command }) => ({
   // to watch the sibling repository. The package dependency remains in place
   // for peer resolution and production builds.
   resolve: {
-    // The linked library must use the docs' installed Pickr, including in dev.
-    dedupe: ['@simonwep/pickr'],
+    // Resolve optional peers from the docs when consuming the sibling library.
+    dedupe: [
+      '@simonwep/pickr',
+      'air-datepicker',
+      'filepond',
+      'filepond-plugin-file-validate-type',
+      'filepond-plugin-image-exif-orientation',
+      'filepond-plugin-image-preview',
+      'imask',
+      'sweetalert2',
+      'tippy.js',
+      'tom-select',
+    ],
     // The local library contains legacy .mjs stubs beside the live TypeScript
     // components. Prefer TypeScript during docs development so Tabs (and the
     // other components) expose their complete init implementations.

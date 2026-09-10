@@ -65,3 +65,17 @@ Local development changes the library dependency to a `file:` path. Before commi
 A `v*` tag push triggers deployment. Publishing a GitHub Release also triggers deployment, so doing both starts two runs. A push to `main` alone does not deploy. Maintainers can also run **Deploy** manually from GitHub Actions.
 
 Deployment builds `build/` and uploads it using rsync over SSH. It requires these repository secrets: `DEPLOY_SSH_KEY`, `DEPLOY_SSH_HOST`, `DEPLOY_SSH_PORT`, `DEPLOY_SSH_USER`, and `DEPLOY_PATH`.
+
+### Library features and documentation
+
+Reusable component code and styling belong to the sibling `kmaterialize` package.
+This repository contains documentation, example data, and demo event handlers.
+Do not add reusable implementations under `src/components` or `src/enhancement`.
+The production build checks that the installed package exports the documented
+features; publish the matching library release before deploying these docs.
+
+Crazy button is documented at `crazy-button.html` under **Web components**.
+It uses the library's `CrazyButton` and `Kmcomponent` exports and registers
+`crazy-button` plus the compatible `regular-btn` alias. Spreadsheet enhancements
+are available through `kmaterialize/sass/enhancement/spreadsheet.scss`; Tippy's
+optional adapter is available through `kmaterialize/tippy`.

@@ -9,7 +9,7 @@
         <div class="row">
           <div id="button-examples" class="s12 m8 offset-m1 xl7 offset-xl1">
             <p class="caption">Explore all ten button families from <a href="https://m3.material.io/components/all-buttons" target="_blank" rel="noopener">Material 3's All buttons</a>: buttons, toggles, icon buttons, icon toggles, split buttons, standard groups, connected groups, FABs, extended FABs, and FAB menus.</p>
-            <p>The new classes are provided by this project's <code>src/components/material-buttons.scss</code>; interactive behavior lives in <code>material-buttons.ts</code>. Copy both files into your app. They extend Materialize and are not yet included in the npm library.</p>
+            <p>Button styles are included in Materialize CSS. Import <code>initMaterialButtons</code> from <code>kmaterialize</code> for toggles, groups, and menus.</p>
             <p id="button-demo-status" class="button-demo-status" role="status">Try a button. Demo actions and selection changes appear here.</p>
 <section id="filled" class="section scrollspy">
   <h3 class="header">Filled</h3>
@@ -857,8 +857,7 @@ Dropdown.init(document.querySelectorAll('.btn-fab-menu .dropdown-trigger'), {
 &lt;/button&gt;</code></pre>
 
 </section><section id="setup" class="section scrollspy"><h3 class="header">Initialization &amp; classes</h3><p>Native buttons already support Enter and Space. Initialize once per container for toggles and menus. Split buttons and FAB menus use the standard Materialize Dropdown for positioning and keyboard navigation. The initializer below already calls Dropdown.init; the standalone snippets above are alternatives. New selection controls use <code>aria-pressed</code>; menu triggers use <code>aria-expanded</code>.</p><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">// Import once, after the site's Materialize stylesheet.
-import './components/material-buttons.scss';
-import { initMaterialButtons } from './components/material-buttons';
+import { initMaterialButtons } from 'kmaterialize';
 
 const root = document.querySelector&lt;HTMLElement&gt;('#button-examples')!;
 const destroy = initMaterialButtons(root);

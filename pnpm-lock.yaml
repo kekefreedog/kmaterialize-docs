@@ -43,7 +43,7 @@ importers:
         version: 5.13.5
       kmaterialize:
         specifier: latest
-        version: 2.3.3-1.0.24(@simonwep/pickr@1.9.1)(air-datepicker@3.6.0)(filepond-plugin-file-validate-type@1.2.9(filepond@4.32.12))(filepond-plugin-image-exif-orientation@1.0.11(filepond@4.32.12))(filepond-plugin-image-preview@4.6.12(filepond@4.32.12))(filepond@4.32.12)(imask@7.6.1)(sweetalert2@11.26.25)(tom-select@2.6.2)
+        version: 2.3.3-1.0.25(@simonwep/pickr@1.9.1)(air-datepicker@3.6.0)(filepond-plugin-file-validate-type@1.2.9(filepond@4.32.12))(filepond-plugin-image-exif-orientation@1.0.11(filepond@4.32.12))(filepond-plugin-image-preview@4.6.12(filepond@4.32.12))(filepond@4.32.12)(imask@7.6.1)(sweetalert2@11.26.25)(tippy.js@6.3.7)(tom-select@2.6.2)
       kspreadsheet:
         specifier: 2.7.0
         version: 2.7.0
@@ -696,8 +696,8 @@ packages:
   jszip@3.10.2:
     resolution: {integrity: sha512-3l+rb15IOWtUhU0H5MFqES/T6Kh7abYwjosBey/vD6hDt8zoEffkSC5Ws5SGtgVw3gBx2NEbhTeSW1+kWkpyTQ==}
 
-  kmaterialize@2.3.3-1.0.24:
-    resolution: {integrity: sha512-QNnrL/StnfNM976HN1vMCQeKBRZxIt3Qn+U11EG1vQdfYcQ6D5/C1osKwvn8fO2GKY033ujJ70l+WMbWHDTSQA==}
+  kmaterialize@2.3.3-1.0.25:
+    resolution: {integrity: sha512-0QslH/3FihBmH0O4Liyp7RdaUPl1AP2xnB5U2Z+VZnBg326IDccvq3DUnEYtXLQiW7s0nacfAz49UNxdTBXKcQ==}
     peerDependencies:
       '@simonwep/pickr': ^1.9.0
       air-datepicker: ^3.5.0
@@ -707,6 +707,7 @@ packages:
       filepond-plugin-image-preview: ^4.6.0
       imask: ^7.6.0
       sweetalert2: ^11.26.25
+      tippy.js: ^6.3.7
       tom-select: ^2.3.0
     peerDependenciesMeta:
       '@simonwep/pickr':
@@ -724,6 +725,8 @@ packages:
       imask:
         optional: true
       sweetalert2:
+        optional: true
+      tippy.js:
         optional: true
       tom-select:
         optional: true
@@ -1661,7 +1664,7 @@ snapshots:
       readable-stream: 2.3.8
       setimmediate: 1.0.5
 
-  kmaterialize@2.3.3-1.0.24(@simonwep/pickr@1.9.1)(air-datepicker@3.6.0)(filepond-plugin-file-validate-type@1.2.9(filepond@4.32.12))(filepond-plugin-image-exif-orientation@1.0.11(filepond@4.32.12))(filepond-plugin-image-preview@4.6.12(filepond@4.32.12))(filepond@4.32.12)(imask@7.6.1)(sweetalert2@11.26.25)(tom-select@2.6.2):
+  kmaterialize@2.3.3-1.0.25(@simonwep/pickr@1.9.1)(air-datepicker@3.6.0)(filepond-plugin-file-validate-type@1.2.9(filepond@4.32.12))(filepond-plugin-image-exif-orientation@1.0.11(filepond@4.32.12))(filepond-plugin-image-preview@4.6.12(filepond@4.32.12))(filepond@4.32.12)(imask@7.6.1)(sweetalert2@11.26.25)(tippy.js@6.3.7)(tom-select@2.6.2):
     dependencies:
       normalize.css: 8.0.1
     optionalDependencies:
@@ -1673,6 +1676,7 @@ snapshots:
       filepond-plugin-image-preview: 4.6.12(filepond@4.32.12)
       imask: 7.6.1
       sweetalert2: 11.26.25
+      tippy.js: 6.3.7
       tom-select: 2.6.2
 
   kspreadsheet@2.7.0:

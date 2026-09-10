@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en"><head>{{> head }}</head><body>{{> navbar }}<main>{{> intro }}
+<div class="container"><div class="row"><div class="s12 m8 offset-m1 xl7 offset-xl1">
+<p class="caption">Keep your logo visible while your workspace loads, with a reactive component built on Materialize Loading.</p>
+<section id="basic" class="section scrollspy"><h3 class="header">Logo, icon, or spinner</h3><p>The same expanding ring as <a href="loading.html">Loading</a>, packaged as a web component. The logo stays still. Loading starts automatically.</p><div class="row"><div class="s12 center"><crazy-loading size="small" label="Loading"></crazy-loading>
+<crazy-loading icon-text="cloud_sync" label="Syncing files"></crazy-loading>
+<crazy-loading size="large" image="images/materialize.svg" label="Loading workspace"></crazy-loading></div></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;crazy-loading size=&quot;small&quot; label=&quot;Loading&quot;&gt;&lt;/crazy-loading&gt;
+&lt;crazy-loading icon-text=&quot;cloud_sync&quot; label=&quot;Syncing files&quot;&gt;&lt;/crazy-loading&gt;
+&lt;crazy-loading size=&quot;large&quot; image=&quot;images/materialize.svg&quot; label=&quot;Loading workspace&quot;&gt;&lt;/crazy-loading&gt;</code></pre></section><section id="controls" class="section scrollspy"><h3 class="header">Start and finish</h3><p>Finish hides the ring and retains the logo. The component keeps the status label and aria-busy in sync.</p><div class="row"><div class="s12 center"><crazy-loading id="loading-component-demo" image="images/materialize.svg" active="false" label="Loading workspace…" complete-label="Workspace ready"></crazy-loading>
+<p id="loading-component-status" role="status">Workspace ready.</p>
+<button id="loading-component-start" class="btn filled" type="button">Start loading</button>
+<button id="loading-component-stop" class="btn outlined" type="button" disabled>Finish loading</button></div></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;crazy-loading id=&quot;loading-component-demo&quot; image=&quot;images/materialize.svg&quot; active=&quot;false&quot; label=&quot;Loading workspace…&quot; complete-label=&quot;Workspace ready&quot;&gt;&lt;/crazy-loading&gt;
+&lt;p id=&quot;loading-component-status&quot; role=&quot;status&quot;&gt;Workspace ready.&lt;/p&gt;
+&lt;button id=&quot;loading-component-start&quot; class=&quot;btn filled&quot; type=&quot;button&quot;&gt;Start loading&lt;/button&gt;
+&lt;button id=&quot;loading-component-stop&quot; class=&quot;btn outlined&quot; type=&quot;button&quot; disabled&gt;Finish loading&lt;/button&gt;</code></pre></section><section id="environment" class="section scrollspy"><h3 class="header">Environment colors</h3><p>Colors inherit from the surrounding Material theme, including dark mode. Use the library’s <a href="color-picker.html">ColorInput picker</a> and select Save to change the ring and icon.</p><div class="row"><div class="s12 center"><div class="input-field">
+  <input id="loading-accent" type="color" data-color-picker="pickr" data-color-theme="nano" data-color-opacity="false" value="#6750a4">
+  <label for="loading-accent">Local accent</label>
+</div>
+<div id="loading-environment" style="--md-sys-color-primary: #6750a4;">
+  <crazy-loading icon-text="palette" label="Preparing the environment"></crazy-loading>
+  <crazy-loading image="images/materialize.svg" label="Loading assets"></crazy-loading>
+</div></div></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;div class=&quot;input-field&quot;&gt;
+  &lt;input id=&quot;loading-accent&quot; type=&quot;color&quot; data-color-picker=&quot;pickr&quot; data-color-theme=&quot;nano&quot; data-color-opacity=&quot;false&quot; value=&quot;#6750a4&quot;&gt;
+  &lt;label for=&quot;loading-accent&quot;&gt;Local accent&lt;/label&gt;
+&lt;/div&gt;
+&lt;div id=&quot;loading-environment&quot; style=&quot;--md-sys-color-primary: #6750a4;&quot;&gt;
+  &lt;crazy-loading icon-text=&quot;palette&quot; label=&quot;Preparing the environment&quot;&gt;&lt;/crazy-loading&gt;
+  &lt;crazy-loading image=&quot;images/materialize.svg&quot; label=&quot;Loading assets&quot;&gt;&lt;/crazy-loading&gt;
+&lt;/div&gt;</code></pre></section><section id="customization" class="section scrollspy"><h3 class="header">Custom size and content</h3><p>Use the same four CSS properties as Loading on the custom element. Child content replaces the image/icon fallback and retains its identity across updates.</p><div class="row"><div class="s12 center"><crazy-loading label="Preparing your project" icon-text="auto_awesome" style="--loading-size: 9rem; --loading-color: var(--md-sys-color-tertiary); --loading-background: var(--md-sys-color-tertiary-container); --loading-thickness: 5px;"></crazy-loading>
+<crazy-loading label="Loading review"><strong>FX</strong></crazy-loading></div></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;crazy-loading label=&quot;Preparing your project&quot; icon-text=&quot;auto_awesome&quot; style=&quot;--loading-size: 9rem; --loading-color: var(--md-sys-color-tertiary); --loading-background: var(--md-sys-color-tertiary-container); --loading-thickness: 5px;&quot;&gt;&lt;/crazy-loading&gt;
+&lt;crazy-loading label=&quot;Loading review&quot;&gt;&lt;strong&gt;FX&lt;/strong&gt;&lt;/crazy-loading&gt;</code></pre></section><section id="legacy" class="section scrollspy"><h3 class="header">Rodeo compatibility</h3><p>The alias <code>loading-screen-btn</code> retains the original 10rem size and defaults to <code>/asset/favicon/android-chrome-192x192.png</code>. This example overrides the image with the documentation logo. The original component had no configurable attributes; both tags now support the API below.</p><div class="row"><div class="s12 center"><loading-screen-btn image="images/materialize.svg" label="Loading Rodeo workspace"></loading-screen-btn></div></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;loading-screen-btn image=&quot;images/materialize.svg&quot; label=&quot;Loading Rodeo workspace&quot;&gt;&lt;/loading-screen-btn&gt;</code></pre></section><section id="api" class="section scrollspy"><h3 class="header">Setup and API</h3>
+<p>Load Materialize CSS and import <code>CrazyLoading</code> from <code>kmaterialize</code>. Both tags register automatically. The component extends <code>Kmcomponent</code> and initializes the library’s <code>Loading</code> internally. Its internal indicator opts out of AutoInit and releases its Loading instance when updated or disconnected.</p>
+<pre><code class="language-typescript">import { CrazyLoading } from 'kmaterialize';
+
+const loading = document.querySelector&lt;CrazyLoading&gt;('crazy-loading')!;
+loading.start('Refreshing assets…');
+await loading.updateComplete;
+console.log(loading.isActive); // true
+
+// When the operation finishes:
+loading.stop('Assets ready');
+await loading.updateComplete;
+
+// Attributes and typed properties are reactive too:
+loading.setAttribute('image', '/images/project-logo.svg');
+loading.setProperty('size', 'small');
+loading.setProperty('active', false);</code></pre>
+<table class="striped responsive-table"><thead><tr><th>Attribute</th><th>Values / default</th></tr></thead><tbody>
+<tr><td>active</td><td>true by default. Use active="false" or "0" to stop; presence, "true", or "1" starts. Removing the attribute restores the default.</td></tr>
+<tr><td>size</td><td>small (4rem), normal (7rem, default), large (10rem). The legacy alias defaults to large.</td></tr>
+<tr><td>label / complete-label</td><td>Loading… / Ready. Accessible status while active / finished.</td></tr>
+<tr><td>aria-label</td><td>Optional override for the active status label; omit when using start(label).</td></tr>
+<tr><td>image</td><td>Logo URL, empty by default. Takes precedence over icon-text. Images are decorative; label describes the status.</td></tr>
+<tr><td>icon-text / icon-class</td><td>Icon text, empty by default / material-icons. Load the corresponding icon font in your application.</td></tr>
+<tr><td>hidden</td><td>Native hidden attribute hides the whole component without changing its active state.</td></tr>
+</tbody></table>
+<table class="striped responsive-table"><thead><tr><th>CSS property</th><th>Default</th></tr></thead><tbody>
+<tr><td>--loading-size</td><td>7rem, or the chosen size</td></tr>
+<tr><td>--loading-color</td><td>Environment primary color (ring and icon)</td></tr>
+<tr><td>--loading-background</td><td>Environment surface container, falling back to surface</td></tr>
+<tr><td>--loading-thickness</td><td>3px</td></tr>
+</tbody></table>
+<p><code>start(label?)</code>, <code>stop(label?)</code>, and <code>isActive</code> mirror Loading. Attribute/property changes render in a microtask; await <code>updateComplete</code> before inspecting the DOM. Supplied start/stop labels remain in their respective properties for later calls. The runtime cleans up automatically; remove the element when its view is no longer needed.</p>
+<p>The indicator exposes a polite status and aria-busy. Decorative content is hidden from assistive technology. Reduced-motion preferences keep the ring visible without rotation. Use a separate button for actions. The old fixed purple ring and light/dark palette are replaced by environment colors; existing legacy container/logo class hooks are retained.</p></section></div><div class="hide-on-small-only m3 xl3"><div class="toc-wrapper"><ul class="section table-of-contents"><li><a href="#basic">Basic usage</a></li><li><a href="#controls">Start and finish</a></li><li><a href="#environment">Environment colors</a></li><li><a href="#customization">Customization</a></li><li><a href="#legacy">Rodeo compatibility</a></li><li><a href="#api">Setup and API</a></li></ul></div></div></div></div></main>{{> footer }}
+<script type="module" src="/main.ts"></script><script type="module" src="/crazy-loading-demo.ts"></script></body></html>

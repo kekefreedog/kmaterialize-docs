@@ -3,7 +3,7 @@
 <main>{{> intro}}<div class="container"><div class="row">
 <div id="divider-examples" class="s12 m9">
 <p class="caption">Separate content with horizontal, vertical, inset, and labeled dividers. All examples inherit the site's Material colors in light and dark themes.</p>
-<p>The existing <code>divider</code> class still works. These additional variants are a local extension: copy <code>src/components/divider.scss</code> into your project and load it after Materialize.</p>
+<p>The existing <code>divider</code> class still works. All variants below are included in Materialize CSS.</p>
 <section id="horizontal" class="section scrollspy"><h3>Horizontal</h3><p>A full-width rule separates sections. Use a native <code>hr</code> for a thematic break.</p><div class="divider-demo"><p>Account details</p>
 <!-- Add divider-line to opt into the extended styles. -->
 <hr class="divider divider-line">
@@ -72,7 +72,7 @@
     --divider-color: var(--md-sys-color-tertiary);
   "
 /&gt;</code></pre></section><section id="setup" class="section scrollspy"><h3>Setup and accessibility</h3><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">// Import once, after your Materialize stylesheet. No JavaScript initialization.
-import './components/divider.scss';</code></pre><p>Use <code>hr</code> for a thematic break. For a purely decorative line, use a <code>div</code> with <code>aria-hidden="true"</code>. Keep labeled dividers as ordinary text; use a heading element when the label introduces a section.</p>
+// Divider styles are included in Materialize CSS.</code></pre><p>Use <code>hr</code> for a thematic break. For a purely decorative line, use a <code>div</code> with <code>aria-hidden="true"</code>. Keep labeled dividers as ordinary text; use a heading element when the label introduces a section.</p>
 <p>Combine horizontal modifiers freely. Use vertical and labeled variants separately. Set the parent height or minimum height for vertical dividers.</p>
 <table class="striped"><thead><tr><th>Variable</th><th>Default</th></tr></thead><tbody>
 <tr><td>--divider-color</td><td>Material outline-variant</td></tr>

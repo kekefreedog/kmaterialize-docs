@@ -17,15 +17,17 @@
 @import "tom-select/dist/css/tom-select.default.css";
 @import "sweetalert2/dist/sweetalert2.min.css";
 
+@import "tippy.js/dist/tippy.css";
+@import "tippy.js/dist/backdrop.css";
+@import "tippy.js/animations/shift-away.css";
+
 @import "kmaterialize/sass/materialize.scss";
 
 // Spreadsheet styles: vendor palette first, then scoped Material and editor enhancements.
 @import "jsuites/dist/jsuites.css";
 @import "kspreadsheet/dist/jspreadsheet.css";
 @import "kspreadsheet/dist/jspreadsheet.themes.css";
-@import "./enhancement/jspreadsheet_materializecss.scss";
-@import "./enhancement/spreadsheet_editors.scss";
-@import "./enhancement/textfield_layout.scss";
+@import "kmaterialize/sass/enhancement/spreadsheet.scss";
 
 // A quiet outline separates dropdown surfaces from the page in either theme.
 .dropdown-content {

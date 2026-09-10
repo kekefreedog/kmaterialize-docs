@@ -1,12 +1,12 @@
 {
   "name": "materialize-docs",
   "private": true,
-  "version": "1.4.14",
+  "version": "1.4.15",
   "type": "module",
   "scripts": {
     "prepare": "git config core.hooksPath .githooks || true",
     "dev": "node scripts/link-kmaterialize.mjs local && vite --force",
-    "build": "node scripts/link-kmaterialize.mjs latest && node scripts/check-no-local-deps.mjs && tsc && vite build",
+    "build": "node scripts/link-kmaterialize.mjs latest && node scripts/check-no-local-deps.mjs && node scripts/check-library-features.mjs && tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {

@@ -65,10 +65,10 @@ OrgChart.init(verticalHost, {
         </section>
         <section id="usage" class="section scrollspy">
           <h3 class="header">Usage</h3>
-          <p>This standalone TypeScript component lives in <code>src/components/org-chart.ts</code> in the docs project. Copy it together with its imported SCSS, card-drag-handles, chart-connections, chart-gestures, and chart-print helpers into your app and load your Materialize styles. It is not yet exported by the npm package.</p>
+          <p>Import <code>OrgChart</code> from <code>kmaterialize</code> and load Materialize CSS. Drag handles, connections, gestures, and printing helpers are included in the library.</p>
           <pre><code class="language-html">&lt;div id="organization" tabindex="0" role="region"
   aria-label="Organization chart"&gt;&lt;/div&gt;</code></pre>
-          <pre><code class="language-typescript">import { OrgChart } from './components/org-chart';
+          <pre><code class="language-typescript">import { OrgChart } from 'kmaterialize';
 
 const host = document.querySelector&lt;HTMLElement&gt;('#organization')!;
 const chart = OrgChart.init(host, {
@@ -112,7 +112,7 @@ const chart = OrgChart.init(host, {
           <pre><code class="language-typescript">import type {
   OrgChartData, OrgChartTeam, OrgChartPerson,
   OrgChartLink, OrgChartAppearance
-} from './components/org-chart';</code></pre>
+} from 'kmaterialize';</code></pre>
           <pre><code class="language-typescript">export interface OrgChartData {
   teams: OrgChartTeam[];
   people: OrgChartPerson[];
@@ -150,8 +150,8 @@ export interface OrgChartLink {
 }</code></pre>
           <p>The declarations above describe the exported types; import them in your app instead of redeclaring them. A link's endpoint type determines which collection its ID refers to. Source and target must be different endpoints. People appear in their team's list in the order supplied by <code>people</code>.</p>
           <h4>Read, update, and save data</h4>
-          <pre><code class="language-typescript">import { OrgChart } from './components/org-chart';
-import type { OrgChartData } from './components/org-chart';
+          <pre><code class="language-typescript">import { OrgChart } from 'kmaterialize';
+import type { OrgChartData } from 'kmaterialize';
 
 const host = document.querySelector&lt;HTMLElement&gt;('#org-chart-demo')!;
 const chart = OrgChart.getInstance(host);

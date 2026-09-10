@@ -1,6 +1,5 @@
-import "./components/material-buttons.scss";
 import "./buttons-demo.scss";
-import { initMaterialButtons } from "./components/material-buttons";
+import { initMaterialButtons } from 'kmaterialize';
 
 const examples = document.querySelector<HTMLElement>("#button-examples")!;
 initMaterialButtons(examples);

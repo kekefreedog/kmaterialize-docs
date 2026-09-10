@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en"><head>{{> head }}</head><body>{{> navbar }}<main>{{> intro }}
+<div class="container"><div class="row"><div id="crazy-button-examples" class="s12 m8 offset-m1 xl7 offset-xl1">
+<p class="caption">The Rodeo regular button, with the full Buttons page feature set and reactive environment colors.</p>
+<p id="crazy-button-status" class="button-demo-status" role="status">Try a button to see its action or selection.</p>
+<section id="legacy" class="section scrollspy"><h3 class="header">Rodeo compatibility</h3><p>Keep the <code>regular-btn</code> tag and existing attributes. Floating buttons show their label as a tooltip; extended buttons show it inline.</p><div class="button-demo-row"><regular-btn label="Add shot" icon-text="add"></regular-btn>
+<regular-btn type="extended" label="Review" icon-text="rate_review" icon-position="left" depth="outlined" size="normal" shape="box"></regular-btn>
+<regular-btn type="extended" label="Buttons documentation" href="buttons.html" target="_blank" size="normal"></regular-btn></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;regular-btn label=&quot;Add shot&quot; icon-text=&quot;add&quot;&gt;&lt;/regular-btn&gt;
+&lt;regular-btn type=&quot;extended&quot; label=&quot;Review&quot; icon-text=&quot;rate_review&quot; icon-position=&quot;left&quot; depth=&quot;outlined&quot; size=&quot;normal&quot; shape=&quot;box&quot;&gt;&lt;/regular-btn&gt;
+&lt;regular-btn type=&quot;extended&quot; label=&quot;Buttons documentation&quot; href=&quot;buttons.html&quot; target=&quot;_blank&quot; size=&quot;normal&quot;&gt;&lt;/regular-btn&gt;</code></pre></section><section id="variants" class="section scrollspy"><h3 class="header">Variants</h3><p>All five styles from the Buttons page, with environment colors inherited automatically.</p><div class="button-demo-row"><crazy-button type="extended" variant="filled" label="Filled" size="normal" icon-text="check" icon-position="left"></crazy-button>
+<crazy-button type="extended" variant="tonal" label="Tonal" size="normal" icon-text="check" icon-position="left"></crazy-button>
+<crazy-button type="extended" variant="outlined" label="Outlined" size="normal" icon-text="check" icon-position="left"></crazy-button>
+<crazy-button type="extended" variant="elevated" label="Elevated" size="normal" icon-text="check" icon-position="left"></crazy-button>
+<crazy-button type="extended" variant="text" label="Text" size="normal" icon-text="check" icon-position="left"></crazy-button></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;crazy-button type=&quot;extended&quot; variant=&quot;filled&quot; label=&quot;Filled&quot; size=&quot;normal&quot; icon-text=&quot;check&quot; icon-position=&quot;left&quot;&gt;&lt;/crazy-button&gt;
+&lt;crazy-button type=&quot;extended&quot; variant=&quot;tonal&quot; label=&quot;Tonal&quot; size=&quot;normal&quot; icon-text=&quot;check&quot; icon-position=&quot;left&quot;&gt;&lt;/crazy-button&gt;
+&lt;crazy-button type=&quot;extended&quot; variant=&quot;outlined&quot; label=&quot;Outlined&quot; size=&quot;normal&quot; icon-text=&quot;check&quot; icon-position=&quot;left&quot;&gt;&lt;/crazy-button&gt;
+&lt;crazy-button type=&quot;extended&quot; variant=&quot;elevated&quot; label=&quot;Elevated&quot; size=&quot;normal&quot; icon-text=&quot;check&quot; icon-position=&quot;left&quot;&gt;&lt;/crazy-button&gt;
+&lt;crazy-button type=&quot;extended&quot; variant=&quot;text&quot; label=&quot;Text&quot; size=&quot;normal&quot; icon-text=&quot;check&quot; icon-position=&quot;left&quot;&gt;&lt;/crazy-button&gt;</code></pre></section><section id="selection" class="section scrollspy"><h3 class="header">Toggles and icon buttons</h3><p>Toggle state reflects to <code>pressed</code>. Native buttons support Enter and Space.</p><div class="button-demo-row"><crazy-button type="extended" variant="tonal" label="Following" toggle pressed size="normal"></crazy-button>
+<crazy-button type="icon" variant="standard" icon-text="search" label="Search"></crazy-button>
+<crazy-button type="icon" variant="tonal" icon-text="favorite" label="Favorite" toggle></crazy-button>
+<crazy-button type="icon" variant="outlined" icon-text="arrow_back" label="Back" icon-width="narrow"></crazy-button>
+<crazy-button type="icon" variant="filled" icon-text="arrow_forward" label="Forward" icon-width="wide"></crazy-button></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;crazy-button type=&quot;extended&quot; variant=&quot;tonal&quot; label=&quot;Following&quot; toggle pressed size=&quot;normal&quot;&gt;&lt;/crazy-button&gt;
+&lt;crazy-button type=&quot;icon&quot; variant=&quot;standard&quot; icon-text=&quot;search&quot; label=&quot;Search&quot;&gt;&lt;/crazy-button&gt;
+&lt;crazy-button type=&quot;icon&quot; variant=&quot;tonal&quot; icon-text=&quot;favorite&quot; label=&quot;Favorite&quot; toggle&gt;&lt;/crazy-button&gt;
+&lt;crazy-button type=&quot;icon&quot; variant=&quot;outlined&quot; icon-text=&quot;arrow_back&quot; label=&quot;Back&quot; icon-width=&quot;narrow&quot;&gt;&lt;/crazy-button&gt;
+&lt;crazy-button type=&quot;icon&quot; variant=&quot;filled&quot; icon-text=&quot;arrow_forward&quot; label=&quot;Forward&quot; icon-width=&quot;wide&quot;&gt;&lt;/crazy-button&gt;</code></pre></section><section id="groups" class="section scrollspy"><h3 class="header">Standard and connected groups</h3><p>Use the same group containers as the Buttons page. Set <code>data-selection="single"</code> or <code>"multiple"</code> on the group.</p><div class="button-demo-row"><div class="btn-group btn-group-standard" role="group" aria-label="Review actions">
+  <crazy-button type="extended" variant="text" label="Cancel" size="normal"></crazy-button>
+  <crazy-button type="extended" variant="filled" label="Save" size="normal"></crazy-button>
+</div>
+<div class="btn-group btn-group-connected" data-selection="single" role="group" aria-label="View">
+  <crazy-button type="extended" variant="tonal" label="List" toggle pressed size="normal"></crazy-button>
+  <crazy-button type="extended" variant="tonal" label="Grid" toggle size="normal"></crazy-button>
+  <crazy-button type="extended" variant="tonal" label="Board" toggle size="normal"></crazy-button>
+</div>
+<div class="btn-group btn-group-connected" data-selection="multiple" role="group" aria-label="Text formatting">
+  <crazy-button type="icon" variant="tonal" label="Bold" icon-text="format_bold" toggle></crazy-button>
+  <crazy-button type="icon" variant="tonal" label="Italic" icon-text="format_italic" toggle></crazy-button>
+</div></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;div class=&quot;btn-group btn-group-standard&quot; role=&quot;group&quot; aria-label=&quot;Review actions&quot;&gt;
+  &lt;crazy-button type=&quot;extended&quot; variant=&quot;text&quot; label=&quot;Cancel&quot; size=&quot;normal&quot;&gt;&lt;/crazy-button&gt;
+  &lt;crazy-button type=&quot;extended&quot; variant=&quot;filled&quot; label=&quot;Save&quot; size=&quot;normal&quot;&gt;&lt;/crazy-button&gt;
+&lt;/div&gt;
+&lt;div class=&quot;btn-group btn-group-connected&quot; data-selection=&quot;single&quot; role=&quot;group&quot; aria-label=&quot;View&quot;&gt;
+  &lt;crazy-button type=&quot;extended&quot; variant=&quot;tonal&quot; label=&quot;List&quot; toggle pressed size=&quot;normal&quot;&gt;&lt;/crazy-button&gt;
+  &lt;crazy-button type=&quot;extended&quot; variant=&quot;tonal&quot; label=&quot;Grid&quot; toggle size=&quot;normal&quot;&gt;&lt;/crazy-button&gt;
+  &lt;crazy-button type=&quot;extended&quot; variant=&quot;tonal&quot; label=&quot;Board&quot; toggle size=&quot;normal&quot;&gt;&lt;/crazy-button&gt;
+&lt;/div&gt;
+&lt;div class=&quot;btn-group btn-group-connected&quot; data-selection=&quot;multiple&quot; role=&quot;group&quot; aria-label=&quot;Text formatting&quot;&gt;
+  &lt;crazy-button type=&quot;icon&quot; variant=&quot;tonal&quot; label=&quot;Bold&quot; icon-text=&quot;format_bold&quot; toggle&gt;&lt;/crazy-button&gt;
+  &lt;crazy-button type=&quot;icon&quot; variant=&quot;tonal&quot; label=&quot;Italic&quot; icon-text=&quot;format_italic&quot; toggle&gt;&lt;/crazy-button&gt;
+&lt;/div&gt;</code></pre></section><section id="menus" class="section scrollspy"><h3 class="header">Split buttons and FAB menus</h3><p>Point <code>menu-target</code> at a unique, existing Materialize dropdown ID. Menu items remain regular links or application actions. The component initializes and cleans up its dropdown automatically.</p><div class="button-demo-row"><crazy-button type="extended" variant="filled" label="Save" size="normal" split menu-target="save-options"></crazy-button>
+<ul id="save-options" class="dropdown-content">
+  <li><a href="#!" data-demo-action="Saved a copy">Save a copy</a></li>
+  <li><a href="#!" data-demo-action="Exported">Export</a></li>
+</ul>
+<crazy-button type="fab" icon-text="add" label="Create" menu-target="create-options"></crazy-button>
+<ul id="create-options" class="dropdown-content">
+  <li><a href="#!" data-demo-action="Created a shot">New shot</a></li>
+  <li><a href="#!" data-demo-action="Created a task">New task</a></li>
+</ul></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;crazy-button type=&quot;extended&quot; variant=&quot;filled&quot; label=&quot;Save&quot; size=&quot;normal&quot; split menu-target=&quot;save-options&quot;&gt;&lt;/crazy-button&gt;
+&lt;ul id=&quot;save-options&quot; class=&quot;dropdown-content&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#!&quot; data-demo-action=&quot;Saved a copy&quot;&gt;Save a copy&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#!&quot; data-demo-action=&quot;Exported&quot;&gt;Export&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;crazy-button type=&quot;fab&quot; icon-text=&quot;add&quot; label=&quot;Create&quot; menu-target=&quot;create-options&quot;&gt;&lt;/crazy-button&gt;
+&lt;ul id=&quot;create-options&quot; class=&quot;dropdown-content&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#!&quot; data-demo-action=&quot;Created a shot&quot;&gt;New shot&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#!&quot; data-demo-action=&quot;Created a task&quot;&gt;New task&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre></section><section id="fabs" class="section scrollspy"><h3 class="header">Floating action buttons</h3><p>FABs use environment container colors. Choose primary, secondary, or tertiary and small, normal, or large FAB geometry.</p><div class="button-demo-row"><crazy-button type="fab" icon-text="add" label="Add" fab-size="small"></crazy-button>
+<crazy-button type="fab" icon-text="edit" label="Edit" fab-color="secondary"></crazy-button>
+<crazy-button type="fab" icon-text="add" label="Create" fab-color="tertiary" fab-size="large"></crazy-button>
+<crazy-button type="extended-fab" icon-text="edit" icon-position="left" label="Compose"></crazy-button></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;crazy-button type=&quot;fab&quot; icon-text=&quot;add&quot; label=&quot;Add&quot; fab-size=&quot;small&quot;&gt;&lt;/crazy-button&gt;
+&lt;crazy-button type=&quot;fab&quot; icon-text=&quot;edit&quot; label=&quot;Edit&quot; fab-color=&quot;secondary&quot;&gt;&lt;/crazy-button&gt;
+&lt;crazy-button type=&quot;fab&quot; icon-text=&quot;add&quot; label=&quot;Create&quot; fab-color=&quot;tertiary&quot; fab-size=&quot;large&quot;&gt;&lt;/crazy-button&gt;
+&lt;crazy-button type=&quot;extended-fab&quot; icon-text=&quot;edit&quot; icon-position=&quot;left&quot; label=&quot;Compose&quot;&gt;&lt;/crazy-button&gt;</code></pre></section><section id="rail" class="section scrollspy"><h3 class="header">Navigation rail</h3><p>Use <code>type="rail"</code> for an icon above a visible label, matching the <a href="sidenav.html">navigation rail example</a>. The inner link receives <code>href</code>, <code>data-view</code>, and <code>aria-current</code>. The active icon pill follows the environment’s secondary container colors.</p><div id="rail-buttons" class="button-demo-row" role="navigation" aria-label="Example sections"><crazy-button type="rail" href="#rail-home" data-view="Home" icon-text="home" label="Home" aria-current="page"></crazy-button>
+<crazy-button type="rail" href="#develop" data-view="Develop" icon-text="code" label="Develop"></crazy-button>
+<crazy-button type="rail" href="#rail-settings" data-view="Settings" icon-text="settings" label="Settings" disabled></crazy-button></div><span id="rail-home"></span><p id="develop">Choose a section to update its current-page indicator.</p><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;crazy-button type=&quot;rail&quot; href=&quot;#rail-home&quot; data-view=&quot;Home&quot; icon-text=&quot;home&quot; label=&quot;Home&quot; aria-current=&quot;page&quot;&gt;&lt;/crazy-button&gt;
+&lt;crazy-button type=&quot;rail&quot; href=&quot;#develop&quot; data-view=&quot;Develop&quot; icon-text=&quot;code&quot; label=&quot;Develop&quot;&gt;&lt;/crazy-button&gt;
+&lt;crazy-button type=&quot;rail&quot; href=&quot;#rail-settings&quot; data-view=&quot;Settings&quot; icon-text=&quot;settings&quot; label=&quot;Settings&quot; disabled&gt;&lt;/crazy-button&gt;</code></pre><p>Set <code>aria-current="page"</code> on the component for the current destination and remove it from the others when your route changes. Rail geometry is fixed at 88px wide and at least 76px high; the other button size, shape, variant, and wave options apply to the other types.</p></section><section id="sizes" class="section scrollspy"><h3 class="header">Sizes and shapes</h3><p>Explicit sizes xs / sm / md / lg / xl are 32 / 40 / 56 / 96 / 136px. Legacy names small / normal / large / extra-large remain available (30 / 40 / 56 / 100px).</p><div class="button-demo-row"><crazy-button type="extended" variant="tonal" size="xs" label="XS" shape="box"></crazy-button>
+<crazy-button type="extended" variant="tonal" size="sm" label="SM" shape="box"></crazy-button>
+<crazy-button type="extended" variant="tonal" size="md" label="MD" shape="box"></crazy-button>
+<crazy-button type="extended" variant="tonal" size="lg" label="LG" shape="box"></crazy-button>
+<crazy-button type="extended" variant="tonal" size="xl" label="XL" shape="box"></crazy-button></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;crazy-button type=&quot;extended&quot; variant=&quot;tonal&quot; size=&quot;xs&quot; label=&quot;XS&quot; shape=&quot;box&quot;&gt;&lt;/crazy-button&gt;
+&lt;crazy-button type=&quot;extended&quot; variant=&quot;tonal&quot; size=&quot;sm&quot; label=&quot;SM&quot; shape=&quot;box&quot;&gt;&lt;/crazy-button&gt;
+&lt;crazy-button type=&quot;extended&quot; variant=&quot;tonal&quot; size=&quot;md&quot; label=&quot;MD&quot; shape=&quot;box&quot;&gt;&lt;/crazy-button&gt;
+&lt;crazy-button type=&quot;extended&quot; variant=&quot;tonal&quot; size=&quot;lg&quot; label=&quot;LG&quot; shape=&quot;box&quot;&gt;&lt;/crazy-button&gt;
+&lt;crazy-button type=&quot;extended&quot; variant=&quot;tonal&quot; size=&quot;xl&quot; label=&quot;XL&quot; shape=&quot;box&quot;&gt;&lt;/crazy-button&gt;</code></pre></section><section id="sidenav-example" data-crazy-button-example class="section scrollspy"><h3 class="header">Rodeo navigation rail</h3><p>An always-visible 88px rail, inspired by Rodeo’s navigation partial. Square icon buttons are grouped by production area; hover or focus a button for its label.</p><div class="rodeo-nav-preview" data-layout="rail">
+<nav class="rodeo-demo-navigation" aria-label="Production navigation">
+  <div class="rodeo-demo-group" role="group" aria-label="Workspace">
+    <crazy-button tooltip-position="right" type="floating" size="large" shape="box" depth="1" icon-text="home" label="Home" data-redirect-name="Home" color-primary="gold" color-secondary="#211b00" aria-current="page"></crazy-button>
+    <crazy-button tooltip-position="right" type="floating" size="large" shape="box" depth="flat" icon-text="schedule" label="Timelog" data-redirect-name="Timelog" color-secondary="var(--md-sys-color-primary)"></crazy-button>
+  </div>
+  <div class="rodeo-demo-group" role="group" aria-label="Out.">
+    <span>Out.</span>
+    <crazy-button tooltip-position="right" type="floating" size="large" shape="box" depth="1" icon-text="social_distance" label="Outsource Turnover" data-redirect-name="OutsourceTurnover" color-primary="#4fc3f7" color-secondary="#052e3c"></crazy-button>
+    <crazy-button tooltip-position="right" type="floating" size="large" shape="box" depth="1" icon-text="microwave" label="Brief Outsource" data-redirect-name="OutsourceBrief" color-primary="#26a69a" color-secondary="#002e29"></crazy-button>
+  </div>
+  <div class="rodeo-demo-group" role="group" aria-label="Prod.">
+    <span>Prod.</span>
+    <crazy-button tooltip-position="right" type="floating" size="large" shape="box" depth="1" icon-text="schedule" label="Timelog Summary" data-redirect-name="TimelogSummary" color-primary="#ab47bc" color-secondary="#fff"></crazy-button>
+  </div>
+  <div class="rodeo-demo-group" role="group" aria-label="Studio">
+    <span>Studio</span>
+    <crazy-button tooltip-position="right" type="floating" size="large" shape="box" depth="1" icon-text="stadium" label="Studio Resource" data-redirect-name="StudioResource" color-primary="#ec407a" color-secondary="#fff"></crazy-button>
+    <crazy-button tooltip-position="right" type="floating" size="large" shape="box" depth="1" icon-text="view_timeline" label="Crew Planning" data-redirect-name="Planning" color-primary="#ef6c00" color-secondary="#fff"></crazy-button>
+  </div>
+  <div class="rodeo-demo-group" role="group" aria-label="Admin">
+    <span>Admin</span>
+    <crazy-button tooltip-position="right" type="floating" size="large" shape="box" depth="flat" icon-text="settings" label="Settings" data-redirect-name="Settings" color-secondary="var(--md-sys-color-on-surface)"></crazy-button>
+  </div>
+</nav>
+  <div class="rodeo-demo-content">
+    <p class="rodeo-demo-eyebrow">Production workspace</p>
+    <h4 data-rodeo-title>Home</h4>
+    <p class="rodeo-demo-description" data-rodeo-description>Your production workspace: quick access to the tools you use every day.</p>
+    <div class="rodeo-demo-detail"><strong>One workspace, every department.</strong><p>Choose a tool from the navigation to preview its destination.</p></div>
+    <p data-crazy-button-status role="status">Home selected.</p>
+  </div>
+</div><details><summary>Markup — Crazy buttons and navigation groups</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;div class=&quot;rodeo-nav-preview&quot; data-layout=&quot;rail&quot;&gt;
+&lt;nav class=&quot;rodeo-demo-navigation&quot; aria-label=&quot;Production navigation&quot;&gt;
+  &lt;div class=&quot;rodeo-demo-group&quot; role=&quot;group&quot; aria-label=&quot;Workspace&quot;&gt;
+    &lt;crazy-button tooltip-position=&quot;right&quot; type=&quot;floating&quot; size=&quot;large&quot; shape=&quot;box&quot; depth=&quot;1&quot; icon-text=&quot;home&quot; label=&quot;Home&quot; data-redirect-name=&quot;Home&quot; color-primary=&quot;gold&quot; color-secondary=&quot;#211b00&quot; aria-current=&quot;page&quot;&gt;&lt;/crazy-button&gt;
+    &lt;crazy-button tooltip-position=&quot;right&quot; type=&quot;floating&quot; size=&quot;large&quot; shape=&quot;box&quot; depth=&quot;flat&quot; icon-text=&quot;schedule&quot; label=&quot;Timelog&quot; data-redirect-name=&quot;Timelog&quot; color-secondary=&quot;var(--md-sys-color-primary)&quot;&gt;&lt;/crazy-button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;rodeo-demo-group&quot; role=&quot;group&quot; aria-label=&quot;Out.&quot;&gt;
+    &lt;span&gt;Out.&lt;/span&gt;
+    &lt;crazy-button tooltip-position=&quot;right&quot; type=&quot;floating&quot; size=&quot;large&quot; shape=&quot;box&quot; depth=&quot;1&quot; icon-text=&quot;social_distance&quot; label=&quot;Outsource Turnover&quot; data-redirect-name=&quot;OutsourceTurnover&quot; color-primary=&quot;#4fc3f7&quot; color-secondary=&quot;#052e3c&quot;&gt;&lt;/crazy-button&gt;
+    &lt;crazy-button tooltip-position=&quot;right&quot; type=&quot;floating&quot; size=&quot;large&quot; shape=&quot;box&quot; depth=&quot;1&quot; icon-text=&quot;microwave&quot; label=&quot;Brief Outsource&quot; data-redirect-name=&quot;OutsourceBrief&quot; color-primary=&quot;#26a69a&quot; color-secondary=&quot;#002e29&quot;&gt;&lt;/crazy-button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;rodeo-demo-group&quot; role=&quot;group&quot; aria-label=&quot;Prod.&quot;&gt;
+    &lt;span&gt;Prod.&lt;/span&gt;
+    &lt;crazy-button tooltip-position=&quot;right&quot; type=&quot;floating&quot; size=&quot;large&quot; shape=&quot;box&quot; depth=&quot;1&quot; icon-text=&quot;schedule&quot; label=&quot;Timelog Summary&quot; data-redirect-name=&quot;TimelogSummary&quot; color-primary=&quot;#ab47bc&quot; color-secondary=&quot;#fff&quot;&gt;&lt;/crazy-button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;rodeo-demo-group&quot; role=&quot;group&quot; aria-label=&quot;Studio&quot;&gt;
+    &lt;span&gt;Studio&lt;/span&gt;
+    &lt;crazy-button tooltip-position=&quot;right&quot; type=&quot;floating&quot; size=&quot;large&quot; shape=&quot;box&quot; depth=&quot;1&quot; icon-text=&quot;stadium&quot; label=&quot;Studio Resource&quot; data-redirect-name=&quot;StudioResource&quot; color-primary=&quot;#ec407a&quot; color-secondary=&quot;#fff&quot;&gt;&lt;/crazy-button&gt;
+    &lt;crazy-button tooltip-position=&quot;right&quot; type=&quot;floating&quot; size=&quot;large&quot; shape=&quot;box&quot; depth=&quot;1&quot; icon-text=&quot;view_timeline&quot; label=&quot;Crew Planning&quot; data-redirect-name=&quot;Planning&quot; color-primary=&quot;#ef6c00&quot; color-secondary=&quot;#fff&quot;&gt;&lt;/crazy-button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;rodeo-demo-group&quot; role=&quot;group&quot; aria-label=&quot;Admin&quot;&gt;
+    &lt;span&gt;Admin&lt;/span&gt;
+    &lt;crazy-button tooltip-position=&quot;right&quot; type=&quot;floating&quot; size=&quot;large&quot; shape=&quot;box&quot; depth=&quot;flat&quot; icon-text=&quot;settings&quot; label=&quot;Settings&quot; data-redirect-name=&quot;Settings&quot; color-secondary=&quot;var(--md-sys-color-on-surface)&quot;&gt;&lt;/crazy-button&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+  &lt;div class=&quot;rodeo-demo-content&quot;&gt;
+    &lt;p class=&quot;rodeo-demo-eyebrow&quot;&gt;Production workspace&lt;/p&gt;
+    &lt;h4 data-rodeo-title&gt;Home&lt;/h4&gt;
+    &lt;p class=&quot;rodeo-demo-description&quot; data-rodeo-description&gt;Your production workspace: quick access to the tools you use every day.&lt;/p&gt;
+    &lt;div class=&quot;rodeo-demo-detail&quot;&gt;&lt;strong&gt;One workspace, every department.&lt;/strong&gt;&lt;p&gt;Choose a tool from the navigation to preview its destination.&lt;/p&gt;&lt;/div&gt;
+    &lt;p data-crazy-button-status role=&quot;status&quot;&gt;Home selected.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details><p>The section colors follow the reference; the surrounding surfaces follow the environment theme. <code>data-redirect-name</code> retains the original route identifiers. These examples update the preview; connect <code>buttonaction</code> to your application router for real navigation. Preview layout styles are shown below.</p><details><summary>Preview layout CSS</summary><pre><code class="language-scss">// Documentation preview layout; all controls are kmaterialize CrazyButton instances.
+.rodeo-nav-preview {
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  margin: 24px 0;
+  .rodeo-demo-navigation {
+    background: var(--md-sys-color-surface-container, var(--md-sys-color-surface-variant));
+    box-shadow: none;
+    color: var(--md-sys-color-on-surface-variant);
+    height: auto;
+    line-height: normal;
+  }
+  .rodeo-demo-group { display: flex; align-items: center; gap: 12px; }
+  .rodeo-demo-group &gt; span { font-size: 11px; font-weight: 600; letter-spacing: .04em; }
+  crazy-button { flex-shrink: 0; }
+  crazy-button[aria-current=&#x27;page&#x27;] { outline: 2px solid var(--md-sys-color-primary); outline-offset: 4px; border-radius: 16px; }
+  .rodeo-demo-content { min-width: 0; padding: clamp(16px, 4vw, 32px); }
+  .rodeo-demo-eyebrow { margin: 0 0 12px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--md-sys-color-on-surface-variant); }
+  h4 { font-size: clamp(22px, 3vw, 32px); margin: 0 0 12px; }
+  .rodeo-demo-description { font-size: 14px; line-height: 1.6; }
+  .rodeo-demo-detail { margin-top: 24px; padding: 16px; border-radius: 12px; background: var(--md-sys-color-surface-variant); font-size: 13px; }
+  &amp;[data-layout=&#x27;rail&#x27;] {
+    display: grid;
+    grid-template-columns: 88px minmax(0, 1fr);
+    .rodeo-demo-navigation { display: flex; flex-direction: column; align-items: center; gap: 24px; padding: 20px 0; }
+    .rodeo-demo-group { flex-direction: column; }
+    .rodeo-demo-content { border-left: 1px solid var(--md-sys-color-outline-variant); }
+  }
+  &amp;[data-layout=&#x27;toolbar&#x27;] {
+    .toolbar { margin: 0; border-radius: 0; padding: 16px; gap: 24px; }
+    .rodeo-demo-group &gt; span { writing-mode: vertical-rl; transform: rotate(180deg); }
+  }
+}
+</code></pre></details></section><section id="toolbar-example" data-crazy-button-example class="section scrollspy"><h3 class="header">Rodeo navigation toolbar</h3><p>The same Rodeo navigation groups arranged horizontally in Materialize’s Toolbar. Scroll the toolbar to reach every group on narrow screens.</p><div class="rodeo-nav-preview" data-layout="toolbar">
+<div class="rodeo-demo-navigation toolbar" aria-label="Production navigation" role="group">
+  <div class="rodeo-demo-group toolbar-group" role="group" aria-label="Workspace">
+    <crazy-button type="floating" size="large" shape="box" depth="1" icon-text="home" label="Home" data-redirect-name="Home" color-primary="gold" color-secondary="#211b00" aria-current="page"></crazy-button>
+    <crazy-button type="floating" size="large" shape="box" depth="flat" icon-text="schedule" label="Timelog" data-redirect-name="Timelog" color-secondary="var(--md-sys-color-primary)"></crazy-button>
+  </div>
+  <div class="rodeo-demo-group toolbar-group" role="group" aria-label="Out.">
+    <span>Out.</span>
+    <crazy-button type="floating" size="large" shape="box" depth="1" icon-text="social_distance" label="Outsource Turnover" data-redirect-name="OutsourceTurnover" color-primary="#4fc3f7" color-secondary="#052e3c"></crazy-button>
+    <crazy-button type="floating" size="large" shape="box" depth="1" icon-text="microwave" label="Brief Outsource" data-redirect-name="OutsourceBrief" color-primary="#26a69a" color-secondary="#002e29"></crazy-button>
+  </div>
+  <div class="rodeo-demo-group toolbar-group" role="group" aria-label="Prod.">
+    <span>Prod.</span>
+    <crazy-button type="floating" size="large" shape="box" depth="1" icon-text="schedule" label="Timelog Summary" data-redirect-name="TimelogSummary" color-primary="#ab47bc" color-secondary="#fff"></crazy-button>
+  </div>
+  <div class="rodeo-demo-group toolbar-group" role="group" aria-label="Studio">
+    <span>Studio</span>
+    <crazy-button type="floating" size="large" shape="box" depth="1" icon-text="stadium" label="Studio Resource" data-redirect-name="StudioResource" color-primary="#ec407a" color-secondary="#fff"></crazy-button>
+    <crazy-button type="floating" size="large" shape="box" depth="1" icon-text="view_timeline" label="Crew Planning" data-redirect-name="Planning" color-primary="#ef6c00" color-secondary="#fff"></crazy-button>
+  </div>
+  <div class="rodeo-demo-group toolbar-group" role="group" aria-label="Admin">
+    <span>Admin</span>
+    <crazy-button type="floating" size="large" shape="box" depth="flat" icon-text="settings" label="Settings" data-redirect-name="Settings" color-secondary="var(--md-sys-color-on-surface)"></crazy-button>
+  </div>
+</div>
+  <div class="rodeo-demo-content">
+    <p class="rodeo-demo-eyebrow">Production workspace</p>
+    <h4 data-rodeo-title>Home</h4>
+    <p class="rodeo-demo-description" data-rodeo-description>Your production workspace: quick access to the tools you use every day.</p>
+    <div class="rodeo-demo-detail"><strong>One workspace, every department.</strong><p>Choose a tool from the navigation to preview its destination.</p></div>
+    <p data-crazy-button-status role="status">Home selected.</p>
+  </div>
+</div><details><summary>Markup — Crazy buttons and navigation groups</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;div class=&quot;rodeo-nav-preview&quot; data-layout=&quot;toolbar&quot;&gt;
+&lt;div class=&quot;rodeo-demo-navigation toolbar&quot; aria-label=&quot;Production navigation&quot; role=&quot;group&quot;&gt;
+  &lt;div class=&quot;rodeo-demo-group toolbar-group&quot; role=&quot;group&quot; aria-label=&quot;Workspace&quot;&gt;
+    &lt;crazy-button type=&quot;floating&quot; size=&quot;large&quot; shape=&quot;box&quot; depth=&quot;1&quot; icon-text=&quot;home&quot; label=&quot;Home&quot; data-redirect-name=&quot;Home&quot; color-primary=&quot;gold&quot; color-secondary=&quot;#211b00&quot; aria-current=&quot;page&quot;&gt;&lt;/crazy-button&gt;
+    &lt;crazy-button type=&quot;floating&quot; size=&quot;large&quot; shape=&quot;box&quot; depth=&quot;flat&quot; icon-text=&quot;schedule&quot; label=&quot;Timelog&quot; data-redirect-name=&quot;Timelog&quot; color-secondary=&quot;var(--md-sys-color-primary)&quot;&gt;&lt;/crazy-button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;rodeo-demo-group toolbar-group&quot; role=&quot;group&quot; aria-label=&quot;Out.&quot;&gt;
+    &lt;span&gt;Out.&lt;/span&gt;
+    &lt;crazy-button type=&quot;floating&quot; size=&quot;large&quot; shape=&quot;box&quot; depth=&quot;1&quot; icon-text=&quot;social_distance&quot; label=&quot;Outsource Turnover&quot; data-redirect-name=&quot;OutsourceTurnover&quot; color-primary=&quot;#4fc3f7&quot; color-secondary=&quot;#052e3c&quot;&gt;&lt;/crazy-button&gt;
+    &lt;crazy-button type=&quot;floating&quot; size=&quot;large&quot; shape=&quot;box&quot; depth=&quot;1&quot; icon-text=&quot;microwave&quot; label=&quot;Brief Outsource&quot; data-redirect-name=&quot;OutsourceBrief&quot; color-primary=&quot;#26a69a&quot; color-secondary=&quot;#002e29&quot;&gt;&lt;/crazy-button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;rodeo-demo-group toolbar-group&quot; role=&quot;group&quot; aria-label=&quot;Prod.&quot;&gt;
+    &lt;span&gt;Prod.&lt;/span&gt;
+    &lt;crazy-button type=&quot;floating&quot; size=&quot;large&quot; shape=&quot;box&quot; depth=&quot;1&quot; icon-text=&quot;schedule&quot; label=&quot;Timelog Summary&quot; data-redirect-name=&quot;TimelogSummary&quot; color-primary=&quot;#ab47bc&quot; color-secondary=&quot;#fff&quot;&gt;&lt;/crazy-button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;rodeo-demo-group toolbar-group&quot; role=&quot;group&quot; aria-label=&quot;Studio&quot;&gt;
+    &lt;span&gt;Studio&lt;/span&gt;
+    &lt;crazy-button type=&quot;floating&quot; size=&quot;large&quot; shape=&quot;box&quot; depth=&quot;1&quot; icon-text=&quot;stadium&quot; label=&quot;Studio Resource&quot; data-redirect-name=&quot;StudioResource&quot; color-primary=&quot;#ec407a&quot; color-secondary=&quot;#fff&quot;&gt;&lt;/crazy-button&gt;
+    &lt;crazy-button type=&quot;floating&quot; size=&quot;large&quot; shape=&quot;box&quot; depth=&quot;1&quot; icon-text=&quot;view_timeline&quot; label=&quot;Crew Planning&quot; data-redirect-name=&quot;Planning&quot; color-primary=&quot;#ef6c00&quot; color-secondary=&quot;#fff&quot;&gt;&lt;/crazy-button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;rodeo-demo-group toolbar-group&quot; role=&quot;group&quot; aria-label=&quot;Admin&quot;&gt;
+    &lt;span&gt;Admin&lt;/span&gt;
+    &lt;crazy-button type=&quot;floating&quot; size=&quot;large&quot; shape=&quot;box&quot; depth=&quot;flat&quot; icon-text=&quot;settings&quot; label=&quot;Settings&quot; data-redirect-name=&quot;Settings&quot; color-secondary=&quot;var(--md-sys-color-on-surface)&quot;&gt;&lt;/crazy-button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+  &lt;div class=&quot;rodeo-demo-content&quot;&gt;
+    &lt;p class=&quot;rodeo-demo-eyebrow&quot;&gt;Production workspace&lt;/p&gt;
+    &lt;h4 data-rodeo-title&gt;Home&lt;/h4&gt;
+    &lt;p class=&quot;rodeo-demo-description&quot; data-rodeo-description&gt;Your production workspace: quick access to the tools you use every day.&lt;/p&gt;
+    &lt;div class=&quot;rodeo-demo-detail&quot;&gt;&lt;strong&gt;One workspace, every department.&lt;/strong&gt;&lt;p&gt;Choose a tool from the navigation to preview its destination.&lt;/p&gt;&lt;/div&gt;
+    &lt;p data-crazy-button-status role=&quot;status&quot;&gt;Home selected.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details><p>The section colors follow the reference; the surrounding surfaces follow the environment theme. <code>data-redirect-name</code> retains the original route identifiers. These examples update the preview; connect <code>buttonaction</code> to your application router for real navigation. Preview layout styles are shown below.</p><details><summary>Preview layout CSS</summary><pre><code class="language-scss">// Documentation preview layout; all controls are kmaterialize CrazyButton instances.
+.rodeo-nav-preview {
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  margin: 24px 0;
+  .rodeo-demo-navigation {
+    background: var(--md-sys-color-surface-container, var(--md-sys-color-surface-variant));
+    box-shadow: none;
+    color: var(--md-sys-color-on-surface-variant);
+    height: auto;
+    line-height: normal;
+  }
+  .rodeo-demo-group { display: flex; align-items: center; gap: 12px; }
+  .rodeo-demo-group &gt; span { font-size: 11px; font-weight: 600; letter-spacing: .04em; }
+  crazy-button { flex-shrink: 0; }
+  crazy-button[aria-current=&#x27;page&#x27;] { outline: 2px solid var(--md-sys-color-primary); outline-offset: 4px; border-radius: 16px; }
+  .rodeo-demo-content { min-width: 0; padding: clamp(16px, 4vw, 32px); }
+  .rodeo-demo-eyebrow { margin: 0 0 12px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--md-sys-color-on-surface-variant); }
+  h4 { font-size: clamp(22px, 3vw, 32px); margin: 0 0 12px; }
+  .rodeo-demo-description { font-size: 14px; line-height: 1.6; }
+  .rodeo-demo-detail { margin-top: 24px; padding: 16px; border-radius: 12px; background: var(--md-sys-color-surface-variant); font-size: 13px; }
+  &amp;[data-layout=&#x27;rail&#x27;] {
+    display: grid;
+    grid-template-columns: 88px minmax(0, 1fr);
+    .rodeo-demo-navigation { display: flex; flex-direction: column; align-items: center; gap: 24px; padding: 20px 0; }
+    .rodeo-demo-group { flex-direction: column; }
+    .rodeo-demo-content { border-left: 1px solid var(--md-sys-color-outline-variant); }
+  }
+  &amp;[data-layout=&#x27;toolbar&#x27;] {
+    .toolbar { margin: 0; border-radius: 0; padding: 16px; gap: 24px; }
+    .rodeo-demo-group &gt; span { writing-mode: vertical-rl; transform: rotate(180deg); }
+  }
+}
+</code></pre></details></section><section id="disabled" class="section scrollspy"><h3 class="header">Disabled and projected content</h3><p>Disabled buttons and links cannot activate. Supplied child nodes keep their identity across updates. Labels are plain text; use child markup for rich labels.</p><div class="button-demo-row"><crazy-button type="extended" variant="filled" label="Unavailable" disabled></crazy-button>
+<regular-btn type="extended" label="Disabled link" href="buttons.html" disabled></regular-btn>
+<crazy-button type="extended" variant="outlined" size="normal"><strong>Review</strong> shot</crazy-button></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;crazy-button type=&quot;extended&quot; variant=&quot;filled&quot; label=&quot;Unavailable&quot; disabled&gt;&lt;/crazy-button&gt;
+&lt;regular-btn type=&quot;extended&quot; label=&quot;Disabled link&quot; href=&quot;buttons.html&quot; disabled&gt;&lt;/regular-btn&gt;
+&lt;crazy-button type=&quot;extended&quot; variant=&quot;outlined&quot; size=&quot;normal&quot;&gt;&lt;strong&gt;Review&lt;/strong&gt; shot&lt;/crazy-button&gt;</code></pre></section><section id="environment" class="section scrollspy"><h3 class="header">Environment colors</h3><p>Try the site theme controls or choose a local accent with the library’s <a href="color-picker.html">ColorInput picker</a> and select Save. Tokens inherit from the nearest environment without rerendering the component. Explicit legacy color attributes override inheritance.</p><div class="button-demo-row"><div class="input-field">
+  <input id="button-accent" type="color" data-color-picker="pickr" data-color-theme="nano" data-color-opacity="false" value="#6750a4">
+  <label for="button-accent">Local accent</label>
+</div>
+<div id="button-environment" style="--md-sys-color-primary: #6750a4; --md-sys-color-on-primary: white; --md-sys-color-primary-container: #eaddff; --md-sys-color-on-primary-container: #21005d; padding: 16px;">
+  <crazy-button type="extended" variant="filled" label="Environment action" size="normal"></crazy-button>
+  <crazy-button type="extended" variant="outlined" label="Supporting action" size="normal"></crazy-button>
+  <crazy-button type="fab" icon-text="palette" label="Environment FAB"></crazy-button>
+</div></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;div class=&quot;input-field&quot;&gt;
+  &lt;input id=&quot;button-accent&quot; type=&quot;color&quot; data-color-picker=&quot;pickr&quot; data-color-theme=&quot;nano&quot; data-color-opacity=&quot;false&quot; value=&quot;#6750a4&quot;&gt;
+  &lt;label for=&quot;button-accent&quot;&gt;Local accent&lt;/label&gt;
+&lt;/div&gt;
+&lt;div id=&quot;button-environment&quot; style=&quot;--md-sys-color-primary: #6750a4; --md-sys-color-on-primary: white; --md-sys-color-primary-container: #eaddff; --md-sys-color-on-primary-container: #21005d; padding: 16px;&quot;&gt;
+  &lt;crazy-button type=&quot;extended&quot; variant=&quot;filled&quot; label=&quot;Environment action&quot; size=&quot;normal&quot;&gt;&lt;/crazy-button&gt;
+  &lt;crazy-button type=&quot;extended&quot; variant=&quot;outlined&quot; label=&quot;Supporting action&quot; size=&quot;normal&quot;&gt;&lt;/crazy-button&gt;
+  &lt;crazy-button type=&quot;fab&quot; icon-text=&quot;palette&quot; label=&quot;Environment FAB&quot;&gt;&lt;/crazy-button&gt;
+&lt;/div&gt;</code></pre></section><section id="api" class="section scrollspy"><h3 class="header">Setup and API</h3>
+<p>Load Materialize CSS and an icon font, then import <code>CrazyButton</code> from <code>kmaterialize</code>. Both custom element names register automatically in the browser. For labeled icon buttons, install the optional <code>tippy.js</code> peer and load its styles as shown on the <a href="tooltips.html">Tooltips page</a>. Do not also initialize these controls with <code>initMaterialButtons</code>.</p>
+<pre><code class="language-typescript">import { CrazyButton, Kmcomponent } from 'kmaterialize';
+
+
+const button = document.querySelector&lt;CrazyButton&gt;('crazy-button')!;
+button.setProperty('label', 'Ready');
+button.setAttribute('variant', 'filled');
+await button.updateComplete;
+button.addEventListener('buttonaction', (event) =&gt; {
+  console.log((event as CustomEvent).detail); // { action, pressed }
+});</code></pre>
+<p><code>Kmcomponent</code> is the CrazyPHP <code>Crazycomponent2</code> script renamed, including its property schema, typed conversion, batched rendering, light DOM projection, optional shadow root, <code>setHtmlAndCss</code>, <code>postRender</code>, and <code>onCleanup</code> APIs. Crazy button uses light DOM for the host environment's styles.</p>
+<table class="striped responsive-table"><thead><tr><th>Attribute</th><th>Values / default</th></tr></thead><tbody>
+<tr><td>type</td><td>floating (default), extended, icon, fab, extended-fab, rail</td></tr>
+<tr><td>depth</td><td>flat (default), outlined, 1–5; variant takes precedence over the legacy style</td></tr>
+<tr><td>shape / size</td><td>round (default), box, square / large (default), small, normal, extra-large, xs, sm, md, lg, xl</td></tr>
+<tr><td>wave</td><td>light (default), dark, false</td></tr>
+<tr><td>tooltip-style</td><td>classic (default), material. Uses the optional tippy.js peer; load its styles before Materialize CSS.</td></tr>
+<tr><td>tooltip-position</td><td>top (default), right, bottom, left. Tooltip placement for floating, icon, and FAB buttons.</td></tr>
+<tr><td>label / icon-text / icon-class</td><td>Empty label and icon; icon-class defaults to material-icons</td></tr>
+<tr><td>icon-image / icon-image-style / icon-position</td><td>Image URL / inline image CSS / right (default), left</td></tr>
+<tr><td>color-primary / color-secondary</td><td>Background / foreground and outline. CSS colors, var(...) expressions, or legacy palette classes such as blue lighten-5. Class colors require the legacy Materialize colors stylesheet.</td></tr>
+<tr><td>data-view / aria-current</td><td>Navigation view identifier / current destination (for example page). Forwarded reactively to the inner control.</td></tr>
+<tr><td>href / target</td><td>Empty (native button) / _self (default), _blank. Links use anchors; disabled links become disabled buttons.</td></tr>
+<tr><td>variant</td><td>filled, tonal, outlined, elevated, text, standard (unfilled icon); omitted: derive from depth</td></tr>
+<tr><td>toggle / pressed / disabled / split</td><td>Boolean: presence, true, or 1 enables; false or 0 disables; omitted defaults to false</td></tr>
+<tr><td>icon-width</td><td>normal (default), narrow, wide</td></tr>
+<tr><td>fab-color / fab-size</td><td>primary (default), secondary, tertiary / normal (default), small, large</td></tr>
+<tr><td>menu-target / menu-label</td><td>External dropdown element ID / More options (default)</td></tr>
+<tr><td>aria-label / action</td><td>Accessible name override / buttonaction event identifier (defaults to label)</td></tr>
+<tr><td>button-type / name / value / form</td><td>button (default), submit, reset / native form button attributes</td></tr>
+</tbody></table>
+<p><strong>Migration notes:</strong> <code>regular-btn</code> is registered only when that tag is free; load this implementation instead of the old registration. Existing attribute names and floating/extended behavior are retained. Default colors now inherit the environment instead of forcing blue lighten-5. Raw HTML in the old label attribute should be moved into child markup. Use native click listeners for activation or <code>buttonaction</code> for the component's action and selection state (pressed is "true", "false", or null). External dropdown items keep their own handlers.</p></section></div><div class="hide-on-small-only m3 xl3"><div class="toc-wrapper"><ul class="section table-of-contents"><li><a href="#legacy">Rodeo compatibility</a></li><li><a href="#variants">Variants</a></li><li><a href="#selection">Toggles</a></li><li><a href="#groups">Groups</a></li><li><a href="#menus">Menus</a></li><li><a href="#fabs">FABs</a></li><li><a href="#sizes">Sizes</a></li><li><a href="#rail">Navigation rail</a></li><li><a href="#sidenav-example">Sidenav example</a></li><li><a href="#toolbar-example">Toolbar example</a></li><li><a href="#disabled">Disabled</a></li><li><a href="#environment">Environment colors</a></li><li><a href="#api">Setup and API</a></li></ul></div></div></div></div></main>{{> footer }}
+<script type="module" src="/main.ts"></script><script type="module" src="/crazy-button-demo.ts"></script><script type="module" src="/crazy-button-layouts-demo.ts"></script></body></html>

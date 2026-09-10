@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en"><head>{{> head }}</head><body>{{> navbar }}<main>{{> intro }}
+<div class="container"><div class="row"><div class="s12 m8 offset-m1 xl7 offset-xl1">
+<p class="caption">Choose a number with small or large adjustments. Fine arrows sit next to the value; coarse arrows sit on the outside.</p>
+<section id="integer" class="section scrollspy"><h3 class="header">Whole numbers · 1 and 10</h3><p>Use the single arrows for one step and the double arrows for ten. You can also type a value directly.</p><div class="row">
+  <div class="input-field col s12">
+    <label for="quantity">Quantity</label>
+    <input id="quantity" name="quantity" type="text" data-type="number" data-number-controls data-number-variant="filled" step="1" data-number-large-step="10" value="25" min="0" max="100" aria-describedby="quantity-help">
+    <p id="quantity-help">Single arrows: ±1 · Double arrows: ±10 · Range: 0–100</p>
+  </div>
+</div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;input-field col s12&quot;&gt;
+    &lt;label for=&quot;quantity&quot;&gt;Quantity&lt;/label&gt;
+    &lt;input id=&quot;quantity&quot; name=&quot;quantity&quot; type=&quot;text&quot; data-type=&quot;number&quot; data-number-controls data-number-variant=&quot;filled&quot; step=&quot;1&quot; data-number-large-step=&quot;10&quot; value=&quot;25&quot; min=&quot;0&quot; max=&quot;100&quot; aria-describedby=&quot;quantity-help&quot;&gt;
+    &lt;p id=&quot;quantity-help&quot;&gt;Single arrows: ±1 · Double arrows: ±10 · Range: 0–100&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></section><section id="decimal" class="section scrollspy"><h3 class="header">Decimal alternative · 0.1 and 1</h3><p>For finer adjustments, the same control uses tenths for the single arrows and one for the double arrows. Decimal steps avoid floating-point display artifacts.</p><div class="row">
+  <div class="input-field col s12">
+    <label for="decimal-quantity">Amount</label>
+    <input id="decimal-quantity" name="amount" type="text" data-type="number" data-number-controls data-number-variant="filled" step="0.1" data-number-large-step="1" value="2.5" min="0" max="10" aria-describedby="decimal-help">
+    <p id="decimal-help">Single arrows: ±0.1 · Double arrows: ±1 · Range: 0–10</p>
+  </div>
+</div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;input-field col s12&quot;&gt;
+    &lt;label for=&quot;decimal-quantity&quot;&gt;Amount&lt;/label&gt;
+    &lt;input id=&quot;decimal-quantity&quot; name=&quot;amount&quot; type=&quot;text&quot; data-type=&quot;number&quot; data-number-controls data-number-variant=&quot;filled&quot; step=&quot;0.1&quot; data-number-large-step=&quot;1&quot; value=&quot;2.5&quot; min=&quot;0&quot; max=&quot;10&quot; aria-describedby=&quot;decimal-help&quot;&gt;
+    &lt;p id=&quot;decimal-help&quot;&gt;Single arrows: ±0.1 · Double arrows: ±1 · Range: 0–10&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></section><section id="appearance" class="section scrollspy"><h3 class="header">Filled, outlined, or rounded</h3><p>Choose the same border treatment as your text fields: filled with an underline, or outlined with a full border and 4px corners. Rounded keeps the original 16px corners. Fine arrows have a lighter tint; coarse arrows have a stronger tint. Both follow the environment color and dark mode.</p><div class="row">
+  <div class="input-field col s12">
+    <label for="number-filled">Filled · underline</label>
+    <input id="number-filled" type="text" data-type="number" data-number-controls data-number-variant="filled" step="1" value="25">
+  </div>
+  <div class="input-field col s12">
+    <label for="number-outlined">Outlined · full border</label>
+    <input id="number-outlined" type="text" data-type="number" data-number-controls data-number-variant="outlined" step="0.1" data-number-large-step="1" value="2.5">
+  </div>
+  <div class="input-field col s12">
+    <label for="number-rounded">Rounded · original style</label>
+    <input id="number-rounded" type="text" data-type="number" data-number-controls data-number-variant="rounded" step="1" value="25">
+  </div>
+</div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;input-field col s12&quot;&gt;
+    &lt;label for=&quot;number-filled&quot;&gt;Filled · underline&lt;/label&gt;
+    &lt;input id=&quot;number-filled&quot; type=&quot;text&quot; data-type=&quot;number&quot; data-number-controls data-number-variant=&quot;filled&quot; step=&quot;1&quot; value=&quot;25&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;input-field col s12&quot;&gt;
+    &lt;label for=&quot;number-outlined&quot;&gt;Outlined · full border&lt;/label&gt;
+    &lt;input id=&quot;number-outlined&quot; type=&quot;text&quot; data-type=&quot;number&quot; data-number-controls data-number-variant=&quot;outlined&quot; step=&quot;0.1&quot; data-number-large-step=&quot;1&quot; value=&quot;2.5&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;input-field col s12&quot;&gt;
+    &lt;label for=&quot;number-rounded&quot;&gt;Rounded · original style&lt;/label&gt;
+    &lt;input id=&quot;number-rounded&quot; type=&quot;text&quot; data-type=&quot;number&quot; data-number-controls data-number-variant=&quot;rounded&quot; step=&quot;1&quot; value=&quot;25&quot;&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></section><section id="limits" class="section scrollspy"><h3 class="header">Limits, disabled, and read-only</h3><p>Controls stop at min/max and disable at the corresponding limit. Disabled and read-only fields cannot be changed by the arrows. Omit min/max to allow an unrestricted range.</p><div class="row">
+  <div class="input-field col s12">
+    <label for="limited-quantity">At the lower limit</label>
+    <input id="limited-quantity" type="text" data-type="number" data-number-controls step="1" min="-10" max="10" value="-10">
+  </div>
+  <div class="input-field col s12">
+    <label for="disabled-quantity">Disabled</label>
+    <input id="disabled-quantity" type="text" data-type="number" data-number-controls step="1" value="8" disabled>
+  </div>
+  <div class="input-field col s12">
+    <label for="readonly-quantity">Read-only</label>
+    <input id="readonly-quantity" type="text" data-type="number" data-number-controls step="1" value="12" readonly>
+  </div>
+</div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;input-field col s12&quot;&gt;
+    &lt;label for=&quot;limited-quantity&quot;&gt;At the lower limit&lt;/label&gt;
+    &lt;input id=&quot;limited-quantity&quot; type=&quot;text&quot; data-type=&quot;number&quot; data-number-controls step=&quot;1&quot; min=&quot;-10&quot; max=&quot;10&quot; value=&quot;-10&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;input-field col s12&quot;&gt;
+    &lt;label for=&quot;disabled-quantity&quot;&gt;Disabled&lt;/label&gt;
+    &lt;input id=&quot;disabled-quantity&quot; type=&quot;text&quot; data-type=&quot;number&quot; data-number-controls step=&quot;1&quot; value=&quot;8&quot; disabled&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;input-field col s12&quot;&gt;
+    &lt;label for=&quot;readonly-quantity&quot;&gt;Read-only&lt;/label&gt;
+    &lt;input id=&quot;readonly-quantity&quot; type=&quot;text&quot; data-type=&quot;number&quot; data-number-controls step=&quot;1&quot; value=&quot;12&quot; readonly&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></section><section id="formatted" class="section scrollspy"><h3 class="header">Existing formatted input</h3><p>The original masked field remains available without arrow controls. Formatting, thousands separators, and decimal precision still come from the library’s NumberInput component.</p><div class="row">
+  <div class="input-field col s12">
+    <input id="formatted-number" type="text" data-type="number" step="0.01" min="0" max="10000" value="1234.56" placeholder=" ">
+    <label for="formatted-number">Formatted amount</label>
+  </div>
+</div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;input-field col s12&quot;&gt;
+    &lt;input id=&quot;formatted-number&quot; type=&quot;text&quot; data-type=&quot;number&quot; step=&quot;0.01&quot; min=&quot;0&quot; max=&quot;10000&quot; value=&quot;1234.56&quot; placeholder=&quot; &quot;&gt;
+    &lt;label for=&quot;formatted-number&quot;&gt;Formatted amount&lt;/label&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></section><section id="setup" class="section scrollspy"><h3 class="header">Setup and API</h3>
+<p>Install the optional <code>imask</code> peer and load Materialize CSS. The arrow controls and styles are implemented in <code>kmaterialize</code>. Initialize NumberInput once, or use <code>M.AutoInit()</code>. This documentation initializes the examples through its shared page setup.</p>
+<pre><code class="language-typescript">import { NumberInput } from 'kmaterialize';
+
+const input = document.querySelector&lt;HTMLInputElement&gt;('#quantity')!;
+const number = NumberInput.init(input, {
+  controls: true,
+  step: 1,
+  largeStep: 10,
+});
+await number.ready;
+number.increment();      // +1
+number.decrement(true);  // -10
+
+input.addEventListener('change', () =&gt; {
+  console.log(number.mask?.typedValue); // numeric value without separators
+});
+
+// When removing the view:
+// number.destroy();</code></pre>
+<p>For the decimal alternative, use <code>{ controls: true, step: 0.1, largeStep: 1 }</code>. Wrap each example in <code>input-field col s12</code> inside a <code>row</code>, as shown above. Labels stay above the arrow controls; the original field without arrows retains its floating label.</p>
+<table class="striped responsive-table"><thead><tr><th>Option / attribute</th><th>Default and behavior</th></tr></thead><tbody>
+<tr><td>controls / data-number-controls</td><td>Off by default. Add the attribute, or set controls: true, to enable the four arrows. data-number-controls="false" keeps them off.</td></tr>
+<tr><td>data-number-variant</td><td>rounded (default), outlined, or filled. Sets the border appearance; arrow colors inherit from the Material theme.</td></tr>
+<tr><td>step / step</td><td>1. The small increment; must be positive. Options take precedence over attributes.</td></tr>
+<tr><td>largeStep / data-number-large-step</td><td>Ten times step. The large increment; must be positive.</td></tr>
+<tr><td>min / min, max / max</td><td>No limit by default. Arrow changes clamp to the bounds.</td></tr>
+<tr><td>scale</td><td>With controls, decimal places are inferred from both increments unless explicitly supplied.</td></tr>
+<tr><td>thousandsSeparator / radix / mapToRadix</td><td>Space / dot / comma. Existing IMask formatting options.</td></tr>
+<tr><td>disabled / readonly</td><td>Native attributes disable adjustment. Disabled fieldsets are respected too.</td></tr>
+</tbody></table>
+<p><code>increment(large?)</code> and <code>decrement(large?)</code> adjust by one fine or coarse step after <code>ready</code>. Each adjustment emits bubbling <code>input</code> and <code>change</code> events. Use <code>mask.typedValue</code> when your application needs a number rather than formatted text. <code>destroy()</code> removes the controls, mask, and listeners and restores the original accessibility attributes.</p></section>
+<section id="keyboard" class="section scrollspy"><h3 class="header">Keyboard and accessibility</h3>
+<p>Focus the number field and use Up/Down for the fine step, or Page Up/Page Down and Shift+Up/Down for the coarse step. Left/Right remain available for moving the text cursor. Each arrow is a native button with its increment in its accessible name; Enter and Space activate it. The input exposes its current value and limits as a spinbutton.</p>
+<p>Colors inherit the surrounding Material theme and dark mode. The controls work without icon fonts, and do not require animation.</p></section></div><div class="hide-on-small-only m3 xl3"><div class="toc-wrapper"><ul class="section table-of-contents"><li><a href="#integer">Whole numbers</a></li><li><a href="#decimal">Decimal alternative</a></li><li><a href="#appearance">Border styles</a></li><li><a href="#limits">Limits and states</a></li><li><a href="#formatted">Formatted input</a></li><li><a href="#setup">Setup and API</a></li><li><a href="#keyboard">Keyboard</a></li></ul></div></div></div></div></main>{{> footer }}<script type="module" src="/main.ts"></script></body></html>

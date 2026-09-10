@@ -1,4 +1,4 @@
-import { enableCardHandles } from "./components/card-drag-handles";
+import { enableCardHandles } from 'kmaterialize';
 import { config } from "../config.materialize";
 import "./style.scss";
 //import { argbFromHex, themeFromSourceColor } from "@material/material-color-utilities";

@@ -1,8 +1,8 @@
-import { createTooltip } from "./components/tippy";
-import "./tippy-demo.scss";
+import { createTooltip } from "kmaterialize/tippy";
+import "./tooltips-demo.scss";
 
-// Both styles are explicit previews; no global Tippy defaults are changed.
-createTooltip(document.querySelector<HTMLElement>("#tippy-classic")!, "classic", {
+// Classic is the library default; Material remains an explicit option.
+createTooltip(document.querySelector<HTMLElement>("#tippy-classic")!, {
   content: "Save your review notes",
 });
 createTooltip(
