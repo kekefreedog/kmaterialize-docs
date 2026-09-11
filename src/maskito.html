@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+  <head>{{> head }}</head>
+  <body>
+    {{> navbar }}
+    <main>
+      {{> intro }}
+      <div class="container">
+        <div class="row">
+          <div class="s12 m8 offset-m1 xl7 offset-xl1">
+            <form id="maskito-demo-form">
+              <section id="overview" class="section scrollspy">
+                <h3 class="header">Format while typing</h3>
+                <p><a href="https://maskito.dev/" target="_blank" rel="noopener">Maskito</a> adds input masks to your existing Material text fields. Type, paste, select, and delete text: the input keeps its configured shape while retaining native labels, keyboard interaction, and form submission.</p>
+                <p id="maskito-demo-status" role="status">Loading input masks…</p>
+                <button id="maskito-fill" type="button" class="btn tonal">Load sample values</button>
+                <button type="reset" class="btn outlined">Reset</button>
+              </section>
+              <section id="patterns" class="section scrollspy">
+                <h3 class="header">Fixed patterns</h3>
+                <p>Use <code>#</code> for a digit, <code>A</code> for an ASCII letter, and <code>*</code> for a letter or digit. Other characters are inserted as literals. Escape a token with a backslash when it should be literal.</p>
+                <div class="row">
+                  <div class="s12 m6 input-field outlined">
+                    <input id="mask-phone" name="phone" type="tel" inputmode="tel" placeholder=" " data-maskito="pattern" data-maskito-pattern="+33 # ## ## ## ##" class="no-autoinit" value="612345678" aria-describedby="mask-phone-help">
+                    <label for="mask-phone">Phone · France</label>
+                    <span id="mask-phone-help" class="helper-text">Format: +33 6 12 34 56 78</span>
+                  </div>
+                  <div class="s12 m6 input-field outlined">
+                    <input id="mask-code" name="code" type="text" placeholder=" " data-maskito="pattern" data-maskito-pattern="AA-####" class="no-autoinit" value="ab1234" pattern="[A-Z]{2}-[0-9]{4}" aria-describedby="mask-code-help">
+                    <label for="mask-code">Project code</label>
+                    <span id="mask-code-help" class="helper-text">Two letters + four digits; converted to uppercase.</span>
+                  </div>
+                </div>
+                <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><div class="input-field outlined">
+  <input id="phone" type="tel" inputmode="tel" placeholder=" "
+         data-maskito="pattern" data-maskito-pattern="+33 # ## ## ## ##">
+  <label for="phone">Phone</label>
+</div></xmp></code></pre>
+                <p>The shorthand is provided by kmaterialize. You can also pass Maskito’s native regex, array, or function masks through <code>maskOptions.mask</code>.</p>
+              </section>
+              <section id="numbers" class="section scrollspy">
+                <h3 class="header">Numbers, currency, and percentages</h3>
+                <p>The number preset supports grouping, decimal separators, fraction digits, bounds, and affixes. Keep <code>type="text"</code> and use <code>inputmode="decimal"</code> to request a decimal keyboard.</p>
+                <div class="row">
+                  <div class="s12 m6 input-field outlined">
+                    <input id="mask-currency" name="budget" type="text" inputmode="decimal" placeholder=" " data-maskito="number" class="no-autoinit" value="1234,5" data-maskito-options='{"number":{"min":0,"max":1000000,"maximumFractionDigits":2,"minimumFractionDigits":2,"decimalSeparator":",","thousandSeparator":" ","postfix":" €"}}'>
+                    <label for="mask-currency">Budget · EUR</label>
+                    <span class="helper-text">0–1,000,000 · two decimal places</span>
+                  </div>
+                  <div class="s12 m6 input-field outlined">
+                    <input id="mask-percent" name="progress" type="text" inputmode="decimal" placeholder=" " data-maskito="number" class="no-autoinit" value="65.5" data-maskito-options='{"number":{"min":0,"max":100,"maximumFractionDigits":1,"postfix":" %"}}'>
+                    <label for="mask-percent">Progress · percent</label>
+                    <span class="helper-text">0–100 · one optional decimal</span>
+                  </div>
+                </div>
+                <pre><code class="language-typescript"><xmp>const budget = MaskitoInput.init(input, {
+  preset: 'number',
+  number: {
+    min: 0,
+    max: 1000000,
+    maximumFractionDigits: 2,
+    minimumFractionDigits: 2,
+    decimalSeparator: ',',
+    thousandSeparator: ' ',
+    postfix: ' €'
+  }
+});
+await budget.ready;</xmp></code></pre>
+                <table class="striped responsive-table">
+                  <thead><tr><th>Number option</th><th>Use</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>locale</code></td><td>Derive locale-specific number formatting. Explicit separator settings take precedence.</td></tr>
+                    <tr><td><code>decimalSeparator / thousandSeparator</code></td><td>Choose decimal and grouping characters.</td></tr>
+                    <tr><td><code>minimumFractionDigits / maximumFractionDigits</code></td><td>Control decimal padding and precision.</td></tr>
+                    <tr><td><code>min / max</code></td><td>Constrain the numeric value.</td></tr>
+                    <tr><td><code>prefix / postfix</code></td><td>Add a currency symbol, percentage sign, or unit.</td></tr>
+                    <tr><td><code>minusSign / negativePattern</code></td><td>Customize negative-value presentation.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="dates" class="section scrollspy">
+                <h3 class="header">Date and time</h3>
+                <p>Date and time presets understand their segments. These are text inputs; their stored values remain formatted strings.</p>
+                <div class="row">
+                  <div class="s12 m6 input-field outlined">
+                    <input id="mask-date" name="date" type="text" inputmode="numeric" placeholder=" " data-maskito="date" class="no-autoinit" value="12092026">
+                    <label for="mask-date">Review date</label>
+                    <span class="helper-text">DD/MM/YYYY · between 2020 and 2030</span>
+                  </div>
+                  <div class="s12 m6 input-field outlined">
+                    <input id="mask-time" name="time" type="text" inputmode="numeric" placeholder=" " data-maskito="time" class="no-autoinit" value="1430">
+                    <label for="mask-time">Review time</label>
+                    <span class="helper-text">HH:MM · Arrow Up/Down adjusts the active segment</span>
+                  </div>
+                </div>
+                <pre><code class="language-typescript"><xmp>MaskitoInput.init(dateInput, {
+  preset: 'date',
+  date: {
+    mode: 'dd/mm/yyyy',
+    separator: '/',
+    min: new Date(2020, 0, 1),
+    max: new Date(2030, 11, 31)
+  }
+});
+
+MaskitoInput.init(timeInput, {
+  preset: 'time',
+  time: { mode: 'HH:MM', step: 1 }
+});</xmp></code></pre>
+                <p>Date options include <code>mode</code>, <code>separator</code>, <code>locale</code>, and native <code>Date</code> bounds. Time options include <code>mode</code>, <code>separators</code>, <code>dayPeriod</code>, segment bounds, and arrow-key <code>step</code>. Use JavaScript options for Date objects.</p>
+              </section>
+              <section id="overwrite" class="section scrollspy">
+                <h3 class="header">Shift or replace</h3>
+                <p>Place the cursor in the middle and type a digit. Shift moves the following digits; replace overwrites the digit at the cursor.</p>
+                <div class="row">
+                  <div class="s12 m6 input-field outlined">
+                    <input id="mask-shift" name="shift" type="text" inputmode="numeric" placeholder=" " class="no-autoinit" value="1234">
+                    <label for="mask-shift">Shift</label>
+                  </div>
+                  <div class="s12 m6 input-field outlined">
+                    <input id="mask-replace" name="replace" type="text" inputmode="numeric" placeholder=" " class="no-autoinit" value="1234">
+                    <label for="mask-replace">Replace</label>
+                  </div>
+                </div>
+                <pre><code class="language-typescript"><xmp>MaskitoInput.init(input, {
+  pattern: '######',
+  maskOptions: { overwriteMode: 'replace' } // Or 'shift'.
+});</xmp></code></pre>
+              </section>
+              <section id="custom" class="section scrollspy">
+                <h3 class="header">Custom masks and processing</h3>
+                <div class="input-field outlined">
+                  <input id="mask-digits" name="digits" type="text" inputmode="numeric" placeholder=" " class="no-autoinit">
+                  <label for="mask-digits">Up to six digits</label>
+                  <span class="helper-text">A native regular-expression mask</span>
+                </div>
+                <pre><code class="language-typescript"><xmp>MaskitoInput.init(input, {
+  maskOptions: { mask: /^\d{0,6}$/ }
+});</xmp></code></pre>
+                <p>A regex mask must accept intermediate values, including an empty string. An array mask mixes fixed characters and per-character regexes. A function mask can choose a mask from the current value and selection.</p>
+                <pre><code class="language-typescript"><xmp>// Project-code example: normalize letters after masking.
+MaskitoInput.init(input, {
+  pattern: 'AA-####',
+  maskOptions: {
+    postprocessors: [({ value, selection }) => ({
+      value: value.toUpperCase(),
+      selection
+    })]
+  }
+});</xmp></code></pre>
+                <table class="striped responsive-table">
+                  <thead><tr><th>Core option</th><th>Purpose</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>mask</code></td><td>A regex, array, or function defining allowed input.</td></tr>
+                    <tr><td><code>overwriteMode</code></td><td><code>shift</code>, <code>replace</code>, or a function choosing between them.</td></tr>
+                    <tr><td><code>preprocessors</code></td><td>Normalize incoming text before the mask runs.</td></tr>
+                    <tr><td><code>postprocessors</code></td><td>Adjust the masked value and selection afterward.</td></tr>
+                    <tr><td><code>plugins</code></td><td>Add lifecycle-managed behavior such as a change-event plugin.</td></tr>
+                  </tbody>
+                </table>
+                <pre><code class="language-typescript"><xmp>import { maskitoChangeEventPlugin } from '@maskito/core';
+
+MaskitoInput.init(input, {
+  pattern: '####',
+  maskOptions: { plugins: [maskitoChangeEventPlugin()] }
+});</xmp></code></pre>
+                <p>Custom preprocessors run before preset preprocessors, and custom postprocessors run after preset postprocessors. Plugins are combined. Supplying <code>maskOptions.mask</code> replaces the preset with your custom mask.</p>
+              </section>
+              <section id="values" class="section scrollspy">
+                <h3 class="header">Form values and validation</h3>
+                <button type="submit" class="btn filled">Inspect form values</button>
+                <pre><code id="maskito-form-output" class="language-json">Submit to inspect the native form strings and parsed values.</code></pre>
+                <p>The native input contains the formatted string, including separators and affixes. Parse numbers, dates, and times with the corresponding kit helper, using the same separators and affixes as the mask:</p>
+                <pre><code class="language-typescript"><xmp>import { maskitoParseNumber, maskitoParseDate, maskitoParseTime } from '@maskito/kit';
+
+const amount = maskitoParseNumber(input.value, {
+  decimalSeparator: ',', thousandSeparator: ' ', postfix: ' €'
+});
+const date = maskitoParseDate(dateInput.value, { mode: 'dd/mm/yyyy', separator: '/' });
+const milliseconds = maskitoParseTime(timeInput.value, { mode: 'HH:MM' });</xmp></code></pre>
+                <p>Masks guide editing; use <code>required</code>, <code>pattern</code>, or application validation to require a complete value. The project-code demo uses <code>pattern="[A-Z]{2}-[0-9]{4}"</code>. Native disabled and read-only states still apply.</p>
+              </section>
+            </form>
+            <section id="setup" class="section scrollspy">
+              <h3 class="header">Setup and lifecycle</h3>
+              <p>Maskito reuses the existing Material text-field styles. No extra stylesheet is required.</p>
+              <pre><code class="language-bash">npm install kmaterialize @maskito/core @maskito/kit</code></pre>
+              <p>Core is required for all masks. Kit is an optional addition for number, date, and time presets.</p>
+              <pre><code class="language-typescript"><xmp>import { MaskitoInput } from 'kmaterialize';
+
+const field = MaskitoInput.init(input, { pattern: 'AA-####' });
+await field.ready;
+
+await field.setValue('AB1234'); // Formats and emits input.
+console.log(field.getValue()); // 'AB-1234'
+
+input.value = 'CD5678';
+await field.refresh(); // Formats without emitting input.
+
+field.destroy(); // Removes mask listeners; keeps the input and its value.</xmp></code></pre>
+              <p><code>M.AutoInit()</code> recognizes <code>input[data-maskito]</code>. Add <code>no-autoinit</code> for explicit initialization. Use <code>data-maskito-pattern</code> for shorthand patterns and <code>data-maskito-options</code> for JSON-serializable options:</p>
+              <pre><code class="language-html"><xmp><input type="text" inputmode="decimal" data-maskito="number"
+       data-maskito-options='{"number":{"maximumFractionDigits":2,"postfix":" €"}}'>
+<script>M.AutoInit();</script></xmp></code></pre>
+              <p>Use JavaScript for regexes, functions, and Date objects. Supported input types are <code>text</code>, <code>tel</code>, <code>search</code>, <code>url</code>, and <code>password</code>. Use <code>inputmode</code> rather than <code>type="number"</code> for formatted numbers.</p>
+              <p>Initialization normalizes the existing value. Form reset reapplies the mask to the default value. Reinitialization replaces the previous instance. Choose one masking engine per input; the existing NumberInput feature continues to use IMask.</p>
+              <p>Further reference: <a href="https://maskito.dev/core-concepts/overview/" target="_blank" rel="noopener">Maskito core concepts</a> and <a href="https://maskito.dev/kit/number/" target="_blank" rel="noopener">Maskito kit</a>. TypeScript options are exported as <code>MaskitoInputOptions</code>.</p>
+            </section>
+          </div>
+          <div class="hide-on-small-only m3 xl3">
+            <div class="toc-wrapper"><ul class="section table-of-contents">
+              <li><a href="#overview">Overview</a></li><li><a href="#patterns">Patterns</a></li>
+              <li><a href="#numbers">Numbers / currency</a></li><li><a href="#dates">Date / time</a></li>
+              <li><a href="#overwrite">Overwrite modes</a></li><li><a href="#custom">Custom processing</a></li>
+              <li><a href="#values">Form values</a></li><li><a href="#setup">Setup / lifecycle</a></li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    {{> footer }}
+    <script type="module" src="/main.ts"></script>
+    <script type="module" src="/maskito-demo.ts"></script>
+  </body>
+</html>

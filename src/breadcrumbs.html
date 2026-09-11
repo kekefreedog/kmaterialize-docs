@@ -62,6 +62,41 @@
                 </div>
             </div>
             <!-- End collections -->
+            <section id="crazy-button" class="section scrollspy">
+              <h3 class="header">With Crazy Button</h3>
+              <p>Use <a href="crazy-button.html">Crazy Button</a> links inside each breadcrumb. Medium tertiary FABs show each location as an icon. Labels provide accessible names and tooltips; the last link marks the current page.</p>
+
+              <nav class="breadcrumb-wrapper" aria-label="Crazy Button breadcrumb example">
+                <div class="s12">
+                  <span class="breadcrumb">
+                    <crazy-button type="fab" icon-text="home" label="Home" fab-color="tertiary" fab-size="normal" href="index.html"></crazy-button>
+                  </span>
+                  <span class="breadcrumb">
+                    <crazy-button type="fab" icon-text="widgets" label="Buttons" fab-color="tertiary" fab-size="normal" href="buttons.html"></crazy-button>
+                  </span>
+                  <span class="breadcrumb">
+                    <crazy-button type="fab" icon-text="add" label="Breadcrumbs" fab-color="tertiary" fab-size="normal" href="breadcrumbs.html" aria-current="page"></crazy-button>
+                  </span>
+                </div>
+              </nav>
+
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><nav class="breadcrumb-wrapper" aria-label="Breadcrumb">
+  <div class="s12">
+    <span class="breadcrumb">
+      <crazy-button type="fab" icon-text="home" label="Home" fab-color="tertiary" fab-size="normal" href="index.html"></crazy-button>
+    </span>
+    <span class="breadcrumb">
+      <crazy-button type="fab" icon-text="widgets" label="Buttons" fab-color="tertiary" fab-size="normal" href="buttons.html"></crazy-button>
+    </span>
+    <span class="breadcrumb">
+      <crazy-button type="fab" icon-text="add" label="Breadcrumbs" fab-color="tertiary" fab-size="normal" href="breadcrumbs.html" aria-current="page"></crazy-button>
+    </span>
+  </div>
+</nav></xmp>
+              </code></pre>
+              <p>Load Materialize CSS and JavaScript to register <code>crazy-button</code> automatically. For icon label tooltips, also install <code>tippy.js</code> and load its styles, as shown on the <a href="tooltips.html">Tooltips page</a>. No additional initialization is needed.</p>
+            </section>
           </div>
 
           <div class="col hide-on-small-only m3 xl3">
@@ -69,6 +104,7 @@
               <div style="height: 1px">
                 <ul class="section table-of-contents">
                   <li><a href="#basic">Basic</a></li>
+                  <li><a href="#crazy-button">With Crazy Button</a></li>
                 </ul>
               </div>
             </div>

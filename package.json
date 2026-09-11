@@ -1,7 +1,7 @@
 {
   "name": "materialize-docs",
   "private": true,
-  "version": "1.4.16",
+  "version": "1.4.17",
   "type": "module",
   "scripts": {
     "prepare": "git config core.hooksPath .githooks || true",
@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@maskito/core": "5.4.0",
+    "@maskito/kit": "5.4.0",
     "@material/material-color-utilities": "^0.2.7",
     "@simonwep/pickr": "1.9.1",
     "air-datepicker": "^3.5.0",
@@ -24,6 +26,7 @@
     "kmaterialize": "latest",
     "kspreadsheet": "2.7.0",
     "material-icons": "^1.13.14",
+    "quill": "2.0.3",
     "sweetalert2": "^11.26.25",
     "tippy.js": "6.3.7",
     "tom-select": "^2.3.0",

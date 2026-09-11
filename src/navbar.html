@@ -117,6 +117,11 @@
   </div>
 </nav></xmp>
         </code></pre>
+<p>Scrolling styles are included in kmaterialize. Initialize the edge fades with the library helper; call the returned function when removing the navbar.</p>
+<pre><code class="language-typescript">import { initNavbarScroll } from 'kmaterialize';
+const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
+// When unmounting: dispose();</code></pre>
+
             </div>
 
             <div id="left" class="section scrollspy">

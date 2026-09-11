@@ -136,6 +136,8 @@ export const config = {
     { id: "switches", url: "switches.html", name: "Switches" },
     { id: "numberinput", url: "number-input.html", name: "Number input", description: "Select numbers with fine and coarse steps, including decimal increments." },
     { id: "textinputs", url: "text-inputs.html", name: "Text Inputs" },
+    { id: "maskito", url: "maskito.html", name: "Input Masks", description: "Maskito patterns, numbers, currency, dates, times, and custom input processing." },
+    { id: "richtextarea", url: "textarea.html", name: "Textarea", description: "A Quill rich-text editor with Material styling and native textarea form integration." },
     {
       id: "colorpicker",
       url: "color-picker.html",
@@ -244,6 +246,8 @@ export const config = {
         { id: "tomselect" },
         { id: "switches" },
         { id: "textinputs" },
+        { id: "maskito" },
+        { id: "richtextarea" },
         { id: "numberinput" },
       ],
     },

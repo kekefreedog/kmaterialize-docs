@@ -55,12 +55,56 @@
 </div></xmp>
         </code></pre>
             </div>
+            <section id="icon-switch" class="section scrollspy">
+              <h3 class="header">Icon inside the thumb</h3>
+              <p>The circle shows a check when enabled and a cross when disabled. Click the switch or focus it and press Space to toggle.</p>
+              <div class="switch switch-with-icon">
+  <label>
+    Off
+    <input type="checkbox" aria-label="Enable notifications" checked>
+    <span class="lever" aria-hidden="true"></span>
+    On
+  </label>
+</div>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><div class="switch switch-with-icon">
+  <label>
+    Off
+    <input type="checkbox" aria-label="Enable notifications" checked>
+    <span class="lever" aria-hidden="true"></span>
+    On
+  </label>
+</div></xmp></code></pre>
+              <p>Add <code>switch-with-icon</code> to a standard Materialize switch and load the Material Icons font. The icon styling is included in kmaterialize. The icons are decorative; the checkbox provides the accessible name and checked state.</p>
+            </section>
+            <section id="custom-icon-switch" class="section scrollspy">
+              <h3 class="header">Custom Material Icons</h3>
+              <p>Try a notification switch: a muted bell when off and a ringing bell when on. Set <code>--switch-icon-off</code> and <code>--switch-icon-on</code> to quoted Material Icons names to choose your own icons.</p>
+              <div class="switch switch-with-icon"
+     style="--switch-icon-off: 'notifications_off'; --switch-icon-on: 'notifications_active';">
+  <label>
+    Notifications
+    <input type="checkbox" aria-label="Enable notifications">
+    <span class="lever" aria-hidden="true"></span>
+  </label>
+</div>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><div class="switch switch-with-icon"
+     style="--switch-icon-off: 'notifications_off'; --switch-icon-on: 'notifications_active';">
+  <label>
+    Notifications
+    <input type="checkbox" aria-label="Enable notifications">
+    <span class="lever" aria-hidden="true"></span>
+  </label>
+</div></xmp></code></pre>
+              <p>These properties are built into kmaterialize's <code>switch-with-icon</code> variant. Load the Material Icons font; no extra CSS or JavaScript is needed.</p>
+            </section>
           </div>
           <div class="col hide-on-small-only m3 xl3">
             <div class="toc-wrapper">
               <div style="height: 1px">
                 <ul class="section table-of-contents">
                   <li><a href="#switches">Switches</a></li>
+                  <li><a href="#icon-switch">Icon inside the thumb</a></li>
+                  <li><a href="#custom-icon-switch">Custom Material Icons</a></li>
                 </ul>
               </div>
             </div>

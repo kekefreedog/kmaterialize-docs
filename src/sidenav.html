@@ -475,7 +475,7 @@ Autocomplete.init(search, {
         <p><a href="sidenav-rail-demo.html" target="_blank" rel="noopener">Open navigation rail in a full window</a></p>
         <iframe class="sidenav-example-frame sidenav-example-frame-rail" src="sidenav-rail-demo.html" title="Interactive Material 3 navigation rail example" loading="lazy"></iframe>
         <p>Choose a section to update the preview. The bottom controls pause the illustration and switch the example's light/dark theme. Its initial palette and theme match the website, and updates from the surrounding page are reflected automatically. Motion starts paused when the device requests reduced motion. The rail stays visible on phones and scrolls when the screen is too short.</p>
-        <p>The rail uses custom CSS and native links, so it needs no <code>Sidenav.init()</code>. Load Materialize and Material Icons, then the SCSS below. The theme control uses <code>@material/material-color-utilities</code>. Replace the demo hash links with your app's routes and preserve <code>aria-current="page"</code> on the active link.</p>
+        <p>The rail layout is included in kmaterialize and uses native links, so it needs no <code>Sidenav.init()</code>. Load Materialize and Material Icons. The SCSS below only styles the preview content. The theme control uses <code>@material/material-color-utilities</code>. Replace the demo hash links with your app's routes and preserve <code>aria-current="page"</code> on the active link.</p>
 <details class="sidenav-example-code"><summary>HTML — structure and navigation</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;body class=&quot;rail-example&quot;&gt;
   &lt;!-- Fixed rail: section links above, utility buttons below. --&gt;
   &lt;aside class=&quot;m3-rail&quot; aria-label=&quot;Site navigation&quot;&gt;
@@ -556,179 +556,28 @@ Autocomplete.init(search, {
   &lt;/main&gt;
   &lt;!-- Load the TypeScript below through your bundler. --&gt;
   &lt;script type=&quot;module&quot; src=&quot;/sidenav-rail-demo.ts&quot;&gt;&lt;/script&gt;
-&lt;/body&gt;</code></pre></details><details class="sidenav-example-code"><summary>SCSS — layout, colors, and responsive styles</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">// Load the icon font and Materialize before these example-specific styles.
-@import &#x27;material-icons/iconfont/material-icons.css&#x27;;
+&lt;/body&gt;</code></pre></details><details class="sidenav-example-code"><summary>SCSS — layout, colors, and responsive styles</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">@import &#x27;material-icons/iconfont/material-icons.css&#x27;;
 @import &#x27;kmaterialize/sass/materialize.scss&#x27;;
 
-.rail-example {
-  margin: 0;
-  background: var(--md-sys-color-background);
-  color: var(--md-sys-color-on-background);
-}
-// Rail layout: fill the viewport and scroll on short screens.
-.m3-rail {
-  position: fixed;
-  inset: 0 auto 0 0;
-  width: 104px;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  padding: 16px 4px;
-  background: var(--md-sys-color-surface);
-  color: var(--md-sys-color-on-surface-variant);
-}
-// Stack icon-and-label links. Highlight hover, active, and keyboard-focus states.
-.m3-rail-nav {
-  display: flex;
-  flex-direction: column;
-  flex: 0 0 auto;
-  width: 100%;
-  height: auto;
-  line-height: normal;
-  background: transparent;
-  box-shadow: none;
-  &gt; a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    min-height: 76px;
-    padding: 8px 0;
-    color: inherit;
-    font-size: 13px;
-    text-decoration: none;
-    text-align: center;
-    border-radius: 16px;
-  }
-  &gt; a:hover .m3-rail-icon {
-    background: var(--md-sys-color-surface-variant);
-  }
-  &gt; a[aria-current=&#x27;page&#x27;] .m3-rail-icon {
-    background: var(--md-sys-color-secondary-container);
-    color: var(--md-sys-color-on-secondary-container);
-  }
-  &gt; a:focus-visible {
-    outline: 2px solid var(--md-sys-color-primary);
-    outline-offset: -2px;
-  }
-}
-.m3-rail-icon {
-  display: grid;
-  place-items: center;
-  width: 56px;
-  height: 32px;
-  border-radius: 18px;
-}
-.m3-rail-icon .material-icons {
-  font-size: 28px;
-}
-.m3-rail-icon img {
-  width: 28px;
-  height: 28px;
-}
-// Push utility buttons to the bottom with margin-top: auto.
-.m3-rail-actions {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  margin-top: auto;
-  padding-top: 36px;
-  button {
-    display: grid;
-    place-items: center;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    border: 1px solid var(--md-sys-color-outline);
-    padding: 0;
-    color: inherit;
-    background: transparent;
-    cursor: pointer;
-  }
-  button:hover {
-    background: var(--md-sys-color-surface-variant);
-  }
-  button:focus-visible {
-    outline: 2px solid var(--md-sys-color-primary);
-    outline-offset: 3px;
-  }
-  .material-icons {
-    font-size: 28px;
-  }
-}
-// Keep page content clear of the fixed rail.
-.rail-example-content {
-  margin-left: 104px;
-  padding: 40px clamp(20px, 5vw, 64px);
-  max-width: 1050px;
-}
-.rail-example-content h1 {
-  font-size: clamp(36px, 7vw, 80px);
-  letter-spacing: -0.05em;
-  margin: 24px 0;
-}
-.rail-example-content p {
-  line-height: 1.6;
-  max-width: 48ch;
-}
-.rail-example-eyebrow {
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  color: var(--md-sys-color-on-surface-variant);
-}
-.rail-example-hint {
-  font-size: 13px;
-  color: var(--md-sys-color-on-surface-variant);
-}
-// Optional demo illustration; not required for navigation.
+.rail-example { margin: 0; background: var(--md-sys-color-background); color: var(--md-sys-color-on-background); }
+.rail-example-content { margin-left: 104px; padding: 40px clamp(20px, 5vw, 64px); max-width: 1050px; }
+.rail-example-content h1 { font-size: clamp(36px, 7vw, 80px); letter-spacing: -.05em; margin: 24px 0; }
+.rail-example-content p { line-height: 1.6; max-width: 48ch; }
+.rail-example-eyebrow { font-size: 10px; letter-spacing: .16em; color: var(--md-sys-color-on-surface-variant); }
+.rail-example-hint { font-size: 13px; color: var(--md-sys-color-on-surface-variant); }
 .rail-example-art {
-  display: grid;
-  place-items: center;
-  position: relative;
-  isolation: isolate;
-  height: 240px;
-  margin: 32px 0;
-  overflow: hidden;
-  border-radius: 36px;
-  background: var(--md-sys-color-secondary-container);
-  color: var(--md-sys-color-on-secondary-container);
-  &gt; div {
-    position: absolute;
-    width: 160px;
-    height: 160px;
-    background: var(--md-sys-color-tertiary-container);
-    border-radius: 40%;
-    animation: rail-orbit 18s linear infinite;
-    z-index: -1;
-  }
-  &gt; i {
-    font-size: 64px;
-  }
+  display: grid; place-items: center; position: relative; isolation: isolate;
+  height: 240px; margin: 32px 0; overflow: hidden; border-radius: 36px;
+  background: var(--md-sys-color-secondary-container); color: var(--md-sys-color-on-secondary-container);
+  &gt; div { position: absolute; width: 160px; height: 160px; background: var(--md-sys-color-tertiary-container); border-radius: 40%; animation: rail-orbit 18s linear infinite; z-index: -1; }
+  &gt; i { font-size: 64px; }
 }
-.rail-motion-paused .rail-example-art &gt; div {
-  animation-play-state: paused;
-}
-@keyframes rail-orbit {
-  to {
-    transform: rotate(360deg);
-  }
-}
-// Narrow screens keep the rail visible with slightly smaller spacing.
+.rail-motion-paused .rail-example-art &gt; div { animation-play-state: paused; }
+@keyframes rail-orbit { to { transform: rotate(360deg); } }
 @media (max-width: 480px) {
-  .m3-rail {
-    width: 88px;
-  }
-  .m3-rail-nav &gt; a {
-    font-size: 12px;
-    min-height: 72px;
-  }
-  .rail-example-content {
-    margin-left: 88px;
-    padding: 28px 20px;
-  }
-}</code></pre></details><details class="sidenav-example-code"><summary>TypeScript — initialization and interactions</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">import {
+  .rail-example-content { margin-left: 88px; padding: 28px 20px; }
+}
+</code></pre></details><details class="sidenav-example-code"><summary>TypeScript — initialization and interactions</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">import {
   applyTheme,
   argbFromHex,
   themeFromSourceColor,

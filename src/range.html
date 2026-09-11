@@ -9,32 +9,97 @@
       {{> intro}}
       <div class="container">
         <div class="row">
-          <div class="col s12 m8 offset-m1 xl7 offset-xl1">
-            <div id="html5" class="section scrollspy">
-              <h3 class="header">HTML5 Range</h3>
-              <p>
-                The Range Component lets the user input a number quick and easy with the mouse. Because this is not really precise you should consider using a numeric input too, if
-                the value should be exact.
-              </p>
-              <form action="#">
-                <p class="range-field">
-                  <input type="range" name="points" min="0" max="100" />
-                </p>
-              </form>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><form action="#">
-  <p class="range-field">
-    <input type="range" id="test5" min="0" max="100" />
-  </p>
-</form></xmp>
-        </code></pre>
-            </div>
+          <div class="s12 m8 offset-m1 xl7 offset-xl1">
+            <section id="html5" class="section scrollspy">
+              <h3 class="header">Material range</h3>
+              <p>Choose a value with a mouse, touch, or keyboard. A rounded track shows the selected amount, while the circular thumb and focus ring follow your Material theme.</p>
+              <div class="range-field">
+                <label for="range-volume">Volume</label>
+                <input id="range-volume" type="range" min="0" max="100" value="40" data-value-label="false">
+                <output for="range-volume">40</output>
+              </div>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><div class="range-field">
+  <label for="volume">Volume</label>
+  <input id="volume" type="range" min="0" max="100" value="40"
+         data-value-label="false">
+</div></xmp></code></pre>
+              <p>All slider styling and behavior are included in kmaterialize. Existing <code>input[type="range"]</code> controls receive the new appearance. The native input preserves form submission and keyboard interaction.</p>
+            </section>
+
+            <section id="discrete" class="section scrollspy">
+              <h3 class="header">Steps and tick marks</h3>
+              <p>Use <code>step</code> for discrete values and <code>data-ticks</code> for visible marks. Focus or drag the slider to reveal its value label.</p>
+              <div class="range-field">
+                <label for="range-brightness">Brightness</label>
+                <input id="range-brightness" type="range" min="0" max="100" step="10" value="60" data-ticks>
+                <output for="range-brightness">60</output>
+              </div>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><div class="range-field">
+  <label for="brightness">Brightness</label>
+  <input id="brightness" type="range" min="0" max="100"
+         step="10" value="60" data-ticks>
+</div></xmp></code></pre>
+              <p>Dense tick sets are thinned to at most 101 marks. <code>step="any"</code> allows continuous values and does not display ticks.</p>
+            </section>
+
+            <section id="formatting" class="section scrollspy">
+              <h3 class="header">Formatted values</h3>
+              <p>Use <code>formatValue</code> to give the value label and assistive technology a meaningful unit. The underlying form value remains numeric.</p>
+              <div class="range-field">
+                <label for="range-budget">Preview budget</label>
+                <input id="range-budget" type="range" min="0" max="10000" step="500" value="3500">
+                <output for="range-budget">3.5k credits</output>
+              </div>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText"><xmp>import { Range } from 'kmaterialize';
+
+const input = document.querySelector<HTMLInputElement>('#range-budget')!;
+Range.init(input, {
+  formatValue: value => `${value / 1000}k credits`
+});</xmp></code></pre>
+            </section>
+
+            <section id="disabled" class="section scrollspy">
+              <h3 class="header">Disabled</h3>
+              <div class="range-field">
+                <label for="range-disabled">Unavailable setting</label>
+                <input id="range-disabled" type="range" min="0" max="100" step="10" value="30" data-ticks disabled>
+              </div>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><div class="range-field">
+  <label for="unavailable">Unavailable setting</label>
+  <input id="unavailable" type="range" min="0" max="100"
+         value="30" disabled>
+</div></xmp></code></pre>
+            </section>
+
+            <section id="api" class="section scrollspy">
+              <h3 class="header">Initialization and updates</h3>
+              <p>Ranges present when kmaterialize loads initialize automatically. For controls added later, call <code>Range.init(input)</code>. Reinitialization safely replaces the previous instance.</p>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText"><xmp>const slider = Range.init(input, {
+  showValue: true, // Default: show a label during interaction.
+  showTicks: false
+});
+
+input.value = '75';
+slider.update(); // Refresh after assigning a value in code.
+
+// When removing the component:
+slider.destroy();</xmp></code></pre>
+              <p>The library keeps the track and label synchronized on input, reset, resizing, and changes to <code>min</code>, <code>max</code>, <code>step</code>, or <code>disabled</code>. Arrow keys adjust the value; Home and End reach the limits. Label every slider with a linked <code>label</code> or <code>aria-label</code>.</p>
+              <p>The outputs in these demos use a standard <code>input</code> listener:</p>
+              <pre><code class="language-javascript"><xmp>input.addEventListener('input', () => {
+  output.value = input.value;
+});</xmp></code></pre>
+            </section>
           </div>
-          <div class="col hide-on-small-only m3 xl3">
+          <div class="hide-on-small-only m3 xl3">
             <div class="toc-wrapper">
               <div style="height: 1px">
                 <ul class="section table-of-contents">
-                  <li><a href="#html5">HTML5 Range</a></li>
+                  <li><a href="#html5">Material range</a></li>
+                  <li><a href="#discrete">Steps and ticks</a></li>
+                  <li><a href="#formatting">Formatted values</a></li>
+                  <li><a href="#disabled">Disabled</a></li>
+                  <li><a href="#api">Initialization</a></li>
                 </ul>
               </div>
             </div>
@@ -44,5 +109,6 @@
     </main>
     {{> footer }}
     <script type="module" src="/main.ts"></script>
+    <script type="module" src="/range-demo.ts"></script>
   </body>
 </html>

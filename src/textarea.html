@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>{{> head }}</head>
+  <body>
+    {{> navbar }}
+    <main>
+      {{> intro }}
+      <div class="container">
+        <div class="row">
+          <div class="s12 m8 offset-m1 xl7 offset-xl1">
+            <section id="editor" class="section scrollspy">
+              <h3 class="header">Rich text, native forms</h3>
+              <p>Write formatted text using <a href="https://quilljs.com/docs/quickstart" target="_blank" rel="noopener">Quill 2</a>. Headings, emphasis, lists, quotes, and links use a Material toolbar. The original textarea keeps the serialized value for normal form submission.</p>
+              <form id="textarea-demo-form">
+                <div class="rich-textarea-field">
+                  <label for="textarea-brief">Project brief</label>
+                  <textarea id="textarea-brief" name="brief" data-editor="quill" class="no-autoinit" placeholder="Describe your next project…" aria-describedby="textarea-brief-help" required><h2>A new idea</h2><p>Give your team a clear brief with <strong>bold ideas</strong>, useful links, and the next steps.</p><ul><li>Describe the goal</li><li>List the deliverables</li></ul></textarea>
+                  <p id="textarea-brief-help">Required. Try formatting, then submit to inspect the form value. Clear the editor to test validation.</p>
+                </div>
+                <button type="submit" class="btn filled">Show form value</button>
+                <button type="reset" class="btn outlined">Reset</button>
+                <button id="textarea-toggle-readonly" type="button" class="btn text" aria-pressed="false">Read-only mode</button>
+              </form>
+              <p id="textarea-demo-status" role="status">Loading the rich-text editor…</p>
+              <pre><code id="textarea-form-output" class="language-json">Submit the form to inspect its serialized HTML.</code></pre>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><div class="rich-textarea-field">
+  <label for="brief">Project brief</label>
+  <textarea id="brief" name="brief" data-editor="quill" required
+            placeholder="Describe your project…"><p>Hello <strong>world</strong>!</p></textarea>
+</div></xmp></code></pre>
+            </section>
+            <section id="setup" class="section scrollspy">
+              <h3 class="header">Setup</h3>
+              <p>Quill is an optional peer dependency. Load its Snow stylesheet before Materialize. The editor code loads when an opted-in textarea is initialized.</p>
+              <pre><code class="language-bash">npm install kmaterialize quill</code></pre>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText"><xmp>import 'quill/dist/quill.snow.css';
+import 'kmaterialize/dist/css/materialize.css';
+import { RichTextarea } from 'kmaterialize';
+
+const field = RichTextarea.init(
+  document.querySelector<HTMLTextAreaElement>('#brief')!
+);
+await field.ready;
+
+console.log(field.getHTML());
+console.log(field.getText());</xmp></code></pre>
+              <p>Alternatively, <code>M.AutoInit()</code> enhances <code>textarea[data-editor="quill"]</code>. Add <code>no-autoinit</code> when you want to initialize a field yourself. Await the instance’s <code>ready</code> promise before using <code>field.quill</code>.</p>
+              <p>Without a bundler, load <code>quill.snow.css</code>, then Materialize CSS, followed by <code>quill.js</code> and <code>materialize.js</code>. The component can use <code>window.Quill</code>.</p>
+            </section>
+            <section id="compact" class="section scrollspy">
+              <h3 class="header">Compact toolbar and plain-text value</h3>
+              <p>Choose which controls to show. This example preserves formatting in the editor while storing plain text in the native textarea.</p>
+              <div class="rich-textarea-field">
+                <label for="textarea-note">Quick note</label>
+                <textarea id="textarea-note" name="note" data-editor="quill" data-value-format="text" class="no-autoinit" placeholder="Write a short note…">A short note for the team.</textarea>
+              </div>
+              <pre><code class="language-typescript"><xmp>const note = RichTextarea.init(textarea, {
+  valueFormat: 'text',
+  toolbar: [['bold', 'italic'], [{ list: 'bullet' }], ['clean']]
+});
+await note.ready;</xmp></code></pre>
+              <p>HTML is the default value format. Use <code>valueFormat: 'text'</code> or <code>data-value-format="text"</code> for plain text; formatting is not preserved when that plain-text value is reloaded.</p>
+            </section>
+            <section id="readonly" class="section scrollspy">
+              <h3 class="header">Read-only and disabled</h3>
+              <div class="rich-textarea-field">
+                <label for="textarea-readonly">Published note</label>
+                <textarea id="textarea-readonly" data-editor="quill" class="no-autoinit" readonly><p>This <strong>published note</strong> can be selected and copied, but not edited.</p></textarea>
+              </div>
+              <div class="rich-textarea-field">
+                <label for="textarea-disabled">Unavailable field</label>
+                <textarea id="textarea-disabled" data-editor="quill" class="no-autoinit" disabled><p>This field is currently unavailable.</p></textarea>
+              </div>
+              <p>Use the native <code>readonly</code> and <code>disabled</code> attributes. Disabled fields are omitted from form submission. State changes are reflected in the editor and toolbar automatically.</p>
+            </section>
+            <section id="api" class="section scrollspy">
+              <h3 class="header">Values, events, and cleanup</h3>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText"><xmp>await field.ready;
+field.setValue('<p>A <strong>formatted</strong> update.</p>');
+const html = field.getHTML();
+const text = field.getText();
+const storedValue = field.getValue();
+
+// Native input fires as content changes; change fires when leaving the editor.
+textarea.addEventListener('input', () => console.log(textarea.value));
+
+// After assigning textarea.value directly:
+textarea.value = '<p>Loaded from a saved draft.</p>';
+field.refresh();
+
+// Access Quill's API and Delta document:
+const delta = field.quill!.getContents();
+
+// Restore the native textarea, retaining the latest serialized value:
+field.destroy();</xmp></code></pre>
+              <p>The native <code>name</code>, <code>required</code>, and form reset behavior are preserved. An empty editor stores an empty string, so required validation works. HTML is normalized through Quill’s supported formats; it is not stored byte-for-byte.</p>
+              <p>The default toolbar supports text formatting and links. Customize <code>toolbar</code> and <code>formats</code>, or set <code>toolbar: false</code> for a toolbar-free editor. TypeScript options are exported as <code>RichTextareaOptions</code>.</p>
+              <p>Set <code>--rich-textarea-min-height</code> and <code>--rich-textarea-max-height</code> on the generated <code>.rich-textarea</code> to adjust the writing area. All component styles are shipped by kmaterialize.</p>
+            </section>
+          </div>
+          <div class="hide-on-small-only m3 xl3">
+            <div class="toc-wrapper"><ul class="section table-of-contents">
+              <li><a href="#editor">Textarea</a></li>
+              <li><a href="#setup">Setup</a></li>
+              <li><a href="#compact">Compact toolbar</a></li>
+              <li><a href="#readonly">Read-only / disabled</a></li>
+              <li><a href="#api">API</a></li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    {{> footer }}
+    <script type="module" src="/main.ts"></script>
+    <script type="module" src="/textarea-demo.ts"></script>
+  </body>
+</html>

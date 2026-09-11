@@ -51,8 +51,7 @@ Local development changes the library dependency to a `file:` path. Before commi
 - `partials/`: shared header, sidebar, and footer.
 - `config.materialize.js`: navigation and page metadata.
 - `src/style.scss`: shared styles and enhancement imports.
-- `src/components/`: reusable extensions demonstrated by the docs.
-- `src/*-demo.ts` and `src/*-demo.scss`: page-specific examples.
+- `src/*-demo.ts` and `src/*-demo.scss`: page-specific example layouts and interactions. Reusable components and styles live in kmaterialize.
 
 ## Publish a docs release
 

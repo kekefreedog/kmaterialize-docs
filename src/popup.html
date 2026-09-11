@@ -129,6 +129,68 @@ if (result.isConfirmed) {
 if (result.isConfirmed) console.log(result.value);</xmp></code></pre>
             </div>
 
+            <section id="stepper" class="section scrollspy">
+              <h3 class="header">Async stepper</h3>
+              <p>Run a sequence of async functions in a Material Design popup. Each step shows its number, progress, and completion state. The next step starts only after the current function resolves.</p>
+              <button id="popup-stepper" class="btn filled" type="button">Run async steps</button>
+              <button id="popup-stepper-retry" class="btn outlined" type="button">Try failure and retry</button>
+              <p>These demos simulate checking assets, rendering a preview, and packaging the result. In the retry demo, rendering fails once; Retry step resumes there and keeps the completed asset check.</p>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText"><xmp>import { Popup } from 'kmaterialize';
+
+// Simulated async work. Replace with your own API calls.
+async function work(signal: AbortSignal) {
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  signal.throwIfAborted();
+}
+
+const result = await Popup.steps<string>({
+  title: 'Prepare a preview',
+  description: 'Check assets, render, then package the result.',
+  steps: [
+    {
+      title: 'Check assets',
+      run: async ({ signal, setMessage }) => {
+        setMessage('Checking source files…');
+        await work(signal);
+        return 'Assets checked';
+      }
+    },
+    {
+      title: 'Render preview',
+      run: async ({ signal, results, setMessage }) => {
+        setMessage(`${results[0]}. Rendering…`);
+        await work(signal);
+        // Throw an Error to show the failed state and Retry step action.
+        return 'Preview rendered';
+      }
+    },
+    {
+      title: 'Package result',
+      run: async ({ signal }) => {
+        await work(signal);
+        return 'Preview ready';
+      }
+    }
+  ]
+});
+
+if (result.isConfirmed) console.log(result.value); // Ordered step results.</xmp></code></pre>
+              <p>The full feature, including styling and async control, is included in kmaterialize. Use the same SweetAlert2 setup as other Popup examples; no extra styles or initialization are needed.</p>
+              <table class="striped responsive-table">
+                <thead><tr><th>Option or context</th><th>Purpose</th></tr></thead>
+                <tbody>
+                  <tr><td><code>steps</code></td><td>A nonempty array of <code>{ title, description?, run }</code> objects.</td></tr>
+                  <tr><td><code>signal</code></td><td>Aborted when dismissed or replaced. Pass it to <code>fetch(url, { signal })</code> or check it inside longer work.</td></tr>
+                  <tr><td><code>results</code></td><td>A read-only snapshot of completed step results.</td></tr>
+                  <tr><td><code>setMessage(text)</code></td><td>Update the active step’s plain-text message.</td></tr>
+                  <tr><td><code>cancellable</code></td><td>Defaults to true. Set false to prevent cancellation during work; failures can still be dismissed.</td></tr>
+                  <tr><td><code>cancelButtonText / doneButtonText / retryButtonText</code></td><td>Customize action labels.</td></tr>
+                </tbody>
+              </table>
+              <p>Done confirms with all results. Cancellation stops further steps and signals the running function to abort; work that ignores the signal may continue in the background. Completed work is not rolled back. Make a failed step safe to retry if it writes data.</p>
+              <p>TypeScript types: <code>PopupStep</code>, <code>PopupStepContext</code>, and <code>PopupStepsOptions</code>. Step labels, descriptions, and error messages are rendered as plain text.</p>
+            </section>
+
             <div id="toast" class="section scrollspy">
               <h3 class="header">Toast mode</h3>
               <p>SweetAlert2’s toast mode provides a compact notification that closes automatically.</p>
@@ -210,6 +272,7 @@ await M.Popup.close();</xmp></code></pre>
                   <li><a href="#confirmation">Confirmation</a></li>
                   <li><a href="#inputs">Input prompts</a></li>
                   <li><a href="#async">Asynchronous actions</a></li>
+                  <li><a href="#stepper">Async stepper</a></li>
                   <li><a href="#toast">Toast mode</a></li>
                   <li><a href="#dragging">Draggable popup</a></li>
                   <li><a href="#options">Options and methods</a></li>

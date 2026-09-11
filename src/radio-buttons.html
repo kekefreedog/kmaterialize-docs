@@ -116,24 +116,7 @@
     &lt;input type=&quot;radio&quot; name=&quot;horizontal-priority&quot; value=&quot;urgent&quot; disabled&gt;
     &lt;span&gt;Urgent (unavailable)&lt;/span&gt;
   &lt;/label&gt;
-&lt;/div&gt;</code></pre><p>Add this CSS after Materialize. No JavaScript initialization is required.</p><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">// Arrange standard Materialize radio labels horizontally, wrapping on small screens.
-.radio-group-horizontal {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px 24px;
-  margin: 16px 0;
-  padding: 16px;
-  border: 1px solid var(--md-sys-color-outline-variant);
-  border-radius: 16px;
-  &gt; label { position: relative; padding-block: 8px; }
-  &gt; label &gt; input:focus-visible + span {
-    outline: 2px solid var(--md-sys-color-primary);
-    outline-offset: 4px;
-    border-radius: 4px;
-  }
-}
-</code></pre></div>
+&lt;/div&gt;</code></pre><p>The <code>radio-group-horizontal</code> layout is included in kmaterialize. No extra CSS or JavaScript initialization is required.</p></div>
             <div id="gap" class="section scrollspy">
               <h3 class="header">With Gap</h3>
               <p>
@@ -173,6 +156,5 @@
     </main>
     {{> footer }}
     <script type="module" src="/main.ts"></script>
-    <script type="module" src="/radio-buttons-demo.ts"></script>
   </body>
 </html>

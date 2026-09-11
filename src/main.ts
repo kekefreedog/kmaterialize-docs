@@ -1,4 +1,4 @@
-import { enableCardHandles } from 'kmaterialize';
+import { enableCardHandles, initNavbarScroll } from 'kmaterialize';
 import { config } from "../config.materialize";
 import "./style.scss";
 //import { argbFromHex, themeFromSourceColor } from "@material/material-color-utilities";
@@ -145,33 +145,9 @@ function initNavbarTabs() {
   }
 }
 
-// Keep horizontal-scroll edge fades honest: only show a fade when more
-// content exists in that direction.
-document.querySelectorAll<HTMLElement>(".navbar-scroll").forEach((navbar) => {
-  const row = navbar.querySelector<HTMLElement>(".nav-wrapper");
-  if (!row) return;
-  const leftFade = document.createElement("span");
-  const rightFade = document.createElement("span");
-  leftFade.className = "navbar-scroll-fade navbar-scroll-fade-left";
-  rightFade.className = "navbar-scroll-fade navbar-scroll-fade-right";
-  leftFade.setAttribute("aria-hidden", "true");
-  rightFade.setAttribute("aria-hidden", "true");
-  navbar.append(leftFade, rightFade);
-  const updateScrollEdges = () => {
-    const maxScroll = Math.max(0, row.scrollWidth - row.clientWidth);
-    const atStart = row.scrollLeft <= 1;
-    const atEnd = maxScroll <= 1 || row.scrollLeft >= maxScroll - 1;
-    navbar.classList.toggle("is-scroll-start", atStart);
-    navbar.classList.toggle("is-scroll-end", atEnd);
-    navbar.style.setProperty("--scroll-left-fade", atStart ? "0" : "1");
-    navbar.style.setProperty("--scroll-right-fade", atEnd ? "0" : "1");
-    leftFade.classList.toggle("is-hidden", atStart);
-    rightFade.classList.toggle("is-hidden", atEnd);
-  };
-  row.addEventListener("scroll", updateScrollEdges, { passive: true });
-  window.addEventListener("resize", updateScrollEdges);
-  updateScrollEdges();
-});
+// Overflow behavior belongs to kmaterialize; release listeners on Vite updates.
+const navbarScrollCleanups = Array.from(document.querySelectorAll<HTMLElement>(".navbar-scroll"), initNavbarScroll);
+if (import.meta.hot) import.meta.hot.dispose(() => navbarScrollCleanups.forEach(dispose => dispose()));
 
 document.addEventListener("DOMContentLoaded", () => {
   // The extended navbar tabs must be wired before the remaining page
@@ -501,7 +477,7 @@ document.addEventListener("DOMContentLoaded", () => {
   CharacterCounter.init(document.querySelectorAll("[maxlength]"), {});
 
   PasswordInput.init(document.querySelectorAll("input[data-password-toggle]"), {});
-  NumberInput.init(document.querySelectorAll('input[data-type="number"]'), {});
+  NumberInput.init(document.querySelectorAll('input[data-type="number"]:not([data-maskito])'), {});
   Autocomplete.init(document.querySelectorAll("input.autocomplete"), {
     minLength: 0,
     data: autocompleteDemoData,

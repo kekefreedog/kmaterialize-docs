@@ -113,3 +113,67 @@ bind("popup-draggable", async () => {
     confirmButtonText: "Done",
   });
 });
+
+// Simulated work for the demo; real tasks can pass signal directly to fetch.
+function stepperDelay(milliseconds: number, signal: AbortSignal): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const abort = () => {
+      window.clearTimeout(timer);
+      reject(new DOMException('Cancelled', 'AbortError'));
+    };
+    const timer = window.setTimeout(() => {
+      signal.removeEventListener('abort', abort);
+      resolve();
+    }, milliseconds);
+    if (signal.aborted) abort();
+    else signal.addEventListener('abort', abort, { once: true });
+  });
+}
+
+async function runStepper(simulateFailure = false) {
+  let attempts = 0;
+  const result = await Popup.steps<string>({
+    title: 'Prepare a preview',
+    description: 'Three async steps, with live progress. This demo does not upload any files.',
+    steps: [
+      {
+        title: 'Check assets',
+        description: 'Check that all required files are available.',
+        run: async ({ signal, setMessage }) => {
+          setMessage('Checking 12 source files…');
+          await stepperDelay(1000, signal);
+          setMessage('All 12 files are ready.');
+          return 'Assets checked';
+        },
+      },
+      {
+        title: 'Render preview',
+        description: 'Generate a preview from the checked assets.',
+        run: async ({ signal, results, setMessage }) => {
+          setMessage(`${results[0]}. Rendering preview…`);
+          await stepperDelay(1300, signal);
+          if (simulateFailure && attempts++ === 0) {
+            throw new Error('The render worker was unavailable. Retry to continue.');
+          }
+          setMessage('Preview rendered.');
+          return 'Preview rendered';
+        },
+      },
+      {
+        title: 'Package result',
+        description: 'Prepare the preview for review.',
+        run: async ({ signal, setMessage }) => {
+          await stepperDelay(900, signal);
+          setMessage('Ready for review.');
+          return 'Preview ready';
+        },
+      },
+    ],
+  });
+  report(result.isConfirmed
+    ? `Stepper finished: ${result.value?.join(' → ')}.`
+    : 'Stepper cancelled. Completed steps are not rolled back.');
+}
+
+bind('popup-stepper', () => runStepper());
+bind('popup-stepper-retry', () => runStepper(true));
