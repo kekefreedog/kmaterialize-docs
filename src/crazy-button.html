@@ -316,6 +316,7 @@ button.addEventListener('buttonaction', (event) =&gt; {
   console.log((event as CustomEvent).detail); // { action, pressed }
 });</code></pre>
 <p><code>Kmcomponent</code> is the CrazyPHP <code>Crazycomponent2</code> script renamed, including its property schema, typed conversion, batched rendering, light DOM projection, optional shadow root, <code>setHtmlAndCss</code>, <code>postRender</code>, and <code>onCleanup</code> APIs. Crazy button uses light DOM for the host environment's styles.</p>
+<p><code>color-primary</code> and <code>color-secondary</code> prefer Materialize palette names, including <code>gold</code>, <code>blue</code>, and <code>red</code>, over CSS named colors. Shades such as <code>blue lighten-2</code> are supported. Use explicit hex, RGB, or CSS variables when you need a custom color. Image-only buttons fill the control and follow its round or square shape.</p>
 <table class="striped responsive-table"><thead><tr><th>Attribute</th><th>Values / default</th></tr></thead><tbody>
 <tr><td>type</td><td>floating (default), extended, icon, fab, extended-fab, rail</td></tr>
 <tr><td>depth</td><td>flat (default), outlined, 1–5; variant takes precedence over the legacy style</td></tr>

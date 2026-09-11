@@ -7,6 +7,7 @@ const root = resolve(dirname(require.resolve('kmaterialize')), '../..');
 const types = readFileSync(resolve(root, 'dist/js/materialize.d.ts'), 'utf8');
 const required = ['CrazyLoading', 'CrazyButton', 'Kmcomponent', 'OrgChart', 'initMaterialButtons', 'initListChecklist', 'enableCardHandles'];
 const missing = required.filter(name => !new RegExp(`\\b${name}\\b`).test(types));
+if (!/static clickConfirm\(/.test(types)) missing.push('Popup.clickConfirm');
 for (const file of ['dist/js/tippy.mjs', 'dist/js/tippy.d.ts', 'sass/enhancement/spreadsheet.scss']) {
   if (!existsSync(resolve(root, file))) missing.push(file);
 }
