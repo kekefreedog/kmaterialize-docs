@@ -186,7 +186,7 @@ const milliseconds = maskitoParseTime(timeInput.value, { mode: 'HH:MM' });</xmp>
               <p><code>OtpInput</code> uses the same Maskito engine with individual Material slots. Try pasting <code>fx2048</code>: two letters, a fixed hyphen, and four digits. See the <a href="otp-input.html">OTP / PIN Input page</a> for configurable length, hidden PINs, grouping, and validation.</p>
               <div class="input-field outlined"><input id="mask-otp" type="text" data-otp class="no-autoinit" aria-describedby="mask-otp-help"><label for="mask-otp">Access code</label><span id="mask-otp-help" class="supporting-text">Pattern AA-####. Letters are converted to uppercase.</span></div>
               <p id="mask-otp-status" role="status">Enter two letters and four digits.</p>
-              <pre><code class="language-html"><xmp><div class="s12 m6 input-field outlined">
+              <pre><code class="language-html"><xmp><div class="input-field outlined">
   <input id="access-code" type="text" placeholder=" " data-otp
          data-otp-pattern="AA-####" aria-describedby="access-help">
   <label for="access-code">Access code</label>

@@ -20,7 +20,7 @@
 &lt;div class="divider-demo-item"&gt;Start inset&lt;/div&gt;
 &lt;hr class="divider divider-line divider-inset" /&gt;
 &lt;div class="divider-demo-item"&gt;Inset on both sides&lt;/div&gt;
-&lt;hr class="divider divider-line divider-middle" /&gt;</code></pre></section><section id="styles" class="section scrollspy"><h3>Line styles</h3><p>Combine emphasis, thickness, and line styles. Colors follow the current Material theme.</p><div class="divider-demo"><!-- Neutral emphasis. -->
+&lt;hr class="divider divider-line divider-middle" /&gt;</code></pre></section><section id="styles" class="section scrollspy"><h3>Line styles</h3><p>Combine emphasis, thickness, and line styles. Dashed and dotted lines use a stronger outline color and 1.5px thickness for visibility. Colors follow the current Material theme.</p><div class="divider-demo"><!-- Neutral emphasis. -->
 <hr class="divider divider-line divider-strong">
 <!-- Theme primary color. -->
 <hr class="divider divider-line divider-accent">
@@ -63,12 +63,12 @@
 <div class="divider divider-line divider-label divider-label-end">Earlier</div></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;div class="divider divider-line divider-label"&gt;Or continue with&lt;/div&gt;
 &lt;div class="divider divider-line divider-label divider-label-start"&gt;Today&lt;/div&gt;
 &lt;div class="divider divider-line divider-label divider-label-end"&gt;Earlier&lt;/div&gt;</code></pre></section><section id="customization" class="section scrollspy"><h3>Custom spacing</h3><p>Override CSS variables per divider. Use theme tokens to keep custom colors compatible with light and dark modes.</p><div class="divider-demo"><hr class="divider divider-line divider-middle"
-    style="--divider-inset: 32px; --divider-spacing: 24px; --divider-thickness: 2px; --divider-color: var(--md-sys-color-tertiary);"></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;hr
+    style="--divider-inset: 32px; --divider-spacing: 24px; --divider-thickness: 1.5px; --divider-color: var(--md-sys-color-tertiary);"></div><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;hr
   class="divider divider-line divider-middle"
   style="
     --divider-inset: 32px;
     --divider-spacing: 24px;
-    --divider-thickness: 2px;
+    --divider-thickness: 1.5px;
     --divider-color: var(--md-sys-color-tertiary);
   "
 /&gt;</code></pre></section><section id="setup" class="section scrollspy"><h3>Setup and accessibility</h3><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">// Import once, after your Materialize stylesheet. No JavaScript initialization.
@@ -102,6 +102,11 @@
   }
   &amp;.divider-middle {
     margin-inline: var(--divider-inset);
+  }
+  &amp;.divider-dashed,
+  &amp;.divider-dotted {
+    --divider-color: var(--md-sys-color-outline);
+    --divider-thickness: 1.5px;
   }
   &amp;.divider-strong {
     --divider-color: var(--md-sys-color-outline);

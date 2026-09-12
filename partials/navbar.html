@@ -5,20 +5,17 @@
   <div class="navbar-fixed">
     <nav class="navbar appbar-bordered docs-appbar">
       <div class="nav-wrapper">
+        <button type="button" class="sidenav-trigger" data-target="nav-mobile" aria-controls="nav-mobile" aria-expanded="false" aria-label="Open navigation"><i class="material-icons" aria-hidden="true">menu</i></button>
         <a class="brand-logo" href="/">
           <img class="brand-logo-image" src="images/materialize.svg" alt="" />
           <span class="truncate" title="{{page.name}}">{{page.name}}</span>
         </a>
-        <button type="button" class="sidenav-trigger" data-target="nav-mobile" aria-controls="nav-mobile" aria-expanded="false" aria-label="Open navigation"><i class="material-icons" aria-hidden="true">menu</i></button>
         <ul class="ml-auto">
           <li class="header-palette">
             <input type="color" id="color-picker" data-color-picker="pickr" data-color-theme="nano" data-color-opacity="false" value="#FFD700" aria-label="Page palette" />
             <a id="palette-trigger" href="#" aria-label="Change page palette">
               <i class="material-icons">palette</i>
             </a>
-          </li>
-          <li>
-            <a href="#paletteSelectorModal" aria-label="Font and theme export settings" onclick="paletteSelectorModal.showModal(); return false;"><i class="material-icons">tune</i></a>
           </li>
           <li>
             <a id="theme-switch" href="#">
@@ -45,7 +42,7 @@
     </li>
 
     <li class="search">
-      <div class="s12 input-field outlined">
+      <div class="input-field outlined">
         <input class="search-docs" id="search" type="text" placeholder=" " autocomplete="off" />
         <label for="search">Search</label>
       </div>

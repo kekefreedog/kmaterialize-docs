@@ -45,7 +45,7 @@ pushPinDemoNavElems.forEach(navElem => {
             <div id="initialization" class="section scrollspy">
               <h3 class="header">Initialization</h3>
               <p>Here is a sample initialization of pushpin. Take a look at what the options are and customize them to your needs.</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
   document.addEventListener('DOMContentLoaded', function() {
     const elems = document.querySelectorAll('.pushpin');
     const instances = Pushpin.init(elems, {
@@ -100,14 +100,14 @@ pushPinDemoNavElems.forEach(navElem => {
               <h3 class="header">Methods</h3>
               <blockquote>
                 <p>All the methods are called on the plugin instance. You can get the plugin instance like this:</p>
-                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
+                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
                   const instance = Pushpin.getInstance(elem);
         </code></pre>
               </blockquote>
 
               <h5 class="method-header">.destroy();</h5>
               <p>Destroy plugin instance and teardown</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript col s12 copiedText">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
 instance.destroy();
       </code></pre>
             </div>
@@ -149,7 +149,7 @@ instance.destroy();
                 A pushpinned element has 3 states. One above and below the scrolling threshold, and the pinned state where the element becomes fixed. Because pushpin changes
                 positioning, chances are your element will look different when the states change. Use these css classes to correctly style your 3 states.
               </p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-css col s12 copiedText">
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-css copiedText">
   // Class for when element is above threshold
   .pin-top {
     position: relative;
