@@ -438,7 +438,7 @@ document.addEventListener("DOMContentLoaded", () => {
     accordion: false,
   });
 
-  Dropdown.init(document.querySelectorAll(".dropdown-trigger:not(.no-autoinit)"), {
+  Dropdown.init(document.querySelectorAll(".dropdown-trigger:not(.no-autoinit):not(.select-dropdown)"), {
     container: document.body,
   });
   Dropdown.init(document.querySelector("#dropdown-demo-left"), {

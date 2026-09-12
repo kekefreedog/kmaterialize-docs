@@ -11,6 +11,28 @@
       <div class="container">
         <div class="row">
           <div class="col s12 m8 offset-m1 xl7 offset-xl1">
+            <section id="outlined-surfaces" class="section scrollspy">
+              <h3>Outlined fields on custom backgrounds</h3>
+              <p>The outline leaves a real gap around the floating label. Your existing input markup works on solid colors and gradients without setting a label background.</p>
+              <div class="row">
+                <div class="s12 m6 p-4" style="background: #30393d; color: #fff; --md-sys-color-on-surface-variant: #ddd; --md-sys-color-on-background: #fff;">
+                  <div class="input-field outlined">
+                    <input id="notch-solid" type="text" placeholder=" " value="Your next great idea">
+                    <label for="notch-solid">Email subject</label>
+                  </div>
+                </div>
+                <div class="s12 m6 p-4" style="background: linear-gradient(110deg, #263238, #546e7a); color: #fff; --md-sys-color-on-surface-variant: #ddd; --md-sys-color-on-background: #fff;">
+                  <div class="input-field outlined">
+                    <input id="notch-gradient" type="text" placeholder=" ">
+                    <label for="notch-gradient">Focus to open the notch</label>
+                  </div>
+                </div>
+              </div>
+              <pre><code class="language-html"><xmp><div class="input-field outlined">
+  <input id="subject" type="text" placeholder=" " value="Your next great idea">
+  <label for="subject">Email subject</label>
+</div></xmp></code></pre>
+            </section>
             <div id="input" class="section scrollspy">
               <p class="caption">
                 Forms are the standard way to receive data from the user. The transitions and smoothness of these elements are very important because of the inherent user
