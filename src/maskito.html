@@ -181,6 +181,32 @@ const milliseconds = maskitoParseTime(timeInput.value, { mode: 'HH:MM' });</xmp>
                 <p>Masks guide editing; use <code>required</code>, <code>pattern</code>, or application validation to require a complete value. The project-code demo uses <code>pattern="[A-Z]{2}-[0-9]{4}"</code>. Native disabled and read-only states still apply.</p>
               </section>
             </form>
+            <section id="otp" class="section scrollspy">
+              <h3 class="header">OTP / PIN slots with a mask</h3>
+              <p><code>OtpInput</code> uses the same Maskito engine with individual Material slots. Try pasting <code>fx2048</code>: two letters, a fixed hyphen, and four digits. See the <a href="otp-input.html">OTP / PIN Input page</a> for configurable length, hidden PINs, grouping, and validation.</p>
+              <div class="input-field outlined"><input id="mask-otp" type="text" data-otp class="no-autoinit" aria-describedby="mask-otp-help"><label for="mask-otp">Access code</label><span id="mask-otp-help" class="supporting-text">Pattern AA-####. Letters are converted to uppercase.</span></div>
+              <p id="mask-otp-status" role="status">Enter two letters and four digits.</p>
+              <pre><code class="language-html"><xmp><div class="s12 m6 input-field outlined">
+  <input id="access-code" type="text" placeholder=" " data-otp
+         data-otp-pattern="AA-####" aria-describedby="access-help">
+  <label for="access-code">Access code</label>
+  <span id="access-help" class="supporting-text">Two letters and four digits.</span>
+</div></xmp></code></pre>
+              <pre><code class="language-typescript"><xmp>import { OtpInput } from 'kmaterialize';
+const code = OtpInput.init(input, {
+  pattern: 'AA-####',
+  maskOptions: {
+    postprocessors: [({ value, selection }) => ({
+      value: value.toUpperCase(), selection
+    })]
+  }
+});
+await code.ready;
+await code.setValue('fx2048');
+code.getValue();         // "FX-2048"
+code.getUnmaskedValue(); // "FX2048"</xmp></code></pre>
+              <p>For digits only, use <code>{ length: 6 }</code>. Do not attach a second <code>MaskitoInput</code> to an OTP field; <code>OtpInput</code> manages its mask. <code>AutoInit</code> keeps the two initializers separate.</p>
+            </section>
             <section id="setup" class="section scrollspy">
               <h3 class="header">Setup and lifecycle</h3>
               <p>Maskito reuses the existing Material text-field styles. No extra stylesheet is required.</p>
@@ -212,7 +238,7 @@ field.destroy(); // Removes mask listeners; keeps the input and its value.</xmp>
               <li><a href="#overview">Overview</a></li><li><a href="#patterns">Patterns</a></li>
               <li><a href="#numbers">Numbers / currency</a></li><li><a href="#dates">Date / time</a></li>
               <li><a href="#overwrite">Overwrite modes</a></li><li><a href="#custom">Custom processing</a></li>
-              <li><a href="#values">Form values</a></li><li><a href="#setup">Setup / lifecycle</a></li>
+              <li><a href="#values">Form values</a></li><li><a href="#otp">OTP / PIN slots</a></li><li><a href="#setup">Setup / lifecycle</a></li>
             </ul></div>
           </div>
         </div>

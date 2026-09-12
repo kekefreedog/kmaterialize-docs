@@ -212,10 +212,12 @@ export default ({ command }) => ({
         currentRoute = pagePath;
         const searchUrl = pagePath.substring(1);
         const index = config.pages.find((page) => page.id === "index");
-        const page = config.pages.find((page) => page.url === searchUrl);
-        // Use default Values if they are not set
-        if (page && !page.description) page.description = index.description;
-        return { page, config };
+        const configuredPage = config.pages.find((page) => page.url === searchUrl);
+        const page = {
+          ...(configuredPage || index),
+          description: configuredPage?.description || index.description,
+        };
+        return { page, config, currentYear: new Date().getFullYear() };
       },
       helpers: {
         getmenu: (item) => getMenuItem(item),

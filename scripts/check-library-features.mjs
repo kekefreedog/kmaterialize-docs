@@ -5,12 +5,12 @@ import { dirname, resolve } from 'node:path';
 const require = createRequire(import.meta.url);
 const root = resolve(dirname(require.resolve('kmaterialize')), '../..');
 const types = readFileSync(resolve(root, 'dist/js/materialize.d.ts'), 'utf8');
-const required = ['CrazyLoading', 'CrazyButton', 'Kmcomponent', 'OrgChart', 'initMaterialButtons', 'initListChecklist', 'enableCardHandles', 'RichTextarea', 'MaskitoInput', 'initNavbarScroll'];
+const required = ['CrazyLoading', 'CrazyButton', 'Kmcomponent', 'OrgChart', 'initMaterialButtons', 'initListChecklist', 'enableCardHandles', 'RichTextarea', 'OtpInput', 'MaskitoInput', 'initNavbarScroll'];
 const missing = required.filter(name => !new RegExp(`\\b${name}\\b`).test(types));
 if (!/static clickConfirm\(/.test(types)) missing.push('Popup.clickConfirm');
 if (!/static steps[<(]/.test(types)) missing.push('Popup.steps');
 const css = readFileSync(resolve(root, 'dist/css/materialize.css'), 'utf8');
-for (const selector of ['.switch-with-icon', '.tabs-fill', '.radio-group-horizontal', '.m3-rail', '.navbar-scroll', '.navbar-search-toolbar', '.rich-textarea']) {
+for (const selector of ['.switch-with-icon', '.tabs-fill', '.radio-group-horizontal', '.m3-rail', '.navbar-scroll', '.navbar-search-toolbar', '.rich-textarea', '.otp-input-slot']) {
   if (!css.includes(selector)) missing.push(selector);
 }
 for (const file of ['dist/js/tippy.mjs', 'dist/js/tippy.d.ts', 'sass/enhancement/spreadsheet.scss']) {

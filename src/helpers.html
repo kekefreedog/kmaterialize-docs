@@ -880,55 +880,89 @@
               <h3 class="header">Cursors</h3>
               <p>
                 One utility class per CSS cursor keyword, named <code class="language-html">cursor-*</code>. Each also has an
-                <code class="language-html">-important</code> variant if you need to override a more specific rule. Hover over a chip below to try it.
+                <code class="language-html">-important</code> variant if you need to override a more specific rule. The buttons below use the <code class="language-html">-important</code> variant to override the button’s default cursor. Hover over a button to try it. Click it, or focus it and press Enter or Space, to copy its class name.
               </p>
 
-              <div class="chips" style="display: flex; flex-wrap: wrap; gap: .5rem;">
-                <div class="chip cursor-pointer">pointer</div>
-                <div class="chip cursor-grab">grab</div>
-                <div class="chip cursor-move">move</div>
-                <div class="chip cursor-not-allowed">not-allowed</div>
-                <div class="chip cursor-crosshair">crosshair</div>
-                <div class="chip cursor-text">text</div>
-                <div class="chip cursor-help">help</div>
-                <div class="chip cursor-wait">wait</div>
-                <div class="chip cursor-zoom-in">zoom-in</div>
-                <div class="chip cursor-zoom-out">zoom-out</div>
-                <div class="chip cursor-copy">copy</div>
-                <div class="chip cursor-cell">cell</div>
-                <div class="chip cursor-col-resize">col-resize</div>
-                <div class="chip cursor-row-resize">row-resize</div>
-                <div class="chip cursor-all-scroll">all-scroll</div>
-                <div class="chip cursor-none">none</div>
+              <div id="cursor-examples" role="group" aria-label="Copy a cursor class" style="display: flex; flex-wrap: wrap; gap: .5rem;">
+                <button type="button" class="btn outlined cursor-alias-important" data-copy-cursor="cursor-alias-important" aria-label="Copy cursor-alias-important">alias</button>
+                <button type="button" class="btn outlined cursor-all-scroll-important" data-copy-cursor="cursor-all-scroll-important" aria-label="Copy cursor-all-scroll-important">all-scroll</button>
+                <button type="button" class="btn outlined cursor-auto-important" data-copy-cursor="cursor-auto-important" aria-label="Copy cursor-auto-important">auto</button>
+                <button type="button" class="btn outlined cursor-cell-important" data-copy-cursor="cursor-cell-important" aria-label="Copy cursor-cell-important">cell</button>
+                <button type="button" class="btn outlined cursor-col-resize-important" data-copy-cursor="cursor-col-resize-important" aria-label="Copy cursor-col-resize-important">col-resize</button>
+                <button type="button" class="btn outlined cursor-context-menu-important" data-copy-cursor="cursor-context-menu-important" aria-label="Copy cursor-context-menu-important">context-menu</button>
+                <button type="button" class="btn outlined cursor-copy-important" data-copy-cursor="cursor-copy-important" aria-label="Copy cursor-copy-important">copy</button>
+                <button type="button" class="btn outlined cursor-crosshair-important" data-copy-cursor="cursor-crosshair-important" aria-label="Copy cursor-crosshair-important">crosshair</button>
+                <button type="button" class="btn outlined cursor-default-important" data-copy-cursor="cursor-default-important" aria-label="Copy cursor-default-important">default</button>
+                <button type="button" class="btn outlined cursor-e-resize-important" data-copy-cursor="cursor-e-resize-important" aria-label="Copy cursor-e-resize-important">e-resize</button>
+                <button type="button" class="btn outlined cursor-ew-resize-important" data-copy-cursor="cursor-ew-resize-important" aria-label="Copy cursor-ew-resize-important">ew-resize</button>
+                <button type="button" class="btn outlined cursor-grab-important" data-copy-cursor="cursor-grab-important" aria-label="Copy cursor-grab-important">grab</button>
+                <button type="button" class="btn outlined cursor-grabbing-important" data-copy-cursor="cursor-grabbing-important" aria-label="Copy cursor-grabbing-important">grabbing</button>
+                <button type="button" class="btn outlined cursor-help-important" data-copy-cursor="cursor-help-important" aria-label="Copy cursor-help-important">help</button>
+                <button type="button" class="btn outlined cursor-move-important" data-copy-cursor="cursor-move-important" aria-label="Copy cursor-move-important">move</button>
+                <button type="button" class="btn outlined cursor-n-resize-important" data-copy-cursor="cursor-n-resize-important" aria-label="Copy cursor-n-resize-important">n-resize</button>
+                <button type="button" class="btn outlined cursor-ne-resize-important" data-copy-cursor="cursor-ne-resize-important" aria-label="Copy cursor-ne-resize-important">ne-resize</button>
+                <button type="button" class="btn outlined cursor-nesw-resize-important" data-copy-cursor="cursor-nesw-resize-important" aria-label="Copy cursor-nesw-resize-important">nesw-resize</button>
+                <button type="button" class="btn outlined cursor-ns-resize-important" data-copy-cursor="cursor-ns-resize-important" aria-label="Copy cursor-ns-resize-important">ns-resize</button>
+                <button type="button" class="btn outlined cursor-nw-resize-important" data-copy-cursor="cursor-nw-resize-important" aria-label="Copy cursor-nw-resize-important">nw-resize</button>
+                <button type="button" class="btn outlined cursor-nwse-resize-important" data-copy-cursor="cursor-nwse-resize-important" aria-label="Copy cursor-nwse-resize-important">nwse-resize</button>
+                <button type="button" class="btn outlined cursor-no-drop-important" data-copy-cursor="cursor-no-drop-important" aria-label="Copy cursor-no-drop-important">no-drop</button>
+                <button type="button" class="btn outlined cursor-none-important" data-copy-cursor="cursor-none-important" aria-label="Copy cursor-none-important">none</button>
+                <button type="button" class="btn outlined cursor-not-allowed-important" data-copy-cursor="cursor-not-allowed-important" aria-label="Copy cursor-not-allowed-important">not-allowed</button>
+                <button type="button" class="btn outlined cursor-pointer-important" data-copy-cursor="cursor-pointer-important" aria-label="Copy cursor-pointer-important">pointer</button>
+                <button type="button" class="btn outlined cursor-progress-important" data-copy-cursor="cursor-progress-important" aria-label="Copy cursor-progress-important">progress</button>
+                <button type="button" class="btn outlined cursor-row-resize-important" data-copy-cursor="cursor-row-resize-important" aria-label="Copy cursor-row-resize-important">row-resize</button>
+                <button type="button" class="btn outlined cursor-s-resize-important" data-copy-cursor="cursor-s-resize-important" aria-label="Copy cursor-s-resize-important">s-resize</button>
+                <button type="button" class="btn outlined cursor-se-resize-important" data-copy-cursor="cursor-se-resize-important" aria-label="Copy cursor-se-resize-important">se-resize</button>
+                <button type="button" class="btn outlined cursor-sw-resize-important" data-copy-cursor="cursor-sw-resize-important" aria-label="Copy cursor-sw-resize-important">sw-resize</button>
+                <button type="button" class="btn outlined cursor-text-important" data-copy-cursor="cursor-text-important" aria-label="Copy cursor-text-important">text</button>
+                <button type="button" class="btn outlined cursor-w-resize-important" data-copy-cursor="cursor-w-resize-important" aria-label="Copy cursor-w-resize-important">w-resize</button>
+                <button type="button" class="btn outlined cursor-wait-important" data-copy-cursor="cursor-wait-important" aria-label="Copy cursor-wait-important">wait</button>
+                <button type="button" class="btn outlined cursor-zoom-in-important" data-copy-cursor="cursor-zoom-in-important" aria-label="Copy cursor-zoom-in-important">zoom-in</button>
+                <button type="button" class="btn outlined cursor-zoom-out-important" data-copy-cursor="cursor-zoom-out-important" aria-label="Copy cursor-zoom-out-important">zoom-out</button>
               </div>
 
+              <p id="cursor-copy-status" role="status" aria-live="polite" style="min-height: 2.5em;">Choose a cursor to copy its class name.</p>
+
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="chip cursor-pointer">pointer</div>
-<div class="chip cursor-grab">grab</div>
-<div class="chip cursor-move">move</div>
-<div class="chip cursor-not-allowed">not-allowed</div>
-<div class="chip cursor-crosshair">crosshair</div>
-<div class="chip cursor-text">text</div>
-<div class="chip cursor-help">help</div>
-<div class="chip cursor-wait">wait</div>
-<div class="chip cursor-zoom-in">zoom-in</div>
-<div class="chip cursor-zoom-out">zoom-out</div>
-<div class="chip cursor-copy">copy</div>
-<div class="chip cursor-cell">cell</div>
-<div class="chip cursor-col-resize">col-resize</div>
-<div class="chip cursor-row-resize">row-resize</div>
-<div class="chip cursor-all-scroll">all-scroll</div>
-<div class="chip cursor-none">none</div></xmp>
+<xmp><button type="button" class="btn outlined cursor-alias-important">alias</button>
+<button type="button" class="btn outlined cursor-all-scroll-important">all-scroll</button>
+<button type="button" class="btn outlined cursor-auto-important">auto</button>
+<button type="button" class="btn outlined cursor-cell-important">cell</button>
+<button type="button" class="btn outlined cursor-col-resize-important">col-resize</button>
+<button type="button" class="btn outlined cursor-context-menu-important">context-menu</button>
+<button type="button" class="btn outlined cursor-copy-important">copy</button>
+<button type="button" class="btn outlined cursor-crosshair-important">crosshair</button>
+<button type="button" class="btn outlined cursor-default-important">default</button>
+<button type="button" class="btn outlined cursor-e-resize-important">e-resize</button>
+<button type="button" class="btn outlined cursor-ew-resize-important">ew-resize</button>
+<button type="button" class="btn outlined cursor-grab-important">grab</button>
+<button type="button" class="btn outlined cursor-grabbing-important">grabbing</button>
+<button type="button" class="btn outlined cursor-help-important">help</button>
+<button type="button" class="btn outlined cursor-move-important">move</button>
+<button type="button" class="btn outlined cursor-n-resize-important">n-resize</button>
+<button type="button" class="btn outlined cursor-ne-resize-important">ne-resize</button>
+<button type="button" class="btn outlined cursor-nesw-resize-important">nesw-resize</button>
+<button type="button" class="btn outlined cursor-ns-resize-important">ns-resize</button>
+<button type="button" class="btn outlined cursor-nw-resize-important">nw-resize</button>
+<button type="button" class="btn outlined cursor-nwse-resize-important">nwse-resize</button>
+<button type="button" class="btn outlined cursor-no-drop-important">no-drop</button>
+<button type="button" class="btn outlined cursor-none-important">none</button>
+<button type="button" class="btn outlined cursor-not-allowed-important">not-allowed</button>
+<button type="button" class="btn outlined cursor-pointer-important">pointer</button>
+<button type="button" class="btn outlined cursor-progress-important">progress</button>
+<button type="button" class="btn outlined cursor-row-resize-important">row-resize</button>
+<button type="button" class="btn outlined cursor-s-resize-important">s-resize</button>
+<button type="button" class="btn outlined cursor-se-resize-important">se-resize</button>
+<button type="button" class="btn outlined cursor-sw-resize-important">sw-resize</button>
+<button type="button" class="btn outlined cursor-text-important">text</button>
+<button type="button" class="btn outlined cursor-w-resize-important">w-resize</button>
+<button type="button" class="btn outlined cursor-wait-important">wait</button>
+<button type="button" class="btn outlined cursor-zoom-in-important">zoom-in</button>
+<button type="button" class="btn outlined cursor-zoom-out-important">zoom-out</button></xmp>
         </code></pre>
 
               <p>
-                Every other CSS cursor keyword is also available (<code class="language-html">alias</code>, <code class="language-html">auto</code>,
-                <code class="language-html">context-menu</code>, <code class="language-html">default</code>, <code class="language-html">e-resize</code>,
-                <code class="language-html">ew-resize</code>, <code class="language-html">grabbing</code>, <code class="language-html">n-resize</code>,
-                <code class="language-html">ne-resize</code>, <code class="language-html">nesw-resize</code>, <code class="language-html">ns-resize</code>,
-                <code class="language-html">nw-resize</code>, <code class="language-html">nwse-resize</code>, <code class="language-html">no-drop</code>,
-                <code class="language-html">progress</code>, <code class="language-html">s-resize</code>, <code class="language-html">se-resize</code>,
-                <code class="language-html">sw-resize</code>, <code class="language-html">w-resize</code>), each as
+                All 35 cursor keywords supported by kmaterialize are shown above. Each is available as
                 <code class="language-html">cursor-*</code> and <code class="language-html">cursor-*-important</code>.
               </p>
             </div>
@@ -1296,5 +1330,6 @@
     </main>
     {{> footer }}
     <script type="module" src="/main.ts"></script>
+    <script type="module" src="/cursors-demo.ts"></script>
   </body>
 </html>

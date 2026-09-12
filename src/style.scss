@@ -254,18 +254,49 @@ header .navbar .nav-wrapper > ul.ml-auto {
   padding-right: 1rem;
 }
 
-header .docs-appbar {
+// Keep the docs header's foreground paired with its actual surface color.
+header .navbar.docs-appbar {
   border-radius: 0;
-  background: var(--md-sys-color-primary);
-  color: var(--md-sys-color-on-primary);
+  background: var(--md-sys-color-surface-variant);
+  color: var(--md-sys-color-on-surface);
+
+  > .nav-wrapper {
+    background: var(--md-sys-color-surface-variant);
+    overflow: hidden;
+  }
+  .brand-logo {
+    color: var(--md-sys-color-on-surface);
+    flex: 1 1 0;
+    min-width: 0;
+    line-height: 1.2;
+    > .brand-logo-image { flex-shrink: 0; }
+    > .truncate { min-width: 0; }
+  }
+  .sidenav-trigger {
+    flex: 0 0 40px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    &:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+  }
 }
 
-header .docs-appbar .nav-wrapper {
-  background: var(--md-sys-color-primary);
+@media #{$medium-and-down} {
+  header .navbar.docs-appbar > .nav-wrapper { gap: 8px; }
+  header .navbar.docs-appbar .nav-wrapper > ul.ml-auto {
+    gap: 8px;
+    padding: 0;
+  }
 }
-
-header .docs-appbar :is(.brand-logo, ul > li > a) {
-  color: var(--md-sys-color-on-primary);
+@media #{$small-and-down} {
+  header .navbar.docs-appbar > .nav-wrapper { gap: 4px; }
+  header .navbar.docs-appbar .brand-logo {
+    font-size: 20px;
+    > .brand-logo-image { display: none; }
+  }
+  header .navbar.docs-appbar .nav-wrapper > ul.ml-auto { gap: 0; }
 }
 
 /* The branded demo's CTA keeps its icon in the button's flex row. This
@@ -639,4 +670,36 @@ ul.table-of-contents {
     pointer-events: none;
     .pcr-button { width: 100%; height: 100%; opacity: 0; }
   }
+}
+
+// A fixed header needs an explicit width beside the desktop sidebar.
+@media only screen and (min-width: 993px) {
+  header .navbar.docs-appbar { width: calc(100% - 300px); }
+  body.docs-navigation-collapsed {
+    > header, > main, > footer { padding-left: 0; }
+    header .navbar.docs-appbar { width: 100%; }
+  }
+}
+
+// Copyright credits are separate lines; names remain inline within each line.
+body > .page-footer .docs-copyright {
+  display: block;
+  overflow: visible;
+  min-height: 0;
+  line-height: 1.5;
+  > div { display: block; margin-block: 4px; }
+  a { display: inline; min-height: 0; padding: 0; }
+  > a { display: inline-block; margin-top: 8px; }
+}
+
+@media only screen and (min-width: 993px) {
+  body > header, body > main, body > footer {
+    transition: padding-left 240ms cubic-bezier(.2, 0, 0, 1);
+  }
+  header .navbar.docs-appbar { transition: width 240ms cubic-bezier(.2, 0, 0, 1); }
+  header #nav-mobile { transition: transform 240ms cubic-bezier(.2, 0, 0, 1) !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body > header, body > main, body > footer,
+  header .navbar.docs-appbar, header #nav-mobile { transition: none !important; }
 }

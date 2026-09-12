@@ -1,4 +1,4 @@
-import { MaskitoInput } from 'kmaterialize';
+import { MaskitoInput, OtpInput } from 'kmaterialize';
 import { maskitoParseDate, maskitoParseNumber, maskitoParseTime } from '@maskito/kit';
 
 const input = (id: string) => document.querySelector<HTMLInputElement>(`#${id}`)!;
@@ -46,3 +46,13 @@ form.addEventListener('submit', event => {
 });
 form.addEventListener('reset', () => { status.textContent = 'Default values restored.'; });
 if (import.meta.hot) import.meta.hot.dispose(() => Object.values(fields).forEach(field => field.destroy()));
+
+const otp = OtpInput.init(input('mask-otp'), {
+  pattern: 'AA-####',
+  maskOptions: { postprocessors: [({ value, selection }) => ({ value: value.toUpperCase(), selection })] },
+  onComplete: (value, field) => {
+    document.querySelector('#mask-otp-status')!.textContent = `Formatted: ${value} · Editable characters: ${field.getUnmaskedValue()}`;
+  }
+});
+otp.ready.catch(reportError);
+if (import.meta.hot) import.meta.hot.dispose(() => otp.destroy());

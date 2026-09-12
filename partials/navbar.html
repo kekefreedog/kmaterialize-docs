@@ -4,12 +4,12 @@
   <!-- Top Nav -->
   <div class="navbar-fixed">
     <nav class="navbar appbar-bordered docs-appbar">
-      <div class="nav-wrapper primary">
+      <div class="nav-wrapper">
         <a class="brand-logo" href="/">
           <img class="brand-logo-image" src="images/materialize.svg" alt="" />
-          <span>{{page.name}}</span>
+          <span class="truncate" title="{{page.name}}">{{page.name}}</span>
         </a>
-        <a class="sidenav-trigger" href="#" data-target="nav-mobile"><i class="material-icons">menu</i></a>
+        <button type="button" class="sidenav-trigger" data-target="nav-mobile" aria-controls="nav-mobile" aria-expanded="false" aria-label="Open navigation"><i class="material-icons" aria-hidden="true">menu</i></button>
         <ul class="ml-auto">
           <li class="header-palette">
             <input type="color" id="color-picker" data-color-picker="pickr" data-color-theme="nano" data-color-opacity="false" value="#FFD700" aria-label="Page palette" />

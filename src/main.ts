@@ -1,3 +1,4 @@
+import { initDocsNavigation } from './docs-navigation';
 import { enableCardHandles, initNavbarScroll } from 'kmaterialize';
 import { config } from "../config.materialize";
 import "./style.scss";
@@ -43,6 +44,11 @@ import {
 // demonstrating the public API - expose the same namespace globally so
 // those actually work, matching what the CDN/IIFE build provides.
 (window as any).M = M;
+
+// Keep the build-time/no-script footer fallback current between deployments.
+for (const year of document.querySelectorAll<HTMLElement>('[data-current-year]')) {
+  year.textContent = String(new Date().getFullYear());
+}
 
 // Apply the saved/default theme as soon as the module runs. Waiting until
 // DOMContentLoaded leaves the navbar and page surface painted with the
@@ -468,7 +474,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   Tooltip.init(document.querySelectorAll(".tooltipped"), {});
 
-  Sidenav.init(document.querySelectorAll(".sidenav"), {});
+  Sidenav.init(document.querySelectorAll(".sidenav:not(#nav-mobile)"), {});
+  const disposeDocsNavigation = initDocsNavigation();
+  if (import.meta.hot) import.meta.hot.dispose(disposeDocsNavigation);
 
   const tts = TapTarget.init(document.querySelectorAll(".tap-target"), {});
   document.querySelector("#open-taptarget")?.addEventListener("click", () => tts[0].open());
@@ -477,7 +485,7 @@ document.addEventListener("DOMContentLoaded", () => {
   CharacterCounter.init(document.querySelectorAll("[maxlength]"), {});
 
   PasswordInput.init(document.querySelectorAll("input[data-password-toggle]"), {});
-  NumberInput.init(document.querySelectorAll('input[data-type="number"]:not([data-maskito])'), {});
+  NumberInput.init(document.querySelectorAll('input[data-type="number"]:not([data-otp]):not([data-maskito])'), {});
   Autocomplete.init(document.querySelectorAll("input.autocomplete"), {
     minLength: 0,
     data: autocompleteDemoData,

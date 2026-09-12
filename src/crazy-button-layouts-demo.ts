@@ -13,7 +13,7 @@ const descriptions: Record<string, string> = {
   Settings: 'Manage workspace preferences and administration.',
 };
 // Demonstration routing only; rendering, tooltips, and activation come from CrazyButton.
-for (const preview of document.querySelectorAll<HTMLElement>('.rodeo-nav-preview')) {
+for (const preview of document.querySelectorAll<HTMLElement>('.workspace-nav-preview')) {
   preview.addEventListener('buttonaction', event => {
     const selected = event.target as CrazyButton;
     if (!selected.matches('crazy-button[data-redirect-name]')) return;
@@ -22,8 +22,8 @@ for (const preview of document.querySelectorAll<HTMLElement>('.rodeo-nav-preview
       if (button === selected) button.setAttribute('aria-current', 'page');
       else button.removeAttribute('aria-current');
     });
-    preview.querySelector('[data-rodeo-title]')!.textContent = String(selected.getProperty('label'));
-    preview.querySelector('[data-rodeo-description]')!.textContent = descriptions[destination];
+    preview.querySelector('[data-workspace-title]')!.textContent = String(selected.getProperty('label'));
+    preview.querySelector('[data-workspace-description]')!.textContent = descriptions[destination];
     preview.querySelector('[data-crazy-button-status]')!.textContent = `${selected.getProperty('label')} selected.`;
   });
 }
