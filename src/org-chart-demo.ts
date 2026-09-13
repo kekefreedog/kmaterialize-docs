@@ -1,3 +1,4 @@
+import type { ChartPrintOptions } from 'kmaterialize';
 import { OrgChart } from 'kmaterialize';
 import type { OrgChartData } from 'kmaterialize';
 
@@ -8,8 +9,8 @@ const initial: OrgChartData = {
     { id: "engineering", name: "Engineering", x: 480, y: 330 },
   ],
   people: [
-    { id: "alex", teamId: "leadership", name: "Alex Morgan", role: "Creative director" },
-    { id: "sam", teamId: "leadership", name: "Sam Rivera", role: "Producer" },
+    { id: "alex", teamId: "leadership", name: "Alex Morgan", role: "Creative director", avatarText: "CD" },
+    { id: "sam", teamId: "leadership", name: "Sam Rivera", role: "Producer", avatarImage: "images/materialize.svg", avatarFit: "contain" },
     { id: "jules", teamId: "design", name: "Jules Chen", role: "Design lead" },
     { id: "maya", teamId: "design", name: "Maya Patel", role: "Product designer", accent: "var(--md-sys-color-tertiary)", accentPosition: "left" },
     { id: "noah", teamId: "engineering", name: "Noah Kim", role: "Engineering lead", color: "var(--md-sys-color-primary)" },
@@ -154,7 +155,11 @@ pdfThemeButton.addEventListener('click', () => {
   pdfThemeButton.title = `Switch PDF export to ${pdfTheme === 'light' ? 'dark' : 'light'} mode`;
 });
 document.querySelector('#org-chart-export-pdf')!.addEventListener('click', () => {
-  chart.exportPdf('People & teams', { theme: pdfTheme }).catch(reason => {
+  chart.exportPdf('People & teams', {
+    theme: pdfTheme,
+    format: document.querySelector<HTMLSelectElement>('#org-chart-pdf-format')!.value as ChartPrintOptions['format'],
+    orientation: document.querySelector<HTMLSelectElement>('#org-chart-pdf-orientation')!.value as ChartPrintOptions['orientation'],
+  }).catch(reason => {
     status.textContent = reason instanceof Error ? reason.message : 'Could not open the print preview.';
   });
 });

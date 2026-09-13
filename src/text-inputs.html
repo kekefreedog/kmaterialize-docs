@@ -11,6 +11,31 @@
       <div class="container">
         <div class="row">
           <div class="col s12 m8 offset-m1 xl7 offset-xl1">
+            <section id="copy-button" class="section scrollspy">
+              <h3>Copy button</h3>
+              <p>Add a button with <code>data-copy-target</code> to copy an input's current value. The button appears only when included in your HTML. It supports keyboard activation, shows a checkmark on success, and reports clipboard failures. Clipboard access requires HTTPS or localhost.</p>
+              <div class="row">
+                <div class="s12 m6 input-field">
+                  <input id="copy-subject" type="text" placeholder=" " value="Welcome to the project">
+                  <label for="copy-subject">Email subject</label>
+                  <button type="button" class="suffix input-copy-button" data-copy-target="#copy-subject" aria-label="Copy email subject"><i class="material-icons" aria-hidden="true">content_copy</i></button>
+                </div>
+                <div class="s12 m6 input-field outlined">
+                  <input id="copy-reference" type="text" placeholder=" " value="PROJECT-2026-001" readonly>
+                  <label for="copy-reference">Reference</label>
+                  <button type="button" class="suffix input-copy-button" data-copy-target="#copy-reference" aria-label="Copy reference"><i class="material-icons" aria-hidden="true">content_copy</i></button>
+                </div>
+              </div>
+              <pre><code class="language-html"><xmp><div class="input-field outlined">
+  <input id="email_subject" type="text" placeholder=" " value="Welcome to the project">
+  <label for="email_subject">Email subject</label>
+  <button type="button" class="suffix input-copy-button"
+          data-copy-target="#email_subject" aria-label="Copy email subject">
+    <i class="material-icons" aria-hidden="true">content_copy</i>
+  </button>
+</div></xmp></code></pre>
+              <p>Load kmaterialize JavaScript to enable the action, including buttons inserted later. Use unique input IDs and <code>type="button"</code> to avoid submitting the form.</p>
+            </section>
             <section id="outlined-surfaces" class="section scrollspy">
               <h3>Outlined fields on custom backgrounds</h3>
               <p>The outline leaves a real gap around the floating label. Your existing input markup works on solid colors and gradients without setting a label background.</p>

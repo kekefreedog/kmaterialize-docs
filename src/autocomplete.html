@@ -25,7 +25,7 @@
                 </div>
 
                 <div>
-                  <p>You can initialize the Autocomplete with isMultiSelect for multiple selections</p>
+                  <p>Use <code>isMultiSelect: true</code> for multiple selections. Selected values appear as removable chips; the input stays available for searching, and the menu remains open while you choose more items.</p>
                 </div>
 
                 <div class="input-field">
@@ -41,16 +41,16 @@
               </div>
 
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="row">
-  <div class="col s12">
-    <div class="row">
-      <div class="input-field col s12">
-        <i class="material-icons prefix">textsms</i>
-        <input type="text" id="autocomplete-input" class="autocomplete">
-        <label for="autocomplete-input">Autocomplete</label>
-      </div>
-    </div>
-  </div>
+<xmp><!-- Single selection: the selected label fills the input. -->
+<div class="input-field outlined">
+  <input type="text" id="autocomplete-input" class="autocomplete" placeholder=" ">
+  <label for="autocomplete-input">Autocomplete</label>
+</div>
+
+<!-- Multiple selections: initialize this input with isMultiSelect: true. -->
+<div class="input-field">
+  <input type="text" id="autocomplete-input-multi" class="autocomplete-multiple" placeholder=" ">
+  <label for="autocomplete-input-multi">Multiple Autocomplete</label>
 </div></xmp>
           </code></pre>
             </div>

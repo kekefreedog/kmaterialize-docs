@@ -10,6 +10,56 @@
       <div class="container">
         <div class="row">
           <div class="col s12 m8 offset-m1 xl7 offset-xl1">
+            <section id="zoom-controls" class="section scrollspy">
+              <h3>Zoom controls</h3>
+              <p>Use − and + to change zoom in 10% steps, from 50% to 200%. Click the percentage button to reset to 100%.</p>
+              <p>The zoom group can also sit inside another <code>toolbar</code>, alongside a <code>toolbar-group</code>. Nested zoom groups have no outer margins and keep their buttons vertically centered. The parent toolbar uses <code>justify-content: space-between</code>, so the action group sits at the opposite end.</p>
+              <p>This example uses the page theme colors for the toolbar, zoom pill and buttons. The download and refresh buttons illustrate the neighboring group layout.</p>
+<div class="toolbar my-0">
+<div id="planning-zoom-controls" class="toolbar toolbar-zoom" role="group" aria-label="Planning zoom">
+  <crazy-button id="planning-zoom-out" class="toolbar-zoom-out" label="Zoom Out" size="small" shape="round" depth="flat" icon-text="remove" variant="tonal"></crazy-button>
+  <crazy-button id="planning-zoom-in" class="toolbar-zoom-in" label="Zoom In" size="small" shape="round" depth="flat" icon-text="add" variant="tonal"></crazy-button>
+  <crazy-button id="planning-zoom-reset" type="extended" class="toolbar-zoom-reset" label="100%" size="small" shape="round" depth="flat" aria-label="Zoom 100 percent. Reset to 100 percent"></crazy-button>
+</div>
+<div class="toolbar-group" role="group" aria-label="Planning actions">
+  <crazy-button label="Download" size="small" shape="round" depth="flat" icon-text="download" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button>
+  <crazy-button label="Refresh" size="small" shape="round" depth="flat" icon-text="refresh" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button>
+</div>
+</div>
+              <div style="overflow: auto; height: 180px; padding: 16px; margin-top: 12px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 12px;">
+                <div id="planning-zoom-preview" class="card-panel primary-container on-primary-container-text" style="width: 240px; margin: 0; transform-origin: top left;">
+                  <strong>Planning preview</strong><p>Design → Review → Delivery</p>
+                </div>
+              </div>
+              <p id="planning-zoom-status" role="status">Zoom: 100%.</p>
+              <pre><code class="language-html"><xmp><div class="toolbar my-0">
+<div id="planning-zoom-controls" class="toolbar toolbar-zoom" role="group" aria-label="Planning zoom">
+  <crazy-button id="planning-zoom-out" class="toolbar-zoom-out" label="Zoom Out" size="small" shape="round" depth="flat" icon-text="remove" variant="tonal"></crazy-button>
+  <crazy-button id="planning-zoom-in" class="toolbar-zoom-in" label="Zoom In" size="small" shape="round" depth="flat" icon-text="add" variant="tonal"></crazy-button>
+  <crazy-button id="planning-zoom-reset" type="extended" class="toolbar-zoom-reset" label="100%" size="small" shape="round" depth="flat" aria-label="Zoom 100 percent. Reset to 100 percent"></crazy-button>
+</div>
+<div class="toolbar-group" role="group" aria-label="Planning actions">
+  <crazy-button label="Download" size="small" shape="round" depth="flat" icon-text="download" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button>
+  <crazy-button label="Refresh" size="small" shape="round" depth="flat" icon-text="refresh" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button>
+</div>
+</div></xmp></code></pre>
+              <pre><code class="language-javascript">let zoom = 100;
+const controls = document.querySelector('#planning-zoom-controls');
+controls.addEventListener('buttonaction', (event) => {
+  const id = event.target.id;
+  if (id === 'planning-zoom-out') zoom = Math.max(50, zoom - 10);
+  else if (id === 'planning-zoom-in') zoom = Math.min(200, zoom + 10);
+  else if (id === 'planning-zoom-reset') zoom = 100;
+  else return;
+
+  document.querySelector('#planning-zoom-reset').setAttribute('label', `${zoom}%`);
+  document.querySelector('#planning-zoom-reset').setAttribute('aria-label', `Zoom ${zoom} percent. Reset to 100 percent`);
+  document.querySelector('#planning-zoom-out').toggleAttribute('disabled', zoom === 50);
+  document.querySelector('#planning-zoom-in').toggleAttribute('disabled', zoom === 200);
+  // Replace with your chart's zoom API, for example chart.setZoom(zoom / 100).
+  document.querySelector('#planning-zoom-preview').style.transform = `scale(${zoom / 100})`;
+});</code></pre>
+            </section>
             <section id="crazy-buttons" data-crazy-button-example class="section scrollspy"><h3 class="header">Workspace navigation toolbar</h3><p>The same workspace navigation groups arranged horizontally in Materialize’s Toolbar. Scroll the toolbar to reach every group on narrow screens.</p><div class="workspace-nav-preview" data-layout="toolbar">
 <div class="workspace-demo-navigation toolbar" aria-label="Production navigation" role="group">
   <div class="workspace-demo-group toolbar-group" role="group" aria-label="Workspace">
@@ -532,6 +582,7 @@ var instances = M.Toolbar.init(elems, options);</code></pre>
             <div class="toc-wrapper">
               <div style="height: 1px">
                 <ul class="section table-of-contents">
+                  <li><a href="#zoom-controls">Zoom controls</a></li>
                   <li><a href="#crazy-buttons">Crazy button example</a></li>
                   <li><a href="#introduction">Introduction</a></li>
                   <li><a href="#groups">Groups</a></li>
@@ -553,6 +604,7 @@ var instances = M.Toolbar.init(elems, options);</code></pre>
     </main>
     {{> footer }}
     <script type="module" src="/main.ts"></script>
+    <script type="module" src="/toolbar-zoom-demo.ts"></script>
     <script type="module" src="/crazy-button-layouts-demo.ts"></script>
   </body>
 </html>
