@@ -128,7 +128,7 @@
       <!-- Project foundations and additions, with direct links to working examples. -->
       <section id="new-features" class="container home-features" aria-labelledby="new-features-title">
         <h2 id="new-features-title">More ways to build with Materialize</h2>
-        <p>Kmaterialize builds on the familiar Materialize foundation with additional components, richer variants, and integrations for application interfaces. Explore the shared foundations, then try the features documented here.</p>
+        <p>Kmaterialize builds on the familiar Materialize foundation with template editors, spreadsheet reports, workflow components, and themed integrations. Explore the shared foundations, then try the live examples and APIs documented here.</p>
 
         <div class="home-foundations">
           <article class="home-foundation" data-foundation-theme="original">
@@ -143,17 +143,38 @@
           </article>
           <article class="home-foundation home-foundation-current">
             <h3>Kmaterialize</h3>
-            <p>This project extends that foundation with workflow components, expanded control examples, themed integrations, and practical customization guides.</p>
+            <p>This project extends that foundation with editing workspaces, workflow components, expanded controls, themed integrations, and practical customization guides.</p>
             <a href="getting-started.html">Start building</a>
           </article>
         </div>
 
         <div class="home-feature-grid materialize-benefits">
           <article class="home-feature">
+            <i class="material-icons" aria-hidden="true">code</i>
+            <span class="home-feature-label">Handlebars Editor</span>
+            <h3>Build templates with live previews</h3>
+            <p>Write HTML and Handlebars with Prism syntax highlighting. Drag nested data tokens into the code, see where they will land, and combine them with custom helper functions while the page preview updates.</p>
+            <div class="home-feature-links"><a href="editor.html#handlebars">Try the editor</a><a href="editor.html#helpers">Custom helpers</a></div>
+          </article>
+          <article class="home-feature">
+            <i class="material-icons" aria-hidden="true">view_column</i>
+            <span class="home-feature-label">Spreadsheet Editor</span>
+            <h3>Generate rows, download reports</h3>
+            <p>Name your columns, then map each value using tokens and functions. Generate one kspreadsheet row per data item, preserve numbers and booleans, and download CSV or XLSX files with headers.</p>
+            <div class="home-feature-links"><a href="editor.html#spreadsheet-editor">Build a report</a><a href="editor.html#spreadsheet-editor-setup">Mapping and export API</a></div>
+          </article>
+          <article class="home-feature">
+            <i class="material-icons" aria-hidden="true">sync_alt</i>
+            <span class="home-feature-label">Shared Editor features</span>
+            <h3>Reuse templates and connect data</h3>
+            <p>Choose templates and data with searchable Tom Select controls, or load both from your backend. Each template keeps its edits and undo history; Ctrl/Cmd+Z and redo work across typing and token insertions.</p>
+            <div class="home-feature-links"><a href="editor.html#templates">Backend loading</a><a href="editor.html#api">Undo and Editor API</a></div>
+          </article>
+          <article class="home-feature">
             <i class="material-icons" aria-hidden="true">account_tree</i>
             <span class="home-feature-label">Workflow components</span>
             <h3>Teams and task boards</h3>
-            <p>Arrange people and groups on an organization chart, edit curved connections, or organize tasks in Kanban columns. Touch-friendly drag handles support moving cards on smaller screens.</p>
+            <p>Arrange people and groups on an organization chart, edit curved connections, and pan or zoom through large charts. Organize tasks in Kanban columns, with touch-friendly drag handles for moving cards on smaller screens.</p>
             <div class="home-feature-links"><a href="org-chart.html">Org Chart</a><a href="kanban.html">Kanban</a></div>
           </article>
           <article class="home-feature">
@@ -166,9 +187,9 @@
           <article class="home-feature">
             <i class="material-icons" aria-hidden="true">smart_button</i>
             <span class="home-feature-label">Expanded controls</span>
-            <h3>More actions and list layouts</h3>
-            <p>Explore split buttons, connected groups, and FAB menus. Build standard or segmented lists, add optional checklist progress, and separate content with labeled or vertical dividers.</p>
-            <div class="home-feature-links"><a href="buttons.html">Buttons</a><a href="lists.html">Lists</a><a href="divider.html">Dividers</a></div>
+            <h3>Buttons, toolbars, and lists</h3>
+            <p>Explore split buttons, connected groups, FAB menus, and flat toolbar actions. Add nested zoom controls with a percentage reset, build segmented lists with optional checklist progress, and use labeled or vertical dividers.</p>
+            <div class="home-feature-links"><a href="buttons.html">Buttons</a><a href="toolbar.html#zoom-controls">Toolbar zoom</a><a href="lists.html">Lists</a><a href="divider.html">Dividers</a></div>
           </article>
           <article class="home-feature">
             <i class="material-icons" aria-hidden="true">view_sidebar</i>

@@ -53,6 +53,7 @@ export const config = {
     { id: "badges", url: "badges.html", name: "Badges" },
     { id: "alerts", url: "alerts.html", name: "Alerts" },
     { id: "kanban", url: "kanban.html", name: "Kanban" },
+    { id: "editor", url: "editor.html", name: "Editor", description: "Build Handlebars pages and spreadsheet reports with tokens, helpers, and live previews." },
     { id: "orgchart", url: "org-chart.html", name: "Org Chart", description: "Arrange teams in a shared space and connect the people behind them." },
     {
       id: "loading",
@@ -207,6 +208,7 @@ export const config = {
         { id: "icons" },
         { id: "kanban" },
         { id: "orgchart" },
+        { id: "editor" },
         { id: "loading" },
         { id: "navbar" },
         { id: "pagination" },

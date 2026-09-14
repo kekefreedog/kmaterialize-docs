@@ -169,6 +169,8 @@ export default ({ command }) => ({
   resolve: {
     // Resolve optional peers from the docs when consuming the sibling library.
     dedupe: [
+      'handlebars',
+      'prismjs',
       '@simonwep/pickr',
       'air-datepicker',
       'filepond',
@@ -179,6 +181,7 @@ export default ({ command }) => ({
       'sweetalert2',
       'tippy.js',
       'tom-select',
+      'kspreadsheet',
     ],
     // The local library contains legacy .mjs stubs beside the live TypeScript
     // components. Prefer TypeScript during docs development so Tabs (and the
