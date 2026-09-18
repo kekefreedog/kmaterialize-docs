@@ -10,6 +10,51 @@
       <div class="container">
         <div class="row">
           <div class="col s12 m8 offset-m1 xl7 offset-xl1">
+            <section id="appearance" class="section scrollspy">
+              <h3>Default and rounded navbars</h3>
+              <p>The default navbar has square corners and no border. Use <code>appbar</code> for the structured app-bar layout shown throughout this page.</p>
+              <h5>Default</h5>
+<nav class="navbar appbar" aria-label="Default navbar example">
+  <div class="nav-wrapper">
+    <a href="index.html" class="brand-logo">Workspace</a>
+    <ul class="ml-auto">
+      <li><a href="cards.html">Cards</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+    </ul>
+  </div>
+</nav>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><nav class="navbar appbar" aria-label="Default navbar example">
+  <div class="nav-wrapper">
+    <a href="index.html" class="brand-logo">Workspace</a>
+    <ul class="ml-auto">
+      <li><a href="cards.html">Cards</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+    </ul>
+  </div>
+</nav></xmp></code></pre>
+              <h5>Rounded with padding</h5>
+              <p>Add <code>navbar-rounded</code> for 16px corners, 4px of padding around the inner bar, and a subtle shadow. The navigation controls retain their usual height.</p>
+<nav class="navbar appbar navbar-rounded" aria-label="Rounded navbar example">
+  <div class="nav-wrapper">
+    <a href="index.html" class="brand-logo">Workspace</a>
+    <ul class="ml-auto">
+      <li><a href="cards.html">Cards</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+    </ul>
+  </div>
+</nav>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><nav class="navbar appbar navbar-rounded" aria-label="Rounded navbar example">
+  <div class="nav-wrapper">
+    <a href="index.html" class="brand-logo">Workspace</a>
+    <ul class="ml-auto">
+      <li><a href="cards.html">Cards</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+    </ul>
+  </div>
+</nav></xmp></code></pre>
+              <p>For an optional outline, add <code>appbar-bordered</code>. Existing navbars using that class keep their layout and border.</p>
+              <pre><code class="language-html">&lt;nav class="navbar appbar appbar-bordered navbar-rounded"&gt;...&lt;/nav&gt;</code></pre>
+            </section>
             <div id="right" class="section scrollspy">
               <p class="caption">
                 There are 2 main parts of the navbar. A logo or brand link, and the
@@ -24,7 +69,7 @@
                 Combine a logo, a visual separator, compact floating icon buttons, and a final call-to-action. The
                 <code class="language-html">ml-auto</code> class keeps the action group fixed to the right edge.
               </p>
-              <nav class="navbar appbar-bordered navbar-rounded">
+              <nav class="navbar appbar">
                 <div class="nav-wrapper">
                   <a href="#!" class="brand-logo" aria-label="Materialize home">
                     <img class="brand-logo-image" src="images/materialize.svg" alt="" />
@@ -66,7 +111,7 @@
               <div class="row">
                 <div class="s12 m6">
                   <p class="caption">Wrap</p>
-                  <nav class="navbar appbar-bordered navbar-wrap">
+                  <nav class="navbar appbar navbar-wrap">
                     <div class="nav-wrapper">
                       <a href="#!" class="brand-logo"><span>Materialize</span></a>
                       <ul>
@@ -82,7 +127,7 @@
                 </div>
                 <div class="s12 m6">
                   <p class="caption">Horizontal scroll</p>
-                  <nav class="navbar appbar-bordered navbar-scroll">
+                  <nav class="navbar appbar navbar-scroll">
                     <div class="nav-wrapper">
                       <a href="#!" class="brand-logo"><span>Materialize</span></a>
                       <ul>
@@ -99,7 +144,7 @@
               </div>
 
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav class="navbar appbar-bordered navbar-scroll">
+<xmp><nav class="navbar appbar navbar-scroll">
   <div class="nav-wrapper">
     <a href="#" class="brand-logo" aria-label="Materialize home">
       <img class="brand-logo-image" src="images/materialize.svg" alt="">
@@ -132,7 +177,7 @@ const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
                 the left, put the <code class="language-html">ul</code> before the logo in the markup and add
                 <code class="language-html">ml-auto</code> to the logo.
               </p>
-              <nav class="navbar appbar-bordered navbar-scroll">
+              <nav class="navbar appbar navbar-scroll">
                 <div class="nav-wrapper">
                   <ul class="hide-on-med-and-down">
                     <li>
@@ -150,7 +195,7 @@ const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
               </nav>
 
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav class="navbar appbar-bordered">
+<xmp><nav class="navbar appbar">
   <div class="nav-wrapper">
     <ul id="nav-mobile" class="hide-on-med-and-down">
       <li><a href="sass.html">Sass</a></li>
@@ -172,7 +217,7 @@ const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
                   &lt;a class=&quot;brand-logo&quot;&gt;&lt;/a&gt;
                 </code>. You will have to make sure yourself that links do not overlap if you use this.
               </p>
-              <nav class="navbar appbar-bordered">
+              <nav class="navbar appbar">
                 <div class="nav-wrapper nav-wrapper-centered">
                   <a href="#!" class="brand-logo center"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
                   <ul class="left hide-on-med-and-down">
@@ -187,7 +232,7 @@ const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
               </nav>
 
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav class="navbar appbar-bordered">
+<xmp><nav class="navbar appbar">
   <div class="nav-wrapper nav-wrapper-centered">
     <a href="#" class="brand-logo center"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
     <ul id="nav-mobile" class="left hide-on-med-and-down">
@@ -204,7 +249,7 @@ const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
               <h3 class="header">Active Items</h3>
               <p>Add active class to your li tags to denote the current page.</p>
 
-              <nav class="navbar appbar-bordered">
+              <nav class="navbar appbar">
                 <div class="nav-wrapper">
                   <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
                   <ul class="ml-auto hide-on-med-and-down">
@@ -222,7 +267,7 @@ const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
               </nav>
 
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav class="navbar appbar-bordered">
+<xmp><nav class="navbar appbar">
   <div class="nav-wrapper nav-wrapper-centered">
     <a href="#!" class="brand-logo center"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
     <ul class="left hide-on-med-and-down">
@@ -243,7 +288,7 @@ const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
                 can just include a tabs component inside the <span class="language-html">nav-wrapper</span>.
               </p>
 
-              <nav class="navbar appbar-bordered nav-extended">
+              <nav class="navbar appbar nav-extended">
                 <div class="nav-wrapper">
                   <a href="#" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
                   <a href="#" data-target="mobile-demo" class="sidenav-trigger">
@@ -297,7 +342,7 @@ const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
               <div id="navbar-test4">Test 4</div>
 
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav class="navbar appbar-bordered nav-extended">
+<xmp><nav class="navbar appbar nav-extended">
   <div class="nav-wrapper">
     <a href="#" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -340,7 +385,7 @@ const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
 
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
 <xmp><div class="navbar-fixed">
-  <nav class="navbar appbar-bordered">
+  <nav class="navbar appbar">
     <div class="nav-wrapper">
       <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
       <ul class="ml-auto hide-on-med-and-down">
@@ -351,6 +396,78 @@ const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
   </nav>
 </div></xmp>
         </code></pre>
+            </div>
+
+            <div id="navbar-tiny" class="section scrollspy">
+              <h3 class="header">Tiny navbar</h3>
+              <p>Use <code>navbar-tiny</code> for a slim full-width bar with quick links or an announcement. Add <code>navbar-tiny-top</code> to pin it to the top, or <code>navbar-tiny-bottom</code> to pin it to the bottom. Without either placement class, it stays in normal page flow.</p>
+              <p>Add <code>navbar-tiny-dismissible</code> for a close icon on the right. Closing hides the entire bar until you call <code>open()</code>; scrolling does not bring a dismissed bar back.</p>
+              <p><a href="navbar-tiny-demo.html" target="_blank" rel="noopener">Open the tiny navbar example</a>, or use the controls below to try top, bottom, and in-page placement.</p>
+              <iframe src="navbar-tiny-demo.html" title="Tiny navbar with top and bottom placement and an optional close button" loading="lazy" style="width: 100%; height: 480px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 16px;"></iframe>
+              <pre><code class="language-html">&lt;nav class="navbar navbar-tiny navbar-tiny-bottom navbar-tiny-dismissible" aria-label="Quick links"&gt;
+  &lt;div class="nav-wrapper"&gt;
+    &lt;p class="navbar-tiny-content"&gt;New components are ready to explore.&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="#guide"&gt;Guide&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#changes"&gt;What’s new&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+              <pre><code class="language-typescript">import { AutoInit, TinyNavbar } from 'kmaterialize';
+import 'kmaterialize/dist/css/materialize.css';
+
+AutoInit();
+const navbar = TinyNavbar.getInstance(document.querySelector&lt;HTMLElement&gt;('.navbar-tiny')!);
+navbar.setPosition('bottom'); // 'top', 'bottom', or 'inline'
+navbar.close();
+navbar.open();
+// When unmounting: navbar.destroy();</code></pre>
+              <h5>Options</h5>
+              <p>For manual initialization, add <code>no-autoinit</code> and use <code>TinyNavbar.init()</code>. Explicit options override the placement and dismissible classes.</p>
+              <pre><code class="language-typescript">const navbar = TinyNavbar.init(document.querySelector&lt;HTMLElement&gt;('#quick-links')!, {
+  position: 'bottom',
+  dismissible: true,
+  closeLabel: 'Close quick links',
+  returnFocus: document.querySelector&lt;HTMLElement&gt;('#show-navbar'),
+  onClose: instance =&gt; console.log('Closed', instance.isOpen)
+});</code></pre>
+              <p>The defaults are <code>position: 'inline'</code>, <code>dismissible: false</code>, and <code>closeLabel: 'Close navigation'</code>, unless the corresponding classes are present. The close button supports mouse, touch, Enter, and Space. Focus moves to <code>returnFocus</code> if provided, or to an available control outside the closed navbar. Include the Material Icons font for the close icon.</p>
+              <p>Fixed bars sit above the page. Leave space in your content at the chosen edge, as the live example does. Set <code>--navbar-tiny-offset</code> to offset the bar from that edge; device safe-area insets are included. Long text and links wrap on smaller screens.</p>
+            </div>
+
+            <div id="navbar-hide-on-scroll" class="section scrollspy">
+              <h3 class="header">Hide on scroll</h3>
+              <p>Add <code>navbar-hide-on-scroll</code> to a navbar and run <code>AutoInit()</code>. It slides away when scrolling down, returns when scrolling up, and stays visible at the top. This follows the interaction demonstrated by <a href="https://wicky.nillia.ms/headroom.js/" target="_blank" rel="noopener">Headroom.js</a>, implemented directly in kmaterialize without another dependency.</p>
+              <p>Scroll inside this preview to try it, or <a href="navbar-hide-demo.html" target="_blank" rel="noopener">open the full-page example</a>.</p>
+              <iframe src="navbar-hide-demo.html" title="Navbar that hides when scrolling down and returns when scrolling up" loading="lazy" style="width: 100%; height: 480px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 16px;"></iframe>
+              <pre><code class="language-html">&lt;nav class="navbar appbar navbar-hide-on-scroll"&gt;
+  &lt;div class="nav-wrapper"&gt;
+    &lt;a href="#overview" class="brand-logo"&gt;Explore&lt;/a&gt;
+    &lt;ul class="ml-auto"&gt;
+      &lt;li&gt;&lt;a href="#stories"&gt;Stories&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+&lt;main id="overview"&gt;…&lt;/main&gt;</code></pre>
+              <pre><code class="language-typescript">import { AutoInit } from 'kmaterialize';
+import 'kmaterialize/dist/css/materialize.css';
+
+AutoInit();</code></pre>
+              <p>The class uses sticky positioning and preserves the navbar’s space. Place the navbar alongside the page content within a parent that spans the scroll area. It also works on the navbar inside an existing <code>navbar-fixed</code> wrapper. Avoid wrapping a sticky navbar in a parent that is only as tall as the bar itself.</p>
+              <p>Keyboard focus reveals the navbar immediately and keeps it visible while its controls are in use. Reduced-motion preferences disable the slide animation. Wrapped and extended navbars hide using their full current height.</p>
+              <h5>Optional settings</h5>
+              <pre><code class="language-typescript">import { NavbarAutoHide } from 'kmaterialize';
+
+// For manual initialization, also add no-autoinit to the navbar.
+const navbar = NavbarAutoHide.init(document.querySelector&lt;HTMLElement&gt;('#my-navbar')!, {
+  tolerance: 4,     // Pixels in one direction before hiding or showing (default: 4)
+  offset: 0,        // Stay visible this far from the top (default: 0)
+  scrollTarget: null // Page scroll; use an HTMLElement for a scrollable panel
+});
+
+// When unmounting:
+navbar.destroy();</code></pre>
+              <p>Set <code>tolerance: 0</code> to react to the first pixel of scrolling. For a scrollable panel, place the navbar and its content inside that panel and pass the panel as <code>scrollTarget</code>. Use <code>--navbar-hide-offset</code> to position the bar below another fixed header. For in-page anchor links, set the scroll container’s <code>scroll-padding-top</code> to leave room for the visible navbar.</p>
             </div>
 
             <div id="navbar-dropdown" class="section scrollspy">
@@ -374,7 +491,7 @@ const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
                   <a href="#!">three</a>
                 </li>
               </ul>
-              <nav class="navbar appbar-bordered">
+              <nav class="navbar appbar">
                 <div class="nav-wrapper">
                   <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
                   <ul class="ml-auto hide-on-med-and-down">
@@ -403,7 +520,7 @@ const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
   <li class="divider"></li>
   <li><a href="#!">three</a></li>
 </ul>
-<nav class="navbar appbar-bordered">
+<nav class="navbar appbar">
   <div class="nav-wrapper">
     <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
     <ul class="ml-auto hide-on-med-and-down">
@@ -437,7 +554,7 @@ const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
             <div id="icons" class="section scrollspy">
               <h3 class="header">Icon Links</h3>
 
-              <nav class="navbar appbar-bordered">
+              <nav class="navbar appbar">
                 <div class="nav-wrapper">
                   <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
                   <ul class="ml-auto hide-on-med-and-down">
@@ -469,7 +586,7 @@ const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
                 You can add icons into links. For icon only links you don't need any additional class. Just pop the <code class="language-html">i</code> tag in and it will work.
               </p>
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav class="navbar appbar-bordered">
+<xmp><nav class="navbar appbar">
   <div class="nav-wrapper">
     <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
     <ul class="ml-auto hide-on-med-and-down">
@@ -482,7 +599,7 @@ const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
 </nav></xmp>
 </code></pre>
 
-              <nav class="navbar appbar-bordered">
+              <nav class="navbar appbar">
                 <div class="nav-wrapper">
                   <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
                   <ul class="ml-auto hide-on-med-and-down">
@@ -504,7 +621,7 @@ const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
                 depending on where you want the icon to be.
               </p>
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav class="navbar appbar-bordered">
+<xmp><nav class="navbar appbar">
   <div class="nav-wrapper">
     <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
     <ul class="ml-auto hide-on-med-and-down">
@@ -519,7 +636,7 @@ const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
             <div id="buttons" class="section scrollspy">
               <h3 class="header">Buttons</h3>
 
-              <nav class="navbar appbar-bordered">
+              <nav class="navbar appbar">
                 <div class="nav-wrapper">
                   <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
                   <ul class="ml-auto hide-on-med-and-down">
@@ -544,7 +661,7 @@ const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
                 <code class="language-html">a</code> tag.
               </p>
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav class="navbar appbar-bordered">
+<xmp><nav class="navbar appbar">
   <div class="nav-wrapper">
     <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
     <ul class="ml-auto hide-on-med-and-down">
@@ -559,7 +676,7 @@ const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
               <h5>Halfway FAB in Extended Navbar</h5>
               <p>Add a halfway FAB to your extended navbar.</p>
 
-              <nav class="navbar appbar-bordered nav-extended">
+              <nav class="navbar appbar nav-extended">
                 <div class="nav-wrapper">
                   <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
                   <ul class="ml-auto hide-on-med-and-down">
@@ -583,7 +700,7 @@ const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
               </nav>
 
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav class="navbar appbar-bordered nav-extended">
+<xmp><nav class="navbar appbar nav-extended">
   <div class="nav-wrapper">
     <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
     <ul class="ml-auto hide-on-med-and-down">
@@ -605,7 +722,7 @@ const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
             <div id="search-docs" class="section scrollspy">
               <h3 class="header">Search Bar</h3>
 
-              <nav class="navbar appbar-bordered">
+              <nav class="navbar appbar">
                 <div class="nav-wrapper">
                   <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
                   <div class="toolbar navbar-search-toolbar">
@@ -620,7 +737,7 @@ const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
 
               <p>You can add a search form in the navbar.</p>
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav class="navbar appbar-bordered">
+<xmp><nav class="navbar appbar">
   <div class="nav-wrapper">
     <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt=""><span>Materialize</span></a>
     <div class="toolbar navbar-search-toolbar">
@@ -639,7 +756,7 @@ const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
             <div id="mobile-collapse" class="section scrollspy">
               <h3 class="header">Mobile Collapse Button</h3>
 
-              <nav class="navbar appbar-bordered navbar-scroll">
+              <nav class="navbar appbar navbar-scroll">
                 <div class="nav-wrapper">
                   <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
                   <a href="#" data-target="mobile-demo" class="sidenav-trigger">
@@ -688,7 +805,7 @@ const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
                 below to get this functionality. Add the entire <code class="language-html">sidenav-trigger</code> line to your <code class="language-html">nav</code>.
               </p>
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav class="navbar appbar-bordered navbar-scroll">
+<xmp><nav class="navbar appbar navbar-scroll">
   <div class="nav-wrapper">
     <a href="#!" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt="" /><span>Materialize</span></a>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -727,6 +844,7 @@ const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
             <div class="toc-wrapper">
               <div style="height: 1px">
                 <ul class="section table-of-contents">
+                  <li><a href="#appearance">Default and Rounded</a></li>
                   <li>
                     <a href="#right">Right Aligned</a>
                   </li>
@@ -744,6 +862,12 @@ const dispose = initNavbarScroll(document.querySelector('.navbar-scroll'));
                   </li>
                   <li>
                     <a href="#navbar-fixed">Fixed Navbar</a>
+                  </li>
+                  <li>
+                    <a href="#navbar-tiny">Tiny Navbar</a>
+                  </li>
+                  <li>
+                    <a href="#navbar-hide-on-scroll">Hide on Scroll</a>
                   </li>
                   <li>
                     <a href="#navbar-dropdown">Dropdown Menu</a>

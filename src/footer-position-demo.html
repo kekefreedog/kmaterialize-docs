@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sticky and fixed footer · kmaterialize</title>
+  </head>
+  <body class="footer-layout footer-fixed">
+    <header class="surface-variant p-3">
+      <strong>Your workspace</strong>
+      <div class="footer-demo-controls mt-3" role="group" aria-label="Footer layout">
+        <crazy-button id="fixed-mode" type="extended" variant="tonal" size="normal" label="Fixed" toggle pressed></crazy-button>
+        <crazy-button id="sticky-mode" type="extended" variant="tonal" size="normal" label="Sticky" toggle></crazy-button>
+        <crazy-button id="content-toggle" type="extended" variant="outlined" size="normal" label="Add content" icon-text="add" icon-position="left"></crazy-button>
+      </div>
+    </header>
+    <main class="container py-4" tabindex="0" aria-label="Example page content">
+      <h4 class="mt-0">A place for the final details.</h4>
+      <p id="footer-demo-status" role="status">The footer stays visible while this content scrolls.</p>
+      <p>Add more content and scroll to compare the two layouts.</p>
+      <div id="extra-content" hidden>
+        <article class="card mb-4"><div class="card-content"><h5 class="mt-0">Room to explore</h5><p>Use the footer for helpful links or a clear next step. The fixed layout keeps those actions available while you read.</p></div></article>
+        <article class="card mb-4"><div class="card-content"><h5 class="mt-0">Built for every screen</h5><p>When footer actions wrap on a smaller screen, the main area adapts to their height and remains scrollable.</p></div></article>
+        <article class="card mb-4"><div class="card-content"><h5 class="mt-0">Keep reading</h5><p>In sticky mode, the footer follows the content. A short page still fills the viewport, while a longer page scrolls normally.</p></div></article>
+        <article class="card mb-4"><div class="card-content"><h5 class="mt-0">The final section</h5><p>This is the end of the example. The footer leaves room for this last paragraph in either layout.</p></div></article>
+      </div>
+    </main>
+    <footer class="page-footer footer-bordered surface-variant px-3 pt-0">
+      <div class="footer-copyright screen-flex screen-wrap">
+        <span class="mr-3">© 2026 Your team</span>
+        <div class="footer-demo-controls">
+          <crazy-button id="back-to-top" type="extended" variant="text" size="normal" label="Back to top" icon-text="north" icon-position="left"></crazy-button>
+          <crazy-button type="extended" variant="filled" size="normal" label="Get started" href="getting-started.html" target="_blank"></crazy-button>
+        </div>
+      </div>
+    </footer>
+    <script type="module" src="/footer-position-demo.ts"></script>
+  </body>
+</html>

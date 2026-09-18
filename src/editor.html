@@ -184,6 +184,10 @@ editor.destroy();                  // Remove listeners and restore original host
           <pre><span class="copyMessage" role="status">Copied!</span><button type="button" class="copyButton btn btn-icon text" aria-label="Copy code"><i class="material-icons" aria-hidden="true">content_copy</i></button><code class="language-css copiedText">#template-editor {
   --editor-height: 720px;
 }</code></pre>
+          <p>To fill a parent div or a popup tab panel, add <code>editor-fill</code> to the editor host. The parent must have a defined height or an allocated flex height. The source, tokens, and preview share that space and scroll internally, including when the preview stacks below the input pane on small screens.</p>
+          <pre><span class="copyMessage" role="status">Copied!</span><button type="button" class="copyButton btn btn-icon text" aria-label="Copy code"><i class="material-icons" aria-hidden="true">content_copy</i></button><code class="language-html copiedText">&lt;div style="height: 600px"&gt;
+  &lt;div id="template-editor" class="editor-fill"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
           <p>The preview is a separate white HTML page and honors template styles. Scripts, form submissions, and remote resources are blocked in the sandbox; inline CSS and data-URL images are supported. The preview cannot alter your application styles or DOM.</p>
         </section>
         <section id="spreadsheet-editor" class="section scrollspy">

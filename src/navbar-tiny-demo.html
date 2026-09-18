@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Tiny navbar · kmaterialize</title>
+  </head>
+  <body>
+    <nav id="tiny-demo" class="navbar navbar-tiny navbar-tiny-top navbar-tiny-dismissible" aria-label="Quick links">
+      <div class="nav-wrapper">
+        <p class="navbar-tiny-content"><strong>A little update.</strong> New components are ready to explore.</p>
+        <ul><li><a href="#guide">Guide</a></li><li><a href="#changes">What’s new</a></li></ul>
+      </div>
+    </nav>
+    <main class="container">
+      <section class="section" id="guide">
+        <p class="primary-text">SMALL BAR, USEFUL LINKS</p>
+        <h1>Keep it within reach.</h1>
+        <p>A compact space for quick links and announcements. Place it at the top or bottom of the screen, or keep it in the page.</p>
+        <div class="toolbar toolbar-wrap" role="toolbar" aria-label="Tiny navbar placement">
+          <div class="toolbar-group">
+            <button type="button" class="btn tonal" data-position="top" aria-pressed="true">Top</button>
+            <button type="button" class="btn tonal" data-position="bottom" aria-pressed="false">Bottom</button>
+            <button type="button" class="btn tonal" data-position="inline" aria-pressed="false">In page</button>
+          </div>
+        </div>
+        <p><button type="button" class="btn outlined" id="tiny-restore">Show navbar</button></p>
+        <p id="tiny-status" role="status">Pinned to the top. Use the close icon on the right to dismiss it.</p>
+      </section>
+      <section class="section" id="changes">
+        <h2>A lighter layer.</h2>
+        <p>Scroll this example to see the pinned bar stay in place. Closing it leaves the page available; use Show navbar to bring it back.</p>
+        <div class="card"><div class="card-content"><h5>Made for small screens too</h5><p>Text and links wrap when needed, while the close button stays accessible on the right.</p></div></div>
+      </section>
+    </main>
+    <script type="module" src="/navbar-tiny-demo.ts"></script>
+  </body>
+</html>

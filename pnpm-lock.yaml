@@ -52,7 +52,7 @@ importers:
         version: 5.13.5
       kmaterialize:
         specifier: latest
-        version: 2.3.3-1.0.31(@maskito/core@5.4.0)(@maskito/kit@5.4.0(@maskito/core@5.4.0))(@simonwep/pickr@1.9.1)(air-datepicker@3.6.0)(filepond-plugin-file-validate-type@1.2.9(filepond@4.32.12))(filepond-plugin-image-exif-orientation@1.0.11(filepond@4.32.12))(filepond-plugin-image-preview@4.6.12(filepond@4.32.12))(filepond@4.32.12)(handlebars@4.7.9)(imask@7.6.1)(kspreadsheet@2.7.0)(prismjs@1.30.0)(quill@2.0.3)(sweetalert2@11.26.25)(tippy.js@6.3.7)(tom-select@2.6.2)
+        version: 2.3.3-1.0.33(@maskito/core@5.4.0)(@maskito/kit@5.4.0(@maskito/core@5.4.0))(@simonwep/pickr@1.9.1)(air-datepicker@3.6.0)(filepond-plugin-file-validate-type@1.2.9(filepond@4.32.12))(filepond-plugin-image-exif-orientation@1.0.11(filepond@4.32.12))(filepond-plugin-image-preview@4.6.12(filepond@4.32.12))(filepond@4.32.12)(handlebars@4.7.9)(imask@7.6.1)(kspreadsheet@2.7.0)(prismjs@1.30.0)(quill@2.0.3)(sweetalert2@11.26.25)(tippy.js@6.3.7)(tom-select@2.6.2)
       kspreadsheet:
         specifier: 2.7.0
         version: 2.7.0
@@ -725,8 +725,8 @@ packages:
   jszip@3.10.2:
     resolution: {integrity: sha512-3l+rb15IOWtUhU0H5MFqES/T6Kh7abYwjosBey/vD6hDt8zoEffkSC5Ws5SGtgVw3gBx2NEbhTeSW1+kWkpyTQ==}
 
-  kmaterialize@2.3.3-1.0.31:
-    resolution: {integrity: sha512-eYhWybXn33CTMgGvwtgJFYb0rcJMYEQlimA6Vue3zVzLJn+JpEGSS3U6mmuuIRZNbmAMn6+T9Tpxrq5hy+DWsA==}
+  kmaterialize@2.3.3-1.0.33:
+    resolution: {integrity: sha512-5lmVRgnRFq/yOkTQX3qfzPOXNdfAPvA1Z+1vjPmT8dT7cxuxZqI7CWc1qSEIuuHG/GaRrguhZ6omIAYsN79mVw==}
     peerDependencies:
       '@maskito/core': ^5.4.0
       '@maskito/kit': ^5.4.0
@@ -1742,7 +1742,7 @@ snapshots:
       readable-stream: 2.3.8
       setimmediate: 1.0.5
 
-  kmaterialize@2.3.3-1.0.31(@maskito/core@5.4.0)(@maskito/kit@5.4.0(@maskito/core@5.4.0))(@simonwep/pickr@1.9.1)(air-datepicker@3.6.0)(filepond-plugin-file-validate-type@1.2.9(filepond@4.32.12))(filepond-plugin-image-exif-orientation@1.0.11(filepond@4.32.12))(filepond-plugin-image-preview@4.6.12(filepond@4.32.12))(filepond@4.32.12)(handlebars@4.7.9)(imask@7.6.1)(kspreadsheet@2.7.0)(prismjs@1.30.0)(quill@2.0.3)(sweetalert2@11.26.25)(tippy.js@6.3.7)(tom-select@2.6.2):
+  kmaterialize@2.3.3-1.0.33(@maskito/core@5.4.0)(@maskito/kit@5.4.0(@maskito/core@5.4.0))(@simonwep/pickr@1.9.1)(air-datepicker@3.6.0)(filepond-plugin-file-validate-type@1.2.9(filepond@4.32.12))(filepond-plugin-image-exif-orientation@1.0.11(filepond@4.32.12))(filepond-plugin-image-preview@4.6.12(filepond@4.32.12))(filepond@4.32.12)(handlebars@4.7.9)(imask@7.6.1)(kspreadsheet@2.7.0)(prismjs@1.30.0)(quill@2.0.3)(sweetalert2@11.26.25)(tippy.js@6.3.7)(tom-select@2.6.2):
     dependencies:
       normalize.css: 8.0.1
     optionalDependencies:

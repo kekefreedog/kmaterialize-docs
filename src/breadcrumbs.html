@@ -11,57 +11,86 @@
       <div class="container">
         <div class="row">
           <div class="col s12 m8 offset-m1 xl7 offset-xl1">
-            <!--  Collections Section  -->
-            <div id="basic" class="section scrollspy">
-                <div class="row">
-                    <div class="col s12">
-                        <p class="caption">Breadcrumbs are a good way to display your current location. This is usually used when you have multiple layers of content.</p>
-                        <h3 class="header">Basic</h3>
+            <section id="basic" class="section scrollspy">
+              <p class="caption">Breadcrumbs show the current location within a hierarchy of pages.</p>
+              <h3 class="header">Basic</h3>
+              <p>Earlier locations use a quieter color; the current page has stronger contrast and a medium font weight. Icons and separators align with the text in both light and dark themes. Use <code>aria-current="page"</code> to identify the current location, and give icon-only links an accessible label.</p>
+<nav class="breadcrumb-wrapper" aria-label="Breadcrumb">
+  <a href="index.html" class="breadcrumb" aria-label="Home"><i class="material-icons" aria-hidden="true">home</i></a>
+  <a href="#!" class="breadcrumb">Components</a>
+  <span class="breadcrumb" aria-current="page">Breadcrumbs</span>
+</nav>
 
-                        <nav class="breadcrumb-wrapper">
-                            <div>
-                                <a href="#!" class="breadcrumb">First</a>
-                                <a href="#!" class="breadcrumb">Second</a>
-                                <a href="#!" class="breadcrumb">Third</a>
-                            </div>
-                        </nav>
-
-                        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav class="breadcrumb-wrapper">
-    <div>
-      <a href="#!" class="breadcrumb">First</a>
-      <a href="#!" class="breadcrumb">Second</a>
-      <a href="#!" class="breadcrumb">Third</a>
-    </div>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><nav class="breadcrumb-wrapper" aria-label="Breadcrumb">
+  <a href="index.html" class="breadcrumb" aria-label="Home"><i class="material-icons" aria-hidden="true">home</i></a>
+  <a href="#!" class="breadcrumb">Components</a>
+  <span class="breadcrumb" aria-current="page">Breadcrumbs</span>
 </nav></xmp>
               </code></pre>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s12">
-                        <h3 class="header">Navbar style</h3>
+            </section>
+            <section id="navbar" class="section scrollspy">
+              <h3 class="header">Navbar style</h3>
+              <p>Inside a navbar, breadcrumbs follow its foreground color. Pair background and text utilities, such as <code>primary on-primary-text</code> or <code>surface on-surface-text</code>. The existing <code>breadcrumb-wrapper</code> keeps long paths on one scrollable line.</p>
+<nav class="navbar" aria-label="Navbar breadcrumb example">
+  <div class="nav-wrapper primary on-primary-text">
+    <div class="breadcrumb-wrapper">
+      <a href="index.html" class="breadcrumb" aria-label="Home"><i class="material-icons" aria-hidden="true">home</i></a>
+      <a href="#!" class="breadcrumb">Components</a>
+      <span class="breadcrumb" aria-current="page">Breadcrumbs</span>
+    </div>
+  </div>
+</nav>
 
-                        <nav class="navbar">
-                            <div class="nav-wrapper primary">
-                                <a href="#!" class="breadcrumb">First</a>
-                                <a href="#!" class="breadcrumb">Second</a>
-                                <a href="#!" class="breadcrumb">Third</a>
-                            </div>
-                        </nav>
-
-                        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><nav class="navbar">
-  <div class="nav-wrapper primary">
-    <a href="#!" class="breadcrumb">First</a>
-    <a href="#!" class="breadcrumb">Second</a>
-    <a href="#!" class="breadcrumb">Third</a>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><nav class="navbar" aria-label="Navbar breadcrumb example">
+  <div class="nav-wrapper primary on-primary-text">
+    <div class="breadcrumb-wrapper">
+      <a href="index.html" class="breadcrumb" aria-label="Home"><i class="material-icons" aria-hidden="true">home</i></a>
+      <a href="#!" class="breadcrumb">Components</a>
+      <span class="breadcrumb" aria-current="page">Breadcrumbs</span>
+    </div>
   </div>
 </nav></xmp>
               </code></pre>
-                    </div>
-                </div>
-            </div>
-            <!-- End collections -->
+            </section>
+            <section id="responsive" class="section scrollspy">
+              <h3 class="header">Responsive breadcrumbs</h3>
+              <p>On desktop, display the site title in the navbar and breadcrumbs below it. On tablet and mobile, replace the title with breadcrumbs using the existing visibility helpers. Resize the page to try this pattern, inspired by <a href="https://codepen.io/j_holtslander/pen/LBPveZ" target="_blank" rel="noopener">Better Breadcrumbs</a>. No JavaScript is required.</p>
+<nav class="navbar" aria-label="Responsive navigation example">
+  <div class="nav-wrapper primary on-primary-text">
+    <a href="index.html" class="brand-logo hide-on-med-and-down">My workspace</a>
+    <div class="breadcrumb-wrapper hide-on-large-only">
+      <a href="index.html" class="breadcrumb" aria-label="Home"><i class="material-icons" aria-hidden="true">home</i></a>
+      <a href="#!" class="breadcrumb">Projects</a>
+      <span class="breadcrumb" aria-current="page">Project overview</span>
+    </div>
+  </div>
+</nav>
+<nav class="breadcrumb-wrapper hide-on-med-and-down" aria-label="Project breadcrumb">
+  <a href="index.html" class="breadcrumb" aria-label="Home"><i class="material-icons" aria-hidden="true">home</i></a>
+  <a href="#!" class="breadcrumb">Projects</a>
+  <span class="breadcrumb" aria-current="page">Project overview</span>
+</nav>
+
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><nav class="navbar" aria-label="Responsive navigation example">
+  <div class="nav-wrapper primary on-primary-text">
+    <a href="index.html" class="brand-logo hide-on-med-and-down">My workspace</a>
+    <div class="breadcrumb-wrapper hide-on-large-only">
+      <a href="index.html" class="breadcrumb" aria-label="Home"><i class="material-icons" aria-hidden="true">home</i></a>
+      <a href="#!" class="breadcrumb">Projects</a>
+      <span class="breadcrumb" aria-current="page">Project overview</span>
+    </div>
+  </div>
+</nav>
+<nav class="breadcrumb-wrapper hide-on-med-and-down" aria-label="Project breadcrumb">
+  <a href="index.html" class="breadcrumb" aria-label="Home"><i class="material-icons" aria-hidden="true">home</i></a>
+  <a href="#!" class="breadcrumb">Projects</a>
+  <span class="breadcrumb" aria-current="page">Project overview</span>
+</nav></xmp>
+              </code></pre>
+            </section>
             <section id="crazy-button" class="section scrollspy">
               <h3 class="header">With Crazy Button</h3>
               <p>When the buttons exceed the available width, the breadcrumb bar scrolls horizontally and keeps them on one line. You can place several buttons inside a breadcrumb to group related actions.</p>
@@ -105,6 +134,8 @@
               <div style="height: 1px">
                 <ul class="section table-of-contents">
                   <li><a href="#basic">Basic</a></li>
+                  <li><a href="#navbar">Navbar style</a></li>
+                  <li><a href="#responsive">Responsive breadcrumbs</a></li>
                   <li><a href="#crazy-button">With Crazy Button</a></li>
                 </ul>
               </div>

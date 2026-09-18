@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+  <head>{{> head }}</head>
+  <body>
+    {{> navbar }}
+    <main>
+      {{> intro }}
+      <div class="container">
+        <section id="project" class="section scrollspy">
+          <p class="caption">Turn a schedule into a shared timeline. Gantt brings rounded task bars, progress indicators, and milestone diamonds to your Material theme, with day and week views for projects of different sizes.</p>
+          <h3 class="header">Plan a website launch</h3>
+          <p>Follow overlapping work from discovery to release. With Edit tasks enabled, drag a bar to move it or drag either end handle to shorten or extend it. Use zoom to choose how much of the schedule you see. The vertical line marks today; shaded columns mark weekends.</p>
+          <div class="toolbar toolbar-wrap" role="toolbar" aria-label="Website timeline controls">
+            <div class="toolbar-group">
+              <button type="button" class="btn filled" data-gantt-view="day" aria-pressed="true">Day</button>
+              <button type="button" class="btn tonal" data-gantt-view="week" aria-pressed="false">Week</button>
+              <button type="button" class="btn text" id="gantt-today">Today</button>
+            </div>
+            <div class="toolbar-group">
+              <button type="button" class="btn filled" id="gantt-edit" aria-pressed="true">Edit tasks</button>
+              <button type="button" class="btn tonal" id="gantt-progress" disabled>Progress +10%</button>
+              <button type="button" class="btn text" id="gantt-reset">Reset example</button>
+            </div>
+            <div class="toolbar-group" role="group" aria-label="Timeline zoom">
+              <button type="button" class="btn text" id="gantt-zoom-out" aria-label="Zoom out">−</button>
+              <output id="gantt-zoom-value" aria-label="Timeline zoom">100%</output>
+              <button type="button" class="btn text" id="gantt-zoom-in" aria-label="Zoom in">+</button>
+              <button type="button" class="btn text" id="gantt-zoom-reset">Reset zoom</button>
+            </div>
+            <div class="toolbar-group" role="group" aria-label="Task selection">
+              <output id="gantt-selection-count">0 selected</output>
+              <button type="button" class="btn text" id="gantt-clear-selection" disabled>Clear selection</button>
+            </div>
+          </div>
+          <div id="gantt-project" class="gantt no-autoinit"></div>
+          <p id="gantt-status" role="status">Select a task to inspect it or update its progress.</p>
+          <p>Default progress colors: blue below 30%, green from 30% to below 90%, orange from 90% through 100%, and red above 100%. Discovery uses 115% of its expected time. Click a task bar, then press Progress +10% to explore the transitions, including overruns. <a href="#progress-colors">Configure progress colors.</a></p>
+          <p>Use the checkboxes beside task names, Ctrl/Cmd-click task bars to toggle them, or Shift-click another checkbox or task bar to select every task between the two, in either direction. Move any selected bar to move the whole group. Drag either end handle to trim that end of all selected tasks; milestones keep their single date during trimming.</p>
+          <p>Scroll inside the timeline to explore the schedule. Task labels stay visible. Tab to a task and press Enter or Space to select it. In edit mode, Left/Right arrows move the task by one day; Shift + Left/Right changes its end date. Tab to either resize handle and use Left/Right to change that end. Escape cancels a drag. Examples use dates relative to today and changes stay in this page.</p>
+        </section>
+
+        <section id="dependencies" class="section scrollspy">
+          <h3 class="header">Dependencies with overlapping work</h3>
+          <p>Links describe which tasks follow a move. They allow any overlap: Implementation has already started while Planning is still scheduled, and Testing overlaps Implementation. Move Planning to try the chain; Marketing is independent.</p>
+          <p><strong>Connect directly:</strong> hover over a task to reveal its round <strong>+</strong> handle, styled like the organization chart, then drag it onto a downstream task. You can also click or tap the handle, then the destination bar. With a keyboard, activate the handle with Enter or Space, Tab to the destination, and activate it. Escape cancels. <strong>Disconnect:</strong> hover over a dependency curve and click its <strong>×</strong> button, or use the button beside the dependency name in the task’s left-hand label. Controls appear on keyboard focus and stay visible on touch screens. These controls never change scheduled dates.</p>
+          <div id="gantt-dependencies" class="gantt no-autoinit"></div>
+          <p id="gantt-dependency-status" role="status">Move Planning later: Implementation keeps its start and extends its end; Testing and Release move. Move Planning earlier: Implementation stays unchanged.</p>
+          <form id="gantt-link-form" class="row">
+            <div class="s12 m6">
+              <label for="gantt-link-from">Upstream task</label>
+              <select id="gantt-link-from" class="browser-default no-autoinit"></select>
+            </div>
+            <div class="s12 m6">
+              <label for="gantt-link-to">Downstream task</label>
+              <select id="gantt-link-to" class="browser-default no-autoinit"></select>
+            </div>
+            <div class="s12">
+              <div class="toolbar toolbar-wrap" role="toolbar" aria-label="Dependency actions">
+                <div class="toolbar-group">
+                  <button type="submit" class="btn filled">Link tasks</button>
+                  <button type="button" class="btn tonal" id="gantt-unlink">Remove link</button>
+                  <button type="button" class="btn text" id="gantt-dependencies-reset">Reset example</button>
+                </div>
+              </div>
+            </div>
+          </form>
+          <p>A task lists its upstream IDs in <code>dependencies</code>. Moving it affects all downstream tasks, including indirect links, once each. Upstream tasks and unrelated tasks stay unchanged. Selecting multiple linked tasks does not apply the same move twice.</p>
+          <ul>
+            <li><strong>Unstarted downstream task (0%):</strong> start and end move by the same number of days as the task you moved.</li>
+            <li><strong>Started downstream task (above 0%, including overruns):</strong> moving its predecessor later extends only its end date. Moving the predecessor earlier leaves both dates unchanged.</li>
+            <li><strong>Resizing:</strong> affects the selected tasks only. Dependencies do not propagate trimming.</li>
+          </ul>
+          <pre><code class="language-typescript">const chart = Gantt.init(document.querySelector&lt;HTMLElement&gt;('#schedule')!, {
+  editable: true,
+  connectable: true, // Direct dependency controls (enabled by default in edit mode)
+  tasks: [
+    { id: 'planning', name: 'Planning', start: '2026-10-01', end: '2026-10-07' },
+    { id: 'build', name: 'Implementation', start: '2026-10-03', end: '2026-10-12',
+      progress: 40, dependencies: ['planning'] },
+    { id: 'qa', name: 'Testing', start: '2026-10-10', end: '2026-10-15',
+      dependencies: ['build'] }
+  ],
+  onTaskChange: change =&gt; console.log(change),
+  onDependencyChange: change =&gt; console.log(change)
+});
+
+chart.addDependency('planning', 'qa'); // Upstream → downstream; dates stay unchanged
+chart.removeDependency('planning', 'qa');
+chart.getTasks(); // Includes independent copies of dependency arrays</code></pre>
+          <p>Only pointer and keyboard moves propagate dependencies. Adding a link, initializing data, or calling <code>setTasks()</code> preserves the dates you supply. Unknown IDs, self-links, duplicate IDs in a dependency array, and cycles are rejected without changing the chart. Re-adding an existing link or removing an absent link is a no-op.</p>
+          <p>A task selected together with one of its upstream tasks is still treated as downstream: if it has started, its start stays fixed. Unstarted milestones move with the chain; started milestones stay at their original date because a milestone has no duration. The move continues to their downstream tasks. Progress values remain unchanged.</p>
+          <p>All affected dates commit together. <code>onTaskChange</code> runs once per changed task: <code>action</code> is <code>'move'</code> for moved tasks and <code>'resize-end'</code> for started successors whose end was extended. Escape or a canceled pointer gesture restores the entire chain. <code>onDependencyChange</code> receives <code>{ from, to, action: 'add' | 'remove' }</code>; import <code>GanttDependencyChange</code> for its type.</p>
+        </section>
+
+        <section id="campaign" class="section scrollspy">
+          <h3 class="header">Coordinate a campaign</h3>
+          <p>Use <code>view: 'week'</code> for a longer schedule. Each header interval begins on Monday, while task positions still reflect their exact calendar dates. Theme colors distinguish the teams and a diamond marks final approval.</p>
+          <div id="gantt-campaign" class="gantt no-autoinit"></div>
+          <p id="gantt-campaign-status" role="status">Select a task or milestone to see its dates.</p>
+          <pre><code class="language-typescript">Gantt.init(document.querySelector&lt;HTMLElement&gt;('#campaign')!, {
+  view: 'week',
+  label: 'Campaign schedule',
+  tasks: [
+    { id: 'creative', name: 'Creative development', detail: 'Studio',
+      start: '2026-10-05', end: '2026-10-23', progress: 40, tone: 'secondary' },
+    { id: 'content', name: 'Content production', detail: 'Editorial',
+      start: '2026-10-12', end: '2026-10-30', progress: 10, tone: 'tertiary' },
+    { id: 'approval', name: 'Final approval',
+      start: '2026-11-02', end: '2026-11-02', milestone: true }
+  ]
+});</code></pre>
+        </section>
+
+        <section id="usage" class="section scrollspy">
+          <h3 class="header">Basic usage</h3>
+          <p>Import <code>Gantt</code> and the framework stylesheet. The component creates the calendar, labels, and task bars inside an empty host.</p>
+          <pre><code class="language-html">&lt;div id="schedule" class="gantt no-autoinit"&gt;&lt;/div&gt;</code></pre>
+          <pre><code class="language-typescript">import { Gantt } from 'kmaterialize';
+import 'kmaterialize/dist/css/materialize.css';
+
+const chart = Gantt.init(document.querySelector&lt;HTMLElement&gt;('#schedule')!, {
+  label: 'Project schedule',
+  tasks: [
+    { id: 'design', name: 'Design', start: '2026-10-05', end: '2026-10-09', progress: 60 },
+    { id: 'build', name: 'Build', start: '2026-10-08', end: '2026-10-16', progress: 20 },
+    { id: 'release', name: 'Release', start: '2026-10-19', end: '2026-10-19', milestone: true }
+  ],
+  onTaskClick: task =&gt; console.log(task)
+});</code></pre>
+          <p>Browser bundles expose the same component as <code>M.Gantt</code>. For automatic initialization, use <code>class="gantt"</code> and pass the data with <code>M.AutoInit(document.body, { Gantt: { tasks } })</code>. Keep <code>no-autoinit</code> on hosts you initialize yourself.</p>
+        </section>
+
+        <section id="editing" class="section scrollspy">
+          <h3 class="header">Move, resize, and zoom</h3>
+          <p>Set <code>editable: true</code> to enable pointer and keyboard edits. Dragging a task preserves its duration; the two end handles change its start or end date. Dates snap to whole calendar days at every zoom level, and a task always occupies at least one day. Milestones can move but keep their single date. Hold a dragged task near a timeline edge to scroll further.</p>
+          <p>Select several tasks to edit them together. Every selected task moves by the same number of days, preserving the gaps between tasks. Group trimming changes the same end of each selected task by the same amount; shortening stops when the shortest task reaches one day. Selected milestones move with the group but are skipped when resizing. Escape cancels the entire group preview.</p>
+          <pre><code class="language-typescript">const chart = Gantt.init(document.querySelector&lt;HTMLElement&gt;('#schedule')!, {
+  tasks,
+  editable: true,
+  zoom: 1,
+  minZoom: 0.5,
+  maxZoom: 3,
+  onTaskChange: ({ task, previousTask, action }) =&gt; {
+    // Called per changed task after the whole edit commits.
+    console.log(action, previousTask.start, task.start, task.end);
+  }
+});
+
+chart.setEditable(false); // View-only mode
+chart.setEditable(true);
+chart.isEditable();      // true
+chart.setSelectedTaskIds(['design', 'build']);
+chart.getSelectedTaskIds(); // ['design', 'build']
+chart.setSelectedTaskIds([]); // Clear selection
+chart.setZoom(1.5);       // 150% calendar width; labels keep their size
+chart.getZoom();          // 1.5
+chart.resetZoom();        // 100%, limited by minZoom / maxZoom</code></pre>
+          <p><code>onTaskChange</code> receives independent <code>task</code> and <code>previousTask</code> copies, plus an <code>action</code> of <code>'move'</code>, <code>'resize-start'</code>, or <code>'resize-end'</code>. A group edit commits all dates together, then calls this callback once for each changed task; <code>getTasks()</code> already contains the entire update. Canceled drags and unchanged dates do not emit changes. Escape, an interrupted pointer gesture, or leaving the window cancels the preview. Programmatic <code>setTasks()</code> updates do not call this callback.</p>
+          <p><code>onSelectionChange(ids)</code> reports the selected IDs in row order. Selection survives zoom, view changes, and task updates; removed tasks are dropped from the selection. The arrow-key move and resize controls apply to the current selection too.</p>
+          <p>Zoom works in both day and week views and keeps the center date in place when the scroll bounds allow it. Values are clamped to the configured limits. Changing view, zoom, edit mode, or data during a drag cancels that unfinished edit. On touch screens, drag a task or its visible end handles; swipe an empty part of the timeline to scroll.</p>
+        </section>
+
+        <section id="progress-colors" class="section scrollspy">
+          <h3 class="header">Progress colors</h3>
+          <p>Without any color configuration, progress is blue below 30%, green from 30% to below 90%, orange from 90% through 100%, and red above 100%. Set <code>progress: 125</code> to show 125% of expected time, with a visible “25% over expected” label. The colored fill stops at the end of the scheduled bar; the stored value, accessible label, and tooltip retain the full percentage. Progress changes do not change scheduled dates.</p>
+          <pre><code class="language-typescript">const tasks = chart.getTasks();
+tasks[0].progress = 125; // 25% over expected; red by default
+chart.setTasks(tasks);</code></pre>
+          <p>Give a task's progress line a fixed <code>progressColor</code>, or change its color by percentage using <code>progressMeter</code>. Names, hex colors, and CSS theme variables are supported. The task bar keeps its own <code>tone</code>.</p>
+          <pre><code class="language-typescript">const tasks: GanttTask[] = [
+  {
+    id: 'design', name: 'Design', start: '2026-10-05', end: '2026-10-09',
+    progress: 60,
+    progressColor: 'var(--md-sys-color-tertiary)'
+  },
+  {
+    id: 'build', name: 'Build', start: '2026-10-08', end: '2026-10-16',
+    progress: 25,
+    progressMeter: {
+      low: 30,
+      high: 70,
+      optimum: 100,
+      optimalColor: 'seagreen',
+      suboptimalColor: 'darkorange',
+      criticalColor: 'crimson'
+    }
+  }
+];
+chart.setTasks(tasks);</code></pre>
+          <p>The optional <code>low</code>, <code>high</code>, and <code>optimum</code> settings override the default regions up to 100%. Low and high are required when supplying <code>progressMeter</code>; optimum defaults to 100. All thresholds must be within 0–100, and low must not exceed high. Progress values themselves may exceed 100%; overruns always use the critical region.</p>
+          <table class="striped responsive-table">
+            <thead><tr><th>Optimum setting</th><th>Optimal range</th><th>Other ranges</th></tr></thead>
+            <tbody>
+              <tr><td>Above high</td><td>High through 100</td><td>Low up to high is suboptimal; below low is critical.</td></tr>
+              <tr><td>Below low</td><td>0 through low</td><td>Above low through high is suboptimal; above high is critical.</td></tr>
+              <tr><td>Between low and high, inclusive</td><td>Low through high</td><td>Values outside that range are suboptimal.</td></tr>
+            </tbody>
+          </table>
+          <p>Default colors are blue (<code>dodgerblue</code>), green (<code>seagreen</code>), orange (<code>darkorange</code>), and red (<code>crimson</code>). Customize them on the host with <code>--gantt-progress-low-color</code>, <code>--gantt-progress-optimal-color</code>, <code>--gantt-progress-suboptimal-color</code>, and <code>--gantt-progress-critical-color</code>. An explicit <code>progressColor</code> overrides all region colors, including overruns. The task's accessible label and tooltip include its percentage and configured range, and overruns also have a visible text label. Milestones have no progress line.</p>
+        </section>
+
+        <section id="data" class="section scrollspy">
+          <h3 class="header">Task data</h3>
+          <pre><code class="language-typescript">import type { GanttTask, GanttOptions, GanttView, GanttTone } from 'kmaterialize';
+
+const task: GanttTask = {
+  id: 'design',
+  name: 'Interface design',
+  start: '2026-10-05',
+  end: '2026-10-09',
+  progress: 60,
+  detail: 'Design team',
+  tone: 'secondary'
+};</code></pre>
+          <table class="striped responsive-table">
+            <thead><tr><th>Field</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><code>id</code>, <code>name</code></td><td>Required non-empty strings. IDs must be unique within the chart.</td></tr>
+              <tr><td><code>start</code>, <code>end</code></td><td>Required valid <code>YYYY-MM-DD</code> calendar dates. The end is inclusive: a task beginning and ending on the same date occupies one day. End cannot precede start.</td></tr>
+              <tr><td><code>progress</code></td><td>Optional finite, non-negative percentage; defaults to 0. Values above 100 show an overrun. The fill is capped at the scheduled bar width while labels and data preserve the actual percentage.</td></tr>
+              <tr><td><code>progressColor</code></td><td>Optional CSS color for the progress line, independent of the task tone. Takes precedence over meter colors.</td></tr>
+              <tr><td><code>progressMeter</code></td><td>Optional <code>GanttProgressMeter</code> with <code>low</code>, <code>high</code>, <code>optimum</code>, and configurable region colors. See <a href="#progress-colors">Progress colors</a>.</td></tr>
+              <tr><td><code>detail</code></td><td>Optional secondary label, such as the assignee or team.</td></tr>
+              <tr><td><code>tone</code></td><td><code>'primary'</code> (default), <code>'secondary'</code>, <code>'tertiary'</code>, or <code>'error'</code>. Uses your Material color tokens.</td></tr>
+              <tr><td><code>milestone</code></td><td>Set to <code>true</code> for a diamond. Start and end must be the same date.</td></tr>
+              <tr><td><code>dependencies</code></td><td>Optional array of upstream task IDs. Links allow overlaps and propagate moves only to downstream tasks. See <a href="#dependencies">Dependencies</a>.</td></tr>
+            </tbody>
+          </table>
+          <p>The range fits the tasks automatically, with padding at both ends. The maximum span between the earliest start and latest end is 3,661 calendar days. Invalid data throws an error and leaves an existing chart intact. Task names and details are rendered as text.</p>
+        </section>
+
+        <section id="options" class="section scrollspy">
+          <h3 class="header">Options</h3>
+          <table class="striped responsive-table">
+            <thead><tr><th>Option</th><th>Default</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><code>tasks</code></td><td><code>[]</code></td><td>Task data in display order. An empty array shows the empty state.</td></tr>
+              <tr><td><code>view</code></td><td><code>'day'</code></td><td>Daily columns, or compact weekly intervals with <code>'week'</code>.</td></tr>
+              <tr><td><code>editable</code></td><td><code>false</code></td><td>Enable moving and resizing tasks with pointer or keyboard controls.</td></tr>
+              <tr><td><code>connectable</code></td><td><code>true</code></td><td>Show drag, click/tap, and keyboard connection handles and dependency removal buttons when editable. Set to false to keep date editing without direct link editing. Programmatic dependency methods remain available.</td></tr>
+              <tr><td><code>zoom</code></td><td><code>1</code></td><td>Initial calendar column scale; 1 is 100%.</td></tr>
+              <tr><td><code>minZoom</code>, <code>maxZoom</code></td><td><code>0.5</code>, <code>3</code></td><td>Positive zoom limits; minimum must not exceed maximum.</td></tr>
+              <tr><td><code>onTaskChange</code></td><td><code>null</code></td><td>Receives <code>{ task, previousTask, action }</code> after a user commits changed dates. Import <code>GanttTaskChange</code> and <code>GanttEditAction</code> for the callback types.</td></tr>
+              <tr><td><code>onSelectionChange</code></td><td><code>null</code></td><td>Receives a copy of the selected task IDs after selection changes.</td></tr>
+              <tr><td><code>onDependencyChange</code></td><td><code>null</code></td><td>Receives <code>{ from, to, action }</code> after a direct connection/removal or a call to <code>addDependency()</code> or <code>removeDependency()</code> changes a link.</td></tr>
+              <tr><td><code>locale</code></td><td><code>'en'</code></td><td>Locale used to format the calendar, such as <code>'fr'</code>.</td></tr>
+              <tr><td><code>label</code></td><td><code>'Project timeline'</code></td><td>Visible heading and accessible name.</td></tr>
+              <tr><td><code>showToday</code></td><td><code>true</code></td><td>Highlights the user's local today when it falls within the task range.</td></tr>
+              <tr><td><code>emptyText</code></td><td><code>'No tasks scheduled.'</code></td><td>Message for an empty schedule.</td></tr>
+              <tr><td><code>onTaskClick</code></td><td><code>null</code></td><td>Receives <code>(task, event)</code> when a task or milestone is activated by pointer or keyboard. The task is a copy.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="methods" class="section scrollspy">
+          <h3 class="header">Update a schedule</h3>
+          <p>Use the public methods to connect the chart to your own task editor or saved data. Dates can be edited directly in edit mode or replaced through <code>setTasks()</code>.</p>
+          <pre><code class="language-typescript">const tasks = chart.getTasks();
+tasks[0].progress = 80;
+chart.setTasks(tasks);
+
+chart.setView('week');
+chart.getView(); // 'week'
+chart.scrollToDate('2026-10-12');
+chart.scrollToDate(); // Today
+
+Gantt.getInstance(document.querySelector&lt;HTMLElement&gt;('#schedule')!);
+chart.setTasks([]); // Show the empty state
+chart.destroy();    // Remove listeners and restore the original host content</code></pre>
+          <p><code>getTasks()</code> and callbacks return copies, and <code>setTasks()</code> copies the supplied data. Initializing the same host again replaces its previous instance. All styling comes from kmaterialize, including light and dark themes. Adjust <code>--gantt-label-width</code> on the host to customize the task column width.</p>
+        </section>
+      </div>
+    </main>
+    {{> footer }}
+    <script type="module" src="/main.ts"></script>
+    <script type="module" src="/gantt-demo.ts"></script>
+  </body>
+</html>

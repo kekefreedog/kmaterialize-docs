@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    {{> head }}
-  </head>
+  <head>{{> head }}</head>
   <body>
     {{> navbar }}
     <main>
@@ -10,84 +8,244 @@
       <div class="container">
         <div class="row">
           <div class="s12 m8 offset-m1 xl7 offset-xl1">
-            <!--  Footer Section-->
-            <div id="footer" class="section scrollspy">
-              <p class="caption">
-                Footers are a great way to organize a lot of site navigation and information at the end of a page. This is where the user will look once they have finished
-                scrolling through the current page or are looking for additional information about your website.
-              </p>
-              <h3 class="header">Introduction</h3>
-              <p>
-                Note: We use flexbox to structure our html so that the footer is always on the bottom of the page. It is important to keep the structure of your page within the 3
-                HTML5 tags:
-                <code class="language-html">header</code>, <code class="language-html">main</code>,
-                <code class="language-html">footer</code>
-              </p>
-
-              <div class="row">
-                <div class="s12">
-                  <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><footer class="page-footer">
-  <div class="container">
-    <div class="row">
-      <div class="l6 s12">
-        <h5>Footer Content</h5>
-        <p>You can use rows and columns here to organize your footer content.</p>
-      </div>
-      <div class="l4 offset-l8 s12">
-        <h5>Links</h5>
-        <ul>
-          <li><a href="#!">Link 1</a></li>
-          <li><a href="#!">Link 2</a></li>
-          <li><a href="#!">Link 3</a></li>
-          <li><a href="#!">Link 4</a></li>
-        </ul>
-      </div>
+            <p class="caption">Footers give visitors a place to find useful links, learn about your project, and decide what to do next. Try these responsive layouts and copy the markup into your own page.</p>
+<section id="footer" class="section scrollspy">
+<h3>Multi-column footer</h3>
+<p>Group a short introduction with navigation and resource links. The columns stack on smaller screens.</p>
+<footer class="page-footer footer-bordered mt-0 px-4 pt-4">
+  <div class="row">
+    <div class="s12 m6">
+      <h5 class="mt-0">Made with kmaterialize</h5>
+      <p class="on-surface-variant-text">Build thoughtful interfaces with responsive components and Material themes.</p>
+    </div>
+    <div class="s6 m3">
+      <h6 class="mt-0">Explore</h6>
+      <ul>
+        <li><a href="getting-started.html">Get started</a></li>
+        <li><a href="cards.html">Components</a></li>
+        <li><a href="themes.html">Themes</a></li>
+      </ul>
+    </div>
+    <div class="s6 m3">
+      <h6 class="mt-0">Resources</h6>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="icons.html">Icons</a></li>
+        <li><a href="helpers.html">Layout helpers</a></li>
+      </ul>
     </div>
   </div>
-  <div class="footer-copyright">
-    <div class="container">
-    © 2014 Copyright Text
-    <a class="right" href="#!">More Links</a>
+  <div class="footer-copyright screen-flex screen-wrap">
+    <span>© 2026 Your team</span>
+    <a href="about.html">About this project</a>
+  </div>
+</footer>
+<pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;footer class=&quot;page-footer footer-bordered mt-0 px-4 pt-4&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;s12 m6&quot;&gt;
+      &lt;h5 class=&quot;mt-0&quot;&gt;Made with kmaterialize&lt;/h5&gt;
+      &lt;p class=&quot;on-surface-variant-text&quot;&gt;Build thoughtful interfaces with responsive components and Material themes.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;s6 m3&quot;&gt;
+      &lt;h6 class=&quot;mt-0&quot;&gt;Explore&lt;/h6&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;getting-started.html&quot;&gt;Get started&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;cards.html&quot;&gt;Components&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;themes.html&quot;&gt;Themes&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;s6 m3&quot;&gt;
+      &lt;h6 class=&quot;mt-0&quot;&gt;Resources&lt;/h6&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;icons.html&quot;&gt;Icons&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;helpers.html&quot;&gt;Layout helpers&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;footer-copyright screen-flex screen-wrap&quot;&gt;
+    &lt;span&gt;© 2026 Your team&lt;/span&gt;
+    &lt;a href=&quot;about.html&quot;&gt;About this project&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</code></pre>
+</section>
+<section id="compact" class="section scrollspy">
+<h3>Compact footer</h3>
+<p>A simple copyright row for applications and smaller sites. Links wrap naturally when the available space is limited.</p>
+<footer class="page-footer footer-bordered mt-0 px-4 pt-0">
+  <div class="footer-copyright screen-flex screen-wrap">
+    <span class="mr-3">© 2026 Your product</span>
+    <nav aria-label="Compact footer links">
+      <ul class="screen-flex screen-wrap m-0">
+        <li class="mr-3"><a href="about.html">About</a></li>
+        <li><a href="getting-started.html">Documentation</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+<pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;footer class=&quot;page-footer footer-bordered mt-0 px-4 pt-0&quot;&gt;
+  &lt;div class=&quot;footer-copyright screen-flex screen-wrap&quot;&gt;
+    &lt;span class=&quot;mr-3&quot;&gt;© 2026 Your product&lt;/span&gt;
+    &lt;nav aria-label=&quot;Compact footer links&quot;&gt;
+      &lt;ul class=&quot;screen-flex screen-wrap m-0&quot;&gt;
+        &lt;li class=&quot;mr-3&quot;&gt;&lt;a href=&quot;about.html&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;getting-started.html&quot;&gt;Documentation&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</code></pre>
+</section>
+<section id="centered" class="section scrollspy">
+<h3>Centered footer</h3>
+<p>Use a centered layout for a small brand statement and a short set of links. Surface color utilities follow the active theme.</p>
+<footer class="page-footer footer-bordered center-align surface-variant on-surface-variant-text mt-0 p-4">
+  <i class="material-icons" aria-hidden="true">landscape</i>
+  <h5 class="mt-2">A little room to explore</h5>
+  <p class="on-surface-variant-text">Components, ideas, and tools for your next project.</p>
+  <nav aria-label="Centered footer links">
+    <ul class="screen-flex screen-center-x screen-wrap">
+      <li class="mx-2"><a href="cards.html">Discover</a></li>
+      <li class="mx-2"><a href="timeline.html">Timeline</a></li>
+      <li class="mx-2"><a href="about.html">Our story</a></li>
+    </ul>
+  </nav>
+  <small>© 2026 Your team. Made with care.</small>
+</footer>
+<pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;footer class=&quot;page-footer footer-bordered center-align surface-variant on-surface-variant-text mt-0 p-4&quot;&gt;
+  &lt;i class=&quot;material-icons&quot; aria-hidden=&quot;true&quot;&gt;landscape&lt;/i&gt;
+  &lt;h5 class=&quot;mt-2&quot;&gt;A little room to explore&lt;/h5&gt;
+  &lt;p class=&quot;on-surface-variant-text&quot;&gt;Components, ideas, and tools for your next project.&lt;/p&gt;
+  &lt;nav aria-label=&quot;Centered footer links&quot;&gt;
+    &lt;ul class=&quot;screen-flex screen-center-x screen-wrap&quot;&gt;
+      &lt;li class=&quot;mx-2&quot;&gt;&lt;a href=&quot;cards.html&quot;&gt;Discover&lt;/a&gt;&lt;/li&gt;
+      &lt;li class=&quot;mx-2&quot;&gt;&lt;a href=&quot;timeline.html&quot;&gt;Timeline&lt;/a&gt;&lt;/li&gt;
+      &lt;li class=&quot;mx-2&quot;&gt;&lt;a href=&quot;about.html&quot;&gt;Our story&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+  &lt;small&gt;© 2026 Your team. Made with care.&lt;/small&gt;
+&lt;/footer&gt;</code></pre>
+</section>
+<section id="call-to-action" class="section scrollspy">
+<h3>Call-to-action footer</h3>
+<p>Give visitors a clear next step with a Material button and a primary-container background.</p>
+<footer class="page-footer footer-bordered primary-container on-primary-container-text mt-0 p-4">
+  <div class="row">
+    <div class="s12 m7">
+      <h5 class="mt-0">Ready to build something?</h5>
+      <p class="on-primary-container-text">Start with the essentials, then make every component your own.</p>
+    </div>
+    <div class="s12 m5 screen-flex screen-center-y">
+      <crazy-button type="extended" variant="filled" size="normal" label="Get started" href="getting-started.html"></crazy-button>
     </div>
   </div>
-</footer></xmp>
-</code></pre>
-                </div>
-              </div>
-            </div>
-            <!-- End of footer section -->
-
-            <div id="sticky-footer" class="section scrollspy">
-              <h3 class="header">Sticky Footer</h3>
-              <p>
-                A sticky footer always stays on the bottom of the page regardless of how little content is on the page. However, this footer will be pushed down if there is a lot
-                of content, so it is different from a fixed footer. Add the following code to your CSS file.
-              </p>
-              <p>Note: This may cause issues in Internet Explorer which has weak support for flexbox.</p>
-            </div>
-
-            <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-css copiedText">body {
+  <div class="footer-copyright screen-flex screen-wrap">
+    <span class="mr-3">Built for your next idea</span>
+    <a href="themes.html">Explore themes</a>
+  </div>
+</footer>
+<pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;footer class=&quot;page-footer footer-bordered primary-container on-primary-container-text mt-0 p-4&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;s12 m7&quot;&gt;
+      &lt;h5 class=&quot;mt-0&quot;&gt;Ready to build something?&lt;/h5&gt;
+      &lt;p class=&quot;on-primary-container-text&quot;&gt;Start with the essentials, then make every component your own.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;s12 m5 screen-flex screen-center-y&quot;&gt;
+      &lt;crazy-button type=&quot;extended&quot; variant=&quot;filled&quot; size=&quot;normal&quot; label=&quot;Get started&quot; href=&quot;getting-started.html&quot;&gt;&lt;/crazy-button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;footer-copyright screen-flex screen-wrap&quot;&gt;
+    &lt;span class=&quot;mr-3&quot;&gt;Built for your next idea&lt;/span&gt;
+    &lt;a href=&quot;themes.html&quot;&gt;Explore themes&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</code></pre>
+</section>
+<section id="sticky-footer" class="section scrollspy">
+<h3>Sticky footer</h3>
+<p>Keep the footer at the bottom of a short page while allowing long content to push it down. The example below uses a 320px preview area. On a real page, use a full-height flex column around your header, main content, and footer.</p>
+<div class="screen-flex screen-direction-y-asc surface-variant" style="min-height: 320px;">
+  <div class="p-3"><strong>Your website</strong></div>
+  <div class="element-flex-grow-1 p-3">
+    <h5 class="mt-0">A short page</h5>
+    <p>The content grows to fill the available space above the footer.</p>
+  </div>
+  <footer class="page-footer footer-bordered surface mt-0 px-3 pt-0">
+    <div class="footer-copyright screen-flex screen-wrap">
+      <span>© 2026 Your team</span>
+      <a href="getting-started.html">Get started</a>
+    </div>
+  </footer>
+</div>
+<pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;div class=&quot;screen-flex screen-direction-y-asc surface-variant&quot; style=&quot;min-height: 320px;&quot;&gt;
+  &lt;div class=&quot;p-3&quot;&gt;&lt;strong&gt;Your website&lt;/strong&gt;&lt;/div&gt;
+  &lt;div class=&quot;element-flex-grow-1 p-3&quot;&gt;
+    &lt;h5 class=&quot;mt-0&quot;&gt;A short page&lt;/h5&gt;
+    &lt;p&gt;The content grows to fill the available space above the footer.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;footer class=&quot;page-footer footer-bordered surface mt-0 px-3 pt-0&quot;&gt;
+    &lt;div class=&quot;footer-copyright screen-flex screen-wrap&quot;&gt;
+      &lt;span&gt;© 2026 Your team&lt;/span&gt;
+      &lt;a href=&quot;getting-started.html&quot;&gt;Get started&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;
+&lt;/div&gt;</code></pre>
+<p>For a complete page, use this structure and apply the following layout CSS. The footer stays in the normal document flow and does not cover the content.</p>
+<pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;body&gt;
+  &lt;header&gt;Site navigation&lt;/header&gt;
+  &lt;main&gt;Page content&lt;/main&gt;
+  &lt;footer class=&quot;page-footer footer-bordered mt-0&quot;&gt;Footer content&lt;/footer&gt;
+&lt;/body&gt;</code></pre><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-css copiedText">body {
   display: flex;
-  min-height: 100vh;
   flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
 }
 
-main {
+body &gt; main {
   flex: 1 0 auto;
 }
-</code></pre>
-          </div>
 
+body &gt; header,
+body &gt; footer {
+  flex-shrink: 0;
+}</code></pre>
+</section>
+<section id="fixed-footer" class="section scrollspy">
+<h3>Sticky and fixed footer</h3>
+<p>Keep useful actions at the bottom of the viewport with <code>footer-layout footer-fixed</code>. The main area scrolls, and the footer reserves its actual height so it never covers the last line of content. Remove <code>footer-fixed</code> for a sticky footer that follows long content.</p>
+<p>Use the Crazy Button controls to switch modes and add content. You can also <a href="footer-position-demo.html" target="_blank" rel="noopener">open the full-page example</a>. This demonstrates the sticky and fixed modes named in the <a href="https://codepen.io/j_holtslander/full/BGdMMr/" target="_blank" rel="noopener">reference pen</a>.</p>
+<iframe src="footer-position-demo.html" title="Compare sticky and fixed footer layouts" loading="lazy" style="width: 100%; height: 540px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 16px;"></iframe>
+<pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;body class=&quot;footer-layout footer-fixed&quot;&gt;
+  &lt;header&gt;Site navigation&lt;/header&gt;
+  &lt;main&gt;
+    &lt;!-- Your page content scrolls here. --&gt;
+  &lt;/main&gt;
+  &lt;footer class=&quot;page-footer footer-bordered surface-variant px-4 pt-0&quot;&gt;
+    &lt;div class=&quot;footer-copyright screen-flex screen-wrap&quot;&gt;
+      &lt;span&gt;© 2026 Your team&lt;/span&gt;
+      &lt;crazy-button type=&quot;extended&quot; variant=&quot;filled&quot; size=&quot;normal&quot;
+          label=&quot;Get started&quot; href=&quot;getting-started.html&quot;&gt;&lt;/crazy-button&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+<p>Both layout classes belong on the page wrapper or <code>body</code>, with <code>header</code>, <code>main</code>, and <code>footer</code> as direct children. The default height is the viewport; set <code>--footer-layout-height</code> for an embedded layout. No JavaScript is needed for positioning. Load kmaterialize JavaScript to register <code>crazy-button</code>.</p>
+</section>
+<section id="usage" class="section scrollspy">
+<h3>Choosing a footer</h3>
+<p>Use a multi-column footer for several navigation groups, a compact footer for a small application, or a centered footer for a short closing message. Keep link labels descriptive and give each navigation group an accessible label.</p>
+<p>The footer layouts use kmaterialize classes and need no initialization. Add <code>footer-bordered</code> for the visible outline shown in these examples. Load kmaterialize JavaScript to register <code>crazy-button</code> for the call-to-action example. <code>mt-0</code> removes the default space above a footer; padding utilities control its inner spacing. Pair background and text colors, such as <code>primary-container on-primary-container-text</code>, and resize the page or switch themes to preview each layout.</p>
+</section>
+          </div>
           <div class="hide-on-small-only m3 xl3">
-            <div class="toc-wrapper">
-              <div style="height: 1px">
-                <ul class="section table-of-contents">
-                  <li><a href="#footer">Footer</a></li>
-                  <li><a href="#sticky-footer">Sticky Footer</a></li>
-                </ul>
-              </div>
-            </div>
+            <div class="toc-wrapper"><ul class="section table-of-contents">
+              <li><a href="#footer">Multi-column footer</a></li>
+              <li><a href="#compact">Compact footer</a></li>
+              <li><a href="#centered">Centered footer</a></li>
+              <li><a href="#call-to-action">Call to action</a></li>
+              <li><a href="#sticky-footer">Sticky footer</a></li>
+              <li><a href="#fixed-footer">Sticky and fixed</a></li>
+              <li><a href="#usage">Choosing a footer</a></li>
+            </ul></div>
           </div>
         </div>
       </div>

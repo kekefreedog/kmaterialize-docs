@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>{{> head }}</head>
+  <body>
+    {{> navbar }}
+    <main>
+      {{> intro}}
+      <div class="container">
+        <div class="row">
+          <div class="s12 l9">
+            <section id="basic" class="section scrollspy">
+              <h3>Timeline</h3>
+              <p class="caption">Show milestones, activity, or a story in chronological order. Cards alternate around a connecting line and become a single column when the timeline has 600px or less of available space.</p>
+              <p>Use <code>timeline</code>, <code>timeline-event</code>, <code>timeline-content</code>, and <code>timeline-badge</code>. These styles are included in kmaterialize; no JavaScript initialization is required.</p>
+<ol class="timeline" role="list" aria-label="Project milestones">
+  <li class="timeline-event">
+    <article class="card timeline-content">
+      <div class="card-content">
+        <time class="on-surface-variant-text" datetime="2026-09-01">September 1, 2026</time>
+        <h4 class="card-title mt-0">Project kickoff</h4>
+        <p>Agree on the goals, meet the team, and outline the first milestones.</p>
+      </div>
+    </article>
+    <span class="timeline-badge " aria-hidden="true"><i class="material-icons">flag</i></span>
+  </li>
+  <li class="timeline-event">
+    <article class="card timeline-content">
+      <div class="card-content">
+        <time class="on-surface-variant-text" datetime="2026-09-05">September 5, 2026</time>
+        <h4 class="card-title mt-0">First prototype</h4>
+        <p>Bring the idea to life with a working prototype and share it with the team.</p>
+      </div>
+    </article>
+    <span class="timeline-badge tertiary on-tertiary-text" aria-hidden="true"><i class="material-icons">design_services</i></span>
+  </li>
+  <li class="timeline-event">
+    <article class="card timeline-content">
+      <div class="card-content">
+        <time class="on-surface-variant-text" datetime="2026-09-12">September 12, 2026</time>
+        <h4 class="card-title mt-0">Team review</h4>
+        <p>Review the details, collect feedback, and prepare the final changes.</p>
+      </div>
+    </article>
+    <span class="timeline-badge secondary on-secondary-text" aria-hidden="true"><i class="material-icons">forum</i></span>
+  </li>
+  <li class="timeline-event">
+    <article class="card timeline-content">
+      <div class="card-content">
+        <time class="on-surface-variant-text" datetime="2026-09-18">September 18, 2026</time>
+        <h4 class="card-title mt-0">Launch day</h4>
+        <p>Release the project and celebrate the work that brought it here.</p>
+      </div>
+    </article>
+    <span class="timeline-badge " aria-hidden="true"><i class="material-icons">rocket_launch</i></span>
+  </li>
+</ol>
+<pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><ol class="timeline" role="list" aria-label="Project milestones">
+  <li class="timeline-event">
+    <article class="card timeline-content">
+      <div class="card-content">
+        <time class="on-surface-variant-text" datetime="2026-09-01">September 1, 2026</time>
+        <h4 class="card-title mt-0">Project kickoff</h4>
+        <p>Agree on the goals, meet the team, and outline the first milestones.</p>
+      </div>
+    </article>
+    <span class="timeline-badge " aria-hidden="true"><i class="material-icons">flag</i></span>
+  </li>
+  <li class="timeline-event">
+    <article class="card timeline-content">
+      <div class="card-content">
+        <time class="on-surface-variant-text" datetime="2026-09-05">September 5, 2026</time>
+        <h4 class="card-title mt-0">First prototype</h4>
+        <p>Bring the idea to life with a working prototype and share it with the team.</p>
+      </div>
+    </article>
+    <span class="timeline-badge tertiary on-tertiary-text" aria-hidden="true"><i class="material-icons">design_services</i></span>
+  </li>
+</ol></xmp>
+</code></pre>
+            </section>
+            <section id="images" class="section scrollspy">
+              <h3>Image cards and dots</h3>
+              <p>Combine the timeline with regular image cards and gradient titles. An empty <code>timeline-badge</code> becomes a small dot. Links and card actions keep their usual behavior.</p>
+<ol class="timeline" role="list" aria-label="Travel journal">
+  <li class="timeline-event">
+    <article class="card timeline-content">
+      <div class="card-image">
+        <img src="images/sample-1.jpg" alt="A mountain lake surrounded by trees">
+        <span class="card-title gradient">Into the mountains</span>
+      </div>
+      <div class="card-content">
+        <time class="on-surface-variant-text" datetime="2026-08-14">August 14, 2026</time>
+        <p>A quiet morning by the lake before the next adventure.</p>
+      </div>
+      <div class="card-action"><a href="cards.html#image-gradient">Image card details</a></div>
+    </article>
+    <span class="timeline-badge" aria-hidden="true"></span>
+  </li>
+  <li class="timeline-event">
+    <article class="card timeline-content">
+      <div class="card-image">
+        <img src="images/parallax1.jpg" alt="Colorful buildings beside a canal">
+        <span class="card-title gradient">A new perspective</span>
+      </div>
+      <div class="card-content">
+        <time class="on-surface-variant-text" datetime="2026-08-17">August 17, 2026</time>
+        <p>Explore the city, meet new people, and find inspiration along the way.</p>
+      </div>
+    </article>
+    <span class="timeline-badge tertiary" aria-hidden="true"></span>
+  </li>
+</ol>
+<pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><ol class="timeline" role="list" aria-label="Travel journal">
+  <li class="timeline-event">
+    <article class="card timeline-content">
+      <div class="card-image">
+        <img src="images/sample-1.jpg" alt="A mountain lake surrounded by trees">
+        <span class="card-title gradient">Into the mountains</span>
+      </div>
+      <div class="card-content">
+        <time class="on-surface-variant-text" datetime="2026-08-14">August 14, 2026</time>
+        <p>A quiet morning by the lake before the next adventure.</p>
+      </div>
+      <div class="card-action"><a href="cards.html#image-gradient">Image card details</a></div>
+    </article>
+    <span class="timeline-badge" aria-hidden="true"></span>
+  </li>
+  <li class="timeline-event">
+    <article class="card timeline-content">
+      <div class="card-image">
+        <img src="images/parallax1.jpg" alt="Colorful buildings beside a canal">
+        <span class="card-title gradient">A new perspective</span>
+      </div>
+      <div class="card-content">
+        <time class="on-surface-variant-text" datetime="2026-08-17">August 17, 2026</time>
+        <p>Explore the city, meet new people, and find inspiration along the way.</p>
+      </div>
+    </article>
+    <span class="timeline-badge tertiary" aria-hidden="true"></span>
+  </li>
+</ol></xmp>
+</code></pre>
+            </section>
+            <section id="single-column" class="section scrollspy">
+              <h3>Single column</h3>
+              <p>Add <code>timeline-left</code> to keep the markers at the start and all cards on one side at every width. This layout also follows the page's text direction.</p>
+<ol class="timeline timeline-left" role="list" aria-label="Order activity">
+  <li class="timeline-event">
+    <article class="card timeline-content">
+      <div class="card-content">
+        <time class="on-surface-variant-text" datetime="2026-09-16T09:00">September 16 · 09:00</time>
+        <h4 class="card-title mt-0">Order confirmed</h4>
+        <p>Your order is confirmed and ready for preparation.</p>
+      </div>
+    </article>
+    <span class="timeline-badge " aria-hidden="true"><i class="material-icons">receipt_long</i></span>
+  </li>
+  <li class="timeline-event">
+    <article class="card timeline-content">
+      <div class="card-content">
+        <time class="on-surface-variant-text" datetime="2026-09-17T14:30">September 17 · 14:30</time>
+        <h4 class="card-title mt-0">On its way</h4>
+        <p>The parcel has left the warehouse.</p>
+      </div>
+    </article>
+    <span class="timeline-badge " aria-hidden="true"><i class="material-icons">local_shipping</i></span>
+  </li>
+  <li class="timeline-event">
+    <article class="card timeline-content">
+      <div class="card-content">
+        <time class="on-surface-variant-text" datetime="2026-09-18T11:15">September 18 · 11:15</time>
+        <h4 class="card-title mt-0">Delivered</h4>
+        <p>The parcel was delivered to the reception desk.</p>
+      </div>
+    </article>
+    <span class="timeline-badge tertiary on-tertiary-text" aria-hidden="true"><i class="material-icons">check</i></span>
+  </li>
+</ol>
+<pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><ol class="timeline timeline-left" role="list" aria-label="Order activity">
+  <li class="timeline-event">
+    <article class="card timeline-content">
+      <div class="card-content">
+        <time class="on-surface-variant-text" datetime="2026-09-16">September 16, 2026</time>
+        <h4 class="card-title mt-0">Order confirmed</h4>
+        <p>Your order is confirmed.</p>
+      </div>
+    </article>
+    <span class="timeline-badge " aria-hidden="true"><i class="material-icons">receipt_long</i></span>
+  </li>
+</ol></xmp>
+</code></pre>
+            </section>
+            <section id="customization" class="section scrollspy">
+              <h3>Customization</h3>
+              <p>Use paired color utilities on icon markers, such as <code>tertiary on-tertiary-text</code>. Colors follow the current light or dark theme.</p>
+              <table class="responsive-table">
+                <thead><tr><th>CSS variable</th><th>Default</th><th>Purpose</th></tr></thead>
+                <tbody>
+                  <tr><td><code>--timeline-line-color</code></td><td>Outline variant</td><td>Connecting line color</td></tr>
+                  <tr><td><code>--timeline-line-width</code></td><td>2px</td><td>Connecting line thickness</td></tr>
+                  <tr><td><code>--timeline-badge-size</code></td><td>40px</td><td>Icon marker size; empty dots remain 16px</td></tr>
+                  <tr><td><code>--timeline-marker-gap</code></td><td>12px</td><td>Clear space between each marker and the connecting line</td></tr>
+                  <tr><td><code>--timeline-gap</code></td><td>16px</td><td>Space between markers and cards</td></tr>
+                  <tr><td><code>--timeline-event-spacing</code></td><td>12px</td><td>Space above and below each event</td></tr>
+                </tbody>
+              </table>
+<pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><ol class="timeline timeline-left" role="list" aria-label="Project milestones"
+    style="--timeline-line-color: var(--md-sys-color-tertiary); --timeline-gap: 24px; --timeline-badge-size: 48px;">
+  <!-- Add timeline-event items here. -->
+</ol></xmp>
+</code></pre>
+            </section>
+            <section id="accessibility" class="section scrollspy">
+              <h3>Content and accessibility</h3>
+              <p>Keep events in chronological order in the markup. Use an ordered list with an accessible label and <code>time datetime="…"</code> for dates. Decorative markers use <code>aria-hidden="true"</code>; describe the event or status in the card text. The visual alternation does not change reading or keyboard order.</p>
+              <p>Inspired by <a href="https://codepen.io/j_holtslander/pen/drpKLo" target="_blank" rel="noopener">Jay Holtslander's image timeline</a> and <a href="https://codepen.io/kaik3257/pen/vPmYWB" target="_blank" rel="noopener">the Materialize icon timeline</a>.</p>
+            </section>
+          </div>
+          <div class="hide-on-med-and-down l3">
+            <div class="toc-wrapper"><ul class="section table-of-contents">
+              <li><a href="#basic">Timeline</a></li>
+              <li><a href="#images">Image cards</a></li>
+              <li><a href="#single-column">Single column</a></li>
+              <li><a href="#customization">Customization</a></li>
+              <li><a href="#accessibility">Accessibility</a></li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    {{> footer }}
+    <script type="module" src="/main.ts"></script>
+  </body>
+</html>

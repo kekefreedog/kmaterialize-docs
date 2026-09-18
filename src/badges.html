@@ -162,6 +162,55 @@
               </div>
             </div>
 
+      <section id="cards" class="section scrollspy">
+        <h3 class="header">Card Badges</h3>
+        <p>Use badges on <a href="cards.html#badges">image cards</a> to highlight a status, recommendation, or availability.</p>
+        <p>Place a <code>card-badges</code> group inside <code>card-image</code> to display custom labels above the image. Badges sit in the top-right corner by default; add <code>left</code> to move the group to the top-left. Multiple badges wrap when space is limited.</p>
+        <div class="row">
+          <div class="s12 m6">
+            <div class="card">
+              <div class="card-image">
+                <img src="images/sample-1.jpg" alt="Mountain lake surrounded by trees">
+                <span class="card-title gradient">Lakeside escape</span>
+                <div class="card-badges">
+                  <span class="badge">Featured</span>
+                  <span class="badge" style="--card-badge-background: var(--md-sys-color-tertiary-container); --card-badge-color: var(--md-sys-color-on-tertiary-container);">New</span>
+                </div>
+              </div>
+              <div class="card-content"><p>Combine custom labels and colors without changing the card layout.</p></div>
+            </div>
+          </div>
+          <div class="s12 m6">
+            <div class="card">
+              <div class="card-image">
+                <img src="images/sample-1.jpg" alt="Mountain lake surrounded by trees">
+                <span class="card-title gradient">Weekend adventure</span>
+                <div class="card-badges left">
+                  <span class="badge"><i class="material-icons" aria-hidden="true">star</i>Recommended</span>
+                  <span class="badge" data-badge-caption="spots left">3</span>
+                </div>
+              </div>
+              <div class="card-content"><p>Use icons and the existing <code>data-badge-caption</code> attribute for extra context.</p></div>
+            </div>
+          </div>
+        </div>
+        <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="card">
+  <div class="card-image">
+    <img src="images/sample-1.jpg" alt="Mountain lake surrounded by trees">
+    <span class="card-title gradient">Lakeside escape</span>
+    <div class="card-badges">
+      <span class="badge">Featured</span>
+      <span class="badge" style="--card-badge-background: var(--md-sys-color-tertiary-container); --card-badge-color: var(--md-sys-color-on-tertiary-container);">New</span>
+    </div>
+  </div>
+  <div class="card-content"><p>Discover your next destination.</p></div>
+</div></xmp>
+        </code></pre>
+        <p>Set <code>--card-badge-background</code> and <code>--card-badge-color</code> on a badge, group, or card to customize its colors. Use paired theme tokens so they adapt to light and dark mode. The badges also work with small, medium, and large image cards.</p>
+        <p>Labels allow clicks through to the image. For an interactive badge, use <code>&lt;a class="badge" href="…"&gt;Featured&lt;/a&gt;</code> with a descriptive label. No JavaScript is required.</p>
+      </section>
+
             <div id="options" class="section scrollspy">
               <div class="row">
                 <div class="col s12">
@@ -219,6 +268,7 @@
                   <li><a href="#dropdown">Dropdown</a></li>
                   <li><a href="#navbar">Navbar</a></li>
                   <li><a href="#collapsible">Collapsible</a></li>
+                  <li><a href="#cards">Card Badges</a></li>
                   <li><a href="#options">Options</a></li>
                 </ul>
               </div>

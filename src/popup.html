@@ -109,6 +109,62 @@ if (result.isConfirmed) {
 });</xmp></code></pre>
             </div>
 
+            <div id="tabs" class="section scrollspy">
+              <h3 class="header">Tabs inside a popup</h3>
+              <p>Pass the <a href="tabs.html#fill-container">fill-height tabs layout</a> through <code>html</code> and set <code>customClass.htmlContainer</code> to <code>popup-content-fill</code>. The tabs fill the popup’s content area edge to edge, without inset padding or a nested border. The popup keeps its normal size and Done button; the tab area is 400px high.</p>
+              <button id="popup-tabs" class="btn filled" type="button">Open popup with tabs</button>
+              <button id="popup-tabs-fullscreen" class="btn outlined" type="button">Fullscreen with bottom tabs</button>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText"><xmp>import { Popup, Tabs } from 'kmaterialize';
+
+let tabs: Tabs | undefined;
+
+await Popup.fire({
+  width: 640,
+  confirmButtonText: 'Done',
+  customClass: { htmlContainer: 'popup-content-fill' },
+  html: `
+    <div class="tabs-fill" data-tab-position="top" style="height: 400px">
+      <ul class="tabs tabs-fixed-width">
+        <li class="tab"><a class="active" href="#popup-first-view">First</a></li>
+        <li class="tab"><a href="#popup-second-view">Second</a></li>
+      </ul>
+      <div id="popup-first-view" class="tabs-fill-panel">First view</div>
+      <div id="popup-second-view" class="tabs-fill-panel">Second view</div>
+    </div>
+  `,
+  didOpen: (popup) => {
+    tabs = Tabs.init(popup.querySelector<HTMLElement>('.tabs')!);
+  },
+  didDestroy: () => tabs?.destroy()
+});</xmp></code></pre>
+              <p>Initialize <code>Tabs</code> in <code>didOpen</code>, after the popup markup is visible, and destroy the instance in <code>didDestroy</code>. Use panel IDs that are unique on the page. The layout and tab behavior are provided by kmaterialize; use the styles from <a href="#setup">Setup</a>.</p>
+              <p>For a fullscreen layout, use <code>grow: 'fullscreen'</code> with <code>popup-content-fill</code> and remove the fixed 400px height. Kmaterialize gives the content the remaining height and keeps the close button out of the layout. Set <code>data-tab-position="bottom"</code> to put the navigation below the panels, even when the list comes first in the HTML.</p>
+              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText"><xmp>import { Popup, Tabs } from 'kmaterialize';
+
+let tabs: Tabs | undefined;
+
+await Popup.fire({
+  grow: 'fullscreen',
+  showConfirmButton: false,
+  showCloseButton: true,
+  customClass: { htmlContainer: 'popup-content-fill' },
+  html: `
+    <div class="tabs-fill" data-tab-position="bottom">
+      <ul class="tabs tabs-fixed-width">
+        <li class="tab"><a class="active" href="#popup-first-view">First</a></li>
+        <li class="tab"><a href="#popup-second-view">Second</a></li>
+      </ul>
+      <div id="popup-first-view" class="tabs-fill-panel">First view</div>
+      <div id="popup-second-view" class="tabs-fill-panel">Second view</div>
+    </div>
+  `,
+  didOpen: (popup) => {
+    tabs = Tabs.init(popup.querySelector<HTMLElement>('.tabs')!);
+  },
+  didDestroy: () => tabs?.destroy()
+});</xmp></code></pre>
+            </div>
+
             <div id="async" class="section scrollspy">
               <h3 class="header">Asynchronous actions</h3>
               <p>Return a promise from <code>preConfirm</code> and enable <code>showLoaderOnConfirm</code> to show progress while it completes. This example simulates two seconds of work.</p>
@@ -271,6 +327,7 @@ await M.Popup.close();</xmp></code></pre>
                   <li><a href="#messages">Messages</a></li>
                   <li><a href="#confirmation">Confirmation</a></li>
                   <li><a href="#inputs">Input prompts</a></li>
+                  <li><a href="#tabs">Tabs inside a popup</a></li>
                   <li><a href="#async">Asynchronous actions</a></li>
                   <li><a href="#stepper">Async stepper</a></li>
                   <li><a href="#toast">Toast mode</a></li>

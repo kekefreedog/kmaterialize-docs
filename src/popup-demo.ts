@@ -1,4 +1,4 @@
-import { Popup } from "kmaterialize";
+import { Popup, Tabs } from "kmaterialize";
 import type { PopupOptions } from "kmaterialize";
 
 const status = document.querySelector<HTMLElement>("#popup-demo-status");
@@ -74,6 +74,36 @@ bind("popup-select", async () => {
   });
   report(result.isConfirmed ? `Demo result: selected ${result.value}.` : "Department selection cancelled.");
 });
+
+async function openTabsPopup(fullscreen = false) {
+  let tabs: Tabs | undefined;
+
+  await Popup.fire({
+    width: fullscreen ? undefined : 640,
+    grow: fullscreen ? "fullscreen" : false,
+    showConfirmButton: !fullscreen,
+    showCloseButton: fullscreen,
+    confirmButtonText: "Done",
+    customClass: { htmlContainer: "popup-content-fill" },
+    html: `
+      <div class="tabs-fill" data-tab-position="${fullscreen ? "bottom" : "top"}" style="height: ${fullscreen ? "100%" : "400px"}">
+        <ul class="tabs tabs-fixed-width">
+          <li class="tab"><a class="active" href="#popup-first-view">First</a></li>
+          <li class="tab"><a href="#popup-second-view">Second</a></li>
+        </ul>
+        <div id="popup-first-view" class="tabs-fill-panel">First view</div>
+        <div id="popup-second-view" class="tabs-fill-panel">Second view</div>
+      </div>
+    `,
+    didOpen: (popup) => {
+      tabs = Tabs.init(popup.querySelector<HTMLElement>(".tabs")!);
+    },
+    didDestroy: () => tabs?.destroy(),
+  });
+}
+
+bind("popup-tabs", () => openTabsPopup());
+bind("popup-tabs-fullscreen", () => openTabsPopup(true));
 
 bind("popup-async", async () => {
   const result = await Popup.fire<string>({

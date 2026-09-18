@@ -1,0 +1,8 @@
+// Example content only; navbar behavior and styling come from kmaterialize.
+html { scroll-padding-top: 88px; }
+body { margin: 0; background: var(--md-sys-color-background); color: var(--md-sys-color-on-surface); }
+main.container { max-width: 860px; }
+main > .section { min-height: 70vh; padding: 48px 0; }
+main h1 { font-size: clamp(36px, 7vw, 68px); }
+main h2 { font-size: clamp(30px, 5vw, 48px); }
+main p { max-width: 54ch; line-height: 1.7; }

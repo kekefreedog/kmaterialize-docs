@@ -95,6 +95,194 @@
         </div>
       </div>
 
+      <section id="image-alt" class="section scrollspy">
+        <h3 class="header">Background Image Card</h3>
+        <p>Add <code>card-image-alt</code> to <code>card</code> to cover the whole card with a background image. A dark overlay keeps the light text and text buttons visible. An optional <code>card-action</code> footer sits at the bottom on a theme-colored surface.</p>
+        <div class="row">
+          <div class="s12 m6">
+            <div class="card card-image-alt" style="background-image: url('images/sample-1.jpg');">
+              <div class="card-content">
+                <span class="card-title">Mountain escape</span>
+                <p>Find your next destination.</p>
+                <p><a href="#image" class="btn btn-small text icon-left waves-effect waves-light"><i class="material-icons" aria-hidden="true">cloud</i>Learn more</a></p>
+              </div>
+              <div class="card-action">Ready when you are</div>
+            </div>
+          </div>
+          <div class="s12 m6">
+            <div class="card card-image-alt" style="background-image: url('images/parallax1.jpg');">
+              <div class="card-content">
+                <span class="card-title">Open skies</span>
+                <p>Take a moment to explore.</p>
+                <p><a href="#image" class="btn btn-small text icon-left waves-effect waves-light"><i class="material-icons" aria-hidden="true">cloud</i>Learn more</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="s12 m6">
+            <div class="card card-image-alt" style="background-image: url('images/parallax2.jpg');">
+              <div class="card-content">
+                <span class="card-title">A different view</span>
+                <p>Discover something new.</p>
+                <p><a href="#image" class="btn btn-small text icon-left waves-effect waves-light"><i class="material-icons" aria-hidden="true">cloud</i>Learn more</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="s12 m6">
+            <div class="card card-image-alt" style="background-image: url('images/office.jpg');">
+              <div class="card-content">
+                <span class="card-title">Your workspace</span>
+                <p>Make room for good ideas.</p>
+                <p><a href="#image" class="btn btn-small text icon-left waves-effect waves-light"><i class="material-icons" aria-hidden="true">cloud</i>Learn more</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="card card-image-alt" style="background-image: url('images/sample-1.jpg');">
+  <div class="card-content">
+    <span class="card-title">Mountain escape</span>
+    <p>Find your next destination.</p>
+    <p>
+      <a href="#image" class="btn btn-small text icon-left waves-effect waves-light">
+        <i class="material-icons" aria-hidden="true">cloud</i>Learn more
+      </a>
+    </p>
+  </div>
+  <div class="card-action">Ready when you are</div>
+</div></xmp>
+        </code></pre>
+        <p>The overlay is automatic. Existing markup with <code>&lt;div class="overlay"&gt;&lt;/div&gt;</code> directly inside the card also works. Background images are decorative; include meaningful information in the card text.</p>
+        <p>Cards start at a minimum height of 186px and grow with their content. Set <code>--card-image-alt-height</code> to change that minimum, <code>--card-image-position</code> to adjust the crop, or <code>--card-image-alt-overlay</code> to replace the overlay color or gradient. Use <code>small</code>, <code>medium</code>, or <code>large</code> for a fixed-height card with scrollable content.</p>
+        <pre><code class="language-html">&lt;div class="card card-image-alt" style="background-image: url('images/sample-1.jpg'); --card-image-alt-height: 240px; --card-image-position: center top; --card-image-alt-overlay: linear-gradient(transparent, var(--md-sys-color-scrim));"&gt;
+  ...
+&lt;/div&gt;</code></pre>
+      </section>
+
+      <section id="image-alt-gradient" class="section scrollspy">
+        <h3 class="header">Background Image Card with Gradient</h3>
+        <p>Add <code>gradient</code> to the card itself: <code>card card-image-alt gradient</code>. The image fades from clear at the top to dark at the bottom, with the content aligned over the darker area. This also supports an explicit <code>overlay</code> element and the <code>--card-image-alt-overlay</code> customization.</p>
+        <div class="row">
+          <div class="s12 m6">
+            <div class="card card-image-alt gradient small" style="background-image: url('images/sample-1.jpg');">
+              <div class="card-content">
+                <span class="card-title">Explore the lake</span>
+                <p>A clear view above, a soft fade behind the text.</p>
+                <p><a href="#image-alt" class="btn btn-small text icon-left waves-effect waves-light"><i class="material-icons" aria-hidden="true">landscape</i>Explore</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="s12 m6">
+            <div class="card card-image-alt gradient small" style="background-image: url('images/parallax1.jpg');">
+              <div class="card-content">
+                <span class="card-title">Discover the city</span>
+                <p>The gradient also works with a bottom action area.</p>
+              </div>
+              <div class="card-action"><a href="#image-alt">View destination</a></div>
+            </div>
+          </div>
+        </div>
+        <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="card card-image-alt gradient small" style="background-image: url('images/sample-1.jpg');">
+  <div class="card-content">
+    <span class="card-title">Explore the lake</span>
+    <p>A clear view above, a soft fade behind the text.</p>
+    <p><a href="#image-alt" class="btn btn-small text">Explore</a></p>
+  </div>
+</div></xmp>
+        </code></pre>
+        <p>The optional <code>small</code> class gives these examples a 300px height. Long content remains scrollable. On regular image cards, continue to put <code>gradient</code> on <code>card-title</code>, as shown below.</p>
+      </section>
+
+      <section id="image-gradient" class="section scrollspy">
+        <h3 class="header">Image Card Gradient</h3>
+        <p>Add <code>gradient</code> to an image's <code>card-title</code> for a dark fade behind the title, inspired by <a href="https://codepen.io/j_holtslander/pen/ejZrqG" target="_blank" rel="noopener">Card Gradients</a>. The fade spans the image width and keeps the text light in both themes.</p>
+        <div class="row">
+          <div class="s12 m6">
+            <div class="card">
+              <div class="card-image">
+                <img src="images/sample-1.jpg" alt="Sunlit landscape">
+                <span class="card-title gradient">Explore the outdoors</span>
+              </div>
+              <div class="card-content">
+                <p>A soft gradient helps the title stand out from the photograph.</p>
+              </div>
+            </div>
+          </div>
+          <div class="s12 m6">
+            <div class="card medium">
+              <div class="card-image">
+                <img src="images/sample-1.jpg" alt="Sunlit landscape">
+                <span class="card-title gradient truncate" title="A longer title for your next adventure">A longer title for your next adventure</span>
+              </div>
+              <div class="card-content">
+                <p>Use the same class on sized cards. Add <code>truncate</code> when you want a single-line title with an ellipsis.</p>
+              </div>
+              <div class="card-action"><a href="#sizes">Card sizes</a></div>
+            </div>
+          </div>
+        </div>
+        <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="card">
+  <div class="card-image">
+    <img src="images/sample-1.jpg" alt="Sunlit landscape">
+    <span class="card-title gradient">Explore the outdoors</span>
+  </div>
+  <div class="card-content">
+    <p>A soft gradient helps the title stand out from the photograph.</p>
+  </div>
+</div></xmp>
+        </code></pre>
+        <p>The gradient needs no JavaScript. Titles wrap by default. Decorative titles allow clicks through to the image; title links and <code>activator</code> titles remain interactive.</p>
+      </section>
+
+      <section id="badges" class="section scrollspy">
+        <h3 class="header">Card Badges</h3>
+        <p>Place a <code>card-badges</code> group inside <code>card-image</code> to display custom labels above the image. Badges sit in the top-right corner by default; add <code>left</code> to move the group to the top-left. Multiple badges wrap when space is limited.</p>
+        <div class="row">
+          <div class="s12 m6">
+            <div class="card">
+              <div class="card-image">
+                <img src="images/sample-1.jpg" alt="Mountain lake surrounded by trees">
+                <span class="card-title gradient">Lakeside escape</span>
+                <div class="card-badges">
+                  <span class="badge">Featured</span>
+                  <span class="badge" style="--card-badge-background: var(--md-sys-color-tertiary-container); --card-badge-color: var(--md-sys-color-on-tertiary-container);">New</span>
+                </div>
+              </div>
+              <div class="card-content"><p>Combine custom labels and colors without changing the card layout.</p></div>
+            </div>
+          </div>
+          <div class="s12 m6">
+            <div class="card">
+              <div class="card-image">
+                <img src="images/sample-1.jpg" alt="Mountain lake surrounded by trees">
+                <span class="card-title gradient">Weekend adventure</span>
+                <div class="card-badges left">
+                  <span class="badge"><i class="material-icons" aria-hidden="true">star</i>Recommended</span>
+                  <span class="badge" data-badge-caption="spots left">3</span>
+                </div>
+              </div>
+              <div class="card-content"><p>Use icons and the existing <code>data-badge-caption</code> attribute for extra context.</p></div>
+            </div>
+          </div>
+        </div>
+        <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
+<xmp><div class="card">
+  <div class="card-image">
+    <img src="images/sample-1.jpg" alt="Mountain lake surrounded by trees">
+    <span class="card-title gradient">Lakeside escape</span>
+    <div class="card-badges">
+      <span class="badge">Featured</span>
+      <span class="badge" style="--card-badge-background: var(--md-sys-color-tertiary-container); --card-badge-color: var(--md-sys-color-on-tertiary-container);">New</span>
+    </div>
+  </div>
+  <div class="card-content"><p>Discover your next destination.</p></div>
+</div></xmp>
+        </code></pre>
+        <p>Set <code>--card-badge-background</code> and <code>--card-badge-color</code> on a badge, group, or card to customize its colors. Use paired theme tokens so they adapt to light and dark mode. The badges also work with small, medium, and large image cards.</p>
+        <p>Labels allow clicks through to the image. For an interactive badge, use <code>&lt;a class="badge" href="…"&gt;Featured&lt;/a&gt;</code> with a descriptive label. No JavaScript is required.</p>
+      </section>
+
       <div id="fab" class="section scrollspy">
         <div class="row">
           <!-- Image Card -->
@@ -422,98 +610,58 @@
       </div>
 
       <div id="sizes" class="section scrollspy">
+        <h3 class="header">Card Sizes</h3>
+        <p>Add <code>small</code>, <code>medium</code>, or <code>large</code> to <code>card</code> for heights of <strong>300px</strong>, <strong>400px</strong>, and <strong>500px</strong>. The grid controls the width.</p>
+        <p>Like the <a href="https://codepen.io/j_holtslander/pen/KbXyrq" target="_blank" rel="noopener">image-sizing example</a>, each image fills a consistent 180px area using <code>object-fit: cover</code>. Landscape, portrait, and square images crop without stretching. The content uses the remaining space and scrolls when needed; actions stay visible at the bottom.</p>
         <div class="row">
-          <!-- Small Card -->
-          <div class="col s12">
-            <h3 class="header">Card Sizes</h3>
-            <p class="caption">If you want to have uniformly sized cards, you can use our premade size classes. Just add the size class in addition to the card class. </p>
-            <pre style="padding-top: 0px;"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="card small">
-  <!-- Card Content -->
-</div></xmp>
-              </code></pre>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col s12">
-            <h5>Small</h5>
-          </div>
-          <div class="col s12 m6">
-          <div class="card small">
-              <div class="card-image">
-                <img src="images/sample-1.jpg">
-                <span class="card-title">Card Title</span>
+          <div class="s12 l4">
+            <h5>Small · 300px</h5>
+            <div class="card small">
+              <div class="card-image"><img src="images/sample-1.jpg" alt="Landscape photograph cropped to fill the card image area"></div>
+              <div class="card-content" tabindex="0" role="region" aria-label="Small card content">
+                <p>A compact card for a short introduction. This landscape image uses the same crop height as the other examples. Scroll this content area to read the full description while the action remains visible.</p>
               </div>
-              <div class="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-              </div>
-              <div class="card-action">
-                <a href="#">This is a link</a>
-                <a href="#">This is a link</a>
-              </div>
+              <div class="card-action"><a href="#sizes">Explore</a></div>
             </div>
           </div>
-          <div class="col s12 m6">
-            
-            <p class="caption">
-             The Small Card limits the height of the card to 300px.
-            </p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col s12">
-            <h5>Medium</h5>
-          </div>
-          <div class="col s12 m7">
+          <div class="s12 l4">
+            <h5>Medium · 400px</h5>
             <div class="card medium">
-              <div class="card-image">
-                <img src="images/sample-1.jpg">
-                <span class="card-title">Card Title</span>
+              <div class="card-image"><img src="images/placeholder/80x200_a.jpg" alt="Tall portrait image cropped to fill a wide card image area"></div>
+              <div class="card-content" tabindex="0" role="region" aria-label="Medium card content">
+                <span class="card-title">More room</span>
+                <p>A portrait source does not make this image taller than its neighbors. The fixed crop leaves more space for details in a medium card. Longer descriptions remain available by scrolling this region.</p>
               </div>
-              <div class="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-              </div>
-              <div class="card-action">
-                <a href="#">This is a link</a>
-                <a href="#">This is a link</a>
-              </div>
+              <div class="card-action"><a href="#sizes">Explore</a></div>
             </div>
           </div>
-          <div class="col s12 m5">
-            
-            <p class="caption">
-             The Medium Card limits the height of the card to 400px.
-            </p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col s12">
-            <h5>Large</h5>
-          </div>
-          <div class="col s12 m8">
+          <div class="s12 l4">
+            <h5>Large · 500px</h5>
             <div class="card large">
-              <div class="card-image">
-                <img src="images/sample-1.jpg">
-                <span class="card-title">Card Title</span>
+              <div class="card-image"><img src="images/yuna.jpg" alt="Portrait photograph cropped to the same image height as the other cards"></div>
+              <div class="card-content" tabindex="0" role="region" aria-label="Large card content">
+                <span class="card-title">Space for detail</span>
+                <p>The large card keeps the same image height and dedicates the extra space to its content. Use it for a richer description, product details, or supporting information. The action stays below the text, with no overlap.</p>
               </div>
-              <div class="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-              </div>
-              <div class="card-action">
-                <a href="#">This is a link</a>
-                <a href="#">This is a link</a>
-              </div>
+              <div class="card-action"><a href="#sizes">Explore</a></div>
             </div>
           </div>
-          <div class="col s12 m4">
-            
-            <p class="caption">
-             The Large Card limits the height of the card to 500px.
-            </p>
-          </div>
         </div>
+        <pre><code class="language-html">&lt;div class="card medium"&gt;
+  &lt;div class="card-image"&gt;
+    &lt;img src="photo.jpg" alt="A description of the photograph"&gt;
+  &lt;/div&gt;
+  &lt;div class="card-content" tabindex="0" role="region" aria-label="Card details"&gt;
+    &lt;span class="card-title"&gt;Card title&lt;/span&gt;
+    &lt;p&gt;Content can scroll when it exceeds the available space.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="card-action"&gt;&lt;a href="details.html"&gt;Read more&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <p>The classes also work without images or actions. For horizontal cards, combine <code>horizontal</code> with a size class and use the usual <code>card-stacked</code> wrapper; the image fills the card height and 40% of its width.</p>
+        <p>To adjust a vertical card’s image height or crop position, set <code>--card-image-height</code> or <code>--card-image-position</code>. Cards without a size class retain their natural image and content sizing. No JavaScript is needed.</p>
+        <pre><code class="language-html">&lt;div class="card large" style="--card-image-height: 220px; --card-image-position: center top;"&gt;
+  …
+&lt;/div&gt;</code></pre>
       </div>
 
       <div id="panel" class="section scrollspy">
@@ -557,6 +705,10 @@
           <ul class="section table-of-contents">
             <li><a href="#basic">Basic Card</a></li>
             <li><a href="#image">Image Card</a></li>
+            <li><a href="#image-alt">Background Image Card</a></li>
+            <li><a href="#image-alt-gradient">Background Gradient</a></li>
+            <li><a href="#image-gradient">Image Card Gradient</a></li>
+            <li><a href="#badges">Card Badges</a></li>
             <li><a href="#fab">FABs in Cards</a></li>
             <li><a href="#horizontal">Horizontal Card</a></li>
             <li><a href="#reveal">Card Reveal</a></li>

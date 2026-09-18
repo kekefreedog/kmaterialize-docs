@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Navbar that hides on scroll · kmaterialize</title>
+  </head>
+  <body>
+    <nav class="navbar appbar navbar-hide-on-scroll" aria-label="Example navigation">
+      <div class="nav-wrapper">
+        <a href="#overview" class="brand-logo"><img class="brand-logo-image" src="images/materialize.svg" alt=""><span>Explore</span></a>
+        <ul class="ml-auto">
+          <li><a href="#stories">Stories</a></li>
+          <li><a href="#visit">Visit</a></li>
+        </ul>
+      </div>
+    </nav>
+    <main class="container">
+      <section id="overview" class="section">
+        <p class="primary-text">MORE ROOM TO EXPLORE</p>
+        <h1>A little more space.</h1>
+        <p>Scroll down and the navigation slides away. Scroll up a little and it returns, ready for your next stop.</p>
+        <div class="card primary-container on-primary-container-text">
+          <div class="card-content"><i class="material-icons" aria-hidden="true">south</i><h5>Try scrolling here</h5><p>This example has its own page scroll. The navigation stays within this preview.</p></div>
+        </div>
+      </section>
+      <section id="stories" class="section">
+        <p class="primary-text">01 / STORIES</p>
+        <h2>Let the content lead.</h2>
+        <p>A quiet reading experience with navigation available whenever you change direction.</p>
+        <div class="card"><div class="card-content"><h5>Room for the details</h5><p>Read a little further, then scroll upward to bring the menu back. The page keeps its position as the navbar moves.</p></div></div>
+      </section>
+      <section id="visit" class="section">
+        <p class="primary-text">02 / VISIT</p>
+        <h2>Find your next stop.</h2>
+        <p>The navbar also appears when one of its links receives keyboard focus. Reduced-motion preferences turn off the sliding animation.</p>
+        <a href="#overview" class="btn filled">Back to the top</a>
+      </section>
+    </main>
+    <script type="module" src="/navbar-hide-demo.ts"></script>
+  </body>
+</html>
