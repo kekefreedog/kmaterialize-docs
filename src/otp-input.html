@@ -24,22 +24,22 @@
               <button class="btn outlined" type="reset">Reset</button>
             </form>
             <p id="otp-status" role="status">Loading OTP input…</p>
-            <pre><code id="otp-output" class="language-json">Submit a complete code to inspect the native form value.</code></pre>
-            <pre><code class="language-html"><xmp><div class="input-field outlined">
-  <input id="verification-code" name="code" type="text" placeholder=" "
+            <div id="otp-output" class="code-card docs-code no-autoinit"><pre><code class="language-json">Submit a complete code to inspect the native form value.</code></pre></div>
+            <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="input-field outlined"&gt;
+  &lt;input id="verification-code" name="code" type="text" placeholder=" "
          data-otp data-otp-length="6" autocomplete="one-time-code"
-         aria-describedby="verification-help" required>
-  <label for="verification-code">Verification code</label>
-  <span id="verification-help" class="supporting-text">Enter all six digits.</span>
-</div></xmp></code></pre>
+         aria-describedby="verification-help" required&gt;
+  &lt;label for="verification-code"&gt;Verification code&lt;/label&gt;
+  &lt;span id="verification-help" class="supporting-text"&gt;Enter all six digits.&lt;/span&gt;
+&lt;/div&gt;</code></pre></div>
             <p>Use the same <code>input-field outlined</code> wrapper as other text inputs. OTP slots share the 4px corner radius and 1px outline, with a 2px active border. The label stays above the group so it remains readable across the individual slots.</p>
-            <pre><code class="language-typescript"><xmp>import { OtpInput } from 'kmaterialize';
-const field = OtpInput.init(input, {
+            <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">import &#123; OtpInput &#125; from 'kmaterialize';
+const field = OtpInput.init(input, &#123;
   length: 6,
   characters: 'digits',
-  onComplete: () => { status.textContent = 'Code complete. Ready to submit.'; }
-});
-await field.ready;</xmp></code></pre>
+  onComplete: () =&gt; &#123; status.textContent = 'Code complete. Ready to submit.'; &#125;
+&#125;);
+await field.ready;</code></pre></div>
             <p>Completion means every slot is filled; verification happens in your application. The component does not submit the form automatically.</p>
           </section>
           <section id="underlined" class="section scrollspy">
@@ -52,48 +52,48 @@ await field.ready;</xmp></code></pre>
               <label for="otp-underlined">Verification code</label>
               <span id="otp-underlined-help" class="supporting-text">Enter or paste your six-digit code.</span>
             </div>
-            <pre><code class="language-html"><xmp><div class="input-field">
-  <input id="verification" name="code" type="text" placeholder=" "
+            <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="input-field"&gt;
+  &lt;input id="verification" name="code" type="text" placeholder=" "
          data-otp data-otp-length="6" autocomplete="one-time-code"
-         aria-describedby="verification-support">
-  <label for="verification">Verification code</label>
-  <span id="verification-support" class="supporting-text">Enter your six-digit code.</span>
-</div></xmp></code></pre>
+         aria-describedby="verification-support"&gt;
+  &lt;label for="verification"&gt;Verification code&lt;/label&gt;
+  &lt;span id="verification-support" class="supporting-text"&gt;Enter your six-digit code.&lt;/span&gt;
+&lt;/div&gt;</code></pre></div>
             <p>Use <code>M.AutoInit()</code>, or initialize explicitly with <code>OtpInput.init(input)</code>. Add <code>outlined</code> to the wrapper to switch back to boxed slots.</p>
           </section>
           <section id="pin" class="section scrollspy">
             <h3 class="header">Hidden PIN</h3>
             <div class="input-field outlined"><input id="otp-pin" type="password" data-otp data-otp-length="4" class="no-autoinit" autocomplete="off" aria-describedby="otp-pin-help"><label for="otp-pin">Four-digit PIN</label><span id="otp-pin-help" class="supporting-text">Characters appear as dots. Use the button to reveal or hide them.</span></div>
             <button id="otp-reveal" class="btn text" type="button" aria-pressed="false" aria-controls="otp-pin">Show PIN</button>
-            <pre><code class="language-html"><xmp><div class="input-field outlined">
-  <input id="pin" type="password" data-otp data-otp-length="4"
-         autocomplete="off" placeholder=" ">
-  <label for="pin">Four-digit PIN</label>
-</div></xmp></code></pre>
+            <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="input-field outlined"&gt;
+  &lt;input id="pin" type="password" data-otp data-otp-length="4"
+         autocomplete="off" placeholder=" "&gt;
+  &lt;label for="pin"&gt;Four-digit PIN&lt;/label&gt;
+&lt;/div&gt;</code></pre></div>
           </section>
           <section id="grouping" class="section scrollspy">
             <h3 class="header">Grouped digits</h3>
             <div class="input-field outlined"><input id="otp-grouped" type="text" data-otp data-otp-length="6" data-otp-group-size="3" class="no-autoinit"><label for="otp-grouped">Six-digit access code</label></div>
             <p><code>groupSize: 3</code> adds space after each group of three. The value remains six digits, without a separator.</p>
-            <pre><code class="language-typescript"><xmp>OtpInput.init(input, { length: 6, groupSize: 3 });</xmp></code></pre>
+            <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">OtpInput.init(input, &#123; length: 6, groupSize: 3 &#125;);</code></pre></div>
           </section>
           <section id="mask" class="section scrollspy">
             <h3 class="header">Custom Maskito pattern</h3>
             <div class="input-field outlined"><input id="otp-license" type="text" data-otp class="no-autoinit" aria-describedby="otp-license-help"><label for="otp-license">Two letters and four digits</label><span id="otp-license-help" class="supporting-text">Try pasting fx2048. Letters become uppercase and the hyphen is inserted automatically.</span></div>
             <p id="otp-mask-status" role="status">Pattern: AA-####</p>
-            <pre><code class="language-typescript"><xmp>const license = OtpInput.init(input, {
+            <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">const license = OtpInput.init(input, &#123;
   pattern: 'AA-####',
-  maskOptions: {
+  maskOptions: &#123;
     overwriteMode: 'replace',
-    postprocessors: [({ value, selection }) => ({
+    postprocessors: [(&#123; value, selection &#125;) =&gt; (&#123;
       value: value.toUpperCase(), selection
-    })]
-  }
-});
+    &#125;)]
+  &#125;
+&#125;);
 await license.ready;
 await license.setValue('fx2048');
 license.getValue();         // "FX-2048" — also the native form value
-license.getUnmaskedValue(); // "FX2048"</xmp></code></pre>
+license.getUnmaskedValue(); // "FX2048"</code></pre></div>
             <p>The pattern determines the number of editable slots: <code>#</code> is a digit, <code>A</code> an ASCII letter, and <code>*</code> an ASCII letter or digit. Other characters are fixed separators; a backslash escapes a token. If you also supply <code>length</code>, it must match the pattern's editable slots.</p>
             <p>Pass Maskito processors, plugins, and <a href="https://maskito.dev/core-concepts/overwrite-mode/" target="_blank" rel="noopener">overwrite options</a> through <code>maskOptions</code>. The component owns the fixed mask so the slots and value stay aligned. Processors should preserve the pattern's positions. See more examples on the <a href="maskito.html#otp">Input Masks page</a>.</p>
           </section>
@@ -105,14 +105,14 @@ license.getUnmaskedValue(); // "FX2048"</xmp></code></pre>
           </section>
           <section id="setup" class="section scrollspy">
             <h3 class="header">Setup and options</h3>
-            <pre><code class="language-bash">npm install kmaterialize @maskito/core</code></pre>
-            <pre><code class="language-html"><xmp><div class="input-field outlined">
-  <input id="verification" name="code" type="text" data-otp
-         data-otp-length="6" autocomplete="one-time-code" required>
-  <label for="verification">Verification code</label>
-</div></xmp></code></pre>
-            <pre><code class="language-typescript"><xmp>import 'kmaterialize/dist/css/materialize.css';
-import { AutoInit, OtpInput } from 'kmaterialize';
+            <div class="code-card docs-code no-autoinit"><pre><code class="language-bash">npm install kmaterialize @maskito/core</code></pre></div>
+            <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="input-field outlined"&gt;
+  &lt;input id="verification" name="code" type="text" data-otp
+         data-otp-length="6" autocomplete="one-time-code" required&gt;
+  &lt;label for="verification"&gt;Verification code&lt;/label&gt;
+&lt;/div&gt;</code></pre></div>
+            <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">import 'kmaterialize/dist/css/materialize.css';
+import &#123; AutoInit, OtpInput &#125; from 'kmaterialize';
 AutoInit();
 const field = OtpInput.getInstance(input);
 await field.ready;
@@ -121,7 +121,7 @@ field.isComplete();           // true
 await field.clear();
 await field.refresh();       // Sync after assigning input.value directly.
 field.focus();
-field.destroy();              // Restores the native input and attributes.</xmp></code></pre>
+field.destroy();              // Restores the native input and attributes.</code></pre></div>
             <p>Use <code>no-autoinit</code> for explicit initialization. Await <code>ready</code> before calling the API. Without a bundler, expose Maskito core exports as <code>window.MaskitoCore</code> before initializing <code>M.OtpInput</code>. The plain native input remains available if the optional library cannot load.</p>
             <table class="striped"><thead><tr><th>Option</th><th>Behavior</th></tr></thead><tbody>
               <tr><td><code>length</code></td><td>1–32 editable slots; defaults to 6 without a pattern.</td></tr>

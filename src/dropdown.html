@@ -41,29 +41,29 @@
                 </li>
               </ul>
 
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><!-- Dropdown Trigger -->
-<a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
-<!-- Dropdown Structure -->
-<ul id='dropdown1' class='dropdown-content'>
-  <li><a href="#!">one</a></li>
-  <li><a href="#!">two</a></li>
-  <li class="divider" tabindex="-1"></li>
-  <li><a href="#!">three</a></li>
-  <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-  <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
-</ul></xmp></code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;!-- Dropdown Trigger --&gt;
+&lt;a class='dropdown-trigger btn' href='#' data-target='dropdown1'&gt;Drop Me!&lt;/a&gt;
+&lt;!-- Dropdown Structure --&gt;
+&lt;ul id='dropdown1' class='dropdown-content'&gt;
+  &lt;li&gt;&lt;a href="#!"&gt;one&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#!"&gt;two&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="divider" tabindex="-1"&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#!"&gt;three&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#!"&gt;&lt;i class="material-icons"&gt;view_module&lt;/i&gt;four&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#!"&gt;&lt;i class="material-icons"&gt;cloud&lt;/i&gt;five&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre></div>
             </div>
 
             <div id="initialization" class="section scrollspy">
               <h3 class="header">Initialization</h3>
 
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
 document.addEventListener('DOMContentLoaded', function() {
   const elems = document.querySelectorAll('.dropdown-trigger');
   const instances = Dropdown.init(elems, {
     // specify options here
   });
-});</code></pre>
+});</code></pre></div>
             </div>
 
             <div id="options" class="section scrollspy">
@@ -220,7 +220,7 @@ document.addEventListener('DOMContentLoaded', function() {
                   });
                 </script>
 
-                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
 document.addEventListener('DOMContentLoaded', function() {
   const elems = document.querySelectorAll('.dropdown-trigger')[0];
   const instances = Dropdown.init(elems, {
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // enabled for example to be visible
     constrainWidth: false,
   });
-});</code></pre>
+});</code></pre></div>
               </div>
             </div>
 
@@ -237,23 +237,23 @@ document.addEventListener('DOMContentLoaded', function() {
               <h3 class="header">Methods</h3>
               <blockquote>
                 <p>All the methods are called on the plugin instance. You can get the plugin instance like this:</p>
-                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">const instance = Dropdown.getInstance(elem);</code></pre>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">const instance = Dropdown.getInstance(elem);</code></pre></div>
               </blockquote>
               <h5 class="method-header">.open();</h5>
               <p>Open dropdown.</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">instance.open();</code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">instance.open();</code></pre></div>
 
               <h5 class="method-header">.close();</h5>
               <p>Close dropdown.</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">instance.close();</code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">instance.close();</code></pre></div>
 
               <h5 class="method-header">.recalculateDimensions();</h5>
               <p>While dropdown is open, you can recalculate its dimensions if its contents have changed.</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">instance.recalculateDimensions();</code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">instance.recalculateDimensions();</code></pre></div>
 
               <h5 class="method-header">.destroy();</h5>
               <p>Destroy plugin instance and teardown</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">instance.destroy();</code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">instance.destroy();</code></pre></div>
             </div>
 
             <div id="properties" class="scrollspy section">

@@ -22,9 +22,9 @@
                 air-datepicker is an optional peer dependency, loaded on demand - install it yourself
                 (<code class="language-html">npm install air-datepicker</code>) and import its base stylesheet once:
               </p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
 import 'air-datepicker/air-datepicker.css';
-        </code></pre>
+        </code></pre></div>
 
               <div id="examples" class="section scrollspy">
                 <h3 class="header">Examples</h3>
@@ -87,45 +87,43 @@ import 'air-datepicker/air-datepicker.css';
                   </div>
                 </div>
               </div>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="input-field">
-  <input id="airdate-single" type="text" data-type="date" data-date-picker="air-datepicker" placeholder=" " readonly>
-  <label for="airdate-single">Single date</label>
-</div>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="input-field"&gt;
+  &lt;input id="airdate-single" type="text" data-type="date" data-date-picker="air-datepicker" placeholder=" " readonly&gt;
+  &lt;label for="airdate-single"&gt;Single date&lt;/label&gt;
+&lt;/div&gt;
 
-<div class="input-field">
-  <input id="airdate-range" type="text" data-type="date" data-date-picker="air-datepicker" data-date-range="true" placeholder=" " readonly>
-  <label for="airdate-range">Date range</label>
-</div>
+&lt;div class="input-field"&gt;
+  &lt;input id="airdate-range" type="text" data-type="date" data-date-picker="air-datepicker" data-date-range="true" placeholder=" " readonly&gt;
+  &lt;label for="airdate-range"&gt;Date range&lt;/label&gt;
+&lt;/div&gt;
 
-<div class="input-field">
-  <i class="material-icons prefix">event</i>
-  <input id="airdate-icon" type="text" data-type="date" data-date-picker="air-datepicker" placeholder=" " readonly>
-  <label for="airdate-icon">With icon</label>
-</div>
+&lt;div class="input-field"&gt;
+  &lt;i class="material-icons prefix"&gt;event&lt;/i&gt;
+  &lt;input id="airdate-icon" type="text" data-type="date" data-date-picker="air-datepicker" placeholder=" " readonly&gt;
+  &lt;label for="airdate-icon"&gt;With icon&lt;/label&gt;
+&lt;/div&gt;
 
-<div class="input-field">
-  <input id="airdate-default" type="text" data-type="date" data-date-picker="air-datepicker" value="2026-09-15" placeholder=" " readonly>
-  <label for="airdate-default">Default value</label>
-</div>
+&lt;div class="input-field"&gt;
+  &lt;input id="airdate-default" type="text" data-type="date" data-date-picker="air-datepicker" value="2026-09-15" placeholder=" " readonly&gt;
+  &lt;label for="airdate-default"&gt;Default value&lt;/label&gt;
+&lt;/div&gt;
 
-<div class="input-field">
-  <input id="airdate-time" type="text" data-type="date" data-date-picker="air-datepicker" data-date-timepicker="true" data-date-time-format="HH:mm" placeholder=" " readonly>
-  <label for="airdate-time">Date and time</label>
-</div></xmp>
-              </code></pre>
+&lt;div class="input-field"&gt;
+  &lt;input id="airdate-time" type="text" data-type="date" data-date-picker="air-datepicker" data-date-timepicker="true" data-date-time-format="HH:mm" placeholder=" " readonly&gt;
+  &lt;label for="airdate-time"&gt;Date and time&lt;/label&gt;
+&lt;/div&gt;</code></pre></div>
             </div>
 
             <div id="initialization" class="scrollspy section">
               <h3 class="header">Initialization</h3>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   document.addEventListener('DOMContentLoaded', function() {
     const elems = document.querySelectorAll('input[data-date-picker="air-datepicker"]');
     const instances = AirDatepickerField.init(elems, {
       // specify options here
     });
   });
-        </code></pre>
+        </code></pre></div>
             </div>
 
             <div id="options" class="scrollspy section">
@@ -208,16 +206,16 @@ import 'air-datepicker/air-datepicker.css';
               <h3 class="header">Methods</h3>
               <blockquote>
                 <p>All the methods are called on the plugin instance. You can get the plugin instance like this:</p>
-                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
                   const instance = AirDatepickerField.getInstance(elem);
-        </code></pre>
+        </code></pre></div>
               </blockquote>
 
               <h5 class="method-header">.destroy();</h5>
               <p>Destroy plugin instance and teardown the calendar popup.</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
 instance.destroy();
-      </code></pre>
+      </code></pre></div>
             </div>
 
             <div id="properties" class="scrollspy section">

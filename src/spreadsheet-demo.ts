@@ -1,3 +1,4 @@
+import { updateCodeSnippet } from "./code-snippets";
 import jspreadsheet, {
   type CellValue,
   type SpreadsheetOptions,
@@ -101,7 +102,7 @@ const options: SpreadsheetOptions = {
 // Keep the first worksheet returned by the constructor.
 const worksheet = jspreadsheet(host, options)[0];
 document.querySelector("#spreadsheet-get")!.addEventListener("click", () => {
-  output.textContent = JSON.stringify(worksheet.getData(), null, 2);
+  void updateCodeSnippet("spreadsheet-data", JSON.stringify(worksheet.getData(), null, 2)).catch(error => { status.textContent = error.message; });
   output.hidden = false;
   status.textContent = "Current worksheet data shown below.";
 });

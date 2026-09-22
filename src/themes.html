@@ -26,22 +26,20 @@
                 It has to be loaded as soon as possible (therefore put it as first script) to avoid flickering of the page. It is also recommended to put this code directly into
                 into the HTML code to load faster (no additional requests).
               </p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
-<xmp><script>
-  function getTheme() {
-    const isDarkModeEnabledViaCss = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">&lt;script&gt;
+  function getTheme() &#123;
+    const isDarkModeEnabledViaCss = window.matchMedia &amp;&amp; window.matchMedia('(prefers-color-scheme: dark)').matches;
     const currentTheme = localStorage.getItem('theme');
     const isDark = currentTheme ? currentTheme === 'dark' : isDarkModeEnabledViaCss;
     return isDark;
-  }
-  function setTheme(enableDark) {
+  &#125;
+  function setTheme(enableDark) &#123;
     document.documentElement.setAttribute('theme', enableDark ? 'dark' : 'light');
     localStorage.setItem('theme', enableDark ? 'dark' : 'light');
-  }
+  &#125;
   const currentState = getTheme();
   setTheme(currentState);
-</script></xmp>
-</code></pre>
+&lt;/script&gt;</code></pre></div>
 
               <p>This Script loads the users settings from the local storage and sets a parameter which can be then used to set variables in the CSS.</p>
             </div>
@@ -52,7 +50,7 @@
                 The following example binds a Theme-Switching Function to an HTML-Element, which has a class of `btn-switch-theme`. To test this, you can click on the moon or the
                 sun icon at this page in the top-right corenr to see it in action!
               </p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">  // Change Theme Setting with a Switch
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">  // Change Theme Setting with a Switch
   function getTheme() {
     const isDarkModeEnabledViaCss = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     const currentTheme = localStorage.getItem('theme');
@@ -85,7 +83,7 @@
   setTheme(currentState);
   updateDarkModeButtonState(currentState);
 
-</code></pre>
+</code></pre></div>
             </div>
             <div class="section scrollspy" id="creating-theme">
               <h2>Creating a Theme</h2>
@@ -96,7 +94,7 @@
                 tags.
               </p>
               <p>Here is an example of the standard Dark-Theme:</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-css copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-css">
 :root[theme='dark'] {
   --background-color: #121212;
   --surface-color: #242424;
@@ -130,7 +128,7 @@
   --font-on-secondary-container-color: rgba(255, 255, 255, 0.87);
   --md_sys_color_on-surface: 230, 225, 229;
 }
-</code></pre>
+</code></pre></div>
             </div>
           </div>
           <div class="hide-on-small-only m3 xl3">

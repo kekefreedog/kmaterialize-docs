@@ -207,3 +207,81 @@ async function runStepper(simulateFailure = false) {
 
 bind('popup-stepper', () => runStepper());
 bind('popup-stepper-retry', () => runStepper(true));
+
+async function runInteractiveStepper() {
+  const result = await Popup.steps<string>({
+    title: 'Create a review preview',
+    description: 'Choose a title, prepare the preview, then approve the result. Nothing is uploaded or saved.',
+    doneButtonText: 'Close',
+    steps: [
+      {
+        title: 'Check assets',
+        run: async ({ signal, setMessage }) => {
+          setMessage('Checking the demo assets…');
+          await stepperDelay(700, signal);
+          setMessage('12 source files are ready.');
+          return '12 source files';
+        },
+      },
+      {
+        title: 'Choose a preview title',
+        description: 'Enter a title, then select Continue. This step waits for you.',
+        run: async ({ waitForConfirmation, setMessage }) => {
+          const content = document.createElement('div');
+          content.innerHTML = `
+            <div class="input-field outlined">
+              <input id="stepper-preview-title" type="text" placeholder=" " maxlength="80" required>
+              <label for="stepper-preview-title">Preview title</label>
+            </div>`;
+          const input = content.querySelector<HTMLInputElement>('input')!;
+          const title = await waitForConfirmation({
+            content,
+            confirmButtonText: 'Continue',
+            readValue: () => {
+              const value = input.value.trim();
+              input.setAttribute('aria-invalid', String(!value));
+              if (!value) throw new Error('Enter a preview title before continuing.');
+              return value;
+            },
+          });
+          setMessage(`Title: ${title}`);
+          return title;
+        },
+      },
+      {
+        title: 'Generate the preview',
+        run: async ({ signal, results, setMessage }) => {
+          setMessage(`Preparing “${results[1]}”…`);
+          await stepperDelay(1000, signal);
+          setMessage('Preview ready: 120 frames at 24 fps.');
+          return '120 frames · 24 fps · 5 seconds';
+        },
+      },
+      {
+        title: 'Review and confirm',
+        description: 'Review your custom result before approving it.',
+        run: async ({ results, waitForConfirmation, setMessage }) => {
+          const content = document.createElement('div');
+          content.className = 'card-panel surface-variant';
+          const title = document.createElement('strong');
+          title.textContent = results[1];
+          const details = document.createElement('p');
+          details.textContent = `${results[0]} · ${results[2]}`;
+          content.append(title, details);
+          const approval = await waitForConfirmation({
+            content,
+            confirmButtonText: 'Confirm preview',
+            readValue: () => `Confirmed “${results[1]}”`,
+          });
+          setMessage('Preview approved. This demo has not saved any files.');
+          return approval;
+        },
+      },
+    ],
+  });
+  report(result.isConfirmed
+    ? `Interactive stepper: ${result.value?.[3]}.`
+    : 'Preview creation cancelled. No preview was saved.');
+}
+
+bind('popup-stepper-interactive', runInteractiveStepper);

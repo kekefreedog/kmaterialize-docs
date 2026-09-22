@@ -1,3 +1,4 @@
+import { updateCodeSnippet } from "./code-snippets";
 import { OtpInput } from 'kmaterialize';
 const input = (id: string) => document.querySelector<HTMLInputElement>(`#${id}`)!;
 const status = document.querySelector<HTMLElement>('#otp-status')!;
@@ -32,10 +33,10 @@ const disabled = OtpInput.init(input('otp-disabled'));
 Promise.all([underlined, pin, grouped, license, readonly, disabled].map(field => field.ready)).catch(reportError);
 form.addEventListener('submit', event => {
   event.preventDefault();
-  document.querySelector('#otp-output')!.textContent = JSON.stringify(Object.fromEntries(new FormData(form)), null, 2);
+  void updateCodeSnippet("otp-output", JSON.stringify(Object.fromEntries(new FormData(form)), null, 2)).catch(reportError);
   status.textContent = 'Complete code captured locally. This demo does not verify or send it.';
 });
-form.addEventListener('reset', () => { status.textContent = 'Code cleared.'; document.querySelector('#otp-output')!.textContent = 'Submit a complete code to inspect the native form value.'; });
+form.addEventListener('reset', () => { status.textContent = 'Code cleared.'; void updateCodeSnippet("otp-output", "Submit a complete code to inspect the native form value.").catch(reportError); });
 input('otp-code').addEventListener('invalid', () => { status.textContent = 'Fill every slot before submitting.'; });
 document.querySelector<HTMLButtonElement>('#otp-reveal')!.addEventListener('click', event => {
   const reveal = input('otp-pin').type === 'password';

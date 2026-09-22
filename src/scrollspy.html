@@ -16,40 +16,38 @@
                 documentation page to the right. Clicking on these links will also scroll the page to that element.
               </p>
 
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="row">
-  <div class="col s12 m9 l10">
-    <div id="introduction" class="section scrollspy">
-      <p>Content</p>
-    </div>
-    <div id="structure" class="section scrollspy">
-      <p>Content</p>
-    </div>
-    <div id="initialization" class="section scrollspy">
-      <p>Content</p>
-    </div>
-  </div>
-  <div class="col hide-on-small-only m3 l2">
-    <ul class="section table-of-contents">
-      <li><a href="#introduction">Introduction</a></li>
-      <li><a href="#structure">Structure</a></li>
-      <li><a href="#initialization">Initialization</a></li>
-    </ul>
-  </div>
-</div></xmp>
-        </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="row"&gt;
+  &lt;div class="col s12 m9 l10"&gt;
+    &lt;div id="introduction" class="section scrollspy"&gt;
+      &lt;p&gt;Content&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div id="structure" class="section scrollspy"&gt;
+      &lt;p&gt;Content&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div id="initialization" class="section scrollspy"&gt;
+      &lt;p&gt;Content&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col hide-on-small-only m3 l2"&gt;
+    &lt;ul class="section table-of-contents"&gt;
+      &lt;li&gt;&lt;a href="#introduction"&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#structure"&gt;Structure&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#initialization"&gt;Initialization&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
             </div>
 
             <div id="initialization" class="scrollspy section">
               <h3 class="header">Initialization</h3>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   document.addEventListener('DOMContentLoaded', function() {
     const elems = document.querySelectorAll('.scrollspy');
     const instances = ScrollSpy.init(elems, {
       // specify options here
     });
   });
-        </code></pre>
+        </code></pre></div>
             </div>
 
             <div id="options" class="scrollspy section">
@@ -95,27 +93,27 @@
               <h5>getActiveElement</h5>
               This is the default function used for finding the active element where id is the id of the scrollspy element. It returns a CSS selector of the element you want marked
               active.
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   function(id) {
     return 'a[href="#' + id + '"]';
   }
-        </code></pre>
+        </code></pre></div>
             </div>
 
             <div id="methods" class="scrollspy section">
               <h3 class="header">Methods</h3>
               <blockquote>
                 <p>All the methods are called on the plugin instance. You can get the plugin instance like this:</p>
-                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
                   const instance = ScrollSpy.getInstance(elem);
-          </code></pre>
+          </code></pre></div>
               </blockquote>
 
               <h5 class="method-header">.destroy();</h5>
               <p>Destroy plugin instance and teardown</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
 instance.destroy();
-        </code></pre>
+        </code></pre></div>
             </div>
 
             <div id="properties" class="scrollspy section">

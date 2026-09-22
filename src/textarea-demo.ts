@@ -1,3 +1,4 @@
+import { updateCodeSnippet } from "./code-snippets";
 import { RichTextarea } from 'kmaterialize';
 
 const status = document.querySelector<HTMLElement>('#textarea-demo-status')!;
@@ -17,7 +18,7 @@ Promise.all([field.ready, note.ready, readonly.ready, disabled.ready]).then(upda
 textarea.addEventListener('input', updateCount);
 form.addEventListener('submit', event => {
   event.preventDefault();
-  document.querySelector('#textarea-form-output')!.textContent = JSON.stringify(Object.fromEntries(new FormData(form)), null, 2);
+  void updateCodeSnippet("textarea-form-output", JSON.stringify(Object.fromEntries(new FormData(form)), null, 2)).catch(error => { status.textContent = error.message; });
   status.textContent = 'Form value captured locally. Nothing was sent to a server.';
 });
 form.addEventListener('reset', () => window.setTimeout(updateCount, 0));

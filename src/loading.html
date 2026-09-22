@@ -27,18 +27,18 @@
               </div>
               <h3 class="header">Basic usage</h3>
               <p>The indicator works with CSS alone using the standard Preloader markup below. Toggle <code>active</code> on the outer <code>loading</code> element to show or hide the spinner; keep <code>active</code> on the inner <code>preloader-wrapper</code>. Place your image inside <code>loading-content</code>, or leave the content out for a plain spinner.</p>
-              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><div class="loading active" role="status" aria-label="Loading workspace" aria-busy="true">
-  <div class="preloader-wrapper active" aria-hidden="true">
-    <div class="spinner-layer">
-      <div class="circle-clipper left"><div class="circle"></div></div>
-      <div class="gap-patch"><div class="circle"></div></div>
-      <div class="circle-clipper right"><div class="circle"></div></div>
-    </div>
-  </div>
-  <span class="loading-content">
-    <img src="images/materialize.svg" alt="">
-  </span>
-</div></xmp></code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="loading active" role="status" aria-label="Loading workspace" aria-busy="true"&gt;
+  &lt;div class="preloader-wrapper active" aria-hidden="true"&gt;
+    &lt;div class="spinner-layer"&gt;
+      &lt;div class="circle-clipper left"&gt;&lt;div class="circle"&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;div class="gap-patch"&gt;&lt;div class="circle"&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;div class="circle-clipper right"&gt;&lt;div class="circle"&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;span class="loading-content"&gt;
+    &lt;img src="images/materialize.svg" alt=""&gt;
+  &lt;/span&gt;
+&lt;/div&gt;</code></pre></div>
             </div>
 
             <div id="sizes" class="section scrollspy">
@@ -84,28 +84,28 @@
                   <p>Large · logo</p>
                 </div>
               </div>
-              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><div class="loading loading-small active" role="status" aria-label="Loading" aria-busy="true">
-  <div class="preloader-wrapper active" aria-hidden="true">
-    <div class="spinner-layer">
-      <div class="circle-clipper left"><div class="circle"></div></div>
-      <div class="gap-patch"><div class="circle"></div></div>
-      <div class="circle-clipper right"><div class="circle"></div></div>
-    </div>
-  </div>
-</div>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="loading loading-small active" role="status" aria-label="Loading" aria-busy="true"&gt;
+  &lt;div class="preloader-wrapper active" aria-hidden="true"&gt;
+    &lt;div class="spinner-layer"&gt;
+      &lt;div class="circle-clipper left"&gt;&lt;div class="circle"&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;div class="gap-patch"&gt;&lt;div class="circle"&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;div class="circle-clipper right"&gt;&lt;div class="circle"&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 
-<div class="loading active" role="status" aria-label="Syncing files" aria-busy="true">
-  <div class="preloader-wrapper active" aria-hidden="true">
-    <div class="spinner-layer">
-      <div class="circle-clipper left"><div class="circle"></div></div>
-      <div class="gap-patch"><div class="circle"></div></div>
-      <div class="circle-clipper right"><div class="circle"></div></div>
-    </div>
-  </div>
-  <span class="loading-content">
-    <i class="material-icons" aria-hidden="true">cloud_sync</i>
-  </span>
-</div></xmp></code></pre>
+&lt;div class="loading active" role="status" aria-label="Syncing files" aria-busy="true"&gt;
+  &lt;div class="preloader-wrapper active" aria-hidden="true"&gt;
+    &lt;div class="spinner-layer"&gt;
+      &lt;div class="circle-clipper left"&gt;&lt;div class="circle"&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;div class="gap-patch"&gt;&lt;div class="circle"&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;div class="circle-clipper right"&gt;&lt;div class="circle"&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;span class="loading-content"&gt;
+    &lt;i class="material-icons" aria-hidden="true"&gt;cloud_sync&lt;/i&gt;
+  &lt;/span&gt;
+&lt;/div&gt;</code></pre></div>
             </div>
 
             <div id="customization" class="section scrollspy">
@@ -123,12 +123,12 @@
                   <span class="loading-content"><i class="material-icons" aria-hidden="true">auto_awesome</i></span>
                 </div>
               </div>
-              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-css copiedText"><xmp>.loading {
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-css">.loading &#123;
   --loading-size: 9rem;
   --loading-color: var(--md-sys-color-tertiary);
   --loading-background: var(--md-sys-color-tertiary-container);
   --loading-thickness: 5px;
-}</xmp></code></pre>
+&#125;</code></pre></div>
               <table class="striped responsive-table">
                 <thead><tr><th>Property</th><th>Default</th><th>Purpose</th></tr></thead>
                 <tbody>
@@ -151,11 +151,11 @@
                 <button id="loading-demo-start" class="btn filled" type="button">Start loading</button>
                 <button id="loading-demo-stop" class="btn outlined" type="button" disabled>Finish loading</button>
               </div>
-              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText"><xmp>const loading = M.Loading.init(document.querySelector('#loading-demo'), {
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">const loading = M.Loading.init(document.querySelector('#loading-demo'), &#123;
   active: false,
   label: 'Loading workspace…',
   completeLabel: 'Workspace ready'
-});
+&#125;);
 
 loading.start();
 // When your operation finishes:
@@ -163,7 +163,7 @@ loading.stop();
 
 // Override the status for a specific operation:
 loading.start('Refreshing assets…');
-loading.stop('Assets ready');</xmp></code></pre>
+loading.stop('Assets ready');</code></pre></div>
               <p>For ES modules, use <code>import { Loading } from 'kmaterialize'</code>. <code>M.AutoInit()</code> initializes <code>.loading</code> elements automatically; add <code>no-autoinit</code> when initializing manually.</p>
               <h5>Options</h5>
               <table class="striped responsive-table">

@@ -21,19 +21,17 @@
               <img class="materialboxed responsive-img" width="650" alt="Material Box sample image" src="images/sample-1.jpg" />
 
               <p>Creating the above image with the effect is as simple as adding a <code class="language-html">materialboxed</code> class to the image tag.</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><img class="materialboxed" width="650" alt="Material Box sample image" src="images/sample-1.jpg"></xmp>
-      </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;img class="materialboxed" width="650" alt="Material Box sample image" src="images/sample-1.jpg"&gt;</code></pre></div>
 
               <h4>Initialization</h4>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   document.addEventListener('DOMContentLoaded', function() {
     const elems = document.querySelectorAll('.materialboxed');
     const instances = Materialbox.init(elems, {
       // specify options here
     });
   });
-        </code></pre>
+        </code></pre></div>
 
               <h4>Options</h4>
               <table class="striped">
@@ -89,27 +87,27 @@
               <h4>Methods</h4>
               <blockquote>
                 <p>All the methods are called on the plugin instance. You can get the plugin instance like this:</p>
-                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
                   const instance = Materialbox.getInstance(elem);
-          </code></pre>
+          </code></pre></div>
               </blockquote>
               <h5 class="method-header">.open();</h5>
               <p>Open materialbox</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   instance.open();
-        </code></pre>
+        </code></pre></div>
 
               <h5 class="method-header">.close();</h5>
               <p>Close materialbox</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   instance.close();
-        </code></pre>
+        </code></pre></div>
 
               <h5 class="method-header">.destroy();</h5>
               <p>Destroy plugin instance and teardown</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   instance.destroy();
-        </code></pre>
+        </code></pre></div>
 
               <h4>Properties</h4>
               <table class="striped">
@@ -166,9 +164,7 @@
                 <code class="language-html">data-caption</code> attribute.
               </p>
               <img class="materialboxed" data-caption="A picture of a way with a group of trees in a park" width="250" src="images/placeholder/800x400_d.jpg" />
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><img class="materialboxed" data-caption="A picture of a way with a group of trees in a park" width="250" alt="Sample image for Material Box with caption" src="images/placeholder/800x400_d.jpg"></xmp>
-          </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;img class="materialboxed" data-caption="A picture of a way with a group of trees in a park" width="250" alt="Sample image for Material Box with caption" src="images/placeholder/800x400_d.jpg"&gt;</code></pre></div>
             </div>
 
             <!--  Slider Section  -->
@@ -216,43 +212,41 @@
                 </ul>
               </div>
 
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="slider">
-  <ul class="slides">
-    <li>
-      <img src="images/placeholder/800x400_a.jpg" alt="Sample image for first slide">
-      <div class="caption center-align">
-        <h3>This is our big Tagline!</h3>
-        <h5 class="light">Here's our small slogan.</h5>
-      </div>
-    </li>
-    <li>
-      <img src="images/placeholder/800x400_b.jpg" alt="Sample image for second slide">
-      <div class="caption left-align">
-        <h3>Left Aligned Caption</h3>
-        <h5 class="light">Here's our small slogan.</h5>
-      </div>
-    </li>
-    <li>
-      <img src="images/placeholder/800x400_c.jpg" alt="Sample image for third slide">
-      <div class="caption right-align">
-        <h3>Right Aligned Caption</h3>
-        <h5 class="light">Here's our small slogan.</h5>
-      </div>
-    </li>
-    <li>
-      <img src="images/placeholder/800x400_d.jpg" alt="Sample image for fourth slide">
-      <div class="caption center-align">
-        <h3>This is our big Tagline!</h3>
-        <h5 class="light">Here's our small slogan.</h5>
-      </div>
-    </li>
-  </ul>
-</div></xmp>
-      </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="slider"&gt;
+  &lt;ul class="slides"&gt;
+    &lt;li&gt;
+      &lt;img src="images/placeholder/800x400_a.jpg" alt="Sample image for first slide"&gt;
+      &lt;div class="caption center-align"&gt;
+        &lt;h3&gt;This is our big Tagline!&lt;/h3&gt;
+        &lt;h5 class="light"&gt;Here's our small slogan.&lt;/h5&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;img src="images/placeholder/800x400_b.jpg" alt="Sample image for second slide"&gt;
+      &lt;div class="caption left-align"&gt;
+        &lt;h3&gt;Left Aligned Caption&lt;/h3&gt;
+        &lt;h5 class="light"&gt;Here's our small slogan.&lt;/h5&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;img src="images/placeholder/800x400_c.jpg" alt="Sample image for third slide"&gt;
+      &lt;div class="caption right-align"&gt;
+        &lt;h3&gt;Right Aligned Caption&lt;/h3&gt;
+        &lt;h5 class="light"&gt;Here's our small slogan.&lt;/h5&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;img src="images/placeholder/800x400_d.jpg" alt="Sample image for fourth slide"&gt;
+      &lt;div class="caption center-align"&gt;
+        &lt;h3&gt;This is our big Tagline!&lt;/h3&gt;
+        &lt;h5 class="light"&gt;Here's our small slogan.&lt;/h5&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre></div>
 
               <h4>Initialization</h4>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   document.addEventListener('DOMContentLoaded', function() {
     const elems = document.querySelectorAll('.slider');
     const instances = Slider.init(elems, {
@@ -267,7 +261,7 @@
       }
     });
   });
-        </code></pre>
+        </code></pre></div>
 
               <h4>Options</h4>
               <table class="striped">
@@ -335,40 +329,40 @@
 
               <blockquote>
                 <p>All the methods are called on the plugin instance. You can get the plugin instance like this:</p>
-                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
                   const instance = Slider.getInstance(elem);
-          </code></pre>
+          </code></pre></div>
               </blockquote>
 
               <h5 class="method-header">.pause();</h5>
               <p>Pause slider autoslide</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   instance.pause();
-        </code></pre>
+        </code></pre></div>
 
               <h5 class="method-header">.start();</h5>
               <p>Start slider autoslide</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   instance.start();
-        </code></pre>
+        </code></pre></div>
 
               <h5 class="method-header">.next();</h5>
               <p>Move to next slider</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   instance.next();
-        </code></pre>
+        </code></pre></div>
 
               <h5 class="method-header">.prev();</h5>
               <p>Move to prev slider</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   instance.prev();
-        </code></pre>
+        </code></pre></div>
 
               <h5 class="method-header">.destroy();</h5>
               <p>Destroy plugin instance and teardown</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   instance.destroy();
-        </code></pre>
+        </code></pre></div>
 
               <h4>Properties</h4>
               <table class="striped">

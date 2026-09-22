@@ -1,3 +1,4 @@
+import { updateCodeSnippet } from "./code-snippets";
 import { MaskitoInput, OtpInput } from 'kmaterialize';
 import { maskitoParseDate, maskitoParseNumber, maskitoParseTime } from '@maskito/kit';
 
@@ -41,7 +42,7 @@ form.addEventListener('submit', event => {
       timeMilliseconds: maskitoParseTime(fields.time.getValue(), { mode: 'HH:MM' })
     }
   };
-  document.querySelector('#maskito-form-output')!.textContent = JSON.stringify(result, null, 2);
+  void updateCodeSnippet("maskito-form-output", JSON.stringify(result, null, 2)).catch(reportError);
   status.textContent = 'Form values captured locally. Nothing was sent to a server.';
 });
 form.addEventListener('reset', () => { status.textContent = 'Default values restored.'; });

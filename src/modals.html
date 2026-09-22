@@ -143,27 +143,25 @@
               <!---->
             </div>
 
-            <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><button class="btn waves-effect waves-light" popovertarget="modal1">Show</button>
-<a class="btn tonal" href="javascript:modal1.showPopover()">Show via Link</a>
+            <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;button class="btn waves-effect waves-light" popovertarget="modal1"&gt;Show&lt;/button&gt;
+&lt;a class="btn tonal" href="javascript:modal1.showPopover()"&gt;Show via Link&lt;/a&gt;
 
-<div id="modal1" class="modal" popover>
-  <div class="modal-header">
-    <h4>Modal Header</h4>
-  </div>
-  <div class="modal-content">
-    <p>A bunch of text</p>
-  </div>
-  <div class="modal-footer">
-    <button tabindex="0" class="waves-effect btn-flat" popovertarget="modal1">Agree</button>
-  </div>
-</div></xmp>
-</code></pre>
+&lt;div id="modal1" class="modal" popover&gt;
+  &lt;div class="modal-header"&gt;
+    &lt;h4&gt;Modal Header&lt;/h4&gt;
+  &lt;/div&gt;
+  &lt;div class="modal-content"&gt;
+    &lt;p&gt;A bunch of text&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="modal-footer"&gt;
+    &lt;button tabindex="0" class="waves-effect btn-flat" popovertarget="modal1"&gt;Agree&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
 
             <div id="initialization" class="scrollspy section">
               <h3 class="header">Initialization</h3>
               <p>To open a modal using a trigger:</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
 // No initialization needed in > 2.1.1
 document.addEventListener('DOMContentLoaded', function() {
   const elems = document.querySelectorAll('.modal');
@@ -171,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // specify options here
   });
 });
-          </code></pre>
+          </code></pre></div>
             </div>
 
             <div id="options" class="scrollspy section">
@@ -186,16 +184,16 @@ document.addEventListener('DOMContentLoaded', function() {
               <h3 class="header">Methods</h3>
               <blockquote>
                 <p>All the methods are called on the plugin instance. You can get the plugin instance like this:</p>
-                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">const modal = document.querySelector('#modal-1');</code></pre>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">const modal = document.querySelector('#modal-1');</code></pre></div>
               </blockquote>
 
               <h5 class="method-header">.showPopover();</h5>
               <p>Open dismissible</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">modal.showPopover();</code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">modal.showPopover();</code></pre></div>
 
               <h5 class="method-header">.hidePopover();</h5>
               <p>Close</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">modal.hidePopover();</code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">modal.hidePopover();</code></pre></div>
             </div>
 
             <div id="properties" class="scrollspy section">
@@ -222,18 +220,16 @@ document.addEventListener('DOMContentLoaded', function() {
               <h3 class="header">Bottom Sheet Modals</h3>
               <button class="btn tonal waves-effect waves-light" popovertarget="modal3">Show BottomSheet-Modal</button>
               <p>Bottom Sheet Modals are good for displaying actions to the user on the bottom of a screen. They still act the same as regular modals.</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><a class="btn tonal waves-effect waves-light" href="javascript:modal1.showPopover()">Show BottomSheet Modal</a>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;a class="btn tonal waves-effect waves-light" href="javascript:modal1.showPopover()"&gt;Show BottomSheet Modal&lt;/a&gt;
 
-<div id="modal1" class="modal bottom-sheet" popover>
-  <div class="modal-header">
-    <h4>Modal Header</h4>
-  </div>
-  <div class="modal-content">
-    <p>A bunch of text</p>
-  </div>
-</div></xmp>
-          </code></pre>
+&lt;div id="modal1" class="modal bottom-sheet" popover&gt;
+  &lt;div class="modal-header"&gt;
+    &lt;h4&gt;Modal Header&lt;/h4&gt;
+  &lt;/div&gt;
+  &lt;div class="modal-content"&gt;
+    &lt;p&gt;A bunch of text&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
             </div>
           </div>
 

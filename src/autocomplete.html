@@ -40,19 +40,17 @@
                 <p class="red-text"><strong>ATTENTION:</strong> Data-Format has changed from version 1.X.X to 2.0.0! Please update option 'data'.</p>
               </div>
 
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><!-- Single selection: the selected label fills the input. -->
-<div class="input-field outlined">
-  <input type="text" id="autocomplete-input" class="autocomplete" placeholder=" ">
-  <label for="autocomplete-input">Autocomplete</label>
-</div>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;!-- Single selection: the selected label fills the input. --&gt;
+&lt;div class="input-field outlined"&gt;
+  &lt;input type="text" id="autocomplete-input" class="autocomplete" placeholder=" "&gt;
+  &lt;label for="autocomplete-input"&gt;Autocomplete&lt;/label&gt;
+&lt;/div&gt;
 
-<!-- Multiple selections: initialize this input with isMultiSelect: true. -->
-<div class="input-field">
-  <input type="text" id="autocomplete-input-multi" class="autocomplete-multiple" placeholder=" ">
-  <label for="autocomplete-input-multi">Multiple Autocomplete</label>
-</div></xmp>
-          </code></pre>
+&lt;!-- Multiple selections: initialize this input with isMultiSelect: true. --&gt;
+&lt;div class="input-field"&gt;
+  &lt;input type="text" id="autocomplete-input-multi" class="autocomplete-multiple" placeholder=" "&gt;
+  &lt;label for="autocomplete-input-multi"&gt;Multiple Autocomplete&lt;/label&gt;
+&lt;/div&gt;</code></pre></div>
             </div>
 
             <div id="initialization" class="scrollspy section">
@@ -87,7 +85,7 @@
                 You may also provide additional attributes to an option object but they will not be taken into consideration by the standard search function. If you want to use
                 them for option filtering, you must specify a custom function in "<b>onSearch</b>" option.
               </p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   document.addEventListener('DOMContentLoaded', function() {
     const elems = document.querySelectorAll('.autocomplete');
     const instances = Autocomplete.init(elems, {
@@ -140,7 +138,7 @@
       }
     });
   });
-          </code></pre>
+          </code></pre></div>
             </div>
 
             <div id="options" class="scrollspy section">
@@ -218,7 +216,7 @@
                 This is the default Search Function. You can write your own search function by passing in a function with the same parameters. You can load asynchronously data in
                 this function or filter an existing list or dictionary. When the data is loaded you can use setMenuItems() to update the content of the Menu.
               </p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
 onSearch: (text, autocomplete) => {
   const normSearch = text.toLocaleLowerCase();
   autocomplete.setMenuItems(
@@ -228,7 +226,7 @@ onSearch: (text, autocomplete) => {
     )
   );
 }
-</code></pre>
+</code></pre></div>
               <p>To disable sorting and use the values as they appear in the data object, use a falsy value.</p>
             </div>
 
@@ -236,49 +234,49 @@ onSearch: (text, autocomplete) => {
               <h3 class="header">Methods</h3>
               <blockquote>
                 <p>All the methods are called on the plugin instance. You can get the plugin instance like this:</p>
-                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   const instance = Autocomplete.getInstance(elem);
   instance.open();
-              </code></pre>
+              </code></pre></div>
               </blockquote>
               <h5 class="method-header">.open();</h5>
               <p>Open autocomplete dropdown.</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
 instance.open();
-      </code></pre>
+      </code></pre></div>
 
               <h5 class="method-header">.close();</h5>
               <p>Close autocomplete dropdown.</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
 instance.close();
-      </code></pre>
+      </code></pre></div>
 
               <h5 class="method-header">.selectOption(id);</h5>
               <p>Select a specific autocomplete option via id-property.</p>
               <h6>Arguments</h6>
               <p><b>id:</b> The id of a data-entry.</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
 instance.selectOption(42);
-      </code></pre>
+      </code></pre></div>
 
               <h5 class="method-header">.setMenuItems(items);</h5>
               <p>Updates the visible or selectable items shown in the menu.</p>
               <h6>Arguments</h6>
               <p><b>items:</b> .</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
 instance.setMenuItems([
   {id: "Test"},
   {id: 12, text: "Apple"},
   {id: 13, text: "Microsoft"},
   {id: 42, text: "Google", image: 'http://placehold.it/250x250'}
 ]);
-      </code></pre>
+      </code></pre></div>
 
               <h5 class="method-header">.destroy();</h5>
               <p>Destroy plugin instance and teardown</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
 instance.destroy();
-      </code></pre>
+      </code></pre></div>
             </div>
 
             <div id="properties" class="scrollspy section">

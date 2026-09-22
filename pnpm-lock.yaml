@@ -41,9 +41,6 @@ importers:
       handlebars:
         specifier: ^4.7.8
         version: 4.7.9
-      highlight.js:
-        specifier: ^11.11.1
-        version: 11.12.0
       imask:
         specifier: ^7.6.0
         version: 7.6.1
@@ -52,7 +49,7 @@ importers:
         version: 5.13.5
       kmaterialize:
         specifier: latest
-        version: 2.3.3-1.0.34(@maskito/core@5.4.0)(@maskito/kit@5.4.0(@maskito/core@5.4.0))(@simonwep/pickr@1.9.1)(air-datepicker@3.6.0)(filepond-plugin-file-validate-type@1.2.9(filepond@4.32.12))(filepond-plugin-image-exif-orientation@1.0.11(filepond@4.32.12))(filepond-plugin-image-preview@4.6.12(filepond@4.32.12))(filepond@4.32.12)(handlebars@4.7.9)(imask@7.6.1)(kspreadsheet@2.7.0)(prismjs@1.30.0)(quill@2.0.3)(sweetalert2@11.26.25)(tippy.js@6.3.7)(tom-select@2.6.2)
+        version: 2.3.3-1.0.35(@maskito/core@5.4.0)(@maskito/kit@5.4.0(@maskito/core@5.4.0))(@simonwep/pickr@1.9.1)(air-datepicker@3.6.0)(filepond-plugin-file-validate-type@1.2.9(filepond@4.32.12))(filepond-plugin-image-exif-orientation@1.0.11(filepond@4.32.12))(filepond-plugin-image-preview@4.6.12(filepond@4.32.12))(filepond@4.32.12)(handlebars@4.7.9)(imask@7.6.1)(kspreadsheet@2.7.0)(prismjs@1.30.0)(quill@2.0.3)(sweetalert2@11.26.25)(tippy.js@6.3.7)(tom-select@2.6.2)
       kspreadsheet:
         specifier: 2.7.0
         version: 2.7.0
@@ -680,10 +677,6 @@ packages:
     resolution: {integrity: sha512-T2UbfbBEF32wiepXIsMlTW9+dDYC6wMh/t/vYA4tuOMKqWz/n3vr1NFSxQiyP+zk2mXsoMA/i/7qV6LKut1t1A==}
     engines: {node: '>= 0.4'}
 
-  highlight.js@11.12.0:
-    resolution: {integrity: sha512-nbfWpyRMcMrPMmDwJB+dhX/eiaPKtc2RB+0QZskqJ3WjRA/FDS0e9hZrx8EC/lbEv8gXy98FcDbNa/dspAaJMg==}
-    engines: {node: '>=12.0.0'}
-
   ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
 
@@ -725,8 +718,8 @@ packages:
   jszip@3.10.2:
     resolution: {integrity: sha512-3l+rb15IOWtUhU0H5MFqES/T6Kh7abYwjosBey/vD6hDt8zoEffkSC5Ws5SGtgVw3gBx2NEbhTeSW1+kWkpyTQ==}
 
-  kmaterialize@2.3.3-1.0.34:
-    resolution: {integrity: sha512-GpC3xYiPz4tuHzHSPJx950jb49uObEvJFr4TkxJ5ccby3foadLwEJa47ZScQ7gyPXVhEMhMKcg2IjwZFc6wBWw==}
+  kmaterialize@2.3.3-1.0.35:
+    resolution: {integrity: sha512-DLNE53JcjgVQGlUyo8dOnSSYvuKQiCftdurbqP0d/l9Vxavb076lxt6dKApWB7adlI9ffCbLxtJPLL1rCb2Ysw==}
     peerDependencies:
       '@maskito/core': ^5.4.0
       '@maskito/kit': ^5.4.0
@@ -1700,8 +1693,6 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  highlight.js@11.12.0: {}
-
   ieee754@1.2.1: {}
 
   imask@7.6.1:
@@ -1742,7 +1733,7 @@ snapshots:
       readable-stream: 2.3.8
       setimmediate: 1.0.5
 
-  kmaterialize@2.3.3-1.0.34(@maskito/core@5.4.0)(@maskito/kit@5.4.0(@maskito/core@5.4.0))(@simonwep/pickr@1.9.1)(air-datepicker@3.6.0)(filepond-plugin-file-validate-type@1.2.9(filepond@4.32.12))(filepond-plugin-image-exif-orientation@1.0.11(filepond@4.32.12))(filepond-plugin-image-preview@4.6.12(filepond@4.32.12))(filepond@4.32.12)(handlebars@4.7.9)(imask@7.6.1)(kspreadsheet@2.7.0)(prismjs@1.30.0)(quill@2.0.3)(sweetalert2@11.26.25)(tippy.js@6.3.7)(tom-select@2.6.2):
+  kmaterialize@2.3.3-1.0.35(@maskito/core@5.4.0)(@maskito/kit@5.4.0(@maskito/core@5.4.0))(@simonwep/pickr@1.9.1)(air-datepicker@3.6.0)(filepond-plugin-file-validate-type@1.2.9(filepond@4.32.12))(filepond-plugin-image-exif-orientation@1.0.11(filepond@4.32.12))(filepond-plugin-image-preview@4.6.12(filepond@4.32.12))(filepond@4.32.12)(handlebars@4.7.9)(imask@7.6.1)(kspreadsheet@2.7.0)(prismjs@1.30.0)(quill@2.0.3)(sweetalert2@11.26.25)(tippy.js@6.3.7)(tom-select@2.6.2):
     dependencies:
       normalize.css: 8.0.1
     optionalDependencies:

@@ -48,7 +48,7 @@
           <div id="org-chart-vertical-demo" tabindex="0" role="region" aria-label="Vertical organization chart workspace" aria-describedby="org-chart-vertical-help"></div>
           <p id="org-chart-vertical-help">Drag the handles to move teams or people, or use the same keyboard controls as above. On smaller screens, scroll inside the chart to explore both branches.</p>
           <p id="org-chart-vertical-status" role="status">3 teams · 6 people · 2 relationships. This example has its own layout.</p>
-          <pre><code class="language-typescript">const verticalHost = document.querySelector&lt;HTMLElement&gt;('#vertical-organization')!;
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">const verticalHost = document.querySelector&lt;HTMLElement&gt;('#vertical-organization')!;
 OrgChart.init(verticalHost, {
   orientation: 'vertical',
   data: {
@@ -67,13 +67,13 @@ OrgChart.init(verticalHost, {
       { from: 'leadership', fromType: 'team', to: 'engineering', toType: 'team', label: 'Delivery' }
     ]
   }
-});</code></pre>
+});</code></pre></div>
         </section>
         <section id="usage" class="section scrollspy">
           <h3 class="header">Usage</h3>
           <p>Import <code>OrgChart</code> from <code>kmaterialize</code> and load Materialize CSS. Drag handles, connections, gestures, and printing helpers are included in the library.</p>
-          <pre><code class="language-html">&lt;div id="organization" tabindex="0" role="region" aria-label="Organization chart"&gt;&lt;/div&gt;</code></pre>
-          <pre><code class="language-typescript">import { OrgChart } from 'kmaterialize';
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div id="organization" tabindex="0" role="region" aria-label="Organization chart"&gt;&lt;/div&gt;</code></pre></div>
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">import { OrgChart } from 'kmaterialize';
 
 const host = document.querySelector&lt;HTMLElement&gt;('#organization')!;
 const chart = OrgChart.init(host, {
@@ -92,7 +92,7 @@ const chart = OrgChart.init(host, {
     ]
   },
   onChange: data =&gt; console.log(data)
-});</code></pre>
+});</code></pre></div>
         </section>
         <section id="data" class="section scrollspy">
           <h3 class="header">Data &amp; options</h3>
@@ -116,11 +116,11 @@ const chart = OrgChart.init(host, {
         <section id="data-interfaces" class="section scrollspy">
           <h3 class="header">Data interfaces</h3>
           <p><code>getData()</code> returns an independent <code>OrgChartData</code> object. Pass the same structure to <code>setData(data)</code> to replace the entire chart. All three arrays are required, but may be empty. Fields marked with <code>?</code> are optional.</p>
-          <pre><code class="language-typescript">import type {
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">import type {
   OrgChartData, OrgChartTeam, OrgChartPerson,
   OrgChartLink, OrgChartAppearance
-} from 'kmaterialize';</code></pre>
-          <pre><code class="language-typescript">export interface OrgChartData {
+} from 'kmaterialize';</code></pre></div>
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">export interface OrgChartData {
   teams: OrgChartTeam[];
   people: OrgChartPerson[];
   links: OrgChartLink[];
@@ -157,10 +157,10 @@ export interface OrgChartLink {
   fromType?: 'person' | 'team'; // Default: person.
   toType?: 'person' | 'team';   // Default: person.
   label?: string;      // Omit or use '' for an unlabeled link.
-}</code></pre>
+}</code></pre></div>
           <p>The declarations above describe the exported types; import them in your app instead of redeclaring them. A link's endpoint type determines which collection its ID refers to. Source and target must be different endpoints. People appear in their team's list in the order supplied by <code>people</code>.</p>
           <h4>Read, update, and save data</h4>
-          <pre><code class="language-typescript">import { OrgChart } from 'kmaterialize';
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">import { OrgChart } from 'kmaterialize';
 import type { OrgChartData } from 'kmaterialize';
 
 const host = document.querySelector&lt;HTMLElement&gt;('#org-chart-demo')!;
@@ -176,34 +176,34 @@ chart.setData(data);
 const json = JSON.stringify(chart.getData()); // Save to your storage or API.
 // Restore trusted, correctly shaped data:
 const restored: OrgChartData = JSON.parse(json);
-chart.setData(restored);</code></pre>
+chart.setData(restored);</code></pre></div>
           <h4>Independent movement controls</h4>
-          <pre><code class="language-typescript">OrgChart.init(host, {
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">OrgChart.init(host, {
   data,
   draggableTeams: true,
   draggablePeople: false
-});</code></pre>
+});</code></pre></div>
           <p>Swap these values to allow moving people while keeping team boxes fixed. Each option controls both its drag handles and keyboard movement.</p>
           <h4>Read-only chart</h4>
           <p>These options are independent: <code>editable</code> controls link-label editing and deletion, <code>connectable</code> controls new connections, and <code>draggable</code> controls team and person movement. Disable all three to hide editing controls while keeping navigation and zoom available.</p>
-          <pre><code class="language-typescript">OrgChart.init(host, {
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">OrgChart.init(host, {
   data,
   editable: false,
   connectable: false,
   draggable: false
-});</code></pre>
+});</code></pre></div>
           <h4>Custom avatars</h4>
           <p>Set <code>avatarText</code> to replace initials, or <code>avatarImage</code> to display an image inside the circular avatar. Images use <code>object-fit: cover</code> by default. Use <code>contain</code> for a logo that should remain fully visible. Failed images fall back to custom text or initials.</p>
-          <pre><code class="language-typescript">{ id: 'alex', teamId: 'design', name: 'Alex Morgan', avatarText: 'UX' },
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">{ id: 'alex', teamId: 'design', name: 'Alex Morgan', avatarText: 'UX' },
 { id: 'sam', teamId: 'design', name: 'Sam Rivera',
-  avatarImage: '/images/avatar.jpg', avatarFit: 'cover' }</code></pre>
+  avatarImage: '/images/avatar.jpg', avatarFit: 'cover' }</code></pre></div>
           <p><code>setData()</code> validates IDs, names, coordinates, and endpoint references, redraws the chart, and calls <code>onChange</code>. It replaces all three arrays; it does not merge a partial update. When removing a team, remove or reassign its people and remove links targeting that team. When removing a person, remove links targeting that person.</p>
           <p><code>OrgChartData</code> contains the organization and its positions. Options such as <code>editable</code>, <code>connectable</code>, <code>orientation</code>, and zoom are configured separately and are not included in <code>getData()</code>. TypeScript types do not validate JSON from an external service; check its structure before passing it to the component.</p>
         </section>
         <section id="appearance" class="section scrollspy">
           <h3 class="header">Colors, borders &amp; group connections</h3>
           <p>Teams and people accept the same appearance options. <code>color</code> overrides the item background, <code>textColor</code> overrides its text, <code>borderColor</code> adds a full border, and <code>accent</code> adds a colored line directly on one edge. Choose <code>accentPosition</code>: top, right, bottom (default), or left. Values accept CSS colors, including Materialize theme variables. You can combine these options in the Add team and Add person forms.</p>
-          <pre><code class="language-typescript">const data = chart.getData();
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">const data = chart.getData();
 data.teams[0].color = 'var(--md-sys-color-primary)';
 data.teams[0].textColor = 'white';
 data.teams[0].borderColor = 'var(--md-sys-color-primary)';
@@ -219,7 +219,7 @@ data.links.push({
   from: data.teams[0].id, fromType: 'team',
   to: data.teams[1].id, toType: 'team', label: 'Partners with'
 });
-chart.setData(data);</code></pre>
+chart.setData(data);</code></pre></div>
           <p>Move handles appear only when <code>draggable</code> is enabled. Person handles support arrow keys: up/down to reorder, left/right to move between groups. Group handles move the whole team. Touch gestures outside a handle scroll the workspace.</p>
         </section>
         <section id="methods" class="section scrollspy">
@@ -227,7 +227,7 @@ chart.setData(data);</code></pre>
           <h4>Export PDF</h4>
           <p>Pinch with two fingers on the chart to zoom, or use a trackpad pinch / Ctrl + mouse wheel. Drag empty space with one finger to pan. The toolbar percentage follows gestures; 100% restores the actual card size.</p>
           <p>Click <strong>Export PDF</strong> above, then choose <strong>Save as PDF</strong> in the browser print dialog. The complete chart (including off-screen cards and SVG connections) fits on one page of the selected format and orientation (A3 landscape by default), independently of the current zoom. Disable browser headers and footers; enable background graphics if your browser requires it. Very large charts will have smaller text.</p>
-          <pre><code class="language-typescript">// Call from a user click so the browser allows the preview window.
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">// Call from a user click so the browser allows the preview window.
 pdfButton.addEventListener('click', async () =&gt; {
   try {
     await chart.exportPdf('People &amp; teams', { format: 'A4', orientation: 'landscape' }); // Light theme by default.
@@ -236,13 +236,13 @@ pdfButton.addEventListener('click', async () =&gt; {
   } catch (error) {
     console.error(error); // For example, the browser blocked the popup.
   }
-});</code></pre>
+});</code></pre></div>
           <p>Choose <code>format</code> from A0–A6, <code>letter</code>, <code>legal</code>, or <code>tabloid</code>. The optional <code>orientation</code> is <code>landscape</code> (default) or <code>portrait</code>. The chart is centered horizontally and vertically within 10mm margins, excluding unused canvas space. Browser print-dialog settings can override the requested paper size.</p>
           <p>The PDF defaults to a white page with light-theme cards, even when the app is dark. Use the <strong>PDF: Light / Dark</strong> toolbar button to switch the export theme, or pass <code>{ theme: 'light' }</code> / <code>{ theme: 'dark' }</code> as the second argument. Explicit item colors are preserved. This opens the browser's print workflow, not an automatic PDF download. Keep <code>chart-print.ts</code> alongside the component when copying this example into your app. The original theme, layout, scroll position, and zoom are preserved.</p>
-          <pre><code class="language-typescript">const data = chart.getData(); // Independent copy, including positions.
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">const data = chart.getData(); // Independent copy, including positions.
 chart.setData(data);           // Validate and replace teams, people, and links.
 OrgChart.getInstance(host);
-chart.destroy();               // Remove listeners and restore original content.</code></pre>
+chart.destroy();               // Remove listeners and restore original content.</code></pre></div>
           <p>Add, edit, or remove items through <code>getData()</code> and <code>setData()</code>. Remove a person's relationships when removing that person; remove or reassign members when removing a team. Duplicate-ID errors list every conflicting team name and array index. Missing coordinates are automatically placed; explicitly invalid coordinates still throw an error before the current chart is replaced.</p>
         </section>
       </div>

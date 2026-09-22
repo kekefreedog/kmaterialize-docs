@@ -18,11 +18,11 @@
                 <input id="range-volume" type="range" min="0" max="100" value="40" data-value-label="false">
                 <output for="range-volume">40</output>
               </div>
-              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><div class="range-field">
-  <label for="volume">Volume</label>
-  <input id="volume" type="range" min="0" max="100" value="40"
-         data-value-label="false">
-</div></xmp></code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="range-field"&gt;
+  &lt;label for="volume"&gt;Volume&lt;/label&gt;
+  &lt;input id="volume" type="range" min="0" max="100" value="40"
+         data-value-label="false"&gt;
+&lt;/div&gt;</code></pre></div>
               <p>All slider styling and behavior are included in kmaterialize. Existing <code>input[type="range"]</code> controls receive the new appearance. The native input preserves form submission and keyboard interaction.</p>
             </section>
 
@@ -34,11 +34,11 @@
                 <input id="range-brightness" type="range" min="0" max="100" step="10" value="60" data-ticks>
                 <output for="range-brightness">60</output>
               </div>
-              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><div class="range-field">
-  <label for="brightness">Brightness</label>
-  <input id="brightness" type="range" min="0" max="100"
-         step="10" value="60" data-ticks>
-</div></xmp></code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="range-field"&gt;
+  &lt;label for="brightness"&gt;Brightness&lt;/label&gt;
+  &lt;input id="brightness" type="range" min="0" max="100"
+         step="10" value="60" data-ticks&gt;
+&lt;/div&gt;</code></pre></div>
               <p>Dense tick sets are thinned to at most 101 marks. <code>step="any"</code> allows continuous values and does not display ticks.</p>
             </section>
 
@@ -50,12 +50,12 @@
                 <input id="range-budget" type="range" min="0" max="10000" step="500" value="3500">
                 <output for="range-budget">3.5k credits</output>
               </div>
-              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText"><xmp>import { Range } from 'kmaterialize';
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">import &#123; Range &#125; from 'kmaterialize';
 
-const input = document.querySelector<HTMLInputElement>('#range-budget')!;
-Range.init(input, {
-  formatValue: value => `${value / 1000}k credits`
-});</xmp></code></pre>
+const input = document.querySelector&lt;HTMLInputElement&gt;('#range-budget')!;
+Range.init(input, &#123;
+  formatValue: value =&gt; `$&#123;value / 1000&#125;k credits`
+&#125;);</code></pre></div>
             </section>
 
             <section id="disabled" class="section scrollspy">
@@ -64,31 +64,31 @@ Range.init(input, {
                 <label for="range-disabled">Unavailable setting</label>
                 <input id="range-disabled" type="range" min="0" max="100" step="10" value="30" data-ticks disabled>
               </div>
-              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><div class="range-field">
-  <label for="unavailable">Unavailable setting</label>
-  <input id="unavailable" type="range" min="0" max="100"
-         value="30" disabled>
-</div></xmp></code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="range-field"&gt;
+  &lt;label for="unavailable"&gt;Unavailable setting&lt;/label&gt;
+  &lt;input id="unavailable" type="range" min="0" max="100"
+         value="30" disabled&gt;
+&lt;/div&gt;</code></pre></div>
             </section>
 
             <section id="api" class="section scrollspy">
               <h3 class="header">Initialization and updates</h3>
               <p>Ranges present when kmaterialize loads initialize automatically. For controls added later, call <code>Range.init(input)</code>. Reinitialization safely replaces the previous instance.</p>
-              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText"><xmp>const slider = Range.init(input, {
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">const slider = Range.init(input, &#123;
   showValue: true, // Default: show a label during interaction.
   showTicks: false
-});
+&#125;);
 
 input.value = '75';
 slider.update(); // Refresh after assigning a value in code.
 
 // When removing the component:
-slider.destroy();</xmp></code></pre>
+slider.destroy();</code></pre></div>
               <p>The library keeps the track and label synchronized on input, reset, resizing, and changes to <code>min</code>, <code>max</code>, <code>step</code>, or <code>disabled</code>. Arrow keys adjust the value; Home and End reach the limits. Label every slider with a linked <code>label</code> or <code>aria-label</code>.</p>
               <p>The outputs in these demos use a standard <code>input</code> listener:</p>
-              <pre><code class="language-javascript"><xmp>input.addEventListener('input', () => {
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">input.addEventListener('input', () =&gt; &#123;
   output.value = input.value;
-});</xmp></code></pre>
+&#125;);</code></pre></div>
             </section>
           </div>
           <div class="hide-on-small-only m3 xl3">

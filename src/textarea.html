@@ -22,28 +22,28 @@
                 <button id="textarea-toggle-readonly" type="button" class="btn text" aria-pressed="false">Read-only mode</button>
               </form>
               <p id="textarea-demo-status" role="status">Loading the rich-text editor…</p>
-              <pre><code id="textarea-form-output" class="language-json">Submit the form to inspect its serialized HTML.</code></pre>
-              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><div class="rich-textarea-field">
-  <label for="brief">Project brief</label>
-  <textarea id="brief" name="brief" data-editor="quill" required
-            placeholder="Describe your project…"><p>Hello <strong>world</strong>!</p></textarea>
-</div></xmp></code></pre>
+              <div id="textarea-form-output" class="code-card docs-code no-autoinit"><pre><code class="language-json">Submit the form to inspect its serialized HTML.</code></pre></div>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="rich-textarea-field"&gt;
+  &lt;label for="brief"&gt;Project brief&lt;/label&gt;
+  &lt;textarea id="brief" name="brief" data-editor="quill" required
+            placeholder="Describe your project…"&gt;&lt;p&gt;Hello &lt;strong&gt;world&lt;/strong&gt;!&lt;/p&gt;&lt;/textarea&gt;
+&lt;/div&gt;</code></pre></div>
             </section>
             <section id="setup" class="section scrollspy">
               <h3 class="header">Setup</h3>
               <p>Quill is an optional peer dependency. Load its Snow stylesheet before Materialize. The editor code loads when an opted-in textarea is initialized.</p>
-              <pre><code class="language-bash">npm install kmaterialize quill</code></pre>
-              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText"><xmp>import 'quill/dist/quill.snow.css';
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-bash">npm install kmaterialize quill</code></pre></div>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">import 'quill/dist/quill.snow.css';
 import 'kmaterialize/dist/css/materialize.css';
-import { RichTextarea } from 'kmaterialize';
+import &#123; RichTextarea &#125; from 'kmaterialize';
 
 const field = RichTextarea.init(
-  document.querySelector<HTMLTextAreaElement>('#brief')!
+  document.querySelector&lt;HTMLTextAreaElement&gt;('#brief')!
 );
 await field.ready;
 
 console.log(field.getHTML());
-console.log(field.getText());</xmp></code></pre>
+console.log(field.getText());</code></pre></div>
               <p>Alternatively, <code>M.AutoInit()</code> enhances <code>textarea[data-editor="quill"]</code>. Add <code>no-autoinit</code> when you want to initialize a field yourself. Await the instance’s <code>ready</code> promise before using <code>field.quill</code>.</p>
               <p>Without a bundler, load <code>quill.snow.css</code>, then Materialize CSS, followed by <code>quill.js</code> and <code>materialize.js</code>. The component can use <code>window.Quill</code>.</p>
             </section>
@@ -54,11 +54,11 @@ console.log(field.getText());</xmp></code></pre>
                 <label for="textarea-note">Quick note</label>
                 <textarea id="textarea-note" name="note" data-editor="quill" data-value-format="text" class="no-autoinit" placeholder="Write a short note…">A short note for the team.</textarea>
               </div>
-              <pre><code class="language-typescript"><xmp>const note = RichTextarea.init(textarea, {
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">const note = RichTextarea.init(textarea, &#123;
   valueFormat: 'text',
-  toolbar: [['bold', 'italic'], [{ list: 'bullet' }], ['clean']]
-});
-await note.ready;</xmp></code></pre>
+  toolbar: [['bold', 'italic'], [&#123; list: 'bullet' &#125;], ['clean']]
+&#125;);
+await note.ready;</code></pre></div>
               <p>HTML is the default value format. Use <code>valueFormat: 'text'</code> or <code>data-value-format="text"</code> for plain text; formatting is not preserved when that plain-text value is reloaded.</p>
             </section>
             <section id="readonly" class="section scrollspy">
@@ -75,24 +75,24 @@ await note.ready;</xmp></code></pre>
             </section>
             <section id="api" class="section scrollspy">
               <h3 class="header">Values, events, and cleanup</h3>
-              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText"><xmp>await field.ready;
-field.setValue('<p>A <strong>formatted</strong> update.</p>');
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">await field.ready;
+field.setValue('&lt;p&gt;A &lt;strong&gt;formatted&lt;/strong&gt; update.&lt;/p&gt;');
 const html = field.getHTML();
 const text = field.getText();
 const storedValue = field.getValue();
 
 // Native input fires as content changes; change fires when leaving the editor.
-textarea.addEventListener('input', () => console.log(textarea.value));
+textarea.addEventListener('input', () =&gt; console.log(textarea.value));
 
 // After assigning textarea.value directly:
-textarea.value = '<p>Loaded from a saved draft.</p>';
+textarea.value = '&lt;p&gt;Loaded from a saved draft.&lt;/p&gt;';
 field.refresh();
 
 // Access Quill's API and Delta document:
 const delta = field.quill!.getContents();
 
 // Restore the native textarea, retaining the latest serialized value:
-field.destroy();</xmp></code></pre>
+field.destroy();</code></pre></div>
               <p>The native <code>name</code>, <code>required</code>, and form reset behavior are preserved. An empty editor stores an empty string, so required validation works. HTML is normalized through Quill’s supported formats; it is not stored byte-for-byte.</p>
               <p>The default toolbar supports text formatting and links. Customize <code>toolbar</code> and <code>formats</code>, or set <code>toolbar: false</code> for a toolbar-free editor. TypeScript options are exported as <code>RichTextareaOptions</code>.</p>
               <p>Set <code>--rich-textarea-min-height</code> and <code>--rich-textarea-max-height</code> on the generated <code>.rich-textarea</code> to adjust the writing area. All component styles are shipped by kmaterialize.</p>

@@ -7,7 +7,7 @@
   <button id="spreadsheet-reset" type="button" class="btn outlined">Reset sample</button>
 </div>
 <p id="spreadsheet-status" class="spreadsheet-demo-status" role="status">Double-click a cell to edit. Scroll sideways to see the frozen columns.</p>
-<pre id="spreadsheet-data" hidden></pre><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;div id="submission-spreadsheet" class="spreadsheet-demo"&gt;&lt;/div&gt;
+<div id="spreadsheet-data" hidden class="code-card docs-code no-autoinit"><pre><code class="language-json"></code></pre></div><div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div id="submission-spreadsheet" class="spreadsheet-demo"&gt;&lt;/div&gt;
 &lt;div class="spreadsheet-demo-actions"&gt;
   &lt;button id="spreadsheet-get" type="button" class="btn filled"&gt;Get data&lt;/button&gt;
   &lt;button id="spreadsheet-update" type="button" class="btn tonal"&gt;
@@ -20,19 +20,19 @@
 &lt;p id="spreadsheet-status" class="spreadsheet-demo-status" role="status"&gt;
   Double-click a cell to edit. Scroll sideways to see the frozen columns.
 &lt;/p&gt;
-&lt;pre id="spreadsheet-data" hidden&gt;&lt;/pre&gt;</code></pre></section>
+&lt;div id="spreadsheet-data" class="code-card" hidden&gt;&lt;/div&gt;</code></pre></div></section>
 <section id="material-variant" class="section scrollspy"><h3>Material variant</h3><p>Opt in with <code>spreadsheet-material</code> on the wrapper. Headers and cells use the page’s navigation and surface colors, with fine grid lines, rounded tabs, and soft selection colors in light and dark mode. Both examples remain editable and keep their data separately.</p><!-- Opt in on a wrapper; leave it off to keep kspreadsheet colors. -->
 <div class="spreadsheet-material">
   <div id="material-spreadsheet" class="spreadsheet-demo"></div>
 </div>
-<p id="material-spreadsheet-status" class="spreadsheet-demo-status" role="status">An independent sheet with a softer Material palette.</p><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- Opt in on a wrapper; leave it off to keep kspreadsheet colors. --&gt;
+<p id="material-spreadsheet-status" class="spreadsheet-demo-status" role="status">An independent sheet with a softer Material palette.</p><div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;!-- Opt in on a wrapper; leave it off to keep kspreadsheet colors. --&gt;
 &lt;div class="spreadsheet-material"&gt;
   &lt;div id="material-spreadsheet" class="spreadsheet-demo"&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p id="material-spreadsheet-status" class="spreadsheet-demo-status" role="status"&gt;
   An independent sheet with a softer Material palette.
-&lt;/p&gt;</code></pre></section>
-<section id="setup" class="section scrollspy"><h3>Install and initialize</h3><p>Shared spreadsheet styles are loaded once in <code>src/style.scss</code>. Install with <code>pnpm add kspreadsheet@2.7.0 jsuites@5.13.5</code>. The default grid keeps vendor colors; load <code>spreadsheet_editors.scss</code> after them for Material dropdown menus and readable editing text. For the optional Material variant, import the enhancement styles from <code>kmaterialize/sass/enhancement</code> as shown below. Both stylesheets are shipped by the library.</p><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">// Add to the main Materialize SCSS entry, once.
+&lt;/p&gt;</code></pre></div></section>
+<section id="setup" class="section scrollspy"><h3>Install and initialize</h3><p>Shared spreadsheet styles are loaded once in <code>src/style.scss</code>. Install with <code>pnpm add kspreadsheet@2.7.0 jsuites@5.13.5</code>. The default grid keeps vendor colors; load <code>spreadsheet_editors.scss</code> after them for Material dropdown menus and readable editing text. For the optional Material variant, import the enhancement styles from <code>kmaterialize/sass/enhancement</code> as shown below. Both stylesheets are shipped by the library.</p><div class="code-card docs-code no-autoinit"><pre><code class="language-scss">// Add to the main Materialize SCSS entry, once.
 @import 'kmaterialize/sass/materialize.scss';
 @import 'jsuites/dist/jsuites.css';
 @import 'kspreadsheet/dist/jspreadsheet.css';
@@ -41,7 +41,8 @@
 // Optional palette, scoped to .spreadsheet-material.
 @import 'kmaterialize/sass/enhancement/jspreadsheet_materializecss.scss';
 // Shared dropdown styling and readable cell editors.
-@import 'kmaterialize/sass/enhancement/spreadsheet_editors.scss';</code></pre><details open><summary>Complete example — data, columns, events, and buttons</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">import jspreadsheet, { type CellValue, type SpreadsheetOptions } from 'kspreadsheet';
+@import 'kmaterialize/sass/enhancement/spreadsheet_editors.scss';</code></pre></div><details open><summary>Complete example — data, columns, events, and buttons</summary><div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">import { CodeCard } from 'kmaterialize';
+import jspreadsheet, { type CellValue, type SpreadsheetOptions } from 'kspreadsheet';
 // Shared spreadsheet and enhancement styles are loaded by style.scss.
 import './spreadsheet-demo.scss';
 
@@ -88,6 +89,7 @@ const copyRows = () =&gt; initialData.map((row) =&gt; [...row]);
 const host = document.querySelector&lt;HTMLDivElement&gt;('#submission-spreadsheet')!;
 const status = document.querySelector&lt;HTMLElement&gt;('#spreadsheet-status')!;
 const output = document.querySelector&lt;HTMLElement&gt;('#spreadsheet-data')!;
+const outputCard = CodeCard.init(output, { language: 'json' });
 
 const options: SpreadsheetOptions = {
   tabs: true,
@@ -136,7 +138,7 @@ const options: SpreadsheetOptions = {
 // Keep the first worksheet returned by the constructor.
 const worksheet = jspreadsheet(host, options)[0];
 document.querySelector('#spreadsheet-get')!.addEventListener('click', () =&gt; {
-  output.textContent = JSON.stringify(worksheet.getData(), null, 2);
+  void outputCard.update({ code: JSON.stringify(worksheet.getData(), null, 2) });
   output.hidden = false;
   status.textContent = 'Current worksheet data shown below.';
 });
@@ -165,8 +167,8 @@ if (import.meta.hot)
   import.meta.hot.dispose(() =&gt; {
     jspreadsheet.destroy(worksheet.parent.el);
     jspreadsheet.destroy(materialWorksheet.parent.el);
-  });</code></pre></details></section>
-<section id="data" class="section scrollspy"><h3>Data interface and methods</h3><p>The constructor takes a <code>worksheets</code> array and returns worksheet instances. Use <code>[0]</code> for the first sheet. Each data row follows the column order; blank spare rows also appear in <code>getData()</code>. Calendar values use year-month-day strings, and checkbox values are booleans.</p><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">import type { CellValue, SpreadsheetOptions, WorksheetOptions } from 'kspreadsheet';
+  });</code></pre></div></details></section>
+<section id="data" class="section scrollspy"><h3>Data interface and methods</h3><p>The constructor takes a <code>worksheets</code> array and returns worksheet instances. Use <code>[0]</code> for the first sheet. Each data row follows the column order; blank spare rows also appear in <code>getData()</code>. Calendar values use year-month-day strings, and checkbox values are booleans.</p><div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">import type { CellValue, SpreadsheetOptions, WorksheetOptions } from 'kspreadsheet';
 
 // Matrix rows match the columns array from left to right.
 type SubmissionRow = [
@@ -192,7 +194,7 @@ const rows: SubmissionRow[] = [
 
 // WorksheetOptions: data, columns, dimensions, frozen columns, editors.
 // SpreadsheetOptions: worksheets, tabs, toolbar, and shared event callbacks.
-// CellValue[][] is the library's general matrix type.</code></pre><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">// Worksheet methods — not the array returned by jspreadsheet().
+// CellValue[][] is the library's general matrix type.</code></pre></div><div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">// Worksheet methods — not the array returned by jspreadsheet().
 const rows = worksheet.getData();
 worksheet.setData([
   ['SQ030_SH010', 'Lighting', 'Alex', 'In progress', '2026-09-20', false, 'New review'],
@@ -204,9 +206,9 @@ const status = worksheet.getValue('D1');
 // await worksheet.download(true, true, 'csv');
 
 // When removing the view:
-// jspreadsheet.destroy(worksheet.parent.el);</code></pre><p><code>onchange(worksheet, cell, column, row, newValue, oldValue)</code> reports edits with zero-based column and row indexes. Connect this event to your application's persistence layer when needed.</p></section>
+// jspreadsheet.destroy(worksheet.parent.el);</code></pre></div><p><code>onchange(worksheet, cell, column, row, newValue, oldValue)</code> reports edits with zero-based column and row indexes. Connect this event to your application's persistence layer when needed.</p></section>
 <section id="theme" class="section scrollspy"><h3>Material enhancement</h3><p>The imported styles preserve editor font size and color, raise active dropdown cells above frozen columns, round popup corners, and style worksheet tabs. The companion jSuites enhancement covers dropdowns, calendars, context menus, and color pickers. All enhancement rules are scoped under <code>spreadsheet-material</code>; default grids retain kspreadsheet’s colors. The Material variant follows the site’s light and dark themes.</p>
-<details><summary>Spreadsheet enhancement SCSS</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">// Optional Material variant. Wrap the spreadsheet host with this class.
+<details><summary>Spreadsheet enhancement SCSS</summary><div class="code-card docs-code no-autoinit"><pre><code class="language-scss">// Optional Material variant. Wrap the spreadsheet host with this class.
 // Unwrapped worksheets retain the vendor's colors, including in dark mode.
 .spreadsheet-material {
   // Inherit the page palette so the grid matches surrounding navigation surfaces.
@@ -516,7 +518,7 @@ const status = worksheet.getValue('D1');
     border-color: var(--md-sys-color-primary);
     opacity: 1;
   }
-}</code></pre></details><details><summary>jSuites enhancement SCSS</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">/// /// ///
+}</code></pre></div></details><details><summary>jSuites enhancement SCSS</summary><div class="code-card docs-code no-autoinit"><pre><code class="language-scss">/// /// ///
 /// Enhancement - Crazy Content
 ///
 /// jSuites ft. Materialize
@@ -871,7 +873,7 @@ $jsuites-elevation:
     // Color
     color: var(--md-sys-color-primary);
   }
-}</code></pre></details><details><summary>Shared dropdown and editor SCSS</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">// Shared editor fixes for both vendor-color and Material-color worksheets.
+}</code></pre></div></details><details><summary>Shared dropdown and editor SCSS</summary><div class="code-card docs-code no-autoinit"><pre><code class="language-scss">// Shared editor fixes for both vendor-color and Material-color worksheets.
 // Cell text follows the worksheet palette, not Materialize's page-level input color.
 .jss_worksheet td.editor {
   z-index: 30 !important;
@@ -1023,7 +1025,7 @@ $jsuites-elevation:
     border-top: 1px solid var(--md-sys-color-outline-variant);
     margin: 4px 0;
   }
-}</code></pre></details><details><summary>Example layout SCSS</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">#spreadsheet-examples {
+}</code></pre></div></details><details><summary>Example layout SCSS</summary><div class="code-card docs-code no-autoinit"><pre><code class="language-scss">#spreadsheet-examples {
   min-width: 0;
 }
 .spreadsheet-demo {
@@ -1047,4 +1049,4 @@ $jsuites-elevation:
 #spreadsheet-data {
   max-height: 320px;
   overflow: auto;
-}</code></pre></details></section></div></div></div></main>{{> footer }}<script type="module" src="/main.ts"></script><script type="module" src="/spreadsheet-demo.ts"></script></body></html>
+}</code></pre></div></details></section></div></div></div></main>{{> footer }}<script type="module" src="/main.ts"></script><script type="module" src="/spreadsheet-demo.ts"></script></body></html>

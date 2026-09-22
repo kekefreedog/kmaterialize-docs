@@ -26,14 +26,14 @@
                   <button type="button" class="suffix input-copy-button" data-copy-target="#copy-reference" aria-label="Copy reference"><i class="material-icons" aria-hidden="true">content_copy</i></button>
                 </div>
               </div>
-              <pre><code class="language-html"><xmp><div class="input-field outlined">
-  <input id="email_subject" type="text" placeholder=" " value="Welcome to the project">
-  <label for="email_subject">Email subject</label>
-  <button type="button" class="suffix input-copy-button"
-          data-copy-target="#email_subject" aria-label="Copy email subject">
-    <i class="material-icons" aria-hidden="true">content_copy</i>
-  </button>
-</div></xmp></code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="input-field outlined"&gt;
+  &lt;input id="email_subject" type="text" placeholder=" " value="Welcome to the project"&gt;
+  &lt;label for="email_subject"&gt;Email subject&lt;/label&gt;
+  &lt;button type="button" class="suffix input-copy-button"
+          data-copy-target="#email_subject" aria-label="Copy email subject"&gt;
+    &lt;i class="material-icons" aria-hidden="true"&gt;content_copy&lt;/i&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre></div>
               <p>Load kmaterialize JavaScript to enable the action, including buttons inserted later. Use unique input IDs and <code>type="button"</code> to avoid submitting the form.</p>
             </section>
             <section id="outlined-surfaces" class="section scrollspy">
@@ -53,10 +53,10 @@
                   </div>
                 </div>
               </div>
-              <pre><code class="language-html"><xmp><div class="input-field outlined">
-  <input id="subject" type="text" placeholder=" " value="Your next great idea">
-  <label for="subject">Email subject</label>
-</div></xmp></code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="input-field outlined"&gt;
+  &lt;input id="subject" type="text" placeholder=" " value="Your next great idea"&gt;
+  &lt;label for="subject"&gt;Email subject&lt;/label&gt;
+&lt;/div&gt;</code></pre></div>
             </section>
             <div id="input" class="section scrollspy">
               <p class="caption">
@@ -115,51 +115,49 @@
                 </div>
               </form>
 
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><form class="row" style="gap: 1em;">
-  <div class="s12 m6 input-field">
-    <input id="first_name" type="text" placeholder=" " maxlength="20">
-    <label for="first_name">First Name</label>
-    <span class="supporting-text">Supporting Text</span>
-  </div>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;form class="row" style="gap: 1em;"&gt;
+  &lt;div class="s12 m6 input-field"&gt;
+    &lt;input id="first_name" type="text" placeholder=" " maxlength="20"&gt;
+    &lt;label for="first_name"&gt;First Name&lt;/label&gt;
+    &lt;span class="supporting-text"&gt;Supporting Text&lt;/span&gt;
+  &lt;/div&gt;
 
-  <div class="s12 m6 input-field outlined">
-    <input id="last_name" type="text" placeholder=" " maxlength="20">
-    <label for="last_name">Last Name</label>
-    <!--<span class="supporting-text">Supporting Text</span>-->
-  </div>
+  &lt;div class="s12 m6 input-field outlined"&gt;
+    &lt;input id="last_name" type="text" placeholder=" " maxlength="20"&gt;
+    &lt;label for="last_name"&gt;Last Name&lt;/label&gt;
+    &lt;!--&lt;span class="supporting-text"&gt;Supporting Text&lt;/span&gt;--&gt;
+  &lt;/div&gt;
 
-  <div class="s12 m6 input-field">
-    <input id="disabled" type="text" placeholder=" " value="I am not editable" disabled>
-    <label for="disabled">Disabled</label>
-  </div>
+  &lt;div class="s12 m6 input-field"&gt;
+    &lt;input id="disabled" type="text" placeholder=" " value="I am not editable" disabled&gt;
+    &lt;label for="disabled"&gt;Disabled&lt;/label&gt;
+  &lt;/div&gt;
 
-  <div class="s12 m6 input-field outlined">
-    <input id="disabled" type="text" placeholder=" " value="Not editable too" disabled>
-    <label for="disabled">Disabled</label>
-  </div>
+  &lt;div class="s12 m6 input-field outlined"&gt;
+    &lt;input id="disabled" type="text" placeholder=" " value="Not editable too" disabled&gt;
+    &lt;label for="disabled"&gt;Disabled&lt;/label&gt;
+  &lt;/div&gt;
 
-  <div class="s12 m6 input-field">
-    <div class="prefix"><i class="material-icons">place</i></div>
-    <div class="suffix"><i class="material-icons">gps_fixed</i></div>
-    <input id="inp-location" type="text" placeholder=" " value="Planet Earth">
-    <label for="inp-location">Location</label>
-  </div>
+  &lt;div class="s12 m6 input-field"&gt;
+    &lt;div class="prefix"&gt;&lt;i class="material-icons"&gt;place&lt;/i&gt;&lt;/div&gt;
+    &lt;div class="suffix"&gt;&lt;i class="material-icons"&gt;gps_fixed&lt;/i&gt;&lt;/div&gt;
+    &lt;input id="inp-location" type="text" placeholder=" " value="Planet Earth"&gt;
+    &lt;label for="inp-location"&gt;Location&lt;/label&gt;
+  &lt;/div&gt;
 
-  <div class="s12 m6 input-field outlined error" maxlength="20">
-    <div class="prefix"><i class="material-icons">bubble_chart</i></div>
-    <div class="suffix"><i class="material-icons">error</i></div>
-    <input id="inp-error" type="text" placeholder=" " value="$%/'#sdf">
-    <label for="inp-error">Failing Input</label>
-    <span class="supporting-text">Invalid characters! Please use 0-9 only.</span>
-  </div>
-</form></xmp>
-</code></pre>
+  &lt;div class="s12 m6 input-field outlined error" maxlength="20"&gt;
+    &lt;div class="prefix"&gt;&lt;i class="material-icons"&gt;bubble_chart&lt;/i&gt;&lt;/div&gt;
+    &lt;div class="suffix"&gt;&lt;i class="material-icons"&gt;error&lt;/i&gt;&lt;/div&gt;
+    &lt;input id="inp-error" type="text" placeholder=" " value="$%/'#sdf"&gt;
+    &lt;label for="inp-error"&gt;Failing Input&lt;/label&gt;
+    &lt;span class="supporting-text"&gt;Invalid characters! Please use 0-9 only.&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre></div>
 
               <!-- Section -->
 
               <h4>Input Types</h4>
-              <p>Alternate Input Types such as email and password are also supported.</p>
+              <p>Alternate input types such as email are also supported. For password fields, see <a href="password-input.html">Password</a>.</p>
 
               <form class="row" style="gap: 1em">
                 <div class="s12 m6 input-field">
@@ -167,25 +165,15 @@
                   <label for="email">Email</label>
                   <span class="supporting-text" data-error="wrong" data-success="right">Supporting text for additional information</span>
                 </div>
-                <div class="s12 m6 input-field">
-                  <input id="password" type="password" class="validate" placeholder=" " maxlength="20" />
-                  <label for="password">Password</label>
-                </div>
               </form>
 
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><form class="row" style="gap: 1em;">
-  <div class="s12 m6 input-field">
-    <input id="email" type="email" class="validate" placeholder=" ">
-    <label for="email">Email</label>
-    <span class="supporting-text" data-error="wrong" data-success="right">Supporting text for additional information</span>
-  </div>
-  <div class="s12 m6 input-field">
-    <input id="password" type="password" class="validate" placeholder=" " maxlength="20">
-    <label for="password">Password</label>
-  </div>
-</form></xmp>
-        </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;form class="row" style="gap: 1em;"&gt;
+  &lt;div class="s12 m6 input-field"&gt;
+    &lt;input id="email" type="email" class="validate" placeholder=" "&gt;
+    &lt;label for="email"&gt;Email&lt;/label&gt;
+    &lt;span class="supporting-text" data-error="wrong" data-success="right"&gt;Supporting text for additional information&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre></div>
 
               <!-- Section -->
               <h4>Inline Inputs</h4>
@@ -202,18 +190,16 @@
                 </div>
               </form>
 
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><form class="row">
-  <div class="s12">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;form class="row"&gt;
+  &lt;div class="s12"&gt;
     This is an inline input field:
-    <div class="input-field inline">
-      <input id="email_inline" type="email" class="validate" placeholder=" ">
-      <label for="email_inline">Email</label>
-      <span class="helper-text" data-error="wrong" data-success="right"></span>
-    </div>
-  </div>
-</form></xmp>
-        </code></pre>
+    &lt;div class="input-field inline"&gt;
+      &lt;input id="email_inline" type="email" class="validate" placeholder=" "&gt;
+      &lt;label for="email_inline"&gt;Email&lt;/label&gt;
+      &lt;span class="helper-text" data-error="wrong" data-success="right"&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre></div>
 
               <!-- Section -->
               <h5 id="floating-labels">Floating Labels</h5>
@@ -240,22 +226,20 @@
                 </div>
               </div>
 
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="row">
-  <div class="col s12 m6">
-    <div class="input-field outlined" style="margin: 0 4px;">
-      <input id="first_name2" type="text" class="validate" placeholder=" ">
-      <label class="active" for="first_name2">First Name</label>
-    </div>
-  </div>
-  <div class="col s12 m6">
-    <div class="input-field outlined" style="margin: 0 4px;">
-      <input id="last_name2" type="text" class="validate" placeholder="Doe...">
-      <label class="active" for="last_name2">Last Name</label>
-    </div>
-  </div>
-</div></xmp>
-        </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="row"&gt;
+  &lt;div class="col s12 m6"&gt;
+    &lt;div class="input-field outlined" style="margin: 0 4px;"&gt;
+      &lt;input id="first_name2" type="text" class="validate" placeholder=" "&gt;
+      &lt;label class="active" for="first_name2"&gt;First Name&lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col s12 m6"&gt;
+    &lt;div class="input-field outlined" style="margin: 0 4px;"&gt;
+      &lt;input id="last_name2" type="text" class="validate" placeholder="Doe..."&gt;
+      &lt;label class="active" for="last_name2"&gt;Last Name&lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
 
               <!-- Section -->
               <h5>Icon Prefixes</h5>
@@ -280,24 +264,22 @@
                 </form>
               </div>
 
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="row">
-  <form class="col s12">
-    <div class="row">
-      <div class="input-field col s6">
-        <i class="material-icons prefix">account_circle</i>
-        <input id="icon_prefix" type="text" class="validate">
-        <label for="icon_prefix">First Name</label>
-      </div>
-      <div class="input-field col s6">
-        <i class="material-icons prefix">phone</i>
-        <input id="icon_telephone" type="tel" class="validate">
-        <label for="icon_telephone">Telephone</label>
-      </div>
-    </div>
-  </form>
-</div></xmp>
-        </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="row"&gt;
+  &lt;form class="col s12"&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="input-field col s6"&gt;
+        &lt;i class="material-icons prefix"&gt;account_circle&lt;/i&gt;
+        &lt;input id="icon_prefix" type="text" class="validate"&gt;
+        &lt;label for="icon_prefix"&gt;First Name&lt;/label&gt;
+      &lt;/div&gt;
+      &lt;div class="input-field col s6"&gt;
+        &lt;i class="material-icons prefix"&gt;phone&lt;/i&gt;
+        &lt;input id="icon_telephone" type="tel" class="validate"&gt;
+        &lt;label for="icon_telephone"&gt;Telephone&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;</code></pre></div>
 
               <h5>Icon Suffixes</h5>
               <p>You can also add an icon suffix. Just add an icon with the class <code class="language-html">suffix</code> before the input and label.</p>
@@ -318,24 +300,22 @@
                 </form>
               </div>
 
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="row">
-  <form class="col s12">
-    <div class="row">
-      <div class="input-field col s6">
-        <i class="material-icons suffix">account_circle</i>
-        <input id="icon_suffix" type="text" class="validate">
-        <label for="icon_suffix">First Name</label>
-      </div>
-      <div class="input-field col s6">
-        <i class="material-icons suffix">phone</i>
-        <input id="icon_telephone_suffix" type="tel" class="validate">
-        <label for="icon_telephone_suffix">Telephone</label>
-      </div>
-    </div>
-  </form>
-</div></xmp>
-        </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="row"&gt;
+  &lt;form class="col s12"&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="input-field col s6"&gt;
+        &lt;i class="material-icons suffix"&gt;account_circle&lt;/i&gt;
+        &lt;input id="icon_suffix" type="text" class="validate"&gt;
+        &lt;label for="icon_suffix"&gt;First Name&lt;/label&gt;
+      &lt;/div&gt;
+      &lt;div class="input-field col s6"&gt;
+        &lt;i class="material-icons suffix"&gt;phone&lt;/i&gt;
+        &lt;input id="icon_telephone_suffix" type="tel" class="validate"&gt;
+        &lt;label for="icon_telephone_suffix"&gt;Telephone&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;</code></pre></div>
 
               <h5>Custom Error or Success Messages</h5>
               <p>
@@ -354,26 +334,24 @@
                 </form>
               </div>
 
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="row">
-  <form class="col s12">
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="email" type="email" class="validate">
-        <label for="email">Email</label>
-        <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
-      </div>
-    </div>
-  </form>
-</div></xmp>
-        </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="row"&gt;
+  &lt;form class="col s12"&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="input-field col s12"&gt;
+        &lt;input id="email" type="email" class="validate"&gt;
+        &lt;label for="email"&gt;Email&lt;/label&gt;
+        &lt;span class="helper-text" data-error="wrong" data-success="right"&gt;Helper text&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;</code></pre></div>
 
               <h5>Changing colors</h5>
               <p>
                 Here is a CSS template for modifying input fields in CSS. With Sass, you can achieve this by just changing a variable. The CSS shown below is unprefixed. Depending
                 on what you use, you may have to change the type attribute selector.
               </p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-css copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-css">
   /* label color */
    .input-field label {
      color: #000;
@@ -401,7 +379,7 @@
    .input-field .prefix.active {
      color: #000;
    }
-        </code></pre>
+        </code></pre></div>
             </div>
 
             <!-- Textarea Section -->
@@ -430,37 +408,35 @@
                   </div>
                 </form>
               </div>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="row">
-  <form class="col s12">
-    <div class="row">
-      <div class="input-field col s12">
-        <textarea id="textarea1" class="materialize-textarea" placeholder=" "></textarea>
-        <label for="textarea1">Textarea</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <textarea id="textarea2" class="materialize-textarea" placeholder="A custom placeholder :)"></textarea>
-        <label for="textarea2">Textarea with placeholder</label>
-      </div>
-    </div>
-  </form>
-</div></xmp>
-        </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="row"&gt;
+  &lt;form class="col s12"&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="input-field col s12"&gt;
+        &lt;textarea id="textarea1" class="materialize-textarea" placeholder=" "&gt;&lt;/textarea&gt;
+        &lt;label for="textarea1"&gt;Textarea&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="input-field col s12"&gt;
+        &lt;textarea id="textarea2" class="materialize-textarea" placeholder="A custom placeholder :)"&gt;&lt;/textarea&gt;
+        &lt;label for="textarea2"&gt;Textarea with placeholder&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;</code></pre></div>
               <p>
                 <strong><b>Advanced notes:</b></strong>
               </p>
               <p>If you are adding Textarea form elements dynamically, you can use this to initialize them.</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">  Forms.InitTextarea(document.querySelector('#textarea1'));</code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">  Forms.InitTextarea(document.querySelector('#textarea1'));</code></pre></div>
               <p>
                 When dynamically changing the value of a textarea like setting <code class="language-html">HTMLElement#value</code> attribute, you must trigger an autoresize on it
                 afterwords because simply updating the element's value does not automatically trigger the events we've binded to the textarea.
               </p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   document.querySelector("#textarea1").value = 'New Text';
   Forms.textareaAutoResize(document.querySelector('#textarea1'));
-        </code></pre>
+        </code></pre></div>
 
               <h5>Icon Prefixes</h5>
               <p>
@@ -479,19 +455,17 @@
                 </form>
               </div>
 
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="row">
-  <form class="col s12">
-    <div class="row">
-      <div class="input-field col s6">
-        <i class="material-icons prefix">mode_edit</i>
-        <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-        <label for="icon_prefix2">First Name</label>
-      </div>
-    </div>
-  </form>
-</div></xmp>
-        </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="row"&gt;
+  &lt;form class="col s12"&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="input-field col s6"&gt;
+        &lt;i class="material-icons prefix"&gt;mode_edit&lt;/i&gt;
+        &lt;textarea id="icon_prefix2" class="materialize-textarea"&gt;&lt;/textarea&gt;
+        &lt;label for="icon_prefix2"&gt;First Name&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;</code></pre></div>
             </div>
 
             <div id="file" class="section scrollspy">
@@ -508,19 +482,17 @@
                   </div>
                 </div>
               </form>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><form action="#">
-  <div class="file-field input-field">
-    <div class="btn">
-      <span>File</span>
-      <input type="file">
-    </div>
-    <div class="file-path-wrapper">
-      <input class="file-path validate" type="text">
-    </div>
-  </div>
-</form></xmp>
-        </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;form action="#"&gt;
+  &lt;div class="file-field input-field"&gt;
+    &lt;div class="btn"&gt;
+      &lt;span&gt;File&lt;/span&gt;
+      &lt;input type="file"&gt;
+    &lt;/div&gt;
+    &lt;div class="file-path-wrapper"&gt;
+      &lt;input class="file-path validate" type="text"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre></div>
 
               <p>You can also use the <code class="language-html">multiple</code> attribute to allow multiple file uploads.</p>
               <form action="#">
@@ -534,25 +506,23 @@
                   </div>
                 </div>
               </form>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><form action="#">
-  <div class="file-field input-field">
-    <div class="btn">
-      <span>File</span>
-      <input type="file" multiple>
-    </div>
-    <div class="file-path-wrapper">
-      <input class="file-path validate" type="text" placeholder="Upload one or more files">
-    </div>
-  </div>
-</form></xmp>
-        </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;form action="#"&gt;
+  &lt;div class="file-field input-field"&gt;
+    &lt;div class="btn"&gt;
+      &lt;span&gt;File&lt;/span&gt;
+      &lt;input type="file" multiple&gt;
+    &lt;/div&gt;
+    &lt;div class="file-path-wrapper"&gt;
+      &lt;input class="file-path validate" type="text" placeholder="Upload one or more files"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre></div>
 
               <p>
                 <strong><b>Advanced note:</b></strong>
               </p>
               <p>If you are adding File Input form elements dynamically, you can use this to initialize them.</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">  Forms.InitFileInputPath(document.querySelector('#fileinput1'));</code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">  Forms.InitFileInputPath(document.querySelector('#fileinput1'));</code></pre></div>
             </div>
 
             <div id="character-counter" class="section scrollspy">
@@ -581,85 +551,35 @@
                   </div>
                 </form>
               </div>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="row">
-  <form class="col s12">
-    <div class="row">
-      <div class="input-field col s6">
-        <input id="input_text" type="text" maxlength="10" placeholder=" ">
-        <label for="input_text">Input text</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <textarea id="textarea2" class="materialize-textarea" maxlength="120" placeholder=" "></textarea>
-        <label for="textarea2">Textarea</label>
-      </div>
-    </div>
-  </form>
-</div></xmp>
-          </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="row"&gt;
+  &lt;form class="col s12"&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="input-field col s6"&gt;
+        &lt;input id="input_text" type="text" maxlength="10" placeholder=" "&gt;
+        &lt;label for="input_text"&gt;Input text&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="input-field col s12"&gt;
+        &lt;textarea id="textarea2" class="materialize-textarea" maxlength="120" placeholder=" "&gt;&lt;/textarea&gt;
+        &lt;label for="textarea2"&gt;Textarea&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;</code></pre></div>
 
               <h5>Initialization</h5>
               <p>There are no options for this plugin, but if you are adding these dynamically, you can use this to initialize them.</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   document.addEventListener('DOMContentLoaded', function() {
     const elems = document.querySelectorAll('input#input_text, textarea#textarea2');
     const instances = CharacterCounter.init(elems);
   });
-        </code></pre>
+        </code></pre></div>
             </div>
 
-            <div id="password-toggle" class="section scrollspy">
-              <h3 class="header">Password Show/Hide Toggle</h3>
-              <p>
-                Add <code>data-password-toggle</code> to the input and <code>data-password-toggle-icon</code>
-                to a suffix button, then initialize <code>PasswordInput</code>. Click the eye or focus the button
-                and press Enter or Space to show or hide the password. Its value and selection stay unchanged.
-              </p>
-              <div class="row">
-                <form class="s12">
-                  <div class="input-field">
-                    <button type="button" class="suffix btn-flat p-0 transparent screen-flex screen-center on-surface-variant-text waves-effect waves-circle" data-password-toggle-icon aria-label="Show password">
-                      <i class="material-icons" aria-hidden="true">visibility</i>
-                    </button>
-                    <input id="password-toggle-example" type="password" class="validate" data-password-toggle placeholder=" " value="Example password" autocomplete="off" />
-                    <label for="password-toggle-example">Password</label>
-                  </div>
-                </form>
-              </div>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="input-field">
-  <button type="button" class="suffix btn-flat p-0 transparent screen-flex screen-center on-surface-variant-text waves-effect waves-circle" data-password-toggle-icon aria-label="Show password">
-    <i class="material-icons" aria-hidden="true">visibility</i>
-  </button>
-  <input id="password-toggle-example" type="password" class="validate" data-password-toggle placeholder=" ">
-  <label for="password-toggle-example">Password</label>
-</div></xmp>
-              </code></pre>
-
-              <h5>Initialization</h5>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
-import { PasswordInput } from 'kmaterialize';
-
-const instances = PasswordInput.init(document.querySelectorAll('input[data-password-toggle]'));
-              </code></pre>
-              <p>
-                Initialization updates the icon, <code>aria-label</code>, <code>aria-pressed</code>, and
-                <code>aria-controls</code>. Disabled inputs cannot be revealed; readonly inputs can.
-                Native buttons support keyboard activation automatically. Existing suffix wrappers remain supported.
-              </p>
-              <h5>Custom labels and lifecycle</h5>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
-const input = document.querySelector('#password-toggle-example');
-const instance = PasswordInput.init(input, {
-  showLabel: 'Show password',
-  hideLabel: 'Hide password'
-});
-
-instance.toggle(); // Show or hide without changing the value.
-instance.destroy(); // Remove listeners before removing the field.
-              </code></pre>
+            <div id="password-toggle" class="section">
+              <p>Password fields, the show/hide toggle, and its API are documented on the <a href="password-input.html#password-toggle">Password page</a>.</p>
             </div>
 
             <div id="number-input" class="section scrollspy">
@@ -682,15 +602,13 @@ instance.destroy(); // Remove listeners before removing the field.
                   </div>
                 </form>
               </div>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="input-field">
-  <input id="number-input-example" type="text" data-type="number" step=".01" min="0" max="10000" placeholder=" ">
-  <label for="number-input-example">Amount</label>
-</div></xmp>
-              </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="input-field"&gt;
+  &lt;input id="number-input-example" type="text" data-type="number" step=".01" min="0" max="10000" placeholder=" "&gt;
+  &lt;label for="number-input-example"&gt;Amount&lt;/label&gt;
+&lt;/div&gt;</code></pre></div>
 
               <h5>Initialization</h5>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   document.addEventListener('DOMContentLoaded', function() {
     const elems = document.querySelectorAll('input[data-type="number"]');
     const instances = NumberInput.init(elems, {
@@ -698,7 +616,7 @@ instance.destroy(); // Remove listeners before removing the field.
       radix: '.',
     });
   });
-        </code></pre>
+        </code></pre></div>
 
               <h5 class="header">Options</h5>
               <table class="striped">
@@ -747,7 +665,6 @@ instance.destroy(); // Remove listeners before removing the field.
                   <li><a href="#textarea">Textareas</a></li>
                   <li><a href="#file">File Input Button</a></li>
                   <li><a href="#character-counter">Character Counter</a></li>
-                  <li><a href="#password-toggle">Password Show/Hide Toggle</a></li>
                   <li><a href="#number-input">Number Input</a></li>
                 </ul>
               </div>

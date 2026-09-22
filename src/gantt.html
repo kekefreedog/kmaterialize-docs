@@ -70,7 +70,7 @@
             <li><strong>Started downstream task (above 0%, including overruns):</strong> moving its predecessor later extends only its end date. Moving the predecessor earlier leaves both dates unchanged.</li>
             <li><strong>Resizing:</strong> affects the selected tasks only. Dependencies do not propagate trimming.</li>
           </ul>
-          <pre><code class="language-typescript">const chart = Gantt.init(document.querySelector&lt;HTMLElement&gt;('#schedule')!, {
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">const chart = Gantt.init(document.querySelector&lt;HTMLElement&gt;('#schedule')!, {
   editable: true,
   connectable: true, // Direct dependency controls (enabled by default in edit mode)
   tasks: [
@@ -86,7 +86,7 @@
 
 chart.addDependency('planning', 'qa'); // Upstream → downstream; dates stay unchanged
 chart.removeDependency('planning', 'qa');
-chart.getTasks(); // Includes independent copies of dependency arrays</code></pre>
+chart.getTasks(); // Includes independent copies of dependency arrays</code></pre></div>
           <p>Only pointer and keyboard moves propagate dependencies. Adding a link, initializing data, or calling <code>setTasks()</code> preserves the dates you supply. Unknown IDs, self-links, duplicate IDs in a dependency array, and cycles are rejected without changing the chart. Re-adding an existing link or removing an absent link is a no-op.</p>
           <p>A task selected together with one of its upstream tasks is still treated as downstream: if it has started, its start stays fixed. Unstarted milestones move with the chain; started milestones stay at their original date because a milestone has no duration. The move continues to their downstream tasks. Progress values remain unchanged.</p>
           <p>All affected dates commit together. <code>onTaskChange</code> runs once per changed task: <code>action</code> is <code>'move'</code> for moved tasks and <code>'resize-end'</code> for started successors whose end was extended. Escape or a canceled pointer gesture restores the entire chain. <code>onDependencyChange</code> receives <code>{ from, to, action: 'add' | 'remove' }</code>; import <code>GanttDependencyChange</code> for its type.</p>
@@ -97,7 +97,7 @@ chart.getTasks(); // Includes independent copies of dependency arrays</code></pr
           <p>Use <code>view: 'week'</code> for a longer schedule. Each header interval begins on Monday, while task positions still reflect their exact calendar dates. Theme colors distinguish the teams and a diamond marks final approval.</p>
           <div id="gantt-campaign" class="gantt no-autoinit"></div>
           <p id="gantt-campaign-status" role="status">Select a task or milestone to see its dates.</p>
-          <pre><code class="language-typescript">Gantt.init(document.querySelector&lt;HTMLElement&gt;('#campaign')!, {
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">Gantt.init(document.querySelector&lt;HTMLElement&gt;('#campaign')!, {
   view: 'week',
   label: 'Campaign schedule',
   tasks: [
@@ -108,14 +108,14 @@ chart.getTasks(); // Includes independent copies of dependency arrays</code></pr
     { id: 'approval', name: 'Final approval',
       start: '2026-11-02', end: '2026-11-02', milestone: true }
   ]
-});</code></pre>
+});</code></pre></div>
         </section>
 
         <section id="usage" class="section scrollspy">
           <h3 class="header">Basic usage</h3>
           <p>Import <code>Gantt</code> and the framework stylesheet. The component creates the calendar, labels, and task bars inside an empty host.</p>
-          <pre><code class="language-html">&lt;div id="schedule" class="gantt no-autoinit"&gt;&lt;/div&gt;</code></pre>
-          <pre><code class="language-typescript">import { Gantt } from 'kmaterialize';
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div id="schedule" class="gantt no-autoinit"&gt;&lt;/div&gt;</code></pre></div>
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">import { Gantt } from 'kmaterialize';
 import 'kmaterialize/dist/css/materialize.css';
 
 const chart = Gantt.init(document.querySelector&lt;HTMLElement&gt;('#schedule')!, {
@@ -126,7 +126,7 @@ const chart = Gantt.init(document.querySelector&lt;HTMLElement&gt;('#schedule')!
     { id: 'release', name: 'Release', start: '2026-10-19', end: '2026-10-19', milestone: true }
   ],
   onTaskClick: task =&gt; console.log(task)
-});</code></pre>
+});</code></pre></div>
           <p>Browser bundles expose the same component as <code>M.Gantt</code>. For automatic initialization, use <code>class="gantt"</code> and pass the data with <code>M.AutoInit(document.body, { Gantt: { tasks } })</code>. Keep <code>no-autoinit</code> on hosts you initialize yourself.</p>
         </section>
 
@@ -134,7 +134,7 @@ const chart = Gantt.init(document.querySelector&lt;HTMLElement&gt;('#schedule')!
           <h3 class="header">Move, resize, and zoom</h3>
           <p>Set <code>editable: true</code> to enable pointer and keyboard edits. Dragging a task preserves its duration; the two end handles change its start or end date. Dates snap to whole calendar days at every zoom level, and a task always occupies at least one day. Milestones can move but keep their single date. Hold a dragged task near a timeline edge to scroll further.</p>
           <p>Select several tasks to edit them together. Every selected task moves by the same number of days, preserving the gaps between tasks. Group trimming changes the same end of each selected task by the same amount; shortening stops when the shortest task reaches one day. Selected milestones move with the group but are skipped when resizing. Escape cancels the entire group preview.</p>
-          <pre><code class="language-typescript">const chart = Gantt.init(document.querySelector&lt;HTMLElement&gt;('#schedule')!, {
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">const chart = Gantt.init(document.querySelector&lt;HTMLElement&gt;('#schedule')!, {
   tasks,
   editable: true,
   zoom: 1,
@@ -154,7 +154,7 @@ chart.getSelectedTaskIds(); // ['design', 'build']
 chart.setSelectedTaskIds([]); // Clear selection
 chart.setZoom(1.5);       // 150% calendar width; labels keep their size
 chart.getZoom();          // 1.5
-chart.resetZoom();        // 100%, limited by minZoom / maxZoom</code></pre>
+chart.resetZoom();        // 100%, limited by minZoom / maxZoom</code></pre></div>
           <p><code>onTaskChange</code> receives independent <code>task</code> and <code>previousTask</code> copies, plus an <code>action</code> of <code>'move'</code>, <code>'resize-start'</code>, or <code>'resize-end'</code>. A group edit commits all dates together, then calls this callback once for each changed task; <code>getTasks()</code> already contains the entire update. Canceled drags and unchanged dates do not emit changes. Escape, an interrupted pointer gesture, or leaving the window cancels the preview. Programmatic <code>setTasks()</code> updates do not call this callback.</p>
           <p><code>onSelectionChange(ids)</code> reports the selected IDs in row order. Selection survives zoom, view changes, and task updates; removed tasks are dropped from the selection. The arrow-key move and resize controls apply to the current selection too.</p>
           <p>Zoom works in both day and week views and keeps the center date in place when the scroll bounds allow it. Values are clamped to the configured limits. Changing view, zoom, edit mode, or data during a drag cancels that unfinished edit. On touch screens, drag a task or its visible end handles; swipe an empty part of the timeline to scroll.</p>
@@ -163,11 +163,11 @@ chart.resetZoom();        // 100%, limited by minZoom / maxZoom</code></pre>
         <section id="progress-colors" class="section scrollspy">
           <h3 class="header">Progress colors</h3>
           <p>Without any color configuration, progress is blue below 30%, green from 30% to below 90%, orange from 90% through 100%, and red above 100%. Set <code>progress: 125</code> to show 125% of expected time, with a visible “25% over expected” label. The colored fill stops at the end of the scheduled bar; the stored value, accessible label, and tooltip retain the full percentage. Progress changes do not change scheduled dates.</p>
-          <pre><code class="language-typescript">const tasks = chart.getTasks();
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">const tasks = chart.getTasks();
 tasks[0].progress = 125; // 25% over expected; red by default
-chart.setTasks(tasks);</code></pre>
+chart.setTasks(tasks);</code></pre></div>
           <p>Give a task's progress line a fixed <code>progressColor</code>, or change its color by percentage using <code>progressMeter</code>. Names, hex colors, and CSS theme variables are supported. The task bar keeps its own <code>tone</code>.</p>
-          <pre><code class="language-typescript">const tasks: GanttTask[] = [
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">const tasks: GanttTask[] = [
   {
     id: 'design', name: 'Design', start: '2026-10-05', end: '2026-10-09',
     progress: 60,
@@ -186,7 +186,7 @@ chart.setTasks(tasks);</code></pre>
     }
   }
 ];
-chart.setTasks(tasks);</code></pre>
+chart.setTasks(tasks);</code></pre></div>
           <p>The optional <code>low</code>, <code>high</code>, and <code>optimum</code> settings override the default regions up to 100%. Low and high are required when supplying <code>progressMeter</code>; optimum defaults to 100. All thresholds must be within 0–100, and low must not exceed high. Progress values themselves may exceed 100%; overruns always use the critical region.</p>
           <table class="striped responsive-table">
             <thead><tr><th>Optimum setting</th><th>Optimal range</th><th>Other ranges</th></tr></thead>
@@ -201,7 +201,7 @@ chart.setTasks(tasks);</code></pre>
 
         <section id="data" class="section scrollspy">
           <h3 class="header">Task data</h3>
-          <pre><code class="language-typescript">import type { GanttTask, GanttOptions, GanttView, GanttTone } from 'kmaterialize';
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">import type { GanttTask, GanttOptions, GanttView, GanttTone } from 'kmaterialize';
 
 const task: GanttTask = {
   id: 'design',
@@ -211,7 +211,7 @@ const task: GanttTask = {
   progress: 60,
   detail: 'Design team',
   tone: 'secondary'
-};</code></pre>
+};</code></pre></div>
           <table class="striped responsive-table">
             <thead><tr><th>Field</th><th>Description</th></tr></thead>
             <tbody>
@@ -255,7 +255,7 @@ const task: GanttTask = {
         <section id="methods" class="section scrollspy">
           <h3 class="header">Update a schedule</h3>
           <p>Use the public methods to connect the chart to your own task editor or saved data. Dates can be edited directly in edit mode or replaced through <code>setTasks()</code>.</p>
-          <pre><code class="language-typescript">const tasks = chart.getTasks();
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">const tasks = chart.getTasks();
 tasks[0].progress = 80;
 chart.setTasks(tasks);
 
@@ -266,7 +266,7 @@ chart.scrollToDate(); // Today
 
 Gantt.getInstance(document.querySelector&lt;HTMLElement&gt;('#schedule')!);
 chart.setTasks([]); // Show the empty state
-chart.destroy();    // Remove listeners and restore the original host content</code></pre>
+chart.destroy();    // Remove listeners and restore the original host content</code></pre></div>
           <p><code>getTasks()</code> and callbacks return copies, and <code>setTasks()</code> copies the supplied data. Initializing the same host again replaces its previous instance. All styling comes from kmaterialize, including light and dark themes. Adjust <code>--gantt-label-width</code> on the host to customize the task column width.</p>
         </section>
       </div>

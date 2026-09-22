@@ -49,7 +49,7 @@
     <div class="workspace-demo-detail"><strong>One workspace, every department.</strong><p>Choose a tool from the navigation to preview its destination.</p></div>
     <p data-crazy-button-status role="status">Home selected.</p>
   </div>
-</div><details><summary>Markup — Crazy buttons and navigation groups</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;div class=&quot;workspace-nav-preview&quot; data-layout=&quot;rail&quot;&gt;
+</div><details><summary>Markup — Crazy buttons and navigation groups</summary><div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class=&quot;workspace-nav-preview&quot; data-layout=&quot;rail&quot;&gt;
 &lt;nav class=&quot;workspace-demo-navigation&quot; aria-label=&quot;Production navigation&quot;&gt;
   &lt;div class=&quot;workspace-demo-group&quot; role=&quot;group&quot; aria-label=&quot;Workspace&quot;&gt;
     &lt;crazy-button tooltip-position=&quot;right&quot; type=&quot;floating&quot; size=&quot;large&quot; shape=&quot;box&quot; depth=&quot;1&quot; icon-text=&quot;home&quot; label=&quot;Home&quot; data-redirect-name=&quot;Home&quot; color-primary=&quot;gold&quot; color-secondary=&quot;#211b00&quot; aria-current=&quot;page&quot;&gt;&lt;/crazy-button&gt;
@@ -81,7 +81,7 @@
     &lt;div class=&quot;workspace-demo-detail&quot;&gt;&lt;strong&gt;One workspace, every department.&lt;/strong&gt;&lt;p&gt;Choose a tool from the navigation to preview its destination.&lt;/p&gt;&lt;/div&gt;
     &lt;p data-crazy-button-status role=&quot;status&quot;&gt;Home selected.&lt;/p&gt;
   &lt;/div&gt;
-&lt;/div&gt;</code></pre></details><p>The section colors follow the reference; the surrounding surfaces follow the environment theme. <code>data-redirect-name</code> retains the original route identifiers. These examples update the preview; connect <code>buttonaction</code> to your application router for real navigation. Preview layout styles are shown below.</p><details><summary>Preview layout CSS</summary><pre><code class="language-scss">// Documentation preview layout; all controls are kmaterialize CrazyButton instances.
+&lt;/div&gt;</code></pre></div></details><p>The section colors follow the reference; the surrounding surfaces follow the environment theme. <code>data-redirect-name</code> retains the original route identifiers. These examples update the preview; connect <code>buttonaction</code> to your application router for real navigation. Preview layout styles are shown below.</p><details><summary>Preview layout CSS</summary><div class="code-card docs-code no-autoinit"><pre><code class="language-scss">// Documentation preview layout; all controls are kmaterialize CrazyButton instances.
 .workspace-nav-preview {
   border: 1px solid var(--md-sys-color-outline-variant);
   border-radius: 20px;
@@ -117,7 +117,7 @@
     .workspace-demo-group &gt; span { writing-mode: vertical-rl; transform: rotate(180deg); }
   }
 }
-</code></pre></details></section>
+</code></pre></div></details></section>
 
 <div id="structure" class="section scrollspy">
         <h3 class="header">1. Slide-out drawer</h3>
@@ -167,7 +167,7 @@
           </li>
         </ul>
 
-        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;nav&gt;&lt;!-- navbar content here  --&gt;&lt;/nav&gt;
+        <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;nav&gt;&lt;!-- navbar content here  --&gt;&lt;/nav&gt;
 &lt;ul id=&quot;slide-out&quot; class=&quot;sidenav&quot;&gt;
   &lt;li&gt;
     &lt;div class=&quot;user-view&quot;&gt;
@@ -192,7 +192,7 @@
 &lt;/ul&gt;
 &lt;a href=&quot;#&quot; data-target=&quot;slide-out&quot; class=&quot;sidenav-trigger&quot;&gt;
   &lt;i class=&quot;material-icons&quot;&gt;menu&lt;/i&gt;
-&lt;/a&gt;</code></pre>
+&lt;/a&gt;</code></pre></div>
       </div>
 
 
@@ -202,7 +202,7 @@
         <p><a href="sidenav-docs-demo.html" target="_blank" rel="noopener">Open documentation drawer in a full window</a></p>
         <iframe class="sidenav-example-frame" src="sidenav-docs-demo.html" title="Interactive documentation drawer example" loading="lazy"></iframe>
         <p>The preview docks the drawer at 560px and above; below that, the menu button opens it as an overlay. Use 993px instead to match the main site's desktop breakpoint. Search uses the same autocomplete and full page index as the website. Select a suggestion to open the page. In your own app, replace the imported <code>config.pages</code> with your route list. Links navigate to actual documentation pages. This example reads the same saved theme and palette as the site, using <code>@material/material-color-utilities</code>.</p>
-<details class="sidenav-example-code"><summary>HTML — structure and navigation</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;body class=&quot;drawer-example&quot;&gt;
+<details class="sidenav-example-code"><summary>HTML — structure and navigation</summary><div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;body class=&quot;drawer-example&quot;&gt;
   &lt;!-- Drawer: logo, search, and grouped page links. Keep it outside the navbar. --&gt;
   &lt;ul id=&quot;docs-example-menu&quot; class=&quot;sidenav&quot; aria-label=&quot;Documentation&quot;&gt;
     &lt;li class=&quot;drawer-example-brand&quot;&gt;
@@ -333,7 +333,7 @@
   &lt;/div&gt;
   &lt;!-- Load the TypeScript below through your bundler. --&gt;
   &lt;script type=&quot;module&quot; src=&quot;/sidenav-docs-demo.ts&quot;&gt;&lt;/script&gt;
-&lt;/body&gt;</code></pre></details><details class="sidenav-example-code"><summary>SCSS — layout, colors, and responsive styles</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">// Load the icon font and Materialize before these example-specific styles.
+&lt;/body&gt;</code></pre></div></details><details class="sidenav-example-code"><summary>SCSS — layout, colors, and responsive styles</summary><div class="code-card docs-code no-autoinit"><pre><code class="language-scss">// Load the icon font and Materialize before these example-specific styles.
 @import &#x27;material-icons/iconfont/material-icons.css&#x27;;
 @import &#x27;kmaterialize/sass/materialize.scss&#x27;;
 
@@ -399,7 +399,7 @@
 .drawer-example-docked .sidenav-overlay,
 .drawer-example-docked #docs-example-toggle {
   display: none !important;
-}</code></pre></details><details class="sidenav-example-code"><summary>TypeScript — initialization and interactions</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">import { Sidenav, Collapsible, Autocomplete } from &#x27;kmaterialize&#x27;;
+}</code></pre></div></details><details class="sidenav-example-code"><summary>TypeScript — initialization and interactions</summary><div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">import { Sidenav, Collapsible, Autocomplete } from &#x27;kmaterialize&#x27;;
 import &#x27;./sidenav-docs-demo.scss&#x27;;
 // This project supplies the page index. Use your own route list in another app.
 import { config } from &#x27;../config.materialize&#x27;;
@@ -467,7 +467,7 @@ Autocomplete.init(search, {
   onAutocomplete: (items) =&gt; {
     if (items.length === 1) window.top!.location.href = items[0][&#x27;url&#x27;];
   },
-});</code></pre></details>
+});</code></pre></div></details>
       </section>
       <section id="material-rail" class="section scrollspy">
         <h3 class="header">3. Material 3 navigation rail</h3>
@@ -476,7 +476,7 @@ Autocomplete.init(search, {
         <iframe class="sidenav-example-frame sidenav-example-frame-rail" src="sidenav-rail-demo.html" title="Interactive Material 3 navigation rail example" loading="lazy"></iframe>
         <p>Choose a section to update the preview. The bottom controls pause the illustration and switch the example's light/dark theme. Its initial palette and theme match the website, and updates from the surrounding page are reflected automatically. Motion starts paused when the device requests reduced motion. The rail stays visible on phones and scrolls when the screen is too short.</p>
         <p>The rail layout is included in kmaterialize and uses native links, so it needs no <code>Sidenav.init()</code>. Load Materialize and Material Icons. The SCSS below only styles the preview content. The theme control uses <code>@material/material-color-utilities</code>. Replace the demo hash links with your app's routes and preserve <code>aria-current="page"</code> on the active link.</p>
-<details class="sidenav-example-code"><summary>HTML — structure and navigation</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;body class=&quot;rail-example&quot;&gt;
+<details class="sidenav-example-code"><summary>HTML — structure and navigation</summary><div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;body class=&quot;rail-example&quot;&gt;
   &lt;!-- Fixed rail: section links above, utility buttons below. --&gt;
   &lt;aside class=&quot;m3-rail&quot; aria-label=&quot;Site navigation&quot;&gt;
     &lt;nav class=&quot;m3-rail-nav&quot; aria-label=&quot;Main sections&quot;&gt;
@@ -556,7 +556,7 @@ Autocomplete.init(search, {
   &lt;/main&gt;
   &lt;!-- Load the TypeScript below through your bundler. --&gt;
   &lt;script type=&quot;module&quot; src=&quot;/sidenav-rail-demo.ts&quot;&gt;&lt;/script&gt;
-&lt;/body&gt;</code></pre></details><details class="sidenav-example-code"><summary>SCSS — layout, colors, and responsive styles</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">@import &#x27;material-icons/iconfont/material-icons.css&#x27;;
+&lt;/body&gt;</code></pre></div></details><details class="sidenav-example-code"><summary>SCSS — layout, colors, and responsive styles</summary><div class="code-card docs-code no-autoinit"><pre><code class="language-scss">@import &#x27;material-icons/iconfont/material-icons.css&#x27;;
 @import &#x27;kmaterialize/sass/materialize.scss&#x27;;
 
 .rail-example { margin: 0; background: var(--md-sys-color-background); color: var(--md-sys-color-on-background); }
@@ -577,7 +577,7 @@ Autocomplete.init(search, {
 @media (max-width: 480px) {
   .rail-example-content { margin-left: 88px; padding: 28px 20px; }
 }
-</code></pre></details><details class="sidenav-example-code"><summary>TypeScript — initialization and interactions</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">import {
+</code></pre></div></details><details class="sidenav-example-code"><summary>TypeScript — initialization and interactions</summary><div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">import {
   applyTheme,
   argbFromHex,
   themeFromSourceColor,
@@ -663,12 +663,12 @@ function selectSection() {
   document.querySelector(&#x27;#rail-view-description&#x27;)!.textContent = descriptions[name];
 }
 window.addEventListener(&#x27;hashchange&#x27;, selectSection);
-selectSection();</code></pre></details>
+selectSection();</code></pre></div></details>
       </section>
 
       <div id="initialization" class="section scrollspy">
         <h3 class="header">Initialization</h3>
-        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">document.addEventListener(&#x27;DOMContentLoaded&#x27;, function () {
+        <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">document.addEventListener(&#x27;DOMContentLoaded&#x27;, function () {
   const elems = document.querySelectorAll(&#x27;.sidenav&#x27;);
   const instances = Sidenav.init(elems, {
     // specify options here
@@ -679,7 +679,7 @@ selectSection();</code></pre></details>
 // const collapsibleElem = document.querySelector(&#x27;.collapsible&#x27;);
 // const collapsibleInstance = Collapsible.init(collapsibleElem, {
 //  // specify options here
-// });</code></pre>
+// });</code></pre></div>
       </div>
 
 
@@ -766,27 +766,27 @@ selectSection();</code></pre></details>
         <h3 class="header">Methods</h3>
         <blockquote>
           <p>All the methods are called on the plugin instance. You can get the plugin instance like this: </p>
-          <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">const instance = Sidenav.getInstance(elem);</code></pre>
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">const instance = Sidenav.getInstance(elem);</code></pre></div>
         </blockquote>
         <h5 class="method-header">
           .open();
         </h5>
         <p>Opens Sidenav.</p>
-        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">instance.open();</code></pre>
+        <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">instance.open();</code></pre></div>
         
 
         <h5 class="method-header">
           .close();
         </h5>
         <p>Closes Sidenav.</p>
-        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">instance.close();</code></pre>
+        <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">instance.close();</code></pre></div>
         
 
         <h5 class="method-header">
           .destroy();
         </h5>
         <p>Destroy plugin instance and teardown</p>
-        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">instance.destroy();</code></pre>
+        <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">instance.destroy();</code></pre></div>
       </div>
 
 
@@ -837,12 +837,12 @@ selectSection();</code></pre></details>
         <p>Add the class
           <code class="language-html">.sidenav-close</code> to an element inside the sidenav and any click event on that element will cause the sidenav to close. This is
           useful in Single Page Apps where the page does not refresh on link clicks.</p>
-        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;ul id=&quot;slide-out&quot; class=&quot;sidenav&quot;&gt;
+        <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;ul id=&quot;slide-out&quot; class=&quot;sidenav&quot;&gt;
   &lt;li&gt;&lt;a class=&quot;sidenav-close&quot; href=&quot;#!&quot;&gt;Clicking this will close Sidenav&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;a href=&quot;#&quot; data-target=&quot;slide-out&quot; class=&quot;sidenav-trigger&quot;&gt;
   &lt;i class=&quot;material-icons&quot;&gt;menu&lt;/i&gt;
-&lt;/a&gt;</code></pre>
+&lt;/a&gt;</code></pre></div>
       </div>
 
 
@@ -854,7 +854,7 @@ selectSection();</code></pre></details>
 
         <h4>Dropdown HTML Structure</h4>
         <p>Add collapsible menus to your sidebar.</p>
-        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;ul id=&quot;slide-out&quot; class=&quot;sidenav&quot;&gt;
+        <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;ul id=&quot;slide-out&quot; class=&quot;sidenav&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#!&quot;&gt;First Sidebar Link&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#!&quot;&gt;Second Sidebar Link&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;no-padding&quot;&gt;
@@ -894,7 +894,7 @@ selectSection();</code></pre></details>
 &lt;/ul&gt;
 &lt;a href=&quot;#&quot; data-target=&quot;slide-out&quot; class=&quot;sidenav-trigger&quot;&gt;
   &lt;i class=&quot;material-icons&quot;&gt;menu&lt;/i&gt;
-&lt;/a&gt;</code></pre>
+&lt;/a&gt;</code></pre></div>
         
 
         <h4>Fullscreen HTML Structure</h4>
@@ -902,29 +902,29 @@ selectSection();</code></pre></details>
           <code class="language-html">show-on-large</code> to the
           <code class="language-html">.sidenav-trigger</code>. </p>
 
-        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;ul id=&quot;slide-out&quot; class=&quot;sidenav&quot;&gt;
+        <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;ul id=&quot;slide-out&quot; class=&quot;sidenav&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#!&quot;&gt;First Sidebar Link&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#!&quot;&gt;Second Sidebar Link&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;a href=&quot;#&quot; data-target=&quot;slide-out&quot; class=&quot;sidenav-trigger show-on-large&quot;&gt;
   &lt;i class=&quot;material-icons&quot;&gt;menu&lt;/i&gt;
-&lt;/a&gt;</code></pre>
+&lt;/a&gt;</code></pre></div>
         
 
         <h4>Fixed HTML Structure</h4>
         <p>Add the class
           <code class="language-html">sidenav-fixed</code> to have the sidenav be fixed and open on large screens and hides to the regular functionality on smaller screens.
           Our sidenav on the left is an example of this.</p>
-        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;ul id=&quot;slide-out&quot; class=&quot;sidenav sidenav-fixed&quot;&gt;
+        <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;ul id=&quot;slide-out&quot; class=&quot;sidenav sidenav-fixed&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#!&quot;&gt;First Sidebar Link&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#!&quot;&gt;Second Sidebar Link&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;a href=&quot;#&quot; data-target=&quot;slide-out&quot; class=&quot;sidenav-trigger&quot;&gt;
   &lt;i class=&quot;material-icons&quot;&gt;menu&lt;/i&gt;
-&lt;/a&gt;</code></pre>
+&lt;/a&gt;</code></pre></div>
         <p>If you are planning on using this you will have to offset your content by the width of the side menu. Place the padding
           on where the offset content will be, which in our case is in header, main and footer.</p>
-        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-css copiedText">header,
+        <div class="code-card docs-code no-autoinit"><pre><code class="language-css">header,
 main,
 footer {
   padding-left: 300px;
@@ -936,7 +936,7 @@ footer {
   footer {
     padding-left: 0;
   }
-}</code></pre>
+}</code></pre></div>
       </div>
     </div>
 

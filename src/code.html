@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+    <head>{{> head }}</head>
+    <body class="code-docs">
+        {{> navbar }}
+        <main>
+            {{> intro }}
+            <div class="container">
+                <div class="row">
+                    <div class="s12 m8 offset-m1 xl7 offset-xl1">
+                        <section id="basic" class="section scrollspy">
+                            <h3 class="header">Code cards</h3>
+<p>Blue blocks show usage code; dark blocks are live component examples.</p>
+<p>Display source using the same compact code block as this documentation, with the standard card border radius and an optional copy icon in the top-right corner. CodeCard uses Prism with the documentation’s dark syntax palette. The title provides an accessible name without adding a visible header.</p><p id="code-demo-status" role="status">Loading code cards…</p><div id="code-basic" class="code-card no-autoinit" data-code-title="Greeting" data-code-copy="true"><pre><code class="language-javascript">console.log(&quot;Hello, world!&quot;);</code></pre></div><div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div id=&quot;my-code&quot; class=&quot;code-card&quot; data-code-title=&quot;Greeting&quot; data-code-copy=&quot;true&quot;&gt;
+    &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;console.log(&quot;Hello, world!&quot;);&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</code></pre></div><p>Put escaped source in <code>&lt;pre&gt;&lt;code&gt;</code>, or pass a string with the <code>code</code> option. The source is displayed as text and is never executed.</p>
+                        </section>
+                        <section id="languages" class="section scrollspy">
+                            <h3 class="header">Language variants</h3>
+<p>Set <code>language</code> or use a <code>language-*</code> class on the authored code element. Load the matching Prism grammar for highlighting; unregistered languages remain readable as plain text.</p><h4>HTML</h4><div id="code-markup" class="code-card no-autoinit" data-code-title="Button markup" data-code-copy="true"><pre><code class="language-markup">&lt;button type=&quot;button&quot; class=&quot;btn filled&quot;&gt;
+    Save changes
+&lt;/button&gt;</code></pre></div><h4>CSS</h4><div id="code-css" class="code-card no-autoinit" data-code-title="Theme colors" data-code-copy="true"><pre><code class="language-css">.message &#123;
+    color: var(--md-sys-color-on-primary-container);
+    background: var(--md-sys-color-primary-container);
+    padding: 1rem;
+&#125;</code></pre></div><h4>JavaScript</h4><div id="code-javascript" class="code-card no-autoinit" data-code-title="Initialize a component" data-code-copy="true"><pre><code class="language-javascript">import &#123; PasswordInput &#125; from &quot;kmaterialize&quot;;
+
+const input = document.querySelector(&quot;#password&quot;);
+const password = PasswordInput.init(input);
+password.toggle();</code></pre></div><h4>TypeScript</h4><div id="code-typescript" class="code-card no-autoinit" data-code-title="Typed configuration" data-code-copy="true"><pre><code class="language-typescript">interface Message &#123;
+    text: string;
+    visible: boolean;
+&#125;
+
+const message: Message = &#123; text: &quot;Saved&quot;, visible: true &#125;;</code></pre></div><h4>PHP</h4><div id="code-php" class="code-card no-autoinit" data-code-title="Form configuration" data-code-copy="true"><pre><code class="language-php">&lt;?php
+
+$form = [
+    &quot;id&quot; =&gt; &quot;contact_form&quot;,
+    &quot;items&quot; =&gt; [
+        [&quot;name&quot; =&gt; &quot;email&quot;, &quot;type&quot; =&gt; &quot;email&quot;],
+    ],
+];</code></pre></div><h4>JSON</h4><div id="code-json" class="code-card no-autoinit" data-code-title="Application settings" data-code-copy="true"><pre><code class="language-json">&#123;
+    &quot;title&quot;: &quot;Code examples&quot;,
+    &quot;language&quot;: &quot;javascript&quot;,
+    &quot;copy&quot;: true
+&#125;</code></pre></div><h4>YAML</h4><div id="code-yaml" class="code-card no-autoinit" data-code-title="Page settings" data-code-copy="true"><pre><code class="language-yaml">page:
+  title: Code examples
+  language: javascript
+  copy: true</code></pre></div><h4>Shell</h4><div id="code-bash" class="code-card no-autoinit" data-code-title="Install dependencies" data-code-copy="true"><pre><code class="language-bash">npm install kmaterialize prismjs</code></pre></div><h4>Python</h4><div id="code-python" class="code-card no-autoinit" data-code-title="A simple function" data-code-copy="true"><pre><code class="language-python">def greet(name: str) -&gt; str:
+    return f&quot;Hello, &#123;name&#125;!&quot;
+
+print(greet(&quot;World&quot;))</code></pre></div><h4>Handlebars</h4><div id="code-handlebars" class="code-card no-autoinit" data-code-title="A template" data-code-copy="true"><pre><code class="language-handlebars">&lt;section&gt;
+    &lt;h2&gt;&#123;&#123;title&#125;&#125;&lt;/h2&gt;
+    &#123;&#123;#each items&#125;&#125;
+        &lt;p&gt;&#123;&#123;this.label&#125;&#125;&lt;/p&gt;
+    &#123;&#123;/each&#125;&#125;
+&lt;/section&gt;</code></pre></div>
+                        </section>
+                        <section id="copy" class="section scrollspy">
+                            <h3 class="header">With or without copy</h3>
+<p>Choose <code>copy: true</code> or <code>copy: false</code>, or set <code>data-code-copy</code> in the markup. The copy control uses <a href="crazy-button.html">Crazy Button</a> with keyboard activation. A successful copy changes its icon to a check mark for two seconds; a failed copy shows an error icon. Copy preserves the original source and whitespace, excluding copy feedback.</p><div id="code-with-copy" class="code-card no-autoinit" data-code-title="With copy button" data-code-copy="true"><pre><code class="language-javascript">const copyEnabled = true;</code></pre></div><div id="code-without-copy" class="code-card no-autoinit" data-code-title="Without copy button" data-code-copy="false"><pre><code class="language-javascript">const copyEnabled = false;</code></pre></div><div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div id=&quot;my-code&quot; class=&quot;code-card&quot; data-code-title=&quot;Greeting&quot; data-code-copy=&quot;false&quot;&gt;
+    &lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;console.log(&quot;Hello, world!&quot;);&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</code></pre></div><p>Clipboard access requires HTTPS or localhost. A failed copy reports “Unable to copy”; the source stays selectable.</p>
+                        </section>
+                        <section id="custom" class="section scrollspy">
+                            <h3 class="header">Custom code</h3>
+<p>Edit the source, change its language and title, or toggle the copy button. Use plain text for logs and custom formats that do not need syntax highlighting.</p><form id="code-controls" class="row g-3">
+    <div class="s12 m6">
+        <label for="code-language">Language</label>
+        <select id="code-language" class="browser-default no-autoinit"><option value="markup">HTML</option><option value="css">CSS</option><option value="javascript">JavaScript</option><option value="typescript">TypeScript</option><option value="php">PHP</option><option value="json" selected>JSON</option><option value="yaml">YAML</option><option value="bash">Shell</option><option value="python">Python</option><option value="handlebars">Handlebars</option><option value="plain">Plain text / custom format</option></select>
+    </div>
+    <div class="input-field s12 m6">
+        <input id="code-title" type="text" value="Custom response" placeholder=" ">
+        <label for="code-title">Accessible title</label>
+    </div>
+    <div class="s12">
+        <label><input id="code-copy" type="checkbox" checked><span>Show copy button</span></label>
+    </div>
+    <div class="input-field s12">
+        <textarea id="code-source" class="materialize-textarea" placeholder=" " style="min-height: 12rem">&#123;
+    &quot;message&quot;: &quot;Your custom code&quot;,
+    &quot;copy&quot;: true
+&#125;</textarea>
+        <label for="code-source">Your source code</label>
+    </div>
+</form><div id="code-playground" class="code-card no-autoinit" data-code-title="Custom response" data-code-copy="true"><pre><code class="language-json">&#123;
+    &quot;message&quot;: &quot;Your custom code&quot;,
+    &quot;copy&quot;: true
+&#125;</code></pre></div><h4>Current configuration</h4><div id="code-configuration" class="code-card docs-code no-autoinit"><pre><code class="language-javascript"></code></pre></div><div id="code-plain" class="code-card no-autoinit" data-code-title="Custom format" data-code-copy="false" data-code-highlight="false"><pre><code class="language-plain">CUSTOM FORMAT
+name =&gt; Example
+state =&gt; ready</code></pre></div>
+                        </section>
+                        <section id="setup" class="section scrollspy">
+                            <h3 class="header">Setup and API</h3>
+<p>Install <code>kmaterialize</code> and the optional <code>prismjs</code> peer when you use highlighting. CodeCard styles and token colors are included in Materialize CSS.</p><div class="code-card docs-code no-autoinit"><pre><code class="language-bash">npm install kmaterialize prismjs</code></pre></div><div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">import &#123; CodeCard &#125; from &quot;kmaterialize&quot;;
+import &quot;kmaterialize/dist/css/materialize.css&quot;;
+
+const card = CodeCard.init(document.querySelector(&quot;#my-code&quot;), &#123;
+    code: &quot;const answer = 42;&quot;,
+    language: &quot;javascript&quot;,
+    title: &quot;Example&quot;,
+    copy: true,
+&#125;);
+await card.ready;</code></pre></div><p>For markup-based initialization, call <code>M.AutoInit()</code> or <code>CodeCard.init(document.querySelectorAll(".code-card"))</code>. Add <code>no-autoinit</code> when initializing explicitly alongside AutoInit. Await <code>ready</code> before interacting with highlighted content.</p><div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">// Prism includes HTML, CSS, and JavaScript by default.
+// Register additional grammars before initializing CodeCard.
+const scope = window;
+if(!scope.Prism) scope.Prism = &#123; manual: true &#125;;
+const &#123; default: Prism &#125; = await import(&quot;prismjs&quot;);
+Prism.manual = true;
+await import(&quot;prismjs/components/prism-typescript.js&quot;);
+await import(&quot;prismjs/components/prism-markup-templating.js&quot;);
+await import(&quot;prismjs/components/prism-php.js&quot;);
+await import(&quot;prismjs/components/prism-handlebars.js&quot;);</code></pre></div><p>Keep Prism in manual mode so it does not also highlight unrelated code blocks. Register a custom grammar through <code>Prism.languages</code>, or use <code>highlight: false</code> for plain text without a Prism dependency.</p><table class="striped responsive-table"><thead><tr><th>Option</th><th>Type</th><th>Default</th><th>Purpose</th></tr></thead><tbody><tr><td>code</td><td>string</td><td>Authored code text</td><td>Source to display and copy.</td></tr><tr><td>language</td><td>string</td><td>Authored language or plain</td><td>Prism language identifier; unregistered grammars display plain text.</td></tr><tr><td>title</td><td>string</td><td>Empty</td><td>Accessible name for the code block; no visible header.</td></tr><tr><td>copy</td><td>boolean</td><td>true</td><td>Show or hide the copy button.</td></tr><tr><td>highlight</td><td>boolean</td><td>true</td><td>Use Prism highlighting. Set false to avoid loading Prism.</td></tr><tr><td>copyLabel / copiedLabel / errorLabel</td><td>string</td><td>Copy code / Copied! / Unable to copy</td><td>Accessible button label and copy feedback.</td></tr></tbody></table><div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">await card.update(&#123;
+    code: &#x27;&#123; &quot;saved&quot;: true &#125;&#x27;,
+    language: &quot;json&quot;, // Load the Prism JSON grammar first.
+    title: &quot;Response&quot;,
+    copy: false,
+&#125;);
+const source = card.getCode();
+await card.update(&#123; copy: true &#125;);
+const copied = await card.copy();
+card.destroy();</code></pre></div><p><code>copy()</code> returns whether the copy succeeded; it returns false when copying is disabled. The bubbling <code>codecopy</code> event exposes <code>detail.success</code>. <code>destroy()</code> removes listeners and restores the authored markup.</p>
+                        </section>
+                    </div>
+                    <div class="hide-on-small-only m3 xl3">
+                        <div class="toc-wrapper"><div style="height: 1px"><ul class="section table-of-contents">
+                            <li><a href="#basic">Code cards</a></li>
+                            <li><a href="#languages">Language variants</a></li>
+                            <li><a href="#copy">With or without copy</a></li>
+                            <li><a href="#custom">Custom code</a></li>
+                            <li><a href="#setup">Setup and API</a></li>
+                        </ul></div></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        {{> footer }}
+        <script type="module" src="/main.ts"></script>
+        <script type="module" src="/code-demo.ts"></script>
+    </body>
+</html>

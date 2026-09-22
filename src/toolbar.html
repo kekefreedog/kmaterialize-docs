@@ -32,18 +32,18 @@
                 </div>
               </div>
               <p id="planning-zoom-status" role="status">Zoom: 100%.</p>
-              <pre><code class="language-html"><xmp><div class="toolbar my-0">
-<div id="planning-zoom-controls" class="toolbar toolbar-zoom" role="group" aria-label="Planning zoom">
-  <crazy-button id="planning-zoom-out" class="toolbar-zoom-out" label="Zoom Out" size="small" shape="round" depth="flat" icon-text="remove" variant="tonal"></crazy-button>
-  <crazy-button id="planning-zoom-in" class="toolbar-zoom-in" label="Zoom In" size="small" shape="round" depth="flat" icon-text="add" variant="tonal"></crazy-button>
-  <crazy-button id="planning-zoom-reset" type="extended" class="toolbar-zoom-reset" label="100%" size="small" shape="round" depth="flat" aria-label="Zoom 100 percent. Reset to 100 percent"></crazy-button>
-</div>
-<div class="toolbar-group" role="group" aria-label="Planning actions">
-  <crazy-button label="Download" size="small" shape="round" depth="flat" icon-text="download" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button>
-  <crazy-button label="Refresh" size="small" shape="round" depth="flat" icon-text="refresh" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button>
-</div>
-</div></xmp></code></pre>
-              <pre><code class="language-javascript">let zoom = 100;
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="toolbar my-0"&gt;
+&lt;div id="planning-zoom-controls" class="toolbar toolbar-zoom" role="group" aria-label="Planning zoom"&gt;
+  &lt;crazy-button id="planning-zoom-out" class="toolbar-zoom-out" label="Zoom Out" size="small" shape="round" depth="flat" icon-text="remove" variant="tonal"&gt;&lt;/crazy-button&gt;
+  &lt;crazy-button id="planning-zoom-in" class="toolbar-zoom-in" label="Zoom In" size="small" shape="round" depth="flat" icon-text="add" variant="tonal"&gt;&lt;/crazy-button&gt;
+  &lt;crazy-button id="planning-zoom-reset" type="extended" class="toolbar-zoom-reset" label="100%" size="small" shape="round" depth="flat" aria-label="Zoom 100 percent. Reset to 100 percent"&gt;&lt;/crazy-button&gt;
+&lt;/div&gt;
+&lt;div class="toolbar-group" role="group" aria-label="Planning actions"&gt;
+  &lt;crazy-button label="Download" size="small" shape="round" depth="flat" icon-text="download" variant="tonal" color-secondary="var(--md-sys-color-primary)"&gt;&lt;/crazy-button&gt;
+  &lt;crazy-button label="Refresh" size="small" shape="round" depth="flat" icon-text="refresh" variant="tonal" color-secondary="var(--md-sys-color-primary)"&gt;&lt;/crazy-button&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">let zoom = 100;
 const controls = document.querySelector('#planning-zoom-controls');
 controls.addEventListener('buttonaction', (event) => {
   const id = event.target.id;
@@ -58,7 +58,7 @@ controls.addEventListener('buttonaction', (event) => {
   document.querySelector('#planning-zoom-in').toggleAttribute('disabled', zoom === 200);
   // Replace with your chart's zoom API, for example chart.setZoom(zoom / 100).
   document.querySelector('#planning-zoom-preview').style.transform = `scale(${zoom / 100})`;
-});</code></pre>
+});</code></pre></div>
             </section>
             <section id="crazy-buttons" data-crazy-button-example class="section scrollspy"><h3 class="header">Workspace navigation toolbar</h3><p>The same workspace navigation groups arranged horizontally in Materialize’s Toolbar. Scroll the toolbar to reach every group on narrow screens.</p><div class="workspace-nav-preview" data-layout="toolbar">
 <div class="workspace-demo-navigation toolbar" aria-label="Production navigation" role="group">
@@ -92,7 +92,7 @@ controls.addEventListener('buttonaction', (event) => {
     <div class="workspace-demo-detail"><strong>One workspace, every department.</strong><p>Choose a tool from the navigation to preview its destination.</p></div>
     <p data-crazy-button-status role="status">Home selected.</p>
   </div>
-</div><details><summary>Markup — Crazy buttons and navigation groups</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;div class=&quot;workspace-nav-preview&quot; data-layout=&quot;toolbar&quot;&gt;
+</div><details><summary>Markup — Crazy buttons and navigation groups</summary><div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class=&quot;workspace-nav-preview&quot; data-layout=&quot;toolbar&quot;&gt;
 &lt;div class=&quot;workspace-demo-navigation toolbar&quot; aria-label=&quot;Production navigation&quot; role=&quot;group&quot;&gt;
   &lt;div class=&quot;workspace-demo-group toolbar-group&quot; role=&quot;group&quot; aria-label=&quot;Workspace&quot;&gt;
     &lt;crazy-button type=&quot;floating&quot; size=&quot;large&quot; shape=&quot;box&quot; depth=&quot;1&quot; icon-text=&quot;home&quot; label=&quot;Home&quot; data-redirect-name=&quot;Home&quot; color-primary=&quot;gold&quot; color-secondary=&quot;#211b00&quot; aria-current=&quot;page&quot;&gt;&lt;/crazy-button&gt;
@@ -124,7 +124,7 @@ controls.addEventListener('buttonaction', (event) => {
     &lt;div class=&quot;workspace-demo-detail&quot;&gt;&lt;strong&gt;One workspace, every department.&lt;/strong&gt;&lt;p&gt;Choose a tool from the navigation to preview its destination.&lt;/p&gt;&lt;/div&gt;
     &lt;p data-crazy-button-status role=&quot;status&quot;&gt;Home selected.&lt;/p&gt;
   &lt;/div&gt;
-&lt;/div&gt;</code></pre></details><p>The section colors follow the reference; the surrounding surfaces follow the environment theme. <code>data-redirect-name</code> retains the original route identifiers. These examples update the preview; connect <code>buttonaction</code> to your application router for real navigation. Preview layout styles are shown below.</p><details><summary>Preview layout CSS</summary><pre><code class="language-scss">// Documentation preview layout; all controls are kmaterialize CrazyButton instances.
+&lt;/div&gt;</code></pre></div></details><p>The section colors follow the reference; the surrounding surfaces follow the environment theme. <code>data-redirect-name</code> retains the original route identifiers. These examples update the preview; connect <code>buttonaction</code> to your application router for real navigation. Preview layout styles are shown below.</p><details><summary>Preview layout CSS</summary><div class="code-card docs-code no-autoinit"><pre><code class="language-scss">// Documentation preview layout; all controls are kmaterialize CrazyButton instances.
 .workspace-nav-preview {
   border: 1px solid var(--md-sys-color-outline-variant);
   border-radius: 20px;
@@ -160,7 +160,7 @@ controls.addEventListener('buttonaction', (event) => {
     .workspace-demo-group &gt; span { writing-mode: vertical-rl; transform: rotate(180deg); }
   }
 }
-</code></pre></details></section>
+</code></pre></div></details></section>
 
 <div id="introduction" class="section scrollspy">
               <p class="caption">
@@ -186,25 +186,23 @@ controls.addEventListener('buttonaction', (event) => {
                 </div>
               </div>
 
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="toolbar">
-  <div class="toolbar-group">
-    <div class="toolbar-track">
-      <div class="toolbar-track-indicator"></div>
-      <button class="toolbar-track-item is-active">Today</button>
-      <button class="toolbar-track-item">Previous</button>
-      <button class="toolbar-track-item">Next</button>
-    </div>
-  </div>
-  <div class="toolbar-group">
-    <div class="toolbar-search">
-      <button class="toolbar-search-toggle"><i class="material-icons">search</i></button>
-      <input class="toolbar-search-input" placeholder="Search...">
-    </div>
-    <button class="btn-floating btn-small"><i class="material-icons">refresh</i></button>
-  </div>
-</div></xmp>
-        </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="toolbar"&gt;
+  &lt;div class="toolbar-group"&gt;
+    &lt;div class="toolbar-track"&gt;
+      &lt;div class="toolbar-track-indicator"&gt;&lt;/div&gt;
+      &lt;button class="toolbar-track-item is-active"&gt;Today&lt;/button&gt;
+      &lt;button class="toolbar-track-item"&gt;Previous&lt;/button&gt;
+      &lt;button class="toolbar-track-item"&gt;Next&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="toolbar-group"&gt;
+    &lt;div class="toolbar-search"&gt;
+      &lt;button class="toolbar-search-toggle"&gt;&lt;i class="material-icons"&gt;search&lt;/i&gt;&lt;/button&gt;
+      &lt;input class="toolbar-search-input" placeholder="Search..."&gt;
+    &lt;/div&gt;
+    &lt;button class="btn-floating btn-small"&gt;&lt;i class="material-icons"&gt;refresh&lt;/i&gt;&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
             </div>
 
             <div id="groups" class="section scrollspy">
@@ -226,20 +224,18 @@ controls.addEventListener('buttonaction', (event) => {
                   <a class="btn-floating btn-small"><i class="material-icons">refresh</i></a>
                 </div>
               </div>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="toolbar">
-  <div class="toolbar-group">
-    <a class="btn-floating btn-small"><i class="material-icons">add</i></a>
-    <a class="btn-floating btn-small"><i class="material-icons">remove</i></a>
-    <a class="btn filled btn-small">Reset</a>
-    <a class="btn-floating btn-small"><i class="material-icons">crop_free</i></a>
-  </div>
-  <div class="toolbar-group">
-    <a class="btn-floating btn-small"><i class="material-icons">download</i></a>
-    <a class="btn-floating btn-small"><i class="material-icons">refresh</i></a>
-  </div>
-</div></xmp>
-        </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="toolbar"&gt;
+  &lt;div class="toolbar-group"&gt;
+    &lt;a class="btn-floating btn-small"&gt;&lt;i class="material-icons"&gt;add&lt;/i&gt;&lt;/a&gt;
+    &lt;a class="btn-floating btn-small"&gt;&lt;i class="material-icons"&gt;remove&lt;/i&gt;&lt;/a&gt;
+    &lt;a class="btn filled btn-small"&gt;Reset&lt;/a&gt;
+    &lt;a class="btn-floating btn-small"&gt;&lt;i class="material-icons"&gt;crop_free&lt;/i&gt;&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class="toolbar-group"&gt;
+    &lt;a class="btn-floating btn-small"&gt;&lt;i class="material-icons"&gt;download&lt;/i&gt;&lt;/a&gt;
+    &lt;a class="btn-floating btn-small"&gt;&lt;i class="material-icons"&gt;refresh&lt;/i&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
             </div>
 
             <div id="track" class="section scrollspy">
@@ -260,15 +256,13 @@ controls.addEventListener('buttonaction', (event) => {
                   </div>
                 </div>
               </div>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="toolbar-track">
-  <div class="toolbar-track-indicator"></div>
-  <button class="toolbar-track-item">Week</button>
-  <button class="toolbar-track-item is-active">Month</button>
-  <button class="toolbar-track-item">6 Month</button>
-  <button class="toolbar-track-item">Year</button>
-</div></xmp>
-        </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="toolbar-track"&gt;
+  &lt;div class="toolbar-track-indicator"&gt;&lt;/div&gt;
+  &lt;button class="toolbar-track-item"&gt;Week&lt;/button&gt;
+  &lt;button class="toolbar-track-item is-active"&gt;Month&lt;/button&gt;
+  &lt;button class="toolbar-track-item"&gt;6 Month&lt;/button&gt;
+  &lt;button class="toolbar-track-item"&gt;Year&lt;/button&gt;
+&lt;/div&gt;</code></pre></div>
               <p>
                 Add <code class="language-html">toolbar-track-bare</code> for a track with no background/border of its own - just for spacing a group of items that don't need
                 the pill-within-a-pill look:
@@ -282,13 +276,11 @@ controls.addEventListener('buttonaction', (event) => {
                   </div>
                 </div>
               </div>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="toolbar-track toolbar-track-bare">
-  <div class="toolbar-track-indicator"></div>
-  <button class="toolbar-track-item is-active">List</button>
-  <button class="toolbar-track-item">Grid</button>
-</div></xmp>
-        </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="toolbar-track toolbar-track-bare"&gt;
+  &lt;div class="toolbar-track-indicator"&gt;&lt;/div&gt;
+  &lt;button class="toolbar-track-item is-active"&gt;List&lt;/button&gt;
+  &lt;button class="toolbar-track-item"&gt;Grid&lt;/button&gt;
+&lt;/div&gt;</code></pre></div>
             </div>
 
             <div id="slider" class="section scrollspy">
@@ -309,15 +301,13 @@ controls.addEventListener('buttonaction', (event) => {
                   </div>
                 </div>
               </div>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="toolbar-slider">
-  <span>-</span>
-  <p class="range-field">
-    <input type="range" min="70" max="150" value="100">
-  </p>
-  <span>+</span>
-</div></xmp>
-        </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="toolbar-slider"&gt;
+  &lt;span&gt;-&lt;/span&gt;
+  &lt;p class="range-field"&gt;
+    &lt;input type="range" min="70" max="150" value="100"&gt;
+  &lt;/p&gt;
+  &lt;span&gt;+&lt;/span&gt;
+&lt;/div&gt;</code></pre></div>
 
               <p>With icons instead of text, or no label at all:</p>
               <div class="toolbar">
@@ -332,18 +322,16 @@ controls.addEventListener('buttonaction', (event) => {
                   </div>
                 </div>
               </div>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="toolbar-slider">
-  <i class="material-icons">volume_down</i>
-  <p class="range-field"><input type="range"></p>
-  <i class="material-icons">volume_up</i>
-</div>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="toolbar-slider"&gt;
+  &lt;i class="material-icons"&gt;volume_down&lt;/i&gt;
+  &lt;p class="range-field"&gt;&lt;input type="range"&gt;&lt;/p&gt;
+  &lt;i class="material-icons"&gt;volume_up&lt;/i&gt;
+&lt;/div&gt;
 
-<!-- no label at all -->
-<div class="toolbar-slider">
-  <p class="range-field"><input type="range"></p>
-</div></xmp>
-        </code></pre>
+&lt;!-- no label at all --&gt;
+&lt;div class="toolbar-slider"&gt;
+  &lt;p class="range-field"&gt;&lt;input type="range"&gt;&lt;/p&gt;
+&lt;/div&gt;</code></pre></div>
               <p>See <a href="range.html">Range</a> for the full component documentation.</p>
             </div>
 
@@ -369,17 +357,15 @@ controls.addEventListener('buttonaction', (event) => {
                 <li><a href="#!">Department</a></li>
                 <li><a href="#!">Status</a></li>
               </ul>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="toolbar-group">
-  <a class="dropdown-trigger btn-floating btn-small" href="#" data-target="toolbar-dropdown-sort"><i class="material-icons">sort</i></a>
-</div>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="toolbar-group"&gt;
+  &lt;a class="dropdown-trigger btn-floating btn-small" href="#" data-target="toolbar-dropdown-sort"&gt;&lt;i class="material-icons"&gt;sort&lt;/i&gt;&lt;/a&gt;
+&lt;/div&gt;
 
-<ul id="toolbar-dropdown-sort" class="dropdown-content">
-  <li><a href="#!">Name</a></li>
-  <li><a href="#!">Date</a></li>
-  <li><a href="#!">Priority</a></li>
-</ul></xmp>
-        </code></pre>
+&lt;ul id="toolbar-dropdown-sort" class="dropdown-content"&gt;
+  &lt;li&gt;&lt;a href="#!"&gt;Name&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#!"&gt;Date&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#!"&gt;Priority&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre></div>
               <p>Same <code class="language-javascript">M.Dropdown.init()</code>/<code class="language-javascript">getInstance()</code> API as on the <a href="dropdown.html">Dropdown</a> page - nothing toolbar-specific about it.</p>
             </div>
 
@@ -395,12 +381,10 @@ controls.addEventListener('buttonaction', (event) => {
                   <input class="toolbar-search-input" placeholder="Search..." />
                 </div>
               </div>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="toolbar-search">
-  <button class="toolbar-search-toggle"><i class="material-icons">search</i></button>
-  <input class="toolbar-search-input" placeholder="Search...">
-</div></xmp>
-        </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="toolbar-search"&gt;
+  &lt;button class="toolbar-search-toggle"&gt;&lt;i class="material-icons"&gt;search&lt;/i&gt;&lt;/button&gt;
+  &lt;input class="toolbar-search-input" placeholder="Search..."&gt;
+&lt;/div&gt;</code></pre></div>
             </div>
 
             <div id="overflow" class="section scrollspy">
@@ -428,15 +412,13 @@ controls.addEventListener('buttonaction', (event) => {
                   <a class="btn-floating btn-small"><i class="material-icons">refresh</i></a>
                 </div>
               </div>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="toolbar">
-  <div class="toolbar-group">
-    <a class="btn-floating btn-small"><i class="material-icons">home</i></a>
-    <a class="btn-floating btn-small"><i class="material-icons">search</i></a>
-    <!-- ...12 more... -->
-  </div>
-</div></xmp>
-        </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="toolbar"&gt;
+  &lt;div class="toolbar-group"&gt;
+    &lt;a class="btn-floating btn-small"&gt;&lt;i class="material-icons"&gt;home&lt;/i&gt;&lt;/a&gt;
+    &lt;a class="btn-floating btn-small"&gt;&lt;i class="material-icons"&gt;search&lt;/i&gt;&lt;/a&gt;
+    &lt;!-- ...12 more... --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
 
               <p>
                 Add <code class="language-html">toolbar-wrap</code> to drop to a new line instead of scrolling, if that suits the content better - same 14 buttons, same container
@@ -460,14 +442,12 @@ controls.addEventListener('buttonaction', (event) => {
                   <a class="btn-floating btn-small"><i class="material-icons">refresh</i></a>
                 </div>
               </div>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="toolbar toolbar-wrap">
-  <div class="toolbar-group">
-    <a class="btn-floating btn-small"><i class="material-icons">home</i></a>
-    <!-- ... -->
-  </div>
-</div></xmp>
-        </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="toolbar toolbar-wrap"&gt;
+  &lt;div class="toolbar-group"&gt;
+    &lt;a class="btn-floating btn-small"&gt;&lt;i class="material-icons"&gt;home&lt;/i&gt;&lt;/a&gt;
+    &lt;!-- ... --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
             </div>
 
             <div id="separator" class="section scrollspy">
@@ -492,19 +472,17 @@ controls.addEventListener('buttonaction', (event) => {
                   <a class="btn-floating btn-small"><i class="material-icons">link</i></a>
                 </div>
               </div>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="toolbar">
-  <div class="toolbar-group">
-    <a class="btn-floating btn-small"><i class="material-icons">format_bold</i></a>
-    <a class="btn-floating btn-small"><i class="material-icons">format_italic</i></a>
-  </div>
-  <div class="toolbar-separator"></div>
-  <div class="toolbar-group">
-    <a class="btn-floating btn-small"><i class="material-icons">format_align_left</i></a>
-    <!-- ... -->
-  </div>
-</div></xmp>
-        </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="toolbar"&gt;
+  &lt;div class="toolbar-group"&gt;
+    &lt;a class="btn-floating btn-small"&gt;&lt;i class="material-icons"&gt;format_bold&lt;/i&gt;&lt;/a&gt;
+    &lt;a class="btn-floating btn-small"&gt;&lt;i class="material-icons"&gt;format_italic&lt;/i&gt;&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class="toolbar-separator"&gt;&lt;/div&gt;
+  &lt;div class="toolbar-group"&gt;
+    &lt;a class="btn-floating btn-small"&gt;&lt;i class="material-icons"&gt;format_align_left&lt;/i&gt;&lt;/a&gt;
+    &lt;!-- ... --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
             </div>
 
             <div id="freeze" class="section scrollspy">
@@ -529,17 +507,15 @@ controls.addEventListener('buttonaction', (event) => {
                   <a class="btn-floating btn-small"><i class="material-icons">refresh</i></a>
                 </div>
               </div>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="toolbar">
-  <div class="toolbar-group">
-    <a class="btn-floating btn-small"><i class="material-icons">home</i></a>
-    <!-- ...more buttons, enough to overflow... -->
-  </div>
-  <div class="toolbar-group toolbar-freeze-right">
-    <a class="btn-floating btn-small"><i class="material-icons">refresh</i></a>
-  </div>
-</div></xmp>
-        </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="toolbar"&gt;
+  &lt;div class="toolbar-group"&gt;
+    &lt;a class="btn-floating btn-small"&gt;&lt;i class="material-icons"&gt;home&lt;/i&gt;&lt;/a&gt;
+    &lt;!-- ...more buttons, enough to overflow... --&gt;
+  &lt;/div&gt;
+  &lt;div class="toolbar-group toolbar-freeze-right"&gt;
+    &lt;a class="btn-floating btn-small"&gt;&lt;i class="material-icons"&gt;refresh&lt;/i&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
               <p>Same idea on the left with <code class="language-html">toolbar-freeze-left</code> instead.</p>
             </div>
 
@@ -548,10 +524,10 @@ controls.addEventListener('buttonaction', (event) => {
               <p>
                 Auto-initializes on every <code class="language-html">.toolbar</code> element via <a href="auto-init.html">Auto Init</a>, or explicitly:
               </p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">var elems = document.querySelectorAll('.toolbar');
-var instances = M.Toolbar.init(elems, options);</code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">var elems = document.querySelectorAll('.toolbar');
+var instances = M.Toolbar.init(elems, options);</code></pre></div>
               <p>Or with jQuery:</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">var instance = M.Toolbar.getInstance(elem);</code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">var instance = M.Toolbar.getInstance(elem);</code></pre></div>
             </div>
 
             <div id="method" class="section scrollspy">

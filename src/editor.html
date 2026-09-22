@@ -20,9 +20,9 @@
         <section id="setup" class="section scrollspy">
           <h3>Setup</h3>
           <p>Install <code>handlebars</code>, <code>prismjs</code>, and <code>tom-select</code> alongside <code>kmaterialize</code>. Editor loads the compiler and Prism only when initialized. Prism colors HTML, embedded CSS, and Handlebars expressions using the editor theme. The full Handlebars build is required; its runtime-only build cannot compile source text.</p>
-          <pre><span class="copyMessage" role="status">Copied!</span><button type="button" class="copyButton btn btn-icon text" aria-label="Copy code"><i class="material-icons" aria-hidden="true">content_copy</i></button><code class="language-bash copiedText">npm install kmaterialize handlebars prismjs tom-select</code></pre>
-          <pre><span class="copyMessage" role="status">Copied!</span><button type="button" class="copyButton btn btn-icon text" aria-label="Copy code"><i class="material-icons" aria-hidden="true">content_copy</i></button><code class="language-html copiedText">&lt;div id="template-editor"&gt;&lt;/div&gt;</code></pre>
-          <pre><span class="copyMessage" role="status">Copied!</span><button type="button" class="copyButton btn btn-icon text" aria-label="Copy code"><i class="material-icons" aria-hidden="true">content_copy</i></button><code class="language-typescript copiedText">import { Editor } from 'kmaterialize';
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-bash">npm install kmaterialize handlebars prismjs tom-select</code></pre></div>
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div id="template-editor"&gt;&lt;/div&gt;</code></pre></div>
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">import { Editor } from 'kmaterialize';
 import 'tom-select/dist/css/tom-select.default.css';
 import 'kmaterialize/dist/css/materialize.css';
 
@@ -35,14 +35,14 @@ const editor = Editor.init(document.querySelector('#template-editor'), {
   },
   onChange: template =&gt; { /* Save the edited source. */ }
 });
-await editor.ready;</code></pre>
+await editor.ready;</code></pre></div>
           <p>Selectors load Tom Select only when shown. Include its CSS before Materialize CSS. For a plain script page, load <code>tom-select.complete.min.js</code>, the full <code>handlebars.js</code> and a <a href="https://prismjs.com/">Prism</a> build containing markup, CSS, markup-templating, and Handlebars (with <code>data-manual</code>) before <code>materialize.js</code>, then call <code>M.Editor.init(host, options)</code>. Editor uses explicit initialization because its template and data belong to the application.</p>
         </section>
         <section id="tokens" class="section scrollspy">
           <h3>Data sources and tokens</h3>
           <p>The data selector appears when you supply <code>sources</code> or <code>loadSources</code>. Set <code>sourceSelect: false</code> to hide it. Pass Tom Select settings such as <code>placeholder</code>, <code>searchField</code>, <code>loadThrottle</code>, or <code>render</code> through <code>sourceSelect</code>; use <code>templateSelect</code> for the template selector. Editor owns the single-selection mode and <code>id</code>/<code>label</code> mapping.</p>
           <p>Pass <code>data</code> for one object, or <code>sources</code> for the dropdown. Each source supplies the root object used by both the token browser and preview. Switching sources preserves the template.</p>
-          <pre><span class="copyMessage" role="status">Copied!</span><button type="button" class="copyButton btn btn-icon text" aria-label="Copy code"><i class="material-icons" aria-hidden="true">content_copy</i></button><code class="language-typescript copiedText">const editor = Editor.init(host, {
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">const editor = Editor.init(host, {
   template: '&lt;p&gt;&#123;&#123;person.firstname}}&lt;/p&gt;',
   sourceId: 'person-a',
   sources: [
@@ -55,19 +55,19 @@ await editor.setSource('person-b');
 editor.setData({ person: { firstname: 'Jamie' } }); // Update the active source.
 editor.insertToken('person.firstname'); // Insert at the current selection.
 editor.insertToken(['items', '0', 'name']); // An array element.
-editor.insertToken(['person', 'display.name']); // A literal dotted key.</code></pre>
+editor.insertToken(['person', 'display.name']); // A literal dotted key.</code></pre></div>
           <p>Tokens insert root paths such as <code>&#123;&#123;person.firstname}}</code>. Inside an <code>each</code> or <code>with</code> block, use <code>&#123;&#123;@root.person.firstname}}</code> to refer back to root data, or <code>&#123;&#123;this}}</code> for the current item. See <a href="https://handlebarsjs.com/guide/expressions.html">Handlebars expressions and context</a>.</p>
-          <pre><span class="copyMessage" role="status">Copied!</span><button type="button" class="copyButton btn btn-icon text" aria-label="Copy code"><i class="material-icons" aria-hidden="true">content_copy</i></button><code class="language-handlebars copiedText">&lt;ul&gt;
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-handlebars">&lt;ul&gt;
   &#123;&#123;#each items}}
     &lt;li&gt;&#123;&#123;this}}&lt;/li&gt;
   &#123;&#123;/each}}
-&lt;/ul&gt;</code></pre>
+&lt;/ul&gt;</code></pre></div>
           <p>Use JSON-like data. Array items have extra indentation beneath their array token. Search matches field paths and sample values. The browser shows at most 1,000 entries and 13 levels; circular references are labeled and cannot be inserted. Empty sources show an empty state.</p>
         </section>
         <section id="templates" class="section scrollspy">
           <h3>Templates and backend loading</h3>
           <p>Provide <code>templates</code> to show the template selector. Each entry has an <code>id</code>, <code>label</code>, and optional <code>template</code> string. Use <code>templateId</code> for the initial selection. Without a template list, the existing <code>template</code> option works as before. Set <code>templateSelect: false</code> to hide the selector while keeping programmatic switching.</p>
-          <pre><span class="copyMessage" role="status">Copied!</span><button type="button" class="copyButton btn btn-icon text" aria-label="Copy code"><i class="material-icons" aria-hidden="true">content_copy</i></button><code class="language-typescript copiedText">const editor = Editor.init(host, {
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">const editor = Editor.init(host, {
   templates: [
     { id: 'card', label: 'Project card', template: '&lt;h1&gt;&#123;&#123;project.name}}&lt;/h1&gt;' },
     { id: 'email', label: 'Email', template: '&lt;p&gt;Hello &#123;&#123;person.firstname}}&lt;/p&gt;' }
@@ -82,10 +82,10 @@ await editor.ready;
 await editor.selectTemplate('email');
 editor.getTemplateId(); // 'email'
 editor.setTemplate('&lt;p&gt;Updated email&lt;/p&gt;'); // Edit the active template.
-await editor.selectTemplate('card'); // The email draft is retained.</code></pre>
+await editor.selectTemplate('card'); // The email draft is retained.</code></pre></div>
           <p>Switching keeps each template's draft and undo/redo history in this Editor instance, and places the cursor at the start with the editor scrolled to the top. It does not save to your server; use <code>onChange</code> or <code>editorchange</code> and <code>getTemplateId()</code> to save your active draft. Template switching emits a source change too.</p>
           <p>Use <code>loadTemplates(query, signal)</code> and <code>loadSources(query, signal)</code> to supply searchable lists. Entries can include content directly or omit it for <code>loadTemplate(id, signal)</code> and <code>loadData(id, signal)</code> to fetch on selection. The callbacks let your application control URLs, authentication, and response mapping.</p>
-          <pre><span class="copyMessage" role="status">Copied!</span><button type="button" class="copyButton btn btn-icon text" aria-label="Copy code"><i class="material-icons" aria-hidden="true">content_copy</i></button><code class="language-typescript copiedText">// Example API contract: list endpoints return [{ id, label }].
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">// Example API contract: list endpoints return [{ id, label }].
 // Template detail returns { template: "..." }; data detail returns a root object.
 async function getJson(url: string, signal: AbortSignal) {
   const response = await fetch(url, { signal });
@@ -110,13 +110,13 @@ const editor = Editor.init(host, {
     getJson(`/api/projects/${encodeURIComponent(id)}/data`, signal),
   onError: error =&gt; console.error(error)
 });
-await editor.ready; // Includes loading the initial template and data.</code></pre>
+await editor.ready; // Includes loading the initial template and data.</code></pre></div>
           <p>List loading preloads by default; set <code>preload: false</code> in the relevant selector settings to wait for a search. Selected content is cached for this instance, preserving local edits when revisited. Use <code>setTemplate()</code> or <code>setData()</code> to apply fresh content yourself. Switching again or destroying the editor aborts pending requests; stale results are ignored even if a loader ignores its signal. Load failures keep the current selection and preview and call <code>onError</code>. Programmatic selection failures reject their returned promise.</p>
         </section>
         <section id="helpers" class="section scrollspy">
           <h3>Custom helpers</h3>
           <p>Define synchronous Handlebars helpers directly in <code>Editor.init</code>. Configured helpers appear in a <strong>Functions</strong> section below the data tokens. Drag or click a function to insert its call; the cursor lands in its argument slot. Then insert a data token to build a call such as <code>&#123;&#123;capitalize person.firstname}}</code>. Dropping a data token inside an existing expression inserts just its path, replacing an argument under the pointer when appropriate. Helpers are local to that editor and can override helpers from its engine without changing the global Handlebars registry.</p>
-          <pre><span class="copyMessage" role="status">Copied!</span><button type="button" class="copyButton btn btn-icon text" aria-label="Copy code"><i class="material-icons" aria-hidden="true">content_copy</i></button><code class="language-typescript copiedText">const editor = Editor.init(host, {
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">const editor = Editor.init(host, {
   template: '&lt;h1&gt;&#123;&#123;uppercase person.firstname}}&lt;/h1&gt;&lt;p&gt;&#123;&#123;taskCount items}}&lt;/p&gt;',
   data: { person: { firstname: 'Alex' }, items: ['Design', 'Review'] },
   helpers: {
@@ -136,7 +136,7 @@ editor.setHelpers({
 await editor.render();
 
 editor.insertHelper('uppercase'); // Inserts a call with the cursor inside.
-editor.insertToken('person.firstname'); // Completes &#123;&#123;uppercase person.firstname}}.</code></pre>
+editor.insertToken('person.firstname'); // Completes &#123;&#123;uppercase person.firstname}}.</code></pre></div>
           <p>Regular helper return values are HTML-escaped. Block helpers receive Handlebars' normal options argument; use a regular function when you need the current <code>this</code> context. Helpers execute in your application script, while their rendered output appears in the preview. See <a href="https://handlebarsjs.com/api-reference/runtime-options.html">Handlebars runtime helpers</a>.</p>
         </section>
         <section id="api" class="section scrollspy">
@@ -162,7 +162,7 @@ editor.insertToken('person.firstname'); // Completes &#123;&#123;uppercase perso
               <tr><td><code>onChange / onRender / onError</code></td><td>None</td><td>Callbacks receiving source text, rendered HTML, or an Error respectively.</td></tr>
             </tbody>
           </table>
-          <pre><span class="copyMessage" role="status">Copied!</span><button type="button" class="copyButton btn btn-icon text" aria-label="Copy code"><i class="material-icons" aria-hidden="true">content_copy</i></button><code class="language-typescript copiedText">await editor.ready;
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">await editor.ready;
 editor.getTemplate();             // Current source, including expressions.
 editor.setTemplate(nextTemplate);
 editor.undo();                    // Undo the last source edit; returns true if applied.
@@ -175,19 +175,19 @@ await editor.selectTemplate('email');
 await editor.setSource('person-b');
 editor.setHelpers(nextHelpers);    // Replace local helpers and refresh.
 Editor.getInstance(host);
-editor.destroy();                  // Remove listeners and restore original host content.</code></pre>
+editor.destroy();                  // Remove listeners and restore original host content.</code></pre></div>
           <p>The host also emits a bubbling <code>editorchange</code> event with <code>detail.template</code>. <code>getHtml()</code> returns the compiled HTML, not sanitized output; use your application's HTML policy when displaying it elsewhere. Compiler loading failures reject <code>ready</code> and appear in the workspace.</p>
         </section>
         <section id="appearance" class="section scrollspy">
           <h3>Layout and preview</h3>
           <p>The editor follows the current Materialize theme. Set <code>--editor-height</code> on the host to change the workspace height. On screens below 700px, the preview moves below the source and tokens.</p>
-          <pre><span class="copyMessage" role="status">Copied!</span><button type="button" class="copyButton btn btn-icon text" aria-label="Copy code"><i class="material-icons" aria-hidden="true">content_copy</i></button><code class="language-css copiedText">#template-editor {
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-css">#template-editor {
   --editor-height: 720px;
-}</code></pre>
+}</code></pre></div>
           <p>To fill a parent div or a popup tab panel, add <code>editor-fill</code> to the editor host. The parent must have a defined height or an allocated flex height. The source, tokens, and preview share that space and scroll internally, including when the preview stacks below the input pane on small screens.</p>
-          <pre><span class="copyMessage" role="status">Copied!</span><button type="button" class="copyButton btn btn-icon text" aria-label="Copy code"><i class="material-icons" aria-hidden="true">content_copy</i></button><code class="language-html copiedText">&lt;div style="height: 600px"&gt;
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div style="height: 600px"&gt;
   &lt;div id="template-editor" class="editor-fill"&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre>
+&lt;/div&gt;</code></pre></div>
           <p>The preview is a separate white HTML page and honors template styles. Scripts, form submissions, and remote resources are blocked in the sandbox; inline CSS and data-URL images are supported. The preview cannot alter your application styles or DOM.</p>
         </section>
         <section id="spreadsheet-editor" class="section scrollspy">
@@ -207,7 +207,7 @@ editor.destroy();                  // Remove listeners and restore original host
         <section id="spreadsheet-editor-setup" class="section scrollspy">
           <h3>Setup and row mappings</h3>
           <p>Install <code>kmaterialize</code>, <code>handlebars</code>, <code>kspreadsheet</code>, <code>jsuites</code>, and <code>tom-select</code> if you use selectors. This variant loads kspreadsheet on demand and does not require Prism. For plain scripts, load jSuites and the kspreadsheet browser build exposing <code>jspreadsheet</code> before initializing.</p>
-          <pre><span class="copyMessage" role="status">Copied!</span><button type="button" class="copyButton btn btn-icon text" aria-label="Copy code"><i class="material-icons" aria-hidden="true">content_copy</i></button><code class="language-typescript copiedText">import { Editor } from 'kmaterialize';
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">import { Editor } from 'kmaterialize';
 import 'jsuites/dist/jsuites.css';
 import 'kspreadsheet/dist/jspreadsheet.css';
 import 'kspreadsheet/dist/jspreadsheet.themes.css';
@@ -241,7 +241,7 @@ editor.getSpreadsheetData(); // { headers: ['Artist', 'Estimate'], rows: [['Alex
 editor.getWorksheet();       // The live kspreadsheet worksheet instance.
 await editor.download('csv', 'shot-report');  // Downloads shot-report.csv with headers.
 await editor.download('xlsx', 'shot-report'); // Downloads shot-report.xlsx with headers.
-editor.undo();               // Undo a header, expression, or column change.</code></pre>
+editor.undo();               // Undo a header, expression, or column change.</code></pre></div>
           <p>Each column defines <code>header</code> (literal title), <code>value</code> (Handlebars expression or text), optional <code>width</code>, and optional <code>type</code>: <code>text</code> by default, <code>numeric</code>, or <code>checkbox</code>. Numeric columns produce numbers; checkbox columns accept true/false or 1/0. Missing fields produce empty text. Helpers and expressions are evaluated independently for every item without HTML escaping, because spreadsheet values are plain text.</p>
           <p>The token browser uses the first item as a sample, so <code>&#123;&#123;artist.firstname}}</code> refers to the current row's artist without an array index. Pass an array of objects with similar fields. Empty data produces zero generated rows; kspreadsheet keeps one blank display row. Invalid expressions or incompatible typed values show an error and keep the last valid result.</p>
           <p><code>download(format, filename?)</code> returns a promise that resolves when the file is generated and the browser download is triggered. The format defaults to <code>csv</code>; the filename defaults to the selected template's label. Pass a name with or without its extension. Downloads include headers and generated values, refresh pending edits first, and reject when the current mapping is invalid or the editor is destroyed. CSV uses commas, quoted fields where needed, and UTF-8 encoding. XLSX preserves numeric and boolean cell values. The method is available only in the spreadsheet variant.</p>
@@ -250,7 +250,7 @@ editor.undo();               // Undo a header, expression, or column change.</co
         <section id="spreadsheet-editor-templates" class="section scrollspy">
           <h3>Templates and backend data</h3>
           <p>The Tom Select options, searchable list callbacks, cached drafts, cancellation, and <code>selectTemplate()</code>/<code>setSource()</code> methods work in both variants. Spreadsheet template entries use <code>columns</code>; their <code>loadTemplate</code> callback can return a column array or serialized column JSON. Data sources and <code>loadData</code> return arrays of row objects.</p>
-          <pre><span class="copyMessage" role="status">Copied!</span><button type="button" class="copyButton btn btn-icon text" aria-label="Copy code"><i class="material-icons" aria-hidden="true">content_copy</i></button><code class="language-typescript copiedText">const editor = Editor.init(host, {
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">const editor = Editor.init(host, {
   variant: 'spreadsheet',
   templates: [
     { id: 'shots', label: 'Shot report', columns: [
@@ -272,7 +272,7 @@ editor.undo();               // Undo a header, expression, or column change.</co
   }
 });
 await editor.ready;
-await editor.selectTemplate('artists');</code></pre>
+await editor.selectTemplate('artists');</code></pre></div>
         </section>
       </div>
     </main>

@@ -5,7 +5,7 @@ import "./style.scss";
 //import { argbFromHex, themeFromSourceColor } from "@material/material-color-utilities";
 import { Themes } from "./themes";
 import { autocompleteDemoData } from "./data-autocomplete";
-import hljs from "highlight.js";
+import { codeSnippetsReady } from "./code-snippets";
 import * as M from "kmaterialize";
 import {
   Autocomplete,
@@ -57,10 +57,7 @@ for (const year of document.querySelectorAll<HTMLElement>('[data-current-year]')
 const themes = new Themes(document);
 themes.applyThemeProperties(themes.isDarkMode());
 
-function importCodeStyle(isDarkMode) {
-  if (isDarkMode) import("highlight.js/styles/atom-one-dark.min.css");
-  else import("highlight.js/styles/atom-one-light.min.css");
-}
+void codeSnippetsReady.catch(error => console.error("Could not initialize documentation code cards.", error));
 
 function rgb2hex(rgb: string) {
   if (/^#[0-9A-F]{6}$/i.test(rgb)) return rgb;
@@ -80,10 +77,6 @@ function is_touch_device() {
   } catch (e) {
     return false;
   }
-}
-
-function escapeHtml(unsafe) {
-  return unsafe.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
 }
 
 // The module is loaded at the end of <body>, so all page inputs already
@@ -290,7 +283,6 @@ document.addEventListener("DOMContentLoaded", () => {
   //---------------------------------------------------------------
   // Theme
   const isDarkMode = themes.isDarkMode();
-  importCodeStyle(isDarkMode);
   themes.applyThemeProperties(isDarkMode);
 
   function setBtnState(isDark: boolean) {
@@ -345,39 +337,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   //---------------------------------------------------------------
-
-  //------ Copy Button
-
-  // Each button finds its own .copiedText/.copyMessage via the shared <pre>
-  // ancestor, rather than pairing them up by matching index across three
-  // separate page-wide querySelectorAll arrays. The old array-index approach
-  // silently mis-paired (or crashed on undefined) as soon as a single block
-  // anywhere on the page had a mismatched count - which happened repeatedly
-  // in practice. DOM-relative lookup can't misalign this way.
-  document.querySelectorAll<HTMLElement>(".copyButton").forEach((btn) => {
-    const container = btn.closest("pre");
-    const textEl = container?.querySelector<HTMLElement>(".copiedText");
-    const msgEl = container?.querySelector<HTMLElement>(".copyMessage");
-    if (!container || !textEl || !msgEl) {
-      console.warn("Copy button missing a .copiedText/.copyMessage sibling in the same <pre>", btn);
-      return;
-    }
-    btn.addEventListener("click", () => {
-      navigator.clipboard.writeText(textEl.innerText);
-      msgEl.style.opacity = "1";
-      setTimeout(() => {
-        msgEl.style.opacity = "0";
-      }, 2000);
-    });
-  });
-
-  //------ Code Highlighting
-
-  document.querySelectorAll("pre code").forEach((el: HTMLElement) => {
-    const xmp = el.querySelector("xmp");
-    if (xmp) el.innerHTML = escapeHtml(xmp.innerHTML);
-    hljs.highlightElement(el);
-  });
 
   //------  Materialize Components
 

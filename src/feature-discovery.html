@@ -34,29 +34,27 @@
                 </div>
               </div>
 
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><!-- Element Showed -->
-<a id="menu" class="waves-effect waves-light btn btn-floating" ><i class="material-icons">menu</i></a>
-<!-- Tap Target Structure -->
-<div class="tap-target" data-target="menu">
-  <div class="tap-target-content">
-    <h5>Title</h5>
-    <p>A bunch of text</p>
-  </div>
-</div></xmp>
-            </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;!-- Element Showed --&gt;
+&lt;a id="menu" class="waves-effect waves-light btn btn-floating" &gt;&lt;i class="material-icons"&gt;menu&lt;/i&gt;&lt;/a&gt;
+&lt;!-- Tap Target Structure --&gt;
+&lt;div class="tap-target" data-target="menu"&gt;
+  &lt;div class="tap-target-content"&gt;
+    &lt;h5&gt;Title&lt;/h5&gt;
+    &lt;p&gt;A bunch of text&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
             </div>
 
             <div id="initialization" class="scrollspy section">
               <h3 class="header">Initialization</h3>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   document.addEventListener('DOMContentLoaded', function() {
     const elems = document.querySelectorAll('.tap-target');
     const instances = TapTarget.init(elems, {
       // specify options here
     });
   });
-            </code></pre>
+            </code></pre></div>
             </div>
 
             <div id="options" class="scrollspy section">
@@ -92,28 +90,28 @@
               <h3 class="header">Methods</h3>
               <blockquote>
                 <p>All the methods are called on the plugin instance. You can get the plugin instance like this:</p>
-                <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
                 const instance = TapTarget.getInstance(elem);
-              </code></pre>
+              </code></pre></div>
               </blockquote>
               <h5 class="method-header">.open();</h5>
               <p>Open Tap Target</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   instance.next();
   instance.next(3); // Move next n times.
-          </code></pre>
+          </code></pre></div>
 
               <h5 class="method-header">.close();</h5>
               <p>Close Tap Target</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   instance.close();
-          </code></pre>
+          </code></pre></div>
 
               <h5 class="method-header">.destroy();</h5>
               <p>Destroy plugin instance and teardown</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   instance.destroy();
-          </code></pre>
+          </code></pre></div>
             </div>
 
             <div id="properties" class="scrollspy section">

@@ -95,42 +95,42 @@
                   </article>
                 </div>
               </div>
-              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><!-- Top edge -->
-<article class="kanban-card kanban-card-accent kanban-card-accent-top"
-  style="--kanban-card-accent: #7c4dff">
-  <h4 class="kanban-card-title">Top accent</h4>
-</article>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;!-- Top edge --&gt;
+&lt;article class="kanban-card kanban-card-accent kanban-card-accent-top"
+  style="--kanban-card-accent: #7c4dff"&gt;
+  &lt;h4 class="kanban-card-title"&gt;Top accent&lt;/h4&gt;
+&lt;/article&gt;
 
-<!-- Right edge -->
-<article class="kanban-card kanban-card-accent kanban-card-accent-right"
-  style="--kanban-card-accent: #00897b">
-  <h4 class="kanban-card-title">Right accent</h4>
-</article>
+&lt;!-- Right edge --&gt;
+&lt;article class="kanban-card kanban-card-accent kanban-card-accent-right"
+  style="--kanban-card-accent: #00897b"&gt;
+  &lt;h4 class="kanban-card-title"&gt;Right accent&lt;/h4&gt;
+&lt;/article&gt;
 
-<!-- Bottom edge (default) -->
-<article class="kanban-card kanban-card-accent kanban-card-accent-bottom"
-  style="--kanban-card-accent: #ef6c00">
-  <h4 class="kanban-card-title">Bottom accent</h4>
-</article>
+&lt;!-- Bottom edge (default) --&gt;
+&lt;article class="kanban-card kanban-card-accent kanban-card-accent-bottom"
+  style="--kanban-card-accent: #ef6c00"&gt;
+  &lt;h4 class="kanban-card-title"&gt;Bottom accent&lt;/h4&gt;
+&lt;/article&gt;
 
-<!-- Left edge -->
-<article class="kanban-card kanban-card-accent kanban-card-accent-left"
-  style="--kanban-card-accent: #d81b60">
-  <h4 class="kanban-card-title">Left accent</h4>
-</article></xmp></code></pre>
-              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText"><xmp><div class="kanban-board" aria-label="Project work board">
-  <section class="kanban-column">
-    <header class="kanban-column-header">
-      <h3 class="kanban-column-title">Backlog</h3>
-      <span class="kanban-column-count">1</span>
-    </header>
-    <div class="kanban-column-body">
-      <article class="kanban-card" data-kanban-card="task">
-        <h4 class="kanban-card-title">A task</h4>
-      </article>
-    </div>
-  </section>
-</div></xmp></code></pre>
+&lt;!-- Left edge --&gt;
+&lt;article class="kanban-card kanban-card-accent kanban-card-accent-left"
+  style="--kanban-card-accent: #d81b60"&gt;
+  &lt;h4 class="kanban-card-title"&gt;Left accent&lt;/h4&gt;
+&lt;/article&gt;</code></pre></div>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="kanban-board" aria-label="Project work board"&gt;
+  &lt;section class="kanban-column"&gt;
+    &lt;header class="kanban-column-header"&gt;
+      &lt;h3 class="kanban-column-title"&gt;Backlog&lt;/h3&gt;
+      &lt;span class="kanban-column-count"&gt;1&lt;/span&gt;
+    &lt;/header&gt;
+    &lt;div class="kanban-column-body"&gt;
+      &lt;article class="kanban-card" data-kanban-card="task"&gt;
+        &lt;h4 class="kanban-card-title"&gt;A task&lt;/h4&gt;
+      &lt;/article&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/div&gt;</code></pre></div>
             </div>
 
             <section class="section">
@@ -147,11 +147,11 @@
                   <tr><td>onMove</td><td>Function</td><td>undefined</td><td>Called after a card moves to another column.</td></tr>
                 </tbody>
               </table>
-              <pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText"><xmp>Kanban.init(document.querySelector('.kanban-board'), {
-  onMove: ({ card, from, to }) => {
-    console.log(`${card.dataset.kanbanCard}: ${from} → ${to}`);
-  }
-});</xmp></code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">Kanban.init(document.querySelector('.kanban-board'), &#123;
+  onMove: (&#123; card, from, to &#125;) =&gt; &#123;
+    console.log(`$&#123;card.dataset.kanbanCard&#125;: $&#123;from&#125; → $&#123;to&#125;`);
+  &#125;
+&#125;);</code></pre></div>
             </div>
           </div>
           <div class="col hide-on-small-only m3 xl3">

@@ -453,17 +453,6 @@ pre {
   position: relative;
   font-size: 0.85rem;
 }
-pre:has(code) {
-  border: 1px solid #8888;
-  background-color: #8881;
-  overflow: auto;
-  border-radius: 3px;
-}
-
-.directory-markup {
-  line-height: 1.1rem !important;
-}
-
 :not(pre) > code[class*="language-"] {
   padding: 0.1em 0.25em;
   border: solid 1px var(--md-sys-color-outline-variant);
@@ -475,27 +464,10 @@ pre:has(code) {
   color: var(--md-sys-color-on-background);
 }
 
-// copy code icons
-.copyMessage,
-.copyButton {
-  color: var(--md-sys-color-on-surface-variant);
-  position: absolute;
-  z-index: 2;
-}
-
-.copyMessage {
-  font-size: 14px;
-  transition: all 0.2s ease-in;
-  opacity: 0;
-  right: 45px;
-  top: 15px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-}
-
-.copyButton {
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
+// On the Code page, distinguish instructional snippets from the live examples.
+.code-docs .card.docs-code {
+    --code-card-background: #1e3446;
+    --code-card-border-color: #486478;
 }
 
 // Footer

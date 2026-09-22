@@ -55,16 +55,16 @@
 <tr><td>Page or card</td><td>surface</td><td>on-surface</td></tr>
 <tr><td>Secondary surface</td><td>surface-variant</td><td>on-surface-variant</td></tr>
 <tr><td>Error message</td><td>error-container</td><td>on-error-container</td></tr>
-</tbody></table><p>Use background classes and their matching <code>-text</code> classes together. An <code>on-*</code> role is the foreground intended for that background.</p><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- Theme-aware colors, inherited from the nearest theme scope. --&gt;
+</tbody></table><p>Use background classes and their matching <code>-text</code> classes together. An <code>on-*</code> role is the foreground intended for that background.</p><div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;!-- Theme-aware colors, inherited from the nearest theme scope. --&gt;
 &lt;div class=&quot;card-panel primary-container on-primary-container-text&quot;&gt;
   A soft accent panel with its matching text color.
 &lt;/div&gt;
-&lt;button type=&quot;button&quot; class=&quot;btn filled&quot;&gt;Primary action&lt;/button&gt;</code></pre><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-css copiedText">/* The same roles work in your own CSS. */
+&lt;button type=&quot;button&quot; class=&quot;btn filled&quot;&gt;Primary action&lt;/button&gt;</code></pre></div><div class="code-card docs-code no-autoinit"><pre><code class="language-css">/* The same roles work in your own CSS. */
 .my-panel {
   background: var(--md-sys-color-surface);
   color: var(--md-sys-color-on-surface);
   border: 1px solid var(--md-sys-color-outline-variant);
-}</code></pre></section><section id="generate-theme" class="section scrollspy"><h3>Generate a palette</h3><p>Install <code>@material/material-color-utilities</code> (already included in these docs). These examples use the package’s <a href="https://github.com/material-foundation/material-color-utilities/tree/main/typescript" target="_blank" rel="noopener">TypeScript theme helpers</a>.</p><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">// npm install @material/material-color-utilities
+}</code></pre></div></section><section id="generate-theme" class="section scrollspy"><h3>Generate a palette</h3><p>Install <code>@material/material-color-utilities</code> (already included in these docs). These examples use the package’s <a href="https://github.com/material-foundation/material-color-utilities/tree/main/typescript" target="_blank" rel="noopener">TypeScript theme helpers</a>.</p><div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">// npm install @material/material-color-utilities
 import { argbFromHex, themeFromSourceColor, applyTheme } from &#x27;@material/material-color-utilities&#x27;;
 
 // 1. Convert a source hex color to the library&#x27;s ARGB representation.
@@ -72,7 +72,7 @@ import { argbFromHex, themeFromSourceColor, applyTheme } from &#x27;@material/ma
 const theme = themeFromSourceColor(argbFromHex(&#x27;#6750A4&#x27;));
 
 // 3. Write --md-sys-color-* CSS variables onto the target.
-applyTheme(theme, { target: document.body, dark: false });</code></pre><p>The source color is a seed, so the generated primary color may differ from the exact hex you provided. <code>applyTheme</code> writes variables; elements must use those variables or Material color classes to show the result.</p></section><section id="theme-playground" class="section scrollspy"><h3>Try page, card, and section themes</h3><p>Use the color picker to choose a source color, press Save, then choose a mode and target. Try different colors for the card and section to compare them with the page. A locally themed element keeps its palette until you apply a new one or reset it.</p><div class="color-theme-controls">
+applyTheme(theme, { target: document.body, dark: false });</code></pre></div><p>The source color is a seed, so the generated primary color may differ from the exact hex you provided. <code>applyTheme</code> writes variables; elements must use those variables or Material color classes to show the result.</p></section><section id="theme-playground" class="section scrollspy"><h3>Try page, card, and section themes</h3><p>Use the color picker to choose a source color, press Save, then choose a mode and target. Try different colors for the card and section to compare them with the page. A locally themed element keeps its palette until you apply a new one or reset it.</p><div class="color-theme-controls">
   <label for="theme-demo-seed">Source color <input id="theme-demo-seed" type="color" data-color-picker="pickr" data-color-theme="nano" data-color-opacity="false" value="#6750a4"></label>
   <label><input id="theme-demo-dark" type="checkbox"><span>Dark mode</span></label>
 </div>
@@ -93,7 +93,7 @@ applyTheme(theme, { target: document.body, dark: false });</code></pre><p>The so
   <div class="color-theme-note">This panel inherits the section’s theme.</div>
   <button type="button" class="btn filled">Section action</button>
   <button type="button" class="btn outlined">Another action</button>
-</section></section><section id="page-theme" class="section scrollspy"><h3>Change the whole page</h3><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">const theme = themeFromSourceColor(argbFromHex(&#x27;#006B5F&#x27;));
+</section></section><section id="page-theme" class="section scrollspy"><h3>Change the whole page</h3><div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">const theme = themeFromSourceColor(argbFromHex(&#x27;#006B5F&#x27;));
 
 function setPageMode(dark: boolean) {
   applyTheme(theme, { target: document.body, dark });
@@ -103,18 +103,18 @@ function setPageMode(dark: boolean) {
 }
 
 setPageMode(window.matchMedia(&#x27;(prefers-color-scheme: dark)&#x27;).matches);
-// Call setPageMode(true) or setPageMode(false) from your own theme toggle.</code></pre><p>Use <code>document.body</code> consistently when that is where your application writes its palette. Variables on <code>body</code> override inherited values from <code>html</code>. Changing only the <code>theme</code> attribute does not regenerate variables written by <code>applyTheme</code>; reapply the matching scheme too.</p>
-<p>For this documentation project, its <code>Themes</code> helper also saves the source color and mode in local storage:</p><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">// This helper belongs to the documentation project; it is not a library export.
+// Call setPageMode(true) or setPageMode(false) from your own theme toggle.</code></pre></div><p>Use <code>document.body</code> consistently when that is where your application writes its palette. Variables on <code>body</code> override inherited values from <code>html</code>. Changing only the <code>theme</code> attribute does not regenerate variables written by <code>applyTheme</code>; reapply the matching scheme too.</p>
+<p>For this documentation project, its <code>Themes</code> helper also saves the source color and mode in local storage:</p><div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">// This helper belongs to the documentation project; it is not a library export.
 import { Themes } from &#x27;./themes&#x27;;
 
 const themes = new Themes(document);
 themes.setThemePrimaryColor(&#x27;#006B5F&#x27;);
 themes.setDarkMode();
-// themes.setLightMode();</code></pre></section><section id="scoped-theme" class="section scrollspy"><h3>Theme a card or another element</h3><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;!-- The palette is local to this element and its descendants. --&gt;
+// themes.setLightMode();</code></pre></div></section><section id="scoped-theme" class="section scrollspy"><h3>Theme a card or another element</h3><div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;!-- The palette is local to this element and its descendants. --&gt;
 &lt;div id=&quot;project-card&quot; class=&quot;card-panel surface on-surface-text&quot;&gt;
   &lt;h5&gt;Project card&lt;/h5&gt;
   &lt;button type=&quot;button&quot; class=&quot;btn filled&quot;&gt;Open project&lt;/button&gt;
-&lt;/div&gt;</code></pre><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">const card = document.querySelector&lt;HTMLElement&gt;(&#x27;#project-card&#x27;)!;
+&lt;/div&gt;</code></pre></div><div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">const card = document.querySelector&lt;HTMLElement&gt;(&#x27;#project-card&#x27;)!;
 const cardTheme = themeFromSourceColor(argbFromHex(&#x27;#B15C00&#x27;));
 
 applyTheme(cardTheme, { target: card, dark: false });
@@ -122,19 +122,19 @@ card.style.colorScheme = &#x27;light&#x27;;
 
 // Use the same approach for a section, toolbar, dialog, or button.
 // Applying to a wrapper also themes the children inside it.
-// A button can be targeted directly with applyTheme(theme, { target: button, dark: false }).</code></pre><p>CSS variables inherit downward, so a local palette does not affect siblings or parents. To follow page mode, reapply each local palette with the new <code>dark</code> value when your theme toggle changes.</p>
-<p>A dropdown or tooltip appended to <code>document.body</code> inherits the page palette. To match a themed card, render it inside that scope where the component supports it, or apply the card palette to the popup itself.</p><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">// Return a locally themed element to the inherited page palette.
+// A button can be targeted directly with applyTheme(theme, { target: button, dark: false }).</code></pre></div><p>CSS variables inherit downward, so a local palette does not affect siblings or parents. To follow page mode, reapply each local palette with the new <code>dark</code> value when your theme toggle changes.</p>
+<p>A dropdown or tooltip appended to <code>document.body</code> inherits the page palette. To match a themed card, render it inside that scope where the component supports it, or apply the card palette to the popup itself.</p><div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">// Return a locally themed element to the inherited page palette.
 for (const property of Array.from(card.style)) {
   if (property.startsWith(&#x27;--md-sys-color-&#x27;)) card.style.removeProperty(property);
 }
-card.style.removeProperty(&#x27;color-scheme&#x27;);</code></pre></section><section id="single-color" class="section scrollspy"><h3>Change only one element color</h3><p>If you only need a different accent on one component, use another role such as <code>secondary-container</code>, or override a matching token pair locally. A token override does not generate a full palette or a separate dark scheme.</p><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">&lt;div class=&quot;card-panel secondary-container on-secondary-container-text&quot;&gt;
+card.style.removeProperty(&#x27;color-scheme&#x27;);</code></pre></div></section><section id="single-color" class="section scrollspy"><h3>Change only one element color</h3><p>If you only need a different accent on one component, use another role such as <code>secondary-container</code>, or override a matching token pair locally. A token override does not generate a full palette or a separate dark scheme.</p><div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class=&quot;card-panel secondary-container on-secondary-container-text&quot;&gt;
   Uses the existing secondary container colors.
 &lt;/div&gt;
 &lt;button type=&quot;button&quot; class=&quot;btn filled&quot;
   style=&quot;--md-sys-color-primary: #285943; --md-sys-color-on-primary: #ffffff;&quot;&gt;
   Local green action
-&lt;/button&gt;</code></pre><p>Prefer generated schemes for light/dark support. If you choose custom pairs, verify their text contrast in every state. Setting <code>--md-sys-color-primary</code> alone does not update <code>on-primary</code>, container colors, or the rest of the palette.</p>
-<details><summary>Live preview TypeScript</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-typescript copiedText">import {
+&lt;/button&gt;</code></pre></div><p>Prefer generated schemes for light/dark support. If you choose custom pairs, verify their text contrast in every state. Setting <code>--md-sys-color-primary</code> alone does not update <code>on-primary</code>, container colors, or the rest of the palette.</p>
+<details><summary>Live preview TypeScript</summary><div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">import {
   applyTheme,
   argbFromHex,
   themeFromSourceColor,
@@ -197,7 +197,7 @@ document.querySelector(&quot;#theme-demo-reset&quot;)!.addEventListener(&quot;cl
   dark.checked = isDark;
   status.textContent =
     &quot;Saved page theme restored. Card and section inherit it again.&quot;;
-});</code></pre></details><details><summary>Live preview SCSS</summary><pre><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">.color-theme-controls {
+});</code></pre></div></details><details><summary>Live preview SCSS</summary><div class="code-card docs-code no-autoinit"><pre><code class="language-scss">.color-theme-controls {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -234,7 +234,7 @@ document.querySelector(&quot;#theme-demo-reset&quot;)!.addEventListener(&quot;cl
   background: var(--md-sys-color-primary-container);
   color: var(--md-sys-color-on-primary-container);
   margin-block: 16px;
-}</code></pre></details></section>
+}</code></pre></div></details></section>
             <div id="color-usage" class="section scrollspy">
               <h3 class="header">Fixed color classes</h3>
               <p class="caption">
@@ -247,9 +247,7 @@ document.querySelector(&quot;#theme-demo-reset&quot;)!.addEventListener(&quot;cl
                   <div class="col s12 m9">
                     <p>To apply a background color, just add the color name and light/darkness as a class to the element.</p>
                     <div class="card-panel teal lighten-2">This is a card panel with a teal lighten-2 class</div>
-                    <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="card-panel teal lighten-2">This is a card panel with a teal lighten-2 class</div></xmp>
-              </code></pre>
+                    <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="card-panel teal lighten-2"&gt;This is a card panel with a teal lighten-2 class&lt;/div&gt;</code></pre></div>
                   </div>
                 </div>
               </section>
@@ -265,11 +263,9 @@ document.querySelector(&quot;#theme-demo-reset&quot;)!.addEventListener(&quot;cl
                   <div class="card-panel">
                     <span class="blue-text text-darken-2">This is a card panel with dark blue text</span>
                   </div>
-                  <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="card-panel">
-  <span class="blue-text text-darken-2">This is a card panel with dark blue text</span>
-</div></xmp>
-              </code></pre>
+                  <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="card-panel"&gt;
+  &lt;span class="blue-text text-darken-2"&gt;This is a card panel with dark blue text&lt;/span&gt;
+&lt;/div&gt;</code></pre></div>
                 </div>
               </div>
             </div>
@@ -278,17 +274,17 @@ document.querySelector(&quot;#theme-demo-reset&quot;)!.addEventListener(&quot;cl
             <div id="sass" class="section scrollspy">
               <h3 class="header">Sass</h3>
               <p>For background colors, you can apply the color simply by extending the classes like the example below.</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-scss">
   .ilike-blue-container {
     @extend .blue, .lighten-4;
   }
-        </code></pre>
+        </code></pre></div>
               <p>For changing text color, you can apply the color simply by extending the classes like the example below.</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-scss copiedText">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-scss">
   .ilike-blue-container {
     @extend .blue-text, .text-lighten-4;
   }
-        </code></pre>
+        </code></pre></div>
             </div>
             <div id="palette" class="section scrollspy">
               <h3 class="header">Color Palette</h3>
@@ -626,11 +622,9 @@ document.querySelector(&quot;#theme-demo-reset&quot;)!.addEventListener(&quot;cl
                   <div class="card-panel amber-border" style="border: 3px solid;">amber-border</div>
                 </div>
               </div>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="card-panel teal-border darken-2" style="border: 3px solid;">teal-border darken-2</div>
-<div class="card-panel red-border accent-3" style="border: 3px solid;">red-border accent-3</div>
-<div class="card-panel amber-border" style="border: 3px solid;">amber-border</div></xmp>
-        </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="card-panel teal-border darken-2" style="border: 3px solid;"&gt;teal-border darken-2&lt;/div&gt;
+&lt;div class="card-panel red-border accent-3" style="border: 3px solid;"&gt;red-border accent-3&lt;/div&gt;
+&lt;div class="card-panel amber-border" style="border: 3px solid;"&gt;amber-border&lt;/div&gt;</code></pre></div>
             </div>
 
             <div id="scheme-colors" class="section scrollspy">
@@ -643,17 +637,13 @@ document.querySelector(&quot;#theme-demo-reset&quot;)!.addEventListener(&quot;cl
               <div class="card-panel light-mode-indigo dark-mode-amber lighten-2-light-mode darken-2-dark-mode">
                 Indigo lighten-2 in light mode, amber darken-2 in dark mode - switch your system's appearance to see it change.
               </div>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="card-panel light-mode-indigo dark-mode-amber lighten-2-light-mode darken-2-dark-mode">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="card-panel light-mode-indigo dark-mode-amber lighten-2-light-mode darken-2-dark-mode"&gt;
   Indigo lighten-2 in light mode, amber darken-2 in dark mode
-</div></xmp>
-        </code></pre>
+&lt;/div&gt;</code></pre></div>
               <p>The base color (no shade) is simpler - no extra suffix needed:</p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="card-panel light-mode-red dark-mode-blue">
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="card-panel light-mode-red dark-mode-blue"&gt;
   Plain red in light mode, plain blue in dark mode
-</div></xmp>
-        </code></pre>
+&lt;/div&gt;</code></pre></div>
               <p>Text and border follow the same pattern: <code class="language-html">light-mode-*-text</code>/<code class="language-html">dark-mode-*-text</code> and <code class="language-html">light-mode-*-border</code>/<code class="language-html">dark-mode-*-border</code>.</p>
             </div>
 
@@ -663,10 +653,8 @@ document.querySelector(&quot;#theme-demo-reset&quot;)!.addEventListener(&quot;cl
                 30 ready-made two-color gradients, each named <code class="language-html">gradient-45deg-&lt;start&gt;-&lt;end&gt;</code>. Add
                 <code class="language-html">gradient-shadow</code> alongside one for a drop shadow tinted to match the gradient's end color (like the two below).
               </p>
-              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><div class="gradient-45deg-purple-pink" style="height: 80px;"></div>
-<div class="gradient-45deg-orange-deep-orange gradient-shadow" style="height: 80px;"></div></xmp>
-        </code></pre>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="gradient-45deg-purple-pink" style="height: 80px;"&gt;&lt;/div&gt;
+&lt;div class="gradient-45deg-orange-deep-orange gradient-shadow" style="height: 80px;"&gt;&lt;/div&gt;</code></pre></div>
 
               <div class="row">
                 <div class="col s6 m3">

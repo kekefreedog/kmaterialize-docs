@@ -57,34 +57,32 @@
           <p>The chevron smoothly rotates when a section opens or closes. Rapid clicks reverse the animation smoothly, and nested sections keep their own arrow state. The animation is disabled when reduced motion is preferred. This behavior is included in kmaterialize; no extra markup or JavaScript is needed.</p>
           <p>To customize the motion, set <code>--collapsible-arrow-duration</code> (default <code>300ms</code>) or <code>--collapsible-arrow-easing</code> on the collapsible.</p>
 
-          <pre style="padding-top: 0px;"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><ul class="collapsible">
-  <li>
-    <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-    <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-  </li>
-  <li>
-    <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-    <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-  </li>
-  <li>
-    <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-    <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-  </li>
-</ul></xmp>
-          </code></pre>
+          <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;ul class="collapsible"&gt;
+  &lt;li&gt;
+    &lt;div class="collapsible-header"&gt;&lt;i class="material-icons"&gt;filter_drama&lt;/i&gt;First&lt;/div&gt;
+    &lt;div class="collapsible-body"&gt;&lt;p&gt;Lorem ipsum dolor sit amet.&lt;/p&gt;&lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;div class="collapsible-header"&gt;&lt;i class="material-icons"&gt;place&lt;/i&gt;Second&lt;/div&gt;
+    &lt;div class="collapsible-body"&gt;&lt;p&gt;Lorem ipsum dolor sit amet.&lt;/p&gt;&lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;div class="collapsible-header"&gt;&lt;i class="material-icons"&gt;whatshot&lt;/i&gt;Third&lt;/div&gt;
+    &lt;div class="collapsible-body"&gt;&lt;p&gt;Lorem ipsum dolor sit amet.&lt;/p&gt;&lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre></div>
       </div>
 
       <div id="initialization" class="section scrollspy">
         <h3 class="header">Initialization</h3>
-        <pre style="padding-top: 0px;"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+        <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   document.addEventListener('DOMContentLoaded', function() {
     const elems = document.querySelectorAll('.collapsible');
     const instances = Collapsible.init(elems, {
       // specify options here
     });
   });
-          </code></pre>
+          </code></pre></div>
 
         
         
@@ -125,11 +123,9 @@
             </div>
           </li>
         </ul>
-        <pre style="padding-top: 0px;"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><li class="active">
-  <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-</li></xmp>
-          </code></pre>
+        <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;li class="active"&gt;
+  &lt;div class="collapsible-header"&gt;&lt;i class="material-icons"&gt;place&lt;/i&gt;Second&lt;/div&gt;
+&lt;/li&gt;</code></pre></div>
       </div>
 
       <div id="options" class="scrollspy section">
@@ -202,9 +198,9 @@
 
         <blockquote>
           <p>All the methods are called on the plugin instance. You can get the plugin instance like this: </p>
-            <pre style="padding-top: 0px;"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+            <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
                 const instance = Collapsible.getInstance(elem);
-              </code></pre>
+              </code></pre></div>
         </blockquote>
         <h5 class="method-header">
           .open();
@@ -213,9 +209,9 @@
         <h6>Arguments</h6>
         <p>
           <b>Integer:</b> Nth section to open.</p>
-        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+        <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
 instance.open(3);
-      </code></pre>
+      </code></pre></div>
         
 
         <h5 class="method-header">
@@ -225,18 +221,18 @@ instance.open(3);
         <h6>Arguments</h6>
         <p>
           <b>Integer:</b> Nth section to close.</p>
-        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+        <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
 instance.close(3);
-      </code></pre>
+      </code></pre></div>
         
 
         <h5 class="method-header">
           .destroy();
         </h5>
         <p>Destroy plugin instance and teardown</p>
-        <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+        <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
 instance.destroy();
-      </code></pre>
+      </code></pre></div>
         
         
 
@@ -351,15 +347,13 @@ instance.destroy();
             </ul>
           </div>
           <div class="col s12 m9 offset-m3">
-            <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><ul class="collapsible expandable"></xmp>
-            </code></pre>
-            <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+            <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;ul class="collapsible expandable"&gt;</code></pre></div>
+            <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
 const elem = document.querySelector('.collapsible.expandable');
 const instance = Collapsible.init(elem, {
   accordion: false
 });
-            </code></pre>
+            </code></pre></div>
           </div>
         </div>
       </div>
@@ -401,9 +395,7 @@ const instance = Collapsible.init(elem, {
             </ul>
           </div>
           <div class="col s12 m9 offset-m3">
-            <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
-<xmp><ul class="collapsible popout"></xmp>
-            </code></pre>
+            <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;ul class="collapsible popout"&gt;</code></pre></div>
           </div>
         </div>
       </div>
