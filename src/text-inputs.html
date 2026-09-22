@@ -613,39 +613,53 @@
             <div id="password-toggle" class="section scrollspy">
               <h3 class="header">Password Show/Hide Toggle</h3>
               <p>
-                <code class="language-html">PasswordInput</code> adds a show/hide eye icon to a password field - no third-party dependency, just
-                Materialize's own <code class="language-html">.suffix</code> icon-slot convention. Opt in with
-                <code class="language-html">data-password-toggle</code> on the input and <code class="language-html">data-password-toggle-icon</code>
-                on the suffix div.
+                Add <code>data-password-toggle</code> to the input and <code>data-password-toggle-icon</code>
+                to a suffix button, then initialize <code>PasswordInput</code>. Click the eye or focus the button
+                and press Enter or Space to show or hide the password. Its value and selection stay unchanged.
               </p>
               <div class="row">
-                <form class="col s12">
+                <form class="s12">
                   <div class="input-field">
-                    <input id="password-toggle-example" type="password" class="validate" data-password-toggle placeholder=" " />
+                    <button type="button" class="suffix btn-flat p-0 transparent screen-flex screen-center on-surface-variant-text waves-effect waves-circle" data-password-toggle-icon aria-label="Show password">
+                      <i class="material-icons" aria-hidden="true">visibility</i>
+                    </button>
+                    <input id="password-toggle-example" type="password" class="validate" data-password-toggle placeholder=" " value="Example password" autocomplete="off" />
                     <label for="password-toggle-example">Password</label>
-                    <div class="suffix cursor-pointer waves-effect waves-circle" data-password-toggle-icon>
-                      <i class="material-icons">visibility</i>
-                    </div>
                   </div>
                 </form>
               </div>
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-html copiedText">
 <xmp><div class="input-field">
+  <button type="button" class="suffix btn-flat p-0 transparent screen-flex screen-center on-surface-variant-text waves-effect waves-circle" data-password-toggle-icon aria-label="Show password">
+    <i class="material-icons" aria-hidden="true">visibility</i>
+  </button>
   <input id="password-toggle-example" type="password" class="validate" data-password-toggle placeholder=" ">
   <label for="password-toggle-example">Password</label>
-  <div class="suffix cursor-pointer waves-effect waves-circle" data-password-toggle-icon>
-    <i class="material-icons">visibility</i>
-  </div>
 </div></xmp>
               </code></pre>
 
               <h5>Initialization</h5>
               <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
-  document.addEventListener('DOMContentLoaded', function() {
-    const elems = document.querySelectorAll('input[data-password-toggle]');
-    const instances = PasswordInput.init(elems);
-  });
-        </code></pre>
+import { PasswordInput } from 'kmaterialize';
+
+const instances = PasswordInput.init(document.querySelectorAll('input[data-password-toggle]'));
+              </code></pre>
+              <p>
+                Initialization updates the icon, <code>aria-label</code>, <code>aria-pressed</code>, and
+                <code>aria-controls</code>. Disabled inputs cannot be revealed; readonly inputs can.
+                Native buttons support keyboard activation automatically. Existing suffix wrappers remain supported.
+              </p>
+              <h5>Custom labels and lifecycle</h5>
+              <pre style="padding-top: 0px"><span class="copyMessage">Copied!</span><i class="material-icons copyButton">content_copy</i><code class="language-javascript copiedText">
+const input = document.querySelector('#password-toggle-example');
+const instance = PasswordInput.init(input, {
+  showLabel: 'Show password',
+  hideLabel: 'Hide password'
+});
+
+instance.toggle(); // Show or hide without changing the value.
+instance.destroy(); // Remove listeners before removing the field.
+              </code></pre>
             </div>
 
             <div id="number-input" class="section scrollspy">
