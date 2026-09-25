@@ -26,6 +26,25 @@
               <p>All slider styling and behavior are included in kmaterialize. Existing <code>input[type="range"]</code> controls receive the new appearance. The native input preserves form submission and keyboard interaction.</p>
             </section>
 
+            <section id="single-editable" class="section scrollspy">
+              <h3 class="header">Single slider with editable value</h3>
+              <p>Add <code>data-range-inputs</code> to a single range input for one editable number on the left. The flat filled bar and tinted value segment follow the number-input appearance. Typing and dragging update each other. Decimal fields keep the precision of the step (for example, 3.0 with step 0.1), with centered, equal-width digits and a short vertical film-roll transition with subtle motion blur that clears as the value settles. Click the number to edit it directly; reduced-motion settings disable the animation. The floating value popup is hidden when the editable number is shown.</p>
+              <form>
+                <div class="range-field">
+                  <label for="range-single-editable">Amount</label>
+                  <input id="range-single-editable" name="amount" type="range" min="0" max="10" step="0.1" value="2.5" data-range-inputs>
+                  <output for="range-single-editable">2.5</output>
+                </div>
+                <button type="reset" class="btn outlined">Reset amount</button>
+              </form>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="range-field"&gt;
+  &lt;label for="amount"&gt;Amount&lt;/label&gt;
+  &lt;input id="amount" name="amount" type="range"
+         min="0" max="10" step="0.1" value="2.5" data-range-inputs&gt;
+&lt;/div&gt;</code></pre></div>
+              <p>Alternatively, call <code>Range.init(input, &#123; showInput: true, inputLabel: 'Amount' &#125;)</code>. The numeric field uses the slider’s bounds and step, supports form reset and disabled state, and normalizes empty or out-of-range drafts on blur. Only the original named range input submits a value. Set <code>data-range-variant="outlined"</code> or <code>"rounded"</code> on the input for another border treatment.</p>
+            </section>
+
             <section id="discrete" class="section scrollspy">
               <h3 class="header">Steps and tick marks</h3>
               <p>Use <code>step</code> for discrete values and <code>data-ticks</code> for visible marks. Focus or drag the slider to reveal its value label.</p>
@@ -71,6 +90,132 @@ Range.init(input, &#123;
 &lt;/div&gt;</code></pre></div>
             </section>
 
+            <section id="interval" class="section scrollspy">
+              <h3 class="header">In / out slider</h3>
+              <p>Select a segment with two handles. The in point cannot pass the out point. Drag either handle or Tab to it and use the arrow keys, Home, or End. Both named inputs submit normally with a form.</p>
+              <form id="trim-form">
+                <p id="trim-label">Clip trim (seconds)</p>
+                <div id="range-trim" class="range-interval" role="group" aria-labelledby="trim-label">
+                  <input type="range" name="clipIn" aria-label="In point" min="0" max="120" step="1" value="15">
+                  <input type="range" name="clipOut" aria-label="Out point" min="0" max="120" step="1" value="90">
+                </div>
+                <p><output data-interval-output="range-trim" aria-live="off">15 – 90 s</output></p>
+                <button type="reset" class="btn outlined">Reset trim</button>
+              </form>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class=&quot;range-interval&quot; role=&quot;group&quot; aria-label=&quot;Clip trim&quot;&gt;
+  &lt;input type=&quot;range&quot; name=&quot;clipIn&quot; aria-label=&quot;In point&quot;
+         min=&quot;0&quot; max=&quot;120&quot; step=&quot;1&quot; value=&quot;15&quot;&gt;
+  &lt;input type=&quot;range&quot; name=&quot;clipOut&quot; aria-label=&quot;Out point&quot;
+         min=&quot;0&quot; max=&quot;120&quot; step=&quot;1&quot; value=&quot;90&quot;&gt;
+&lt;/div&gt;</code></pre></div>
+              <p>Place exactly two range inputs directly inside <code>.range-interval</code>, ordered in then out. Give each an accessible label. The first input defines the shared <code>min</code>, <code>max</code>, and <code>step</code>; matching attributes on both inputs also give sensible values before initialization. Set direction on the whole group.</p>
+            </section>
+
+            <section id="variants" class="section scrollspy">
+              <h3 class="header">Interval variants</h3>
+              <p>Use the same component for price bounds, discrete selections, or continuous values. Add <code>.range-compact</code> or <code>.range-expressive</code> to a range field or interval group to change the track and handle sizes.</p>
+              <p id="price-label">Price range · expressive · $50 increments</p>
+              <div id="range-price" class="range-interval range-expressive" role="group" aria-labelledby="price-label">
+                <input type="range" name="priceMin" aria-label="Minimum price" min="0" max="1000" step="50" value="200">
+                <input type="range" name="priceMax" aria-label="Maximum price" min="0" max="1000" step="50" value="800">
+              </div>
+              <p><output data-interval-output="range-price">$200 – $800</output></p>
+              <p id="continuous-label">Continuous interval · compact</p>
+              <div id="range-continuous" class="range-interval range-compact" role="group" aria-labelledby="continuous-label">
+                <input type="range" aria-label="Lower bound" min="0" max="1" step="any" value="0.2">
+                <input type="range" aria-label="Upper bound" min="0" max="1" step="any" value="0.75">
+              </div>
+              <p><output data-interval-output="range-continuous">0.20 – 0.75</output></p>
+              <p id="rtl-label">Right-to-left interval</p>
+              <div id="range-rtl" class="range-interval" dir="rtl" role="group" aria-labelledby="rtl-label">
+                <input type="range" aria-label="Lower bound" min="0" max="100" step="10" value="20">
+                <input type="range" aria-label="Upper bound" min="0" max="100" step="10" value="70">
+              </div>
+              <p><output data-interval-output="range-rtl">20 – 70</output></p>
+              <p id="interval-disabled-label">Disabled interval</p>
+              <div class="range-interval" role="group" aria-labelledby="interval-disabled-label">
+                <input type="range" aria-label="Lower bound" min="0" max="100" value="25" disabled>
+                <input type="range" aria-label="Upper bound" min="0" max="100" value="75" disabled>
+              </div>
+              <p>Set <code>disabled</code> on both inputs to disable the interval. Interval sliders support native step snapping; tick marks are available on the single-value sliders above. Drag the handles to adjust an interval; clicking the shared track does not move a handle.</p>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class=&quot;range-interval range-expressive&quot; role=&quot;group&quot; aria-label=&quot;Price range&quot;&gt;
+  &lt;input type=&quot;range&quot; aria-label=&quot;Minimum price&quot; min=&quot;0&quot; max=&quot;1000&quot; step=&quot;50&quot; value=&quot;200&quot;&gt;
+  &lt;input type=&quot;range&quot; aria-label=&quot;Maximum price&quot; min=&quot;0&quot; max=&quot;1000&quot; step=&quot;50&quot; value=&quot;800&quot;&gt;
+&lt;/div&gt;
+&lt;!-- Use step=&quot;any&quot; on both inputs for continuous selection.
+     Use dir=&quot;rtl&quot; on the group for right-to-left selection.
+     Use disabled on both inputs to disable both handles. --&gt;</code></pre></div>
+            </section>
+
+            <section id="outside" class="section scrollspy">
+              <h3 class="header">Outside segments</h3>
+              <p>With <code>.range-outside</code>, the track outside the in/out points is highlighted, the middle is muted, and end stops align with the handle centers at the minimum and maximum. This changes the appearance; values remain the ordered in/out points.</p>
+              <div id="range-outside" class="range-interval range-outside" role="group" aria-label="Outside segments">
+                <input type="range" aria-label="In point" min="0" max="100" value="25">
+                <input type="range" aria-label="Out point" min="0" max="100" value="75">
+              </div>
+              <p><output data-interval-output="range-outside">25 – 75</output></p>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class=&quot;range-interval range-outside&quot; role=&quot;group&quot; aria-label=&quot;Outside segments&quot;&gt;
+  &lt;input type=&quot;range&quot; aria-label=&quot;In point&quot; min=&quot;0&quot; max=&quot;100&quot; value=&quot;25&quot;&gt;
+  &lt;input type=&quot;range&quot; aria-label=&quot;Out point&quot; min=&quot;0&quot; max=&quot;100&quot; value=&quot;75&quot;&gt;
+&lt;/div&gt;</code></pre></div>
+            </section>
+
+            <section id="editable" class="section scrollspy">
+              <h3 class="header">Editable in / out fields</h3>
+              <p>Add <code>data-range-inputs</code> to place an editable In value on the left and Out value on the right. Type a number, use the arrow keys, or drag a handle: both controls stay synchronized. No synchronization code is needed in your application. Floating value popups are hidden because both values are already displayed.</p>
+              <form>
+                <p id="editable-label">Flat filled · selected interval</p>
+                <div id="range-editable" class="range-interval" data-range-inputs role="group" aria-labelledby="editable-label">
+                  <input type="range" name="in" aria-label="In point" min="0" max="100" step="1" value="20">
+                  <input type="range" name="out" aria-label="Out point" min="0" max="100" step="1" value="80">
+                </div>
+                <p><output data-interval-output="range-editable">20 – 80</output></p>
+                <button type="reset" class="btn outlined">Reset values</button>
+              </form>
+              <p id="editable-outside-label">Filled · outside segments · 0.5 increments</p>
+              <div id="range-editable-outside" class="range-interval range-outside" data-range-inputs data-range-variant="filled" role="group" aria-labelledby="editable-outside-label">
+                <input type="range" aria-label="In point" min="-10" max="10" step="0.5" value="-5">
+                <input type="range" aria-label="Out point" min="-10" max="10" step="0.5" value="5">
+              </div>
+              <p><output data-interval-output="range-editable-outside">-5 – 5</output></p>
+              <p id="editable-rounded-label">Rounded · outside segments</p>
+              <div id="range-editable-rounded" class="range-interval range-outside" data-range-inputs data-range-variant="rounded" role="group" aria-labelledby="editable-rounded-label">
+                <input type="range" aria-label="In point" min="0" max="120" step="1" value="15">
+                <input type="range" aria-label="Out point" min="0" max="120" step="1" value="90">
+              </div>
+              <p><output data-interval-output="range-editable-rounded">15 – 90</output></p>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class=&quot;range-interval range-outside&quot; data-range-inputs
+     data-range-variant=&quot;filled&quot; role=&quot;group&quot; aria-label=&quot;In/out interval&quot;&gt;
+  &lt;input type=&quot;range&quot; name=&quot;in&quot; aria-label=&quot;In point&quot;
+         min=&quot;-10&quot; max=&quot;10&quot; step=&quot;0.5&quot; value=&quot;-5&quot;&gt;
+  &lt;input type=&quot;range&quot; name=&quot;out&quot; aria-label=&quot;Out point&quot;
+         min=&quot;-10&quot; max=&quot;10&quot; step=&quot;0.5&quot; value=&quot;5&quot;&gt;
+&lt;/div&gt;</code></pre></div>
+              <p><code>data-range-variant</code> supports <code>filled</code> (default), <code>outlined</code>, and <code>rounded</code>. You can also enable fields with <code>RangeInterval.init(group, &#123; showInputs: true, startLabel: 'In', endLabel: 'Out' &#125;)</code>; change these labels for your language or use case.</p>
+              <p>Valid numbers update the slider immediately. Empty or incomplete drafts leave the handle unchanged. On change or blur, the field shows the bounded, step-aligned value; handles cannot cross. Dragging, API updates, disabling a range input, and resetting a form also update its number field. Only the named range inputs submit values, avoiding duplicate form entries. Number fields use raw numbers even when handle labels use <code>formatValue</code>.</p>
+            </section>
+
+            <section id="interval-api" class="section scrollspy">
+              <h3 class="header">Interval API</h3>
+              <p>Groups present when the library loads initialize automatically. Use <code>RangeInterval.init(group, options)</code> for dynamically inserted groups or custom formatting. Use <code>.no-autoinit</code> on a group to opt out of automatic interval initialization.</p>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">import &#123; RangeInterval &#125; from &#x27;kmaterialize&#x27;;
+
+const group = document.querySelector&lt;HTMLElement&gt;(&#x27;#range-price&#x27;)!;
+const interval = RangeInterval.init(group, &#123;
+  showValue: true,
+  formatValue: value =&gt; `$$&#123;value&#125;`
+&#125;);
+interval.setValues(250, 750);
+const [start, end] = interval.getValues();
+group.addEventListener(&#x27;input&#x27;, () =&gt; &#123;
+  console.log(interval.getValues());
+&#125;);
+// Call interval.destroy() when removing the component.</code></pre></div>
+              <p><code>getValues()</code> returns <code>[in, out]</code>. <code>setValues(in, out)</code> orders the values and applies native bounds and step rounding; it does not emit events. Non-finite values throw a <code>TypeError</code>. After assigning input values directly, call <code>update()</code>. Listen for bubbling native <code>input</code> and <code>change</code> events on the group; values are constrained before your listener runs. Reset restores the inputs’ original values.</p>
+              <p>Options: <code>showInputs</code> (default <code>false</code>), <code>startLabel</code> / <code>endLabel</code> (default In / Out), <code>showValue</code> (default <code>true</code>) and <code>formatValue(value)</code>. Formatting is plain text and also supplies accessible value text. <code>destroy()</code> removes generated labels, listeners and interval styles, and restores managed attributes. Reinitialization safely replaces the old instance.</p>
+            </section>
+
             <section id="api" class="section scrollspy">
               <h3 class="header">Initialization and updates</h3>
               <p>Ranges present when kmaterialize loads initialize automatically. For controls added later, call <code>Range.init(input)</code>. Reinitialization safely replaces the previous instance.</p>
@@ -96,9 +241,15 @@ slider.destroy();</code></pre></div>
               <div style="height: 1px">
                 <ul class="section table-of-contents">
                   <li><a href="#html5">Material range</a></li>
+                  <li><a href="#single-editable">Single editable value</a></li>
                   <li><a href="#discrete">Steps and ticks</a></li>
                   <li><a href="#formatting">Formatted values</a></li>
                   <li><a href="#disabled">Disabled</a></li>
+                  <li><a href="#interval">In / out</a></li>
+                  <li><a href="#variants">Interval variants</a></li>
+                  <li><a href="#outside">Outside segments</a></li>
+                  <li><a href="#editable">Editable values</a></li>
+                  <li><a href="#interval-api">Interval API</a></li>
                   <li><a href="#api">Initialization</a></li>
                 </ul>
               </div>

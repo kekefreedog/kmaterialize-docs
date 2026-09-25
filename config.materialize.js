@@ -134,7 +134,7 @@ export const config = {
       description: "Select a single time with the support of the awesome Timepicker.",
     },
     { id: "radiobuttons", url: "radio-buttons.html", name: "Radio Buttons" },
-    { id: "range", url: "range.html", name: "Range" },
+    { id: "range", url: "range.html", name: "Range", description: "Select a value or an in/out interval with continuous, stepped, compact and expressive sliders." },
     { id: "select", url: "select.html", name: "Select" },
     { id: "switches", url: "switches.html", name: "Switches" },
     { id: "numberinput", url: "number-input.html", name: "Number input", description: "Select numbers with fine and coarse steps, including decimal increments." },

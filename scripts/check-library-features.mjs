@@ -5,13 +5,13 @@ import { dirname, resolve } from 'node:path';
 const require = createRequire(import.meta.url);
 const root = resolve(dirname(require.resolve('kmaterialize')), '../..');
 const types = readFileSync(resolve(root, 'dist/js/materialize.d.ts'), 'utf8');
-const required = ['CodeCard', 'PasswordInput', 'TinyNavbar', 'NavbarAutoHide', 'Gantt', 'Editor', 'CrazyLoading', 'CrazyButton', 'Kmcomponent', 'OrgChart', 'initMaterialButtons', 'initListChecklist', 'enableCardHandles', 'RichTextarea', 'OtpInput', 'MaskitoInput', 'initNavbarScroll'];
+const required = ['RangeInterval', 'RangeIntervalOptions', 'CodeCard', 'PasswordInput', 'TinyNavbar', 'NavbarAutoHide', 'Gantt', 'Editor', 'CrazyLoading', 'CrazyButton', 'Kmcomponent', 'OrgChart', 'initMaterialButtons', 'initListChecklist', 'enableCardHandles', 'RichTextarea', 'OtpInput', 'MaskitoInput', 'initNavbarScroll'];
 const missing = required.filter(name => !new RegExp(`\\b${name}\\b`).test(types));
 if (!/static clickConfirm\(/.test(types)) missing.push('Popup.clickConfirm');
 if (!/static steps[<(]/.test(types)) missing.push('Popup.steps');
 if (!/waitForConfirmation</.test(types)) missing.push('PopupStepContext.waitForConfirmation');
 const css = readFileSync(resolve(root, 'dist/css/materialize.css'), 'utf8');
-for (const selector of ['.code-card', '.footer-layout', '.footer-fixed', '.timeline', '.timeline-event', '.timeline-content', '.timeline-badge', '.timeline-left', '.navbar-tiny', '.navbar-hide-on-scroll', '.editor-workspace', '.switch-with-icon', '.tabs-fill', '.radio-group-horizontal', '.m3-rail', '.navbar-scroll', '.navbar-search-toolbar', '.rich-textarea', '.otp-input-slot']) {
+for (const selector of ['.range-interval', '.range-control', '.range-control-readout', '.range-outside', '.code-card', '.footer-layout', '.footer-fixed', '.timeline', '.timeline-event', '.timeline-content', '.timeline-badge', '.timeline-left', '.navbar-tiny', '.navbar-hide-on-scroll', '.editor-workspace', '.switch-with-icon', '.tabs-fill', '.radio-group-horizontal', '.m3-rail', '.navbar-scroll', '.navbar-search-toolbar', '.rich-textarea', '.otp-input-slot']) {
   if (!css.includes(selector)) missing.push(selector);
 }
 for (const file of ['dist/js/tippy.mjs', 'dist/js/tippy.d.ts', 'sass/enhancement/spreadsheet.scss']) {

@@ -95,6 +95,7 @@ const delta = field.quill!.getContents();
 field.destroy();</code></pre></div>
               <p>The native <code>name</code>, <code>required</code>, and form reset behavior are preserved. An empty editor stores an empty string, so required validation works. HTML is normalized through Quill’s supported formats; it is not stored byte-for-byte.</p>
               <p>The default toolbar supports text formatting and links. Customize <code>toolbar</code> and <code>formats</code>, or set <code>toolbar: false</code> for a toolbar-free editor. TypeScript options are exported as <code>RichTextareaOptions</code>.</p>
+              <p>Set <code>fontFamily</code> in the <code>RichTextarea.init()</code> options to choose the default editor content font, for example <code>{ fontFamily: 'Arial, sans-serif' }</code>. You can also set <code>--rich-textarea-font-family</code> on the wrapper. Without an override, content inherits the application font. Load any web fonts separately, including weight 800 for extra-bold text. Toolbar typography is unchanged.</p>
               <p>Set <code>--rich-textarea-min-height</code> and <code>--rich-textarea-max-height</code> on the generated <code>.rich-textarea</code> to adjust the writing area. All component styles are shipped by kmaterialize.</p>
             </section>
           </div>
