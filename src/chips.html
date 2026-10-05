@@ -8,31 +8,104 @@
       <div class="container">
   <div class="row">
     <div class="s12 m8 offset-m1 xl7 offset-xl1">
-      <div id="introduction" class="section scrollspy">
-        <p class="caption">
-          Chips can be used to represent small blocks of information. They are most commonly used either for contacts or for tags.
-        </p>
+            <section id="input-basic" class="section scrollspy">
+              <h2 class="header">Basic example</h2>
+              <div id="basic">
+                <p class="caption">To add tags, just enter your tag text and press enter. You can delete them by clicking on the close icon or by
+                  using your delete button.</p>
 
-        <div class="chip">
-          <img src="images/yuna.jpg" alt="Contact Person"> Jane Doe
-        </div>
-        <div class="chip">
-          Tag
-          <i class="close material-icons">close</i>
-        </div>
-        <div class="chip">
-          <i class="material-icons">check</i>
-          Filter
-          <i class="close material-icons">close</i>
-        </div>
-        <div class="chip outlined">Information</div>
-        <div class="chip outlined">
-          <i class="material-icons">check</i>
-          Filter
-          <i class="close material-icons">close</i>
-        </div>
+                <div class="chips"></div>
 
-        <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="chip"&gt;
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="chips"&gt;&lt;/div&gt;</code></pre></div>
+              </div>
+            </section>
+
+            <section id="input-setup" class="section scrollspy">
+              <h2 class="header">Setup</h2>
+              {{> input-setup-note }}
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">import { Chips } from 'kmaterialize';
+
+Chips.init(document.querySelectorAll('.chips'), {
+    allowUserInput: true,
+    placeholder: 'Enter a tag',
+    secondaryPlaceholder: '+Tag'
+});</code></pre></div>
+
+              <p>Set <code>allowUserInput: true</code> to enable tag entry, then initialize each editable chip field once after its markup exists. Plain <code>.chip</code> labels need no per-element initialization.</p>
+            </section>
+
+            <section id="input-variants" class="section scrollspy">
+              <h2 class="header">Examples and variants</h2>
+              <h3>Initial tags, placeholders, and autocomplete</h3>
+              <p>Choose the options for each chip field when initializing it.</p>
+
+              <p class="caption">Set initial tags.</p>
+
+              <div class="chips chips-initial"></div>
+
+              <p class="caption">Use placeholders and override hint texts.</p>
+
+              <div class="chips chips-placeholder"></div>
+
+              <p class="caption">Use autocomplete with chips.</p>
+
+              <div class="chips chips-autocomplete"></div>
+
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;!-- Default with no input (automatically generated)  --&gt;
+&lt;div class="chips"&gt;&lt;/div&gt;
+&lt;div class="chips chips-initial"&gt;&lt;/div&gt;
+&lt;div class="chips chips-placeholder"&gt;&lt;/div&gt;
+&lt;div class="chips chips-autocomplete"&gt;&lt;/div&gt;
+&lt;!-- Customizable input  --&gt;
+&lt;div class="chips"&gt;
+  &lt;input class="custom-class"&gt;
+&lt;/div&gt;</code></pre></div>
+
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    const elems = document.querySelectorAll('.chips-autocomplete');
+    const instances = Chips.init(elems, {
+      allowUserInput: true,
+      autocompleteOptions: {
+        data: [
+          {id: 12, text: "Apple"},
+          {id: 13, text: "Microsoft"},
+          {id: 42, text: "Google", image: 'http://placehold.it/250x250'}
+        ]
+      },
+      placeholder: 'Enter a tag',
+      secondaryPlaceholder: '+Tag',
+    });
+  });
+          </code></pre></div>
+              <div id="introduction">
+                <h3>Display chips</h3>
+
+
+                <p class="caption">
+                  Chips can be used to represent small blocks of information. They are most commonly used either for contacts or for tags.
+                </p>
+
+                <div class="chip">
+                  <img src="images/yuna.jpg" alt="Contact Person"> Jane Doe
+                </div>
+                <div class="chip">
+                  Tag
+                  <i class="close material-icons">close</i>
+                </div>
+                <div class="chip">
+                  <i class="material-icons">check</i>
+                  Filter
+                  <i class="close material-icons">close</i>
+                </div>
+                <div class="chip outlined">Information</div>
+                <div class="chip outlined">
+                  <i class="material-icons">check</i>
+                  Filter
+                  <i class="close material-icons">close</i>
+                </div>
+
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="chip"&gt;
   &lt;img src="images/yuna.jpg" alt="Contact Person"&gt; Jane Doe
 &lt;/div&gt;
 &lt;div class="chip"&gt;
@@ -51,310 +124,270 @@
   &lt;i class="close material-icons"&gt;close&lt;/i&gt;
 &lt;/div&gt;</code></pre></div>
 
-      </div>
 
-      <!-- ### -->
+              </div>
 
-      <div id="contact" class="section scrollspy">
-        <h3 class="header">Contacts</h3>
-        <p class="caption">
-          To create a contact chip just add an img inside.
-          <div class="chip">
-            <img src="images/yuna.jpg" alt="Contact Person"> Jane Doe
-          </div>
-        </p>
+              <div id="contact" class="section">
+                <h3 class="header">Contacts</h3>
+                <p class="caption">
+                  To create a contact chip just add an img inside.
+                </p>
+                <div class="chip">
+                  <img src="images/yuna.jpg" alt="Contact Person"> Jane Doe
+                </div>
 
-        <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="chip"&gt;
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="chip"&gt;
   &lt;img src="images/yuna.jpg" alt="Contact Person"&gt;
   Jane Doe
 &lt;/div&gt;</code></pre></div>
-      </div>
+              </div>
 
-      <!-- ### -->
-
-      <div id="tag" class="section scrollspy">
-        <h3 class="header">Tags</h3>
-        <p class="caption">
-          To create a tag chip just add a close icon inside with the class
-          <code class="language-html">close</code>.
-          <div class="chip">
-            Tag
-            <i class="close material-icons">close</i>
-          </div>
-        </p>
-        <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="chip"&gt;
+              <div id="tag" class="section">
+                <h3 class="header">Tags</h3>
+                <p class="caption">
+                  To create a tag chip just add a close icon inside with the class
+                  <code class="language-html">close</code>.
+                </p>
+                <div class="chip">
+                  Tag
+                  <i class="close material-icons">close</i>
+                </div>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="chip"&gt;
   Tag
   &lt;i class="close material-icons"&gt;close&lt;/i&gt;
 &lt;/div&gt;</code></pre></div>
-      </div>
+              </div>
+            </section>
 
-      <!-- ### -->
-
-      <div id="basic" class="section scrollspy">
-        <h3 class="header">Javascript Plugin</h4>
-          <p class="caption">To add tags, just enter your tag text and press enter. You can delete them by clicking on the close icon or by
-            using your delete button.</p>
-
-          <!-- Update Info -->
-          <div>
-            <p class="red-text"><strong>ATTENTION:</strong> Data-Format has changed from version 1.X.X to 2.0.0! Please update option 'data'.</p>
-          </div>
-
-          <div class="chips"></div>
-          
-          <p class="caption">Set initial tags.</p>
-          <div class="chips chips-initial"></div>
-          
-          <p class="caption">Use placeholders and override hint texts.</p>
-          <div class="chips chips-placeholder"></div>
-          
-          <p class="caption">Use autocomplete with chips.</p>
-          <div class="chips chips-autocomplete"></div>
-      </div>
-
-      <div id="options" class="section scrollspy">
-        <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;!-- Default with no input (automatically generated)  --&gt;
-&lt;div class="chips"&gt;&lt;/div&gt;
-&lt;div class="chips chips-initial"&gt;&lt;/div&gt;
-&lt;div class="chips chips-placeholder"&gt;&lt;/div&gt;
-&lt;div class="chips chips-autocomplete"&gt;&lt;/div&gt;
-&lt;!-- Customizable input  --&gt;
-&lt;div class="chips"&gt;
-  &lt;input class="custom-class"&gt;
+            <section id="validation-errors" class="section scrollspy">
+              <h2 class="header">Validation</h2>
+              <p>A limit on tags is a limit on the chip collection, not the length of the text used to type a new chip. Validate the collection in your application and associate the message with its editor.</p>
+              {{> validation-note }}
+              <div class="row g-4">
+                <div class="s12 m6">
+                  <h5>Too many tags</h5>
+                  <div role="group" aria-label="Project tags" aria-describedby="validation-tags-error">
+                    <div class="chip outlined">Design</div>
+                    <div class="chip outlined">Animation</div>
+                    <div class="chip outlined">Lighting</div>
+                    <div class="chip outlined">Compositing</div>
+                    <p id="validation-tags-error" class="supporting-text error-text"><i class="material-icons" aria-hidden="true">error</i> Choose up to three tags. Remove one tag before saving.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div role="group" aria-label="Project tags" aria-describedby="validation-tags-error"&gt;
+    &lt;div class="chip outlined"&gt;Design&lt;/div&gt;
+    &lt;div class="chip outlined"&gt;Animation&lt;/div&gt;
+    &lt;div class="chip outlined"&gt;Lighting&lt;/div&gt;
+    &lt;div class="chip outlined"&gt;Compositing&lt;/div&gt;
+    &lt;p id="validation-tags-error" class="supporting-text error-text"&gt;&lt;i class="material-icons" aria-hidden="true"&gt;error&lt;/i&gt; Choose up to three tags. Remove one tag before saving.&lt;/p&gt;
 &lt;/div&gt;</code></pre></div>
-        <h3 class="header">Initialization</h3>
-        <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
-  document.addEventListener('DOMContentLoaded', function() {
-    const elems = document.querySelectorAll('.chips');
-    const instances = Chips.init(elems, {
-      // specify options here
-      autocompleteOptions: {
-        data: [
-          {id: 12, text: "Apple"},
-          {id: 13, text: "Microsoft"},
-          {id: 42, text: "Google", image: 'http://placehold.it/250x250'}
-        ]
-      },
-      placeholder: 'Enter a tag',
-      secondaryPlaceholder: '+Tag',
-    });
-  });
-          </code></pre></div>
-        <p class="caption">Chip data object</p>
-        <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
+            </section>
+
+            <section id="input-reference" class="section scrollspy">
+              <h2 class="header">Reference</h2>
+              <div id="options">
+                <p class="caption">Chip data object</p>
+
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   const chip = {
     id: '4711', // unique identifier (can be a string too)
-    text: 'Title' // optional Text
+    text: 'Title', // optional Text
     image: '', // optional Image-Url
   };
           </code></pre></div>
 
-        
-        <h3 class="header">Options</h3>
-        <table class="table highlight">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Type</th>
-              <th>Default</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>data</td>
-              <td>Array</td>
-              <td>[]</td>
-              <td>Set the chip data (look at the Chip data object)</td>
-            </tr>
-            <tr>
-              <td>placeholder</td>
-              <td>String</td>
-              <td>''</td>
-              <td>Set first placeholder when there are no tags.</td>
-            </tr>
-            <tr>
-              <td>secondaryPlaceholder</td>
-              <td>String</td>
-              <td>''</td>
-              <td>Set second placeholder when adding additional tags.</td>
-            </tr>
-            <tr>
-              <td>closeIconClass</td>
-              <td>String</td>
-              <td>'material-icons'</td>
-              <td>Specifies class to be used in "close" button (useful when working with Material Symbols icon set).</td>
-            </tr>
-            <tr>
-              <td>allowUserInput</td>
-              <td>Boolean</td>
-              <td>false</td>
-              <td>Specifies option to render user input field</td>
-            </tr>
-            <tr>
-              <td>autocompleteOptions</td>
-              <td>Object</td>
-              <td>{}</td>
-              <td>Set autocomplete options.</td>
-            </tr>
-            <tr>
-              <td>autocompleteOnly</td>
-              <td>Boolean</td>
-              <td>false</td>
-              <td>Toggles abililty to add custom value not in autocomplete list.</td>
-            </tr>
-            <tr>
-              <td>limit</td>
-              <td>Integer</td>
-              <td>Infinity</td>
-              <td>Set chips limit.</td>
-            </tr>
-            <tr>
-              <td>onChipAdd</td>
-              <td>Function</td>
-              <td>null</td>
-              <td>Callback for chip add.</td>
-            </tr>
-            <tr>
-              <td>onChipSelect</td>
-              <td>Function</td>
-              <td>null</td>
-              <td>Callback for chip select.</td>
-            </tr>
-            <tr>
-              <td>onChipDelete</td>
-              <td>Function</td>
-              <td>null</td>
-              <td>Callback for chip delete.</td>
-            </tr>
-            <tr>
-          </tbody>
-        </table>
-      </div>
+                <h3 class="header">Options</h3>
 
-      <div id="methods" class="section scrollspy">
-        <h3 class="header">Methods</h3>
-        <p class="caption">
-          Use these methods to interact with chips.
-        </p>
+                <table class="responsive-table table highlight">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Default</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>data</td>
+                      <td>Array</td>
+                      <td>[]</td>
+                      <td>Set the chip data (look at the Chip data object)</td>
+                    </tr>
+                    <tr>
+                      <td>placeholder</td>
+                      <td>String</td>
+                      <td>''</td>
+                      <td>Set first placeholder when there are no tags.</td>
+                    </tr>
+                    <tr>
+                      <td>secondaryPlaceholder</td>
+                      <td>String</td>
+                      <td>''</td>
+                      <td>Set second placeholder when adding additional tags.</td>
+                    </tr>
+                    <tr>
+                      <td>closeIconClass</td>
+                      <td>String</td>
+                      <td>'material-icons'</td>
+                      <td>Specifies class to be used in "close" button (useful when working with Material Symbols icon set).</td>
+                    </tr>
+                    <tr>
+                      <td>allowUserInput</td>
+                      <td>Boolean</td>
+                      <td>false</td>
+                      <td>Specifies option to render user input field</td>
+                    </tr>
+                    <tr>
+                      <td>autocompleteOptions</td>
+                      <td>Object</td>
+                      <td>{}</td>
+                      <td>Set autocomplete options.</td>
+                    </tr>
+                    <tr>
+                      <td>autocompleteOnly</td>
+                      <td>Boolean</td>
+                      <td>false</td>
+                      <td>Toggles abililty to add custom value not in autocomplete list.</td>
+                    </tr>
+                    <tr>
+                      <td>limit</td>
+                      <td>Integer</td>
+                      <td>Infinity</td>
+                      <td>Set chips limit.</td>
+                    </tr>
+                    <tr>
+                      <td>onChipAdd</td>
+                      <td>Function</td>
+                      <td>null</td>
+                      <td>Callback for chip add.</td>
+                    </tr>
+                    <tr>
+                      <td>onChipSelect</td>
+                      <td>Function</td>
+                      <td>null</td>
+                      <td>Callback for chip select.</td>
+                    </tr>
+                    <tr>
+                      <td>onChipDelete</td>
+                      <td>Function</td>
+                      <td>null</td>
+                      <td>Callback for chip delete.</td>
+                    </tr>
+                    <tr>
+                    </tbody>
+                </table>
+              </div>
 
-        <blockquote>
-          <p>All the methods are called on the plugin instance. You can get the plugin instance like this: </p>
-            <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
+              <div>
+                <p class="red-text"><strong>ATTENTION:</strong> Data-Format has changed from version 1.X.X to 2.0.0! Please update option 'data'.</p>
+              </div>
+
+              <div id="methods" class="section">
+                <h3 class="header">Methods</h3>
+                <p class="caption">
+                  Use these methods to interact with chips.
+                </p>
+
+                <blockquote>
+                  <p>All the methods are called on the plugin instance. You can get the plugin instance like this: </p>
+                  <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   const instance = Chips.getInstance(elem);
               </code></pre></div>
-        </blockquote>
+                </blockquote>
 
-        <h5 class="method-header">
-          .addChip();
-        </h5>
-        <p>Add chip to input.</p>
-        <h6>Arguments</h6>
-        <p>
-          <b>Chip:</b> Chip data object.</p>
-        <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
+                <h5 class="method-header">
+                  .addChip();
+                </h5>
+                <p>Add chip to input.</p>
+                <h6>Arguments</h6>
+                <p>
+                  <b>Chip:</b> Chip data object.</p>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   instance.addChip({
     id: 1337,
     text: 'John Doe', // optional
     image: '', // optional
   });
         </code></pre></div>
-        
 
-        <h5 class="method-header">
-          .deleteChip();
-        </h5>
-        <p>Delete nth chip.</p>
-        <h6>Arguments</h6>
-        <p>
-          <b>Integer:</b> Index of chip.</p>
-        <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
+
+                <h5 class="method-header">
+                  .deleteChip();
+                </h5>
+                <p>Delete nth chip.</p>
+                <h6>Arguments</h6>
+                <p>
+                  <b>Integer:</b> Index of chip.</p>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   instance.deleteChip(3); // Delete 3rd chip.
         </code></pre></div>
-        
 
-        <h5 class="method-header">
-          .selectChip();
-        </h5>
-        <p>Select nth chip.</p>
-        <h6>Arguments</h6>
-        <p>
-          <b>Integer:</b> Index of chip.</p>
-        <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
+
+                <h5 class="method-header">
+                  .selectChip();
+                </h5>
+                <p>Select nth chip.</p>
+                <h6>Arguments</h6>
+                <p>
+                  <b>Integer:</b> Index of chip.</p>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   instance.selectChip(2); // Select 2nd chip
         </code></pre></div>
 
-      </div>
+              </div>
 
-      <div id="properties" class="scrollspy section">
-        <h3 class="header">Properties</h3>
-        <table class="striped">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Type</th>
-              <th>Description</th>
-            </tr>
-          </thead>
+              <div id="properties" class="section">
+                <h3 class="header">Properties</h3>
+                <table class="responsive-table striped">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
 
-          <tbody>
-            <tr>
-              <td>el</td>
-              <td>Element</td>
-              <td>The DOM element the plugin was initialized with.</td>
-            </tr>
-            <tr>
-              <td>options</td>
-              <td>Object</td>
-              <td>The options the instance was initialized with.</td>
-            </tr>
-            <tr>
-              <td>chipsData</td>
-              <td>Array</td>
-              <td>Array of the current chips data.</td>
-            </tr>
-            <tr>
-              <td>hasAutocomplete</td>
-              <td>Boolean</td>
-              <td>If the chips has autocomplete enabled.</td>
-            </tr>
-            <tr>
-              <td>autocomplete</td>
-              <td>Object</td>
-              <td>
-                <a href="autocomplete.html">Autocomplete</a> instance, if any.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-    </div>
+                  <tbody>
+                    <tr>
+                      <td>el</td>
+                      <td>Element</td>
+                      <td>The DOM element the plugin was initialized with.</td>
+                    </tr>
+                    <tr>
+                      <td>options</td>
+                      <td>Object</td>
+                      <td>The options the instance was initialized with.</td>
+                    </tr>
+                    <tr>
+                      <td>chipsData</td>
+                      <td>Array</td>
+                      <td>Array of the current chips data.</td>
+                    </tr>
+                    <tr>
+                      <td>hasAutocomplete</td>
+                      <td>Boolean</td>
+                      <td>If the chips has autocomplete enabled.</td>
+                    </tr>
+                    <tr>
+                      <td>autocomplete</td>
+                      <td>Object</td>
+                      <td>
+                        <a href="autocomplete.html">Autocomplete</a> instance, if any.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
 
     <!-- Table of Contents -->
     <div class="col hide-on-small-only m3 xl3">
       <div class="toc-wrapper">
 
         <div style="height: 1px;">
-          <ul class="section table-of-contents">
-            <li>
-              <a href="#contact">Contacts</a>
-            </li>
-            <li>
-              <a href="#tag">Tags</a>
-            </li>
-            <li>
-              <a href="#basic">Plugin</a>
-            </li>
-            <li>
-              <a href="#options">Options</a>
-            </li>
-            <li>
-              <a href="#methods">Methods</a>
-            </li>
-            <li>
-              <a href="#properties">Properties</a>
-            </li>
-          </ul>
+          {{> input-toc }}
         </div>
       </div>
     </div>

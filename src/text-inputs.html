@@ -7,115 +7,54 @@
     {{> navbar }}
     <main>
       {{> intro}}
-      <div class="container"><p>For formatted phone numbers, currency, dates, and codes, see <a href="maskito.html">Input Masks with Maskito</a>.</p></div>
       <div class="container">
         <div class="row">
           <div class="col s12 m8 offset-m1 xl7 offset-xl1">
-            <section id="copy-button" class="section scrollspy">
-              <h3>Copy button</h3>
-              <p>Add a button with <code>data-copy-target</code> to copy an input's current value. The button appears only when included in your HTML. It supports keyboard activation, shows a checkmark on success, and reports clipboard failures. Clipboard access requires HTTPS or localhost.</p>
-              <div class="row">
-                <div class="s12 m6 input-field">
-                  <input id="copy-subject" type="text" placeholder=" " value="Welcome to the project">
-                  <label for="copy-subject">Email subject</label>
-                  <button type="button" class="suffix input-copy-button" data-copy-target="#copy-subject" aria-label="Copy email subject"><i class="material-icons" aria-hidden="true">content_copy</i></button>
-                </div>
-                <div class="s12 m6 input-field outlined">
-                  <input id="copy-reference" type="text" placeholder=" " value="PROJECT-2026-001" readonly>
-                  <label for="copy-reference">Reference</label>
-                  <button type="button" class="suffix input-copy-button" data-copy-target="#copy-reference" aria-label="Copy reference"><i class="material-icons" aria-hidden="true">content_copy</i></button>
-                </div>
-              </div>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="input-field outlined"&gt;
-  &lt;input id="email_subject" type="text" placeholder=" " value="Welcome to the project"&gt;
-  &lt;label for="email_subject"&gt;Email subject&lt;/label&gt;
-  &lt;button type="button" class="suffix input-copy-button"
-          data-copy-target="#email_subject" aria-label="Copy email subject"&gt;
-    &lt;i class="material-icons" aria-hidden="true"&gt;content_copy&lt;/i&gt;
-  &lt;/button&gt;
-&lt;/div&gt;</code></pre></div>
-              <p>Load kmaterialize JavaScript to enable the action, including buttons inserted later. Use unique input IDs and <code>type="button"</code> to avoid submitting the form.</p>
-            </section>
-            <section id="outlined-surfaces" class="section scrollspy">
-              <h3>Outlined fields on custom backgrounds</h3>
-              <p>The outline leaves a real gap around the floating label. Your existing input markup works on solid colors and gradients without setting a label background.</p>
-              <div class="row">
-                <div class="s12 m6 p-4" style="background: #30393d; color: #fff; --md-sys-color-on-surface-variant: #ddd; --md-sys-color-on-background: #fff;">
-                  <div class="input-field outlined">
-                    <input id="notch-solid" type="text" placeholder=" " value="Your next great idea">
-                    <label for="notch-solid">Email subject</label>
+            <section id="input-basic" class="section scrollspy">
+              <h2 class="header">Basic example</h2>
+              <div id="input">
+                <p class="caption">Use a text field for short free-form input. Choose an underlined or outlined style and keep a visible label.</p>
+
+                <form class="row" style="gap: 1em">
+                  <div class="s12 m6 input-field">
+                    <input id="first_name" type="text" placeholder=" " maxlength="20" />
+                    <label for="first_name">First Name</label>
+                    <span class="supporting-text">Supporting Text</span>
                   </div>
-                </div>
-                <div class="s12 m6 p-4" style="background: linear-gradient(110deg, #263238, #546e7a); color: #fff; --md-sys-color-on-surface-variant: #ddd; --md-sys-color-on-background: #fff;">
-                  <div class="input-field outlined">
-                    <input id="notch-gradient" type="text" placeholder=" ">
-                    <label for="notch-gradient">Focus to open the notch</label>
+
+                  <div class="s12 m6 input-field outlined">
+                    <input id="last_name" type="text" placeholder=" " maxlength="20" />
+                    <label for="last_name">Last Name</label>
+                    <!--<span class="supporting-text">Supporting Text</span>-->
                   </div>
-                </div>
-              </div>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="input-field outlined"&gt;
-  &lt;input id="subject" type="text" placeholder=" " value="Your next great idea"&gt;
-  &lt;label for="subject"&gt;Email subject&lt;/label&gt;
-&lt;/div&gt;</code></pre></div>
-            </section>
-            <div id="input" class="section scrollspy">
-              <p class="caption">
-                Forms are the standard way to receive data from the user. The transitions and smoothness of these elements are very important because of the inherent user
-                interaction associated with forms.
-              </p>
 
-              <!-- Section -->
+                  <div class="s12 m6 input-field">
+                    <input id="disabled" type="text" placeholder=" " value="I am not editable" disabled />
+                    <label for="disabled">Disabled</label>
+                  </div>
 
-              <h3 class="header">Input fields</h3>
-              <p>
-                Text fields allow user input. The border should light up simply and clearly indicating which field the user is currently editing. You must have a
-                <code class="language-html">.input-field</code> div wrapping your input and label. This is only used in our Input and Textarea form elements.
-              </p>
-              <p>
-                The validate class leverages HTML5 validation and will add a <code class="language-html">valid</code> and <code class="language-html">invalid</code> class
-                accordingly. If you don't want the Green and Red validation states, just remove the <code class="language-html">validate</code> class from your inputs.
-              </p>
+                  <div class="s12 m6 input-field outlined">
+                    <input id="disabled" type="text" placeholder=" " value="Not editable too" disabled />
+                    <label for="disabled">Disabled</label>
+                  </div>
 
-              <form class="row" style="gap: 1em">
-                <div class="s12 m6 input-field">
-                  <input id="first_name" type="text" placeholder=" " maxlength="20" />
-                  <label for="first_name">First Name</label>
-                  <span class="supporting-text">Supporting Text</span>
-                </div>
+                  <div class="s12 m6 input-field">
+                    <div class="prefix"><i class="material-icons">place</i></div>
+                    <div class="suffix"><i class="material-icons">gps_fixed</i></div>
+                    <input id="inp-location" type="text" placeholder=" " value="Planet Earth" />
+                    <label for="inp-location">Location</label>
+                  </div>
 
-                <div class="s12 m6 input-field outlined">
-                  <input id="last_name" type="text" placeholder=" " maxlength="20" />
-                  <label for="last_name">Last Name</label>
-                  <!--<span class="supporting-text">Supporting Text</span>-->
-                </div>
+                  <div class="s12 m6 input-field outlined error">
+                    <div class="prefix"><i class="material-icons">bubble_chart</i></div>
+                    <div class="suffix"><i class="material-icons">error</i></div>
+                    <input id="inp-error" type="text" placeholder=" " value="$%/'#sdf" maxlength="20" />
+                    <label for="inp-error">Failing Input</label>
+                    <span class="supporting-text">Invalid characters! Please use 0-9 only.</span>
+                  </div>
+                </form>
 
-                <div class="s12 m6 input-field">
-                  <input id="disabled" type="text" placeholder=" " value="I am not editable" disabled />
-                  <label for="disabled">Disabled</label>
-                </div>
-
-                <div class="s12 m6 input-field outlined">
-                  <input id="disabled" type="text" placeholder=" " value="Not editable too" disabled />
-                  <label for="disabled">Disabled</label>
-                </div>
-
-                <div class="s12 m6 input-field">
-                  <div class="prefix"><i class="material-icons">place</i></div>
-                  <div class="suffix"><i class="material-icons">gps_fixed</i></div>
-                  <input id="inp-location" type="text" placeholder=" " value="Planet Earth" />
-                  <label for="inp-location">Location</label>
-                </div>
-
-                <div class="s12 m6 input-field outlined error" maxlength="20">
-                  <div class="prefix"><i class="material-icons">bubble_chart</i></div>
-                  <div class="suffix"><i class="material-icons">error</i></div>
-                  <input id="inp-error" type="text" placeholder=" " value="$%/'#sdf" />
-                  <label for="inp-error">Failing Input</label>
-                  <span class="supporting-text">Invalid characters! Please use 0-9 only.</span>
-                </div>
-              </form>
-
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;form class="row" style="gap: 1em;"&gt;
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;form class="row" style="gap: 1em;"&gt;
   &lt;div class="s12 m6 input-field"&gt;
     &lt;input id="first_name" type="text" placeholder=" " maxlength="20"&gt;
     &lt;label for="first_name"&gt;First Name&lt;/label&gt;
@@ -145,72 +84,37 @@
     &lt;label for="inp-location"&gt;Location&lt;/label&gt;
   &lt;/div&gt;
 
-  &lt;div class="s12 m6 input-field outlined error" maxlength="20"&gt;
+  &lt;div class="s12 m6 input-field outlined error"&gt;
     &lt;div class="prefix"&gt;&lt;i class="material-icons"&gt;bubble_chart&lt;/i&gt;&lt;/div&gt;
     &lt;div class="suffix"&gt;&lt;i class="material-icons"&gt;error&lt;/i&gt;&lt;/div&gt;
-    &lt;input id="inp-error" type="text" placeholder=" " value="$%/'#sdf"&gt;
+    &lt;input id="inp-error" type="text" placeholder=" " value="$%/'#sdf" maxlength="20"&gt;
     &lt;label for="inp-error"&gt;Failing Input&lt;/label&gt;
     &lt;span class="supporting-text"&gt;Invalid characters! Please use 0-9 only.&lt;/span&gt;
   &lt;/div&gt;
 &lt;/form&gt;</code></pre></div>
+              </div>
+            </section>
 
-              <!-- Section -->
+            <section id="input-setup" class="section scrollspy">
+              <h2 class="header">Setup</h2>
+              {{> input-setup-note }}
+              <p>Wrap the input and its label in <code>.input-field</code>; add <code>.outlined</code> for a full border. Match the label’s <code>for</code> to the input’s unique <code>id</code>. Load kmaterialize’s stylesheet and JavaScript once; text fields and floating labels are handled automatically.</p>
 
-              <h4>Input Types</h4>
-              <p>Alternate input types such as email are also supported. For password fields, see <a href="password-input.html">Password</a>.</p>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">import 'kmaterialize/dist/css/materialize.css';
+import 'kmaterialize';</code></pre></div>
 
-              <form class="row" style="gap: 1em">
-                <div class="s12 m6 input-field">
-                  <input id="email" type="email" class="validate" placeholder=" " />
-                  <label for="email">Email</label>
-                  <span class="supporting-text" data-error="wrong" data-success="right">Supporting text for additional information</span>
-                </div>
-              </form>
+              <h3 id="floating-labels">Floating labels</h3>
 
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;form class="row" style="gap: 1em;"&gt;
-  &lt;div class="s12 m6 input-field"&gt;
-    &lt;input id="email" type="email" class="validate" placeholder=" "&gt;
-    &lt;label for="email"&gt;Email&lt;/label&gt;
-    &lt;span class="supporting-text" data-error="wrong" data-success="right"&gt;Supporting text for additional information&lt;/span&gt;
-  &lt;/div&gt;
-&lt;/form&gt;</code></pre></div>
-
-              <!-- Section -->
-              <h4>Inline Inputs</h4>
-              <p>Also Inline Inputs are supported.</p>
-
-              <form class="row">
-                <div class="s12">
-                  This is an inline input field:
-                  <div class="input-field inline">
-                    <input id="email_inline" type="email" class="validate" placeholder=" " />
-                    <label for="email_inline">Email</label>
-                    <span class="helper-text" data-error="wrong" data-success="right"></span>
-                  </div>
-                </div>
-              </form>
-
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;form class="row"&gt;
-  &lt;div class="s12"&gt;
-    This is an inline input field:
-    &lt;div class="input-field inline"&gt;
-      &lt;input id="email_inline" type="email" class="validate" placeholder=" "&gt;
-      &lt;label for="email_inline"&gt;Email&lt;/label&gt;
-      &lt;span class="helper-text" data-error="wrong" data-success="right"&gt;&lt;/span&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/form&gt;</code></pre></div>
-
-              <!-- Section -->
-              <h5 id="floating-labels">Floating Labels</h5>
               <p>
                 Since <b>KmaterializeCSS v2</b>, floating Labels are rendered with CSS only by default. However, it is required to use a placeholder with a single white space (" ")
                 in the HTML (providing an empty string will not work!).
               </p>
+
               <p>
                 <strong><b>Important:</b></strong> If you provide a value different than a single white space, the CSS rules will treat it as a "important" placeholder value and
                 will always render the labels in "active" state.
               </p>
+
               <div class="row">
                 <div class="col s12 m6">
                   <div class="input-field outlined" style="margin: 0 4px">
@@ -240,13 +144,63 @@
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre></div>
+            </section>
 
-              <!-- Section -->
+            <section id="input-variants" class="section scrollspy">
+              <h2 class="header">Examples and variants</h2>
+              <h4>Input Types</h4>
+
+              <p>Alternate input types such as email are also supported. For password fields, see <a href="password-input.html">Password</a>.</p>
+
+              <form class="row" style="gap: 1em">
+                <div class="s12 m6 input-field">
+                  <input id="email" type="email" class="validate" placeholder=" " />
+                  <label for="email">Email</label>
+                  <span class="supporting-text" data-error="wrong" data-success="right">Supporting text for additional information</span>
+                </div>
+              </form>
+
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;form class="row" style="gap: 1em;"&gt;
+  &lt;div class="s12 m6 input-field"&gt;
+    &lt;input id="email" type="email" class="validate" placeholder=" "&gt;
+    &lt;label for="email"&gt;Email&lt;/label&gt;
+    &lt;span class="supporting-text" data-error="wrong" data-success="right"&gt;Supporting text for additional information&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre></div>
+
+              <h4>Inline Inputs</h4>
+
+              <p>Also Inline Inputs are supported.</p>
+
+              <form class="row">
+                <div class="s12">
+                  This is an inline input field:
+                  <div class="input-field inline">
+                    <input id="email_inline" type="email" class="validate" placeholder=" " />
+                    <label for="email_inline">Email</label>
+                    <span class="helper-text" data-error="wrong" data-success="right"></span>
+                  </div>
+                </div>
+              </form>
+
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;form class="row"&gt;
+  &lt;div class="s12"&gt;
+    This is an inline input field:
+    &lt;div class="input-field inline"&gt;
+      &lt;input id="email_inline" type="email" class="validate" placeholder=" "&gt;
+      &lt;label for="email_inline"&gt;Email&lt;/label&gt;
+      &lt;span class="helper-text" data-error="wrong" data-success="right"&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre></div>
+
               <h5>Icon Prefixes</h5>
+
               <p>
                 You can add an icon prefix to make the form input label even more clear. Just add an icon with the class <code class="language-html">prefix</code> before the input
                 and label.
               </p>
+
               <div class="row">
                 <form class="col s12">
                   <div class="row">
@@ -282,7 +236,9 @@
 &lt;/div&gt;</code></pre></div>
 
               <h5>Icon Suffixes</h5>
+
               <p>You can also add an icon suffix. Just add an icon with the class <code class="language-html">suffix</code> before the input and label.</p>
+
               <div class="row">
                 <form class="col s12">
                   <div class="row">
@@ -317,11 +273,396 @@
   &lt;/form&gt;
 &lt;/div&gt;</code></pre></div>
 
+              <section id="outlined-surfaces" class="section">
+                <h3>Outlined fields on custom backgrounds</h3>
+                <p>The outline leaves a real gap around the floating label. Your existing input markup works on solid colors and gradients without setting a label background.</p>
+                <div class="row">
+                  <div class="s12 m6 p-4" style="background: #30393d; color: #fff; --md-sys-color-on-surface-variant: #ddd; --md-sys-color-on-background: #fff;">
+                    <div class="input-field outlined">
+                      <input id="notch-solid" type="text" placeholder=" " value="Your next great idea">
+                      <label for="notch-solid">Email subject</label>
+                    </div>
+                  </div>
+                  <div class="s12 m6 p-4" style="background: linear-gradient(110deg, #263238, #546e7a); color: #fff; --md-sys-color-on-surface-variant: #ddd; --md-sys-color-on-background: #fff;">
+                    <div class="input-field outlined">
+                      <input id="notch-gradient" type="text" placeholder=" ">
+                      <label for="notch-gradient">Focus to open the notch</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="input-field outlined"&gt;
+  &lt;input id="subject" type="text" placeholder=" " value="Your next great idea"&gt;
+  &lt;label for="subject"&gt;Email subject&lt;/label&gt;
+&lt;/div&gt;</code></pre></div>
+              </section>
+
+              <section id="copy-button" class="section">
+                <h3>Copy button</h3>
+                <p>Add a button with <code>data-copy-target</code> to copy an input's current value. The button appears only when included in your HTML. It supports keyboard activation, shows a checkmark on success, and reports clipboard failures. Clipboard access requires HTTPS or localhost.</p>
+                <div class="row">
+                  <div class="s12 m6 input-field">
+                    <input id="copy-subject" type="text" placeholder=" " value="Welcome to the project">
+                    <label for="copy-subject">Email subject</label>
+                    <button type="button" class="suffix input-copy-button" data-copy-target="#copy-subject" aria-label="Copy email subject"><i class="material-icons" aria-hidden="true">content_copy</i></button>
+                  </div>
+                  <div class="s12 m6 input-field outlined">
+                    <input id="copy-reference" type="text" placeholder=" " value="PROJECT-2026-001" readonly>
+                    <label for="copy-reference">Reference</label>
+                    <button type="button" class="suffix input-copy-button" data-copy-target="#copy-reference" aria-label="Copy reference"><i class="material-icons" aria-hidden="true">content_copy</i></button>
+                  </div>
+                </div>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="input-field outlined"&gt;
+  &lt;input id="email_subject" type="text" placeholder=" " value="Welcome to the project"&gt;
+  &lt;label for="email_subject"&gt;Email subject&lt;/label&gt;
+  &lt;button type="button" class="suffix input-copy-button"
+          data-copy-target="#email_subject" aria-label="Copy email subject"&gt;
+    &lt;i class="material-icons" aria-hidden="true"&gt;content_copy&lt;/i&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre></div>
+                <p>Load kmaterialize JavaScript to enable the action, including buttons inserted later. Use unique input IDs and <code>type="button"</code> to avoid submitting the form.</p>
+              </section>
+
+              <div id="character-counter" class="section">
+                <h3 class="header">Character Counter</h3>
+                <p class="caption">Use a character counter in fields where a character restriction is in place.</p>
+                <div class="row">
+                  <div class="col s12">
+                    <div class="card-panel yellow black-text">
+                      <strong><b>Important:</b></strong> The "data-length" attribute has been depracated in favour of "maxlength" in v2.x.
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <form class="col s12">
+                    <div class="row">
+                      <div class="input-field col s6">
+                        <input id="input_text" type="text" maxlength="10" placeholder=" " />
+                        <label for="input_text">Input text</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <textarea id="textarea-counter" class="materialize-textarea" maxlength="120" placeholder=" "></textarea>
+                        <label for="textarea-counter">Textarea</label>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="row"&gt;
+  &lt;form class="col s12"&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="input-field col s6"&gt;
+        &lt;input id="input_text" type="text" maxlength="10" placeholder=" "&gt;
+        &lt;label for="input_text"&gt;Input text&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="input-field col s12"&gt;
+        &lt;textarea id="textarea-counter" class="materialize-textarea" maxlength="120" placeholder=" "&gt;&lt;/textarea&gt;
+        &lt;label for="textarea-counter"&gt;Textarea&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;</code></pre></div>
+
+                <h5>Initialization</h5>
+                <p>There are no options for this plugin, but if you are adding these dynamically, you can use this to initialize them.</p>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    const elems = document.querySelectorAll('input#input_text, textarea#textarea-counter');
+    const instances = CharacterCounter.init(elems);
+  });
+        </code></pre></div>
+              </div>
+
+              <div id="textarea" class="section">
+                <p>Need formatting, lists, and links? Try the <a href="textarea.html">Quill-based Textarea</a>.</p>
+                <h3 class="header">Textarea</h3>
+                <p>
+                  Textareas allow larger expandable user input. The border should light up simply and clearly indicating which field the user is currently editing. You must have a
+                  <code class="language-html">.input-field</code> div wrapping your input and label. This is only used in our Input and Textarea form elements.
+                </p>
+                <p><strong>Textareas will auto resize to the text inside.</strong></p>
+
+                <div class="row">
+                  <form class="col s12">
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <textarea id="textarea1" class="materialize-textarea" placeholder=" "></textarea>
+                        <label for="textarea1">Textarea</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <textarea id="textarea2" class="materialize-textarea" placeholder="A custom placeholder :)"></textarea>
+                        <label for="textarea2">Textarea with placeholder</label>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="row"&gt;
+  &lt;form class="col s12"&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="input-field col s12"&gt;
+        &lt;textarea id="textarea1" class="materialize-textarea" placeholder=" "&gt;&lt;/textarea&gt;
+        &lt;label for="textarea1"&gt;Textarea&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="input-field col s12"&gt;
+        &lt;textarea id="textarea2" class="materialize-textarea" placeholder="A custom placeholder :)"&gt;&lt;/textarea&gt;
+        &lt;label for="textarea2"&gt;Textarea with placeholder&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;</code></pre></div>
+                <p>
+                  <strong><b>Advanced notes:</b></strong>
+                </p>
+                <p>If you are adding Textarea form elements dynamically, you can use this to initialize them.</p>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">  Forms.InitTextarea(document.querySelector('#textarea1'));</code></pre></div>
+                <p>
+                  When dynamically changing the value of a textarea like setting <code class="language-html">HTMLElement#value</code> attribute, you must trigger an autoresize on it
+                  afterwords because simply updating the element's value does not automatically trigger the events we've binded to the textarea.
+                </p>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
+  document.querySelector("#textarea1").value = 'New Text';
+  Forms.textareaAutoResize(document.querySelector('#textarea1'));
+        </code></pre></div>
+
+                <h5>Icon Prefixes</h5>
+                <p>
+                  You can add an icon prefix to make the form input label even more clear. Just add an icon with the class <code class="language-html">prefix</code> before the input
+                  and label.
+                </p>
+                <div class="row">
+                  <form class="col s12">
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <i class="material-icons prefix">mode_edit</i>
+                        <textarea id="icon_prefix2" class="materialize-textarea" placeholder=" "></textarea>
+                        <label for="icon_prefix2">Message</label>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="row"&gt;
+  &lt;form class="col s12"&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="input-field col s6"&gt;
+        &lt;i class="material-icons prefix"&gt;mode_edit&lt;/i&gt;
+        &lt;textarea id="icon_prefix2" class="materialize-textarea"&gt;&lt;/textarea&gt;
+        &lt;label for="icon_prefix2"&gt;First Name&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;</code></pre></div>
+              </div>
+
+              <div id="file" class="section">
+                <h3 class="header">File Input</h3>
+                <p>If you want to style an input button with a path input we provide this structure.</p>
+                <form action="#">
+                  <div class="file-field input-field">
+                    <div class="btn">
+                      <span>File</span>
+                      <input type="file" />
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path validate" type="text" />
+                    </div>
+                  </div>
+                </form>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;form action="#"&gt;
+  &lt;div class="file-field input-field"&gt;
+    &lt;div class="btn"&gt;
+      &lt;span&gt;File&lt;/span&gt;
+      &lt;input type="file"&gt;
+    &lt;/div&gt;
+    &lt;div class="file-path-wrapper"&gt;
+      &lt;input class="file-path validate" type="text"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre></div>
+
+                <p>You can also use the <code class="language-html">multiple</code> attribute to allow multiple file uploads.</p>
+                <form action="#">
+                  <div class="file-field input-field">
+                    <div class="btn">
+                      <span>File</span>
+                      <input type="file" multiple />
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path validate" type="text" placeholder="Upload one or more files" />
+                    </div>
+                  </div>
+                </form>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;form action="#"&gt;
+  &lt;div class="file-field input-field"&gt;
+    &lt;div class="btn"&gt;
+      &lt;span&gt;File&lt;/span&gt;
+      &lt;input type="file" multiple&gt;
+    &lt;/div&gt;
+    &lt;div class="file-path-wrapper"&gt;
+      &lt;input class="file-path validate" type="text" placeholder="Upload one or more files"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre></div>
+
+                <p>
+                  <strong><b>Advanced note:</b></strong>
+                </p>
+                <p>If you are adding File Input form elements dynamically, you can use this to initialize them.</p>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">  Forms.InitFileInputPath(document.querySelector('#fileinput1'));</code></pre></div>
+              </div>
+
+              <div id="number-input">
+                <h3 class="header">Number Input</h3>
+
+                <p>For arrow controls with whole-number and decimal increments, see <a href="number-input.html">Number input</a>.</p>
+
+                <p>
+                  <code class="language-html">NumberInput</code> enhances a text input with
+                  <a href="https://imask.js.org/">IMask</a> formatting - thousands separators, decimal scale, min/max. Deliberately opts in on
+                  <code class="language-html">type="text" data-type="number"</code> rather than <code class="language-html">type="number"</code>, so
+                  IMask can format the display value.
+                </p>
+
+                <p>
+                  IMask is an optional peer dependency, loaded on demand - install it yourself: <code class="language-html">npm install imask</code>.
+                </p>
+
+                <div class="row">
+                  <form class="col s12">
+                    <div class="input-field">
+                      <input id="number-input-example" type="text" data-type="number" step=".01" min="0" max="10000" placeholder=" " />
+                      <label for="number-input-example">Amount</label>
+                    </div>
+                  </form>
+                </div>
+
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="input-field"&gt;
+  &lt;input id="number-input-example" type="text" data-type="number" step=".01" min="0" max="10000" placeholder=" "&gt;
+  &lt;label for="number-input-example"&gt;Amount&lt;/label&gt;
+&lt;/div&gt;</code></pre></div>
+              </div>
+            </section>
+
+            <section id="validation-errors" class="section scrollspy">
+              <h2 class="header">Validation</h2>
+              <p>Use <code>required</code>, <code>minlength</code>, <code>maxlength</code>, <code>type</code>, and <code>pattern</code> on the control. Browsers normally prevent typing past <code>maxlength</code>; the over-limit previews below represent values loaded from saved data or rejected by your application. Check their length explicitly when validating programmatically assigned values.</p>
+              {{> validation-note }}
+              <div class="row g-4">
+                <div class="s12 m6">
+                  <h5>Required</h5>
+                  <div class="input-field outlined error">
+                    <i class="material-icons suffix" aria-hidden="true">error</i>
+                    <input id="validation-name" type="text" required placeholder=" " value="" aria-invalid="true" aria-describedby="validation-name-error">
+                    <label for="validation-name">First name</label>
+                    <span id="validation-name-error" class="supporting-text">Enter your first name.</span>
+                  </div>
+                </div>
+                <div class="s12 m6">
+                  <h5>Maximum length</h5>
+                  <div class="input-field error">
+                    <i class="material-icons suffix" aria-hidden="true">error</i>
+                    <input id="validation-display-name" type="text" maxlength="20" placeholder=" " value="Alexandra Montgomery-Smith" aria-invalid="true" aria-describedby="validation-display-name-error">
+                    <label for="validation-display-name">Display name</label>
+                    <span id="validation-display-name-error" class="supporting-text">Use 20 characters or fewer.</span>
+                  </div>
+                </div>
+                <div class="s12 m6">
+                  <h5>Email format</h5>
+                  <div class="input-field outlined error">
+                    <i class="material-icons suffix" aria-hidden="true">error</i>
+                    <input id="validation-email" type="email" required placeholder=" " value="alex@" aria-invalid="true" aria-describedby="validation-email-error">
+                    <label for="validation-email">Email address</label>
+                    <span id="validation-email-error" class="supporting-text">Enter an email address such as name@example.com.</span>
+                  </div>
+                </div>
+                <div class="s12 m6">
+                  <h5>URL format</h5>
+                  <div class="input-field outlined error">
+                    <i class="material-icons suffix" aria-hidden="true">error</i>
+                    <input id="validation-url" type="url" placeholder=" " value="example" aria-invalid="true" aria-describedby="validation-url-error">
+                    <label for="validation-url">Website</label>
+                    <span id="validation-url-error" class="supporting-text">Enter a complete URL, such as https://example.com.</span>
+                  </div>
+                </div>
+                <div class="s12 m6">
+                  <h5>Pattern</h5>
+                  <div class="input-field error">
+                    <i class="material-icons suffix" aria-hidden="true">error</i>
+                    <input id="validation-reference" type="tel" pattern="[0-9]{6}" inputmode="numeric" placeholder=" " value="12A" aria-invalid="true" aria-describedby="validation-reference-error">
+                    <label for="validation-reference">Reference</label>
+                    <span id="validation-reference-error" class="supporting-text">Use exactly six digits.</span>
+                  </div>
+                </div>
+                <div class="s12 m6">
+                  <h5>Textarea length</h5>
+                  <div class="input-field outlined error">
+                    <textarea id="validation-summary" class="materialize-textarea" maxlength="40" placeholder=" " aria-invalid="true" aria-describedby="validation-summary-error">A project summary that is longer than the forty-character limit.</textarea>
+                    <label for="validation-summary">Summary</label>
+                    <span id="validation-summary-error" class="supporting-text"><i class="material-icons" aria-hidden="true">error</i> Keep your summary to 40 characters or fewer.</span>
+                  </div>
+                </div>
+              </div>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="input-field outlined error"&gt;
+    &lt;i class="material-icons suffix" aria-hidden="true"&gt;error&lt;/i&gt;
+    &lt;input id="validation-name" type="text" required placeholder=" " value="" aria-invalid="true" aria-describedby="validation-name-error"&gt;
+    &lt;label for="validation-name"&gt;First name&lt;/label&gt;
+    &lt;span id="validation-name-error" class="supporting-text"&gt;Enter your first name.&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="input-field error"&gt;
+    &lt;i class="material-icons suffix" aria-hidden="true"&gt;error&lt;/i&gt;
+    &lt;input id="validation-display-name" type="text" maxlength="20" placeholder=" " value="Alexandra Montgomery-Smith" aria-invalid="true" aria-describedby="validation-display-name-error"&gt;
+    &lt;label for="validation-display-name"&gt;Display name&lt;/label&gt;
+    &lt;span id="validation-display-name-error" class="supporting-text"&gt;Use 20 characters or fewer.&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="input-field outlined error"&gt;
+    &lt;i class="material-icons suffix" aria-hidden="true"&gt;error&lt;/i&gt;
+    &lt;input id="validation-email" type="email" required placeholder=" " value="alex@" aria-invalid="true" aria-describedby="validation-email-error"&gt;
+    &lt;label for="validation-email"&gt;Email address&lt;/label&gt;
+    &lt;span id="validation-email-error" class="supporting-text"&gt;Enter an email address such as name@example.com.&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="input-field outlined error"&gt;
+    &lt;i class="material-icons suffix" aria-hidden="true"&gt;error&lt;/i&gt;
+    &lt;input id="validation-url" type="url" placeholder=" " value="example" aria-invalid="true" aria-describedby="validation-url-error"&gt;
+    &lt;label for="validation-url"&gt;Website&lt;/label&gt;
+    &lt;span id="validation-url-error" class="supporting-text"&gt;Enter a complete URL, such as https://example.com.&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="input-field error"&gt;
+    &lt;i class="material-icons suffix" aria-hidden="true"&gt;error&lt;/i&gt;
+    &lt;input id="validation-reference" type="tel" pattern="[0-9]{6}" inputmode="numeric" placeholder=" " value="12A" aria-invalid="true" aria-describedby="validation-reference-error"&gt;
+    &lt;label for="validation-reference"&gt;Reference&lt;/label&gt;
+    &lt;span id="validation-reference-error" class="supporting-text"&gt;Use exactly six digits.&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="input-field outlined error"&gt;
+    &lt;textarea id="validation-summary" class="materialize-textarea" maxlength="40" placeholder=" " aria-invalid="true" aria-describedby="validation-summary-error"&gt;A project summary that is longer than the forty-character limit.&lt;/textarea&gt;
+    &lt;label for="validation-summary"&gt;Summary&lt;/label&gt;
+    &lt;span id="validation-summary-error" class="supporting-text"&gt;&lt;i class="material-icons" aria-hidden="true"&gt;error&lt;/i&gt; Keep your summary to 40 characters or fewer.&lt;/span&gt;
+&lt;/div&gt;</code></pre></div>
+
+              <h3>Native validation states</h3>
+
+              <p>
+                The validate class leverages HTML5 validation and will add a <code class="language-html">valid</code> and <code class="language-html">invalid</code> class
+                accordingly. If you don't want the Green and Red validation states, just remove the <code class="language-html">validate</code> class from your inputs.
+              </p>
+
               <h5>Custom Error or Success Messages</h5>
+
               <p>
                 You can add custom validation messages by adding either <code class="language-html">data-error</code> or <code class="language-html">data-success</code> attributes
                 to your helper text element.
               </p>
+
               <div class="row">
                 <form class="col s12">
                   <div class="row">
@@ -345,12 +686,17 @@
     &lt;/div&gt;
   &lt;/form&gt;
 &lt;/div&gt;</code></pre></div>
+            </section>
 
+            <section id="input-reference" class="section scrollspy">
+              <h2 class="header">Reference</h2>
               <h5>Changing colors</h5>
+
               <p>
                 Here is a CSS template for modifying input fields in CSS. With Sass, you can achieve this by just changing a variable. The CSS shown below is unprefixed. Depending
                 on what you use, you may have to change the type attribute selector.
               </p>
+
               <div class="code-card docs-code no-autoinit"><pre><code class="language-css">
   /* label color */
    .input-field label {
@@ -380,234 +726,11 @@
      color: #000;
    }
         </code></pre></div>
-            </div>
 
-            <!-- Textarea Section -->
-            <div id="textarea" class="section scrollspy">
-              <p>Need formatting, lists, and links? Try the <a href="textarea.html">Quill-based Textarea</a>.</p>
-              <h3 class="header">Textarea</h3>
-              <p>
-                Textareas allow larger expandable user input. The border should light up simply and clearly indicating which field the user is currently editing. You must have a
-                <code class="language-html">.input-field</code> div wrapping your input and label. This is only used in our Input and Textarea form elements.
-              </p>
-              <p><strong>Textareas will auto resize to the text inside.</strong></p>
-
-              <div class="row">
-                <form class="col s12">
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <textarea id="textarea1" class="materialize-textarea" placeholder=" "></textarea>
-                      <label for="textarea1">Textarea</label>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <textarea id="textarea2" class="materialize-textarea" placeholder="A custom placeholder :)"></textarea>
-                      <label for="textarea2">Textarea with placeholder</label>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="row"&gt;
-  &lt;form class="col s12"&gt;
-    &lt;div class="row"&gt;
-      &lt;div class="input-field col s12"&gt;
-        &lt;textarea id="textarea1" class="materialize-textarea" placeholder=" "&gt;&lt;/textarea&gt;
-        &lt;label for="textarea1"&gt;Textarea&lt;/label&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="row"&gt;
-      &lt;div class="input-field col s12"&gt;
-        &lt;textarea id="textarea2" class="materialize-textarea" placeholder="A custom placeholder :)"&gt;&lt;/textarea&gt;
-        &lt;label for="textarea2"&gt;Textarea with placeholder&lt;/label&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/form&gt;
-&lt;/div&gt;</code></pre></div>
-              <p>
-                <strong><b>Advanced notes:</b></strong>
-              </p>
-              <p>If you are adding Textarea form elements dynamically, you can use this to initialize them.</p>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">  Forms.InitTextarea(document.querySelector('#textarea1'));</code></pre></div>
-              <p>
-                When dynamically changing the value of a textarea like setting <code class="language-html">HTMLElement#value</code> attribute, you must trigger an autoresize on it
-                afterwords because simply updating the element's value does not automatically trigger the events we've binded to the textarea.
-              </p>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
-  document.querySelector("#textarea1").value = 'New Text';
-  Forms.textareaAutoResize(document.querySelector('#textarea1'));
-        </code></pre></div>
-
-              <h5>Icon Prefixes</h5>
-              <p>
-                You can add an icon prefix to make the form input label even more clear. Just add an icon with the class <code class="language-html">prefix</code> before the input
-                and label.
-              </p>
-              <div class="row">
-                <form class="col s12">
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <i class="material-icons prefix">mode_edit</i>
-                      <textarea id="icon_prefix2" class="materialize-textarea" placeholder=" "></textarea>
-                      <label for="icon_prefix2">Message</label>
-                    </div>
-                  </div>
-                </form>
-              </div>
-
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="row"&gt;
-  &lt;form class="col s12"&gt;
-    &lt;div class="row"&gt;
-      &lt;div class="input-field col s6"&gt;
-        &lt;i class="material-icons prefix"&gt;mode_edit&lt;/i&gt;
-        &lt;textarea id="icon_prefix2" class="materialize-textarea"&gt;&lt;/textarea&gt;
-        &lt;label for="icon_prefix2"&gt;First Name&lt;/label&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/form&gt;
-&lt;/div&gt;</code></pre></div>
-            </div>
-
-            <div id="file" class="section scrollspy">
-              <h3 class="header">File Input</h3>
-              <p>If you want to style an input button with a path input we provide this structure.</p>
-              <form action="#">
-                <div class="file-field input-field">
-                  <div class="btn">
-                    <span>File</span>
-                    <input type="file" />
-                  </div>
-                  <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text" />
-                  </div>
-                </div>
-              </form>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;form action="#"&gt;
-  &lt;div class="file-field input-field"&gt;
-    &lt;div class="btn"&gt;
-      &lt;span&gt;File&lt;/span&gt;
-      &lt;input type="file"&gt;
-    &lt;/div&gt;
-    &lt;div class="file-path-wrapper"&gt;
-      &lt;input class="file-path validate" type="text"&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/form&gt;</code></pre></div>
-
-              <p>You can also use the <code class="language-html">multiple</code> attribute to allow multiple file uploads.</p>
-              <form action="#">
-                <div class="file-field input-field">
-                  <div class="btn">
-                    <span>File</span>
-                    <input type="file" multiple />
-                  </div>
-                  <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text" placeholder="Upload one or more files" />
-                  </div>
-                </div>
-              </form>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;form action="#"&gt;
-  &lt;div class="file-field input-field"&gt;
-    &lt;div class="btn"&gt;
-      &lt;span&gt;File&lt;/span&gt;
-      &lt;input type="file" multiple&gt;
-    &lt;/div&gt;
-    &lt;div class="file-path-wrapper"&gt;
-      &lt;input class="file-path validate" type="text" placeholder="Upload one or more files"&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/form&gt;</code></pre></div>
-
-              <p>
-                <strong><b>Advanced note:</b></strong>
-              </p>
-              <p>If you are adding File Input form elements dynamically, you can use this to initialize them.</p>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">  Forms.InitFileInputPath(document.querySelector('#fileinput1'));</code></pre></div>
-            </div>
-
-            <div id="character-counter" class="section scrollspy">
-              <h3 class="header">Character Counter</h3>
-              <p class="caption">Use a character counter in fields where a character restriction is in place.</p>
-              <div class="row">
-                <div class="col s12">
-                  <div class="card-panel yellow black-text">
-                    <strong><b>Important:</b></strong> The "data-length" attribute has been depracated in favour of "maxlength" in v2.x.
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <form class="col s12">
-                  <div class="row">
-                    <div class="input-field col s6">
-                      <input id="input_text" type="text" maxlength="10" placeholder=" " />
-                      <label for="input_text">Input text</label>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <textarea id="textarea2" class="materialize-textarea" maxlength="120" placeholder=" "></textarea>
-                      <label for="textarea2">Textarea</label>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="row"&gt;
-  &lt;form class="col s12"&gt;
-    &lt;div class="row"&gt;
-      &lt;div class="input-field col s6"&gt;
-        &lt;input id="input_text" type="text" maxlength="10" placeholder=" "&gt;
-        &lt;label for="input_text"&gt;Input text&lt;/label&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="row"&gt;
-      &lt;div class="input-field col s12"&gt;
-        &lt;textarea id="textarea2" class="materialize-textarea" maxlength="120" placeholder=" "&gt;&lt;/textarea&gt;
-        &lt;label for="textarea2"&gt;Textarea&lt;/label&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/form&gt;
-&lt;/div&gt;</code></pre></div>
+              <h3>Formatted number setup</h3>
 
               <h5>Initialization</h5>
-              <p>There are no options for this plugin, but if you are adding these dynamically, you can use this to initialize them.</p>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
-  document.addEventListener('DOMContentLoaded', function() {
-    const elems = document.querySelectorAll('input#input_text, textarea#textarea2');
-    const instances = CharacterCounter.init(elems);
-  });
-        </code></pre></div>
-            </div>
 
-            <div id="password-toggle" class="section">
-              <p>Password fields, the show/hide toggle, and its API are documented on the <a href="password-input.html#password-toggle">Password page</a>.</p>
-            </div>
-
-            <div id="number-input" class="section scrollspy">
-              <h3 class="header">Number Input</h3>
-              <p>For arrow controls with whole-number and decimal increments, see <a href="number-input.html">Number input</a>.</p>
-              <p>
-                <code class="language-html">NumberInput</code> enhances a text input with
-                <a href="https://imask.js.org/">IMask</a> formatting - thousands separators, decimal scale, min/max. Deliberately opts in on
-                <code class="language-html">type="text" data-type="number"</code> rather than <code class="language-html">type="number"</code>, so
-                IMask can format the display value.
-              </p>
-              <p>
-                IMask is an optional peer dependency, loaded on demand - install it yourself: <code class="language-html">npm install imask</code>.
-              </p>
-              <div class="row">
-                <form class="col s12">
-                  <div class="input-field">
-                    <input id="number-input-example" type="text" data-type="number" step=".01" min="0" max="10000" placeholder=" " />
-                    <label for="number-input-example">Amount</label>
-                  </div>
-                </form>
-              </div>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="input-field"&gt;
-  &lt;input id="number-input-example" type="text" data-type="number" step=".01" min="0" max="10000" placeholder=" "&gt;
-  &lt;label for="number-input-example"&gt;Amount&lt;/label&gt;
-&lt;/div&gt;</code></pre></div>
-
-              <h5>Initialization</h5>
               <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   document.addEventListener('DOMContentLoaded', function() {
     const elems = document.querySelectorAll('input[data-type="number"]');
@@ -619,7 +742,8 @@
         </code></pre></div>
 
               <h5 class="header">Options</h5>
-              <table class="striped">
+
+              <table class="responsive-table striped">
                 <thead>
                   <tr>
                     <th>Name</th>
@@ -655,18 +779,20 @@
                   </tr>
                 </tbody>
               </table>
-            </div>
+
+              <h3>Related input guides</h3>
+
+              <div id="password-toggle" class="section">
+                <p>Password fields, the show/hide toggle, and its API are documented on the <a href="password-input.html#password-toggle">Password page</a>.</p>
+              </div>
+
+              <p>For numeric steppers, see <a href="number-input.html">Number input</a>. For formatted phone numbers, currency, dates, and codes, see <a href="maskito.html">Input Masks</a>. Use <a href="textarea.html">Textarea</a> for rich text and <a href="file-upload.html">File Upload</a> for drag-and-drop attachments.</p>
+            </section>
           </div>
           <div class="col hide-on-small-only m3 xl3">
             <div class="toc-wrapper">
               <div style="height: 1px">
-                <ul class="section table-of-contents">
-                  <li><a href="#input">Input Fields</a></li>
-                  <li><a href="#textarea">Textareas</a></li>
-                  <li><a href="#file">File Input Button</a></li>
-                  <li><a href="#character-counter">Character Counter</a></li>
-                  <li><a href="#number-input">Number Input</a></li>
-                </ul>
+                {{> input-toc }}
               </div>
             </div>
           </div>

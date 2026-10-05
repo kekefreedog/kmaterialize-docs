@@ -10,83 +10,50 @@
       <div class="container">
         <div class="row">
           <div class="col s12 m8 offset-m1 xl7 offset-xl1">
-            <!-- Checkboxes -->
-            <div id="checkbox" class="section scrollspy">
-              <p>
-                Use checkboxes when looking for yes or no answers. The
-                <code class="language-html">for</code> attribute is necessary to bind our custom checkbox with the input. Add the input's <code class="language-html">id</code> as
-                the value of the <code class="language-html">for</code> attribute of the label.
-              </p>
-              <form action="#">
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>Red</span>
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    <input type="checkbox" checked="checked" />
-                    <span>Yellow</span>
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    <input type="checkbox" class="filled-in" checked="checked" />
-                    <span>Filled in</span>
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    <input id="indeterminate-checkbox" type="checkbox" />
-                    <span>Indeterminate Style</span>
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    <input type="checkbox" checked="checked" disabled="disabled" />
-                    <span>Green</span>
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    <input type="checkbox" disabled="disabled" />
-                    <span>Brown</span>
-                  </label>
-                </p>
-              </form>
+            <section id="input-basic" class="section scrollspy">
+              <h2 class="header">Basic example</h2>
+              <div id="checkbox">
+                <p>Use checkboxes for independent choices. Wrap the input and its text in a label so clicking either toggles the choice.</p>
 
-              <h4>Checkboxes with icons</h4>
-              <form action="#">
-                <p>
-                  <label>
-                    <input type="checkbox" checked />
-                    <i class="material-icons checkbox-icon" aria-hidden="true">notifications</i>
-                    <span>Icon on the left</span>
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    <input type="checkbox" />
-                    <span>Icon on the right</span>
-                    <i class="material-icons checkbox-icon" aria-hidden="true">favorite</i>
-                  </label>
-                </p>
-              </form>
-
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;label&gt;
-  &lt;input type="checkbox" checked /&gt;
-  &lt;i class="material-icons checkbox-icon" aria-hidden="true"&gt;notifications&lt;/i&gt;
-  &lt;span&gt;Icon on the left&lt;/span&gt;
-&lt;/label&gt;
-
-&lt;label&gt;
-  &lt;input type="checkbox" /&gt;
-  &lt;span&gt;Icon on the right&lt;/span&gt;
-  &lt;i class="material-icons checkbox-icon" aria-hidden="true"&gt;favorite&lt;/i&gt;
-&lt;/label&gt;</code></pre></div>
-
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;form action="#"&gt;
+                <form action="#">
+                  <p>
+                    <label>
+                      <input type="checkbox" />
+                      <span>Red</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" checked="checked" />
+                      <span>Yellow</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" class="filled-in" checked="checked" />
+                      <span>Filled in</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input id="indeterminate-checkbox" type="checkbox" />
+                      <span>Indeterminate Style</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" checked="checked" disabled="disabled" />
+                      <span>Green</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input type="checkbox" disabled="disabled" />
+                      <span>Brown</span>
+                    </label>
+                  </p>
+                </form>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;form action="#"&gt;
   &lt;p&gt;
     &lt;label&gt;
       &lt;input type="checkbox" /&gt;
@@ -124,14 +91,92 @@
     &lt;/label&gt;
   &lt;/p&gt;
 &lt;/form&gt;</code></pre></div>
-            </div>
+              </div>
+            </section>
+
+            <section id="input-setup" class="section scrollspy">
+              <h2 class="header">Setup</h2>
+              {{> input-native-setup }}
+
+              <p>Wrap each checkbox and its text in a <code>&lt;label&gt;</code>, with the text in a <code>&lt;span&gt;</code>. No JavaScript initialization is required. Set the native <code>indeterminate</code> property for a partially selected group.</p>
+
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">document.querySelector('#indeterminate-checkbox').indeterminate = true;</code></pre></div>
+            </section>
+
+            <section id="input-variants" class="section scrollspy">
+              <h2 class="header">Examples and variants</h2>
+              <h3>Checkboxes with icons</h3>
+
+              <form action="#">
+                <p>
+                  <label>
+                    <input type="checkbox" checked />
+                    <i class="material-icons checkbox-icon" aria-hidden="true">notifications</i>
+                    <span>Icon on the left</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" />
+                    <span>Icon on the right</span>
+                    <i class="material-icons checkbox-icon" aria-hidden="true">favorite</i>
+                  </label>
+                </p>
+              </form>
+
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;label&gt;
+  &lt;input type="checkbox" checked /&gt;
+  &lt;i class="material-icons checkbox-icon" aria-hidden="true"&gt;notifications&lt;/i&gt;
+  &lt;span&gt;Icon on the left&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;label&gt;
+  &lt;input type="checkbox" /&gt;
+  &lt;span&gt;Icon on the right&lt;/span&gt;
+  &lt;i class="material-icons checkbox-icon" aria-hidden="true"&gt;favorite&lt;/i&gt;
+&lt;/label&gt;</code></pre></div>
+            </section>
+
+            <section id="validation-errors" class="section scrollspy">
+              <h2 class="header">Validation</h2>
+              <p>A required checkbox must be checked. For rules such as “select at least two,” validate the whole group in your application and associate one message with the group.</p>
+              {{> validation-note }}
+              <div class="row g-4">
+                <div class="s12 m6">
+                  <h5>Required agreement</h5>
+                  <div>
+                    <label>
+                      <input id="validation-checkbox" type="checkbox" required aria-invalid="true" aria-describedby="validation-checkbox-error">
+                      <span>I agree to the project terms</span>
+                    </label>
+                    <p id="validation-checkbox-error" class="supporting-text error-text"><i class="material-icons" aria-hidden="true">error</i> Accept the terms before continuing.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div&gt;
+    &lt;label&gt;
+        &lt;input id="validation-checkbox" type="checkbox" required aria-invalid="true" aria-describedby="validation-checkbox-error"&gt;
+        &lt;span&gt;I agree to the project terms&lt;/span&gt;
+    &lt;/label&gt;
+    &lt;p id="validation-checkbox-error" class="supporting-text error-text"&gt;&lt;i class="material-icons" aria-hidden="true"&gt;error&lt;/i&gt; Accept the terms before continuing.&lt;/p&gt;
+&lt;/div&gt;</code></pre></div>
+            </section>
+
+            <section id="input-reference" class="section scrollspy">
+              <h2 class="header">Reference</h2>
+              <h3>Attributes</h3>
+
+              {{> input-choice-reference }}
+
+              <h3>Keyboard and accessibility</h3>
+
+              <p>Use Tab to focus a checkbox and Space to toggle it. Give each choice a visible label. Group related choices with a <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code>. An indeterminate checkbox still submits according to its <code>checked</code> state.</p>
+            </section>
           </div>
           <div class="col hide-on-small-only m3 xl3">
             <div class="toc-wrapper">
               <div style="height: 1px">
-                <ul class="section table-of-contents">
-                  <li><a href="#checkbox">Checkboxes</a></li>
-                </ul>
+                {{> input-toc }}
               </div>
             </div>
           </div>

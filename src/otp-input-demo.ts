@@ -20,6 +20,8 @@ function configure() {
 configure();
 length.addEventListener('change', configure);
 characters.addEventListener('change', configure);
+const validation = OtpInput.init(input('validation-otp'));
+const incomplete = OtpInput.init(input('validation-otp-incomplete'));
 const underlined = OtpInput.init(input('otp-underlined'));
 const pin = OtpInput.init(input('otp-pin'));
 const grouped = OtpInput.init(input('otp-grouped'));
@@ -30,7 +32,7 @@ const license = OtpInput.init(input('otp-license'), {
 });
 const readonly = OtpInput.init(input('otp-readonly'));
 const disabled = OtpInput.init(input('otp-disabled'));
-Promise.all([underlined, pin, grouped, license, readonly, disabled].map(field => field.ready)).catch(reportError);
+Promise.all([validation, incomplete, underlined, pin, grouped, license, readonly, disabled].map(field => field.ready)).catch(reportError);
 form.addEventListener('submit', event => {
   event.preventDefault();
   void updateCodeSnippet("otp-output", JSON.stringify(Object.fromEntries(new FormData(form)), null, 2)).catch(reportError);
@@ -45,4 +47,4 @@ document.querySelector<HTMLButtonElement>('#otp-reveal')!.addEventListener('clic
   button.textContent = reveal ? 'Hide PIN' : 'Show PIN';
   button.setAttribute('aria-pressed', String(reveal));
 });
-if (import.meta.hot) import.meta.hot.dispose(() => [code, underlined, pin, grouped, license, readonly, disabled].forEach(field => field.destroy()));
+if (import.meta.hot) import.meta.hot.dispose(() => [code, validation, incomplete, underlined, pin, grouped, license, readonly, disabled].forEach(field => field.destroy()));

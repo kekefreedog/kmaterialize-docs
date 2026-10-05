@@ -10,26 +10,92 @@
       <div class="container">
         <div class="row">
           <div class="col s12 m8 offset-m1 xl7 offset-xl1">
-            <div id="date-picker" class="section scrollspy">
-              <div class="input-field">
-                <input id="birthdate" type="text" class="datepicker" placeholder=" " />
-                <label for="birthdate">Birthdate</label>
-              </div>
+            <section id="input-basic" class="section scrollspy">
+              <h2 class="header">Basic example</h2>
+              <div id="date-picker">
+                <p>Click the field to open the picker, then choose a value.</p>
 
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;input type="text" class="datepicker"&gt;</code></pre></div>
-              <div class="section">
-                <h5>Initialization</h5>
-                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">document.addEventListener('DOMContentLoaded', function() {
-  const elems = document.querySelectorAll('.datepicker');
-  const instances = Datepicker.init(elems, {
-    // specify options here
-  });
+                <div class="input-field">
+                  <input id="birthdate" type="text" class="datepicker" placeholder=" " />
+                  <label for="birthdate">Birthdate</label>
+                </div>
+
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="input-field"&gt;
+  &lt;input id="birthdate" type="text" class="datepicker" placeholder=" " /&gt;
+  &lt;label for="birthdate"&gt;Birthdate&lt;/label&gt;
+&lt;/div&gt;</code></pre></div>
+              </div>
+            </section>
+
+            <section id="input-setup" class="section scrollspy">
+              <h2 class="header">Setup</h2>
+              {{> input-setup-note }}
+              <p>Import the component and initialize it after the input exists. Use <code>displayPlugin: 'docked'</code> to open the picker next to the field.</p>
+
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">import { Datepicker } from 'kmaterialize';
+
+Datepicker.init(document.querySelector('#birthdate'), {
+    displayPlugin: 'docked'
 });</code></pre></div>
-              </div>
+            </section>
 
+            <section id="input-variants" class="section scrollspy">
+              <h2 class="header">Examples and variants</h2>
+              <h3>Date format and limits</h3>
+
+              <p>Pass a format and native <code>Date</code> bounds when initializing your field.</p>
+
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">Datepicker.init(document.querySelector('#birthdate'), {
+    displayPlugin: 'docked',
+    format: 'yyyy-mm-dd',
+    minDate: new Date(2026, 0, 1),
+    maxDate: new Date(2026, 11, 31),
+    showClearBtn: true
+});</code></pre></div>
+            </section>
+
+            <section id="validation-errors" class="section scrollspy">
+              <h2 class="header">Validation</h2>
+              <p>Use <code>required</code> on the date input. For text-based calendar inputs, validate the parsed date against your allowed dates; native <code>min</code>/<code>max</code> validation only applies to native date controls.</p>
+              {{> validation-note }}
+              <div class="row g-4">
+                <div class="s12 m6">
+                  <h5>Required date</h5>
+                  <div class="input-field outlined error">
+                    <i class="material-icons suffix" aria-hidden="true">error</i>
+                    <input id="validation-date" type="text" class="datepicker" required placeholder=" " value="" aria-invalid="true" aria-describedby="validation-date-error">
+                    <label for="validation-date">Appointment date</label>
+                    <span id="validation-date-error" class="supporting-text">Choose an appointment date.</span>
+                  </div>
+                </div>
+                <div class="s12 m6">
+                  <h5>Date outside the range</h5>
+                  <div class="input-field error">
+                    <input id="validation-date-range" type="date" min="2027-01-01" placeholder=" " value="2026-12-20" aria-invalid="true" aria-describedby="validation-date-range-error">
+                    <label for="validation-date-range">Delivery date</label>
+                    <span id="validation-date-range-error" class="supporting-text"><i class="material-icons" aria-hidden="true">error</i> Choose a date on or after 1 January 2027.</span>
+                  </div>
+                </div>
+              </div>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="input-field outlined error"&gt;
+    &lt;i class="material-icons suffix" aria-hidden="true"&gt;error&lt;/i&gt;
+    &lt;input id="validation-date" type="text" class="datepicker" required placeholder=" " value="" aria-invalid="true" aria-describedby="validation-date-error"&gt;
+    &lt;label for="validation-date"&gt;Appointment date&lt;/label&gt;
+    &lt;span id="validation-date-error" class="supporting-text"&gt;Choose an appointment date.&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="input-field error"&gt;
+    &lt;input id="validation-date-range" type="date" min="2027-01-01" placeholder=" " value="2026-12-20" aria-invalid="true" aria-describedby="validation-date-range-error"&gt;
+    &lt;label for="validation-date-range"&gt;Delivery date&lt;/label&gt;
+    &lt;span id="validation-date-range-error" class="supporting-text"&gt;&lt;i class="material-icons" aria-hidden="true"&gt;error&lt;/i&gt; Choose a date on or after 1 January 2027.&lt;/span&gt;
+&lt;/div&gt;</code></pre></div>
+            </section>
+
+            <section id="input-reference" class="section scrollspy">
+              <h2 class="header">Reference</h2>
               <div class="section">
-                <h5>Options</h5>
-                <table class="striped">
+                <h3>Options</h3>
+                <table class="responsive-table striped">
                   <thead>
                     <tr>
                       <th>Name</th>
@@ -183,9 +249,9 @@
               </div>
 
               <div class="section">
-                <h5>Date format options</h5>
+                <h3>Date format options</h3>
                 <p>Use these in the format option to customize your date string.</p>
-                <table class="striped">
+                <table class="responsive-table striped">
                   <thead>
                     <tr>
                       <th>Key</th>
@@ -250,9 +316,9 @@
               </div>
 
               <div class="section">
-                <h5>Datepicker Internationalization options</h5>
+                <h3>Datepicker Internationalization options</h3>
                 <p>Use these in the i18n option to localize the datepicker.</p>
-                <table class="striped">
+                <table class="responsive-table striped">
                   <thead>
                     <tr>
                       <th>Key</th>
@@ -360,8 +426,8 @@
               </div>
 
               <div class="section">
-                <h5>Properties</h5>
-                <table class="striped">
+                <h3>Properties</h3>
+                <table class="responsive-table striped">
                   <thead>
                     <tr>
                       <th>Name</th>
@@ -396,44 +462,40 @@
               </div>
 
               <div class="section">
-                <h5>Methods</h5>
+                <h3>Methods</h3>
 
                 <blockquote>
                   <p>All the methods are called on the plugin instance. You can get the plugin instance like this:</p>
                   <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">const instance = Datepicker.getInstance(elem);</code></pre></div>
                 </blockquote>
 
-                <h5 class="method-header">.toString();</h5>
-                <p>Gets a string representation of the selected date</p>
-                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">instance.toString();</code></pre></div>
+                <h5 class="method-header">.toString();</h3>
+                  <p>Gets a string representation of the selected date</p>
+                  <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">instance.toString();</code></pre></div>
 
-                <h5 class="method-header">.setDate();</h5>
-                <p>Set a date on the datepicker</p>
-                <h6>Arguments</h6>
-                <p><b>Date (optional):</b> Date to set on the datepicker.</p>
-                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">instance.setDate(new Date());</code></pre></div>
+                  <h5 class="method-header">.setDate();</h3>
+                    <p>Set a date on the datepicker</p>
+                    <h6>Arguments</h6>
+                    <p><b>Date (optional):</b> Date to set on the datepicker.</p>
+                    <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">instance.setDate(new Date());</code></pre></div>
 
-                <h5 class="method-header">.gotoDate();</h5>
-                <p>Change date view to a specific date on the datepicker</p>
-                <h6>Arguments</h6>
-                <p><b>Date:</b> Date to show on the datepicker.</p>
-                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">instance.gotoDate(new Date());</code></pre></div>
+                    <h5 class="method-header">.gotoDate();</h3>
+                      <p>Change date view to a specific date on the datepicker</p>
+                      <h6>Arguments</h6>
+                      <p><b>Date:</b> Date to show on the datepicker.</p>
+                      <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">instance.gotoDate(new Date());</code></pre></div>
 
-                <h5 class="method-header">.destroy();</h5>
-                <p>Destroy plugin instance and teardown</p>
-                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">instance.destroy();</code></pre></div>
-              </div>
-            </div>
+                      <h5 class="method-header">.destroy();</h3>
+                        <p>Destroy plugin instance and teardown</p>
+                        <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">instance.destroy();</code></pre></div>
+                      </div>
+            </section>
           </div>
 
           <div class="col hide-on-small-only m3 xl3">
             <div class="toc-wrapper">
               <div style="height: 1px">
-                <ul class="section table-of-contents">
-                  <li>
-                    <a href="#date-picker">Date Picker</a>
-                  </li>
-                </ul>
+                {{> input-toc }}
               </div>
             </div>
           </div>

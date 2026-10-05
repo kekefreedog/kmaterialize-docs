@@ -8,32 +8,37 @@
       <div class="container">
         <div class="row">
           <div class="s12 m8 offset-m1 xl7 offset-xl1">
-            <section id="editor" class="section scrollspy">
-              <h3 class="header">Rich text, native forms</h3>
-              <p>Write formatted text using <a href="https://quilljs.com/docs/quickstart" target="_blank" rel="noopener">Quill 2</a>. Headings, emphasis, lists, quotes, and links use a Material toolbar. The original textarea keeps the serialized value for normal form submission.</p>
-              <form id="textarea-demo-form">
-                <div class="rich-textarea-field">
-                  <label for="textarea-brief">Project brief</label>
-                  <textarea id="textarea-brief" name="brief" data-editor="quill" class="no-autoinit" placeholder="Describe your next project…" aria-describedby="textarea-brief-help" required><h2>A new idea</h2><p>Give your team a clear brief with <strong>bold ideas</strong>, useful links, and the next steps.</p><ul><li>Describe the goal</li><li>List the deliverables</li></ul></textarea>
-                  <p id="textarea-brief-help">Required. Try formatting, then submit to inspect the form value. Clear the editor to test validation.</p>
-                </div>
-                <button type="submit" class="btn filled">Show form value</button>
-                <button type="reset" class="btn outlined">Reset</button>
-                <button id="textarea-toggle-readonly" type="button" class="btn text" aria-pressed="false">Read-only mode</button>
-              </form>
-              <p id="textarea-demo-status" role="status">Loading the rich-text editor…</p>
-              <div id="textarea-form-output" class="code-card docs-code no-autoinit"><pre><code class="language-json">Submit the form to inspect its serialized HTML.</code></pre></div>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="rich-textarea-field"&gt;
+            <section id="input-basic" class="section scrollspy">
+              <h2 class="header">Basic example</h2>
+              <div id="editor">
+                <p>Write formatted text using <a href="https://quilljs.com/docs/quickstart" target="_blank" rel="noopener">Quill 2</a>. Headings, emphasis, lists, quotes, and links use a Material toolbar. The original textarea keeps the serialized value for normal form submission.</p>
+                <form id="textarea-demo-form">
+                  <div class="rich-textarea-field">
+                    <label for="textarea-brief">Project brief</label>
+                    <textarea id="textarea-brief" name="brief" data-editor="quill" class="no-autoinit" placeholder="Describe your next project…" aria-describedby="textarea-brief-help" required><h2>A new idea</h2><p>Give your team a clear brief with <strong>bold ideas</strong>, useful links, and the next steps.</p><ul><li>Describe the goal</li><li>List the deliverables</li></ul></textarea>
+                    <p id="textarea-brief-help">Required. Try formatting, then submit to inspect the form value. Clear the editor to test validation.</p>
+                  </div>
+                  <button type="submit" class="btn filled">Show form value</button>
+                  <button type="reset" class="btn outlined">Reset</button>
+                  <button id="textarea-toggle-readonly" type="button" class="btn text" aria-pressed="false">Read-only mode</button>
+                </form>
+                <p id="textarea-demo-status" role="status">Loading the rich-text editor…</p>
+                <div id="textarea-form-output" class="code-card docs-code no-autoinit"><pre><code class="language-json">Submit the form to inspect its serialized HTML.</code></pre></div>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="rich-textarea-field"&gt;
   &lt;label for="brief"&gt;Project brief&lt;/label&gt;
   &lt;textarea id="brief" name="brief" data-editor="quill" required
             placeholder="Describe your project…"&gt;&lt;p&gt;Hello &lt;strong&gt;world&lt;/strong&gt;!&lt;/p&gt;&lt;/textarea&gt;
 &lt;/div&gt;</code></pre></div>
+              </div>
             </section>
-            <section id="setup" class="section scrollspy">
-              <h3 class="header">Setup</h3>
-              <p>Quill is an optional peer dependency. Load its Snow stylesheet before Materialize. The editor code loads when an opted-in textarea is initialized.</p>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-bash">npm install kmaterialize quill</code></pre></div>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">import 'quill/dist/quill.snow.css';
+
+            <section id="input-setup" class="section scrollspy">
+              <h2 class="header">Setup</h2>
+              {{> input-setup-note }}
+              <div id="setup">
+                <p>Quill is an optional peer dependency. Load its Snow stylesheet before Materialize. The editor code loads when an opted-in textarea is initialized.</p>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-bash">npm install kmaterialize quill</code></pre></div>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">import 'quill/dist/quill.snow.css';
 import 'kmaterialize/dist/css/materialize.css';
 import &#123; RichTextarea &#125; from 'kmaterialize';
 
@@ -44,38 +49,82 @@ await field.ready;
 
 console.log(field.getHTML());
 console.log(field.getText());</code></pre></div>
-              <p>Alternatively, <code>M.AutoInit()</code> enhances <code>textarea[data-editor="quill"]</code>. Add <code>no-autoinit</code> when you want to initialize a field yourself. Await the instance’s <code>ready</code> promise before using <code>field.quill</code>.</p>
-              <p>Without a bundler, load <code>quill.snow.css</code>, then Materialize CSS, followed by <code>quill.js</code> and <code>materialize.js</code>. The component can use <code>window.Quill</code>.</p>
-            </section>
-            <section id="compact" class="section scrollspy">
-              <h3 class="header">Compact toolbar and plain-text value</h3>
-              <p>Choose which controls to show. This example preserves formatting in the editor while storing plain text in the native textarea.</p>
-              <div class="rich-textarea-field">
-                <label for="textarea-note">Quick note</label>
-                <textarea id="textarea-note" name="note" data-editor="quill" data-value-format="text" class="no-autoinit" placeholder="Write a short note…">A short note for the team.</textarea>
+                <p>Alternatively, <code>M.AutoInit()</code> enhances <code>textarea[data-editor="quill"]</code>. Add <code>no-autoinit</code> when you want to initialize a field yourself. Await the instance’s <code>ready</code> promise before using <code>field.quill</code>.</p>
+                <p>Without a bundler, load <code>quill.snow.css</code>, then Materialize CSS, followed by <code>quill.js</code> and <code>materialize.js</code>. The component can use <code>window.Quill</code>.</p>
               </div>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">const note = RichTextarea.init(textarea, &#123;
+            </section>
+
+            <section id="input-variants" class="section scrollspy">
+              <h2 class="header">Examples and variants</h2>
+              <section id="compact" class="section">
+                <h3 class="header">Compact toolbar and plain-text value</h3>
+                <p>Choose which controls to show. This example preserves formatting in the editor while storing plain text in the native textarea.</p>
+                <div class="rich-textarea-field">
+                  <label for="textarea-note">Quick note</label>
+                  <textarea id="textarea-note" name="note" data-editor="quill" data-value-format="text" class="no-autoinit" placeholder="Write a short note…">A short note for the team.</textarea>
+                </div>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">const note = RichTextarea.init(textarea, &#123;
   valueFormat: 'text',
   toolbar: [['bold', 'italic'], [&#123; list: 'bullet' &#125;], ['clean']]
 &#125;);
 await note.ready;</code></pre></div>
-              <p>HTML is the default value format. Use <code>valueFormat: 'text'</code> or <code>data-value-format="text"</code> for plain text; formatting is not preserved when that plain-text value is reloaded.</p>
+                <p>HTML is the default value format. Use <code>valueFormat: 'text'</code> or <code>data-value-format="text"</code> for plain text; formatting is not preserved when that plain-text value is reloaded.</p>
+              </section>
+
+              <section id="readonly" class="section">
+                <h3 class="header">Read-only and disabled</h3>
+                <div class="rich-textarea-field">
+                  <label for="textarea-readonly">Published note</label>
+                  <textarea id="textarea-readonly" data-editor="quill" class="no-autoinit" readonly><p>This <strong>published note</strong> can be selected and copied, but not edited.</p></textarea>
+                </div>
+                <div class="rich-textarea-field">
+                  <label for="textarea-disabled">Unavailable field</label>
+                  <textarea id="textarea-disabled" data-editor="quill" class="no-autoinit" disabled><p>This field is currently unavailable.</p></textarea>
+                </div>
+                <p>Use the native <code>readonly</code> and <code>disabled</code> attributes. Disabled fields are omitted from form submission. State changes are reflected in the editor and toolbar automatically.</p>
+              </section>
             </section>
-            <section id="readonly" class="section scrollspy">
-              <h3 class="header">Read-only and disabled</h3>
-              <div class="rich-textarea-field">
-                <label for="textarea-readonly">Published note</label>
-                <textarea id="textarea-readonly" data-editor="quill" class="no-autoinit" readonly><p>This <strong>published note</strong> can be selected and copied, but not edited.</p></textarea>
+
+            <section id="validation-errors" class="section scrollspy">
+              <h2 class="header">Validation</h2>
+              <p>Native textareas support <code>required</code> and text-length constraints. For rich text, validate the editor’s plain text if your limit counts readable characters; the original textarea stores HTML. Native <code>maxlength</code> is not a limit for Quill’s editable content.</p>
+              {{> validation-note }}
+              <div class="row g-4">
+                <div class="s12 m6">
+                  <h5>Required rich text</h5>
+                  <div class="rich-textarea-field">
+                    <label for="validation-notes">Notes</label>
+                    <textarea id="validation-notes" data-editor="quill" required aria-invalid="true" aria-describedby="validation-notes-error"></textarea>
+                    <p id="validation-notes-error" class="supporting-text error-text"><i class="material-icons" aria-hidden="true">error</i> Enter your notes.</p>
+                  </div>
+                </div>
+                <div class="s12 m6">
+                  <h5>Maximum length</h5>
+                  <div class="input-field error">
+                    <textarea id="validation-bio" class="materialize-textarea" maxlength="40" placeholder=" " aria-invalid="true" aria-describedby="validation-bio-error">This description contains more than forty characters.</textarea>
+                    <label for="validation-bio">Short description</label>
+                    <span id="validation-bio-error" class="supporting-text"><i class="material-icons" aria-hidden="true">error</i> Use 40 characters or fewer.</span>
+                  </div>
+                </div>
               </div>
-              <div class="rich-textarea-field">
-                <label for="textarea-disabled">Unavailable field</label>
-                <textarea id="textarea-disabled" data-editor="quill" class="no-autoinit" disabled><p>This field is currently unavailable.</p></textarea>
-              </div>
-              <p>Use the native <code>readonly</code> and <code>disabled</code> attributes. Disabled fields are omitted from form submission. State changes are reflected in the editor and toolbar automatically.</p>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="rich-textarea-field"&gt;
+    &lt;label for="validation-notes"&gt;Notes&lt;/label&gt;
+    &lt;textarea id="validation-notes" data-editor="quill" required aria-invalid="true" aria-describedby="validation-notes-error"&gt;&lt;/textarea&gt;
+    &lt;p id="validation-notes-error" class="supporting-text error-text"&gt;&lt;i class="material-icons" aria-hidden="true"&gt;error&lt;/i&gt; Enter your notes.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="input-field error"&gt;
+    &lt;textarea id="validation-bio" class="materialize-textarea" maxlength="40" placeholder=" " aria-invalid="true" aria-describedby="validation-bio-error"&gt;This description contains more than forty characters.&lt;/textarea&gt;
+    &lt;label for="validation-bio"&gt;Short description&lt;/label&gt;
+    &lt;span id="validation-bio-error" class="supporting-text"&gt;&lt;i class="material-icons" aria-hidden="true"&gt;error&lt;/i&gt; Use 40 characters or fewer.&lt;/span&gt;
+&lt;/div&gt;</code></pre></div>
             </section>
-            <section id="api" class="section scrollspy">
-              <h3 class="header">Values, events, and cleanup</h3>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">await field.ready;
+
+            <section id="input-reference" class="section scrollspy">
+              <h2 class="header">Reference</h2>
+              <section id="api" class="section">
+                <h3 class="header">Values, events, and cleanup</h3>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-typescript">await field.ready;
 field.setValue('&lt;p&gt;A &lt;strong&gt;formatted&lt;/strong&gt; update.&lt;/p&gt;');
 const html = field.getHTML();
 const text = field.getText();
@@ -93,20 +142,15 @@ const delta = field.quill!.getContents();
 
 // Restore the native textarea, retaining the latest serialized value:
 field.destroy();</code></pre></div>
-              <p>The native <code>name</code>, <code>required</code>, and form reset behavior are preserved. An empty editor stores an empty string, so required validation works. HTML is normalized through Quill’s supported formats; it is not stored byte-for-byte.</p>
-              <p>The default toolbar supports text formatting and links. Customize <code>toolbar</code> and <code>formats</code>, or set <code>toolbar: false</code> for a toolbar-free editor. TypeScript options are exported as <code>RichTextareaOptions</code>.</p>
-              <p>Set <code>fontFamily</code> in the <code>RichTextarea.init()</code> options to choose the default editor content font, for example <code>{ fontFamily: 'Arial, sans-serif' }</code>. You can also set <code>--rich-textarea-font-family</code> on the wrapper. Without an override, content inherits the application font. Load any web fonts separately, including weight 800 for extra-bold text. Toolbar typography is unchanged.</p>
-              <p>Set <code>--rich-textarea-min-height</code> and <code>--rich-textarea-max-height</code> on the generated <code>.rich-textarea</code> to adjust the writing area. All component styles are shipped by kmaterialize.</p>
+                <p>The native <code>name</code>, <code>required</code>, and form reset behavior are preserved. An empty editor stores an empty string, so required validation works. HTML is normalized through Quill’s supported formats; it is not stored byte-for-byte.</p>
+                <p>The default toolbar supports text formatting and links. Customize <code>toolbar</code> and <code>formats</code>, or set <code>toolbar: false</code> for a toolbar-free editor. TypeScript options are exported as <code>RichTextareaOptions</code>.</p>
+                <p>Set <code>fontFamily</code> in the <code>RichTextarea.init()</code> options to choose the default editor content font, for example <code>{ fontFamily: 'Arial, sans-serif' }</code>. You can also set <code>--rich-textarea-font-family</code> on the wrapper. Without an override, content inherits the application font. Load any web fonts separately, including weight 800 for extra-bold text. Toolbar typography is unchanged.</p>
+                <p>Set <code>--rich-textarea-min-height</code> and <code>--rich-textarea-max-height</code> on the generated <code>.rich-textarea</code> to adjust the writing area. All component styles are shipped by kmaterialize.</p>
+              </section>
             </section>
           </div>
           <div class="hide-on-small-only m3 xl3">
-            <div class="toc-wrapper"><ul class="section table-of-contents">
-              <li><a href="#editor">Textarea</a></li>
-              <li><a href="#setup">Setup</a></li>
-              <li><a href="#compact">Compact toolbar</a></li>
-              <li><a href="#readonly">Read-only / disabled</a></li>
-              <li><a href="#api">API</a></li>
-            </ul></div>
+            <div class="toc-wrapper">{{> input-toc }}</div>
           </div>
         </div>
       </div>

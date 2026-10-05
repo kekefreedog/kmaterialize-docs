@@ -418,7 +418,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   ScrollSpy.init(document.querySelectorAll(".scrollspy"), {});
 
-  Datepicker.init(document.querySelectorAll(".datepicker"), {});
+  Datepicker.init(document.querySelectorAll(".datepicker"), { displayPlugin: "docked" });
 
   Tabs.init(document.querySelectorAll(".tabs:not(#navbar-demo-tabs)"), {});
   Tabs.init(document.querySelectorAll("#tabs-swipe-demo"), {
@@ -429,7 +429,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // mode reusing the same class name, not this component.
   Toolbar.init(document.querySelectorAll(".toolbar:not(.fixed-action-btn)"), {});
 
-  Timepicker.init(document.querySelectorAll(".timepicker"), {});
+  Timepicker.init(document.querySelectorAll(".timepicker"), { displayPlugin: "docked" });
 
   Tooltip.init(document.querySelectorAll(".tooltipped"), {});
 
@@ -441,7 +441,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#open-taptarget")?.addEventListener("click", () => tts[0].open());
   document.querySelector("#close-taptarget")?.addEventListener("click", () => tts[0].close());
 
-  CharacterCounter.init(document.querySelectorAll("[maxlength]"), {});
+  CharacterCounter.init(document.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("input[maxlength], textarea[maxlength]"), {});
 
   PasswordInput.init(document.querySelectorAll("input[data-password-toggle]"), {});
   NumberInput.init(document.querySelectorAll('input[data-type="number"]:not([data-otp]):not([data-maskito])'), {});
@@ -455,15 +455,22 @@ document.addEventListener("DOMContentLoaded", () => {
     data: autocompleteDemoData,
   });
 
-  Chips.init(document.querySelectorAll(".chips"), {});
+  Chips.init(document.querySelectorAll(".chips:not(.chips-initial):not(.chips-placeholder):not(.chips-autocomplete)"), {
+    allowUserInput: true,
+    placeholder: "Enter a tag",
+    secondaryPlaceholder: "+Tag",
+  });
   Chips.init(document.querySelectorAll(".chips-initial"), {
+    allowUserInput: true,
     data: autocompleteDemoData.filter((country) => ["ma", "ta", "er", "ia", "li", "ze"].includes(country.id)),
   });
   Chips.init(document.querySelectorAll(".chips-placeholder"), {
+    allowUserInput: true,
     placeholder: "Enter a tag",
     secondaryPlaceholder: "+Tag",
   });
   Chips.init(document.querySelectorAll(".chips-autocomplete"), {
+    allowUserInput: true,
     autocompleteOptions: {
       data: autocompleteDemoData,
     },

@@ -10,28 +10,90 @@
       <div class="container">
         <div class="row">
           <div class="col s12 m8 offset-m1 xl7 offset-xl1">
-            <!----------------------------- TIME PICKER ------------------------------------->
+            <section id="input-basic" class="section scrollspy">
+              <h2 class="header">Basic example</h2>
+              <div id="time-picker">
+                <p>Click the field to open the picker, then choose a value.</p>
 
-            <div id="time-picker" class="section scrollspy">
-              <div class="input-field">
-                <input id="lunchtime" type="text" class="timepicker" />
-                <label for="lunchtime">Lunchtime</label>
+                <div class="input-field">
+                  <input id="lunchtime" type="text" class="timepicker" />
+                  <label for="lunchtime">Lunchtime</label>
+                </div>
+
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="input-field"&gt;
+  &lt;input id="lunchtime" type="text" class="timepicker" /&gt;
+  &lt;label for="lunchtime"&gt;Lunchtime&lt;/label&gt;
+&lt;/div&gt;</code></pre></div>
               </div>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;input type="text" class="timepicker"&gt;</code></pre></div>
+            </section>
 
-              <div class="section">
-                <h5>Initialization</h5>
-                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">document.addEventListener('DOMContentLoaded', function() {
-  const elems = document.querySelectorAll('.timepicker');
-  const instances = Timepicker.init(elems, {
-    // specify options here
-  });
+            <section id="input-setup" class="section scrollspy">
+              <h2 class="header">Setup</h2>
+              {{> input-setup-note }}
+              <p>Import the component and initialize it after the input exists. Use <code>displayPlugin: 'docked'</code> to open the picker next to the field.</p>
+
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">import { Timepicker } from 'kmaterialize';
+
+Timepicker.init(document.querySelector('#lunchtime'), {
+    displayPlugin: 'docked'
 });</code></pre></div>
-              </div>
+            </section>
 
+            <section id="input-variants" class="section scrollspy">
+              <h2 class="header">Examples and variants</h2>
+              <h3>24-hour clock</h3>
+
+              <p>Set <code>twelveHour: false</code> for 24-hour time and enable the Clear action when the field is optional.</p>
+
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">Timepicker.init(document.querySelector('#lunchtime'), {
+    displayPlugin: 'docked',
+    twelveHour: false,
+    showClearBtn: true
+});</code></pre></div>
+            </section>
+
+            <section id="validation-errors" class="section scrollspy">
+              <h2 class="header">Validation</h2>
+              <p>Use <code>required</code> on the text-based picker and validate its parsed time in your application. Native <code>type="time"</code> supports <code>min</code> and <code>max</code>.</p>
+              {{> validation-note }}
+              <div class="row g-4">
+                <div class="s12 m6">
+                  <h5>Required time</h5>
+                  <div class="input-field outlined error">
+                    <i class="material-icons suffix" aria-hidden="true">error</i>
+                    <input id="validation-time" type="text" class="timepicker" required placeholder=" " value="" aria-invalid="true" aria-describedby="validation-time-error">
+                    <label for="validation-time">Start time</label>
+                    <span id="validation-time-error" class="supporting-text">Choose a start time.</span>
+                  </div>
+                </div>
+                <div class="s12 m6">
+                  <h5>Outside opening hours</h5>
+                  <div class="input-field error">
+                    <input id="validation-time-range" type="time" min="09:00" max="18:00" placeholder=" " value="08:00" aria-invalid="true" aria-describedby="validation-time-range-error">
+                    <label for="validation-time-range">Appointment time</label>
+                    <span id="validation-time-range-error" class="supporting-text"><i class="material-icons" aria-hidden="true">error</i> Choose a time between 09:00 and 18:00.</span>
+                  </div>
+                </div>
+              </div>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="input-field outlined error"&gt;
+    &lt;i class="material-icons suffix" aria-hidden="true"&gt;error&lt;/i&gt;
+    &lt;input id="validation-time" type="text" class="timepicker" required placeholder=" " value="" aria-invalid="true" aria-describedby="validation-time-error"&gt;
+    &lt;label for="validation-time"&gt;Start time&lt;/label&gt;
+    &lt;span id="validation-time-error" class="supporting-text"&gt;Choose a start time.&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="input-field error"&gt;
+    &lt;input id="validation-time-range" type="time" min="09:00" max="18:00" placeholder=" " value="08:00" aria-invalid="true" aria-describedby="validation-time-range-error"&gt;
+    &lt;label for="validation-time-range"&gt;Appointment time&lt;/label&gt;
+    &lt;span id="validation-time-range-error" class="supporting-text"&gt;&lt;i class="material-icons" aria-hidden="true"&gt;error&lt;/i&gt; Choose a time between 09:00 and 18:00.&lt;/span&gt;
+&lt;/div&gt;</code></pre></div>
+            </section>
+
+            <section id="input-reference" class="section scrollspy">
+              <h2 class="header">Reference</h2>
               <div class="section">
-                <h5>Options</h5>
-                <table class="striped">
+                <h3>Options</h3>
+                <table class="responsive-table striped">
                   <thead>
                     <tr>
                       <th>Name</th>
@@ -125,9 +187,9 @@
               </div>
 
               <div class="section">
-                <h5>Timepicker Internationalization options</h5>
+                <h3>Timepicker Internationalization options</h3>
                 <p>Use these in the i18n option to localize the timepicker.</p>
-                <table class="striped">
+                <table class="responsive-table striped">
                   <thead>
                     <tr>
                       <th>Key</th>
@@ -153,8 +215,8 @@
               </div>
 
               <div class="section">
-                <h5>Properties</h5>
-                <table class="striped">
+                <h3>Properties</h3>
+                <table class="responsive-table striped">
                   <thead>
                     <tr>
                       <th>Name</th>
@@ -189,35 +251,31 @@
               </div>
 
               <div class="section">
-                <h5>Methods</h5>
+                <h3>Methods</h3>
 
                 <blockquote>
                   <p>All the methods are called on the plugin instance. You can get the plugin instance like this:</p>
                   <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">const instance = Timepicker.getInstance(elem);</code></pre></div>
                 </blockquote>
 
-                <h5 class="method-header">.showView();</h5>
-                <p>Show hours or minutes view on timepicker</p>
-                <h6>Arguments</h6>
-                <p><b>String:</b> The name of the view you want to switch to, 'hours' or 'minutes'.</p>
-                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">instance.showView('hours');</code></pre></div>
+                <h5 class="method-header">.showView();</h3>
+                  <p>Show hours or minutes view on timepicker</p>
+                  <h6>Arguments</h6>
+                  <p><b>String:</b> The name of the view you want to switch to, 'hours' or 'minutes'.</p>
+                  <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">instance.showView('hours');</code></pre></div>
 
-                <h5 class="method-header">.destroy();</h5>
-                <p>Destroy plugin instance and teardown</p>
-                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">instance.destroy();</code></pre></div>
+                  <h5 class="method-header">.destroy();</h3>
+                    <p>Destroy plugin instance and teardown</p>
+                    <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">instance.destroy();</code></pre></div>
 
-              </div>
-            </div>
+                  </div>
+            </section>
           </div>
 
           <div class="col hide-on-small-only m3 xl3">
             <div class="toc-wrapper">
               <div style="height: 1px">
-                <ul class="section table-of-contents">
-                  <li>
-                    <a href="#time-picker">Time Picker</a>
-                  </li>
-                </ul>
+                {{> input-toc }}
               </div>
             </div>
           </div>

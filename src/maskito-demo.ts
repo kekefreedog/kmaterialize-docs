@@ -4,6 +4,8 @@ import { maskitoParseDate, maskitoParseNumber, maskitoParseTime } from '@maskito
 
 const input = (id: string) => document.querySelector<HTMLInputElement>(`#${id}`)!;
 const fields = {
+  validation: MaskitoInput.init(input('validation-mask')),
+  incomplete: MaskitoInput.init(input('validation-mask-incomplete')),
   phone: MaskitoInput.init(input('mask-phone')),
   code: MaskitoInput.init(input('mask-code'), {
     maskOptions: { postprocessors: [({ value, selection }) => ({ value: value.toUpperCase(), selection })] }

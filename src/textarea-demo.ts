@@ -5,6 +5,7 @@ const status = document.querySelector<HTMLElement>('#textarea-demo-status')!;
 const form = document.querySelector<HTMLFormElement>('#textarea-demo-form')!;
 const textarea = document.querySelector<HTMLTextAreaElement>('#textarea-brief')!;
 const field = RichTextarea.init(textarea);
+const validation = RichTextarea.init(document.querySelector<HTMLTextAreaElement>('#validation-notes')!, { toolbar: false });
 const note = RichTextarea.init(document.querySelector<HTMLTextAreaElement>('#textarea-note')!, {
   toolbar: [['bold', 'italic'], [{ list: 'bullet' }], ['clean']]
 });
@@ -12,7 +13,7 @@ const readonly = RichTextarea.init(document.querySelector<HTMLTextAreaElement>('
 const disabled = RichTextarea.init(document.querySelector<HTMLTextAreaElement>('#textarea-disabled')!);
 
 const updateCount = () => { status.textContent = `${field.getText().length} characters. Edits are synchronized with the textarea.`; };
-Promise.all([field.ready, note.ready, readonly.ready, disabled.ready]).then(updateCount).catch(error => {
+Promise.all([field.ready, validation.ready, note.ready, readonly.ready, disabled.ready]).then(updateCount).catch(error => {
   status.textContent = error instanceof Error ? error.message : 'Could not load the rich-text editor.';
 });
 textarea.addEventListener('input', updateCount);
@@ -27,4 +28,4 @@ document.querySelector<HTMLButtonElement>('#textarea-toggle-readonly')!.addEvent
   (event.currentTarget as HTMLButtonElement).setAttribute('aria-pressed', String(textarea.readOnly));
   status.textContent = textarea.readOnly ? 'Read-only mode enabled.' : 'Editing enabled.';
 });
-if (import.meta.hot) import.meta.hot.dispose(() => [field, note, readonly, disabled].forEach(editor => editor.destroy()));
+if (import.meta.hot) import.meta.hot.dispose(() => [field, validation, note, readonly, disabled].forEach(editor => editor.destroy()));

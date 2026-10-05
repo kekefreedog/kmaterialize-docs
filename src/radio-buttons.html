@@ -10,44 +10,46 @@
       <div class="container">
         <div class="row">
           <div class="col s12 m8 offset-m1 xl7 offset-xl1">
-            <div id="radio" class="section scrollspy">
-              <p>
-                Radio Buttons are used when the user must make only one selection out of a group of items. The
-                <code class="language-html">for</code> attribute is necessary to bind our custom radio button with the input. Add the input's
-                <code class="language-html">id</code> as the value of the <code class="language-html">for</code> attribute of the label.
-              </p>
-              <p>
-                Add radio buttons to a group by adding the name attribute along with the same corresponding value for each of the radio buttons in the group. Create disabled radio
-                buttons by adding the disabled attribute as shown below.
-              </p>
-              <form action="#">
+            <section id="input-basic" class="section scrollspy">
+              <h2 class="header">Basic example</h2>
+              <div id="radio">
                 <p>
-                  <label>
-                    <input name="group1" type="radio" checked />
-                    <span>Red</span>
-                  </label>
+                  Radio Buttons are used when the user must make only one selection out of a group of items. The
+                  <code class="language-html">for</code> attribute is necessary to bind our custom radio button with the input. Add the input's
+                  <code class="language-html">id</code> as the value of the <code class="language-html">for</code> attribute of the label.
                 </p>
                 <p>
-                  <label>
-                    <input name="group1" type="radio" />
-                    <span>Yellow</span>
-                  </label>
+                  Add radio buttons to a group by adding the name attribute along with the same corresponding value for each of the radio buttons in the group. Create disabled radio
+                  buttons by adding the disabled attribute as shown below.
                 </p>
-                <p>
-                  <label>
-                    <input class="with-gap" name="group1" type="radio" />
-                    <span>Green</span>
-                  </label>
-                </p>
-                <p>
-                  <label>
-                    <input name="group1" type="radio" disabled="disabled" />
-                    <span>Brown</span>
-                  </label>
-                </p>
-              </form>
+                <form action="#">
+                  <p>
+                    <label>
+                      <input name="group1" type="radio" checked />
+                      <span>Red</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input name="group1" type="radio" />
+                      <span>Yellow</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input class="with-gap" name="group1" type="radio" />
+                      <span>Green</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input name="group1" type="radio" disabled="disabled" />
+                      <span>Brown</span>
+                    </label>
+                  </p>
+                </form>
 
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;form action="#"&gt;
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;form action="#"&gt;
   &lt;p&gt;
     &lt;label&gt;
       &lt;input name="group1" type="radio" checked /&gt;
@@ -73,30 +75,40 @@
     &lt;/label&gt;
   &lt;/p&gt;
 &lt;/form&gt;</code></pre></div>
-            </div>
+              </div>
+            </section>
 
-<div id="horizontal" class="section scrollspy">
-  <h3 class="header">Horizontal</h3>
-  <p>Place radio options side by side with <code>radio-group-horizontal</code>. They wrap onto another line when space is limited. Tab enters the group and arrow keys change the selection, skipping disabled options.</p>
-<!-- The shared name keeps this group independent from the other examples. -->
-<div class="radio-group-horizontal" role="radiogroup" aria-label="Delivery priority">
-  <label>
-    <input type="radio" name="horizontal-priority" value="low" checked>
-    <span>Low</span>
-  </label>
-  <label>
-    <input type="radio" name="horizontal-priority" value="normal">
-    <span>Normal</span>
-  </label>
-  <label>
-    <input type="radio" name="horizontal-priority" value="high">
-    <span>High</span>
-  </label>
-  <label>
-    <input type="radio" name="horizontal-priority" value="urgent" disabled>
-    <span>Urgent (unavailable)</span>
-  </label>
-</div><div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;!-- The shared name keeps this group independent from the other examples. --&gt;
+            <section id="input-setup" class="section scrollspy">
+              <h2 class="header">Setup</h2>
+              {{> input-native-setup }}
+
+              <p>Give every radio in a group the same <code>name</code> and a different <code>value</code>. Wrap each radio and its text in a <code>&lt;label&gt;</code>, with the text in a <code>&lt;span&gt;</code>. No JavaScript initialization is required.</p>
+            </section>
+
+            <section id="input-variants" class="section scrollspy">
+              <h2 class="header">Examples and variants</h2>
+              <div id="horizontal" class="section">
+                <h3 class="header">Horizontal</h3>
+                <p>Place radio options side by side with <code>radio-group-horizontal</code>. They wrap onto another line when space is limited. Tab enters the group and arrow keys change the selection, skipping disabled options.</p>
+                <!-- The shared name keeps this group independent from the other examples. -->
+                <div class="radio-group-horizontal" role="radiogroup" aria-label="Delivery priority">
+                  <label>
+                    <input type="radio" name="horizontal-priority" value="low" checked>
+                    <span>Low</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="horizontal-priority" value="normal">
+                    <span>Normal</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="horizontal-priority" value="high">
+                    <span>High</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="horizontal-priority" value="urgent" disabled>
+                    <span>Urgent (unavailable)</span>
+                  </label>
+                </div><div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;!-- The shared name keeps this group independent from the other examples. --&gt;
 &lt;div class=&quot;radio-group-horizontal&quot; role=&quot;radiogroup&quot; aria-label=&quot;Delivery priority&quot;&gt;
   &lt;label&gt;
     &lt;input type=&quot;radio&quot; name=&quot;horizontal-priority&quot; value=&quot;low&quot; checked&gt;
@@ -115,35 +127,67 @@
     &lt;span&gt;Urgent (unavailable)&lt;/span&gt;
   &lt;/label&gt;
 &lt;/div&gt;</code></pre></div><p>The <code>radio-group-horizontal</code> layout is included in kmaterialize. No extra CSS or JavaScript initialization is required.</p></div>
-            <div id="gap" class="section scrollspy">
-              <h3 class="header">With Gap</h3>
-              <p>
-                To create a radio button with a gap, add
-                <code class="language-html">class="with-gap"</code> to your input. See the example below.
-              </p>
 
-              <p>
-                <label>
-                  <input class="with-gap" name="group3" type="radio" checked />
-                  <span>Red</span>
-                </label>
-              </p>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;p&gt;
+              <div id="gap" class="section">
+                <h3 class="header">With Gap</h3>
+                <p>
+                  To create a radio button with a gap, add
+                  <code class="language-html">class="with-gap"</code> to your input. See the example below.
+                </p>
+
+                <p>
+                  <label>
+                    <input class="with-gap" name="group3" type="radio" checked />
+                    <span>Red</span>
+                  </label>
+                </p>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;p&gt;
   &lt;label&gt;
     &lt;input class="with-gap" name="group3" type="radio" checked /&gt;
     &lt;span&gt;Red&lt;/span&gt;
   &lt;/label&gt;
 &lt;/p&gt;</code></pre></div>
-            </div>
+              </div>
+            </section>
+
+            <section id="validation-errors" class="section scrollspy">
+              <h2 class="header">Validation</h2>
+              <p>Give radio buttons the same <code>name</code>. A required group needs one selected option. Use <code>fieldset.radio-group</code> and a legend to label the group and keep its error message beneath the options.</p>
+              {{> validation-note }}
+              <div class="row g-4">
+                <div class="s12 m6">
+                  <h5>Required choice</h5>
+                  <fieldset class="radio-group error" aria-describedby="validation-radio-error">
+                    <legend>Delivery method</legend>
+                    <p><label><input type="radio" name="validation-delivery" value="email" required aria-invalid="true" aria-describedby="validation-radio-error"><span>Email</span></label></p>
+                    <p><label><input type="radio" name="validation-delivery" value="download" required aria-invalid="true" aria-describedby="validation-radio-error"><span>Download</span></label></p>
+                    <p id="validation-radio-error" class="supporting-text error-text"><i class="material-icons" aria-hidden="true">error</i> Choose a delivery method.</p>
+                  </fieldset>
+                </div>
+              </div>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;fieldset class="radio-group error" aria-describedby="validation-radio-error"&gt;
+    &lt;legend&gt;Delivery method&lt;/legend&gt;
+    &lt;p&gt;&lt;label&gt;&lt;input type="radio" name="validation-delivery" value="email" required aria-invalid="true" aria-describedby="validation-radio-error"&gt;&lt;span&gt;Email&lt;/span&gt;&lt;/label&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;label&gt;&lt;input type="radio" name="validation-delivery" value="download" required aria-invalid="true" aria-describedby="validation-radio-error"&gt;&lt;span&gt;Download&lt;/span&gt;&lt;/label&gt;&lt;/p&gt;
+    &lt;p id="validation-radio-error" class="supporting-text error-text"&gt;&lt;i class="material-icons" aria-hidden="true"&gt;error&lt;/i&gt; Choose a delivery method.&lt;/p&gt;
+&lt;/fieldset&gt;</code></pre></div>
+            </section>
+
+            <section id="input-reference" class="section scrollspy">
+              <h2 class="header">Reference</h2>
+              <h3>Attributes</h3>
+
+              {{> input-choice-reference }}
+
+              <h3>Keyboard and accessibility</h3>
+
+              <p>Tab moves into or out of the radio group; arrow keys move between its options. Use a <code>&lt;fieldset class="radio-group"&gt;</code> with a <code>&lt;legend&gt;</code> to name a group, as shown in the validation example.</p>
+            </section>
           </div>
           <div class="col hide-on-small-only m3 xl3">
             <div class="toc-wrapper">
               <div style="height: 1px">
-                <ul class="section table-of-contents">
-                  <li><a href="#radio">Radio Buttons</a></li>
-                  <li><a href="#gap">With Gap</a></li>
-                  <li><a href="#horizontal">Horizontal</a></li>
-                </ul>
+                {{> input-toc }}
               </div>
             </div>
           </div>

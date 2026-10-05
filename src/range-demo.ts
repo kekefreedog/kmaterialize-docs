@@ -4,11 +4,27 @@ const budget = document.querySelector<HTMLInputElement>('#range-budget')!;
 const formatBudget = (value: number) => `${value / 1000}k credits`;
 Range.init(budget, { formatValue: formatBudget });
 
+const storage = document.querySelector<HTMLInputElement>('#validation-range')!;
+const storageError = document.querySelector<HTMLElement>('#validation-range-error')!;
+const formatStorage = (value: number) => `${value} GB`;
+Range.init(storage, { formatValue: formatStorage });
+const updateStorageError = () => {
+  const invalid = storage.valueAsNumber > 50;
+  storageError.hidden = !invalid;
+  if (invalid) storage.setAttribute('aria-invalid', 'true');
+  else storage.removeAttribute('aria-invalid');
+  storage.setCustomValidity(invalid ? 'Your plan allows up to 50 GB.' : '');
+};
+storage.addEventListener('input', updateStorageError);
+storage.addEventListener('change', updateStorageError);
+updateStorageError();
+
 document.querySelectorAll<HTMLInputElement>('.range-field input[type="range"]').forEach(input => {
   const output = document.querySelector<HTMLOutputElement>(`output[for="${input.id}"]`);
   if (!output) return;
-  const update = () => { output.value = input === budget ? formatBudget(input.valueAsNumber) : input.value; };
+  const update = () => { output.value = input === budget ? formatBudget(input.valueAsNumber) : input === storage ? formatStorage(input.valueAsNumber) : input.value; };
   input.addEventListener('input', update);
+  input.addEventListener('change', update);
   input.form?.addEventListener('reset', () => setTimeout(update, 0));
   update();
 });

@@ -11,8 +11,9 @@
       <div class="container">
         <div class="row">
           <div class="col s12 m8 offset-m1 xl7 offset-xl1">
-            <div id="introduction" class="section scrollspy">
-              <div>
+            <section id="input-basic" class="section scrollspy">
+              <h2 class="header">Basic example</h2>
+              <div id="introduction">
                 <p class="caption">
                   Add an autocomplete dropdown below your input to suggest possible values in your form. You can populate the list of autocomplete options dynamically as well.
                 </p>
@@ -24,20 +25,45 @@
                   <span class="supporting-text">Select a single item</span>
                 </div>
 
-                <div>
-                  <p>Use <code>isMultiSelect: true</code> for multiple selections. Selected values appear as removable chips; the input stays available for searching, and the menu remains open while you choose more items.</p>
-                </div>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="input-field outlined"&gt;
+  &lt;i class="material-icons prefix"&gt;textsms&lt;/i&gt;
+  &lt;input type="text" id="autocomplete-input" class="autocomplete" placeholder=" " /&gt;
+  &lt;label for="autocomplete-input"&gt;Autocomplete&lt;/label&gt;
+  &lt;span class="supporting-text"&gt;Select a single item&lt;/span&gt;
+&lt;/div&gt;</code></pre></div>
+              </div>
+            </section>
 
-                <div class="input-field">
-                  <i class="material-icons prefix">textsms</i>
-                  <input type="text" id="autocomplete-input-multi" class="autocomplete-multiple" placeholder=" " />
-                  <label for="autocomplete-input-multi">Multiple Autocomplete</label>
-                </div>
+            <section id="input-setup" class="section scrollspy">
+              <h2 class="header">Setup</h2>
+              {{> input-setup-note }}
+              <div id="initialization">
+                <p>Initialize after the input exists. Supply a list of suggestions; each option needs an <code>id</code> and may include display <code>text</code>.</p>
+
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">import { Autocomplete } from 'kmaterialize';
+
+Autocomplete.init(document.querySelector('#autocomplete-input'), {
+    minLength: 0,
+    data: [
+        { id: 12, text: 'Apple' },
+        { id: 13, text: 'Microsoft' }
+    ]
+});</code></pre></div>
+              </div>
+            </section>
+
+            <section id="input-variants" class="section scrollspy">
+              <h2 class="header">Examples and variants</h2>
+              <h3>Multiple selections</h3>
+
+              <div>
+                <p>Use <code>isMultiSelect: true</code> for multiple selections. Selected values appear as removable chips; the input stays available for searching, and the menu remains open while you choose more items.</p>
               </div>
 
-              <!-- Update Info -->
-              <div>
-                <p class="red-text"><strong>ATTENTION:</strong> Data-Format has changed from version 1.X.X to 2.0.0! Please update option 'data'.</p>
+              <div class="input-field">
+                <i class="material-icons prefix">textsms</i>
+                <input type="text" id="autocomplete-input-multi" class="autocomplete-multiple" placeholder=" " />
+                <label for="autocomplete-input-multi">Multiple Autocomplete</label>
               </div>
 
               <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;!-- Single selection: the selected label fills the input. --&gt;
@@ -51,10 +77,108 @@
   &lt;input type="text" id="autocomplete-input-multi" class="autocomplete-multiple" placeholder=" "&gt;
   &lt;label for="autocomplete-input-multi"&gt;Multiple Autocomplete&lt;/label&gt;
 &lt;/div&gt;</code></pre></div>
-            </div>
 
-            <div id="initialization" class="scrollspy section">
-              <h3 class="header">Initialization</h3>
+              <h3>Custom search</h3>
+
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    const elems = document.querySelectorAll('.autocomplete');
+    const instances = Autocomplete.init(elems, {
+      // specify options here
+      minLength: 0, // shows instantly
+      data: [
+        {id: 12, text: "Apple"},
+        {id: 13, text: "Microsoft"},
+        {id: 42, text: "Google", image: 'http://placehold.it/250x250'}
+      ]
+    });
+  });
+
+  // With Multi Select
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const elems = document.querySelectorAll('.autocomplete-multiple');
+    const instances = Autocomplete.init(elems, {
+      // specify options here
+      minLength: 0, // shows instantly
+      isMultiSelect: true,
+      data: [
+        {id: 12, text: "Apple"},
+        {id: 13, text: "Microsoft"},
+        {id: 42, text: "Google", image: 'http://placehold.it/250x250'}
+      ]
+    });
+  });
+
+  // With Multi Select and custom search function
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const elems = document.querySelectorAll('.autocomplete-multiple');
+    const instances = Autocomplete.init(elems, {
+      // specify options here
+      isMultiSelect: true,
+      data: [
+        {id: 12, text: "Apple"},
+        {id: 13, text: "Microsoft"},
+        {id: 42, text: "Google", image: 'http://placehold.it/250x250'}
+      ],
+      // This search function considers every object entry as "search values".
+      onSearch: (text, autocomplete) => {
+        const filteredData = autocomplete.options.data.filter(item => {
+          return Object.keys(item)
+            .map(key => item[key].toString().toLowerCase().indexOf(text.toLowerCase()) >= 0)
+            .some(isMatch => isMatch);
+        });
+        autocomplete.setMenuItems(filteredData);
+      }
+    });
+  });
+          </code></pre></div>
+            </section>
+
+            <section id="validation-errors" class="section scrollspy">
+              <h2 class="header">Validation</h2>
+              <p>Autocomplete suggestions do not make a field required or restrict it to listed values. Use <code>required</code> and validate membership in your application when a suggested value must be selected.</p>
+              {{> validation-note }}
+              <div class="row g-4">
+                <div class="s12 m6">
+                  <h5>Required</h5>
+                  <div class="input-field outlined error">
+                    <i class="material-icons suffix" aria-hidden="true">error</i>
+                    <input id="validation-autocomplete" type="text" class="autocomplete" required placeholder=" " value="" aria-invalid="true" aria-describedby="validation-autocomplete-error">
+                    <label for="validation-autocomplete">Recipient</label>
+                    <span id="validation-autocomplete-error" class="supporting-text">Choose a recipient.</span>
+                  </div>
+                </div>
+                <div class="s12 m6">
+                  <h5>Unknown value</h5>
+                  <div class="input-field error">
+                    <i class="material-icons suffix" aria-hidden="true">error</i>
+                    <input id="validation-autocomplete-choice" type="text" class="autocomplete" placeholder=" " value="Unknown person" aria-invalid="true" aria-describedby="validation-autocomplete-choice-error">
+                    <label for="validation-autocomplete-choice">Recipient</label>
+                    <span id="validation-autocomplete-choice-error" class="supporting-text">Choose a recipient from the suggestions.</span>
+                  </div>
+                </div>
+              </div>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="input-field outlined error"&gt;
+    &lt;i class="material-icons suffix" aria-hidden="true"&gt;error&lt;/i&gt;
+    &lt;input id="validation-autocomplete" type="text" class="autocomplete" required placeholder=" " value="" aria-invalid="true" aria-describedby="validation-autocomplete-error"&gt;
+    &lt;label for="validation-autocomplete"&gt;Recipient&lt;/label&gt;
+    &lt;span id="validation-autocomplete-error" class="supporting-text"&gt;Choose a recipient.&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="input-field error"&gt;
+    &lt;i class="material-icons suffix" aria-hidden="true"&gt;error&lt;/i&gt;
+    &lt;input id="validation-autocomplete-choice" type="text" class="autocomplete" placeholder=" " value="Unknown person" aria-invalid="true" aria-describedby="validation-autocomplete-choice-error"&gt;
+    &lt;label for="validation-autocomplete-choice"&gt;Recipient&lt;/label&gt;
+    &lt;span id="validation-autocomplete-choice-error" class="supporting-text"&gt;Choose a recipient from the suggestions.&lt;/span&gt;
+&lt;/div&gt;</code></pre></div>
+            </section>
+
+            <section id="input-reference" class="section scrollspy">
+              <h2 class="header">Reference</h2>
+              <h3>Suggestion data</h3>
+
               <p>The data is an array of option objects, which supports three different attributes:</p>
 
               <ul class="collection">
@@ -85,138 +209,87 @@
                 You may also provide additional attributes to an option object but they will not be taken into consideration by the standard search function. If you want to use
                 them for option filtering, you must specify a custom function in "<b>onSearch</b>" option.
               </p>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
-  document.addEventListener('DOMContentLoaded', function() {
-    const elems = document.querySelectorAll('.autocomplete');
-    const instances = Autocomplete.init(elems, {
-      // specify options here
-      minLength: 0, // shows instantly
-      data: [
-        {id: 12, text: "Apple"},
-        {id: 13, text: "Microsoft"},
-        {id: 42, text: "Google", image: 'http://placehold.it/250x250'}
-      ]
-    });
-  });
 
-  // With Mutlti Select
+              <div>
+                <p class="red-text"><strong>ATTENTION:</strong> Data-Format has changed from version 1.X.X to 2.0.0! Please update option 'data'.</p>
+              </div>
 
-  document.addEventListener('DOMContentLoaded', function() {
-    const elems = document.querySelectorAll('.autocomplete');
-    const instances = Autocomplete.init(elems, {
-      // specify options here
-      minLength: 0, // shows instantly
-      isMultiSelect: true,
-      data: [
-        {id: 12, text: "Apple"},
-        {id: 13, text: "Microsoft"},
-        {id: 42, text: "Google", image: 'http://placehold.it/250x250'}
-      ]
-    });
-  });
+              <div id="options" class="section">
+                <h3 class="header">Options</h3>
+                <table class="responsive-table striped">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Default</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
 
-  // With Mutlti Select and custom search function
+                  <tbody>
+                    <tr>
+                      <td>data</td>
+                      <td>Array</td>
+                      <td>[]</td>
+                      <td>
+                        Array with Data-Objects defining autocomplete options with optional icon (image). The Property <u>id</u> is required which can be string or integer. It is
+                        also possible to use the properties <u>text</u> and <u>image</u>.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>isMultiSelect</td>
+                      <td>boolean</td>
+                      <td>false</td>
+                      <td>Flag which can be set if multiple values can be selected. The Result will be an Array.</td>
+                    </tr>
+                    <tr>
+                      <td>maxDropDownHeight</td>
+                      <td>string</td>
+                      <td>'300px'</td>
+                      <td>The height of the Menu which can be set via css-property.</td>
+                    </tr>
+                    <tr>
+                      <td>onAutocomplete</td>
+                      <td>Function</td>
+                      <td>null</td>
+                      <td>Callback for when autocompleted. After a Selection was made this Function is called. This is also called when a default value is set.</td>
+                    </tr>
+                    <tr>
+                      <td>onSearch</td>
+                      <td>Function(text, el)</td>
+                      <td>&nbsp;</td>
+                      <td>
+                        Function is called when the input text is altered and data can also be loaded asynchronously. If the results are collected the items in the list can be
+                        updated via the function setMenuItems(collectedItems).
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>minLength</td>
+                      <td>Number</td>
+                      <td>1</td>
+                      <td>Minimum number of characters before autocomplete starts. When set to 0, the Options are shown on click or focus.</td>
+                    </tr>
+                    <tr>
+                      <td>dropdownOptions</td>
+                      <td>Object</td>
+                      <td>{}</td>
+                      <td>Pass options object for the dropdown initialization.</td>
+                    </tr>
+                    <tr>
+                      <td>allowUnsafeHTML</td>
+                      <td>Boolean</td>
+                      <td>false</td>
+                      <td>If true will render the key from each item directly as HTML. User input MUST be properly sanitized first.</td>
+                    </tr>
+                  </tbody>
+                </table>
 
-  document.addEventListener('DOMContentLoaded', function() {
-    const elems = document.querySelectorAll('.autocomplete');
-    const instances = Autocomplete.init(elems, {
-      // specify options here
-      isMultiSelect: true,
-      data: [
-        {id: 12, text: "Apple"},
-        {id: 13, text: "Microsoft"},
-        {id: 42, text: "Google", image: 'http://placehold.it/250x250'}
-      ],
-      // This search function considers every object entry as "search values".
-      onSearch: (text, autocomplete) => {
-        const filteredData = autocomplete.options.data.filter(item => {
-          return Object.keys(item)
-            .map(key => item[key].toString().toLowerCase().indexOf(text.toLowerCase()) >= 0)
-            .some(isMatch => isMatch);
-        });
-        autocomplete.setMenuItems(filteredData);
-      }
-    });
-  });
-          </code></pre></div>
-            </div>
-
-            <div id="options" class="scrollspy section">
-              <h3 class="header">Options</h3>
-              <table class="striped">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Default</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <tr>
-                    <td>data</td>
-                    <td>Array</td>
-                    <td>[]</td>
-                    <td>
-                      Array with Data-Objects defining autocomplete options with optional icon (image). The Property <u>id</u> is required which can be string or integer. It is
-                      also possible to use the properties <u>text</u> and <u>image</u>.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>isMultiSelect</td>
-                    <td>boolean</td>
-                    <td>false</td>
-                    <td>Flag which can be set if multiple values can be selected. The Result will be an Array.</td>
-                  </tr>
-                  <tr>
-                    <td>maxDropDownHeight</td>
-                    <td>string</td>
-                    <td>'300px'</td>
-                    <td>The height of the Menu which can be set via css-property.</td>
-                  </tr>
-                  <tr>
-                    <td>onAutocomplete</td>
-                    <td>Function</td>
-                    <td>null</td>
-                    <td>Callback for when autocompleted. After a Selection was made this Function is called. This is also called when a default value is set.</td>
-                  </tr>
-                  <tr>
-                    <td>onSearch</td>
-                    <td>Function(text, el)</td>
-                    <td>&nbsp;</td>
-                    <td>
-                      Function is called when the input text is altered and data can also be loaded asynchronously. If the results are collected the items in the list can be
-                      updated via the function setMenuItems(collectedItems).
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>minLength</td>
-                    <td>Number</td>
-                    <td>1</td>
-                    <td>Minimum number of characters before autocomplete starts. When set to 0, the Options are shown on click or focus.</td>
-                  </tr>
-                  <tr>
-                    <td>dropdownOptions</td>
-                    <td>Object</td>
-                    <td>{}</td>
-                    <td>Pass options object for the dropdown initialization.</td>
-                  </tr>
-                  <tr>
-                    <td>allowUnsafeHTML</td>
-                    <td>Boolean</td>
-                    <td>false</td>
-                    <td>If true will render the key from each item directly as HTML. User input MUST be properly sanitized first.</td>
-                  </tr>
-                </tbody>
-              </table>
-
-              <h5 class="method-header">onSearch</h5>
-              <p>
-                This is the default Search Function. You can write your own search function by passing in a function with the same parameters. You can load asynchronously data in
-                this function or filter an existing list or dictionary. When the data is loaded you can use setMenuItems() to update the content of the Menu.
-              </p>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
+                <h5 class="method-header">onSearch</h5>
+                <p>
+                  This is the default Search Function. You can write your own search function by passing in a function with the same parameters. You can load asynchronously data in
+                  this function or filter an existing list or dictionary. When the data is loaded you can use setMenuItems() to update the content of the Menu.
+                </p>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
 onSearch: (text, autocomplete) => {
   const normSearch = text.toLocaleLowerCase();
   autocomplete.setMenuItems(
@@ -227,43 +300,43 @@ onSearch: (text, autocomplete) => {
   );
 }
 </code></pre></div>
-              <p>To disable sorting and use the values as they appear in the data object, use a falsy value.</p>
-            </div>
+                <p>To disable sorting and use the values as they appear in the data object, use a falsy value.</p>
+              </div>
 
-            <div id="methods" class="scrollspy section">
-              <h3 class="header">Methods</h3>
-              <blockquote>
-                <p>All the methods are called on the plugin instance. You can get the plugin instance like this:</p>
-                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
+              <div id="methods" class="section">
+                <h3 class="header">Methods</h3>
+                <blockquote>
+                  <p>All the methods are called on the plugin instance. You can get the plugin instance like this:</p>
+                  <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
   const instance = Autocomplete.getInstance(elem);
   instance.open();
               </code></pre></div>
-              </blockquote>
-              <h5 class="method-header">.open();</h5>
-              <p>Open autocomplete dropdown.</p>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
+                </blockquote>
+                <h5 class="method-header">.open();</h5>
+                <p>Open autocomplete dropdown.</p>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
 instance.open();
       </code></pre></div>
 
-              <h5 class="method-header">.close();</h5>
-              <p>Close autocomplete dropdown.</p>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
+                <h5 class="method-header">.close();</h5>
+                <p>Close autocomplete dropdown.</p>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
 instance.close();
       </code></pre></div>
 
-              <h5 class="method-header">.selectOption(id);</h5>
-              <p>Select a specific autocomplete option via id-property.</p>
-              <h6>Arguments</h6>
-              <p><b>id:</b> The id of a data-entry.</p>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
+                <h5 class="method-header">.selectOption(id);</h5>
+                <p>Select a specific autocomplete option via id-property.</p>
+                <h6>Arguments</h6>
+                <p><b>id:</b> The id of a data-entry.</p>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
 instance.selectOption(42);
       </code></pre></div>
 
-              <h5 class="method-header">.setMenuItems(items);</h5>
-              <p>Updates the visible or selectable items shown in the menu.</p>
-              <h6>Arguments</h6>
-              <p><b>items:</b> .</p>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
+                <h5 class="method-header">.setMenuItems(items);</h5>
+                <p>Updates the visible or selectable items shown in the menu.</p>
+                <h6>Arguments</h6>
+                <p><b>items:</b> .</p>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
 instance.setMenuItems([
   {id: "Test"},
   {id: 12, text: "Apple"},
@@ -272,79 +345,64 @@ instance.setMenuItems([
 ]);
       </code></pre></div>
 
-              <h5 class="method-header">.destroy();</h5>
-              <p>Destroy plugin instance and teardown</p>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
+                <h5 class="method-header">.destroy();</h5>
+                <p>Destroy plugin instance and teardown</p>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">
 instance.destroy();
       </code></pre></div>
-            </div>
+              </div>
 
-            <div id="properties" class="scrollspy section">
-              <h3 class="header">Properties</h3>
-              <table class="striped">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
+              <div id="properties" class="section">
+                <h3 class="header">Properties</h3>
+                <table class="responsive-table striped">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
 
-                <tbody>
-                  <tr>
-                    <td>el</td>
-                    <td>Element</td>
-                    <td>The DOM element the plugin was initialized with.</td>
-                  </tr>
-                  <tr>
-                    <td>options</td>
-                    <td>Object</td>
-                    <td>The options the instance was initialized with.</td>
-                  </tr>
-                  <tr>
-                    <td>isOpen</td>
-                    <td>Boolean</td>
-                    <td>If the autocomplete is open.</td>
-                  </tr>
-                  <tr>
-                    <td>count</td>
-                    <td>Number</td>
-                    <td>Number of matching autocomplete options.</td>
-                  </tr>
-                  <tr>
-                    <td>activeIndex</td>
-                    <td>Integer</td>
-                    <td>Index of the current selected option.</td>
-                  </tr>
-                  <tr>
-                    <td>dropdown</td>
-                    <td>Dropdown</td>
-                    <td>Instance of the dropdown plugin for this autocomplete.</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+                  <tbody>
+                    <tr>
+                      <td>el</td>
+                      <td>Element</td>
+                      <td>The DOM element the plugin was initialized with.</td>
+                    </tr>
+                    <tr>
+                      <td>options</td>
+                      <td>Object</td>
+                      <td>The options the instance was initialized with.</td>
+                    </tr>
+                    <tr>
+                      <td>isOpen</td>
+                      <td>Boolean</td>
+                      <td>If the autocomplete is open.</td>
+                    </tr>
+                    <tr>
+                      <td>count</td>
+                      <td>Number</td>
+                      <td>Number of matching autocomplete options.</td>
+                    </tr>
+                    <tr>
+                      <td>activeIndex</td>
+                      <td>Integer</td>
+                      <td>Index of the current selected option.</td>
+                    </tr>
+                    <tr>
+                      <td>dropdown</td>
+                      <td>Dropdown</td>
+                      <td>Instance of the dropdown plugin for this autocomplete.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
           </div>
           <div class="col hide-on-small-only m3 xl3">
             <div class="toc-wrapper">
               <div style="height: 1px">
-                <ul class="section table-of-contents">
-                  <li>
-                    <a href="#introduction">Introduction</a>
-                  </li>
-                  <li>
-                    <a href="#initialization">Initialization</a>
-                  </li>
-                  <li>
-                    <a href="#options">Options</a>
-                  </li>
-                  <li>
-                    <a href="#methods">Methods</a>
-                  </li>
-                  <li>
-                    <a href="#properties">Properties</a>
-                  </li>
-                </ul>
+                {{> input-toc }}
               </div>
             </div>
           </div>

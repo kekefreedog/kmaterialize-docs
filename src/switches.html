@@ -10,32 +10,33 @@
       <div class="container">
         <div class="row">
           <div class="col s12 m8 offset-m1 xl7 offset-xl1">
-            <!-- Switches -->
-            <div id="switches" class="section scrollspy">
-              <p>Switches are special checkboxes used for binary states such as on / off</p>
-              <form action="#">
-                <div class="mb-3">
-                  <div class="switch">
-                    <label>
-                      Off
-                      <input checked type="checkbox" />
-                      <span class="lever"></span>
-                      On
-                    </label>
+            <section id="input-basic" class="section scrollspy">
+              <h2 class="header">Basic example</h2>
+              <div id="switches">
+                <p>Switches turn a setting on or off. Click the track, drag the thumb to either side, or focus the checkbox and press Space.</p>
+                <form action="#">
+                  <div class="mb-3">
+                    <div class="switch">
+                      <label>
+                        Off
+                        <input checked type="checkbox" />
+                        <span class="lever"></span>
+                        On
+                      </label>
+                    </div>
                   </div>
-                </div>
-                <div>
-                  <div class="switch">
-                    <label>
-                      Off
-                      <input type="checkbox" disabled />
-                      <span class="lever"></span>
-                      On
-                    </label>
+                  <div>
+                    <div class="switch">
+                      <label>
+                        Off
+                        <input type="checkbox" disabled />
+                        <span class="lever"></span>
+                        On
+                      </label>
+                    </div>
                   </div>
-                </div>
-              </form>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;!-- Switch --&gt;
+                </form>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;!-- Switch --&gt;
 &lt;div class="switch"&gt;
   &lt;label&gt;
     Off
@@ -53,19 +54,33 @@
     On
   &lt;/label&gt;
 &lt;/div&gt;</code></pre></div>
-            </div>
-            <section id="icon-switch" class="section scrollspy">
-              <h3 class="header">Icon inside the thumb</h3>
-              <p>The circle shows a check when enabled and a cross when disabled. Click the switch or focus it and press Space to toggle.</p>
-              <div class="switch switch-with-icon">
-  <label>
-    Off
-    <input type="checkbox" aria-label="Enable notifications" checked>
-    <span class="lever" aria-hidden="true"></span>
-    On
-  </label>
-</div>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="switch switch-with-icon"&gt;
+              </div>
+            </section>
+
+            <section id="input-setup" class="section scrollspy">
+              <h2 class="header">Setup</h2>
+              {{> input-setup-note }}
+
+              <p>Place a native checkbox and a <code>&lt;span class="lever"&gt;</code> inside the label of a <code>.switch</code>. Load kmaterialize’s JavaScript to enable dragging; the behavior attaches automatically, including to switches added later.</p>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">import 'kmaterialize/dist/css/materialize.css';
+import 'kmaterialize';</code></pre></div>
+              <p>No per-switch initialization is needed. Listen to the checkbox’s native <code>change</code> event when applying a setting.</p>
+            </section>
+
+            <section id="input-variants" class="section scrollspy">
+              <h2 class="header">Examples and variants</h2>
+              <section id="icon-switch" class="section">
+                <h3 class="header">Icon inside the thumb</h3>
+                <p>The circle shows a check when on and a cross when off. Click or drag the thumb, or focus the checkbox and press Space to toggle.</p>
+                <div class="switch switch-with-icon">
+                  <label>
+                    Off
+                    <input type="checkbox" aria-label="Enable notifications" checked>
+                    <span class="lever" aria-hidden="true"></span>
+                    On
+                  </label>
+                </div>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="switch switch-with-icon"&gt;
   &lt;label&gt;
     Off
     &lt;input type="checkbox" aria-label="Enable notifications" checked&gt;
@@ -73,20 +88,21 @@
     On
   &lt;/label&gt;
 &lt;/div&gt;</code></pre></div>
-              <p>Add <code>switch-with-icon</code> to a standard Materialize switch and load the Material Icons font. The icon styling is included in kmaterialize. The icons are decorative; the checkbox provides the accessible name and checked state.</p>
-            </section>
-            <section id="custom-icon-switch" class="section scrollspy">
-              <h3 class="header">Custom Material Icons</h3>
-              <p>Try a notification switch: a muted bell when off and a ringing bell when on. Set <code>--switch-icon-off</code> and <code>--switch-icon-on</code> to quoted Material Icons names to choose your own icons.</p>
-              <div class="switch switch-with-icon"
-     style="--switch-icon-off: 'notifications_off'; --switch-icon-on: 'notifications_active';">
-  <label>
-    Notifications
-    <input type="checkbox" aria-label="Enable notifications">
-    <span class="lever" aria-hidden="true"></span>
-  </label>
-</div>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="switch switch-with-icon"
+                <p>Add <code>switch-with-icon</code> to a standard Materialize switch and load the Material Icons font. The icon styling is included in kmaterialize. The icons are decorative; the checkbox provides the accessible name and checked state.</p>
+              </section>
+
+              <section id="custom-icon-switch" class="section">
+                <h3 class="header">Custom Material Icons</h3>
+                <p>Try a notification switch: a muted bell when off and a ringing bell when on. Set <code>--switch-icon-off</code> and <code>--switch-icon-on</code> to quoted Material Icons names to choose your own icons.</p>
+                <div class="switch switch-with-icon"
+                  style="--switch-icon-off: 'notifications_off'; --switch-icon-on: 'notifications_active';">
+                  <label>
+                    Notifications
+                    <input type="checkbox" aria-label="Enable notifications">
+                    <span class="lever" aria-hidden="true"></span>
+                  </label>
+                </div>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="switch switch-with-icon"
      style="--switch-icon-off: 'notifications_off'; --switch-icon-on: 'notifications_active';"&gt;
   &lt;label&gt;
     Notifications
@@ -94,17 +110,53 @@
     &lt;span class="lever" aria-hidden="true"&gt;&lt;/span&gt;
   &lt;/label&gt;
 &lt;/div&gt;</code></pre></div>
-              <p>These properties are built into kmaterialize's <code>switch-with-icon</code> variant. Load the Material Icons font; no extra CSS or JavaScript is needed.</p>
+                <p>These properties are built into kmaterialize's <code>switch-with-icon</code> variant. Load the Material Icons font; no extra CSS or JavaScript is needed.</p>
+              </section>
+            </section>
+
+            <section id="validation-errors" class="section scrollspy">
+              <h2 class="header">Validation</h2>
+              <p>A switch uses a native checkbox. Use <code>required</code> only when the on state is necessary to proceed; an optional preference should accept either state.</p>
+              {{> validation-note }}
+              <div class="row g-4">
+                <div class="s12 m6">
+                  <h5>Required activation</h5>
+                  <div class="switch">
+                    <label>Off
+                      <input id="validation-switch" type="checkbox" required aria-label="Enable project backups" aria-invalid="true" aria-describedby="validation-switch-error">
+                      <span class="lever"></span> On
+                    </label>
+                  </div>
+                  <p id="validation-switch-error" class="supporting-text error-text"><i class="material-icons" aria-hidden="true">error</i> Enable project backups before starting this job.</p>
+                </div>
+              </div>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="switch"&gt;
+    &lt;label&gt;Off
+        &lt;input id="validation-switch" type="checkbox" required aria-label="Enable project backups" aria-invalid="true" aria-describedby="validation-switch-error"&gt;
+        &lt;span class="lever"&gt;&lt;/span&gt; On
+    &lt;/label&gt;
+&lt;/div&gt;
+&lt;p id="validation-switch-error" class="supporting-text error-text"&gt;&lt;i class="material-icons" aria-hidden="true"&gt;error&lt;/i&gt; Enable project backups before starting this job.&lt;/p&gt;</code></pre></div>
+            </section>
+
+            <section id="input-reference" class="section scrollspy">
+              <h2 class="header">Reference</h2>
+              <h3>Attributes</h3>
+
+              {{> input-choice-reference }}
+
+              <h3>Keyboard and accessibility</h3>
+
+              <p>Use Tab to focus the switch and Space to toggle it. Give the setting a clear label so its meaning remains understandable in either state.</p>
+              <h3>Dragging</h3>
+              <p>The thumb follows a horizontal mouse, pen, or touch drag. Release past the midpoint to turn the switch on, or before it to turn it off. Right-to-left layouts mirror this direction. The checkbox value changes only on release, emitting the usual native events when its state changes.</p>
+              <p>Press Escape to cancel a drag. Disabled switches stay inactive, and vertical touch gestures can scroll the page. Clicking still works when only the stylesheet is loaded.</p>
             </section>
           </div>
           <div class="col hide-on-small-only m3 xl3">
             <div class="toc-wrapper">
               <div style="height: 1px">
-                <ul class="section table-of-contents">
-                  <li><a href="#switches">Switches</a></li>
-                  <li><a href="#icon-switch">Icon inside the thumb</a></li>
-                  <li><a href="#custom-icon-switch">Custom Material Icons</a></li>
-                </ul>
+                {{> input-toc }}
               </div>
             </div>
           </div>
