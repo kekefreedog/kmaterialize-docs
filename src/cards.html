@@ -91,6 +91,29 @@
         </div>
       </div>
 
+      <section id="image-only" class="section scrollspy">
+        <h4 class="header">Image Only</h4>
+        <p>Use only <code>card-image</code> inside the card to display an image with an optional title. Omit <code>card-content</code> and <code>card-action</code> when no description or footer is needed.</p>
+        <div class="row">
+          <div class="s12 m7">
+            <div class="card">
+              <div class="card-image">
+                <img src="images/sample-1.jpg" alt="Mountain landscape">
+                <span class="card-title">Card Title</span>
+              </div>
+            </div>
+          </div>
+          <div class="s12">
+            <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="card"&gt;
+  &lt;div class="card-image"&gt;
+    &lt;img src="images/sample-1.jpg" alt="Mountain landscape"&gt;
+    &lt;span class="card-title"&gt;Card Title&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+          </div>
+        </div>
+      </section>
+
       <section id="image-alt" class="section scrollspy">
         <h3 class="header">Background Image Card</h3>
         <p>Add <code>card-image-alt</code> to <code>card</code> to cover the whole card with a background image. A dark overlay keeps the light text and text buttons visible. An optional <code>card-action</code> footer sits at the bottom on a theme-colored surface.</p>
@@ -681,6 +704,7 @@
           <ul class="section table-of-contents">
             <li><a href="#basic">Basic Card</a></li>
             <li><a href="#image">Image Card</a></li>
+            <li><a href="#image-only">Image Only</a></li>
             <li><a href="#image-alt">Background Image Card</a></li>
             <li><a href="#image-alt-gradient">Background Gradient</a></li>
             <li><a href="#image-gradient">Image Card Gradient</a></li>
