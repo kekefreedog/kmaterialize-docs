@@ -49,10 +49,10 @@ importers:
         version: 5.13.5
       kmaterialize:
         specifier: latest
-        version: 2.3.3-1.0.39(@maskito/core@5.4.0)(@maskito/kit@5.4.0(@maskito/core@5.4.0))(@simonwep/pickr@1.9.1)(air-datepicker@3.6.0)(filepond-plugin-file-validate-type@1.2.9(filepond@4.32.12))(filepond-plugin-image-exif-orientation@1.0.11(filepond@4.32.12))(filepond-plugin-image-preview@4.6.12(filepond@4.32.12))(filepond@4.32.12)(handlebars@4.7.10)(imask@7.6.1)(kspreadsheet@2.7.0)(prismjs@1.30.0)(quill@2.0.3)(sweetalert2@11.26.25)(tippy.js@6.3.7)(tom-select@2.6.2)
+        version: 2.3.3-1.0.39(@maskito/core@5.4.0)(@maskito/kit@5.4.0(@maskito/core@5.4.0))(@simonwep/pickr@1.9.1)(air-datepicker@3.6.0)(filepond-plugin-file-validate-type@1.2.9(filepond@4.32.12))(filepond-plugin-image-exif-orientation@1.0.11(filepond@4.32.12))(filepond-plugin-image-preview@4.6.12(filepond@4.32.12))(filepond@4.32.12)(handlebars@4.7.10)(imask@7.6.1)(kspreadsheet@2.10.0)(prismjs@1.30.0)(quill@2.0.3)(sweetalert2@11.26.25)(tippy.js@6.3.7)(tom-select@2.6.2)
       kspreadsheet:
-        specifier: 2.7.0
-        version: 2.7.0
+        specifier: 2.10.0
+        version: 2.10.0
       material-icons:
         specifier: ^1.13.14
         version: 1.13.14
@@ -73,20 +73,20 @@ importers:
         version: 2.6.2
       vite-plugin-handlebars:
         specifier: ^1.6.0
-        version: 1.6.0(sass@1.106.1)
+        version: 1.6.0(sass@1.107.1)
     devDependencies:
       compare-versions:
         specifier: ^6.1.1
         version: 6.1.1
       sass:
         specifier: ^1.89.1
-        version: 1.106.1
+        version: 1.107.1
       typescript:
         specifier: ^5.8.3
         version: 5.9.3
       vite:
         specifier: ^4.5.14
-        version: 4.5.14(@types/node@14.18.63)(lightningcss@1.33.0)(sass@1.106.1)
+        version: 4.5.14(@types/node@14.18.63)(lightningcss@1.33.0)(sass@1.107.1)
 
 packages:
 
@@ -343,10 +343,6 @@ packages:
   '@types/node@14.18.63':
     resolution: {integrity: sha512-fAtCfv4jJg+ExtXhvCkCqUKZ+4ok/JQk01qDKhL5BDDoS3AxKXhV5/MAVUZyQnSEd2GT92fkgZl0pz0Q0AzcIQ==}
 
-  adler-32@1.3.1:
-    resolution: {integrity: sha512-ynZ4w/nUUv5rrsR8UUGoe1VC9hZj6V5hU9Qw1HlMDJGEJw5S7TfTErWTjMys6M7vr0YWcPqs3qAr4ss0nDfP+A==}
-    engines: {node: '>=0.8'}
-
   air-datepicker@3.6.0:
     resolution: {integrity: sha512-+txUkqa949rXBJDmkQAIb/GehZECJYF4rm9XJxVYtEX22C9WvBpE/XwCUQZBopKIkpg4ycAySJ9lH3JOg9qQTw==}
 
@@ -388,14 +384,14 @@ packages:
   bluebird@3.4.7:
     resolution: {integrity: sha512-iD3898SR7sWVRHbiQv+sHUtHnMvC1o3nW5rAcqnq3uOn07DSAppZYUkIGslDz6gXC7HfunPe7YVBgoEJASPcHA==}
 
-  brace-expansion@1.1.18:
-    resolution: {integrity: sha512-Edep/X9fGqVNmzKBVsDYIOtD+z1tuezV70LBjdCst9Tqu76lsnvRiZ6oTic1n+/BIwX6QDGAO94PN4N2SADvtw==}
+  brace-expansion@1.1.21:
+    resolution: {integrity: sha512-9zeA+KLZNNzglF2TPKRQEDyx6Yby7daAkuy8MiPzpXPsYDWi/DRM8jmwUDxokQjYqBpv5DgPiwD4h4ZZSy1Ujw==}
 
-  brace-expansion@2.1.4:
-    resolution: {integrity: sha512-hGfVzPxthbf3+2yjg/RBs60cB0FhqBS/zvdV/4wn4/BmN0bNMMHPc4V/BbFieqf1TKAGGAHnY4eSjajCl0f2Xg==}
+  brace-expansion@2.1.7:
+    resolution: {integrity: sha512-uZbew1NqdmPDTMJ8ah1y+b+9QEJrfkXFk3RcTQw3X0jW/xRUvFKsg1CfQdSYGdTbXZWExtU3J3ccxtnfw1Fi0g==}
 
-  brace-expansion@5.0.9:
-    resolution: {integrity: sha512-ScQ4IuvIEF1TMlP7Zt+vjJ//9zlPb2SDcxWxM3bk8s6t6GGdJ7KO1dCcTidOPJKePW30LE/2cT7wCyPho9/Wxg==}
+  brace-expansion@5.0.12:
+    resolution: {integrity: sha512-YovQ3rzhaLMIrDjNDMkNS01tea93qhEhG5xy8f6+R0l+dw3Ki+5sCoIoI942iuLZTHWogWktgwVDhU09iNEimQ==}
     engines: {node: 20 || >=22}
 
   buffer-crc32@0.2.13:
@@ -412,20 +408,12 @@ packages:
     resolution: {integrity: sha512-9q/rDEGSb/Qsvv2qvzIzdluL5k7AaJOTrw23z9reQthrbF7is4CtlT0DXyO1oei2DCp4uojjzQ7igaSHp1kAEQ==}
     engines: {node: '>=0.2.0'}
 
-  cfb@1.2.2:
-    resolution: {integrity: sha512-KfdUZsSOw19/ObEWasvBP/Ac4reZvAGauZhs6S/gqNhXhI7cKwvlH7ulj+dOEYnca4bm4SGo8C1bTAQvnTjgQA==}
-    engines: {node: '>=0.8'}
-
   chainsaw@0.1.0:
     resolution: {integrity: sha512-75kWfWt6MEKNC8xYXIdRpDehRYY/tNSgwKaJq+dbbDcxORuVrrQ+SEHoWsniVn9XPYfP4gmdWIeDk/4YNp1rNQ==}
 
   chokidar@5.0.0:
     resolution: {integrity: sha512-TQMmc3w+5AxjpL8iIiwebF73dRDF4fBIieAqGn9RGCWaEVwQ6Fb2cGe31Yns0RRIzii5goJ1Y7xbMwo1TxMplw==}
     engines: {node: '>= 20.19.0'}
-
-  codepage@1.15.0:
-    resolution: {integrity: sha512-3g6NUTPd/YtuuGrhMnOMRjFc+LJw/bnMp3+0r/Wcz3IXUuCosKRJvMphm5+Q+bvTVGcJJuRvVLuYba+WojaFaA==}
-    engines: {node: '>=0.8'}
 
   compare-versions@6.1.1:
     resolution: {integrity: sha512-4hm4VPpIecmlg59CHXnRDnqGplJFrbLG4aFEl5vl6cK1u76ws3LLvX7ikFnTDl5vo39sjWD6AaDPYodJp/NNHg==}
@@ -634,10 +622,6 @@ packages:
   filepond@4.32.12:
     resolution: {integrity: sha512-wro0/deLwua9CkL7HJygOlDaPo1c7Ov8kfzbZjH7m4hdi56gdHGDeRWnYa+qXnRm3Lty69gUGVFb3JZy/9vT8g==}
 
-  frac@1.1.2:
-    resolution: {integrity: sha512-w/XBfkibaTl3YDqASwfDUqkna4Z2p9cFSr1aHDt0WoMTECnRfBOv2WArlZILlqgWlmdIlALXGpM2AOhEk5W3IA==}
-    engines: {node: '>=0.8'}
-
   fs-constants@1.0.0:
     resolution: {integrity: sha512-y6OAwoSIf7FyjMIv94u+b5rdheZEjzR63GTyZJm5qh4Bi+2YgwLCcI/fPFZkL5PSixOt6ZNKm+w+Hfp/Bciwow==}
 
@@ -771,8 +755,8 @@ packages:
       tom-select:
         optional: true
 
-  kspreadsheet@2.7.0:
-    resolution: {integrity: sha512-iDyirekjdIel259eAhlXyWEK5ipph2z3kmWef0UIzkopGe5t3cdiQqqHUroPzw0a6GeANnocxAuazvtC9UP29Q==}
+  kspreadsheet@2.10.0:
+    resolution: {integrity: sha512-35H4zHHoP1ihtY9Rpk2kFdu1YDrFn9qAw6A6sCe+qpIu9GsYLVPqATxd1zGefYeU93mDJCLHqOq+YUiIIv7DHg==}
 
   lazystream@1.0.1:
     resolution: {integrity: sha512-b94GiNHQNy6JNTrt5w6zNyffMrNkXZb3KTkCZJb2V1xaEGCk093vkZ2jk3tpaeP33/OiXC+WvK9AxUebnf5nbw==}
@@ -900,8 +884,8 @@ packages:
   lodash.uniq@4.5.0:
     resolution: {integrity: sha512-xfBaXQd9ryd9dlSDvnvI0lvxfLJlYAZzXomUYzLKtUeOQvOP5piqAWuGtrhWeqaXK9hhoM/iyJc5AV+XfsX3HQ==}
 
-  lru-cache@11.5.2:
-    resolution: {integrity: sha512-4pfM1Ff0x50o0tQwb5ucw/RzNyD0/YJME6IVcStalZuMWxdt3sR3huStTtxz4PUmvZfRguvDejasvQ2kifR11g==}
+  lru-cache@11.5.3:
+    resolution: {integrity: sha512-U4N8FgzmWxc8k1VH8Kr6lQg18U7Fjvby6wXHVRX/ZZ7IwWbRMgrRbP0Wrb5q5NVinryp4SQampHKdvtecItxUg==}
     engines: {node: 20 || >=22}
 
   material-icons@1.13.14:
@@ -1036,8 +1020,8 @@ packages:
   safe-buffer@5.2.1:
     resolution: {integrity: sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==}
 
-  sass@1.106.1:
-    resolution: {integrity: sha512-kD+Gi66vycZcbJt+42NC4z4PXNMcCajVrJPhqoKKXy5cOBMmJQt052CxIBcRjwYXeImHYOpu/ydWWGZQIenl7A==}
+  sass@1.107.1:
+    resolution: {integrity: sha512-aJ1/LvxOOb04YhmiBjzZn3jVwdHKol+OVhoMV6fFl02fF9T3i+5Mg9l/CnzqtM+NX5Jn5o3lAbs/ZJivTCLHfQ==}
     engines: {node: '>=20.19.0'}
     hasBin: true
 
@@ -1059,10 +1043,6 @@ packages:
   source-map@0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
     engines: {node: '>=0.10.0'}
-
-  ssf@0.11.2:
-    resolution: {integrity: sha512-+idbmIXoYET47hH+d7dfm2epdOMUDjqcB4648sTZ+t2JwoyBFL/insLfB/racrDmsKB3diwsDA696pZMieAC5g==}
-    engines: {node: '>=0.8'}
 
   string_decoder@1.1.1:
     resolution: {integrity: sha512-n/ShnvDi6FHbbVfviro+WojiFzv+s8MPMHBczVePfUpDJLwoLT0ht1l4YwBCbi8pJAveEEdnkHyPyTP/mzRfwg==}
@@ -1094,8 +1074,8 @@ packages:
   traverse@0.3.9:
     resolution: {integrity: sha512-iawgk0hLP3SxGKDfnDJf8wTz4p2qImnyihM5Hh/sGvQ3K37dPi/w8sRhdNIxYA1TwFwc5mDhIJq+O0RsvXBKdQ==}
 
-  tslib@2.8.1:
-    resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
+  tslib@2.9.1:
+    resolution: {integrity: sha512-a4Ux9VKuIMHsOS7ENbEq6hK2ZGYIT27Rtl0E4eD9KqwxhKiQeMZE/9xb3IdYwWaSOyIBQLExhQgXDTYoiCxnWA==}
 
   typescript@5.9.3:
     resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
@@ -1165,24 +1145,11 @@ packages:
       terser:
         optional: true
 
-  wmf@1.0.2:
-    resolution: {integrity: sha512-/p9K7bEh0Dj6WbXg4JG0xvLQmIadrner1bi45VMJTfnbVHsc7yIajZyoSoK60/dtVBs12Fm6WkUI5/3WAVsNMw==}
-    engines: {node: '>=0.8'}
-
-  word@0.3.0:
-    resolution: {integrity: sha512-OELeY0Q61OXpdUfTp+oweA/vtLVg5VDOXh+3he3PNzLGG/y0oylSOC1xRVj0+l4vQ3tj/bB1HVHv1ocXkQceFA==}
-    engines: {node: '>=0.8'}
-
   wordwrap@1.0.0:
     resolution: {integrity: sha512-gvVzJFlPycKc5dZN4yPkP8w7Dc37BtP1yczEneOb4uq34pXZcvrtRTmWV8W+Ume+XCxKgbjM+nevkyFPMybd4Q==}
 
   wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
-
-  xlsx@0.18.5:
-    resolution: {integrity: sha512-dmg3LCjBPHZnQp5/F/+nnTa+miPJxUXB6vtk42YjBBKayDNagxGEeIdWApkYPOf3Z3pm3k62Knjzp7lMeTEtFQ==}
-    engines: {node: '>=0.8'}
-    hasBin: true
 
   xmlchars@2.2.0:
     resolution: {integrity: sha512-JZnDKK8B0RCDw84FNdDAIpZK+JuJw+s7Lz8nksI7SIuU3UXJJslUthsi+uWBUYOwPFwW7W7PRLRfUKpxjtjFCw==}
@@ -1367,8 +1334,6 @@ snapshots:
 
   '@types/node@14.18.63': {}
 
-  adler-32@1.3.1: {}
-
   air-datepicker@3.6.0: {}
 
   archiver-utils@2.1.0:
@@ -1430,16 +1395,16 @@ snapshots:
 
   bluebird@3.4.7: {}
 
-  brace-expansion@1.1.18:
+  brace-expansion@1.1.21:
     dependencies:
       balanced-match: 1.0.2
       concat-map: 0.0.1
 
-  brace-expansion@2.1.4:
+  brace-expansion@2.1.7:
     dependencies:
       balanced-match: 1.0.2
 
-  brace-expansion@5.0.9:
+  brace-expansion@5.0.12:
     dependencies:
       balanced-match: 4.0.4
 
@@ -1454,11 +1419,6 @@ snapshots:
 
   buffers@0.1.1: {}
 
-  cfb@1.2.2:
-    dependencies:
-      adler-32: 1.3.1
-      crc-32: 1.2.2
-
   chainsaw@0.1.0:
     dependencies:
       traverse: 0.3.9
@@ -1466,8 +1426,6 @@ snapshots:
   chokidar@5.0.0:
     dependencies:
       readdirp: 5.1.1
-
-  codepage@1.15.0: {}
 
   compare-versions@6.1.1: {}
 
@@ -1652,8 +1610,6 @@ snapshots:
 
   filepond@4.32.12: {}
 
-  frac@1.1.2: {}
-
   fs-constants@1.0.0: {}
 
   fs.realpath@1.0.0: {}
@@ -1740,10 +1696,10 @@ snapshots:
       readable-stream: 2.3.8
       setimmediate: 1.0.5
 
-  kmaterialize@2.3.3-1.0.39(@maskito/core@5.4.0)(@maskito/kit@5.4.0(@maskito/core@5.4.0))(@simonwep/pickr@1.9.1)(air-datepicker@3.6.0)(filepond-plugin-file-validate-type@1.2.9(filepond@4.32.12))(filepond-plugin-image-exif-orientation@1.0.11(filepond@4.32.12))(filepond-plugin-image-preview@4.6.12(filepond@4.32.12))(filepond@4.32.12)(handlebars@4.7.10)(imask@7.6.1)(kspreadsheet@2.7.0)(prismjs@1.30.0)(quill@2.0.3)(sweetalert2@11.26.25)(tippy.js@6.3.7)(tom-select@2.6.2):
+  kmaterialize@2.3.3-1.0.39(@maskito/core@5.4.0)(@maskito/kit@5.4.0(@maskito/core@5.4.0))(@simonwep/pickr@1.9.1)(air-datepicker@3.6.0)(filepond-plugin-file-validate-type@1.2.9(filepond@4.32.12))(filepond-plugin-image-exif-orientation@1.0.11(filepond@4.32.12))(filepond-plugin-image-preview@4.6.12(filepond@4.32.12))(filepond@4.32.12)(handlebars@4.7.10)(imask@7.6.1)(kspreadsheet@2.10.0)(prismjs@1.30.0)(quill@2.0.3)(sweetalert2@11.26.25)(tippy.js@6.3.7)(tom-select@2.6.2):
     dependencies:
       normalize.css: 8.0.1
-      tslib: 2.8.1
+      tslib: 2.9.1
     optionalDependencies:
       '@maskito/core': 5.4.0
       '@maskito/kit': 5.4.0(@maskito/core@5.4.0)
@@ -1755,19 +1711,18 @@ snapshots:
       filepond-plugin-image-preview: 4.6.12(filepond@4.32.12)
       handlebars: 4.7.10
       imask: 7.6.1
-      kspreadsheet: 2.7.0
+      kspreadsheet: 2.10.0
       prismjs: 1.30.0
       quill: 2.0.3
       sweetalert2: 11.26.25
       tippy.js: 6.3.7
       tom-select: 2.6.2
 
-  kspreadsheet@2.7.0:
+  kspreadsheet@2.10.0:
     dependencies:
       '@jspreadsheet/formula': 2.0.2
       exceljs: 4.4.0
       jsuites: 5.13.5
-      xlsx: 0.18.5
 
   lazystream@1.0.1:
     dependencies:
@@ -1859,21 +1814,21 @@ snapshots:
 
   lodash.uniq@4.5.0: {}
 
-  lru-cache@11.5.2: {}
+  lru-cache@11.5.3: {}
 
   material-icons@1.13.14: {}
 
   minimatch@10.2.6:
     dependencies:
-      brace-expansion: 5.0.9
+      brace-expansion: 5.0.12
 
   minimatch@3.1.5:
     dependencies:
-      brace-expansion: 1.1.18
+      brace-expansion: 1.1.21
 
   minimatch@5.1.9:
     dependencies:
-      brace-expansion: 2.1.4
+      brace-expansion: 2.1.7
 
   minimist@1.2.8: {}
 
@@ -1910,7 +1865,7 @@ snapshots:
 
   path-scurry@2.0.2:
     dependencies:
-      lru-cache: 11.5.2
+      lru-cache: 11.5.3
       minipass: 7.1.3
 
   picocolors@1.1.1: {}
@@ -1986,7 +1941,7 @@ snapshots:
 
   safe-buffer@5.2.1: {}
 
-  sass@1.106.1:
+  sass@1.107.1:
     dependencies:
       chokidar: 5.0.0
       immutable: 5.1.9
@@ -2005,10 +1960,6 @@ snapshots:
   source-map-js@1.2.2: {}
 
   source-map@0.6.1: {}
-
-  ssf@0.11.2:
-    dependencies:
-      frac: 1.1.2
 
   string_decoder@1.1.1:
     dependencies:
@@ -2043,7 +1994,7 @@ snapshots:
 
   traverse@0.3.9: {}
 
-  tslib@2.8.1: {}
+  tslib@2.9.1: {}
 
   typescript@5.9.3: {}
 
@@ -2067,16 +2018,16 @@ snapshots:
 
   uuid@8.3.2: {}
 
-  vite-plugin-handlebars@1.6.0(sass@1.106.1):
+  vite-plugin-handlebars@1.6.0(sass@1.107.1):
     dependencies:
       handlebars: 4.7.10
-      vite: 2.9.18(sass@1.106.1)
+      vite: 2.9.18(sass@1.107.1)
     transitivePeerDependencies:
       - less
       - sass
       - stylus
 
-  vite@2.9.18(sass@1.106.1):
+  vite@2.9.18(sass@1.107.1):
     dependencies:
       esbuild: 0.14.54
       postcss: 8.5.31
@@ -2084,9 +2035,9 @@ snapshots:
       rollup: 2.77.3
     optionalDependencies:
       fsevents: 2.3.3
-      sass: 1.106.1
+      sass: 1.107.1
 
-  vite@4.5.14(@types/node@14.18.63)(lightningcss@1.33.0)(sass@1.106.1):
+  vite@4.5.14(@types/node@14.18.63)(lightningcss@1.33.0)(sass@1.107.1):
     dependencies:
       esbuild: 0.18.20
       postcss: 8.5.31
@@ -2095,25 +2046,11 @@ snapshots:
       '@types/node': 14.18.63
       fsevents: 2.3.3
       lightningcss: 1.33.0
-      sass: 1.106.1
-
-  wmf@1.0.2: {}
-
-  word@0.3.0: {}
+      sass: 1.107.1
 
   wordwrap@1.0.0: {}
 
   wrappy@1.0.2: {}
-
-  xlsx@0.18.5:
-    dependencies:
-      adler-32: 1.3.1
-      cfb: 1.2.2
-      codepage: 1.15.0
-      crc-32: 1.2.2
-      ssf: 0.11.2
-      wmf: 1.0.2
-      word: 0.3.0
 
   xmlchars@2.2.0: {}
 

@@ -138,15 +138,15 @@ h5 > span {
 */
 
 //--- Sidnav
-header,
-main,
-footer {
+body > header,
+body > main,
+body > footer {
   padding-left: 300px;
 }
 @media #{$medium-and-down} {
-  header,
-  main,
-  footer {
+  body > header,
+  body > main,
+  body > footer {
     padding-left: 0;
   }
 }
@@ -470,16 +470,6 @@ pre {
     --code-card-border-color: #486478;
 }
 
-// Footer
-footer {
-  font-size: 0.9rem;
-  .footer-copyright,
-  .footer-copyright a {
-    color: var(--md-sys-color-on-surface-variant);
-    background-color: transparent;
-  }
-}
-
 // Table of Contents
 .toc-wrapper {
   &.pin-bottom {
@@ -651,17 +641,6 @@ ul.table-of-contents {
     > header, > main, > footer { padding-left: 0; }
     header .navbar.docs-appbar { width: 100%; }
   }
-}
-
-// Copyright credits are separate lines; names remain inline within each line.
-body > .page-footer .docs-copyright {
-  display: block;
-  overflow: visible;
-  min-height: 0;
-  line-height: 1.5;
-  > div { display: block; margin-block: 4px; }
-  a { display: inline; min-height: 0; padding: 0; }
-  > a { display: inline-block; margin-top: 8px; }
 }
 
 @media only screen and (min-width: 993px) {

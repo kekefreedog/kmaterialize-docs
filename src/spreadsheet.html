@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head>{{> head }}</head><body>{{> navbar }}<main>{{> intro}}<div class="container"><div class="row"><div id="spreadsheet-examples" class="s12">
 <p class="caption"><a href="https://github.com/kekefreedog/kspreadsheet" target="_blank" rel="noopener">kspreadsheet</a> with its original colors by default and a separate, optional Material variant. This standalone example uses fictional submission data, two frozen columns, editable cells, and jSuites editors.</p>
-<section id="demo" class="section scrollspy"><h3>Default — kspreadsheet colors</h3><p>Double-click text, dropdown, or date cells to edit; click a checkbox to toggle it. Right-click a cell for its Material-styled context menu, available in both color variants. Edits stay in this page until reset or reload. The grid scrolls horizontally on smaller screens.</p><div id="submission-spreadsheet" class="spreadsheet-demo"></div>
+<section id="demo" class="section scrollspy"><h3>Default — kspreadsheet colors</h3><p>Double-click text, dropdown, or date cells to edit; click a checkbox to toggle it. Cell dropdowns and right-click context menus share the Material 3 Expressive look in both color variants: rounded surfaces, tertiary selection highlights, and an inset focus indicator for arrow-key navigation. Edits stay in this page until reset or reload. The grid scrolls horizontally on smaller screens.</p><div id="submission-spreadsheet" class="spreadsheet-demo"></div>
 <div class="spreadsheet-demo-actions">
   <button id="spreadsheet-get" type="button" class="btn filled">Get data</button>
   <button id="spreadsheet-update" type="button" class="btn tonal">Mark first shot ready</button>
@@ -32,7 +32,7 @@
 &lt;p id="material-spreadsheet-status" class="spreadsheet-demo-status" role="status"&gt;
   An independent sheet with a softer Material palette.
 &lt;/p&gt;</code></pre></div></section>
-<section id="setup" class="section scrollspy"><h3>Install and initialize</h3><p>Shared spreadsheet styles are loaded once in <code>src/style.scss</code>. Install with <code>pnpm add kspreadsheet@2.7.0 jsuites@5.13.5</code>. The default grid keeps vendor colors; load <code>spreadsheet_editors.scss</code> after them for Material dropdown menus and readable editing text. For the optional Material variant, import the enhancement styles from <code>kmaterialize/sass/enhancement</code> as shown below. Both stylesheets are shipped by the library.</p><div class="code-card docs-code no-autoinit"><pre><code class="language-scss">// Add to the main Materialize SCSS entry, once.
+<section id="setup" class="section scrollspy"><h3>Install and initialize</h3><p>Shared spreadsheet styles are loaded once in <code>src/style.scss</code>. Install with <code>pnpm add kspreadsheet@2.10.0 jsuites@5.13.5</code>. The default grid keeps vendor colors; load <code>spreadsheet_editors.scss</code> after them for Material dropdown menus and readable editing text. For the optional Material variant, import the enhancement styles from <code>kmaterialize/sass/enhancement</code> as shown below. Both stylesheets are shipped by the library.</p><div class="code-card docs-code no-autoinit"><pre><code class="language-scss">// Add to the main Materialize SCSS entry, once.
 @import 'kmaterialize/sass/materialize.scss';
 @import 'jsuites/dist/jsuites.css';
 @import 'kspreadsheet/dist/jspreadsheet.css';
@@ -873,159 +873,8 @@ $jsuites-elevation:
     // Color
     color: var(--md-sys-color-primary);
   }
-}</code></pre></div></details><details><summary>Shared dropdown and editor SCSS</summary><div class="code-card docs-code no-autoinit"><pre><code class="language-scss">// Shared editor fixes for both vendor-color and Material-color worksheets.
-// Cell text follows the worksheet palette, not Materialize's page-level input color.
-.jss_worksheet td.editor {
-  z-index: 30 !important;
-  &amp;:not(.jss_freezed) {
-    position: relative;
-  }
-  &gt; input,
-  &gt; textarea,
-  .jdropdown-header {
-    font-family: inherit !important;
-    font-size: inherit !important;
-    line-height: inherit !important;
-    color: inherit !important;
-    -webkit-text-fill-color: currentColor;
-    opacity: 1;
-    background-color: inherit;
-  }
-}
-
-// Match Materialize's dropdown surface, spacing, typography, and hover treatment.
-// Keep jSuites positioning and selection behavior intact.
-.jss_spreadsheet .jss_worksheet .jdropdown-container {
-  border: 1px solid var(--md-sys-color-outline-variant);
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--md-sys-color-surface);
-  color: var(--md-sys-color-on-surface);
-  box-shadow:
-    0 2px 2px rgba(0, 0, 0, 0.14),
-    0 3px 1px -2px rgba(0, 0, 0, 0.12),
-    0 1px 5px rgba(0, 0, 0, 0.2);
-
-  .jdropdown-content {
-    border: 0;
-    background: var(--md-sys-color-surface);
-  }
-  .jdropdown-item {
-    position: relative;
-    min-height: 50px;
-    padding: 14px 40px 14px 16px;
-    font-family: inherit;
-    font-size: 16px;
-    line-height: 22px;
-    color: var(--md-sys-color-on-surface);
-    background-color: transparent;
-    background-image: none;
-    &amp;:hover,
-    &amp;.jdropdown-cursor {
-      color: var(--md-sys-color-on-surface);
-      background-color: color-mix(
-        in srgb,
-        var(--md-sys-color-surface),
-        var(--md-sys-color-on-surface) 8%
-      );
-    }
-    &amp;.jdropdown-selected::after {
-      content: 'check';
-      position: absolute;
-      inset-inline-end: 12px;
-      font-family: 'Material Icons';
-      font-size: 20px;
-      color: currentColor;
-    }
-  }
-  .jdropdown-description {
-    line-height: 22px;
-  }
-}
-
-// The right-click menu shares the dropdown palette in both spreadsheet variants.
-// Do not clip overflow: nested context menus need to extend beyond this surface.
-.jss_spreadsheet .jcontextmenu {
-  border: 1px solid var(--md-sys-color-outline-variant);
-  border-radius: 12px;
-  padding-block: 4px;
-  background: var(--md-sys-color-surface);
-  color: var(--md-sys-color-on-surface);
-  font-family: inherit;
-  box-shadow:
-    0 2px 2px rgba(0, 0, 0, 0.14),
-    0 3px 1px -2px rgba(0, 0, 0, 0.12),
-    0 1px 5px rgba(0, 0, 0, 0.2);
-
-  &gt; div:not(.header) {
-    // Inset every row, including the first visible row after a hidden header.
-    // Rounding rows preserves submenu overflow without clipping the parent menu.
-    margin-inline: 4px;
-    border-radius: 8px;
-    min-height: 50px;
-    padding: 12px 16px 12px 40px;
-    gap: 16px;
-    font-family: inherit;
-    font-size: 16px;
-    line-height: 22px;
-    cursor: pointer;
-    &gt; a {
-      color: var(--md-sys-color-on-surface) !important;
-    }
-    &gt; span {
-      color: var(--md-sys-color-on-surface-variant);
-      font-size: 12px;
-      margin: 0;
-      white-space: nowrap;
-    }
-    &amp;::before {
-      color: var(--md-sys-color-on-surface);
-      font-size: 20px;
-    }
-    &amp;:hover,
-    &amp;:focus-visible {
-      background: color-mix(
-        in srgb,
-        var(--md-sys-color-surface),
-        var(--md-sys-color-on-surface) 8%
-      );
-      &gt; a {
-        color: var(--md-sys-color-on-surface) !important;
-      }
-      &amp;::before {
-        color: var(--md-sys-color-on-surface);
-      }
-    }
-    &amp;:first-child {
-      border-start-start-radius: 8px;
-      border-start-end-radius: 8px;
-    }
-    &amp;:last-child {
-      border-end-start-radius: 8px;
-      border-end-end-radius: 8px;
-    }
-    &amp;.jcontextmenu-disabled {
-      cursor: default;
-      &gt; a,
-      &gt; span,
-      &amp;::before {
-        color: color-mix(
-          in srgb,
-          var(--md-sys-color-on-surface) 38%,
-          transparent
-        ) !important;
-      }
-      &amp;:hover {
-        background: transparent;
-      }
-    }
-  }
-  &gt; hr {
-    border: 0;
-    border-top: 1px solid var(--md-sys-color-outline-variant);
-    margin: 4px 0;
-  }
-}</code></pre></div></details><details><summary>Example layout SCSS</summary><div class="code-card docs-code no-autoinit"><pre><code class="language-scss">#spreadsheet-examples {
+}</code></pre></div></details><details><summary>Shared dropdown and editor SCSS</summary><p>Import the library stylesheet after the vendor and optional Material styles. It supplies the shared Material 3 Expressive dropdown and context-menu appearance, including selected states and keyboard focus, plus readable cell editor text.</p><div class="code-card docs-code no-autoinit"><pre><code class="language-scss">// Use the library's shared menu styles for both worksheet color variants.
+@import 'kmaterialize/sass/enhancement/spreadsheet_editors.scss';</code></pre></div></details><details><summary>Example layout SCSS</summary><div class="code-card docs-code no-autoinit"><pre><code class="language-scss">#spreadsheet-examples {
   min-width: 0;
 }
 .spreadsheet-demo {

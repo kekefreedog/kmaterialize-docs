@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>{{> head }}</head>
+    <body>
+        {{> navbar }}
+        <main>
+            {{> intro}}
+            <div class="container">
+                <div class="row">
+                    <div class="s12 m9 offset-m1 xl8 offset-xl1">
+                        <p class="caption">Edit source code with native text selection, line numbers, indentation, and <a href="https://prismjs.com/docs/prism">Prism syntax highlighting</a>. Highlighting decorates the text; code is never executed.</p>
+<section id="demo" class="section scrollspy"><h3>Try the editor</h3>
+<p>Type or paste code, select several lines, and use Indent or Outdent. Tab indents; Shift+Tab outdents. Press Escape, then Tab to leave the editor. Enter preserves indentation. Ctrl/Cmd+Z and Ctrl/Cmd+Shift+Z share the toolbar history. Changing the language preserves your source.</p><div id="script-toolbar" class="toolbar" role="group" aria-label="Script editing commands"><div class="toolbar-group"><crazy-button data-editor-command="undo" type="floating" label="Undo" size="small" shape="round" depth="flat" icon-text="undo" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button><crazy-button data-editor-command="redo" type="floating" label="Redo" size="small" shape="round" depth="flat" icon-text="redo" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button></div><span class="toolbar-separator" aria-hidden="true"></span><div class="toolbar-group"><crazy-button data-editor-command="indent" type="floating" label="Indent" size="small" shape="round" depth="flat" icon-text="format_indent_increase" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button><crazy-button data-editor-command="outdent" type="floating" label="Outdent" size="small" shape="round" depth="flat" icon-text="format_indent_decrease" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button></div><span class="toolbar-separator" aria-hidden="true"></span><div class="toolbar-group"><crazy-button id="script-language" menu-target="script-language-menu" data-language="javascript" type="extended" label="JavaScript" size="small" shape="round" depth="flat" icon-text="code" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button></div></div><ul id="script-language-menu" class="dropdown-content">
+    <li><button type="button" data-language="javascript"><i class="material-icons" aria-hidden="true">javascript</i>JavaScript</button></li>
+    <li><button type="button" data-language="markup"><i class="material-icons" aria-hidden="true">html</i>HTML</button></li>
+    <li><button type="button" data-language="css"><i class="material-icons" aria-hidden="true">css</i>CSS</button></li>
+    <li><button type="button" data-language="json"><i class="material-icons" aria-hidden="true">data_object</i>JSON</button></li>
+    <li><button type="button" data-language="plain"><i class="material-icons" aria-hidden="true">notes</i>Plain text</button></li>
+</ul>
+<div id="script-demo"></div><div class="toolbar" role="group" aria-label="Source actions"><div class="toolbar-group"><crazy-button id="script-sample" type="extended" label="Load language sample" size="small" shape="round" depth="flat" icon-text="code" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button><crazy-button id="script-insert" type="floating" label="Insert “example” at selection" size="small" shape="round" depth="flat" icon-text="add" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button><crazy-button id="script-export" type="extended" label="Export text" size="small" shape="round" depth="flat" icon-text="download" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button></div><div class="toolbar-group"><label><input type="checkbox" id="script-readonly"><span>Read only</span></label></div></div><p id="script-status" role="status">Changes stay in this browser session until exported.</p>
+</section>
+<section id="setup" class="section scrollspy"><h3>Setup</h3>
+<p>Install the optional <code>prismjs</code> peer. The component loads it when initialized; await <code>ready</code> before registering extra grammars. Initialize explicitly after the host is in the document.</p><div class="code-card docs-code no-autoinit"><pre><code class="language-bash">npm install kmaterialize prismjs</code></pre></div><div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div id="source-editor"&gt;&lt;/div&gt;</code></pre></div><div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">import { ScriptEditor } from "kmaterialize";
+import "kmaterialize/dist/css/materialize.css";
+
+// Create an editable source document.
+const editor = ScriptEditor.init(document.querySelector("#source-editor"), {
+    value: "const message = 'Hello';\n",
+    language: "javascript",
+    label: "JavaScript source",
+    tabSize: 4,
+    lineNumbers: true
+});
+// Wait for Prism to become available.
+await editor.ready;</code></pre></div>
+</section>
+<section id="languages" class="section scrollspy"><h3>Prism languages</h3>
+<p>Prism’s default package includes JavaScript, CSS, markup, and C-like grammars. Load additional language modules in your application, then call <code>setLanguage()</code>. Unavailable grammars display readable plain text. The editor uses a compact, neutral line-number gutter. The library provides theme-aware token colors, so a separate Prism theme stylesheet is unnecessary.</p><div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">// Wait for the shared Prism instance.
+await editor.ready;
+// Load the additional grammar explicitly.
+await import("prismjs/components/prism-json.js");
+// Re-highlight the existing source without replacing it.
+editor.setLanguage("json");</code></pre></div><p>For script-tag applications, load Prism and your grammars before creating the editor and set <code>data-manual</code> on the Prism script. The editor uses the global <code>Prism</code> fallback when a module import is unavailable.</p>
+</section>
+<section id="toolbar" class="section scrollspy"><h3>Toolbar connection</h3>
+<p>The demo uses Rodeo-style <code>crazy-button</code> controls: <code>size="small"</code>, <code>shape="round"</code>, Material icons, and <code>variant="tonal"</code>. Related actions use <code>toolbar-group</code> with <code>toolbar-separator</code> between them. Narrow toolbars scroll horizontally.</p>
+<div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">import { Toolbar } from "kmaterialize";
+
+// Initialize the standard Toolbar.
+const toolbar = Toolbar.init(document.querySelector("#code-toolbar"));
+// Connect undo, redo, indent, and outdent commands.
+const disconnect = editor.connectToolbar(toolbar);</code></pre></div><div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div id="code-toolbar" class="toolbar"&gt;
+  &lt;div class="toolbar-group"&gt;
+    &lt;crazy-button data-editor-command="undo" type="floating" label="Undo" size="small" shape="round" depth="flat" icon-text="undo" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"&gt;&lt;/crazy-button&gt;
+    &lt;crazy-button data-editor-command="redo" type="floating" label="Redo" size="small" shape="round" depth="flat" icon-text="redo" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"&gt;&lt;/crazy-button&gt;
+    &lt;crazy-button data-editor-command="indent" type="floating" label="Indent" size="small" shape="round" depth="flat" icon-text="format_indent_increase" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"&gt;&lt;/crazy-button&gt;
+    &lt;crazy-button data-editor-command="outdent" type="floating" label="Outdent" size="small" shape="round" depth="flat" icon-text="format_indent_decrease" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"&gt;&lt;/crazy-button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+</section>
+<section id="api" class="section scrollspy"><h3>Methods & options</h3>
+<div class="responsive-table"><table><thead><tr><th>Method / option</th><th>Behavior</th></tr></thead><tbody><tr><td><code>getValue() / setValue(text)</code></td><td>Read or replace source text. Programmatic replacement is undoable and remains available in read-only mode.</td></tr><tr><td><code>getSelection() / setSelection(start, end?)</code></td><td>Read or set zero-based UTF-16 selection offsets using native textarea behavior.</td></tr><tr><td><code>replaceSelection(text)</code></td><td>Insert literal text at the current selection and restore editing focus.</td></tr><tr><td><code>indent(outdent = false)</code></td><td>Indent selected lines, or remove one indentation level when true.</td></tr><tr><td><code>undo() / redo()</code></td><td>Restore up to 100 recorded snapshots, including source and selection.</td></tr><tr><td><code>setLanguage(language)</code></td><td>Re-highlight using a loaded Prism grammar; never changes source text.</td></tr><tr><td><code>setReadOnly(boolean) / focus()</code></td><td>Control editing availability and focus.</td></tr><tr><td><code>canExecute(command) / execute(command)</code></td><td>Inspect or run undo, redo, indent, and outdent commands.</td></tr><tr><td><code>connectToolbar(toolbar)</code></td><td>Bind an existing Toolbar or element; returns a disconnect function.</td></tr><tr><td><code>destroy()</code></td><td>Disconnect listeners and restore original host content. Pending Prism loading cannot repaint a destroyed editor.</td></tr><tr><td><code>value / language / label</code></td><td>Initial source, Prism grammar name, and accessible input label.</td></tr><tr><td><code>tabSize / lineNumbers / readOnly / onChange</code></td><td>Indent width (1–8), gutter visibility, interaction mode, and <code>onChange(value)</code> callback.</td></tr><tr><td><code>--script-editor-height / --script-editor-font-size</code></td><td>CSS properties controlling viewport height and identical font metrics in both text layers.</td></tr></tbody></table></div><p><code>scriptchange</code> bubbles with <code>detail.value</code> and <code>detail.language</code>. This is a lightweight source editor, without code execution, autocomplete, linting, or a language server. Try <code>window.scriptEditor</code> in this demo’s console.</p>
+</section>
+                    </div>
+                    <div class="hide-on-small-only m2 xl2"><div class="toc-wrapper"><ul class="section table-of-contents"><li><a href="#demo">Try the editor</a></li><li><a href="#setup">Setup</a></li><li><a href="#languages">Prism languages</a></li><li><a href="#toolbar">Toolbar connection</a></li><li><a href="#api">Methods & options</a></li></ul></div></div>
+                </div>
+            </div>
+        </main>
+        {{> footer }}
+        <script type="module" src="/main.ts"></script>
+        <script type="module" src="/editor-demos.ts"></script>
+    </body>
+</html>

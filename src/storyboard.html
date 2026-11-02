@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>{{> head }}</head>
+    <body>
+        {{> navbar }}
+        <main>
+            {{> intro}}
+            <div class="container">
+                <div class="row">
+                    <div class="s12 m9 offset-m1 xl8 offset-xl1">
+                        <p class="caption">Plan a sequence as visual shot cards. Edit frame references, action or dialogue, camera notes, and duration. Drag the six-dot handle to reorder shots, use its arrow keys, or use the rounded icon buttons in each card footer. Every reorder can be undone.</p>
+<section id="demo" class="section scrollspy"><h3>Try the storyboard</h3>
+<p>Select a shot using its numbered header or focus one of its fields. Open “Frame &amp; camera” to set its image URL, framing notes, and duration in seconds. Earlier and Later change the shot order; Duplicate preserves metadata with a new ID.</p><div id="storyboard-toolbar" class="toolbar" role="group" aria-label="Storyboard editing commands"><div class="toolbar-group"><crazy-button data-editor-command="add" type="extended" label="Add shot" size="small" shape="round" depth="flat" icon-text="add_photo_alternate" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button></div><span class="toolbar-separator" aria-hidden="true"></span><div class="toolbar-group"><crazy-button data-editor-command="duplicate" type="floating" label="Duplicate" size="small" shape="round" depth="flat" icon-text="content_copy" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button><crazy-button data-editor-command="remove" type="floating" label="Delete" size="small" shape="round" depth="flat" icon-text="delete_outline" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button></div><span class="toolbar-separator" aria-hidden="true"></span><div class="toolbar-group"><crazy-button data-editor-command="up" type="floating" label="Earlier" size="small" shape="round" depth="flat" icon-text="arrow_upward" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button><crazy-button data-editor-command="down" type="floating" label="Later" size="small" shape="round" depth="flat" icon-text="arrow_downward" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button></div><span class="toolbar-separator" aria-hidden="true"></span><div class="toolbar-group"><crazy-button data-editor-command="undo" type="floating" label="Undo" size="small" shape="round" depth="flat" icon-text="undo" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button><crazy-button data-editor-command="redo" type="floating" label="Redo" size="small" shape="round" depth="flat" icon-text="redo" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button></div></div><div id="storyboard-demo"></div><div class="toolbar" role="group" aria-label="Document actions">
+<div class="toolbar-group"><crazy-button id="storyboard-export" type="extended" label="Export JSON" size="small" shape="round" depth="flat" icon-text="download" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button><crazy-button id="storyboard-reset" type="floating" label="Reset sample" size="small" shape="round" depth="flat" icon-text="refresh" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button></div>
+<div class="toolbar-group"><label><input type="checkbox" id="storyboard-readonly"><span>Read only</span></label></div>
+</div><label for="storyboard-import">Import a previously exported JSON file</label><input type="file" id="storyboard-import" accept="application/json,.json"><p id="storyboard-feedback" role="status">Changes stay in this browser session until exported.</p>
+</section>
+<section id="setup" class="section scrollspy"><h3>Setup</h3>
+<p>Initialize explicitly after the host is in the document. Storyboard has no additional JavaScript dependency. Your application owns image upload and storage; pass the resulting URL to <code>image</code>.</p><div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div id="shot-board"&gt;&lt;/div&gt;</code></pre></div><div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">import { Storyboard, Toolbar } from "kmaterialize";
+import "kmaterialize/dist/css/materialize.css";
+
+// Create a visual sequence.
+const board = Storyboard.init(document.querySelector("#shot-board"), {
+    shots: [{
+        id: "shot-1", title: "Establishing the lake",
+        image: "/images/lake.jpg", description: "Hold on the first light.",
+        camera: "Wide · locked off", duration: 5
+    }]
+});
+// Initialize the standard Toolbar.
+const toolbar = Toolbar.init(document.querySelector("#shot-toolbar"));
+// Bind selection-aware shot commands.
+board.connectToolbar(toolbar);</code></pre></div>
+</section>
+<section id="toolbar" class="section scrollspy"><h3>Toolbar connection</h3>
+<p>The demo uses Rodeo-style <code>crazy-button</code> controls: <code>size="small"</code>, <code>shape="round"</code>, Material icons, and <code>variant="tonal"</code>. Related actions use <code>toolbar-group</code> with <code>toolbar-separator</code> between them. Narrow toolbars scroll horizontally.</p>
+<p>Each card includes small, round <code>crazy-button</code> footer actions for Earlier, Later, Duplicate, and Delete. Drag the six-dot header handle to insert a card before or after another; the insertion marker previews the position. Focus the handle and press an arrow key to reorder with the keyboard. Earlier and Later remain available on touch devices. Read-only mode disables handles and editing actions.</p>
+<p>Use <code>data-editor-command</code> with <code>add</code>, <code>duplicate</code>, <code>remove</code>, <code>up</code>, <code>down</code>, <code>undo</code>, or <code>redo</code>. Connected buttons follow selection, read-only mode, and history availability. A new connection replaces the previous binding.</p><div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div id="shot-toolbar" class="toolbar"&gt;
+  &lt;div class="toolbar-group"&gt;
+    &lt;crazy-button data-editor-command="add" type="extended" label="Add shot" size="small" shape="round" depth="flat" icon-text="add_photo_alternate" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"&gt;&lt;/crazy-button&gt;
+    &lt;crazy-button data-editor-command="duplicate" type="floating" label="Duplicate" size="small" shape="round" depth="flat" icon-text="content_copy" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"&gt;&lt;/crazy-button&gt;
+    &lt;crazy-button data-editor-command="up" type="floating" label="Earlier" size="small" shape="round" depth="flat" icon-text="arrow_upward" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"&gt;&lt;/crazy-button&gt;
+    &lt;crazy-button data-editor-command="down" type="floating" label="Later" size="small" shape="round" depth="flat" icon-text="arrow_downward" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"&gt;&lt;/crazy-button&gt;
+    &lt;crazy-button data-editor-command="undo" type="floating" label="Undo" size="small" shape="round" depth="flat" icon-text="undo" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"&gt;&lt;/crazy-button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+</section>
+<section id="data" class="section scrollspy"><h3>Shot data & export</h3>
+<p>Each shot stores an ID, title, image URL, description, camera notes, and a non-negative duration in seconds. Getters return detached copies. Imports validate the entire document before replacement. HTTP(S), relative, blob, and raster data image URLs are supported; blob URLs only last for their creating browser session.</p><div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">// Append a shot and retain its generated ID.
+const id = board.addShot({title: "The landing", duration: 4});
+// Update metadata using literal text and an application-owned image URL.
+board.updateShot(id, {image: "/images/landing.jpg", camera: "Medium · slow pan"});
+// Move the shot to the start of the sequence.
+board.moveShot(id, 0);
+// Export and restore the complete versioned document.
+const json = board.toJSON();
+board.fromJSON(json);</code></pre></div><div id="storyboard-output" class="code-card docs-code no-autoinit"><pre><code class="language-json">{"version":1,"shots":[]}</code></pre></div>
+</section>
+<section id="api" class="section scrollspy"><h3>Methods & options</h3>
+<div class="responsive-table"><table><thead><tr><th>Method / option</th><th>Behavior</th></tr></thead><tbody><tr><td><code>getShots() / setShots(shots)</code></td><td>Read a detached shot list or replace the complete board as an undoable operation.</td></tr><tr><td><code>addShot(fields?, index?)</code></td><td>Insert a shot with defaults; returns a generated ID. Index defaults to the end.</td></tr><tr><td><code>updateShot(id, fields)</code></td><td>Validate and update supported metadata without changing the shot ID.</td></tr><tr><td><code>selectShot(id) / getSelectedShot()</code></td><td>Select a shot or read a detached selected shot; returns null for an empty board.</td></tr><tr><td><code>duplicateShot(id?) / removeShot(id?)</code></td><td>Duplicate or remove the selected shot by default.</td></tr><tr><td><code>moveShot(id, index)</code></td><td>Move to a zero-based final position in the sequence.</td></tr><tr><td><code>getTotalDuration()</code></td><td>Return total duration in seconds.</td></tr><tr><td><code>toJSON() / fromJSON(json)</code></td><td>Export or import a version 1 storyboard document.</td></tr><tr><td><code>undo() / redo()</code></td><td>Restore bounded, 100-step shot history.</td></tr><tr><td><code>setReadOnly(boolean)</code></td><td>Keep cards selectable while disabling edits and mutation commands. Explicit data loads remain available.</td></tr><tr><td><code>execute(command) / canExecute(command)</code></td><td>Run or inspect toolbar commands.</td></tr><tr><td><code>destroy()</code></td><td>Restore original host content and remove component listeners and toolbar bindings.</td></tr><tr><td><code>shots / label / readOnly / onChange</code></td><td>Initialization options; <code>onChange(shots)</code> receives detached shot data.</td></tr><tr><td><code>--storyboard-card-width / --storyboard-frame-ratio</code></td><td>CSS properties for minimum card width and frame aspect ratio; defaults are 260px and 16 / 9.</td></tr></tbody></table></div><p><code>storyboardchange</code> bubbles with <code>detail.shots</code>. <code>storyboardselectionchange</code> bubbles with <code>detail.shot</code>. Try <code>window.storyboard</code> in the demo console.</p>
+</section>
+                    </div>
+                    <div class="hide-on-small-only m2 xl2"><div class="toc-wrapper"><ul class="section table-of-contents"><li><a href="#demo">Try the storyboard</a></li><li><a href="#setup">Setup</a></li><li><a href="#toolbar">Toolbar connection</a></li><li><a href="#data">Shot data & export</a></li><li><a href="#api">Methods & options</a></li></ul></div></div>
+                </div>
+            </div>
+        </main>
+        {{> footer }}
+        <script type="module" src="/main.ts"></script>
+        <script type="module" src="/editor-demos.ts"></script>
+    </body>
+</html>

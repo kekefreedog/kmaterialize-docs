@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>{{> head }}</head>
+    <body>
+        {{> navbar }}
+        <main>
+            {{> intro}}
+            <div class="container">
+                <div class="row">
+                    <div class="s12 m9 offset-m1 xl8 offset-xl1">
+                        <p class="caption">Write scene headings, action, characters, dialogue, parentheticals, and transitions in a structured screenplay. Use the public JavaScript methods with your own controls or connect the existing <a href="toolbar.html">Toolbar</a>.</p>
+<section id="demo" class="section scrollspy"><h3>Try the editor</h3>
+<p>Click a block to edit it, then change its type or position with the toolbar. The active block has a black left marker and a six-dot drag handle: drag it above or below another block using the full-width insertion line (blank space beside a block accepts drops too), or focus the handle and use the Up/Down arrows. Moving a continuation reorders the entire semantic block and can be undone. Enter creates the next block; Shift+Enter inserts a line break. A character or parenthetical continues into dialogue. Backspace removes an empty block. Ctrl/Cmd+Z undoes; Ctrl/Cmd+Shift+Z redoes. Ordinary Tab moves between controls. Write on complete, numbered A4 sheets (210 × 297 mm), with 12-point Courier and fixed screenplay margins. Fit parent is the default preview size. Use the zoom menu for a fixed percentage; the writing canvas scrolls vertically and horizontally as needed. Preview size does not change line breaks or page count. Additional sheets appear as you write. The document title sits outside the numbered screenplay pages.</p><div id="screenplay-toolbar" class="toolbar" role="group" aria-label="Screenplay editing commands"><div class="toolbar-group"><crazy-button id="screenplay-type" menu-target="screenplay-type-menu" type="extended" label="Scene heading" size="small" shape="round" depth="flat" icon-text="movie" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button></div><span class="toolbar-separator" aria-hidden="true"></span><div class="toolbar-group"><crazy-button data-editor-command="insert" data-editor-value="action" type="floating" label="Add action" size="small" shape="round" depth="flat" icon-text="notes" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button><crazy-button data-editor-command="insert" data-editor-value="scene" type="floating" label="Add scene" size="small" shape="round" depth="flat" icon-text="movie" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button></div><span class="toolbar-separator" aria-hidden="true"></span><div class="toolbar-group"><crazy-button data-editor-command="up" type="floating" label="Move up" size="small" shape="round" depth="flat" icon-text="arrow_upward" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button><crazy-button data-editor-command="down" type="floating" label="Move down" size="small" shape="round" depth="flat" icon-text="arrow_downward" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button><crazy-button data-editor-command="remove" type="floating" label="Delete block" size="small" shape="round" depth="flat" icon-text="delete_outline" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button></div><span class="toolbar-separator" aria-hidden="true"></span><div class="toolbar-group"><crazy-button data-editor-command="undo" type="floating" label="Undo" size="small" shape="round" depth="flat" icon-text="undo" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button><crazy-button data-editor-command="redo" type="floating" label="Redo" size="small" shape="round" depth="flat" icon-text="redo" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button></div><span class="toolbar-separator" aria-hidden="true"></span><div class="toolbar-group"><crazy-button id="screenplay-zoom" menu-target="screenplay-zoom-menu" type="extended" label="Fit parent" size="small" shape="round" depth="flat" icon-text="zoom_in" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button></div></div><ul id="screenplay-type-menu" class="dropdown-content">
+    <li><button type="button" data-block-type="scene"><i class="material-icons" aria-hidden="true">movie</i>Scene heading</button></li>
+    <li><button type="button" data-block-type="action"><i class="material-icons" aria-hidden="true">notes</i>Action</button></li>
+    <li><button type="button" data-block-type="character"><i class="material-icons" aria-hidden="true">person</i>Character</button></li>
+    <li><button type="button" data-block-type="dialogue"><i class="material-icons" aria-hidden="true">chat_bubble_outline</i>Dialogue</button></li>
+    <li><button type="button" data-block-type="parenthetical"><i class="material-icons" aria-hidden="true">short_text</i>Parenthetical</button></li>
+    <li><button type="button" data-block-type="transition"><i class="material-icons" aria-hidden="true">compare_arrows</i>Transition</button></li>
+</ul>
+<ul id="screenplay-zoom-menu" class="dropdown-content" aria-label="Page preview size">
+    <li><button type="button" data-screenplay-zoom="fit-parent">Fit parent</button></li>
+    <li><button type="button" data-screenplay-zoom="0.5">50%</button></li>
+    <li><button type="button" data-screenplay-zoom="0.75">75%</button></li>
+    <li><button type="button" data-screenplay-zoom="1">100% · Actual size</button></li>
+    <li><button type="button" data-screenplay-zoom="1.25">125%</button></li>
+    <li><button type="button" data-screenplay-zoom="1.5">150%</button></li>
+    <li><button type="button" data-screenplay-zoom="2">200%</button></li>
+</ul>
+<div id="screenplay-demo"></div><p id="screenplay-status" role="status">Changes stay in this browser session until exported.</p><div class="toolbar" role="group" aria-label="Document actions">
+<div class="toolbar-group"><crazy-button id="screenplay-export" type="extended" label="Export JSON" size="small" shape="round" depth="flat" icon-text="download" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button><crazy-button id="screenplay-text" type="floating" label="Export text" size="small" shape="round" depth="flat" icon-text="download" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button><crazy-button id="screenplay-reset" type="floating" label="Reset sample" size="small" shape="round" depth="flat" icon-text="refresh" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"></crazy-button></div>
+<div class="toolbar-group"><label><input type="checkbox" id="screenplay-readonly"><span>Read only</span></label></div>
+</div><label for="screenplay-import">Import a previously exported JSON file</label><input type="file" id="screenplay-import" accept="application/json,.json">
+</section>
+<p>A conventionally formatted screenplay page represents roughly one minute of screen time; this is a pacing guide, not an exact runtime calculation. See the <a href="https://www.oscars.org/sites/oscars/files/complete_screen_writing_activities_guide.pdf">Academy’s screenwriting guide</a>. A4 and US Letter have different usable areas, and scene content also affects timing.</p>
+<section id="setup" class="section scrollspy"><h3>Setup</h3>
+<p>Initialize explicitly after the host is in the document. No additional editor dependency is required. <code>AutoInit</code> does not create this data-driven editor.</p><div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div id="writing-toolbar" class="toolbar"&gt;
+  &lt;div class="toolbar-group"&gt;
+    &lt;crazy-button data-editor-command="type" data-editor-value="scene" type="floating" label="Scene heading" size="small" shape="round" depth="flat" icon-text="movie" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"&gt;&lt;/crazy-button&gt;
+    &lt;crazy-button data-editor-command="type" data-editor-value="dialogue" type="floating" label="Dialogue" size="small" shape="round" depth="flat" icon-text="chat_bubble_outline" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"&gt;&lt;/crazy-button&gt;
+    &lt;crazy-button data-editor-command="insert" data-editor-value="action" type="floating" label="Add action" size="small" shape="round" depth="flat" icon-text="notes" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"&gt;&lt;/crazy-button&gt;
+    &lt;crazy-button data-editor-command="undo" type="floating" label="Undo" size="small" shape="round" depth="flat" icon-text="undo" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"&gt;&lt;/crazy-button&gt;
+    &lt;crazy-button data-editor-command="redo" type="floating" label="Redo" size="small" shape="round" depth="flat" icon-text="redo" icon-position="left" variant="tonal" color-secondary="var(--md-sys-color-primary)"&gt;&lt;/crazy-button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="screenplay"&gt;&lt;/div&gt;</code></pre></div><div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">import { ScreenplayEditor, Toolbar } from "kmaterialize";
+import "kmaterialize/dist/css/materialize.css";
+
+// Create a structured screenplay.
+const editor = ScreenplayEditor.init(document.querySelector("#screenplay"), {
+    document: {
+        title: "The last light",
+        blocks: [
+            { id: "scene-1", type: "scene", text: "EXT. MOUNTAIN LAKE — DAWN" },
+            { id: "action-1", type: "action", text: "Mist drifts across the water." }
+        ]
+    }
+});
+// Initialize the existing Toolbar component.
+const toolbar = Toolbar.init(document.querySelector("#writing-toolbar"));
+// Connect public editor commands.
+const disconnect = editor.connectToolbar(toolbar);</code></pre></div>
+</section>
+<section id="toolbar" class="section scrollspy"><h3>Toolbar connection</h3>
+<p>The demo uses Rodeo-style <code>crazy-button</code> controls: <code>size="small"</code>, <code>shape="round"</code>, Material icons, and <code>variant="tonal"</code>. Related actions use <code>toolbar-group</code> with <code>toolbar-separator</code> between them. Narrow toolbars scroll horizontally.</p>
+<p><code>connectToolbar()</code> accepts a Toolbar instance or its element and returns a disconnect function. Commands work with native buttons, <code>crazy-button</code>, and native selects. The editor keeps unavailable undo, redo, and movement commands disabled. Connecting a new toolbar replaces the old binding.</p><div class="responsive-table"><table><thead><tr><th>Method / option</th><th>Behavior</th></tr></thead><tbody><tr><td><code>data-editor-command=&quot;type&quot;</code></td><td>Change the active block to <code>data-editor-value</code>: scene, action, character, dialogue, parenthetical, or transition.</td></tr><tr><td><code>insert</code></td><td>Insert a block after the selected one; its type comes from <code>data-editor-value</code>.</td></tr><tr><td><code>up / down / remove</code></td><td>Move or remove the selected block.</td></tr><tr><td><code>undo / redo</code></td><td>Restore document history, including formatting and order.</td></tr></tbody></table></div><div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">// Use the same methods with any custom controls.
+editor.setBlockType("character");
+// Add dialogue after the active block.
+const id = editor.insertBlock("dialogue", "We made it before the light.");
+// Move it to a specific zero-based document position.
+editor.moveBlock(id, 2);
+// Display pages at 100% without changing screenplay pagination.
+editor.setZoom(1);
+// Restore responsive parent-width sizing.
+editor.setZoom("fit-parent");
+// Read the current number of A4 screenplay pages.
+const pages = editor.getPageCount();
+// Disconnect an external toolbar when no longer needed.
+disconnect();</code></pre></div>
+</section>
+<section id="data" class="section scrollspy"><h3>Document & export</h3>
+<p>Documents contain a title and ordered blocks with stable IDs, a semantic type, and literal text. Getters return detached copies. Duplicate or missing IDs are replaced during loading. Invalid imports leave the current document intact. JSON preserves block types and order; text export is readable plain text, not a Fountain or PDF serializer.</p><div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">// Save through your application’s persistence layer.
+const json = editor.toJSON();
+// Restore a previously saved document.
+editor.fromJSON(json);
+// Read a plain-text version.
+const text = editor.toText();</code></pre></div><div id="screenplay-output" class="code-card docs-code no-autoinit"><pre><code class="language-json">{"title":"The last light","blocks":[]}</code></pre></div>
+</section>
+<section id="api" class="section scrollspy"><h3>Methods & options</h3>
+<div class="responsive-table"><table><thead><tr><th>Method / option</th><th>Behavior</th></tr></thead><tbody><tr><td><code>getDocument() / setDocument(document)</code></td><td>Read a detached document or replace it as an undoable operation.</td></tr><tr><td><code>getActiveBlock()</code></td><td>Read a detached copy of the focused block.</td></tr><tr><td><code>insertBlock(type, text?, afterId?)</code></td><td>Insert and focus a block; returns its ID.</td></tr><tr><td><code>updateBlock(id, { type?, text? })</code></td><td>Update supported fields without changing the stable ID.</td></tr><tr><td><code>setBlockType(type)</code></td><td>Format the active block and retain its text selection.</td></tr><tr><td><code>moveBlock(id, index) / removeBlock(id?)</code></td><td>Reorder by zero-based index or remove a block. An empty document retains one writable action block.</td></tr><tr><td><code>focus(id?, start?, end?)</code></td><td>Focus a block and optionally select a text range.</td></tr><tr><td><code>undo() / redo() / canExecute(command)</code></td><td>Inspect and use the bounded, 100-step document history.</td></tr><tr><td><code>execute(command, value?)</code></td><td>Invoke the same commands as a connected toolbar.</td></tr><tr><td><code>getZoom() / setZoom("fit-parent" | number)</code></td><td>Read or change preview size. Numeric scales range from 0.25 to 2; 1 means 100%. Defaults to <code>"fit-parent"</code>. Available in read-only mode and independent of document history.</td></tr><tr><td><code>getPageCount()</code></td><td>Read the number of physical A4 sheets. Page breaks preserve semantic blocks and their source text, including long blocks continued across several pages.</td></tr><tr><td><code>setReadOnly(boolean)</code></td><td>Disable user edits and mutation commands; explicit document loads remain available.</td></tr><tr><td><code>destroy()</code></td><td>Disconnect listeners and the toolbar, stop resize observation, and restore the original host markup. The Toolbar instance remains application-owned.</td></tr><tr><td><code>document / label / readOnly / zoom / onChange</code></td><td>Initialization options. <code>onChange(document)</code> receives a detached document.</td></tr><tr><td><code>--screenplay-editor-height / --screenplay-page-shadow</code></td><td>Customize the scrollable canvas height (default 640px) and the soft shadow around each page.</td></tr><tr><td><code>--screenplay-paper-background / --screenplay-paper-color / --screenplay-paper-muted</code></td><td>Customize the paper and ink colors. Page size, margins, and 12-point Courier stay fixed so resizing the preview does not change pagination.</td></tr></tbody></table></div><p><code>screenplayzoomchange</code> bubbles with <code>detail.zoom</code>. <code>screenplaylayoutchange</code> bubbles with <code>detail.pages</code> when pagination changes. <code>screenplaychange</code> bubbles with <code>detail.document</code>. <code>screenplayselectionchange</code> bubbles with <code>detail.block</code>. In this demo, try the public <code>window.screenplayEditor</code> instance in your console.</p>
+</section>
+                    </div>
+                    <div class="hide-on-small-only m2 xl2"><div class="toc-wrapper"><ul class="section table-of-contents"><li><a href="#demo">Try the editor</a></li><li><a href="#setup">Setup</a></li><li><a href="#toolbar">Toolbar connection</a></li><li><a href="#data">Document & export</a></li><li><a href="#api">Methods & options</a></li></ul></div></div>
+                </div>
+            </div>
+        </main>
+        {{> footer }}
+        <script type="module" src="/main.ts"></script>
+        <script type="module" src="/editor-demos.ts"></script>
+    </body>
+</html>

@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     {{> head }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
   </head>
   <body>
     {{> navbar }}
@@ -204,6 +205,87 @@
         <p>Labels allow clicks through to the image. For an interactive badge, use <code>&lt;a class="badge" href="…"&gt;Featured&lt;/a&gt;</code> with a descriptive label. No JavaScript is required.</p>
       </section>
 
+            <section id="icons" class="section scrollspy">
+              <h3 class="header">Badges with Icons</h3>
+              <p>Place an icon before the label inside a <code>badge</code>. Kmaterialize centers the icon and text, with consistent sizing for Material Icons and Font Awesome. This works with standard badges and card-overlay badges.</p>
+              <p>Load the stylesheet for your chosen icon set in the page's <code>&lt;head&gt;</code>, alongside Kmaterialize:</p>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;!-- Material Icons --&gt;
+&lt;link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"&gt;
+&lt;!-- Font Awesome Free --&gt;
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"&gt;</code></pre></div>
+              <h4>Standard badges</h4>
+              <p>Use <code>data-badge-caption=""</code> when your label replaces the default “new” caption. No additional icon alignment classes are needed.</p>
+              <div class="collection">
+                <div class="collection-item"><span class="new badge" data-badge-caption=""><i class="material-icons" aria-hidden="true">lock</i>Project Manager</span>Material Icons</div>
+                <div class="collection-item"><span class="new badge" data-badge-caption=""><i class="fa-solid fa-lock" aria-hidden="true"></i>Project Manager</span>Font Awesome</div>
+              </div>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;!-- Material Icons --&gt;
+&lt;span class="new badge" data-badge-caption=""&gt;&lt;i class="material-icons" aria-hidden="true"&gt;lock&lt;/i&gt;Project Manager&lt;/span&gt;
+&lt;!-- Font Awesome --&gt;
+&lt;span class="new badge" data-badge-caption=""&gt;&lt;i class="fa-solid fa-lock" aria-hidden="true"&gt;&lt;/i&gt;Project Manager&lt;/span&gt;</code></pre></div>
+              <h4>Card badges</h4>
+              <div class="row">
+                <div class="s12 m6">
+                  <h4>Material Icons</h4>
+                  <div class="card">
+                    <div class="card-image">
+                      <img src="images/sample-1.jpg" alt="Mountain lake surrounded by trees">
+                      <div class="card-badges">
+                        <span class="badge"><i class="material-icons" aria-hidden="true">star</i>Recommended</span>
+                        <span class="badge"><i class="material-icons" aria-hidden="true">check_circle</i>Available</span>
+                      </div>
+                    </div>
+                    <div class="card-content"><p>Use the icon name as the text of a <code>material-icons</code> element.</p></div>
+                  </div>
+                  <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="card"&gt;
+  &lt;div class="card-image"&gt;
+    &lt;img src="images/sample-1.jpg" alt="Mountain lake surrounded by trees"&gt;
+    &lt;div class="card-badges"&gt;
+      &lt;span class="badge"&gt;&lt;i class="material-icons" aria-hidden="true"&gt;star&lt;/i&gt;Recommended&lt;/span&gt;
+      &lt;span class="badge"&gt;&lt;i class="material-icons" aria-hidden="true"&gt;check_circle&lt;/i&gt;Available&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+                </div>
+                <div class="s12 m6">
+                  <h4>Font Awesome</h4>
+                  <div class="card">
+                    <div class="card-image">
+                      <img src="images/sample-1.jpg" alt="Mountain lake surrounded by trees">
+                      <div class="card-badges">
+                        <span class="badge"><i class="fa-solid fa-star" aria-hidden="true"></i>Recommended</span>
+                        <span class="badge"><i class="fa-solid fa-circle-check" aria-hidden="true"></i>Available</span>
+                      </div>
+                    </div>
+                    <div class="card-content"><p>Use <code>fa-solid</code> and the icon's name class on an empty icon element.</p></div>
+                  </div>
+                  <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="card"&gt;
+  &lt;div class="card-image"&gt;
+    &lt;img src="images/sample-1.jpg" alt="Mountain lake surrounded by trees"&gt;
+    &lt;div class="card-badges"&gt;
+      &lt;span class="badge"&gt;&lt;i class="fa-solid fa-star" aria-hidden="true"&gt;&lt;/i&gt;Recommended&lt;/span&gt;
+      &lt;span class="badge"&gt;&lt;i class="fa-solid fa-circle-check" aria-hidden="true"&gt;&lt;/i&gt;Available&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+                </div>
+              </div>
+              <p>Keep a visible label and mark decorative icons with <code>aria-hidden="true"</code>. See the <a href="icons.html">Material Icons guide</a> and <a href="https://docs-v6.fontawesome.com/web/add-icons/how-to">Font Awesome guide</a> for more icon choices.</p>
+            </section>
+
+            <section id="round" class="section scrollspy">
+              <h3 class="header">Round Badges</h3>
+              <p>Add <code>round</code> to give a badge a pill shape. Combine it with <code>new</code>, icons, custom captions, and colors. The modifier also works inside <code>card-badges</code>.</p>
+              <div class="collection">
+                <div class="collection-item"><span class="new badge round">4</span>Unread messages</div>
+                <div class="collection-item"><span class="new badge round" data-badge-caption=""><i class="material-icons" aria-hidden="true">lock</i>Project Manager</span>Material Icons</div>
+                <div class="collection-item"><span class="new badge round" data-badge-caption=""><i class="fa-solid fa-lock" aria-hidden="true"></i>Project Manager</span>Font Awesome</div>
+              </div>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;span class="new badge round"&gt;4&lt;/span&gt;
+&lt;span class="new badge round" data-badge-caption=""&gt;&lt;i class="material-icons" aria-hidden="true"&gt;lock&lt;/i&gt;Project Manager&lt;/span&gt;
+&lt;span class="new badge round" data-badge-caption=""&gt;&lt;i class="fa-solid fa-lock" aria-hidden="true"&gt;&lt;/i&gt;Project Manager&lt;/span&gt;</code></pre></div>
+            </section>
+
             <div id="options" class="section scrollspy">
               <div class="row">
                 <div class="col s12">
@@ -260,6 +342,8 @@
                   <li><a href="#navbar">Navbar</a></li>
                   <li><a href="#collapsible">Collapsible</a></li>
                   <li><a href="#cards">Card Badges</a></li>
+                  <li><a href="#icons">Badges with Icons</a></li>
+                  <li><a href="#round">Round Badges</a></li>
                   <li><a href="#options">Options</a></li>
                 </ul>
               </div>

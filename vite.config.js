@@ -192,8 +192,9 @@ export default ({ command }) => ({
         ? [
             { find: /^kmaterialize$/, replacement: resolve(localKmaterializeRoot, "src/index.ts") },
             {
-              find: /^kmaterialize\/sass\/materialize\.scss$/,
-              replacement: resolve(localKmaterializeRoot, "sass/materialize.scss"),
+              // Preview optional enhancement styles from the same local library.
+              find: /^kmaterialize\/sass\/(.+)$/,
+              replacement: `${resolve(localKmaterializeRoot, "sass")}/$1`,
             },
           ]
         : [],

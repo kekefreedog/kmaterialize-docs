@@ -20,6 +20,9 @@
                 <code class="language-html">anchor</code> tag.
               </p>
 
+              <p>Dropdowns use Material 3 Expressive styling with rounded menu sections and theme-aware interaction states. Open a menu and use <kbd>↑</kbd> / <kbd>↓</kbd> to move between available items, <kbd>Enter</kbd> to activate an item, and <kbd>Esc</kbd> to close it. The keyboard focus indicator stays inside the item so it remains visible at the menu edges.</p>
+              <p>Use <code>selected</code> or <code>aria-selected="true"</code> on an item to show the current selection with a rounded tertiary highlight. Focus moves independently of selection. Mark unavailable items with <code>disabled</code> and <code>aria-disabled="true"</code>; disabled items and dividers are skipped by arrow-key navigation.</p>
+
               <a class="dropdown-trigger btn tonal" href="#" data-target="dropdown1">Drop Me!</a>
 
               <ul id="dropdown1" class="dropdown-content">
@@ -233,6 +236,53 @@ document.addEventListener('DOMContentLoaded', function() {
               </div>
             </div>
 
+            <section id="nested" class="scrollspy section">
+              <h3 class="header">Nested Dropdowns</h3>
+              <p>Put a <code>dropdown-trigger</code> inside a menu item and connect it to another <code>dropdown-content</code> using <code>data-target</code>. Initialize every trigger, including the nested ones. Submenus open on hover, click, or touch, and flip to the other side when there is not enough room.</p>
+              <p>Use <kbd>→</kbd> to enter a submenu, <kbd>←</kbd> to return, and <kbd>Esc</kbd> to close one level. Left and right are reversed in right-to-left layouts. Choosing a final item closes the menu tree; opening a submenu keeps its parent open.</p>
+
+              <div id="nested-dropdown-demo">
+                <button type="button" class="dropdown-trigger btn tonal" data-target="nested-components">Explore components</button>
+                <ul id="nested-components" class="dropdown-content">
+                  <li>
+                    <button type="button" class="dropdown-trigger" data-target="nested-layout">Layout</button>
+                    <ul id="nested-layout" class="dropdown-content">
+                      <li><a href="cards.html">Cards</a></li>
+                      <li><a href="grid.html">Grid</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <button type="button" class="dropdown-trigger" data-target="nested-forms">Forms</button>
+                    <ul id="nested-forms" class="dropdown-content">
+                      <li><a href="text-inputs.html">Text inputs</a></li>
+                      <li>
+                        <button type="button" class="dropdown-trigger" data-target="nested-pickers">Pickers</button>
+                        <ul id="nested-pickers" class="dropdown-content">
+                          <li><a href="pickers.html">Date and time</a></li>
+                          <li><a href="color-picker.html">Color picker</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="divider" role="separator"></li>
+                  <li><a href="buttons.html">Buttons</a></li>
+                </ul>
+              </div>
+
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;button class="dropdown-trigger btn tonal" data-target="actions"&gt;Actions&lt;/button&gt;
+&lt;ul id="actions" class="dropdown-content"&gt;
+  &lt;li&gt;
+    &lt;button class="dropdown-trigger" data-target="export-options"&gt;Export&lt;/button&gt;
+    &lt;ul id="export-options" class="dropdown-content"&gt;
+      &lt;li&gt;&lt;a href="report.pdf"&gt;PDF&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="report.csv"&gt;CSV&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre></div>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">// Initialize root and nested triggers together.
+Dropdown.init(document.querySelectorAll('.dropdown-trigger'));</code></pre></div>
+            </section>
+
             <div id="methods" class="scrollspy section">
               <h3 class="header">Methods</h3>
               <blockquote>
@@ -321,6 +371,9 @@ document.addEventListener('DOMContentLoaded', function() {
                   </li>
                   <li>
                     <a href="#options">Options</a>
+                  </li>
+                  <li>
+                    <a href="#nested">Nested Dropdowns</a>
                   </li>
                   <li>
                     <a href="#methods">Methods</a>
