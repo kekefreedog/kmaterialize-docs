@@ -8,10 +8,23 @@ const types = readFileSync(resolve(root, 'dist/js/materialize.d.ts'), 'utf8');
 // Require every library component presented in the documentation.
 const required = ['ScreenplayEditor', 'ScriptEditor', 'Storyboard', 'RangeInterval', 'RangeIntervalOptions', 'CodeCard', 'PasswordInput', 'TinyNavbar', 'NavbarAutoHide', 'Gantt', 'Editor', 'CrazyLoading', 'CrazyButton', 'Kmcomponent', 'OrgChart', 'initMaterialButtons', 'initListChecklist', 'enableCardHandles', 'RichTextarea', 'OtpInput', 'MaskitoInput', 'initNavbarScroll'];
 const missing = required.filter(name => !new RegExp(`\\b${name}\\b`).test(types));
+// Require the reusable search API before publishing its documentation.
+for (const name of ['SearchInput', 'SearchInputOptions']) {
+  // Report missing search exports from an older installed release.
+  if (!new RegExp(`\\b${name}\\b`).test(types)) {
+    // Include the missing public API in the build error.
+    missing.push(name);
+  }
+}
 if (!/static clickConfirm\(/.test(types)) missing.push('Popup.clickConfirm');
 if (!/static steps[<(]/.test(types)) missing.push('Popup.steps');
 if (!/waitForConfirmation</.test(types)) missing.push('PopupStepContext.waitForConfirmation');
 const css = readFileSync(resolve(root, 'dist/css/materialize.css'), 'utf8');
+// Require the search control's library-owned styles.
+if (!css.includes('.search-input-status')) {
+  // Reject builds that would display an unstyled search control.
+  missing.push('.search-input-status');
+}
 // Verify reusable component styling ships with the installed library.
 for (const selector of ['.screenplay-editor', '.script-editor', '.storyboard', '.range-interval', '.range-control', '.range-control-readout', '.range-outside', '.code-card', '.footer-layout', '.footer-fixed', '.timeline', '.timeline-event', '.timeline-content', '.timeline-badge', '.timeline-left', '.navbar-tiny', '.navbar-hide-on-scroll', '.editor-workspace', '.switch-with-icon', '.tabs-fill', '.radio-group-horizontal', '.m3-rail', '.navbar-scroll', '.navbar-search-toolbar', '.rich-textarea', '.otp-input-slot']) {
   if (!css.includes(selector)) missing.push(selector);

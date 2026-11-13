@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        {{> head }}
+    </head>
+    <body>
+        {{> navbar }}
+        <main>
+            {{> intro }}
+            <div class="container">
+                <div class="row">
+                    <div class="s12 m8 offset-m1 xl7 offset-xl1">
+                        <section id="basic" class="section scrollspy" data-search-demo>
+                            <h2>Filter with match feedback</h2>
+                            <p>A rounded search field inspired by Studio Resource. Try <strong>Ada</strong> for one match, <strong>Lighting</strong> for two, or <strong>dd</strong> for zero. Clearing the query restores every record and hides the counter.</p>
+                            <input id="artist-search" class="no-autoinit" type="search" data-search-input placeholder="Find an artist…" aria-label="Filter artists" autocomplete="off">
+                            <ul class="collection">
+                                <li class="collection-item" data-search-record>Ada Martin · Lighting</li>
+                                <li class="collection-item" data-search-record>Alex Chen · Animation</li>
+                                <li class="collection-item" data-search-record>Sam Rivera · Lighting</li>
+                                <li class="collection-item" data-search-record>Camille Roy · Compositing</li>
+                            </ul>
+                            <h3>Customize the field</h3>
+                            <p>These controls reinitialize the same Kmaterialize input. Leave an icon name empty to hide it.</p>
+                            <div class="row" data-search-settings>
+                                <div class="s12 m6 input-field outlined">
+                                    <input id="search-option-icon" name="icon" value="person_search" placeholder=" ">
+                                    <label for="search-option-icon">Left Material icon</label>
+                                </div>
+                                <div class="s12 m6 input-field outlined">
+                                    <input id="search-option-right" name="iconRight" value="" placeholder=" ">
+                                    <label for="search-option-right">Right Material icon</label>
+                                </div>
+                                <div class="s12 m6 input-field outlined">
+                                    <input id="search-option-singular" name="matchSingular" value="match" placeholder=" ">
+                                    <label for="search-option-singular">Singular text</label>
+                                </div>
+                                <div class="s12 m6 input-field outlined">
+                                    <input id="search-option-plural" name="matchPlural" value="matches" placeholder=" ">
+                                    <label for="search-option-plural">Plural text</label>
+                                </div>
+                                <label class="s12 m6"><input type="checkbox" name="clearable" checked><span>Show clear button</span></label>
+                                <label class="s12 m6"><input type="checkbox" name="showMatches" checked><span>Show match count</span></label>
+                                <label class="s12"><input type="checkbox" name="fullWidth"><span>Fill available width</span></label>
+                                <label class="s12"><input type="checkbox" name="expandable"><span>Collapse to an icon when empty</span></label>
+                            </div>
+                        </section>
+
+                        <section id="setup" class="section scrollspy">
+                            <h2>Setup</h2>
+                            {{> input-setup-note }}
+                            <p>Initialize a native input with <code>SearchInput.init()</code>. The component creates its pill, icons, clear action and accessible status message. Keep an accessible label on the input; no additional peer dependency is needed.</p>
+                            <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;input id="artist-search" type="search" data-search-input
+    class="no-autoinit" placeholder="Find an artist…"
+    aria-label="Filter artists" autocomplete="off"&gt;</code></pre></div>
+                            <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">import { SearchInput } from "kmaterialize";
+import "kmaterialize/dist/css/materialize.css";
+
+// Read application records to filter
+const records = [...document.querySelectorAll("[data-search-record]")];
+
+// Initialize the reusable field
+const search = SearchInput.init(document.querySelector("#artist-search"), {
+    icon: "person_search",
+    iconRight: "filter_alt",
+    clearable: true,
+    matchSingular: "artist",
+    matchPlural: "artists",
+    getMatches(query) {
+        // Prepare result
+        let result = 0;
+
+        // Filter the application's records
+        for(const record of records){
+            // Compare the displayed name
+            const matches = record.textContent.toLowerCase().includes(query.toLowerCase());
+
+            // Update this application's list
+            record.hidden = !matches;
+
+            // Count visible records
+            if(matches){
+                // Include this match
+                result++;
+            }
+        }
+
+        // Return result
+        return result;
+    }
+});</code></pre></div>
+                            <p><code>getMatches(query, instance)</code> receives the trimmed query on initialization, editing, clearing and refresh. Return a non-negative integer, or <code>null</code> to hide feedback. Filtering or highlighting belongs to your callback, so the same input can control a list, spreadsheet or seating plan.</p>
+                            <p>For automatic initialization, remove <code>no-autoinit</code> and call <code>M.AutoInit(container, { SearchInput: options })</code>. It recognizes <code>input[data-search-input]</code> and legacy <code>input.toolbar-search-input</code>, excluding <code>no-autoinit</code>. Plain scripts use <code>M.SearchInput</code>.</p>
+                        </section>
+
+                        <section id="html-options" class="section scrollspy" data-search-demo>
+                            <h2>HTML options and full-width columns</h2>
+                            <p>Set icons, labels and toggles directly on the input with <code>data-search-*</code>. The library reads them during <code>SearchInput.init()</code> or <code>M.AutoInit()</code>. Explicit JavaScript options override HTML values, which override defaults. Reinitialize after changing configuration attributes.</p>
+                            <p>This example uses <code>col s12</code> and fills the column automatically. Kmaterialize’s grid only needs <code>s12</code>; the extra <code>col</code> class is optional. Responsive classes also work directly on the input: the generated wrapper inherits its grid classes, such as <code>s12 m6</code>.</p>
+                            <div class="row">
+                                <div class="col s12">
+                                    <input
+                                        id="html-artist-search"
+                                        class="no-autoinit"
+                                        type="search"
+                                        data-search-input
+                                        data-search-icon="person_search"
+                                        data-search-icon-right="filter_alt"
+                                        data-search-clear-icon="backspace"
+                                        data-search-clear-label="Effacer la recherche"
+                                        data-search-clearable="true"
+                                        data-search-show-matches="true"
+                                        data-search-match-singular="artiste"
+                                        data-search-match-plural="artistes"
+                                        placeholder="Chercher un artiste…"
+                                        aria-label="Filtrer les artistes"
+                                        autocomplete="off"
+                                    >
+                                </div>
+                            </div>
+                            <ul class="collection">
+                                <li class="collection-item" data-search-record>Ada Martin · Lighting</li>
+                                <li class="collection-item" data-search-record>Alex Chen · Animation</li>
+                                <li class="collection-item" data-search-record>Sam Rivera · Lighting</li>
+                            </ul>
+                            <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="row"&gt;
+    &lt;div class="s12"&gt;
+        &lt;input id="artist-filter" type="search" data-search-input
+            data-search-icon="person_search"
+            data-search-icon-right="filter_alt"
+            data-search-clear-icon="backspace"
+            data-search-clear-label="Clear artist search"
+            data-search-clearable="true"
+            data-search-show-matches="true"
+            data-search-match-singular="artist"
+            data-search-match-plural="artists"
+            placeholder="Find an artist…" aria-label="Filter artists"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+                            <p>Use <code>data-search-clearable="false"</code> to hide the clear button and <code>data-search-show-matches="false"</code> to hide the counter. A bare boolean attribute or <code>"true"</code> enables the option; <code>"false"</code> disables it. Empty <code>data-search-icon=""</code> or <code>data-search-icon-right=""</code> omits that icon. <code>placeholder</code>, <code>value</code> and <code>aria-label</code> remain native input attributes.</p>
+                            <p>Outside a grid column, use <code>data-search-full-width</code> (or <code>fullWidth: true</code>) to fill the parent. Otherwise the field keeps its compact 380px default. Grid columns always use their available width; <code>--search-input-width</code> can override it explicitly.</p>
+                            <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;input type="search" data-search-input data-search-full-width
+    placeholder="Search…" aria-label="Search"&gt;</code></pre></div>
+                            <p>Functions stay in JavaScript: pass <code>getMatches</code>, <code>formatMatches</code> and <code>onError</code> through initialization. HTML attributes configure presentation; they do not execute function names or code.</p>
+                            <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">// Read HTML presentation settings and supply application matching
+M.AutoInit(document.body, {
+    SearchInput: {
+        getMatches: query => countArtists(query)
+    }
+});</code></pre></div>
+                        </section>
+
+                        <section id="toolbar" class="section scrollspy" data-search-demo>
+                            <h2>Toolbar item</h2>
+                            <p>Place the same input directly in a toolbar or a <code>toolbar-group</code>. It stays visible, with a compact height. This example uses a right icon and <code>artist / artists</code> labels.</p>
+                            <div class="toolbar" role="group" aria-label="Artist filters">
+                                <input type="search" data-search-input class="no-autoinit" data-search-icon="person_search" data-search-icon-right="filter_alt" data-search-match-singular="artist" data-search-match-plural="artists" aria-label="Filter toolbar artists" placeholder="Find an artist…" autocomplete="off">
+                            </div>
+                            <ul class="collection">
+                                <li class="collection-item" data-search-record>Ada Martin · Lighting</li>
+                                <li class="collection-item" data-search-record>Alex Chen · Animation</li>
+                                <li class="collection-item" data-search-record>Sam Rivera · Lighting</li>
+                            </ul>
+                            <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="toolbar"&gt;
+    &lt;div class="toolbar-group"&gt;
+        &lt;input type="search" data-search-input class="no-autoinit"
+            aria-label="Filter artists" placeholder="Find an artist…"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+                            <p>Initialize it with the same <code>SearchInput.init()</code> options, or let <code>Toolbar.init()</code> initialize it. Add <code>data-search-expandable</code> to start as an accessible icon button; the <a href="toolbar.html#search">toolbar page</a> demonstrates expandable, customized, full-width and prefilled examples using this same component.</p>
+                            <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;input type="search" data-search-input data-search-expandable
+    data-search-icon="person_search"
+    data-search-expand-label="Open artist search"
+    aria-label="Filter artists" placeholder="Find an artist…"&gt;</code></pre></div>
+                            <p>Expandable fields open on button activation or native input focus, remain expanded while a query is present, and collapse when an empty field loses focus. Escape clears and collapses back to the opener. The clear button keeps the field open. If the leading icon is omitted, the opener uses <code>search</code>. Expansion respects disabled and readonly state and reduced-motion preferences.</p>
+                        </section>
+
+                        <section id="callbacks" class="section scrollspy">
+                            <h2>Async results and custom text</h2>
+                            <p>The callback can return a promise. Only the latest returned count is displayed; clearing immediately removes old feedback. Supply <code>onError</code> to present or log failures. If your callback also renders remote records, manage those updates against the current query in your application.</p>
+                            <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">// Initialize remote matching with a complete count formatter
+SearchInput.init(input, {
+    icon: null,
+    iconRight: "person_search",
+    clearable: false,
+    getMatches: query => countArtists(query), // Promise&lt;number | null&gt;
+    formatMatches: count => `${count} ${count === 1 ? "résultat" : "résultats"}`,
+    onError: error => console.error("Could not count artists", error)
+});</code></pre></div>
+                            <p><code>formatMatches(count, query, instance)</code> overrides the whole counter, including the number. Text is inserted as plain text. An empty query always hides the counter, while still invoking <code>getMatches("")</code> so your application can reset filtering.</p>
+                        </section>
+
+                        <section id="reference" class="section scrollspy">
+                            <h2>Options and methods</h2>
+                            <table class="striped responsive-table">
+                                <thead><tr><th>Option</th><th>Default</th><th>Purpose</th></tr></thead>
+                                <tbody>
+                                    <tr><td><code>icon</code></td><td><code>"search"</code></td><td>Left Material icon name, or null to hide.</td></tr>
+                                    <tr><td><code>iconRight</code></td><td><code>null</code></td><td>Right Material icon name, or null to hide.</td></tr>
+                                    <tr><td><code>clearable</code></td><td><code>true</code></td><td>Show the clear button when text is present. Escape still clears editable inputs.</td></tr>
+                                    <tr><td><code>clearIcon</code></td><td><code>"close"</code></td><td>Material icon used inside the clear button.</td></tr>
+                                    <tr><td><code>clearLabel</code></td><td><code>"Clear search"</code></td><td>Accessible name of the clear button.</td></tr>
+                                    <tr><td><code>fullWidth</code></td><td><code>false</code></td><td>Fill any parent. Grid columns already fill their available width automatically.</td></tr>
+                                    <tr><td><code>expandable</code></td><td><code>false</code></td><td>Start as an icon button when empty and unfocused. Defaults to true for legacy toolbar-search wrappers.</td></tr>
+                                    <tr><td><code>expandLabel</code></td><td><code>"Open search"</code></td><td>Accessible name of the expansion button.</td></tr>
+                                    <tr><td><code>showMatches</code></td><td><code>true</code></td><td>Display count feedback. Matching still runs when false.</td></tr>
+                                    <tr><td><code>matchSingular</code></td><td><code>"match"</code></td><td>Text for exactly one result.</td></tr>
+                                    <tr><td><code>matchPlural</code></td><td><code>"matches"</code></td><td>Text for zero and multiple results.</td></tr>
+                                    <tr><td><code>formatMatches</code></td><td><code>null</code></td><td>Optional callback returning the complete counter text.</td></tr>
+                                    <tr><td><code>getMatches</code></td><td><code>null</code></td><td>Sync or async callback returning a count or null.</td></tr>
+                                    <tr><td><code>onError</code></td><td><code>null</code></td><td>Receives error, query and instance for the current failed request.</td></tr>
+                                </tbody>
+                            </table>
+                            <table class="striped responsive-table">
+                                <thead><tr><th>Method / property</th><th>Purpose</th></tr></thead>
+                                <tbody>
+                                    <tr><td><code>getValue()</code></td><td>Read the untrimmed native value.</td></tr>
+                                    <tr><td><code>setValue(value, emit = false)</code></td><td>Update and recompute; optionally emit bubbling input/change events.</td></tr>
+                                    <tr><td><code>clear()</code></td><td>Clear, emit input/change and focus the input. Respects disabled and readonly.</td></tr>
+                                    <tr><td><code>expand()</code></td><td>Reveal and focus the native input unless disabled.</td></tr>
+                                    <tr><td><code>collapse()</code></td><td>Collapse an empty expandable input. A nonempty query stays visible.</td></tr>
+                                    <tr><td><code>isExpanded</code></td><td>Read whether the input is currently presented; always true when expansion is disabled.</td></tr>
+                                    <tr><td><code>await refresh()</code></td><td>Recompute when application data changes or after assigning input.value directly.</td></tr>
+                                    <tr><td><code>await ready</code></td><td>Wait for the most recent search triggered by the component.</td></tr>
+                                    <tr><td><code>destroy()</code></td><td>Remove generated markup and listeners; retain the native input and its value.</td></tr>
+                                    <tr><td><code>SearchInput.getInstance(input)</code></td><td>Retrieve the current instance.</td></tr>
+                                </tbody>
+                            </table>
+                            <p>Clear keeps focus in the input. Escape returns focus to the opener in expandable mode, or retains input focus in always-open mode. Native form reset, disabled fieldsets, readonly values and IME composition are supported. Counts use a polite live region and preserve existing <code>aria-describedby</code> help text.</p>
+                            <p>Presentation options map to their kebab-case HTML attributes: <code>iconRight</code> becomes <code>data-search-icon-right</code>, <code>clearLabel</code> becomes <code>data-search-clear-label</code>, and so on. All icons, labels and boolean options above support this form.</p>
+                            <p>Set <code>--search-input-width</code> and <code>--search-input-height</code> on a parent to adjust sizing. Width defaults to 380px with a 100% maximum outside grid columns; columns and <code>fullWidth</code> use 100%. Height is 40px standalone and 34px inside a toolbar. Colors follow the active Material theme.</p>
+                        </section>
+                    </div>
+                    <div class="hide-on-small-only m3 xl3">
+                        <div class="toc-wrapper">
+                            <ul class="section table-of-contents" aria-label="On this page">
+                                <li><a href="#basic">Filter and customize</a></li>
+                                <li><a href="#setup">Setup</a></li>
+                                <li><a href="#html-options">HTML and full width</a></li>
+                                <li><a href="#toolbar">Toolbar item</a></li>
+                                <li><a href="#callbacks">Async and custom text</a></li>
+                                <li><a href="#reference">Options and methods</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        {{> footer }}
+        <script type="module" src="/main.ts"></script>
+        <script type="module" src="/search-input-demo.ts"></script>
+    </body>
+</html>

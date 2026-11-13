@@ -40,18 +40,17 @@ if (mode === "latest") {
   // A plain `pnpm install` reuses whatever version is already resolved in
   // pnpm-lock.yaml for the "latest" specifier - it does NOT re-check the
   // npm registry just because the "latest" dist-tag moved on to a newer
-  // publish (confirmed: a build shipped a week-old version this way even
-  // though package.json said "latest" the whole time). `pnpm update
-  // --latest` is what actually re-resolves the dist-tag - but it also
-  // rewrites package.json's specifier to the exact pinned version as a
-  // side effect, so put "latest" back afterwards.
+  // publish. Request kmaterialize@latest explicitly to re-resolve that
+  // package without --latest relaxing the other dependencies' ranges.
+  // Restore the "latest" specifier if pnpm pins the resolved version.
   //
   // The reconciliation install below needs --no-frozen-lockfile: pnpm
   // auto-enables frozen-lockfile whenever CI=true (i.e. every GitHub
   // Actions run), which would otherwise reject it for package.json/
   // lockfile briefly disagreeing mid-script. (`update` has no such flag -
   // it isn't subject to frozen-lockfile in the first place.)
-  execSync("corepack pnpm update kmaterialize --latest", { stdio: "inherit", cwd: rootDir });
+  // Refresh only Kmaterialize while preserving the other declared dependency ranges.
+  execSync("corepack pnpm update kmaterialize@latest", { stdio: "inherit", cwd: rootDir });
   const pkgAfterUpdate = JSON.parse(readFileSync(pkgPath, "utf8"));
   if (pkgAfterUpdate.dependencies.kmaterialize !== "latest") {
     pkgAfterUpdate.dependencies.kmaterialize = "latest";

@@ -178,10 +178,7 @@ controls.addEventListener('buttonaction', (event) => {
                   </div>
                 </div>
                 <div class="toolbar-group">
-                  <div class="toolbar-search">
-                    <button class="toolbar-search-toggle"><i class="material-icons">search</i></button>
-                    <input class="toolbar-search-input" placeholder="Search..." />
-                  </div>
+                  <input type="search" data-search-input data-search-expandable data-search-show-matches="false" aria-label="Search planning" placeholder="Search planning…">
                   <button class="btn-floating btn-small"><i class="material-icons">refresh</i></button>
                 </div>
               </div>
@@ -196,10 +193,9 @@ controls.addEventListener('buttonaction', (event) => {
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class="toolbar-group"&gt;
-    &lt;div class="toolbar-search"&gt;
-      &lt;button class="toolbar-search-toggle"&gt;&lt;i class="material-icons"&gt;search&lt;/i&gt;&lt;/button&gt;
-      &lt;input class="toolbar-search-input" placeholder="Search..."&gt;
-    &lt;/div&gt;
+    &lt;input type="search" data-search-input data-search-expandable
+      data-search-show-matches="false" aria-label="Search planning"
+      placeholder="Search planning…"&gt;
     &lt;button class="btn-floating btn-small"&gt;&lt;i class="material-icons"&gt;refresh&lt;/i&gt;&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre></div>
@@ -292,6 +288,7 @@ controls.addEventListener('buttonaction', (event) => {
               </p>
 
               <p>With custom labels on each side (e.g. a zoom level):</p>
+              <p>Value popups stay visible above the toolbar and follow the slider while scrolling. Horizontal toolbar scrolling remains available.</p>
               <div class="toolbar">
                 <div class="toolbar-group">
                   <div class="toolbar-slider">
@@ -369,23 +366,131 @@ controls.addEventListener('buttonaction', (event) => {
               <p>Same <code class="language-javascript">M.Dropdown.init()</code>/<code class="language-javascript">getInstance()</code> API as on the <a href="dropdown.html">Dropdown</a> page - nothing toolbar-specific about it.</p>
             </div>
 
-            <div id="search" class="section scrollspy">
+            <section id="search" class="section scrollspy">
               <h3 class="header">Expandable Search</h3>
-              <p>
-                Starts as just an icon button and expands into a text input on focus (or once it has a value) - click the icon below. Press
-                <code class="language-html">Escape</code> to clear and collapse it again.
-              </p>
-              <div class="toolbar" style="justify-content: flex-start;">
-                <div class="toolbar-search">
-                  <button class="toolbar-search-toggle"><i class="material-icons">search</i></button>
-                  <input class="toolbar-search-input" placeholder="Search..." />
+              <p>Toolbar search uses the same <a href="search-input.html">SearchInput component</a> as standalone filters. Add <code>data-search-expandable</code> or initialize with <code>expandable: true</code> to start with an icon button. All icons, clear options, count callbacks and text labels remain available.</p>
+              <p>Click the icon, or activate it with Enter or Space, to open and focus the field. An empty field collapses when focus leaves the whole control. A query stays visible until cleared. Escape clears and collapses back to the button; the clear button keeps the field open for another query.</p>
+
+              <section id="search-matches" data-search-demo>
+                <h4>Expandable filter with matches</h4>
+                <p>Try <strong>Ada</strong>, <strong>Lighting</strong> or <strong>zz</strong> to see one, several or zero results.</p>
+                <div class="toolbar" role="group" aria-label="Artist search" style="justify-content: flex-start;">
+                  <input id="toolbar-search-matches" class="no-autoinit" type="search" data-search-input data-search-expandable aria-label="Filter artists" placeholder="Find an artist…" autocomplete="off">
                 </div>
-              </div>
-              <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="toolbar-search"&gt;
-  &lt;button class="toolbar-search-toggle"&gt;&lt;i class="material-icons"&gt;search&lt;/i&gt;&lt;/button&gt;
-  &lt;input class="toolbar-search-input" placeholder="Search..."&gt;
+                <ul class="collection">
+                  <li class="collection-item" data-search-record>Ada Martin · Lighting</li>
+                  <li class="collection-item" data-search-record>Alex Chen · Animation</li>
+                  <li class="collection-item" data-search-record>Sam Rivera · Lighting</li>
+                </ul>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="toolbar"&gt;
+    &lt;input type="search" data-search-input data-search-expandable
+        aria-label="Filter artists" placeholder="Find an artist…"&gt;
 &lt;/div&gt;</code></pre></div>
-            </div>
+              </section>
+
+              <section id="search-custom" data-search-demo>
+                <h4>Custom icons and labels, without a clear button</h4>
+                <p>The opener uses <code>person_search</code>, the trailing icon uses <code>filter_alt</code>, and feedback uses <code>artiste / artistes</code>. Escape still clears when the clear button is disabled.</p>
+                <div class="toolbar" role="group" aria-label="Recherche des artistes" style="justify-content: flex-start; --search-input-width: 320px;">
+                  <input id="toolbar-search-custom" class="no-autoinit" type="search" data-search-input data-search-expandable data-search-icon="person_search" data-search-icon-right="filter_alt" data-search-expand-label="Ouvrir la recherche" data-search-clearable="false" data-search-match-singular="artiste" data-search-match-plural="artistes" aria-label="Filtrer les artistes" placeholder="Chercher un artiste…" autocomplete="off">
+                </div>
+                <ul class="collection">
+                  <li class="collection-item" data-search-record>Ada Martin · Lighting</li>
+                  <li class="collection-item" data-search-record>Sam Rivera · Lighting</li>
+                  <li class="collection-item" data-search-record>Camille Roy · Compositing</li>
+                </ul>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;input type="search" data-search-input data-search-expandable
+    data-search-icon="person_search"
+    data-search-icon-right="filter_alt"
+    data-search-expand-label="Ouvrir la recherche"
+    data-search-clearable="false"
+    data-search-match-singular="artiste"
+    data-search-match-plural="artistes"
+    aria-label="Filtrer les artistes"&gt;</code></pre></div>
+              </section>
+
+              <section id="search-full-width" data-search-demo>
+                <h4>Expand to the available width</h4>
+                <p><code>data-search-full-width</code> fills the toolbar when expanded. In a grid, <code>s12</code> and responsive column classes set the expanded width automatically. Resize the page to try it.</p>
+                <div class="toolbar" role="group" aria-label="Shot filters" style="justify-content: flex-start;">
+                  <input id="toolbar-search-wide" class="no-autoinit" type="search" data-search-input data-search-expandable data-search-full-width data-search-icon="movie" data-search-match-singular="shot" data-search-match-plural="shots" aria-label="Filter shots" placeholder="Find a shot…" autocomplete="off">
+                </div>
+                <ul class="collection">
+                  <li class="collection-item" data-search-record>SQ010_0010 · Animation</li>
+                  <li class="collection-item" data-search-record>SQ010_0020 · Lighting</li>
+                  <li class="collection-item" data-search-record>SQ020_0010 · Compositing</li>
+                </ul>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="toolbar"&gt;
+    &lt;input type="search" data-search-input data-search-expandable
+        data-search-full-width data-search-icon="movie"
+        data-search-match-singular="shot" data-search-match-plural="shots"
+        aria-label="Filter shots" placeholder="Find a shot…"&gt;
+&lt;/div&gt;</code></pre></div>
+              </section>
+
+              <section id="search-prefilled" data-search-demo>
+                <h4>Prefilled query</h4>
+                <p>A saved query starts expanded and remains visible when another control receives focus. This example also demonstrates a custom clear icon and label.</p>
+                <div class="toolbar" role="group" aria-label="Saved artist filter" style="justify-content: flex-start;">
+                  <input id="toolbar-search-prefilled" class="no-autoinit" type="search" data-search-input data-search-expandable data-search-icon="person_search" data-search-clear-icon="backspace" data-search-clear-label="Clear saved filter" data-search-match-singular="artist" data-search-match-plural="artists" value="Lighting" aria-label="Saved artist filter" placeholder="Find an artist…" autocomplete="off">
+                </div>
+                <ul class="collection">
+                  <li class="collection-item" data-search-record>Ada Martin · Lighting</li>
+                  <li class="collection-item" data-search-record>Sam Rivera · Lighting</li>
+                  <li class="collection-item" data-search-record>Alex Chen · Animation</li>
+                </ul>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;input type="search" data-search-input data-search-expandable
+    data-search-icon="person_search" value="Lighting"
+    data-search-clear-icon="backspace" data-search-clear-label="Clear saved filter"
+    aria-label="Saved artist filter"&gt;</code></pre></div>
+              </section>
+
+              <section id="search-always-open" data-search-demo>
+                <h4>Always-open filter</h4>
+                <p>Set <code>data-search-expandable="false"</code>, or omit it, for the original always-visible field. Hiding the counter leaves application filtering active.</p>
+                <div class="toolbar" role="group" aria-label="Department filter" style="justify-content: flex-start;">
+                  <input id="toolbar-search-open" class="no-autoinit" type="search" data-search-input data-search-expandable="false" data-search-show-matches="false" data-search-icon="filter_alt" aria-label="Filter departments" placeholder="Filter departments…" autocomplete="off">
+                </div>
+                <ul class="collection">
+                  <li class="collection-item" data-search-record>Animation</li>
+                  <li class="collection-item" data-search-record>Lighting</li>
+                  <li class="collection-item" data-search-record>Compositing</li>
+                </ul>
+              </section>
+
+              <h4>Initialization and callbacks</h4>
+              <p><code>Toolbar.init()</code> initializes its search fields and accepts shared search options. For automatic initialization, pass callback options through <code>M.AutoInit(container, { SearchInput: options })</code>. Explicitly initialized search instances are preserved.</p>
+              <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">// Initialize toolbar tracks and search fields through Kmaterialize
+const toolbar = M.Toolbar.init(document.querySelector(".toolbar"), {
+    search: {
+        expandable: true,
+        icon: "person_search",
+        getMatches: query => filterArtistsAndCount(query)
+    }
+});
+
+// Access the same reusable search instance
+const search = M.SearchInput.getInstance(document.querySelector("input[data-search-input]"));
+
+// Open and focus the field programmatically
+search.expand();
+
+// Collapse an empty field; nonempty queries remain visible
+search.collapse();</code></pre></div>
+              <p>The live lists above provide their own <code>getMatches</code> callbacks and use <code>no-autoinit</code> with explicit <code>SearchInput.init()</code>. Matching may also be asynchronous; see the <a href="search-input.html#callbacks">callback reference</a>.</p>
+              <details>
+                <summary>Existing toolbar-search markup</summary>
+                <p>The original wrapper, toggle and input are supported. <code>Toolbar.init()</code> upgrades them to the same expandable <code>SearchInput</code>, preserving native input and toggle listeners. Destroying the owning toolbar restores the original markup. <code>no-autoinit</code> on an input opts it out.</p>
+                <div class="code-card docs-code no-autoinit"><pre><code class="language-html">&lt;div class="toolbar"&gt;
+    &lt;div class="toolbar-search"&gt;
+        &lt;button type="button" class="toolbar-search-toggle"&gt;
+            &lt;i class="material-icons"&gt;search&lt;/i&gt;
+        &lt;/button&gt;
+        &lt;input class="toolbar-search-input" type="search" aria-label="Search"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+              </details>
+            </section>
 
             <div id="overflow" class="section scrollspy">
               <h3 class="header">Overflow</h3>
@@ -526,7 +631,7 @@ controls.addEventListener('buttonaction', (event) => {
               </p>
               <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">var elems = document.querySelectorAll('.toolbar');
 var instances = M.Toolbar.init(elems, options);</code></pre></div>
-              <p>Or with jQuery:</p>
+              <p>Retrieve an initialized toolbar:</p>
               <div class="code-card docs-code no-autoinit"><pre><code class="language-javascript">var instance = M.Toolbar.getInstance(elem);</code></pre></div>
             </div>
 
@@ -546,7 +651,7 @@ var instances = M.Toolbar.init(elems, options);</code></pre></div>
                   </tr>
                   <tr>
                     <td><code class="language-javascript">destroy()</code></td>
-                    <td>Removes the instance's event listeners.</td>
+                    <td>Removes the toolbar’s event listeners and destroys only search inputs it initialized. Explicitly initialized or subsequently replaced search instances remain owned by the application.</td>
                   </tr>
                 </tbody>
               </table>
@@ -566,6 +671,8 @@ var instances = M.Toolbar.init(elems, options);</code></pre></div>
                   <li><a href="#slider">Slider</a></li>
                   <li><a href="#dropdown">Dropdown</a></li>
                   <li><a href="#search">Expandable Search</a></li>
+                  <li><a href="#search-custom">Custom search</a></li>
+                  <li><a href="#search-full-width">Full-width search</a></li>
                   <li><a href="#overflow">Overflow</a></li>
                   <li><a href="#separator">Separator</a></li>
                   <li><a href="#freeze">Freeze a group</a></li>
@@ -581,6 +688,7 @@ var instances = M.Toolbar.init(elems, options);</code></pre></div>
     {{> footer }}
     <script type="module" src="/main.ts"></script>
     <script type="module" src="/toolbar-zoom-demo.ts"></script>
+    <script type="module" src="/search-input-demo.ts"></script>
     <script type="module" src="/crazy-button-layouts-demo.ts"></script>
   </body>
 </html>
